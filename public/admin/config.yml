@@ -1,0 +1,68 @@
+# Decap CMS — Configuración
+# Documentación: https://decapcms.org/docs/configuration-options/
+
+backend:
+  name: github
+  # TODO: actualizar con el nombre real del repositorio tras crearlo en GitHub
+  repo: ucb-sistemas/fundacion-pro21
+  branch: main
+  # Para desarrollo local usar: npx decap-server
+  # local_backend: true
+
+# Carpeta donde se guardan las imágenes subidas desde el CMS
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+# Idioma del panel de administración
+locale: es
+
+# ── Colecciones de contenido ─────────────────────────────────────────────────
+
+collections:
+
+  # ── Blog / Noticias ──────────────────────────────────────────────────────
+  - name: blog
+    label: Blog / Noticias
+    label_singular: Publicación
+    folder: content/blog
+    create: true
+    slug: "{{slug}}"
+    preview_path: "/es/blog/{{slug}}"
+    fields:
+      - { label: Título, name: title, widget: string }
+      - { label: Fecha de publicación, name: date, widget: datetime, format: "YYYY-MM-DD" }
+      - { label: Imagen destacada, name: image, widget: image, required: false }
+      - { label: Resumen (para la lista), name: excerpt, widget: text }
+      - { label: Contenido, name: body, widget: markdown }
+
+  # ── Equipo ───────────────────────────────────────────────────────────────
+  - name: equipo
+    label: Equipo profesional
+    label_singular: Miembro del equipo
+    folder: content/equipo
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Nombre completo, name: name, widget: string }
+      - { label: Cargo, name: role, widget: string }
+      - { label: Especialidad, name: specialty, widget: string }
+      - { label: Foto, name: photo, widget: image, required: false }
+      - { label: Descripción breve, name: bio, widget: text }
+
+  # ── Testimonios ──────────────────────────────────────────────────────────
+  - name: testimonios
+    label: Testimonios de familias
+    label_singular: Testimonio
+    folder: content/testimonios
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Nombre de la familia, name: family, widget: string }
+      - label: Programa
+        name: program
+        widget: select
+        options:
+          - Mi Escuelita Down
+          - Aula Wawitas
+          - Pasos Firmes
+      - { label: Testimonio, name: body, widget: markdown }

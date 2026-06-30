@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Variables CSS del proyecto ─────────────────────────────────────────── */
+:root {
+  /* Colores provisionales — confirmar con la fundación en la entrevista inicial */
+  --color-primary: #f97316;      /* naranja — energía, inclusión */
+  --color-secondary: #22c55e;    /* verde — crecimiento, esperanza */
+  --color-accent: #3b82f6;       /* azul — confianza, profesionalismo */
+  --color-text: #1a1a1a;         /* gris oscuro — nunca negro puro */
+}
+
+/* ── Clase para alto contraste (accesibilidad) ──────────────────────────── */
+.high-contrast {
+  --color-primary: #000000;
+  --color-secondary: #000000;
+  --color-text: #000000;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+.high-contrast * {
+  border-color: #000000 !important;
+}
+
+/* ── Componentes reutilizables ───────────────────────────────────────────── */
+@layer components {
+  .input {
+    @apply w-full border border-gray-300 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400
+           focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent
+           transition-colors;
+  }
+
+  .container {
+    @apply max-w-6xl;
+  }
+
+  /* Tipografía del blog */
+  .prose h2 { @apply text-2xl font-bold mt-8 mb-4; }
+  .prose h3 { @apply text-xl font-semibold mt-6 mb-3; }
+  .prose p  { @apply leading-relaxed mb-4; }
+  .prose ul { @apply list-disc list-inside mb-4 space-y-1; }
+  .prose a  { @apply text-primary underline; }
+}
+
+/* ── Fuente base ─────────────────────────────────────────────────────────── */
+body {
+  color: var(--color-text);
+  font-display: swap;
+}
