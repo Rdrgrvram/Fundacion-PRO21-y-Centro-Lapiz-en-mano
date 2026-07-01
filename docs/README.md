@@ -97,7 +97,7 @@ El deploy es automático: cualquier push a `main` desencadena un nuevo deploy en
 
 ## Equipo
 
-Desarrollado por 8 estudiantes de Ingeniería de Sistemas, UCB La Paz.
+Desarrollado por 6 estudiantes de Ingeniería de Sistemas, UCB La Paz.
 Supervisado por M.Sc. Orlando Rivera, Director de la Carrera.
 
 ---
