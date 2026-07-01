@@ -1,7 +1,7 @@
 # TEAM.md — Roles y Responsabilidades del Equipo
 
 > Proyecto Social UCB — Carrera Ingeniería de Sistemas
-> 8 estudiantes · 40 horas de servicio social cada uno
+> 6 estudiantes · 40 horas de servicio social cada uno
 
 ---
 
@@ -21,13 +21,27 @@
 
 ## Estructura del equipo
 
-### Rol 1 — Diseño Visual (2 personas)
+### Scrum Master
+
+| Campo | Detalle |
+|---|---|
+| Integrante | Rodrigo Rivera |
+| Horas | 40h |
+
+**Responsabilidades:**
+- Facilitar las ceremonias Scrum (Daily, Sprint Planning, Review, Retrospectiva)
+- Eliminar bloqueos del equipo
+- Asegurar que el equipo siga las convenciones definidas en SCRUM.md
+- Coordinar comunicación entre el equipo, supervisor y fundación
+
+---
+
+### Rol 1 — Diseño Visual (1 persona)
 
 | Campo | Detalle |
 |---|---|
 | Integrante 1 | _______________ |
-| Integrante 2 | _______________ |
-| Horas | 40h cada uno |
+| Horas | 40h |
 
 **Responsabilidades:**
 - Definir el sistema de diseño: colores, tipografía, espaciado, íconos
@@ -44,13 +58,12 @@
 
 ---
 
-### Rol 2 — Frontend (3 personas)
+### Rol 2 — Frontend (2 personas)
 
 | Campo | Detalle |
 |---|---|
 | Integrante 1 | _______________ |
 | Integrante 2 | _______________ |
-| Integrante 3 | _______________ |
 | Horas | 40h cada uno |
 
 **Responsabilidades:**
@@ -64,9 +77,8 @@
 - Optimizar performance (Lighthouse > 90)
 
 **División sugerida de páginas:**
-- Frontend 1: Inicio, Quiénes somos, Equipo, Contacto
-- Frontend 2: Mi Escuelita Down, Aula Wawitas, Pasos Firmes
-- Frontend 3: Impacto, Colabora, Familias, Blog (listado + post)
+- Frontend 1: Inicio, Quiénes somos, Equipo, Contacto, Impacto
+- Frontend 2: Mi Escuelita Down, Aula Wawitas, Pasos Firmes, Colabora, Familias, Blog
 
 **Entregables principales:**
 - Todas las páginas implementadas y funcionales
@@ -75,13 +87,12 @@
 
 ---
 
-### Rol 3 — Sistema Interno / Backend (2 personas)
+### Rol 3 — Sistema Interno / Backend (1 persona)
 
 | Campo | Detalle |
 |---|---|
 | Integrante 1 | _______________ |
-| Integrante 2 | _______________ |
-| Horas | 40h cada uno |
+| Horas | 40h |
 
 **Responsabilidades:**
 - Configurar Decap CMS (`/admin/config.yml`)
@@ -182,12 +193,10 @@
 
 | Integrante | Rol | S1 | S2 | S3 | S4 | S5 | S6 | S7 | S8 | Total |
 |---|---|---|---|---|---|---|---|---|---|---|
+| Rodrigo Rivera | Scrum Master | | | | | | | | | /40h |
 | | Diseño | | | | | | | | | /40h |
-| | Diseño | | | | | | | | | /40h |
 | | Frontend | | | | | | | | | /40h |
 | | Frontend | | | | | | | | | /40h |
-| | Frontend | | | | | | | | | /40h |
-| | Sistema | | | | | | | | | /40h |
 | | Sistema | | | | | | | | | /40h |
 | | QA/Docs | | | | | | | | | /40h |
-| **TOTAL** | | | | | | | | | | **/320h** |
+| **TOTAL** | | | | | | | | | | **/240h** |
