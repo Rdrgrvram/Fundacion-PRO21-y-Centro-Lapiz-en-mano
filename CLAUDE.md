@@ -79,11 +79,11 @@ Ver `.env.example`. Las críticas son:
 - `RESEND_API_KEY` — para el formulario de contacto
 - `NEXT_PUBLIC_SITE_URL` — URL de producción
 
-## Colores (provisionales — confirmar con la fundación)
+## Colores oficiales de la Fundación PRO-21
 
-- **Primary:** `#f97316` naranja — energía, inclusión
-- **Secondary:** `#22c55e` verde — crecimiento, esperanza  
-- **Accent:** `#3b82f6` azul — confianza
+- **Primary:** `#ffc500` amarillo — identidad de la fundación
+- **Secondary:** `#229cc2` azul — confianza, profesionalismo
+- **Accent:** `#8c3cbd` morado — creatividad, inclusión
 - **Text:** `#1a1a1a` gris oscuro
 
 ## WhatsApp de la fundación
