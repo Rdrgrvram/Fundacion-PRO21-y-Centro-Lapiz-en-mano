@@ -4,10 +4,10 @@
 
 /* ── Variables CSS del proyecto ─────────────────────────────────────────── */
 :root {
-  /* Colores provisionales — confirmar con la fundación en la entrevista inicial */
-  --color-primary: #f97316;      /* naranja — energía, inclusión */
-  --color-secondary: #22c55e;    /* verde — crecimiento, esperanza */
-  --color-accent: #3b82f6;       /* azul — confianza, profesionalismo */
+  /* Colores oficiales de la Fundación PRO-21 */
+  --color-primary: #ffc500;      /* amarillo — identidad de la fundación */
+  --color-secondary: #229cc2;    /* azul — confianza, profesionalismo */
+  --color-accent: #8c3cbd;       /* morado — creatividad, inclusión */
   --color-text: #1a1a1a;         /* gris oscuro — nunca negro puro */
 }
 

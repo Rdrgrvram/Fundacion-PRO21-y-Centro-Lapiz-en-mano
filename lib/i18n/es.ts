@@ -21,10 +21,21 @@ const es = {
   'hero.cta.contact': 'Contáctanos',
 
   // Impacto
-  'impact.children': 'niños atendidos',
-  'impact.years': 'años de experiencia',
+  'impact.children': 'niños atendidos en total',
+  'impact.years': 'años de vida institucional',
   'impact.families': 'familias acompañadas',
   'impact.therapists': 'terapeutas especializados',
+  'impact.professionals': 'profesionales en el equipo',
+
+  // Quiénes Somos
+  'about.mission.title': 'Nuestra Misión',
+  'about.mission.text':
+    'Nuestra misión se basa en el compromiso con los derechos de los niños y niñas con síndrome de Down, neurodivergencia y dificultades de aprendizaje a recibir una educación integral de calidad, inclusiva, integral y personalizada, con estrategias metodológicas innovadoras y actualizadas, en un ambiente de amor, respeto y calidez humana, y que sus familias reciban el apoyo necesario para ser parte del proceso educativo de sus hijos.',
+  'about.vision.title': 'Nuestra Visión',
+  'about.vision.text':
+    'Ser el centro líder de referencia auto sostenible en el departamento de La Paz en particular y en Bolivia, en la promoción de la educación inclusiva, brindando una atención integral y de calidad a niños y niñas con síndrome de Down, neurodivergencia y dificultades de aprendizaje, con un equipo de profesionales altamente capacitados, comprometidos con la inclusión educativa y social.',
+  'about.stats.escuelita': 'en Mi Escuelita Down',
+  'about.stats.other': 'en Aula Wawitas y Pasos Firmes',
 
   // Programas
   'programs.title': 'Nuestros programas',
