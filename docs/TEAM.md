@@ -40,7 +40,7 @@
 
 | Campo | Detalle |
 |---|---|
-| Integrante 1 | _______________ |
+| Integrante 1 | Mauricio Rivera|
 | Horas | 40h |
 
 **Responsabilidades:**
@@ -62,8 +62,8 @@
 
 | Campo | Detalle |
 |---|---|
-| Integrante 1 | _______________ |
-| Integrante 2 | _______________ |
+| Integrante 1 | Huascar Duran |
+| Integrante 2 | Einar Guillen |
 | Horas | 40h cada uno |
 
 **Responsabilidades:**
@@ -91,7 +91,7 @@
 
 | Campo | Detalle |
 |---|---|
-| Integrante 1 | _______________ |
+| Integrante 1 | Leonardo Ibarra |
 | Horas | 40h |
 
 **Responsabilidades:**
@@ -119,7 +119,7 @@
 
 | Campo | Detalle |
 |---|---|
-| Integrante | _______________ |
+| Integrante | Jose Manzaneda |
 | Horas | 40h |
 
 **Responsabilidades:**

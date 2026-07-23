@@ -8,28 +8,33 @@ module.exports = {
 
   theme: {
     extend: {
-      // Colores del proyecto — provisionales, confirmar con la fundación
+      // Colores oficiales de la Fundación PRO-21
       colors: {
         primary: {
-          DEFAULT: '#f97316',   // naranja — energía, inclusión
-          50:  '#fff7ed',
-          100: '#ffedd5',
-          200: '#fed7aa',
-          500: '#f97316',
-          600: '#ea6a10',
-          700: '#c2540a',
-          900: '#7c2d12',
+          DEFAULT: '#ffc500',   // amarillo — identidad de la fundación
+          50:  '#fffbeb',
+          100: '#fff3c4',
+          200: '#ffe680',
+          500: '#ffc500',
+          600: '#e6b000',
+          700: '#cc9c00',
+          900: '#7a5e00',
         },
         secondary: {
-          DEFAULT: '#22c55e',   // verde — crecimiento, esperanza
-          50:  '#f0fdf4',
-          100: '#dcfce7',
-          500: '#22c55e',
-          600: '#16a34a',
-          700: '#15803d',
+          DEFAULT: '#229cc2',   // azul — confianza, profesionalismo
+          50:  '#e8f7fb',
+          100: '#bde9f5',
+          500: '#229cc2',
+          600: '#1b85a6',
+          700: '#166e8a',
         },
         accent: {
-          DEFAULT: '#3b82f6',   // azul — confianza, profesionalismo
+          DEFAULT: '#8c3cbd',   // morado — creatividad, inclusión
+          50:  '#f5edfb',
+          100: '#e6cff5',
+          500: '#8c3cbd',
+          600: '#7a33a6',
+          700: '#66298f',
         },
       },
 
