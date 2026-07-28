@@ -1,55 +1,54 @@
 import type { Metadata } from 'next'
 import type { Locale } from '@/lib/i18n'
-import { getTranslation } from '@/lib/i18n'
-import Hero from '@/components/sections/Hero'
-import ImpactStat from '@/components/sections/ImpactStat'
-import Button from '@/components/ui/Button'
+import { getAllPosts, getAllTestimonials } from '@/lib/content'
+import HomeHero from '@/components/home/HomeHero'
+import HomeStats from '@/components/home/HomeStats'
+import HomePrograms from '@/components/home/HomePrograms'
+import HomeTestimonials from '@/components/home/HomeTestimonials'
+import HomeImpactStrip from '@/components/home/HomeImpactStrip'
+import HomeBlogPreview from '@/components/home/HomeBlogPreview'
 
-export const metadata: Metadata = {
-  title: 'Inicio | Fundación PRO-21',
+interface PageProps {
+  params: {
+    lang: Locale
+  }
 }
 
-export default function Page({ params }: { params: { lang: Locale } }) {
-  const t = getTranslation(params.lang)
+export async function generateMetadata({ params: { lang } }: PageProps): Promise<Metadata> {
+  const es = lang === 'es'
+  return {
+    title: es ? 'Inicio | Fundación PRO-21 y Centro Lápiz en Mano' : 'Home | PRO-21 Foundation & Lápiz en Mano Center',
+    description: es 
+      ? 'Promovemos el bienestar integral de niños, niñas y adolescentes con síndrome de Down, autismo y dificultades de aprendizaje en La Paz, Bolivia.'
+      : 'We promote the comprehensive well-being of children and adolescents with Down syndrome, autism, and learning difficulties in La Paz, Bolivia.',
+    keywords: ['síndrome de Down', 'autismo', 'TEA', 'La Paz', 'Bolivia', 'dificultades de aprendizaje', 'psicomotricidad', 'fisioterapia'],
+  }
+}
+
+export default async function Page({ params: { lang } }: PageProps) {
+  // Carga asíncrona de datos en el servidor
+  const posts = await getAllPosts()
+  const testimonials = getAllTestimonials()
 
   return (
-    <>
-      <Hero
-        lang={params.lang}
-        title={t['hero.title']}
-        subtitle={t['hero.subtitle']}
-        ctaPrimary={{ label: t['hero.cta.programs'], href: `/${params.lang}/mi-escuelita-down` }}
-        ctaSecondary={{ label: t['hero.cta.contact'], href: `/${params.lang}/contacto` }}
-      />
+    <div className="overflow-x-hidden w-full min-h-screen flex flex-col bg-white">
+      {/* 1. Hero Section con Animaciones */}
+      <HomeHero lang={lang} />
 
-      {/* Estadísticas reales */}
-      <section className="bg-white py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
-            <ImpactStat value="70+" label={t['impact.children']} icon="👶" />
-            <ImpactStat value="8"   label={t['impact.years']}    icon="🏫" />
-            <ImpactStat value="10"  label={t['impact.professionals']} icon="👩‍⚕️" />
-          </div>
-        </div>
-      </section>
+      {/* 2. Franja de Estadísticas */}
+      <HomeStats lang={lang} />
 
-      {/* Programas — acceso rápido */}
-      <section className="bg-gray-50 py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">{t['programs.title']}</h2>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button href={`/${params.lang}/mi-escuelita-down`} variant="primary">
-              Mi Escuelita Down
-            </Button>
-            <Button href={`/${params.lang}/aula-wawitas`} variant="outline">
-              Aula Wawitas
-            </Button>
-            <Button href={`/${params.lang}/pasos-firmes`} variant="outline">
-              Pasos Firmes
-            </Button>
-          </div>
-        </div>
-      </section>
-    </>
+      {/* 3. Tarjetas Expandibles de Programas */}
+      <HomePrograms lang={lang} />
+
+      {/* 4. Carrusel de Testimonios de Familias */}
+      <HomeTestimonials lang={lang} testimonials={testimonials} />
+
+      {/* 5. Franja Informativa de Tres Columnas de Impacto */}
+      <HomeImpactStrip lang={lang} />
+
+      {/* 6. Vista Previa de Publicaciones de Blog / Noticias del CMS */}
+      <HomeBlogPreview lang={lang} posts={posts} />
+    </div>
   )
 }
