@@ -24,7 +24,7 @@ const SIZES: Record<Size, string> = {
   lg: 'px-7 py-3.5 text-lg',
 }
 
-const BASE = 'inline-flex items-center justify-center rounded-lg font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:opacity-50 disabled:pointer-events-none'
+const BASE = 'inline-flex items-center justify-center rounded-lg font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:opacity-50 disabled:pointer-events-none min-h-[44px] min-w-[44px]'
 
 export default function Button({
   variant = 'primary',
