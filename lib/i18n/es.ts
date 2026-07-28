@@ -48,6 +48,10 @@ const es = {
   // Footer
   'footer.rights': 'Todos los derechos reservados.',
   'footer.ucb': 'Desarrollado por estudiantes de Ingeniería de Sistemas, UCB La Paz.',
+
+  // WhatsApp
+  'whatsapp.label': 'Contactar por WhatsApp',
+  'whatsapp.message': '¡Hola! Me gustaría obtener más información sobre la fundación.',
 } as const
 
 export default es

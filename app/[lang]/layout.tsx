@@ -21,7 +21,7 @@ export default function LangLayout({ children, params: { lang } }: LangLayoutPro
       <Header lang={lang} />
       <main>{children}</main>
       <Footer lang={lang} />
-      <WhatsAppButton phone="59170106276" />
+      <WhatsAppButton lang={lang} />
     </>
   )
 }
