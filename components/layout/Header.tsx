@@ -1,23 +1,158 @@
+'use client'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import type { Locale } from '@/lib/i18n'
-import Nav from './Nav'
+import Nav, { NAV_ITEMS } from './Nav'
 import LanguageSwitcher from './LanguageSwitcher'
+import AccessibilityBar from './AccessibilityBar'
 
 interface HeaderProps {
   lang: Locale
 }
 
-// TODO: agregar logo de la fundación
 export default function Header({ lang }: HeaderProps) {
+  const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
+  const es = lang === 'es'
+
+  // Cerrar el menú cuando cambia la ruta (navegación completa)
+  useEffect(() => {
+    setIsOpen(false)
+  }, [pathname])
+
+  // Deshabilitar scroll en el cuerpo cuando el menú móvil está abierto
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
+
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm">
-      <div className="container mx-auto px-4 flex items-center justify-between h-16">
-        <Link href={`/${lang}`} className="font-bold text-xl text-primary">
-          Fundación PRO-21
-        </Link>
-        <Nav lang={lang} />
-        <LanguageSwitcher lang={lang} />
-      </div>
-    </header>
+    <div className="sticky top-0 z-50 w-full flex flex-col">
+      {/* Barra de accesibilidad global */}
+      <AccessibilityBar lang={lang} />
+
+      {/* Header principal */}
+      <header className="w-full bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
+        <div className="container mx-auto px-4 flex items-center justify-between h-16 md:h-20">
+          
+          {/* Logo / Identidad */}
+          <Link href={`/${lang}`} className="flex flex-col group py-1.5 focus:outline-none">
+            <span className="font-extrabold text-lg md:text-xl tracking-tight text-secondary group-hover:text-primary transition-colors">
+              Fundación PRO-21
+            </span>
+            <span className="text-[10px] md:text-xs font-semibold text-gray-500 tracking-wider uppercase">
+              Centro Lápiz en Mano
+            </span>
+          </Link>
+
+          {/* Menú de navegación de escritorio (hidden on screens < 1280px) */}
+          <Nav lang={lang} />
+
+          {/* Acciones del Header (Idioma + Colaborar en Escritorio) */}
+          <div className="hidden xl:flex items-center gap-4">
+            <LanguageSwitcher lang={lang} />
+            <Link
+              href={`/${lang}/colabora`}
+              className="bg-primary text-black hover:bg-primary/90 font-bold text-sm px-5 py-2.5 rounded-full transition-all hover:scale-[1.02] shadow-md shadow-primary/10 min-h-[44px] flex items-center justify-center"
+            >
+              {es ? 'Colaborar ♥' : 'Support us ♥'}
+            </Link>
+          </div>
+
+          {/* Controles para Móvil/Tablet */}
+          <div className="flex xl:hidden items-center gap-2">
+            <LanguageSwitcher lang={lang} />
+            
+            {/* Botón Hamburguesa */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label={es ? 'Abrir menú de navegación' : 'Open navigation menu'}
+              aria-expanded={isOpen}
+              className="w-11 h-11 flex items-center justify-center rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50 active:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-secondary transition-all"
+            >
+              <div className="w-6 h-5 flex flex-col justify-between items-center relative">
+                <span className={`w-6 h-0.5 bg-current rounded-full transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-2' : ''}`} />
+                <span className={`w-6 h-0.5 bg-current rounded-full transition-all duration-300 ${isOpen ? 'opacity-0 scale-0' : ''}`} />
+                <span className={`w-6 h-0.5 bg-current rounded-full transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-2.5' : ''}`} />
+              </div>
+            </button>
+          </div>
+
+        </div>
+      </header>
+
+      {/* Cajón de Navegación Móvil (Drawer) */}
+      {isOpen && (
+        <div className="fixed inset-0 z-50 xl:hidden">
+          {/* Overlay de fondo */}
+          <div 
+            className="fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300"
+            onClick={() => setIsOpen(false)}
+          />
+
+          {/* Contenedor del menú lateral */}
+          <div className="fixed top-0 right-0 bottom-0 w-[300px] max-w-[85vw] bg-white z-50 shadow-2xl flex flex-col p-6 transition-transform duration-300 transform translate-x-0 overflow-y-auto">
+            {/* Header del cajón */}
+            <div className="flex items-center justify-between pb-4 border-b border-gray-100 mb-6">
+              <div className="flex flex-col">
+                <span className="font-bold text-base text-secondary">Fundación PRO-21</span>
+                <span className="text-[10px] text-gray-500 font-semibold uppercase">Lápiz en Mano</span>
+              </div>
+              <button
+                onClick={() => setIsOpen(false)}
+                aria-label={es ? 'Cerrar menú' : 'Close menu'}
+                className="w-11 h-11 flex items-center justify-center rounded-full border border-gray-100 text-gray-500 hover:text-gray-900 hover:bg-gray-50 active:bg-gray-100 transition-colors focus:outline-none"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Enlaces de navegación */}
+            <nav className="flex flex-col gap-1.5 flex-1">
+              {NAV_ITEMS.map(({ key, label }) => {
+                const href = `/${lang}/${key}`
+                const isActive = pathname === href || pathname?.startsWith(href + '/')
+                return (
+                  <Link
+                    key={key}
+                    href={href}
+                    onClick={() => setIsOpen(false)}
+                    className={`min-h-[44px] px-4 rounded-xl flex items-center text-sm font-semibold transition-all ${
+                      isActive 
+                        ? 'bg-secondary/10 text-secondary' 
+                        : 'text-gray-700 hover:bg-gray-50 hover:text-secondary'
+                    }`}
+                  >
+                    {label[lang]}
+                  </Link>
+                )
+              })}
+            </nav>
+
+            {/* Footer del cajón móvil */}
+            <div className="mt-8 pt-6 border-t border-gray-100 flex flex-col gap-3">
+              <Link
+                href={`/${lang}/colabora`}
+                onClick={() => setIsOpen(false)}
+                className="bg-primary text-black hover:bg-primary/90 font-extrabold text-sm py-3 px-4 rounded-xl text-center shadow-lg shadow-primary/10 transition-all active:scale-[0.98] min-h-[44px] flex items-center justify-center"
+              >
+                {es ? 'Colaborar ahora' : 'Support now'}
+              </Link>
+              <div className="text-[10px] text-gray-400 text-center font-medium">
+                La Paz · Bolivia
+              </div>
+            </div>
+
+          </div>
+        </div>
+      )}
+    </div>
   )
 }

@@ -1,105 +1,448 @@
-import type { Metadata } from 'next'
-import type { Locale } from '@/lib/i18n'
+'use client'
+import { useState } from 'react'
+import Link from 'next/link'
 import { CONTACT } from '@/lib/contact'
-import Button from '@/components/ui/Button'
+import type { Locale } from '@/lib/i18n'
 
-export const metadata: Metadata = {
-  title: 'Contacto | Fundación PRO-21',
+interface PageProps {
+  params: {
+    lang: Locale
+  }
 }
 
-export default function Page({ params }: { params: { lang: Locale } }) {
-  const es = params.lang === 'es'
+export default function Page({ params: { lang } }: PageProps) {
+  const es = lang === 'es'
+  const [selectedReason, setSelectedReason] = useState<number | null>(null)
+  const [formSent, setFormSent] = useState(false)
+
+  const reasons = [
+    { label: es ? 'Quiero inscribir a mi hijo/a' : 'I want to enroll my child', icon: '🌟', colorClass: 'border-[#2466a8] text-[#2466a8] hover:bg-[#2466a8]/5' },
+    { label: es ? 'Solicitar una evaluación' : 'Request an evaluation', icon: '🔍', colorClass: 'border-[#e86840] text-[#e86840] hover:bg-[#e86840]/5' },
+    { label: es ? 'Ser voluntario/a' : 'Become a volunteer', icon: '🙌', colorClass: 'border-[#1a8a7d] text-[#1a8a7d] hover:bg-[#1a8a7d]/5' },
+    { label: es ? 'Alianza institucional' : 'Institutional alliance', icon: '🤝', colorClass: 'border-[#6c5ce7] text-[#6c5ce7] hover:bg-[#6c5ce7]/5' },
+    { label: es ? 'Donación o patrocinio' : 'Donation or sponsorship', icon: '💛', colorClass: 'border-[#e8a838] text-[#e8a838] hover:bg-[#e8a838]/5' },
+    { label: es ? 'Prensa o medios' : 'Press or media', icon: '📰', colorClass: 'border-[#2d8a4e] text-[#2d8a4e] hover:bg-[#2d8a4e]/5' },
+    { label: es ? 'Otro motivo' : 'Other reason', icon: '💬', colorClass: 'border-gray-500 text-gray-500 hover:bg-gray-500/5' }
+  ]
+
+  const contactInfo = [
+    { icon: '📱', title: 'WhatsApp', primary: '+591 70106276', secondary: es ? 'Respuesta en menos de 2 horas' : 'Reply in less than 2 hours', href: CONTACT.whatsapp, action: es ? 'Escribir ahora' : 'Write now', color: '#25d366', bg: 'bg-[#e8faf0]' },
+    { icon: '✉️', title: es ? 'Correo electrónico' : 'Email', primary: CONTACT.email, secondary: es ? 'Respuesta en 24 horas' : 'Reply in 24 hours', href: `mailto:${CONTACT.email}`, action: es ? 'Enviar correo' : 'Send email', color: '#2466a8', bg: 'bg-[#e8f1fa]' },
+    { icon: '📞', title: es ? 'Teléfono' : 'Phone', primary: '+591 70106276', secondary: es ? 'Lunes a viernes, 8:00 – 18:00' : 'Monday to Friday, 8:00 – 18:00', href: `tel:${CONTACT.phone}`, action: es ? 'Llamar' : 'Call', color: '#1a8a7d', bg: 'bg-[#e0f5f0]' }
+  ]
+
+  const hours = [
+    { day: es ? 'Lunes a viernes' : 'Monday to Friday', time: '8:00 – 12:00 / 14:00 – 18:00', active: true },
+    { day: es ? 'Sábados' : 'Saturdays', time: es ? '9:00 – 12:00 (con cita)' : '9:00 – 12:00 (by appt)', active: true },
+    { day: es ? 'Domingos y feriados' : 'Sundays & holidays', time: es ? 'Cerrado' : 'Closed', active: false }
+  ]
+
+  const socialLinks = [
+    { name: 'Facebook', handle: 'Centro Lapiz en Mano', color: '#1877f2', bg: 'bg-[#e8f0fe]', url: 'https://facebook.com/Centro_Lapiz_en_Mano' },
+    { name: 'Instagram', handle: '@Centro_Lapiz_en_Mano', color: '#e4405f', bg: 'bg-[#fce8ec]', url: CONTACT.social.instagram },
+    { name: 'TikTok', handle: '@lapiz.en.mano65', color: '#111', bg: 'bg-[#f0f0f0]', url: CONTACT.social.tiktok }
+  ]
+
+  const faqs = [
+    { q: es ? '¿Cómo inscribo a mi hijo?' : 'How do I enroll my child?', a: es ? 'Agenda una evaluación inicial de diagnóstico escribiendo a nuestro WhatsApp. Nuestro equipo multidisciplinario sugerirá el programa terapéutico o escolar adecuado.' : 'Schedule an initial diagnostic evaluation by messaging our WhatsApp. Our team will suggest the appropriate therapeutic or school program.', icon: '🌟', color: '#2466a8' },
+    { q: es ? '¿Tiene costo la atención?' : 'Is there a cost for care?', a: es ? 'Cada programa cuenta con cuotas mensuales solidarias. Si la familia no puede cubrirlas, contamos con becas parciales y completas. Ningún niño queda sin atención por motivos económicos.' : 'Each program has supportive monthly fees. If a family cannot cover them, we offer partial and full scholarships. No child is left without care due to economic reasons.', icon: '💰', color: '#e8a838' },
+    { q: es ? '¿Se requiere diagnóstico previo?' : 'Is a prior diagnosis required?', a: es ? 'No es necesario. Puedes consultarnos ante cualquier señal de alerta en el desarrollo, comunicación o conducta de tu hijo. Nosotros realizamos la evaluación correspondiente.' : 'It is not necessary. You can consult us for any developmental, communication, or behavioral warning sign in your child. We perform the evaluation.', icon: '📋', color: '#1a8a7d' },
+    { q: es ? '¿Atienden fuera de La Paz?' : 'Do you serve outside La Paz?', a: es ? 'La atención terapéutica y escolar presencial es en La Paz. Sin embargo, ofrecemos orientación familiar y capacitaciones virtuales para todo el país.' : 'Physical therapy and school care are in La Paz. However, we offer family guidance and virtual training sessions nationwide.', icon: '🌎', color: '#e86840' }
+  ]
 
   return (
-    <>
-      {/* Encabezado */}
-      <section className="bg-gradient-to-br from-primary/10 to-secondary/10 py-16 px-4">
-        <div className="container mx-auto max-w-3xl text-center">
-          <h1 className="text-4xl font-bold text-gray-900">
-            {es ? 'Contáctanos' : 'Contact Us'}
+    <div className="overflow-x-hidden w-full bg-[#fafbfd]">
+      
+      {/* 1. Page Hero */}
+      <section className="relative min-h-[400px] flex items-center bg-gradient-to-br from-[#0c2340] via-[#142d4c] to-[#2466a8] py-16 px-4 overflow-hidden">
+        {/* Decoraciones */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
+          <div className="absolute -top-[15%] -right-[8%] w-[350px] h-[350px] md:w-[500px] md:h-[500px] rounded-full border border-white/5 opacity-30" />
+          <div className="absolute top-[60%] right-[15%] w-3.5 h-3.5 rounded-full bg-primary/80 animate-ping" />
+        </div>
+
+        {/* Wave bottom */}
+        <div className="absolute bottom-0 left-0 right-0 z-10">
+          <svg viewBox="0 0 1440 70" fill="none" className="block w-full h-8 md:h-16 lg:h-20 text-[#fafbfd] fill-current">
+            <path d="M0 30C360 55 720 15 1080 40C1260 50 1380 42 1440 38V70H0Z" />
+          </svg>
+        </div>
+
+        <div className="container mx-auto max-w-4xl text-center relative z-20 mt-8">
+          <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full py-1 px-3.5 mb-5 select-none">
+            <span className="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-[10px] text-black font-extrabold">✦</span>
+            <span className="text-white/80 text-xs font-semibold">{es ? 'Canales de comunicación' : 'Communication channels'}</span>
+          </div>
+
+          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-normal leading-tight mb-4">
+            {es ? (
+              <>
+                Estamos a un mensaje de <br />
+                <span className="font-bold italic text-primary">distancia</span>
+              </>
+            ) : (
+              <>
+                We are just a message <br />
+                <span className="font-bold italic text-primary">away</span>
+              </>
+            )}
           </h1>
-          <p className="mt-4 text-lg text-gray-600">
-            {es
-              ? 'Estamos aquí para orientarte. Escríbenos o visítanos.'
-              : 'We are here to guide you. Write to us or visit us.'}
+
+          <p className="text-sm md:text-base lg:text-lg text-white/70 max-w-xl mx-auto leading-relaxed">
+            {es 
+              ? 'Ya sea que busques inscribir a tu hijo, realizar prácticas profesionales, proponer una alianza o hacernos llegar tus dudas, estamos listos para escucharte.'
+              : 'Whether you want to enroll your child, complete professional practice, propose an alliance, or ask questions, we are ready to listen.'}
           </p>
         </div>
       </section>
 
-      {/* Datos de contacto */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto max-w-4xl">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* 2. Quick Contact Cards Grid */}
+      <section className="py-12 px-4 bg-[#fafbfd]">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {contactInfo.map((c, i) => (
+              <a
+                key={i}
+                href={c.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white rounded-3xl p-6 md:p-8 border border-gray-200 shadow-sm flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300 group text-left"
+              >
+                <div>
+                  <div className="flex items-center gap-4 mb-4 select-none">
+                    <div className={`w-14 h-14 rounded-2xl ${c.bg} flex items-center justify-center text-3xl flex-shrink-0 shadow-sm`}>
+                      {c.icon}
+                    </div>
+                    <div>
+                      <div className="text-[10px] font-bold text-gray-400 tracking-wider uppercase">{c.title}</div>
+                      <div className="text-sm sm:text-base font-bold text-[#0c2340] mt-0.5 break-all">{c.primary}</div>
+                    </div>
+                  </div>
+                  <p className="text-xs text-gray-400 font-semibold mb-6">
+                    {c.secondary}
+                  </p>
+                </div>
 
-            {/* Dirección */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col gap-3">
-              <span className="text-3xl">📍</span>
-              <h3 className="font-bold text-gray-900">{es ? 'Dirección' : 'Address'}</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">{CONTACT.address}</p>
+                <div 
+                  className="flex items-center justify-center gap-2 p-3 rounded-xl border font-bold text-xs sm:text-sm select-none transition-colors"
+                  style={{ color: c.color, backgroundColor: `${c.bg.replace('bg-[', '').replace(']', '')}40`, borderColor: `${c.color}20` }}
+                >
+                  <span>{c.action}</span>
+                  <span>→</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Form and Info columns */}
+      <section className="py-12 md:py-16 px-4 bg-[#fafbfd]">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            
+            {/* Formulario de Mensaje */}
+            <div className="lg:col-span-7 bg-white rounded-3xl p-6 md:p-10 border border-gray-200 shadow-sm text-left flex flex-col justify-between">
+              {!formSent ? (
+                <>
+                  <div>
+                    <h3 className="font-serif text-2xl text-[#0c2340] font-bold mb-1.5">
+                      {es ? 'Envíanos un mensaje' : 'Send us a message'}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-gray-400 mb-8 leading-relaxed">
+                      {es 
+                        ? 'Completa los siguientes datos y nuestro equipo te responderá en menos de 24 horas hábiles.' 
+                        : 'Complete the following fields and our team will respond within 24 working hours.'}
+                    </p>
+
+                    <div className="space-y-4">
+                      {/* Selector de Motivo */}
+                      <div>
+                        <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-2 block select-none">
+                          {es ? '¿Motivo de tu consulta?' : 'Reason for your inquiry?'}
+                        </label>
+                        <div className="flex flex-wrap gap-2">
+                          {reasons.map((r, i) => {
+                            const isSelected = selectedReason === i
+                            return (
+                              <button
+                                key={i}
+                                type="button"
+                                onClick={() => setSelectedReason(isSelected ? null : i)}
+                                className={`px-4 py-2 rounded-full border-2 text-xs font-bold transition-all focus:outline-none min-h-[44px] min-w-[44px] flex items-center justify-center gap-1.5 ${
+                                  isSelected 
+                                    ? r.colorClass.split(' ')[0] + ' bg-gray-50 ' + r.colorClass.split(' ')[1]
+                                    : 'border-gray-200 bg-white text-gray-600'
+                                }`}
+                              >
+                                <span className="text-sm select-none">{r.icon}</span>
+                                <span>{r.label}</span>
+                              </button>
+                            )
+                          })}
+                        </div>
+                      </div>
+
+                      {/* Campos comunes */}
+                      {[
+                        { label: es ? 'Nombre completo' : 'Full name', placeholder: es ? 'Tu nombre completo' : 'Your full name', type: 'text' },
+                        { label: es ? 'Correo electrónico' : 'Email address', placeholder: 'ejemplo@correo.com', type: 'email' },
+                        { label: es ? 'Teléfono / WhatsApp' : 'Phone / WhatsApp', placeholder: '+591 ...', type: 'tel' }
+                      ].map((f) => (
+                        <div key={f.label}>
+                          <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1 block select-none">
+                            {f.label}
+                          </label>
+                          <input
+                            type={f.type}
+                            placeholder={f.placeholder}
+                            required
+                            className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#2466a8] bg-[#fafbfd] focus:outline-none text-xs sm:text-sm"
+                          />
+                        </div>
+                      ))}
+
+                      {/* Mensaje */}
+                      <div>
+                        <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1 block select-none">
+                          {es ? 'Mensaje o consulta' : 'Message or inquiry'}
+                        </label>
+                        <textarea
+                          rows={4}
+                          placeholder={es ? 'Escribe aquí tu consulta en detalle...' : 'Write here your inquiry in detail...'}
+                          required
+                          className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#2466a8] bg-[#fafbfd] focus:outline-none text-xs sm:text-sm resize-y"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => setFormSent(true)}
+                    className="w-full mt-8 bg-gradient-to-r from-[#2466a8] to-[#1a8a7d] text-white font-extrabold text-xs sm:text-sm py-3.5 px-6 rounded-full transition-all hover:scale-[1.01] active:scale-[0.99] shadow-md shadow-[#2466a8]/10 min-h-[44px]"
+                  >
+                    {es ? 'Enviar mensaje' : 'Send message'}
+                  </button>
+                </>
+              ) : (
+                <div className="text-center py-16 px-4 flex flex-col items-center justify-center h-full">
+                  <span className="text-5xl block mb-4 select-none">✅</span>
+                  <h3 className="font-serif text-xl sm:text-2xl text-[#0c2340] font-bold mb-3">
+                    {es ? '¡Mensaje recibido!' : 'Message received!'}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-500 leading-relaxed mb-6 max-w-sm">
+                    {es 
+                      ? 'Muchas gracias por escribirnos. Nuestro equipo se pondrá en contacto contigo en las próximas 24 horas hábiles por el medio que indicaste.'
+                      : 'Thank you very much for writing to us. Our team will contact you within the next 24 business hours through the medium you specified.'}
+                  </p>
+                  
+                  <div className="mt-4 p-4 bg-[#e8faf0] border border-[#25d366]/20 rounded-2xl flex flex-col items-center gap-2 max-w-xs select-none">
+                    <span className="text-xs font-bold text-gray-500">{es ? '¿Deseas respuesta inmediata?' : 'Need immediate answer?'}</span>
+                    <a
+                      href={CONTACT.whatsapp}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-[#25d366] hover:bg-[#25d366]/90 text-white font-extrabold text-xs px-5 py-2.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] min-h-[44px] flex items-center justify-center gap-1.5"
+                    >
+                      <span className="text-lg">💬</span>
+                      {es ? 'WhatsApp directo' : 'Direct WhatsApp'}
+                    </a>
+                  </div>
+
+                  <button
+                    onClick={() => setFormSent(false)}
+                    className="text-xs font-bold text-[#2466a8] hover:underline mt-8"
+                  >
+                    {es ? '← Enviar otro mensaje' : '← Send another message'}
+                  </button>
+                </div>
+              )}
             </div>
 
-            {/* WhatsApp / Teléfono */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col gap-3">
-              <span className="text-3xl">📞</span>
-              <h3 className="font-bold text-gray-900">WhatsApp / {es ? 'Teléfono' : 'Phone'}</h3>
-              <p className="text-gray-600 text-sm">{CONTACT.phone}</p>
+            {/* Columna Derecha: Mapa + Horarios + Redes */}
+            <div className="lg:col-span-5 flex flex-col gap-6 text-left">
+              
+              {/* Mapa de Ubicación */}
+              <div className="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between min-h-[220px]">
+                <div className="flex items-center gap-3.5 mb-4 select-none">
+                  <div className="w-10 h-10 rounded-xl bg-[#fef0e8] flex items-center justify-center text-xl shadow-inner">
+                    📍
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-[#0c2340] leading-none">{es ? 'Centro Lápiz en Mano' : 'Lápiz en Mano Center'}</h4>
+                    <p className="text-[10px] text-gray-400 font-semibold mt-1">{es ? 'La Paz, Bolivia' : 'La Paz, Bolivia'}</p>
+                  </div>
+                </div>
+                
+                <p className="text-xs text-gray-500 leading-relaxed mb-5">
+                  {CONTACT.address}
+                </p>
+
+                <a
+                  href="https://maps.google.com/?q=La+Paz+Bolivia"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3 rounded-xl border border-gray-200 hover:border-primary bg-white hover:bg-gray-50 text-xs font-bold text-center text-gray-600 hover:text-primary transition-all select-none min-h-[44px] flex items-center justify-center gap-1.5"
+                >
+                  {es ? 'Abrir en Google Maps' : 'Open in Google Maps'}
+                  <span>→</span>
+                </a>
+              </div>
+
+              {/* Horarios de Atención */}
+              <div className="bg-white rounded-3xl p-6 border border-gray-200/80 shadow-sm">
+                <div className="flex items-center gap-3.5 mb-4 select-none">
+                  <div className="w-10 h-10 rounded-xl bg-[#fdf6e3] flex items-center justify-center text-xl shadow-inner">
+                    🕐
+                  </div>
+                  <h4 className="text-sm font-bold text-[#0c2340]">{es ? 'Horarios de atención' : 'Opening Hours'}</h4>
+                </div>
+                <div className="divide-y divide-gray-100 flex flex-col gap-0.5">
+                  {hours.map((h, i) => (
+                    <div key={i} className="flex justify-between items-center py-2.5 text-xs">
+                      <span className={`font-semibold ${h.active ? 'text-gray-700' : 'text-gray-400'}`}>{h.day}</span>
+                      <span className={`font-bold px-2.5 py-0.5 rounded-full ${h.active ? 'bg-[#e5f5eb] text-[#2d8a4e]' : 'bg-gray-100 text-gray-400'}`}>
+                        {h.time}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Enlaces de Redes */}
+              <div className="bg-white rounded-3xl p-6 border border-gray-200/80 shadow-sm">
+                <div className="flex items-center gap-3.5 mb-4 select-none">
+                  <div className="w-10 h-10 rounded-xl bg-[#e8f1fa] flex items-center justify-center text-xl shadow-inner">
+                    🌐
+                  </div>
+                  <h4 className="text-sm font-bold text-[#0c2340]">{es ? 'Presencia digital' : 'Digital Presence'}</h4>
+                </div>
+                <div className="grid grid-cols-3 gap-2.5 select-none">
+                  {socialLinks.map((s, idx) => (
+                    <a
+                      key={idx}
+                      href={s.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 bg-gray-50 border border-transparent hover:border-gray-200 rounded-xl text-center transition-all flex flex-col items-center justify-center min-h-[72px]"
+                    >
+                      <span className="text-[10px] font-extrabold" style={{ color: s.color }}>{s.name}</span>
+                      <span className="text-[8px] text-gray-400 font-semibold mt-1 truncate max-w-[64px]">{s.handle}</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Quick FAQs List */}
+      <section className="py-16 md:py-24 px-4 bg-[#f7f5f0] border-t border-b border-gray-200/50">
+        <div className="container mx-auto max-w-6xl">
+          
+          <div className="text-center mb-12 max-w-2xl mx-auto">
+            <div className="inline-flex items-center gap-2 bg-[#fdf6e3] border border-[#e8a838]/15 rounded-full px-4 py-1.5 mb-3 select-none">
+              <span className="text-sm">⚡</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#e8a838]">
+                {es ? 'Preguntas y respuestas' : 'Questions and answers'}
+              </span>
+            </div>
+            <h2 className="font-serif text-3xl md:text-4xl text-[#0c2340] font-normal tracking-tight mb-4">
+              {es ? 'Preguntas frecuentes rápidas' : 'Quick Frequently Asked Questions'}
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto text-left">
+            {faqs.map((faq, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-3xl p-6 md:p-8 border border-gray-200 shadow-sm flex items-start gap-4 hover:shadow-md transition-all duration-300"
+              >
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0 shadow-sm text-white select-none"
+                  style={{ backgroundColor: faq.color }}
+                >
+                  {faq.icon}
+                </div>
+                <div>
+                  <h4 className="font-serif text-base md:text-lg text-[#0c2340] font-bold mb-2">
+                    {faq.q}
+                  </h4>
+                  <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
+                    {faq.a}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-10 select-none">
+            <Link
+              href={`/${lang}/familias`}
+              className="text-xs sm:text-sm font-bold text-[#2466a8] hover:underline"
+            >
+              {es ? 'Ver todas las preguntas frecuentes de familias →' : 'See all family FAQs →'}
+            </Link>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 5. Direct WhatsApp Cta */}
+      <section className="py-16 px-4 bg-[#fafbfd]">
+        <div className="container mx-auto max-w-4xl">
+          <div className="bg-gradient-to-r from-[#128c52] to-[#25d366] rounded-3xl p-8 md:p-12 text-center text-white relative overflow-hidden shadow-xl shadow-[#25d366]/10">
+            <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
+              <div className="absolute top-1/2 right-[10%] w-44 h-44 rounded-full border border-white/5" />
+              <div className="absolute top-1/2 right-[20%] w-32 h-32 rounded-full border border-white/5" />
+            </div>
+
+            <div className="relative z-10 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-8">
+              <div className="max-w-md">
+                <h3 className="font-serif text-2xl md:text-3xl text-white font-bold mb-3 leading-snug">
+                  {es ? '¿Prefieres una respuesta inmediata?' : 'Do you prefer an immediate response?'}
+                </h3>
+                <p className="text-xs sm:text-sm text-white/80 leading-relaxed">
+                  {es 
+                    ? 'Escríbenos directamente por WhatsApp y recibirás atención personalizada en menos de 2 horas hábiles. Sin esperas.'
+                    : 'Write to us directly on WhatsApp and you will receive personalized attention in less than 2 business hours. No waiting.'}
+                </p>
+              </div>
+
               <a
                 href={CONTACT.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-auto inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors"
+                className="bg-white/15 hover:bg-white/25 border border-white/20 backdrop-blur-md px-8 py-5 rounded-2xl text-white transition-all hover:scale-[1.02] active:scale-[0.98] flex flex-col items-center justify-center min-h-[44px] select-none"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                </svg>
-                {es ? 'Escribir por WhatsApp' : 'Message on WhatsApp'}
-              </a>
-            </div>
-
-            {/* Correo */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col gap-3">
-              <span className="text-3xl">✉️</span>
-              <h3 className="font-bold text-gray-900">{es ? 'Correo electrónico' : 'Email'}</h3>
-              <p className="text-gray-600 text-sm break-all">{CONTACT.email}</p>
-              <a
-                href={`mailto:${CONTACT.email}`}
-                className="mt-auto inline-flex items-center gap-2 bg-secondary hover:bg-secondary/90 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors"
-              >
-                {es ? 'Enviar correo' : 'Send email'}
-              </a>
-            </div>
-          </div>
-
-          {/* Redes sociales */}
-          <div className="mt-10 bg-gray-50 rounded-2xl p-6">
-            <h3 className="font-bold text-gray-900 mb-4">{es ? 'Síguenos en redes sociales' : 'Follow us on social media'}</h3>
-            <div className="flex gap-4">
-              <a
-                href={CONTACT.social.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-white border border-gray-200 rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:border-pink-400 hover:text-pink-600 transition-colors"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-pink-500">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
-                Instagram
-              </a>
-              <a
-                href={CONTACT.social.tiktok}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-white border border-gray-200 rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:border-gray-900 hover:text-gray-900 transition-colors"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-                  <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/>
-                </svg>
-                TikTok
+                <span className="text-3xl mb-1 block">💬</span>
+                <span className="font-serif text-xl font-bold leading-none">70106276</span>
+                <span className="text-[10px] text-white/70 font-semibold mt-1">{es ? 'Presiona para chatear' : 'Tap to chat'}</span>
               </a>
             </div>
           </div>
         </div>
       </section>
-    </>
+
+      {/* 6. Footer philosophy card */}
+      <section className="py-16 px-4 bg-gradient-to-br from-[#0c2340] via-[#142d4c] to-[#2466a8]">
+        <div className="container mx-auto max-w-2xl text-center text-white/75 relative">
+          <span className="text-4xl block mb-4 select-none">💛</span>
+          <p className="font-serif text-lg sm:text-xl font-bold italic leading-relaxed mb-6">
+            &ldquo;{es 
+              ? 'Creemos que el síndrome de Down no es una barrera, sino una manera diferente y valiosa de aprender, crecer y desarrollar todo su potencial.' 
+              : 'We believe Down syndrome is not a barrier, but a different and valuable way to learn, grow, and develop one\'s full potential.'}&rdquo;
+          </p>
+          <div className="w-12 h-0.5 bg-primary/30 mx-auto mb-4" />
+          <span className="text-xs text-white/40 font-semibold uppercase tracking-widest block">
+            {es ? 'Fundación PRO-21 & Centro Lápiz en Mano' : 'PRO-21 Foundation & Lápiz en Mano Center'}
+          </span>
+        </div>
+      </section>
+
+    </div>
   )
 }

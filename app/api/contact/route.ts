@@ -1,7 +1,5 @@
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export async function POST(req: Request) {
   try {
     const { name, email, phone, message, program } = await req.json()
@@ -10,6 +8,13 @@ export async function POST(req: Request) {
       return Response.json({ error: 'Faltan campos requeridos' }, { status: 400 })
     }
 
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) {
+      console.warn('RESEND_API_KEY no configurado. Simulando envío de correo.')
+      return Response.json({ ok: true, simulated: true })
+    }
+
+    const resend = new Resend(apiKey)
     await resend.emails.send({
       from: 'web@fundacionpro21.org',
       to: 'contacto@fundacionpro21.org',
