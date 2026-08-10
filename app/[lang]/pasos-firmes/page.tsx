@@ -129,7 +129,7 @@ export default function Page({ params: { lang } }: PageProps) {
     <div className="overflow-x-hidden w-full bg-[#fafbfd]">
       
       {/* 1. Hero Section */}
-      <section className="relative min-h-[480px] flex items-center bg-gradient-to-br from-[#0a2e16] via-[#1e6b38] to-[#2d8a4e] py-16 px-4 overflow-hidden">
+      <section className="relative min-h-[480px] flex items-center bg-gradient-to-br from-[#0c2340] via-[#163a60] to-[#229cc2] py-16 px-4 overflow-hidden">
         {/* Decoraciones */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
           <div className="absolute -top-[15%] -right-[10%] w-[350px] h-[350px] md:w-[550px] md:h-[550px] rounded-full border border-white/5 opacity-30" />
@@ -172,7 +172,7 @@ export default function Page({ params: { lang } }: PageProps) {
               <div className="flex flex-wrap gap-4 items-center">
                 <a
                   href="#areas-intervencion"
-                  className="bg-primary hover:bg-primary/95 text-black font-extrabold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-md shadow-primary/10 min-h-[44px] flex items-center justify-center"
+                  className="bg-[#ffc500] hover:bg-[#ffc500]/90 text-black font-extrabold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-md shadow-[#ffc500]/20 min-h-[44px] flex items-center justify-center"
                 >
                   {es ? 'Ver áreas de intervención' : 'View areas of intervention'}
                 </a>
@@ -267,9 +267,9 @@ export default function Page({ params: { lang } }: PageProps) {
       {/* 1.5. Propósito y Enfoque Inclusivo (Texto Oficial) */}
       <section className="py-12 md:py-16 px-4 bg-white border-b border-gray-100">
         <div className="container mx-auto max-w-5xl">
-          <div className="bg-gradient-to-br from-[#e5f5eb]/60 via-[#fafbfd] to-[#f0edff]/60 rounded-3xl p-8 md:p-12 border border-[#2d8a4e]/15 shadow-sm">
+          <div className="bg-gradient-to-br from-[#229cc2]/10 via-[#fafbfd] to-[#8c3cbd]/10 rounded-3xl p-8 md:p-12 border border-[#229cc2]/20 shadow-sm">
             <div className="max-w-3xl mx-auto text-center space-y-6">
-              <div className="inline-flex items-center gap-2 bg-[#2d8a4e]/10 border border-[#2d8a4e]/20 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#2d8a4e]">
+              <div className="inline-flex items-center gap-2 bg-[#229cc2]/10 border border-[#229cc2]/20 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#229cc2]">
                 <span>🌱</span> {es ? 'Propósito y Enfoque Inclusivo' : 'Purpose and Inclusive Focus'}
               </div>
               
@@ -293,9 +293,9 @@ export default function Page({ params: { lang } }: PageProps) {
       <section id="areas-intervencion" className="py-16 md:py-24 px-4 bg-[#fafbfd]">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[#e5f5eb] border border-[#2d8a4e]/15 rounded-full px-4 py-1.5 mb-3 select-none">
+            <div className="inline-flex items-center gap-2 bg-[#229cc2]/10 border border-[#229cc2]/20 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">🎯</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#2d8a4e]">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#229cc2]">
                 {es ? 'Áreas de Intervención' : 'Areas of Intervention'}
               </span>
             </div>
@@ -381,6 +381,107 @@ export default function Page({ params: { lang } }: PageProps) {
           </div>
         </div>
       </section>
+
+      {/* 1.9. Galería de Fotos de Actividades (Fotos Reales de las Sesiones) */}
+      <section className="py-16 md:py-24 px-4 bg-white border-t border-b border-gray-100">
+        <div className="container mx-auto max-w-6xl">
+          
+          <div className="text-center mb-12 max-w-2xl mx-auto">
+            <div className="inline-flex items-center gap-2 bg-[#ffc500]/15 border border-[#ffc500]/30 rounded-full px-4 py-1.5 mb-3 select-none">
+              <span className="text-sm">📸</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#b38600]">
+                {es ? 'Fotos de Actividades' : 'Activity Photos'}
+              </span>
+            </div>
+            <h2 className="font-serif text-3xl md:text-4xl text-[#0c2340] font-bold tracking-tight mb-4">
+              {es ? 'Nuestras Sesiones en Acción' : 'Our Sessions in Action'}
+            </h2>
+            <p className="text-sm text-gray-600 max-w-lg mx-auto leading-relaxed">
+              {es 
+                ? 'Experiencias vivenciales, terapéuticas y educativas diseñadas para potenciar el desarrollo integral, la autonomía y la creatividad de cada niño.' 
+                : 'Experiential, therapeutic, and educational experiences designed to boost each child\'s integral development, autonomy, and creativity.'}
+            </p>
+
+            {/* Aviso de Autorización Escrita */}
+            <div className="mt-4 inline-flex items-center gap-2 bg-[#fafbfd] border border-gray-200 rounded-full px-4 py-1.5 text-xs text-gray-600 font-medium shadow-sm">
+              <span>🔒</span>
+              <span>{es ? 'Fotos de las actividades del centro. Cuentan con la autorización escrita de los papás.' : 'Photos of center activities. They have written parental authorization.'}</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+            {[
+              {
+                src: '/images/actividades/mercado-autonomia.jpg',
+                alt: es ? 'Mercado adaptado y cálculo funcional' : 'Adapted market and functional math',
+                badge: es ? '🛒 Autonomía Cotidiana' : '🛒 Daily Autonomy',
+                title: es ? 'Mercado Adaptado & Cálculo' : 'Adapted Market & Math',
+                desc: es ? 'Práctica de cálculo funcional, pesaje en balanza y habilidades de compra en contextos reales.' : 'Functional math, weighing scale practice, and shopping skills in real-life contexts.',
+                border: 'border-[#ffc500]/30',
+                textColor: 'text-[#b38600]'
+              },
+              {
+                src: '/images/actividades/estimulacion-sensorial.jpg',
+                alt: es ? 'Estimulación sensorial y manipulación' : 'Sensory stimulation and manipulation',
+                badge: es ? '🌽 Estimulación Sensorial' : '🌽 Sensory Stimulation',
+                title: es ? 'Texturas & Motricidad Fina' : 'Textures & Fine Motor',
+                desc: es ? 'Desgrane de maíz y manipulación táctil para desarrollar coordinación bimanual y concentración.' : 'Corn deshelling and tactile manipulation to build bimanual coordination and focus.',
+                border: 'border-[#229cc2]/20',
+                textColor: 'text-[#229cc2]'
+              },
+              {
+                src: '/images/actividades/psicomotricidad-bolos.jpg',
+                alt: es ? 'Juegos de psicomotricidad y equilibrio' : 'Psychomotor games and balance',
+                badge: es ? '🎳 Psicomotricidad' : '🎳 Psychomotor',
+                title: es ? 'Juegos & Coordinación' : 'Games & Coordination',
+                desc: es ? 'Circuito lúdico con bolos para ejercitar control postural, precisión motora y enfoque.' : 'Playful bowling circuit to exercise postural control, motor precision, and focus.',
+                border: 'border-[#8c3cbd]/20',
+                textColor: 'text-[#8c3cbd]'
+              },
+              {
+                src: '/images/actividades/trazos-cognitivos.jpg',
+                alt: es ? 'Grafomotricidad y trazos cognitivos' : 'Graphomotor and cognitive tracing',
+                badge: es ? '✏️ Grafomotricidad' : '✏️ Graphomotor',
+                title: es ? 'Trazos & Apoyo Escolar' : 'Tracing & Academic Support',
+                desc: es ? 'Ejercicios de concentración, patrón visual y coloreado adaptado para fortalecer la lectoescritura.' : 'Focus exercises, visual patterns, and adapted coloring to strengthen literacy.',
+                border: 'border-[#2d8a4e]/20',
+                textColor: 'text-[#2d8a4e]'
+              }
+            ].map((img, idx) => (
+              <div
+                key={idx}
+                className={`bg-white rounded-3xl overflow-hidden border ${img.border} shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group`}
+              >
+                <div className="relative aspect-[3/4] overflow-hidden bg-gray-100">
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute top-3 left-3 z-10">
+                    <span className={`inline-block backdrop-blur-md bg-white/95 ${img.textColor} font-extrabold text-[11px] px-3 py-1 rounded-full shadow-sm`}>
+                      {img.badge}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-5 flex flex-col justify-between flex-1">
+                  <div>
+                    <h3 className="font-serif text-lg font-bold text-[#0c2340] mb-2 leading-snug">
+                      {img.title}
+                    </h3>
+                    <p className="text-xs text-gray-600 leading-relaxed">
+                      {img.desc}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
 
       {/* 2. Difficulties We Address Section */}
       <section id="dificultades" className="py-16 md:py-24 px-4 bg-[#fafbfd]">
@@ -655,7 +756,7 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 6. CTA / Enrollment */}
-      <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-[#0a2e16] via-[#1e6b38] to-[#2d8a4e] relative overflow-hidden">
+      <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-[#0c2340] via-[#163a60] to-[#229cc2] relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
           <div className="absolute top-[15%] left-[15%] text-white/5 text-4xl transform rotate-12">📖</div>
           <div className="absolute bottom-[20%] right-[25%] text-white/5 text-5xl transform -rotate-12">✏️</div>
