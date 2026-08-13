@@ -55,24 +55,25 @@ export default function Page({ params: { lang } }: PageProps) {
     <div className="overflow-x-hidden w-full bg-gray-50">
       
       {/* 1. Page Hero Section */}
-      <section className="relative min-h-[400px] flex items-center bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary py-16 px-4 overflow-hidden">
+      <section className="relative bg-secondary overflow-hidden">
         {/* Decoraciones */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
-          <div className="absolute -top-[20%] -right-[10%] w-[300px] h-[300px] md:w-[600px] md:h-[600px] rounded-full border border-white/5" />
-          <div className="absolute bottom-[-20%] left-[-5%] w-[250px] h-[250px] md:w-[500px] md:h-[500px] rounded-full bg-radial-gradient(circle, rgba(255,197,0,0.06), transparent 70%)" />
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/3" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/4" />
         </div>
 
-        {/* Ola inferior */}
-        <div className="absolute bottom-0 left-0 right-0 z-10">
-          <svg viewBox="0 0 1440 90" fill="none" className="block w-full h-8 md:h-16 lg:h-20 text-[#f9fafb] fill-current">
-            <path d="M0 40C360 80 720 10 1080 50C1260 70 1380 60 1440 55V90H0Z" />
-          </svg>
-        </div>
+        <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-2 text-white/60 text-xs mb-8">
+            <Link href={`/${lang}`} className="hover:text-white transition-colors">{es ? 'Inicio' : 'Home'}</Link>
+            <span>/</span>
+            <span className="text-white font-semibold">{es ? 'Quiénes Somos' : 'About Us'}</span>
+          </nav>
 
-        <div className="container mx-auto max-w-4xl text-center relative z-20 mt-8">
-          <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full py-1 px-3.5 mb-5">
-            <span className="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-[10px] text-black font-extrabold select-none">✦</span>
-            <span className="text-white/80 text-xs font-semibold select-none">{es ? 'Nuestra historia' : 'Our history'}</span>
+          <div className="inline-flex items-center gap-2 bg-white/15 border border-white/20 rounded-full px-4 py-1.5 mb-5">
+            <span className="text-xs font-bold uppercase tracking-wider text-white select-none">
+              {es ? 'Nuestra historia' : 'Our history'}
+            </span>
           </div>
 
           <h1 id="nosotros-titulo" className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-normal leading-tight mb-4">
@@ -89,11 +90,18 @@ export default function Page({ params: { lang } }: PageProps) {
             )}
           </h1>
 
-          <p className="text-sm md:text-base lg:text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
-            {es 
+          <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-2xl leading-relaxed">
+            {es
               ? 'Fundación PRO-21 y Centro Lápiz en Mano trabajan juntos desde La Paz, Bolivia, para brindar atención integral y especializada, promoviendo la inclusión y el desarrollo humano.'
               : 'PRO-21 Foundation and Lápiz en Mano Center work together from La Paz, Bolivia, to provide comprehensive and specialized care, promoting inclusion and human development.'}
           </p>
+        </div>
+
+        {/* Ola inferior */}
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg viewBox="0 0 1440 60" className="w-full h-8 md:h-12 fill-gray-50">
+            <path d="M0 30C360 60 1080 0 1440 30V60H0Z" />
+          </svg>
         </div>
       </section>
 
@@ -352,24 +360,26 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 6. Team Teaser Section */}
-      <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary relative overflow-hidden">
-        <div className="absolute inset-0 bg-radial-gradient(circle, rgba(232,168,56,0.04), transparent 70%) pointer-events-none" />
-        
-        <div className="container mx-auto max-w-6xl relative z-20">
-          
+      <section className="py-16 md:py-24 px-4 bg-secondary relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/3" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/4" />
+        </div>
+
+        <div className="container mx-auto max-w-6xl relative z-10">
+
           <div className="text-center mb-12 max-w-xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">👩‍⚕️</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-primary">
+            <div className="inline-flex items-center gap-2 bg-white/15 border border-white/20 rounded-full px-4 py-1.5 mb-3 select-none">
+              <span className="text-xs font-bold uppercase tracking-wider text-white">
                 {es ? 'Nuestro equipo' : 'Our Team'}
               </span>
             </div>
             <h2 className="font-serif text-3xl md:text-4xl text-white font-normal tracking-tight mb-4">
               {es ? 'Profesionales con vocación' : 'Professionals with Vocation'}
             </h2>
-            <p className="text-sm md:text-base text-white/70 max-w-lg mx-auto leading-relaxed">
-              {es 
-                ? 'Un equipo multidisciplinario de 10 profesionales especializados dedicados al desarrollo integral de cada niño y su familia.' 
+            <p className="text-sm md:text-base text-white/80 max-w-lg mx-auto leading-relaxed">
+              {es
+                ? 'Un equipo multidisciplinario de 10 profesionales especializados dedicados al desarrollo integral de cada niño y su familia.'
                 : 'A multidisciplinary team of 10 specialized professionals dedicated to the comprehensive development of each child and their family.'}
             </p>
           </div>
@@ -378,9 +388,9 @@ export default function Page({ params: { lang } }: PageProps) {
             {teamTeaser.map((r, i) => (
               <div
                 key={i}
-                className="bg-white/5 border border-white/10 backdrop-blur-sm p-6 rounded-2xl text-center transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 select-none flex flex-col items-center justify-center min-h-[140px]"
+                className="bg-white/10 border border-white/20 p-5 rounded-2xl text-center transition-all duration-300 hover:bg-white/20 hover:-translate-y-1 select-none flex flex-col items-center justify-center min-h-[110px]"
               >
-                <div className={`w-12 h-12 rounded-xl ${r.bg} flex items-center justify-center text-2xl mb-4 shadow-inner`}>
+                <div className="w-11 h-11 rounded-xl bg-white/20 flex items-center justify-center text-2xl mb-3">
                   {r.icon}
                 </div>
                 <div className="text-xs font-semibold text-white/90 leading-tight">
@@ -393,7 +403,7 @@ export default function Page({ params: { lang } }: PageProps) {
           <div className="text-center mt-12">
             <Link
               href={`/${lang}/equipo`}
-              className="bg-primary hover:bg-primary/95 text-black font-extrabold text-sm px-8 py-3.5 sm:py-4 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-primary/10 min-h-[44px] min-w-[44px] inline-flex items-center justify-center"
+              className="bg-primary hover:bg-primary/95 text-black font-extrabold text-sm px-8 py-3.5 sm:py-4 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-black/10 min-h-[44px] min-w-[44px] inline-flex items-center justify-center"
             >
               {es ? 'Conoce al equipo completo →' : 'Meet the entire team →'}
             </Link>
@@ -403,37 +413,34 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 7. CTA Banner */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="container mx-auto max-w-4xl">
-          <div className="bg-white rounded-3xl border border-gray-200/80 shadow-md p-8 md:p-12 text-center relative overflow-hidden">
-            <div className="absolute -top-10 -right-10 w-44 h-44 rounded-full bg-radial-gradient(circle, rgba(232,168,56,0.15), transparent 70%) pointer-events-none" />
-            <div className="absolute -bottom-10 -left-10 w-36 h-36 rounded-full bg-radial-gradient(circle, rgba(36,102,168,0.1), transparent 70%) pointer-events-none" />
-
-            <div className="relative z-10 max-w-xl mx-auto">
-              <span className="text-4xl mb-4 block animate-[float_4s_ease-in-out_infinite]">💛</span>
-              <h3 className="font-serif text-2xl md:text-3xl text-[#111827] font-bold mb-4">
-                {es ? '¿Quieres ser parte de esta historia?' : 'Want to be part of this story?'}
-              </h3>
-              <p className="text-sm text-gray-500 leading-relaxed mb-8">
-                {es 
-                  ? 'Tu apoyo transforma vidas. Dona, sé voluntario o conviértete en aliado de la inclusión en Bolivia.' 
-                  : 'Your support transforms lives. Donate, volunteer, or become an ally of inclusion in Bolivia.'}
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center items-center">
-                <Link
-                  href={`/${lang}/colabora`}
-                  className="bg-primary hover:bg-primary/95 text-black font-extrabold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-md shadow-primary/10 min-h-[44px] min-w-[44px] flex items-center justify-center"
-                >
-                  {es ? 'Colaborar ahora' : 'Support now'}
-                </Link>
-                <Link
-                  href={`/${lang}/contacto`}
-                  className="border border-gray-300 hover:border-gray-400 bg-white hover:bg-gray-50 text-gray-700 font-bold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] min-h-[44px] min-w-[44px] flex items-center justify-center"
-                >
-                  {es ? 'Contactar' : 'Contact'}
-                </Link>
-              </div>
-            </div>
+      <section className="py-16 md:py-20 px-4 bg-primary relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-black/5 rounded-full -translate-y-1/2 translate-x-1/3" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/5 rounded-full translate-y-1/2 -translate-x-1/4" />
+        </div>
+        <div className="container mx-auto max-w-3xl relative z-10 text-center">
+          <span className="text-4xl mb-4 block select-none">💛</span>
+          <h3 className="font-serif text-2xl md:text-3xl text-gray-900 font-bold mb-4">
+            {es ? '¿Quieres ser parte de esta historia?' : 'Want to be part of this story?'}
+          </h3>
+          <p className="text-sm text-gray-800/80 leading-relaxed mb-8 max-w-xl mx-auto">
+            {es
+              ? 'Tu apoyo transforma vidas. Dona, sé voluntario o conviértete en aliado de la inclusión en Bolivia.'
+              : 'Your support transforms lives. Donate, volunteer, or become an ally of inclusion in Bolivia.'}
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center items-center">
+            <Link
+              href={`/${lang}/colabora`}
+              className="bg-gray-900 hover:bg-gray-800 text-white font-extrabold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg min-h-[44px] min-w-[44px] flex items-center justify-center"
+            >
+              {es ? 'Colaborar ahora' : 'Support now'}
+            </Link>
+            <Link
+              href={`/${lang}/contacto`}
+              className="border-2 border-gray-900/30 hover:border-gray-900/60 bg-transparent text-gray-900 font-bold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] min-h-[44px] min-w-[44px] flex items-center justify-center"
+            >
+              {es ? 'Contactar' : 'Contact'}
+            </Link>
           </div>
         </div>
       </section>

@@ -50,7 +50,7 @@ export default function Footer({ lang }: FooterProps) {
                 </svg>
               </a>
               <a
-                href={CONTACT.social.tiktok}
+                href={CONTACT.social.tiktokLapiz}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="TikTok"
