@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import type { Locale } from '@/lib/i18n'
 
 interface PageProps {
@@ -27,10 +28,7 @@ export default function Page({ params: { lang } }: PageProps) {
       skills: es 
         ? ['Estimulación temprana motora', 'Rehabilitación neuromuscular', 'Hidroterapia', 'Técnicas de posicionamiento']
         : ['Motor early stimulation', 'Neuromuscular rehabilitation', 'Hydrotherapy', 'Positioning techniques'],
-      programs: ['Mi Escuelita Down', 'Aula Wawitas'],
-      members: [
-        { name: 'Belen Lazcano Quispe', role: es ? 'Lic. Fisioterapia y Kinesiología' : 'B.S. Physiotherapy and Kinesiology' }
-      ]
+      programs: ['Mi Escuelita Down', 'Aula Wawitas']
     },
     {
       id: 'psicomotricidad',
@@ -45,10 +43,7 @@ export default function Page({ params: { lang } }: PageProps) {
       skills: es 
         ? ['Coordinación motora gruesa y fina', 'Esquema corporal', 'Integración bilateral', 'Equilibrio dinámico y estático']
         : ['Gross & fine motor coordination', 'Body schema', 'Bilateral integration', 'Dynamic & static balance'],
-      programs: ['Mi Escuelita Down', 'Aula Wawitas'],
-      members: [
-        { name: 'Wara Belen Valdivia', role: es ? 'Lic. Psicomotricidad' : 'B.S. Psychomotricity' }
-      ]
+      programs: ['Mi Escuelita Down', 'Aula Wawitas']
     },
     {
       id: 'lenguaje',
@@ -63,10 +58,7 @@ export default function Page({ params: { lang } }: PageProps) {
       skills: es 
         ? ['Control orofacial', 'Articulación fonética', 'Comunicación aumentativa', 'Desarrollo del lenguaje expresivo/comprensivo']
         : ['Orofacial control', 'Phonetic articulation', 'Augmentative communication', 'Expressive/receptive language development'],
-      programs: ['Mi Escuelita Down', 'Aula Wawitas', 'Pasos Firmes'],
-      members: [
-        { name: 'Yasmanni German Peralta Mendoza', role: es ? 'Lic. Terapia de Lenguaje' : 'B.S. Speech Therapy' }
-      ]
+      programs: ['Mi Escuelita Down', 'Aula Wawitas', 'Pasos Firmes']
     },
     {
       id: 'conducta',
@@ -81,13 +73,7 @@ export default function Page({ params: { lang } }: PageProps) {
       skills: es 
         ? ['Análisis conductual aplicado', 'Habilidades sociales', 'Autorregulación emocional', 'Modificación de conducta']
         : ['Applied behavior analysis', 'Social skills', 'Emotional self-regulation', 'Behavior modification'],
-      programs: ['Mi Escuelita Down', 'Aula Wawitas', 'Pasos Firmes'],
-      members: [
-        { name: 'Mónica Mikaela Medina Rosales', role: es ? 'Lic. Psicología Clínica' : 'B.S. Clinical Psychology' },
-        { name: 'Ana Valentina Copa Rosales', role: es ? 'Lic. Psicología' : 'B.S. Psychology' },
-        { name: 'Luis Enrique Machicado Cahuaya', role: es ? 'Lic. Psicología' : 'B.S. Psychology' },
-        { name: 'Helan Paola Medrano López', role: es ? 'Lic. Psicología Infantil' : 'B.S. Child Psychology' }
-      ]
+      programs: ['Mi Escuelita Down', 'Aula Wawitas', 'Pasos Firmes']
     },
     {
       id: 'pedagogia',
@@ -102,10 +88,7 @@ export default function Page({ params: { lang } }: PageProps) {
       skills: es 
         ? ['Adaptaciones curriculares', 'Técnicas de estudio', 'Lectoescritura adaptada', 'Estimulación temprana escolar']
         : ['Curricular adaptations', 'Study techniques', 'Adapted literacy', 'Early school stimulation'],
-      programs: ['Mi Escuelita Down', 'Pasos Firmes'],
-      members: [
-        { name: 'Megan', role: es ? 'Parvularia y Apoyo Pedagógico' : 'Early Childhood Educator' }
-      ]
+      programs: ['Mi Escuelita Down', 'Pasos Firmes']
     },
     {
       id: 'social',
@@ -120,10 +103,136 @@ export default function Page({ params: { lang } }: PageProps) {
       skills: es 
         ? ['Evaluación familiar socioeconómica', 'Contención emocional', 'Orientación a padres', 'Gestión de redes de apoyo']
         : ['Family socioeconomic evaluation', 'Emotional containment', 'Parent guidance', 'Support network management'],
-      programs: ['Mi Escuelita Down', 'Aula Wawitas', 'Pasos Firmes'],
-      members: [
-        { name: 'Benita Isabel Rosales', role: es ? 'Lic. Trabajo Social' : 'B.S. Social Work' }
-      ]
+      programs: ['Mi Escuelita Down', 'Aula Wawitas', 'Pasos Firmes']
+    }
+  ]
+
+  const team = [
+    {
+      id: 'belen-lazcano',
+      name: 'Belen Lazcano Quispe',
+      role: es ? 'Lic. Fisioterapia y Kinesiología' : 'B.S. Physiotherapy and Kinesiology',
+      specialty: es ? 'Fisioterapia Pediátrica y Neurodesarrollo' : 'Pediatric Physiotherapy & Neurodevelopment',
+      bio: es 
+        ? 'Especialista en estimulación temprana motora y rehabilitación neuromuscular infantil. Acompaña a la primera infancia en el desarrollo del tono muscular y la postura.'
+        : 'Specialist in motor early stimulation and child neuromuscular rehabilitation. Accompanies early childhood in the development of muscle tone and posture.',
+      photo: '/images/equipo/belen-lazcano.jpg',
+      initials: 'BL',
+      areaId: 'fisio',
+      color: '#2466a8',
+      bg: 'bg-[#e8f1fa]'
+    },
+    {
+      id: 'wara-valdivia',
+      name: 'Wara Belen Valdivia',
+      role: es ? 'Lic. Psicomotricidad' : 'B.S. Psychomotor Therapy',
+      specialty: es ? 'Psicomotricidad Educativa y Terapéutica' : 'Educational and Therapeutic Psychomotricity',
+      bio: es 
+        ? 'Experta en el desarrollo de la coordinación motora, esquema corporal, lateralidad e integración sensorial a través de circuitos lúdicos adaptados.'
+        : 'Expert in the development of motor coordination, body schema, laterality, and sensory integration through adapted play circuits.',
+      photo: '/images/equipo/wara-valdivia.jpg',
+      initials: 'WV',
+      areaId: 'psicomotricidad',
+      color: '#e86840',
+      bg: 'bg-[#fef0e8]'
+    },
+    {
+      id: 'yasmanni-peralta',
+      name: 'Yasmanni German Peralta Mendoza',
+      role: es ? 'Lic. Terapia de Lenguaje' : 'B.S. Speech Therapy',
+      specialty: es ? 'Fonoaudiología y Terapia del Lenguaje' : 'Speech-Language Pathology & Speech Therapy',
+      bio: es 
+        ? 'Especialista en trastornos del habla, deglución y comunicación funcional. Experto en el diseño e implementación de sistemas aumentativos de comunicación (SAAC).'
+        : 'Specialist in speech, swallowing, and functional communication disorders. Expert in the design and implementation of augmentative communication systems (AAC).',
+      photo: '/images/equipo/yasmanni-peralta.png',
+      initials: 'YP',
+      areaId: 'lenguaje',
+      color: '#1a8a7d',
+      bg: 'bg-[#e0f5f0]'
+    },
+    {
+      id: 'monica-medina',
+      name: 'Mónica Mikaela Medina Rosales',
+      role: es ? 'Lic. Psicología Clínica' : 'B.S. Clinical Psychology',
+      specialty: es ? 'Psicología Clínica Infantil y Neurodesarrollo' : 'Child Clinical Psychology & Neurodevelopment',
+      bio: es 
+        ? 'Especialista en evaluación diagnóstica, análisis funcional de la conducta y diseño de intervenciones terapéuticas adaptadas al perfil individual de cada niño.'
+        : 'Specialist in diagnostic evaluation, functional behavior analysis, and design of therapeutic interventions adapted to each child\'s individual profile.',
+      photo: '/images/equipo/monica-medina.jpg',
+      initials: 'MM',
+      areaId: 'conducta',
+      color: '#6c5ce7',
+      bg: 'bg-[#f0edff]'
+    },
+    {
+      id: 'ana-copa',
+      name: 'Ana Valentina Copa Rosales',
+      role: es ? 'Lic. Psicología' : 'B.S. Psychology',
+      specialty: es ? 'Psicología del Aprendizaje y Conducta' : 'Learning & Behavioral Psychology',
+      bio: es 
+        ? 'Licenciada en Psicología, especializada en estrategias de autorregulación emocional, modificación de conducta y estimulación de habilidades de interacción social.'
+        : 'B.S. in Psychology, specialized in emotional self-regulation strategies, behavior modification, and stimulation of social interaction skills.',
+      photo: '/images/equipo/ana-copa.png',
+      initials: 'AC',
+      areaId: 'conducta',
+      color: '#6c5ce7',
+      bg: 'bg-[#f0edff]'
+    },
+    {
+      id: 'luis-machicado',
+      name: 'Luis Enrique Machicado Cahuaya',
+      role: es ? 'Lic. Psicología' : 'B.S. Psychology',
+      specialty: es ? 'Modificación de Conducta y Socialización' : 'Behavior Modification & Socialization',
+      bio: es 
+        ? 'Psicólogo con enfoque cognitivo-conductual. Trabaja en la estructuración de rutinas adaptativas, juego conjunto e inclusión escolar en el aula regular.'
+        : 'Psychologist with cognitive-behavioral approach. Works on the structuring of adaptive routines, joint play, and school inclusion in the regular classroom.',
+      photo: '',
+      initials: 'LM',
+      areaId: 'conducta',
+      color: '#6c5ce7',
+      bg: 'bg-[#f0edff]'
+    },
+    {
+      id: 'helan-medrano',
+      name: 'Helan Paola Medrano López',
+      role: es ? 'Lic. Psicología Infantil' : 'B.S. Child Psychology',
+      specialty: es ? 'Psicología Infantil y Contención Familiar' : 'Child Psychology & Family Counseling',
+      bio: es 
+        ? 'Especialista en psicoterapia infantil, contención emocional familiar ante el diagnóstico y dinámicas de juego lúdico-terapéutico grupal.'
+        : 'Specialist in child psychotherapy, family emotional support during diagnosis, and group play-therapy dynamics.',
+      photo: '',
+      initials: 'HM',
+      areaId: 'conducta',
+      color: '#6c5ce7',
+      bg: 'bg-[#f0edff]'
+    },
+    {
+      id: 'megan',
+      name: 'Megan',
+      role: es ? 'Parvularia y Apoyo Pedagógico' : 'Early Childhood & Pedagogical Support',
+      specialty: es ? 'Educación Especial y Adaptaciones Curriculares' : 'Special Education & Curriculum Adaptations',
+      bio: es 
+        ? 'Educadora infantil experta en adaptaciones en el aula regular, metodologías multisensoriales de lectura y escritura, y aprestamiento preescolar inclusivo.'
+        : 'Early educator expert in regular classroom adaptations, multisensory reading and writing methodologies, and inclusive preschool readiness.',
+      photo: '/images/equipo/megan.jpg',
+      initials: 'ME',
+      areaId: 'pedagogia',
+      color: '#2d8a4e',
+      bg: 'bg-[#e5f5eb]'
+    },
+    {
+      id: 'benita-rosales',
+      name: 'Benita Isabel Rosales',
+      role: es ? 'Lic. Trabajo Social' : 'B.S. Social Work',
+      specialty: es ? 'Trabajo Social Familiar e Inclusión' : 'Family Social Work & Inclusion Support',
+      bio: es 
+        ? 'Especialista en orientación familiar, visitas domiciliarias de valoración socioeconómica y estructuración de redes de apoyo en comunidad.'
+        : 'Specialist in family guidance, home visits for socioeconomic assessment, and structuring community support networks.',
+      photo: '/images/equipo/benita-rosales.jpg',
+      initials: 'BR',
+      areaId: 'social',
+      color: '#e84393',
+      bg: 'bg-[#fdf2f8]'
     }
   ]
 
@@ -137,6 +246,11 @@ export default function Page({ params: { lang } }: PageProps) {
   const volunteers = ['Paola', 'Wanda', 'Alejandra']
 
   const selectedData = selectedArea !== null ? areas[selectedArea] : null
+
+  // Filter team members based on the selected area
+  const filteredTeam = selectedData 
+    ? team.filter(m => m.areaId === selectedData.id) 
+    : team
 
   return (
     <div className="overflow-x-hidden w-full bg-[#fafbfd]">
@@ -248,7 +362,7 @@ export default function Page({ params: { lang } }: PageProps) {
         </div>
       </section>
 
-      {/* 4. Areas Grid & Staff List (Interactive selection) */}
+      {/* 4. Areas Grid Filter & Staff Profile Cards List */}
       <section className="py-16 md:py-24 px-4 bg-[#f7f5f0] border-t border-b border-gray-200/50">
         <div className="container mx-auto max-w-6xl">
           
@@ -260,157 +374,146 @@ export default function Page({ params: { lang } }: PageProps) {
               </span>
             </div>
             <h2 className="font-serif text-3xl md:text-4xl text-[#0c2340] font-normal tracking-tight mb-4">
-              {es ? 'Nuestro Equipo Profesional por Áreas' : 'Our Professional Team by Areas'}
+              {es ? 'Conoce a Nuestro Equipo' : 'Meet Our Team'}
             </h2>
             <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">
               {es 
-                ? 'Haz clic en cualquier área para conocer a los profesionales, sus competencias y los programas en los que intervienen.' 
-                : 'Click on any area to meet the professionals, their competencies, and the programs they support.'}
+                ? 'Filtra por área para conocer a los profesionales, su especialidad y formación complementaria.' 
+                : 'Filter by area to meet the professionals, their specialty, and educational background.'}
             </p>
           </div>
 
-          {/* Tarjetas de áreas (1 col en mobile, 2 en tablet, 3 en desktop) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto text-left">
+          {/* Tarjetas de áreas (Filtros interactivos) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto text-left mb-12">
             {areas.map((a, i) => {
               const isSelected = selectedArea === i
               return (
                 <div
                   key={a.id}
                   onClick={() => setSelectedArea(isSelected ? null : i)}
-                  className={`bg-white rounded-3xl overflow-hidden border cursor-pointer shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md ${
-                    isSelected ? 'border-primary shadow-[#2466a8]/5' : 'border-gray-200 hover:border-gray-300'
+                  className={`bg-white rounded-2xl overflow-hidden border cursor-pointer shadow-sm transition-all duration-300 hover:shadow-md ${
+                    isSelected ? 'border-primary shadow-[#2466a8]/5 scale-[1.01]' : 'border-gray-200/80 hover:border-gray-300'
                   }`}
                 >
-                  <div className="h-1.5 w-full" style={{ backgroundColor: a.color }} />
-                  
-                  <div className="p-6 flex flex-col justify-between min-h-[180px]">
-                    <div>
-                      <div className="flex items-center justify-between mb-4 select-none">
-                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center text-2xl ${isSelected ? 'bg-primary text-black' : a.bg}`}>
-                          {a.icon}
-                        </div>
-                        <div className="flex gap-1.5">
-                          {a.programs.slice(0, 2).map((pr) => (
-                            <span key={pr} className="text-[8px] sm:text-[9px] font-bold px-2 py-0.5 bg-gray-100 rounded-full text-gray-400">
-                              {pr.split(' ').pop()}
-                            </span>
-                          ))}
-                        </div>
+                  <div className="h-1 w-full" style={{ backgroundColor: a.color }} />
+                  <div className="p-5 flex items-center justify-between">
+                    <div className="flex items-center gap-3.5">
+                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-xl ${isSelected ? 'bg-primary text-black' : a.bg}`}>
+                        {a.icon}
                       </div>
-                      
-                      <h4 className="font-serif text-base md:text-lg text-[#0c2340] font-bold mb-2">
-                        {a.name}
-                      </h4>
-                      <p className="text-xs text-gray-400 line-clamp-2">
-                        {a.desc}
-                      </p>
+                      <div>
+                        <h4 className="text-sm font-bold text-[#0c2340] leading-snug">
+                          {a.name}
+                        </h4>
+                        <span className="text-[9px] text-gray-400 font-semibold block mt-0.5">
+                          {team.filter(m => m.areaId === a.id).length} {es ? 'Profesionales' : 'Staff'}
+                        </span>
+                      </div>
                     </div>
-
-                    <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-center select-none">
-                      <span className="text-xs font-bold flex items-center gap-1" style={{ color: a.color }}>
-                        {isSelected ? (es ? 'Ocultar detalle' : 'Hide details') : (es ? 'Ver profesionales' : 'View professionals')}
-                        <span className={`transition-transform duration-300 ${isSelected ? 'rotate-180' : ''}`}>▾</span>
-                      </span>
+                    <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs transition-transform duration-300 ${isSelected ? 'bg-primary/20 text-[#0c2340] rotate-180' : 'bg-gray-50 text-gray-400'}`}>
+                      ▾
                     </div>
                   </div>
-
                 </div>
               )
             })}
           </div>
 
-          {/* Panel de detalles del área seleccionada */}
+          {/* Competencies of the active area */}
           {selectedData && (
-            <div className="max-w-5xl mx-auto mt-8 text-left animate-[fadeSlideUp_0.4s_cubic-bezier(0.16,1,0.3,1)]">
-              <div className="bg-white rounded-3xl border border-gray-200 shadow-md overflow-hidden">
-                
-                {/* Cabecera del detalle */}
-                <div className={`p-6 md:p-8 flex flex-col sm:flex-row items-start gap-6 border-b border-gray-100`} style={{ background: `linear-gradient(135deg, ${selectedData.bg.replace('bg-[', '').replace(']', '')}15, white)` }}>
-                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl shadow-md text-white flex-shrink-0 select-none" style={{ backgroundColor: selectedData.color }}>
-                    {selectedData.icon}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-serif text-2xl text-[#0c2340] font-bold mb-2">{selectedData.name}</h3>
-                    <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">{selectedData.desc}</p>
-                  </div>
-                  <button
-                    onClick={() => setSelectedArea(null)}
-                    className="w-10 h-10 rounded-full border border-gray-200 bg-white hover:bg-gray-50 flex items-center justify-center text-gray-400 hover:text-gray-600 transition-colors select-none"
-                  >
-                    ✕
-                  </button>
-                </div>
-
-                {/* Contenido del detalle */}
-                <div className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-                  
-                  {/* Competencias */}
-                  <div>
-                    <div className="text-[10px] font-bold text-gray-400 tracking-wider uppercase mb-4 select-none">
-                      {es ? 'Competencias del área' : 'Area Competencies'}
-                    </div>
-                    <div className="flex flex-col gap-2">
-                      {selectedData.skills.map((sk) => (
-                        <div key={sk} className={`flex items-center gap-2.5 p-2 rounded-xl text-xs font-semibold text-gray-700 ${selectedData.bg}`}>
-                          <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: selectedData.color }} />
-                          <span>{sk}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Profesionales asignados */}
-                  <div>
-                    <div className="text-[10px] font-bold text-gray-400 tracking-wider uppercase mb-4 select-none">
-                      {es ? 'Profesionales' : 'Staff Members'}
-                    </div>
-                    <div className="flex flex-col gap-3">
-                      {selectedData.members.map((m, idx) => (
-                        <div key={idx} className="flex items-center gap-3">
-                          <div className="w-11 h-11 rounded-xl bg-gray-100 flex items-center justify-center font-serif text-sm font-bold text-gray-700 flex-shrink-0 select-none">
-                            👤
-                          </div>
-                          <div>
-                            <div className="text-xs sm:text-sm font-bold text-[#0c2340]">{m.name}</div>
-                            <div className="text-[10px] text-gray-400 font-semibold">{m.role}</div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Programas relacionados */}
-                  <div>
-                    <div className="text-[10px] font-bold text-gray-400 tracking-wider uppercase mb-4 select-none">
-                      {es ? 'Presente en programas' : 'Active in Programs'}
-                    </div>
-                    <div className="flex flex-col gap-2.5">
-                      {selectedData.programs.map((pr) => {
-                        const iconMap: Record<string, string> = {
-                          'Mi Escuelita Down': '🌟',
-                          'Aula Wawitas': '🧩',
-                          'Pasos Firmes': '📚'
-                        }
-                        return (
-                          <div key={pr} className="flex items-center gap-3 p-3 rounded-2xl bg-gray-50 border border-gray-200/50">
-                            <span className="text-xl select-none">{iconMap[pr] || '📋'}</span>
-                            <span className="text-xs font-bold text-[#0c2340]">{pr}</span>
-                          </div>
-                        )
-                      })}
-                    </div>
-                  </div>
-
-                </div>
-
+            <div className="max-w-5xl mx-auto mb-10 text-left bg-white rounded-3xl border border-gray-200/80 p-6 md:p-8 shadow-sm flex flex-col md:flex-row gap-6 items-start md:items-center animate-fadeIn">
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl text-white shadow-md flex-shrink-0 select-none" style={{ backgroundColor: selectedData.color }}>
+                {selectedData.icon}
               </div>
+              <div className="flex-1">
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-1">
+                  {es ? 'Competencias de esta área' : 'Competencies in this area'}
+                </span>
+                <h4 className="font-serif text-lg font-bold text-[#0c2340] mb-2">{selectedData.name}</h4>
+                <p className="text-xs text-gray-500 leading-relaxed mb-4">{selectedData.desc}</p>
+                <div className="flex flex-wrap gap-2">
+                  {selectedData.skills.map((s, idx) => (
+                    <span key={idx} className={`text-xs font-semibold px-3 py-1 rounded-xl text-gray-700 ${selectedData.bg}`}>
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <button 
+                onClick={() => setSelectedArea(null)}
+                className="text-xs font-bold text-gray-400 hover:text-gray-600 transition-colors uppercase self-end md:self-center bg-gray-50 hover:bg-gray-100 border border-gray-200 px-3.5 py-1.5 rounded-full select-none"
+              >
+                {es ? 'Limpiar filtro' : 'Clear filter'}
+              </button>
             </div>
           )}
+
+          {/* Team Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto text-left">
+            {filteredTeam.map((m) => {
+              const matchedArea = areas.find(a => a.id === m.areaId)
+              return (
+                <div
+                  key={m.id}
+                  className="bg-white rounded-3xl overflow-hidden border border-gray-200/80 shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300 hover:-translate-y-1"
+                >
+                  <div className="p-6 md:p-8 flex flex-col items-center text-center">
+                    {/* Circle Image / Placeholder */}
+                    <div className="relative w-28 h-28 rounded-full overflow-hidden bg-gray-100 border-[3.5px] border-white shadow-md mb-5 group select-none flex items-center justify-center">
+                      {m.photo ? (
+                        <Image 
+                          src={m.photo} 
+                          alt={`Foto de ${m.name}`} 
+                          fill
+                          className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                      ) : (
+                        <div className={`w-full h-full flex items-center justify-center font-serif text-3xl font-bold ${m.bg} text-gray-800 transition-transform duration-300 group-hover:scale-105`}>
+                          {m.initials}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Member Information */}
+                    <h3 className="font-serif text-lg font-bold text-[#0c2340] leading-snug">
+                      {m.name}
+                    </h3>
+                    <p className="text-[11px] font-bold uppercase tracking-wider text-[#0c2340]/60 mt-1 select-none">
+                      {m.role}
+                    </p>
+
+                    {/* Specialty Badge */}
+                    <span 
+                      className={`text-[9px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full mt-3 border select-none`}
+                      style={{ color: m.color, backgroundColor: `${m.bg.replace('bg-[', '').replace(']', '')}35`, borderColor: `${m.color}15` }}
+                    >
+                      {matchedArea?.name || ''}
+                    </span>
+
+                    <div className="w-12 h-0.5 bg-gray-100 my-4" />
+
+                    {/* Specialty description */}
+                    <div className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1.5 select-none">
+                      {es ? 'Especialidad médica' : 'Medical Specialty'}
+                    </div>
+                    <p className="text-xs font-bold text-gray-700 mb-4 px-2">
+                      {m.specialty}
+                    </p>
+
+                    {/* Short bio */}
+                    <p className="text-xs text-gray-500 leading-relaxed px-1">
+                      {m.bio}
+                    </p>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
 
         </div>
       </section>
 
-      {/* 5. Organizational Network (Adaptive Circular Network: Circle on Desktop, Vertical/Cascading layout on Mobile) */}
+      {/* 5. Organizational Network */}
       <section className="py-16 md:py-24 px-4 bg-white border-b border-gray-200/50">
         <div className="container mx-auto max-w-5xl">
           
@@ -549,7 +652,7 @@ export default function Page({ params: { lang } }: PageProps) {
         <div className="absolute inset-0 bg-radial-gradient(circle, rgba(232,168,56,0.06), transparent 70%) pointer-events-none" />
         
         <div className="container mx-auto max-w-3xl relative z-10 text-center">
-          <span className="text-5xl block mb-5 animate-[float_4s_ease-in-out_infinite]">🩺</span>
+          <span className="text-5xl block mb-5 animate-[float_4s_ease-in-out_infinite] select-none">🩺</span>
           <h2 className="font-serif text-3xl md:text-4xl text-white font-normal leading-tight mb-4">
             {es ? '¿Quieres unirte a nuestro equipo?' : 'Want to join our team?'}
           </h2>
@@ -563,13 +666,13 @@ export default function Page({ params: { lang } }: PageProps) {
           <div className="flex flex-wrap gap-4 justify-center items-center">
             <Link
               href={`/${lang}/contacto`}
-              className="bg-primary hover:bg-primary/95 text-black font-extrabold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-primary/10 min-h-[44px] flex items-center justify-center"
+              className="bg-primary hover:bg-primary/95 text-black font-extrabold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-primary/10 min-h-[44px] flex items-center justify-center select-none"
             >
               {es ? 'Postular ahora' : 'Apply now'}
             </Link>
             <Link
               href={`/${lang}/colabora`}
-              className="border border-white/20 hover:border-white/50 bg-white/5 text-white font-bold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] min-h-[44px] flex items-center justify-center"
+              className="border border-white/20 hover:border-white/50 bg-white/5 text-white font-bold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] min-h-[44px] flex items-center justify-center select-none"
             >
               {es ? 'Ser voluntario' : 'Become a volunteer'}
             </Link>

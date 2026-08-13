@@ -1,18 +1,30 @@
+import { getTranslation, type Locale } from '@/lib/i18n'
+import { WHATSAPP_NUMBER } from '@/lib/utils'
+
 interface WhatsAppButtonProps {
-  phone: string
+  lang: Locale
+  phone?: string
   message?: string
 }
 
 // Botón flotante de WhatsApp — visible en todas las páginas
-export default function WhatsAppButton({ phone, message = '¡Hola! Me gustaría obtener más información.' }: WhatsAppButtonProps) {
-  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
+export default function WhatsAppButton({
+  lang,
+  phone = WHATSAPP_NUMBER,
+  message,
+}: WhatsAppButtonProps) {
+  const t = getTranslation(lang)
+  const defaultMessage = t['whatsapp.message']
+  const ariaLabel = t['whatsapp.label']
+  const finalMessage = message ?? defaultMessage
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(finalMessage)}`
 
   return (
     <a
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Contactar por WhatsApp"
+      aria-label={ariaLabel}
       className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg transition-transform hover:scale-110"
     >
       {/* Ícono WhatsApp SVG inline */}

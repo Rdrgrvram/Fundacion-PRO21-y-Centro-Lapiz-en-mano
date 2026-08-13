@@ -3,7 +3,9 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { CONTACT } from '@/lib/contact'
 import type { Locale } from '@/lib/i18n'
-
+//.
+//.
+//.cortaaaaaaaaa
 interface PageProps {
   params: {
     lang: Locale
@@ -18,7 +20,7 @@ export default function Page({ params: { lang } }: PageProps) {
     {
       title: es ? 'Orientación psicológica' : 'Psychological orientation',
       icon: '🧠',
-      desc: es 
+      desc: es
         ? 'Sesiones individuales con psicólogos para abordar el impacto emocional del diagnóstico, manejar la ansiedad, el duelo y la culpa, y fortalecer la salud mental de los padres.'
         : 'Individual sessions with psychologists to address the emotional impact of diagnosis, manage anxiety, grief, and guilt, and strengthen parents\' mental health.',
       freq: es ? 'Semanal' : 'Weekly',
@@ -29,7 +31,7 @@ export default function Page({ params: { lang } }: PageProps) {
     {
       title: es ? 'Trabajo social' : 'Social work',
       icon: '🤝',
-      desc: es 
+      desc: es
         ? 'Orientación sobre derechos, acceso a servicios públicos, trámites de discapacidad, becas educativas y redes de apoyo institucional disponibles en Bolivia.'
         : 'Orientation on rights, access to public services, disability certificate procedures, educational scholarships, and institutional networks in Bolivia.',
       freq: es ? 'Quincenal' : 'Fortnightly',
@@ -40,7 +42,7 @@ export default function Page({ params: { lang } }: PageProps) {
     {
       title: es ? 'Charlas temáticas' : 'Thematic talks',
       icon: '🎓',
-      desc: es 
+      desc: es
         ? 'Talleres formativos sobre temas como estimulación en casa, manejo de conducta, alimentación, sexualidad, autonomía y transición a la vida adulta.'
         : 'Training workshops on topics such as stimulation at home, behavior management, nutrition, sexuality, autonomy, and transition to adult life.',
       freq: es ? 'Mensual' : 'Monthly',
@@ -51,7 +53,7 @@ export default function Page({ params: { lang } }: PageProps) {
     {
       title: es ? 'Interconsulta con especialistas' : 'Interconsultation with specialists',
       icon: '🩺',
-      desc: es 
+      desc: es
         ? 'Sesiones donde los padres pueden hacer preguntas directas al fisioterapeuta, fonoaudiólogo o terapeuta conductual de su hijo sobre el progreso y las estrategias.'
         : 'Sessions where parents can ask direct questions to their child\'s physical therapist, speech therapist, or behavioral therapist about progress.',
       freq: es ? 'Mensual' : 'Monthly',
@@ -90,7 +92,7 @@ export default function Page({ params: { lang } }: PageProps) {
 
   return (
     <div className="overflow-x-hidden w-full bg-[#fafbfd]">
-      
+
       {/* 1. Hero Section */}
       <section className="relative min-h-[440px] flex items-center bg-gradient-to-br from-[#2d0a1e] via-[#6b234e] to-[#e84393] py-16 px-4 overflow-hidden">
         {/* Decoraciones */}
@@ -132,7 +134,7 @@ export default function Page({ params: { lang } }: PageProps) {
           </h1>
 
           <p className="text-sm md:text-base lg:text-lg text-white/70 max-w-xl mx-auto leading-relaxed">
-            {es 
+            {es
               ? 'Sabemos que detrás de cada niño que atendemos hay una familia que también necesita acompañamiento, formación y contención. Este espacio es para ustedes.'
               : 'We know that behind every child we support there is a family that also needs guidance, training, and emotional support. This space is for you.'}
           </p>
@@ -144,7 +146,7 @@ export default function Page({ params: { lang } }: PageProps) {
         <div className="container mx-auto max-w-4xl">
           <div className="bg-gradient-to-br from-[#fdf2f8] to-[#fdf6e3] rounded-3xl p-8 md:p-10 border border-[#e84393]/10 shadow-sm text-left relative overflow-hidden">
             <div className="absolute -top-10 -right-10 w-36 h-36 rounded-full bg-radial-gradient(circle, rgba(232,168,56,0.1), transparent 70%) pointer-events-none" />
-            
+
             <div className="flex flex-col sm:flex-row items-start gap-6 relative z-10">
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#e84393] to-[#e86840] text-white flex items-center justify-center text-3xl shadow-md flex-shrink-0 select-none">
                 💌
@@ -154,7 +156,7 @@ export default function Page({ params: { lang } }: PageProps) {
                   {es ? 'Querida familia:' : 'Dear family:'}
                 </h3>
                 <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">
-                  {es 
+                  {es
                     ? 'Recibir un diagnóstico es un momento de gran sensibilidad que cambia la vida. Sentir temor, dudas o tristeza es completamente natural — y no significa que debas recorrer este camino en soledad. Estamos aquí para acompañarte en cada paso: con información profesional clara, apoyo psicológico constante y una red de familias que entienden exactamente tu vivencia.'
                     : 'Receiving a diagnosis is a highly sensitive, life-changing moment. Feeling fear, doubts, or sadness is completely natural — and it does not mean you have to walk this path alone. We are here to support you at every step: with clear professional information, constant psychological support, and a network of families who understand exactly what you are experiencing.'}
                 </p>
@@ -170,7 +172,7 @@ export default function Page({ params: { lang } }: PageProps) {
       {/* 3. Free Virtual Sessions (Grid 1-2 columns) */}
       <section className="py-12 md:py-16 px-4 bg-[#fafbfd] border-t border-b border-gray-200/50">
         <div className="container mx-auto max-w-6xl">
-          
+
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-[#f0edff] border border-[#6c5ce7]/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">🎥</span>
@@ -182,8 +184,8 @@ export default function Page({ params: { lang } }: PageProps) {
               {es ? 'Orientación profesional desde casa' : 'Professional guidance from home'}
             </h2>
             <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">
-              {es 
-                ? 'Sesiones sin costo con especialistas del centro, diseñadas para responder tus inquietudes vivenciales y familiares.' 
+              {es
+                ? 'Sesiones sin costo con especialistas del centro, diseñadas para responder tus inquietudes vivenciales y familiares.'
                 : 'Cost-free sessions with center specialists, designed to answer your everyday family concerns.'}
             </p>
           </div>
@@ -195,7 +197,7 @@ export default function Page({ params: { lang } }: PageProps) {
                 className="bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300"
               >
                 <div className="h-1.5 w-full" style={{ backgroundColor: s.color }} />
-                
+
                 <div className="p-6 md:p-8 flex items-start gap-5">
                   <div className={`w-12 h-12 rounded-2xl ${s.bg} flex items-center justify-center text-2xl flex-shrink-0 select-none shadow-inner`}>
                     {s.icon}
@@ -204,7 +206,7 @@ export default function Page({ params: { lang } }: PageProps) {
                     <h4 className="font-serif text-base sm:text-lg text-[#0c2340] font-bold mb-2">
                       {s.title}
                     </h4>
-                    
+
                     <div className="flex gap-2 mb-4 select-none">
                       <span className={`text-[9px] font-bold px-2.5 py-0.5 rounded-full ${s.bg}`} style={{ color: s.color }}>
                         {s.freq}
@@ -236,7 +238,7 @@ export default function Page({ params: { lang } }: PageProps) {
       {/* 4. Support Network Directory (Grid 1-2 cols) */}
       <section className="py-16 px-4 bg-[#f7f5f0]">
         <div className="container mx-auto max-w-6xl">
-          
+
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-[#fdf2f8] border border-[#e84393]/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">🤝</span>
@@ -248,8 +250,8 @@ export default function Page({ params: { lang } }: PageProps) {
               {es ? 'Nadie comprende mejor que quien lo vive' : 'No one understands better than those who live it'}
             </h2>
             <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">
-              {es 
-                ? 'Comunidad de padres y madres que comparten experiencias cotidianas y celebran el desarrollo pleno de sus hijos.' 
+              {es
+                ? 'Comunidad de padres y madres que comparten experiencias cotidianas y celebran el desarrollo pleno de sus hijos.'
                 : 'Community of parents sharing daily experiences and celebrating the full development of their children.'}
             </p>
           </div>
@@ -284,7 +286,7 @@ export default function Page({ params: { lang } }: PageProps) {
       {/* 5. Downloadable Guides List (1 col mobile, 2 tablet, 3 desktop) */}
       <section className="py-16 md:py-24 px-4 bg-[#fafbfd] border-t border-b border-gray-200/50">
         <div className="container mx-auto max-w-6xl">
-          
+
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-[#e8f1fa] border border-[#2466a8]/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">📄</span>
@@ -296,8 +298,8 @@ export default function Page({ params: { lang } }: PageProps) {
               {es ? 'Guías y recursos descargables' : 'Downloadable Guides & Resources'}
             </h2>
             <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">
-              {es 
-                ? 'Material elaborado por nuestros profesionales para guiar las actividades formativas, sensoriales y de rutina diaria en casa.' 
+              {es
+                ? 'Material elaborado por nuestros profesionales para guiar las actividades formativas, sensoriales y de rutina diaria en casa.'
                 : 'Material prepared by our professionals to guide educational, sensory, and daily routine activities at home.'}
             </p>
           </div>
@@ -358,7 +360,7 @@ export default function Page({ params: { lang } }: PageProps) {
       {/* 6. FAQ Accordions List */}
       <section id="faq" className="py-16 md:py-24 px-4 bg-[#f7f5f0] border-b border-gray-200/50">
         <div className="container mx-auto max-w-4xl">
-          
+
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-[#fdf6e3] border border-[#e8a838]/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">❓</span>
@@ -370,8 +372,8 @@ export default function Page({ params: { lang } }: PageProps) {
               {es ? 'Respuestas a las dudas más comunes' : 'Answers to the most common doubts'}
             </h2>
             <p className="text-sm text-gray-500 max-w-md mx-auto leading-relaxed">
-              {es 
-                ? 'Si tu consulta no se encuentra resuelta, escríbenos directamente y te ayudaremos.' 
+              {es
+                ? 'Si tu consulta no se encuentra resuelta, escríbenos directamente y te ayudaremos.'
                 : 'If your inquiry is not resolved here, message us directly and we will help.'}
             </p>
           </div>
@@ -384,9 +386,8 @@ export default function Page({ params: { lang } }: PageProps) {
                 <div
                   key={i}
                   onClick={() => setOpenFaq(isOpen ? null : i)}
-                  className={`bg-white rounded-2xl border overflow-hidden shadow-sm hover:shadow-md cursor-pointer transition-all duration-300 ${
-                    isOpen ? 'border-[#e8a838]' : 'border-gray-200'
-                  }`}
+                  className={`bg-white rounded-2xl border overflow-hidden shadow-sm hover:shadow-md cursor-pointer transition-all duration-300 ${isOpen ? 'border-[#e8a838]' : 'border-gray-200'
+                    }`}
                 >
                   <div className="flex items-center justify-between p-5 select-none">
                     <div className="flex items-center gap-4">
@@ -398,18 +399,16 @@ export default function Page({ params: { lang } }: PageProps) {
                       </h4>
                     </div>
 
-                    <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold transition-all duration-300 ${
-                      isOpen ? 'bg-[#e8a838]/10 text-[#e8a838] rotate-180' : 'bg-gray-50 text-gray-400'
-                    }`}>
+                    <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold transition-all duration-300 ${isOpen ? 'bg-[#e8a838]/10 text-[#e8a838] rotate-180' : 'bg-gray-50 text-gray-400'
+                      }`}>
                       ▾
                     </div>
                   </div>
 
                   {/* Detalle */}
                   <div
-                    className={`overflow-hidden transition-all duration-500 ${
-                      isOpen ? 'max-h-[350px] opacity-100' : 'max-h-0 opacity-0'
-                    }`}
+                    className={`overflow-hidden transition-all duration-500 ${isOpen ? 'max-h-[350px] opacity-100' : 'max-h-0 opacity-0'
+                      }`}
                   >
                     <div className="px-5 pb-5 pl-5 sm:pl-18">
                       <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
@@ -429,21 +428,21 @@ export default function Page({ params: { lang } }: PageProps) {
       {/* 7. Contact / Orientation CTA */}
       <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-[#2d0a1e] via-[#6b234e] to-[#e84393] relative overflow-hidden">
         <div className="absolute inset-0 bg-radial-gradient(circle, rgba(232,168,56,0.06), transparent 70%) pointer-events-none" />
-        
+
         <div className="container mx-auto max-w-3xl relative z-10 text-center">
           <span className="text-5xl block mb-5 animate-[float_4s_ease-in-out_infinite] select-none">💛</span>
           <h2 className="font-serif text-3xl md:text-4xl text-white font-normal leading-tight mb-4">
             {es ? '¿Necesitas orientación para tu familia?' : 'Need guidance for your family?'}
           </h2>
-          
+
           <p className="text-sm md:text-base text-white/70 max-w-xl mx-auto leading-relaxed mb-6">
-            {es 
+            {es
               ? 'Si acabas de recibir un diagnóstico, si tienes dudas sobre el desarrollo de tu hijo, o si simplemente necesitas chatear con un profesional de contención — estamos aquí.'
               : 'If you have just received a diagnosis, if you have doubts about your child\'s development, or if you simply need to chat with a support professional — we are here.'}
           </p>
 
           <p className="text-xs sm:text-sm text-white/55 italic max-w-md mx-auto mb-10">
-            {es 
+            {es
               ? 'La primera consulta de orientación familiar es gratuita y sin compromisos.'
               : 'The first family orientation consultation is free and with no commitments.'}
           </p>
