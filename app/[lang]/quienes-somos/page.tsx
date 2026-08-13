@@ -172,8 +172,8 @@ export default function Page({ params: { lang } }: PageProps) {
                 textColor: 'text-secondary',
                 bgColor: 'bg-secondary/10',
                 text: es 
-                  ? 'Ser una institución líder en la promoción del bienestar integral de personas con y sin discapacidad mediante la implementación de programas de intervención y proyectos de formación, fortaleciendo la inclusión, el empoderamiento y la autogestión como pilares de desarrollo humano.'
-                  : 'To be a leading institution in promoting the comprehensive well-being of people with and without disabilities through the implementation of intervention programs and training projects, strengthening inclusion, empowerment, and self-management as pillars of human development.'
+                  ? 'Nuestro compromiso es con los derechos de los niños y niñas con síndrome de Down, neurodivergencia y dificultades de aprendizaje a recibir una educación integral de calidad, inclusiva y personalizada que les permita desarrollar todo su potencial. Creamos un ambiente acogedor y seguro donde los niños se sientan incluidos, valorados y respetados, siendo referencia en la promoción de la educación inclusiva e igualdad de oportunidades.'
+                  : 'Our commitment is to the rights of children with Down syndrome, neurodivergence, and learning difficulties to receive quality, inclusive, and personalized comprehensive education that allows them to develop their full potential. We create a welcoming and safe environment where children feel included, valued, and respected, serving as a reference in promoting inclusive education and equal opportunities.'
               },
               {
                 label: es ? 'Visión' : 'Vision',
@@ -182,8 +182,8 @@ export default function Page({ params: { lang } }: PageProps) {
                 textColor: 'text-accent',
                 bgColor: 'bg-accent/10',
                 text: es 
-                  ? 'Ser referentes a nivel nacional como la principal institución en la promoción del bienestar integral, destacándonos por programas de intervención y proyectos de formación innovadores y efectivos que transformen vidas y construyan una sociedad más justa e inclusiva.'
-                  : 'To be national references as the main institution in promoting comprehensive well-being, standing out for innovative and effective intervention programs and training projects that transform lives and build a more just and inclusive society.'
+                  ? 'Ser el centro líder de referencia auto sostenible en el departamento de La Paz y en Bolivia, en la promoción de la educación inclusiva para niños y niñas con síndrome de Down, neurodivergencia y dificultades de aprendizaje, ofreciendo una intervención psico-socio-educativa integral y proporcionando herramientas necesarias para su inclusión educativa, social y laboral.'
+                  : 'To be the leading self-sustaining reference center in the department of La Paz and in Bolivia, promoting inclusive education for children with Down syndrome, neurodivergence, and learning difficulties, offering comprehensive psycho-socio-educational intervention and providing tools necessary for their educational, social, and labor inclusion.'
               },
               {
                 label: es ? 'Objetivo' : 'Objective',
@@ -192,8 +192,8 @@ export default function Page({ params: { lang } }: PageProps) {
                 textColor: 'text-secondary',
                 bgColor: 'bg-secondary/10',
                 text: es 
-                  ? 'Implementar programas de intervención y proyectos de formación que atiendan las necesidades específicas de niños, niñas y adolescentes con síndrome de Down, autismo, dificultades de aprendizaje y otras condiciones del neurodesarrollo, promoviendo su desarrollo integral, autonomía e inserción activa en la sociedad.'
-                  : 'To implement intervention programs and training projects that meet the specific needs of children and adolescents with Down syndrome, autism, learning difficulties, and other neurodevelopmental conditions, promoting their comprehensive development, autonomy, and active integration into society.'
+                  ? 'Brindar atención terapéutica y educativa de calidad a niños y niñas con síndrome de Down, neurodivergencia y dificultades de aprendizaje, promoviendo su desarrollo integral, autonomía e inclusión activa en la sociedad boliviana mediante un equipo multidisciplinario comprometido.'
+                  : 'To provide quality therapeutic and educational care to children with Down syndrome, neurodivergence, and learning difficulties, promoting their comprehensive development, autonomy, and active inclusion in Bolivian society through a committed multidisciplinary team.'
               }
             ].map((card) => (
               <div
@@ -369,8 +369,8 @@ export default function Page({ params: { lang } }: PageProps) {
             </h2>
             <p className="text-sm md:text-base text-white/70 max-w-lg mx-auto leading-relaxed">
               {es 
-                ? 'Un equipo multidisciplinario de más de 20 profesionales dedicados al desarrollo integral de cada niño y su familia.' 
-                : 'A multidisciplinary team of over 20 professionals dedicated to the comprehensive development of each child and their family.'}
+                ? 'Un equipo multidisciplinario de 10 profesionales especializados dedicados al desarrollo integral de cada niño y su familia.' 
+                : 'A multidisciplinary team of 10 specialized professionals dedicated to the comprehensive development of each child and their family.'}
             </p>
           </div>
 
