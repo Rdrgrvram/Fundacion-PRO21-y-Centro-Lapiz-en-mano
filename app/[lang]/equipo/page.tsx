@@ -96,7 +96,7 @@ export default function Page({ params: { lang } }: PageProps) {
       icon: '🤝',
       color: '#8c3cbd',
       colorClass: 'border-accent text-accent',
-      bg: 'bg-[#f5edfb]',
+      bg: 'bg-accent/10',
       desc: es 
         ? 'Orientación, acompañamiento social y contención emocional para las familias, estructurando la red de apoyo necesaria en el hogar.'
         : 'Guidance, social support, and emotional containment for families, structuring the necessary support network at home.',
@@ -232,7 +232,7 @@ export default function Page({ params: { lang } }: PageProps) {
       initials: 'BR',
       areaId: 'social',
       color: '#8c3cbd',
-      bg: 'bg-[#f5edfb]'
+      bg: 'bg-accent/10'
     }
   ]
 
@@ -256,26 +256,25 @@ export default function Page({ params: { lang } }: PageProps) {
     <div className="overflow-x-hidden w-full bg-gray-50">
       
       {/* 1. Page Hero */}
-      <section className="relative min-h-[400px] flex items-center bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary py-16 px-4 overflow-hidden">
+      <section className="relative bg-accent overflow-hidden">
         {/* Decoraciones */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
-          <div className="absolute -top-[15%] -right-[8%] w-[350px] h-[350px] md:w-[550px] md:h-[550px] rounded-full border border-white/5 opacity-30 animate-pulse" />
-          <div className="absolute -bottom-[20%] -left-[6%] w-[250px] h-[250px] md:w-[450px] md:h-[450px] rounded-full bg-radial-gradient(circle, rgba(232,168,56,0.06), transparent 70%)" />
-          <div className="absolute top-[20%] left-[10%] text-white/5 text-4xl">💪</div>
-          <div className="absolute bottom-[30%] right-[15%] text-white/5 text-4xl">🧠</div>
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/3" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/4" />
         </div>
 
-        {/* Wave bottom */}
-        <div className="absolute bottom-0 left-0 right-0 z-10">
-          <svg viewBox="0 0 1440 80" fill="none" className="block w-full h-8 md:h-16 lg:h-20 text-[#f9fafb] fill-current">
-            <path d="M0 45C360 15 720 65 1080 35C1260 20 1380 30 1440 28V80H0Z" />
-          </svg>
-        </div>
+        <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-2 text-white/60 text-xs mb-8">
+            <Link href={`/${lang}`} className="hover:text-white transition-colors">{es ? 'Inicio' : 'Home'}</Link>
+            <span>/</span>
+            <span className="text-white font-semibold">{es ? 'Equipo' : 'Team'}</span>
+          </nav>
 
-        <div className="container mx-auto max-w-4xl text-center relative z-20 mt-8">
-          <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full py-1 px-3.5 mb-5 select-none">
-            <span className="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-[10px] text-black font-extrabold">✦</span>
-            <span className="text-white/80 text-xs font-semibold">{es ? 'Nuestro equipo' : 'Our team'}</span>
+          <div className="inline-flex items-center gap-2 bg-white/15 border border-white/20 rounded-full px-4 py-1.5 mb-5">
+            <span className="text-xs font-bold uppercase tracking-wider text-white select-none">
+              {es ? 'Nuestro equipo' : 'Our team'}
+            </span>
           </div>
 
           <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-normal leading-tight mb-4">
@@ -292,11 +291,18 @@ export default function Page({ params: { lang } }: PageProps) {
             )}
           </h1>
 
-          <p className="text-sm md:text-base lg:text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
-            {es 
+          <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-2xl leading-relaxed">
+            {es
               ? 'Un equipo multidisciplinario que trabaja de forma coordinada, poniendo al niño y su familia en el centro de cada intervención para lograr avances significativos.'
               : 'A multidisciplinary team working coordinately, placing the child and family at the center of every intervention to achieve meaningful progress.'}
           </p>
+        </div>
+
+        {/* Ola inferior */}
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg viewBox="0 0 1440 60" className="w-full h-8 md:h-12 fill-gray-50">
+            <path d="M0 30C360 60 1080 0 1440 30V60H0Z" />
+          </svg>
         </div>
       </section>
 
@@ -613,7 +619,7 @@ export default function Page({ params: { lang } }: PageProps) {
         <div className="container mx-auto max-w-4xl text-center">
           
           <div className="text-center mb-10 max-w-md mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[#f5edfb] border border-accent/15 rounded-full px-4 py-1.5 mb-3 select-none">
+            <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">🤝</span>
               <span className="text-xs font-bold uppercase tracking-wider text-accent">
                 {es ? 'Voluntariado' : 'Volunteering'}
@@ -648,17 +654,20 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 7. Join Team CTA */}
-      <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary relative overflow-hidden">
-        <div className="absolute inset-0 bg-radial-gradient(circle, rgba(232,168,56,0.06), transparent 70%) pointer-events-none" />
-        
+      <section className="py-16 md:py-24 px-4 bg-accent relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/3" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/4" />
+        </div>
+
         <div className="container mx-auto max-w-3xl relative z-10 text-center">
-          <span className="text-5xl block mb-5 animate-[float_4s_ease-in-out_infinite] select-none">🩺</span>
+          <span className="text-5xl block mb-5 select-none">🩺</span>
           <h2 className="font-serif text-3xl md:text-4xl text-white font-normal leading-tight mb-4">
             {es ? '¿Quieres unirte a nuestro equipo?' : 'Want to join our team?'}
           </h2>
-          
-          <p className="text-sm md:text-base text-white/70 max-w-xl mx-auto leading-relaxed mb-8">
-            {es 
+
+          <p className="text-sm md:text-base text-white/80 max-w-xl mx-auto leading-relaxed mb-8">
+            {es
               ? 'Buscamos fisioterapeutas, psicopedagogos, fonoaudiólogos, psicólogos clínicos y educadores que deseen poner su conocimiento al servicio de la inclusión integral en La Paz.'
               : 'We look for physiotherapists, psychopedagogues, speech therapists, clinical psychologists, and educators who wish to put their knowledge at the service of integral inclusion in La Paz.'}
           </p>
@@ -666,13 +675,13 @@ export default function Page({ params: { lang } }: PageProps) {
           <div className="flex flex-wrap gap-4 justify-center items-center">
             <Link
               href={`/${lang}/contacto`}
-              className="bg-primary hover:bg-primary/95 text-black font-extrabold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-primary/10 min-h-[44px] flex items-center justify-center select-none"
+              className="bg-primary hover:bg-primary/95 text-black font-extrabold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-black/10 min-h-[44px] flex items-center justify-center select-none"
             >
               {es ? 'Postular ahora' : 'Apply now'}
             </Link>
             <Link
               href={`/${lang}/colabora`}
-              className="border border-white/20 hover:border-white/50 bg-white/5 text-white font-bold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] min-h-[44px] flex items-center justify-center select-none"
+              className="border-2 border-white/30 hover:border-white/60 bg-white/10 hover:bg-white/20 text-white font-bold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] min-h-[44px] flex items-center justify-center select-none"
             >
               {es ? 'Ser voluntario' : 'Become a volunteer'}
             </Link>
