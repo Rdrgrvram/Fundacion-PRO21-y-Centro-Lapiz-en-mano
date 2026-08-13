@@ -76,7 +76,7 @@ export default function Page({ params: { lang } }: PageProps) {
             </span>
           </div>
 
-          <h1 id="nosotros-titulo" className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-normal leading-tight mb-4">
+          <h1 id="nosotros-titulo" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-extrabold leading-tight mb-4">
             {es ? (
               <>
                 Dos instituciones, <br className="hidden sm:inline" />
@@ -115,7 +115,7 @@ export default function Page({ params: { lang } }: PageProps) {
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#229cc2] to-[#229cc2] flex items-center justify-center font-serif text-xl font-bold text-white mb-6 shadow-md shadow-[#229cc2]/10 select-none">
                 P21
               </div>
-              <h3 className="font-serif text-2xl text-[#111827] font-bold mb-1">Fundación PRO-21</h3>
+              <h3 className="text-2xl text-gray-900 font-bold mb-1">Fundación PRO-21</h3>
               <p className="text-xs font-semibold text-secondary italic tracking-wide mb-5">
                 {es ? 'Promoviendo el bienestar integral' : 'Promoting comprehensive well-being'}
               </p>
@@ -140,7 +140,7 @@ export default function Page({ params: { lang } }: PageProps) {
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-[#8c3cbd] flex items-center justify-center text-3xl mb-6 shadow-md shadow-primary/10 select-none">
                 ✏️
               </div>
-              <h3 className="font-serif text-2xl text-[#111827] font-bold mb-1">Centro Lápiz en Mano</h3>
+              <h3 className="text-2xl text-gray-900 font-bold mb-1">Centro Lápiz en Mano</h3>
               <p className="text-xs font-semibold text-accent italic tracking-wide mb-5">
                 {es ? 'Centro de Educación Complementaria' : 'Complementary Education Center'}
               </p>
@@ -166,7 +166,7 @@ export default function Page({ params: { lang } }: PageProps) {
                 {es ? 'Identidad institucional' : 'Institutional Identity'}
               </span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight">
+            <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold tracking-tight">
               {es ? 'Lo que nos define' : 'What defines us'}
             </h2>
           </div>
@@ -238,7 +238,7 @@ export default function Page({ params: { lang } }: PageProps) {
                 {es ? 'Nuestros valores' : 'Our Values'}
               </span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">
+            <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold tracking-tight mb-4">
               {es ? 'Los principios que nos guían' : 'The principles that guide us'}
             </h2>
             <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">
@@ -258,7 +258,7 @@ export default function Page({ params: { lang } }: PageProps) {
                   <div className={`w-11 h-11 rounded-xl ${v.bg} flex items-center justify-center text-xl mb-4 transition-all duration-300 group-hover:scale-105`}>
                     {v.icon}
                   </div>
-                  <h4 className="font-serif text-base text-[#111827] font-bold mb-2">
+                  <h4 className="text-base text-gray-900 font-bold mb-2">
                     {v.name}
                   </h4>
                   <p className="text-xs text-gray-500 leading-relaxed">
@@ -284,7 +284,7 @@ export default function Page({ params: { lang } }: PageProps) {
                 {es ? 'Nuestra trayectoria' : 'Our Journey'}
               </span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">
+            <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold tracking-tight mb-4">
               {es ? 'Cada paso cuenta' : 'Every step counts'}
             </h2>
             <p className="text-sm text-gray-500 leading-relaxed">
@@ -318,7 +318,7 @@ export default function Page({ params: { lang } }: PageProps) {
                       {isLeft && (
                         <div className="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm hover:border-secondary/30 transition-all duration-300 mr-6">
                           <span className="inline-block text-xs font-bold px-3 py-1 bg-secondary/10 text-secondary rounded-full mb-3">{item.year}</span>
-                          <h4 className="font-serif text-lg text-[#111827] font-bold mb-2">{item.title}</h4>
+                          <h4 className="text-lg text-gray-900 font-bold mb-2">{item.title}</h4>
                           <p className="text-xs text-gray-500 leading-relaxed">{item.desc}</p>
                         </div>
                       )}
@@ -336,7 +336,7 @@ export default function Page({ params: { lang } }: PageProps) {
                       {!isLeft && (
                         <div className="hidden md:block bg-white rounded-3xl p-6 border border-gray-200 shadow-sm hover:border-secondary/30 transition-all duration-300">
                           <span className="inline-block text-xs font-bold px-3 py-1 bg-secondary/10 text-secondary rounded-full mb-3">{item.year}</span>
-                          <h4 className="font-serif text-lg text-[#111827] font-bold mb-2">{item.title}</h4>
+                          <h4 className="text-lg text-gray-900 font-bold mb-2">{item.title}</h4>
                           <p className="text-xs text-gray-500 leading-relaxed">{item.desc}</p>
                         </div>
                       )}
@@ -344,7 +344,7 @@ export default function Page({ params: { lang } }: PageProps) {
                       {/* Tarjeta de visualización móvil obligatoria */}
                       <div className="block md:hidden bg-white rounded-2xl p-5 sm:p-6 border border-gray-200 shadow-sm">
                         <span className="inline-block text-[10px] font-bold px-2.5 py-0.5 bg-secondary/10 text-secondary rounded-full mb-2">{item.year}</span>
-                        <h4 className="font-serif text-base text-[#111827] font-bold mb-1.5">{item.title}</h4>
+                        <h4 className="text-base text-gray-900 font-bold mb-1.5">{item.title}</h4>
                         <p className="text-xs text-gray-500 leading-relaxed">{item.desc}</p>
                       </div>
                     </div>
@@ -374,7 +374,7 @@ export default function Page({ params: { lang } }: PageProps) {
                 {es ? 'Nuestro equipo' : 'Our Team'}
               </span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-white font-normal tracking-tight mb-4">
+            <h2 className="text-3xl md:text-4xl text-white font-extrabold tracking-tight mb-4">
               {es ? 'Profesionales con vocación' : 'Professionals with Vocation'}
             </h2>
             <p className="text-sm md:text-base text-white/80 max-w-lg mx-auto leading-relaxed">
@@ -420,7 +420,7 @@ export default function Page({ params: { lang } }: PageProps) {
         </div>
         <div className="container mx-auto max-w-3xl relative z-10 text-center">
           <span className="text-4xl mb-4 block select-none">💛</span>
-          <h3 className="font-serif text-2xl md:text-3xl text-gray-900 font-bold mb-4">
+          <h3 className="text-2xl md:text-3xl text-gray-900 font-bold mb-4">
             {es ? '¿Quieres ser parte de esta historia?' : 'Want to be part of this story?'}
           </h3>
           <p className="text-sm text-gray-800/80 leading-relaxed mb-8 max-w-xl mx-auto">
