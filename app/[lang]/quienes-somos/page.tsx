@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import type { Locale } from '@/lib/i18n'
 
 interface PageProps {
@@ -112,8 +113,8 @@ export default function Page({ params: { lang } }: PageProps) {
             
             {/* PRO-21 Card */}
             <div className="w-full lg:w-[46%] bg-white rounded-3xl p-8 md:p-10 border border-gray-200/80 shadow-sm transition-all hover:shadow-md hover:border-gray-300 flex flex-col">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#229cc2] to-[#229cc2] flex items-center justify-center font-serif text-xl font-bold text-white mb-6 shadow-md shadow-[#229cc2]/10 select-none">
-                P21
+              <div className="w-16 h-16 mb-6 select-none">
+                <Image src="/icons/logo-pro21.png" alt="Fundación PRO-21" width={64} height={64} className="w-full h-full object-contain" />
               </div>
               <h3 className="text-2xl text-gray-900 font-bold mb-1">Fundación PRO-21</h3>
               <p className="text-xs font-semibold text-secondary italic tracking-wide mb-5">
@@ -137,8 +138,8 @@ export default function Page({ params: { lang } }: PageProps) {
 
             {/* Lápiz en Mano Card */}
             <div className="w-full lg:w-[46%] bg-white rounded-3xl p-8 md:p-10 border border-gray-200/80 shadow-sm transition-all hover:shadow-md hover:border-gray-300 flex flex-col">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-[#8c3cbd] flex items-center justify-center text-3xl mb-6 shadow-md shadow-primary/10 select-none">
-                ✏️
+              <div className="w-16 h-16 mb-6 select-none">
+                <Image src="/icons/logo-lapiz.png" alt="Centro Lápiz en Mano" width={64} height={64} className="w-full h-full object-contain" />
               </div>
               <h3 className="text-2xl text-gray-900 font-bold mb-1">Centro Lápiz en Mano</h3>
               <p className="text-xs font-semibold text-accent italic tracking-wide mb-5">
