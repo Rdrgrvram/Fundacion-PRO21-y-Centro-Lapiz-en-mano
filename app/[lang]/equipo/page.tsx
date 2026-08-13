@@ -260,7 +260,7 @@ export default function Page({ params: { lang } }: PageProps) {
         {/* Decoraciones */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/3" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/4" />
+          <div className="absolute bottom-1/4 -left-16 w-64 h-64 bg-white/10 rounded-full" />
         </div>
 
         <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
@@ -657,7 +657,7 @@ export default function Page({ params: { lang } }: PageProps) {
       <section className="py-16 md:py-24 px-4 bg-accent relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/3" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/4" />
+          <div className="absolute bottom-1/4 -left-16 w-64 h-64 bg-white/10 rounded-full" />
         </div>
 
         <div className="container mx-auto max-w-3xl relative z-10 text-center">
