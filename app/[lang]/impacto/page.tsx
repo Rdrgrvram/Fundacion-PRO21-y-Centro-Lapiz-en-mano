@@ -38,12 +38,12 @@ export default function Page({ params: { lang } }: PageProps) {
   const [activeFilter, setActiveFilter] = useState(0)
 
   const stats = [
-    { value: '100', suffix: '+', label: es ? 'Familias acompañadas' : 'Families supported', icon: '👨‍👩‍👧', color: '#2466a8', bg: 'bg-[#e8f1fa]' },
-    { value: '3', suffix: '', label: es ? 'Programas activos' : 'Active programs', icon: '📋', color: '#e86840', bg: 'bg-[#fef0e8]' },
-    { value: '5', suffix: '+', label: es ? 'Años de servicio' : 'Years of service', icon: '🏛️', color: '#1a8a7d', bg: 'bg-[#e0f5f0]' },
-    { value: '20', suffix: '+', label: es ? 'Profesionales dedicados' : 'Staff professionals', icon: '🩺', color: '#2d8a4e', bg: 'bg-[#e5f5eb]' },
-    { value: '8', suffix: '', label: es ? 'Áreas terapéuticas' : 'Therapeutic areas', icon: '🧩', color: '#6c5ce7', bg: 'bg-[#f0edff]' },
-    { value: '1000', suffix: '+', label: es ? 'Sesiones al año' : 'Sessions per year', icon: '📅', color: '#e8a838', bg: 'bg-[#fdf6e3]' }
+    { value: '70', suffix: '+', label: es ? 'Familias acompañadas' : 'Families supported', icon: '👨‍👩‍👧', color: '#229cc2', bg: 'bg-secondary/10' },
+    { value: '3', suffix: '', label: es ? 'Programas activos' : 'Active programs', icon: '📋', color: '#8c3cbd', bg: 'bg-accent/10' },
+    { value: '8', suffix: '', label: es ? 'Años de experiencia' : 'Years of service', icon: '🏛️', color: '#229cc2', bg: 'bg-secondary/10' },
+    { value: '10', suffix: '', label: es ? 'Profesionales en el equipo' : 'Staff professionals', icon: '🩺', color: '#229cc2', bg: 'bg-secondary/10' },
+    { value: '8', suffix: '', label: es ? 'Áreas terapéuticas' : 'Therapeutic areas', icon: '🧩', color: '#8c3cbd', bg: 'bg-accent/10' },
+    { value: '1000', suffix: '+', label: es ? 'Sesiones al año' : 'Sessions per year', icon: '📅', color: '#ffc500', bg: 'bg-primary/15' }
   ]
 
   const testimonials = [
@@ -54,7 +54,7 @@ export default function Page({ params: { lang } }: PageProps) {
       family: 'Familia Quispe',
       program: 'Mi Escuelita Down',
       emoji: '🌟',
-      color: '#2466a8'
+      color: '#229cc2'
     },
     {
       quote: es 
@@ -63,7 +63,7 @@ export default function Page({ params: { lang } }: PageProps) {
       family: 'Familia Mamani',
       program: 'Aula Wawitas',
       emoji: '🧩',
-      color: '#e86840'
+      color: '#8c3cbd'
     },
     {
       quote: es 
@@ -72,7 +72,7 @@ export default function Page({ params: { lang } }: PageProps) {
       family: 'Familia Condori',
       program: 'Pasos Firmes',
       emoji: '📚',
-      color: '#2d8a4e'
+      color: '#229cc2'
     }
   ]
 
@@ -84,10 +84,10 @@ export default function Page({ params: { lang } }: PageProps) {
   ]
 
   const media = [
-    { outlet: 'Red Uno de Bolivia', type: es ? 'Televisión' : 'Television', desc: es ? 'Cobertura especial del incidente durante los conflictos en La Paz, visibilizando el centro.' : 'Special coverage of the incident during conflicts in La Paz, making the center visible.', year: '2026', color: '#e53935' },
-    { outlet: 'ATB Digital', type: es ? 'Televisión' : 'Television', desc: es ? 'Reportaje sobre los programas de inclusión educativa para niños con síndrome de Down.' : 'Report on educational inclusion programs for children with Down syndrome in Bolivia.', year: '2026', color: '#1565c0' },
-    { outlet: 'Página Siete', type: es ? 'Prensa escrita' : 'Press outlet', desc: es ? 'Artículo sobre la labor del Centro Lápiz en Mano y la importancia de la estimulación temprana.' : 'Article on the work of Lápiz en Mano Center and the importance of early stimulation.', year: '2025', color: '#2e7d32' },
-    { outlet: 'Redes Internacionales', type: es ? 'Digital' : 'Digital media', desc: es ? 'Acompañamiento y notas de solidaridad internacional tras la difusión de prensa.' : 'Accompaniment and international solidarity notes after press releases.', year: '2026', color: '#6a1b9a' }
+    { outlet: 'Red Uno de Bolivia', type: es ? 'Televisión' : 'Television', desc: es ? 'Cobertura especial del incidente durante los conflictos en La Paz, visibilizando el centro.' : 'Special coverage of the incident during conflicts in La Paz, making the center visible.', year: '2026', color: '#8c3cbd' },
+    { outlet: 'ATB Digital', type: es ? 'Televisión' : 'Television', desc: es ? 'Reportaje sobre los programas de inclusión educativa para niños con síndrome de Down.' : 'Report on educational inclusion programs for children with Down syndrome in Bolivia.', year: '2026', color: '#229cc2' },
+    { outlet: 'Página Siete', type: es ? 'Prensa escrita' : 'Press outlet', desc: es ? 'Artículo sobre la labor del Centro Lápiz en Mano y la importancia de la estimulación temprana.' : 'Article on the work of Lápiz en Mano Center and the importance of early stimulation.', year: '2025', color: '#229cc2' },
+    { outlet: 'Redes Internacionales', type: es ? 'Digital' : 'Digital media', desc: es ? 'Acompañamiento y notas de solidaridad internacional tras la difusión de prensa.' : 'Accompaniment and international solidarity notes after press releases.', year: '2026', color: '#8c3cbd' }
   ]
 
   const categories = es 
@@ -97,10 +97,10 @@ export default function Page({ params: { lang } }: PageProps) {
   const activeT = testimonials[activeTestimonial]
 
   return (
-    <div className="overflow-x-hidden w-full bg-[#fafbfd]">
+    <div className="overflow-x-hidden w-full bg-gray-50">
       
       {/* 1. Page Hero */}
-      <section className="relative min-h-[440px] flex items-center bg-gradient-to-br from-[#0c2340] via-[#142d4c] to-[#2466a8] py-16 px-4 overflow-hidden">
+      <section className="relative min-h-[440px] flex items-center bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary py-16 px-4 overflow-hidden">
         {/* Decoraciones */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
           <div className="absolute -top-[15%] -right-[8%] w-[350px] h-[350px] md:w-[500px] md:h-[500px] rounded-full border border-white/5 opacity-30" />
@@ -109,7 +109,7 @@ export default function Page({ params: { lang } }: PageProps) {
 
         {/* Wave bottom */}
         <div className="absolute bottom-0 left-0 right-0 z-10">
-          <svg viewBox="0 0 1440 80" fill="none" className="block w-full h-8 md:h-16 lg:h-20 text-[#fafbfd] fill-current">
+          <svg viewBox="0 0 1440 80" fill="none" className="block w-full h-8 md:h-16 lg:h-20 text-[#f9fafb] fill-current">
             <path d="M0 40C360 70 720 15 1080 45C1260 60 1380 50 1440 48V80H0Z" />
           </svg>
         </div>
@@ -143,17 +143,17 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 2. Impact Numbers Strip (Grid 2 columns mobile, 3 desktop) */}
-      <section className="py-12 px-4 bg-[#fafbfd] border-b border-gray-200/50">
+      <section className="py-12 px-4 bg-gray-50 border-b border-gray-200/50">
         <div className="container mx-auto max-w-6xl">
           
           <div className="text-center mb-12 max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[#fdf6e3] border border-[#e8a838]/15 rounded-full px-4 py-1.5 mb-3 select-none">
+            <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">📊</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#e8a838]">
+              <span className="text-xs font-bold uppercase tracking-wider text-primary-700">
                 {es ? 'Nuestras cifras' : 'Our metrics'}
               </span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#0c2340] font-normal tracking-tight">
+            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight">
               {es ? 'El impacto consolidado en números' : 'Consolidated impact in numbers'}
             </h2>
           </div>
@@ -185,17 +185,17 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 3. Testimonials Carousel Slider (Touch friendly dots + mini selectors) */}
-      <section className="py-16 md:py-24 px-4 bg-[#f7f5f0] border-b border-gray-200/50">
+      <section className="py-16 md:py-24 px-4 bg-[#f9fafb] border-b border-gray-200/50">
         <div className="container mx-auto max-w-4xl text-center">
           
           <div className="text-center mb-10 max-w-md mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[#fdf2f8] border border-[#e84393]/15 rounded-full px-4 py-1.5 mb-3 select-none">
+            <div className="inline-flex items-center gap-2 bg-[#f5edfb] border border-[#8c3cbd]/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">💛</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#e84393]">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#8c3cbd]">
                 {es ? 'Voces de las familias' : 'Voices of families'}
               </span>
             </div>
-            <h2 className="font-serif text-2xl md:text-3xl text-[#0c2340] font-normal tracking-tight">
+            <h2 className="font-serif text-2xl md:text-3xl text-[#111827] font-normal tracking-tight">
               {es ? 'Lo que dicen de nosotros' : 'What they say about us'}
             </h2>
           </div>
@@ -205,7 +205,7 @@ export default function Page({ params: { lang } }: PageProps) {
               <span className="absolute top-2 left-6 font-serif text-8xl text-gray-100 pointer-events-none select-none">&ldquo;</span>
               
               <div className="relative z-10">
-                <p className="font-serif text-base sm:text-lg md:text-xl text-[#0c2340] font-bold italic leading-relaxed mb-6">
+                <p className="font-serif text-base sm:text-lg md:text-xl text-[#111827] font-bold italic leading-relaxed mb-6">
                   &ldquo;{activeT.quote}&rdquo;
                 </p>
 
@@ -215,7 +215,7 @@ export default function Page({ params: { lang } }: PageProps) {
                       {activeT.emoji}
                     </div>
                     <div>
-                      <h4 className="text-xs sm:text-sm font-bold text-[#0c2340]">{activeT.family}</h4>
+                      <h4 className="text-xs sm:text-sm font-bold text-[#111827]">{activeT.family}</h4>
                       <p className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider mt-0.5">{activeT.program}</p>
                     </div>
                   </div>
@@ -227,7 +227,7 @@ export default function Page({ params: { lang } }: PageProps) {
                         key={idx}
                         onClick={() => setActiveTestimonial(idx)}
                         className={`h-2.5 rounded-full transition-all focus:outline-none min-h-[11px] ${
-                          idx === activeTestimonial ? 'w-6 bg-[#e8a838]' : 'w-2.5 bg-gray-200'
+                          idx === activeTestimonial ? 'w-6 bg-[#ffc500]' : 'w-2.5 bg-gray-200'
                         }`}
                       />
                     ))}
@@ -266,13 +266,13 @@ export default function Page({ params: { lang } }: PageProps) {
         <div className="container mx-auto max-w-6xl">
           
           <div className="text-center mb-12 max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[#e8f1fa] border border-[#2466a8]/15 rounded-full px-4 py-1.5 mb-3 select-none">
+            <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">🔍</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#2466a8]">
+              <span className="text-xs font-bold uppercase tracking-wider text-secondary">
                 {es ? 'Transparencia institucional' : 'Institutional Transparency'}
               </span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#0c2340] font-normal tracking-tight mb-4">
+            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">
               {es ? 'Rendición de cuentas anual' : 'Annual Accountability'}
             </h2>
             <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">
@@ -293,14 +293,14 @@ export default function Page({ params: { lang } }: PageProps) {
                 {reports.map((r, idx) => (
                   <div
                     key={idx}
-                    className="bg-[#fafbfd] rounded-2xl p-5 border border-gray-200/80 flex items-center justify-between hover:border-[#2466a8]/20 transition-all select-none hover:translate-x-1"
+                    className="bg-gray-50 rounded-2xl p-5 border border-gray-200/80 flex items-center justify-between hover:border-secondary/20 transition-all select-none hover:translate-x-1"
                   >
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 rounded-xl bg-white border border-gray-150 flex items-center justify-center text-2xl flex-shrink-0">
                         📊
                       </div>
                       <div>
-                        <h4 className="text-xs sm:text-sm font-bold text-[#0c2340] leading-snug">{r.title}</h4>
+                        <h4 className="text-xs sm:text-sm font-bold text-[#111827] leading-snug">{r.title}</h4>
                         <p className="text-[10px] text-gray-400 font-semibold mt-0.5">{r.desc}</p>
                       </div>
                     </div>
@@ -309,7 +309,7 @@ export default function Page({ params: { lang } }: PageProps) {
                       href="https://wa.me/59170106276"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-[#e5f5eb] text-[#2d8a4e] font-bold text-[9px] uppercase tracking-wider px-3 py-1 rounded-full min-h-[28px] flex items-center justify-center"
+                      className="bg-secondary/10 text-secondary font-bold text-[9px] uppercase tracking-wider px-3 py-1 rounded-full min-h-[28px] flex items-center justify-center"
                     >
                       {r.status}
                     </a>
@@ -325,10 +325,10 @@ export default function Page({ params: { lang } }: PageProps) {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 {[
-                  { icon: '👶', title: es ? 'Niños atendidos' : 'Children served', desc: es ? 'Matrícula en cada programa e informes pedagógicos.' : 'Enrollment in each program and pedagogical reports.', bg: 'bg-[#e8f1fa]' },
-                  { icon: '💰', title: es ? 'Uso de fondos' : 'Use of funds', desc: es ? 'Distribución porcentual por áreas y costo de becas.' : 'Percentage distribution by areas and cost of scholarships.', bg: 'bg-[#fdf6e3]' },
-                  { icon: '📈', title: es ? 'Avances terapéuticos' : 'Therapeutic progress', desc: es ? 'Logros medidos a nivel psicomotor, fonoaudiológico y conductual.' : 'Achievements measured at psychomotor, speech, and behavior levels.', bg: 'bg-[#e0f5f0]' },
-                  { icon: '🤝', title: es ? 'Convenios firmados' : 'Signed agreements', desc: es ? 'Nuevas alianzas nacionales y de cooperación.' : 'New national and cooperation alliances.', bg: 'bg-[#e5f5eb]' }
+                  { icon: '👶', title: es ? 'Niños atendidos' : 'Children served', desc: es ? 'Matrícula en cada programa e informes pedagógicos.' : 'Enrollment in each program and pedagogical reports.', bg: 'bg-secondary/10' },
+                  { icon: '💰', title: es ? 'Uso de fondos' : 'Use of funds', desc: es ? 'Distribución porcentual por áreas y costo de becas.' : 'Percentage distribution by areas and cost of scholarships.', bg: 'bg-primary/15' },
+                  { icon: '📈', title: es ? 'Avances terapéuticos' : 'Therapeutic progress', desc: es ? 'Logros medidos a nivel psicomotor, fonoaudiológico y conductual.' : 'Achievements measured at psychomotor, speech, and behavior levels.', bg: 'bg-secondary/10' },
+                  { icon: '🤝', title: es ? 'Convenios firmados' : 'Signed agreements', desc: es ? 'Nuevas alianzas nacionales y de cooperación.' : 'New national and cooperation alliances.', bg: 'bg-secondary/10' }
                 ].map((item, idx) => (
                   <div
                     key={idx}
@@ -338,7 +338,7 @@ export default function Page({ params: { lang } }: PageProps) {
                       {item.icon}
                     </div>
                     <div>
-                      <h4 className="text-xs font-bold text-[#0c2340] mb-0.5">{item.title}</h4>
+                      <h4 className="text-xs font-bold text-[#111827] mb-0.5">{item.title}</h4>
                       <p className="text-[10px] text-gray-400 leading-normal font-semibold">{item.desc}</p>
                     </div>
                   </div>
@@ -352,17 +352,17 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 5. Media Coverage Grid */}
-      <section className="py-16 md:py-24 px-4 bg-[#f7f5f0] border-b border-gray-200/50">
+      <section className="py-16 md:py-24 px-4 bg-[#f9fafb] border-b border-gray-200/50">
         <div className="container mx-auto max-w-6xl">
           
           <div className="text-center mb-12 max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[#fef0e8] border border-[#e86840]/15 rounded-full px-4 py-1.5 mb-3 select-none">
+            <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">📰</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#e86840]">
+              <span className="text-xs font-bold uppercase tracking-wider text-accent">
                 {es ? 'Impacto social en medios' : 'Outreach in media'}
               </span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#0c2340] font-normal tracking-tight mb-4">
+            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">
               {es ? 'Difusión en prensa y televisión' : 'Broadcasting in press and television'}
             </h2>
           </div>
@@ -381,7 +381,7 @@ export default function Page({ params: { lang } }: PageProps) {
                         {m.outlet.charAt(0)}
                       </div>
                       <div>
-                        <h4 className="text-xs sm:text-sm font-bold text-[#0c2340] leading-none">{m.outlet}</h4>
+                        <h4 className="text-xs sm:text-sm font-bold text-[#111827] leading-none">{m.outlet}</h4>
                         <span className="text-[9px] text-gray-400 font-semibold mt-1 block">{m.type}</span>
                       </div>
                     </div>
@@ -399,17 +399,17 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 6. Photo Gallery (Grid 2-3-4 cols) */}
-      <section className="py-16 md:py-24 px-4 bg-[#fafbfd]">
+      <section className="py-16 md:py-24 px-4 bg-gray-50">
         <div className="container mx-auto max-w-6xl">
           
           <div className="text-center mb-12 max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[#e0f5f0] border border-[#1a8a7d]/15 rounded-full px-4 py-1.5 mb-3 select-none">
+            <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">📷</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#1a8a7d]">
+              <span className="text-xs font-bold uppercase tracking-wider text-secondary">
                 {es ? 'Galería del centro' : 'Center Gallery'}
               </span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#0c2340] font-normal tracking-tight mb-4">
+            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">
               {es ? 'Momentos que nos inspiran' : 'Moments that inspire us'}
             </h2>
           </div>
@@ -423,7 +423,7 @@ export default function Page({ params: { lang } }: PageProps) {
                 onClick={() => setActiveFilter(i)}
                 className={`px-5 py-2 rounded-full border-2 font-bold text-xs sm:text-sm transition-all focus:outline-none min-h-[44px] min-w-[44px] flex items-center justify-center ${
                   activeFilter === i 
-                    ? 'border-[#1a8a7d] bg-[#e0f5f0] text-[#1a8a7d] shadow-sm' 
+                    ? 'border-secondary bg-secondary/10 text-secondary shadow-sm' 
                     : 'border-gray-200 bg-white text-gray-500 hover:bg-gray-50'
                 }`}
               >
@@ -435,14 +435,14 @@ export default function Page({ params: { lang } }: PageProps) {
           {/* Grid de imágenes simuladas con emojis/estilos decorativos premium */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto select-none">
             {[
-              { icon: '🎨', h: 'h-44 sm:h-52', bg: 'bg-[#e8f1fa]' },
-              { icon: '🤸', h: 'h-52 sm:h-60', bg: 'bg-[#fdf6e3]' },
-              { icon: '📖', h: 'h-44 sm:h-52', bg: 'bg-[#e0f5f0]' },
-              { icon: '🧩', h: 'h-48 sm:h-56', bg: 'bg-[#fef0e8]' },
-              { icon: '🎵', h: 'h-48 sm:h-56', bg: 'bg-[#e5f5eb]' },
-              { icon: '👶', h: 'h-44 sm:h-52', bg: 'bg-[#f0edff]' },
-              { icon: '🌟', h: 'h-52 sm:h-60', bg: 'bg-[#eaf2fb]' },
-              { icon: '🧠', h: 'h-44 sm:h-52', bg: 'bg-[#fdf2f8]' }
+              { icon: '🎨', h: 'h-44 sm:h-52', bg: 'bg-secondary/10' },
+              { icon: '🤸', h: 'h-52 sm:h-60', bg: 'bg-primary/15' },
+              { icon: '📖', h: 'h-44 sm:h-52', bg: 'bg-secondary/10' },
+              { icon: '🧩', h: 'h-48 sm:h-56', bg: 'bg-accent/10' },
+              { icon: '🎵', h: 'h-48 sm:h-56', bg: 'bg-secondary/10' },
+              { icon: '👶', h: 'h-44 sm:h-52', bg: 'bg-accent/10' },
+              { icon: '🌟', h: 'h-52 sm:h-60', bg: 'bg-[#e8f7fb]' },
+              { icon: '🧠', h: 'h-44 sm:h-52', bg: 'bg-[#f5edfb]' }
             ].map((img, idx) => (
               <div
                 key={idx}
@@ -466,7 +466,7 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 7. Call To Action Footer */}
-      <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-[#0c2340] via-[#142d4c] to-[#2466a8] relative overflow-hidden">
+      <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary relative overflow-hidden">
         <div className="absolute inset-0 bg-radial-gradient(circle, rgba(232,168,56,0.06), transparent 70%) pointer-events-none" />
         
         <div className="container mx-auto max-w-3xl relative z-10 text-center">

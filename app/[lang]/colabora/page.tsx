@@ -24,8 +24,8 @@ export default function Page({ params: { lang } }: PageProps) {
       usd: '≈ $14',
       label: es ? 'Semilla' : 'Seed',
       icon: '🌱',
-      color: '#1a8a7d',
-      bg: 'bg-[#e0f5f0]',
+      color: '#229cc2',
+      bg: 'bg-secondary/10',
       impact: es ? 'Cubre materiales terapéuticos para un niño durante un mes.' : 'Covers therapeutic materials for one child for a month.',
       items: es 
         ? ['Materiales de estimulación', 'Fichas psicopedagógicas', 'Insumos terapéuticos']
@@ -36,8 +36,8 @@ export default function Page({ params: { lang } }: PageProps) {
       usd: '≈ $43',
       label: es ? 'Acompañante' : 'Companion',
       icon: '💚',
-      color: '#2466a8',
-      bg: 'bg-[#e8f1fa]',
+      color: '#229cc2',
+      bg: 'bg-secondary/10',
       impact: es ? 'Financia 2 sesiones de terapia especializada.' : 'Finances 2 specialized therapy sessions.',
       items: es 
         ? ['1 sesión de fisioterapia', '1 sesión de lenguaje', 'Evaluación de avances']
@@ -49,8 +49,8 @@ export default function Page({ params: { lang } }: PageProps) {
       usd: '≈ $72',
       label: es ? 'Guardián' : 'Guardian',
       icon: '⭐',
-      color: '#e8a838',
-      bg: 'bg-[#fdf6e3]',
+      color: '#ffc500',
+      bg: 'bg-primary/15',
       impact: es ? 'Cubre un mes completo de atención para una familia con beca.' : 'Covers one full month of care for a family on scholarship.',
       items: es 
         ? ['Plan terapéutico mensual', 'Orientación familiar', 'Materiales + sesiones']
@@ -61,8 +61,8 @@ export default function Page({ params: { lang } }: PageProps) {
       usd: '',
       label: es ? 'A tu medida' : 'To your measure',
       icon: '💛',
-      color: '#e86840',
-      bg: 'bg-[#fef0e8]',
+      color: '#8c3cbd',
+      bg: 'bg-accent/10',
       impact: es ? 'Elige el monto que puedas. Todo suma y todo cambia vidas.' : 'Choose the amount you can. Everything counts and transforms lives.',
       items: es 
         ? ['Cualquier monto ayuda', 'Recibo de donación', 'Impacto verificable']
@@ -74,8 +74,8 @@ export default function Page({ params: { lang } }: PageProps) {
     {
       icon: '🏦',
       title: es ? 'Transferencia bancaria' : 'Bank transfer',
-      color: '#2466a8',
-      bg: 'bg-[#e8f1fa]',
+      color: '#229cc2',
+      bg: 'bg-secondary/10',
       lines: [
         `${CONTACT.donation.bank}`,
         `Cta: ${CONTACT.donation.account}`,
@@ -85,8 +85,8 @@ export default function Page({ params: { lang } }: PageProps) {
     {
       icon: '📱',
       title: es ? 'QR de pago directo' : 'Direct QR payment',
-      color: '#1a8a7d',
-      bg: 'bg-[#e0f5f0]',
+      color: '#229cc2',
+      bg: 'bg-secondary/10',
       lines: es 
         ? ['Escanea desde tu app bancaria.', 'Compatible con Simple QR en Bolivia.']
         : ['Scan from your banking app.', 'Compatible with Simple QR in Bolivia.']
@@ -94,8 +94,8 @@ export default function Page({ params: { lang } }: PageProps) {
     {
       icon: '🌐',
       title: es ? 'Donación internacional' : 'International donation',
-      color: '#6c5ce7',
-      bg: 'bg-[#f0edff]',
+      color: '#8c3cbd',
+      bg: 'bg-accent/10',
       lines: es 
         ? ['PayPal o transferencia directa.', 'Escríbenos para recibir los códigos Swift/IBAN.']
         : ['PayPal or direct wire transfer.', 'Contact us to receive Swift/IBAN codes.']
@@ -103,20 +103,20 @@ export default function Page({ params: { lang } }: PageProps) {
   ]
 
   const volunteerAreas = [
-    { icon: '🩺', title: es ? 'Salud y terapia' : 'Health & therapy', desc: es ? 'Fisioterapia, psicología, fonoaudiología, psicomotricidad, nutrición.' : 'Physiotherapy, psychology, speech therapy, psychomotor, nutrition.', color: '#2466a8', bg: 'bg-[#e8f1fa]' },
-    { icon: '📖', title: es ? 'Educación y tutorías' : 'Education & tutoring', desc: es ? 'Apoyo escolar, adaptaciones curriculares, psicopedagogía, talleres.' : 'School support, curricular adaptations, psychopedagogy, workshops.', color: '#1a8a7d', bg: 'bg-[#e0f5f0]' },
-    { icon: '🎨', title: es ? 'Arte y recreación' : 'Art & recreation', desc: es ? 'Música, pintura, teatro, expresión corporal, deportes adaptados.' : 'Music, painting, theater, body expression, adapted sports.', color: '#e86840', bg: 'bg-[#fef0e8]' },
-    { icon: '💻', title: es ? 'Tecnología y diseño' : 'Tech & design', desc: es ? 'Desarrollo web, redes sociales, diseño gráfico, edición multimedia.' : 'Web dev, social media, graphic design, multimedia editing.', color: '#6c5ce7', bg: 'bg-[#f0edff]' },
-    { icon: '📋', title: es ? 'Gestión y eventos' : 'Management & events', desc: es ? 'Planificación, captación de fondos, logística de talleres, campañas.' : 'Planning, fundraising, workshop logistics, campaigns.', color: '#e8a838', bg: 'bg-[#fdf6e3]' },
-    { icon: '🌍', title: es ? 'Trabajo comunitario' : 'Community work', desc: es ? 'Trabajo social, orientación legal, visitas domiciliarias, difusión.' : 'Social work, legal guidance, home visits, outreach.', color: '#2d8a4e', bg: 'bg-[#e5f5eb]' }
+    { icon: '🩺', title: es ? 'Salud y terapia' : 'Health & therapy', desc: es ? 'Fisioterapia, psicología, fonoaudiología, psicomotricidad, nutrición.' : 'Physiotherapy, psychology, speech therapy, psychomotor, nutrition.', color: '#229cc2', bg: 'bg-secondary/10' },
+    { icon: '📖', title: es ? 'Educación y tutorías' : 'Education & tutoring', desc: es ? 'Apoyo escolar, adaptaciones curriculares, psicopedagogía, talleres.' : 'School support, curricular adaptations, psychopedagogy, workshops.', color: '#229cc2', bg: 'bg-secondary/10' },
+    { icon: '🎨', title: es ? 'Arte y recreación' : 'Art & recreation', desc: es ? 'Música, pintura, teatro, expresión corporal, deportes adaptados.' : 'Music, painting, theater, body expression, adapted sports.', color: '#8c3cbd', bg: 'bg-accent/10' },
+    { icon: '💻', title: es ? 'Tecnología y diseño' : 'Tech & design', desc: es ? 'Desarrollo web, redes sociales, diseño gráfico, edición multimedia.' : 'Web dev, social media, graphic design, multimedia editing.', color: '#8c3cbd', bg: 'bg-accent/10' },
+    { icon: '📋', title: es ? 'Gestión y eventos' : 'Management & events', desc: es ? 'Planificación, captación de fondos, logística de talleres, campañas.' : 'Planning, fundraising, workshop logistics, campaigns.', color: '#ffc500', bg: 'bg-primary/15' },
+    { icon: '🌍', title: es ? 'Trabajo comunitario' : 'Community work', desc: es ? 'Trabajo social, orientación legal, visitas domiciliarias, difusión.' : 'Social work, legal guidance, home visits, outreach.', color: '#229cc2', bg: 'bg-secondary/10' }
   ]
 
   const partnerTypes = [
     {
       icon: '🏢',
       title: es ? 'Empresas comprometidas' : 'Committed Corporations',
-      color: '#2466a8',
-      bg: 'bg-[#e8f1fa]',
+      color: '#229cc2',
+      bg: 'bg-secondary/10',
       desc: es ? 'RSE, auspicios, donaciones corporativas con impacto social verificado.' : 'CSR, sponsorship, corporate donations with verified social impact.',
       benefits: es 
         ? ['Recibo oficial de donación', 'Logotipo en sitio web', 'Informes semestrales de impacto']
@@ -125,8 +125,8 @@ export default function Page({ params: { lang } }: PageProps) {
     {
       icon: '🎓',
       title: es ? 'Universidades y Colegios' : 'Universities & Schools',
-      color: '#6c5ce7',
-      bg: 'bg-[#f0edff]',
+      color: '#8c3cbd',
+      bg: 'bg-accent/10',
       desc: es ? 'Prácticas profesionales, voluntariado estudiantil e investigación.' : 'Professional internships, student volunteering, and research.',
       benefits: es 
         ? ['Convenios marco certificados', 'Campos de práctica guiados', 'Acceso a datos de investigación']
@@ -135,8 +135,8 @@ export default function Page({ params: { lang } }: PageProps) {
     {
       icon: '🌍',
       title: es ? 'Cooperación Internacional' : 'International Aid',
-      color: '#1a8a7d',
-      bg: 'bg-[#e0f5f0]',
+      color: '#229cc2',
+      bg: 'bg-secondary/10',
       desc: es ? 'Proyectos conjuntos de desarrollo y financiamiento de equipamiento.' : 'Joint development projects and equipment financing.',
       benefits: es 
         ? ['Auditorías de transparencia', 'Cumplimiento de objetivos ODS', 'Reportes técnicos de ejecución']
@@ -145,8 +145,8 @@ export default function Page({ params: { lang } }: PageProps) {
     {
       icon: '📺',
       title: es ? 'Medios y difusores' : 'Media & Outreach',
-      color: '#e86840',
-      bg: 'bg-[#fef0e8]',
+      color: '#8c3cbd',
+      bg: 'bg-accent/10',
       desc: es ? 'Difusión de campañas, reportajes de sensibilización y eventos.' : 'Campaign dissemination, awareness reports, and events.',
       benefits: es 
         ? ['Contenido de prensa exclusivo', 'Entrevistas con especialistas', 'Menciones de agradecimiento']
@@ -155,10 +155,10 @@ export default function Page({ params: { lang } }: PageProps) {
   ]
 
   return (
-    <div className="overflow-x-hidden w-full bg-[#fafbfd]">
+    <div className="overflow-x-hidden w-full bg-gray-50">
       
       {/* 1. Hero Section */}
-      <section className="relative min-h-[480px] flex items-center bg-gradient-to-br from-[#0c2340] via-[#142d4c] to-[#2466a8] py-16 px-4 overflow-hidden">
+      <section className="relative min-h-[480px] flex items-center bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary py-16 px-4 overflow-hidden">
         {/* Decoraciones */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
           <div className="absolute -top-[12%] -right-[8%] w-[350px] h-[350px] md:w-[500px] md:h-[500px] rounded-full border border-white/5 opacity-30" />
@@ -172,7 +172,7 @@ export default function Page({ params: { lang } }: PageProps) {
 
         {/* Wave bottom */}
         <div className="absolute bottom-0 left-0 right-0 z-10">
-          <svg viewBox="0 0 1440 80" fill="none" className="block w-full h-8 md:h-16 lg:h-20 text-[#fafbfd] fill-current">
+          <svg viewBox="0 0 1440 80" fill="none" className="block w-full h-8 md:h-16 lg:h-20 text-[#f9fafb] fill-current">
             <path d="M0 45C320 20 640 60 960 35C1200 15 1380 40 1440 38V80H0Z" />
           </svg>
         </div>
@@ -244,17 +244,17 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 2. Donations Section (Donation tiers responsive grid) */}
-      <section id="donaciones" className="py-16 md:py-24 px-4 bg-[#fafbfd]">
+      <section id="donaciones" className="py-16 md:py-24 px-4 bg-gray-50">
         <div className="container mx-auto max-w-6xl">
           
           <div className="text-center mb-12 max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[#fdf6e3] border border-[#e8a838]/15 rounded-full px-4 py-1.5 mb-3 select-none">
+            <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">💛</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#e8a838]">
+              <span className="text-xs font-bold uppercase tracking-wider text-primary-700">
                 {es ? 'Donaciones con impacto' : 'Donations with impact'}
               </span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#0c2340] font-normal tracking-tight mb-4">
+            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">
               {es ? 'Elige cómo quieres colaborar' : 'Choose how you wish to support'}
             </h2>
             <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">
@@ -365,13 +365,13 @@ export default function Page({ params: { lang } }: PageProps) {
                 {paymentMethods.map((m, idx) => (
                   <div
                     key={idx}
-                    className="bg-[#fafbfd] border border-gray-200/80 rounded-2xl p-4 flex items-start gap-4"
+                    className="bg-gray-50 border border-gray-200/80 rounded-2xl p-4 flex items-start gap-4"
                   >
                     <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-xl shadow-sm flex-shrink-0 select-none">
                       {m.icon}
                     </div>
                     <div>
-                      <h4 className="text-xs sm:text-sm font-bold text-[#0c2340] mb-0.5">{m.title}</h4>
+                      <h4 className="text-xs sm:text-sm font-bold text-[#111827] mb-0.5">{m.title}</h4>
                       {m.lines.map((line, lidx) => (
                         <div key={lidx} className="text-[11px] text-gray-500 font-semibold leading-relaxed">
                           {line}
@@ -389,17 +389,17 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 3. Volunteer Section (Form and Details side-by-side) */}
-      <section id="voluntariado" className="py-16 md:py-24 px-4 bg-[#f7f5f0] border-t border-b border-gray-200/50">
+      <section id="voluntariado" className="py-16 md:py-24 px-4 bg-[#f9fafb] border-t border-b border-gray-200/50">
         <div className="container mx-auto max-w-6xl">
           
           <div className="text-center mb-12 max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[#e0f5f0] border border-[#1a8a7d]/15 rounded-full px-4 py-1.5 mb-3 select-none">
+            <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">🙌</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#1a8a7d]">
+              <span className="text-xs font-bold uppercase tracking-wider text-secondary">
                 {es ? 'Voluntariado con propósito' : 'Volunteering with purpose'}
               </span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#0c2340] font-normal tracking-tight mb-4">
+            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">
               {es ? 'Comparte tu talento y haz la diferencia' : 'Share your talent and make a difference'}
             </h2>
             <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">
@@ -423,7 +423,7 @@ export default function Page({ params: { lang } }: PageProps) {
                     onClick={() => setSelectedVolArea(isSelected ? null : i)}
                     className={`p-4 rounded-2xl border-2 flex flex-col items-center text-center transition-all duration-300 focus:outline-none min-h-[110px] justify-center ${
                       isSelected 
-                        ? 'border-[#1a8a7d] bg-[#e0f5f0] text-gray-900 shadow-sm' 
+                        ? 'border-secondary bg-secondary/10 text-gray-900 shadow-sm' 
                         : 'border-gray-200 bg-white text-gray-500 hover:bg-gray-50'
                     }`}
                   >
@@ -435,7 +435,7 @@ export default function Page({ params: { lang } }: PageProps) {
             </div>
             {selectedVolArea !== null && (
               <div className="mt-4 p-4 rounded-xl bg-white border border-gray-200 max-w-xl mx-auto text-xs font-semibold text-gray-600 animate-fadeSlideUp text-left">
-                💡 <strong className="text-[#1a8a7d]">{volunteerAreas[selectedVolArea].title}:</strong> {volunteerAreas[selectedVolArea].desc}
+                💡 <strong className="text-secondary">{volunteerAreas[selectedVolArea].title}:</strong> {volunteerAreas[selectedVolArea].desc}
               </div>
             )}
           </div>
@@ -447,7 +447,7 @@ export default function Page({ params: { lang } }: PageProps) {
             <div className="bg-white rounded-3xl p-6 md:p-8 border border-gray-200 shadow-sm text-left">
               {!formSent ? (
                 <>
-                  <h4 className="font-serif text-lg md:text-xl text-[#0c2340] font-bold mb-6">
+                  <h4 className="font-serif text-lg md:text-xl text-[#111827] font-bold mb-6">
                     {es ? 'Inscríbete como voluntario' : 'Register as volunteer'}
                   </h4>
                   
@@ -466,7 +466,7 @@ export default function Page({ params: { lang } }: PageProps) {
                           type={f.type}
                           placeholder={f.placeholder}
                           required
-                          className="w-full px-4 py-2.5 rounded-xl border-2 border-gray-200 focus:border-[#1a8a7d] bg-[#fafbfd] focus:outline-none text-xs sm:text-sm"
+                          className="w-full px-4 py-2.5 rounded-xl border-2 border-gray-200 focus:border-secondary bg-gray-50 focus:outline-none text-xs sm:text-sm"
                         />
                       </div>
                     ))}
@@ -491,7 +491,7 @@ export default function Page({ params: { lang } }: PageProps) {
 
                   <button
                     onClick={() => setFormSent(true)}
-                    className="w-full mt-6 bg-gradient-to-r from-[#1a8a7d] to-[#2466a8] hover:scale-[1.01] active:scale-[0.99] text-white font-extrabold text-xs sm:text-sm py-3 px-6 rounded-full transition-all shadow-md shadow-[#1a8a7d]/10 min-h-[44px]"
+                    className="w-full mt-6 bg-gradient-to-r from-[#229cc2] to-[#229cc2] hover:scale-[1.01] active:scale-[0.99] text-white font-extrabold text-xs sm:text-sm py-3 px-6 rounded-full transition-all shadow-md shadow-[#229cc2]/10 min-h-[44px]"
                   >
                     {es ? 'Enviar inscripción' : 'Submit registration'}
                   </button>
@@ -499,7 +499,7 @@ export default function Page({ params: { lang } }: PageProps) {
               ) : (
                 <div className="text-center py-12 px-4">
                   <span className="text-5xl block mb-4 select-none">🎉</span>
-                  <h3 className="font-serif text-xl text-[#0c2340] font-bold mb-3">
+                  <h3 className="font-serif text-xl text-[#111827] font-bold mb-3">
                     {es ? '¡Inscripción recibida!' : 'Registration received!'}
                   </h3>
                   <p className="text-xs sm:text-sm text-gray-500 leading-relaxed mb-6">
@@ -509,7 +509,7 @@ export default function Page({ params: { lang } }: PageProps) {
                   </p>
                   <button
                     onClick={() => setFormSent(false)}
-                    className="text-xs font-bold text-[#1a8a7d] hover:underline"
+                    className="text-xs font-bold text-secondary hover:underline"
                   >
                     {es ? '← Enviar otra solicitud' : '← Submit another request'}
                   </button>
@@ -520,7 +520,7 @@ export default function Page({ params: { lang } }: PageProps) {
             {/* Lado Información */}
             <div className="flex flex-col gap-6 justify-between text-left">
               <div className="bg-white rounded-3xl p-6 md:p-8 border border-gray-200 shadow-sm flex-1">
-                <h4 className="font-serif text-lg text-[#0c2340] font-bold mb-4">
+                <h4 className="font-serif text-lg text-[#111827] font-bold mb-4">
                   {es ? '¿Qué implica el voluntariado?' : 'What does volunteering involve?'}
                 </h4>
                 
@@ -540,19 +540,19 @@ export default function Page({ params: { lang } }: PageProps) {
               </div>
 
               {/* Frase / Testimonio */}
-              <div className="bg-gradient-to-br from-[#e0f5f0] to-[#e8f1fa] rounded-3xl p-6 border border-[#1a8a7d]/10 relative overflow-hidden flex flex-col justify-center">
-                <span className="absolute top-1 left-2 font-serif text-7xl text-[#1a8a7d]/5 pointer-events-none select-none">&ldquo;</span>
-                <p className="font-serif text-sm text-[#0c2340] font-bold italic leading-relaxed mb-4 relative z-10">
+              <div className="bg-gradient-to-br from-[#e8f7fb] to-[#e8f7fb] rounded-3xl p-6 border border-secondary/10 relative overflow-hidden flex flex-col justify-center">
+                <span className="absolute top-1 left-2 font-serif text-7xl text-secondary/5 pointer-events-none select-none">&ldquo;</span>
+                <p className="font-serif text-sm text-[#111827] font-bold italic leading-relaxed mb-4 relative z-10">
                   {es 
                     ? '«Llegué al Centro como practicante de fonoaudiología y decidí quedarme como voluntaria. Ver cómo un niño pronuncia sus primeras palabras es el regalo más grande de mi vida profesional».' 
                     : '“I came to the Center as a speech therapy intern and decided to stay as a volunteer. Seeing how a child pronounces their first words is the greatest gift of my professional life.”'}
                 </p>
                 <div className="flex items-center gap-3 relative z-10">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#1a8a7d] to-[#2466a8] flex items-center justify-center text-white text-base select-none">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#229cc2] to-[#229cc2] flex items-center justify-center text-white text-base select-none">
                     🩺
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-[#0c2340]">{es ? 'Voluntaria activa' : 'Active Volunteer'}</div>
+                    <div className="text-xs font-bold text-[#111827]">{es ? 'Voluntaria activa' : 'Active Volunteer'}</div>
                     <div className="text-[10px] text-gray-500 font-semibold">{es ? 'Terapia de lenguaje' : 'Speech therapy'}</div>
                   </div>
                 </div>
@@ -565,17 +565,17 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 4. Alliances Section (Corporate & Institutional) */}
-      <section id="alianzas" className="py-16 md:py-24 px-4 bg-[#fafbfd]">
+      <section id="alianzas" className="py-16 md:py-24 px-4 bg-gray-50">
         <div className="container mx-auto max-w-6xl">
           
           <div className="text-center mb-12 max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[#f0edff] border border-[#6c5ce7]/15 rounded-full px-4 py-1.5 mb-3 select-none">
+            <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">🤝</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#6c5ce7]">
+              <span className="text-xs font-bold uppercase tracking-wider text-accent">
                 {es ? 'Alianzas de valor' : 'Valuable Alliances'}
               </span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#0c2340] font-normal tracking-tight mb-4">
+            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">
               {es ? 'Trabajemos juntos por la inclusión' : 'Let\'s work together for inclusion'}
             </h2>
             <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">
@@ -594,7 +594,7 @@ export default function Page({ params: { lang } }: PageProps) {
                   key={p.title}
                   onClick={() => setOpenAlliance(isOpen ? null : idx)}
                   className={`bg-white rounded-3xl border overflow-hidden shadow-sm hover:shadow-md cursor-pointer transition-all duration-300 ${
-                    isOpen ? 'border-[#6c5ce7]' : 'border-gray-200'
+                    isOpen ? 'border-accent' : 'border-gray-200'
                   }`}
                 >
                   <div className="h-1 w-full" style={{ backgroundColor: p.color }} />
@@ -604,11 +604,11 @@ export default function Page({ params: { lang } }: PageProps) {
                         {p.icon}
                       </div>
                       <div className="flex-1">
-                        <h4 className="font-serif text-lg text-[#0c2340] font-bold leading-snug">{p.title}</h4>
+                        <h4 className="font-serif text-lg text-[#111827] font-bold leading-snug">{p.title}</h4>
                         <p className="text-xs sm:text-sm text-gray-500 mt-2 leading-relaxed">{p.desc}</p>
                       </div>
                       <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300 ${
-                        isOpen ? 'bg-[#6c5ce7]/10 text-[#6c5ce7] rotate-180' : 'bg-gray-50 text-gray-400'
+                        isOpen ? 'bg-accent/10 text-accent rotate-180' : 'bg-gray-50 text-gray-400'
                       }`}>
                         ▾
                       </div>
@@ -642,7 +642,7 @@ export default function Page({ params: { lang } }: PageProps) {
 
           {/* Vitrina de Aliados Actuales */}
           <div className="bg-white rounded-3xl border border-gray-200 p-6 md:p-8 max-w-5xl mx-auto shadow-sm text-center select-none">
-            <h4 className="font-serif text-lg text-[#0c2340] font-bold mb-2">
+            <h4 className="font-serif text-lg text-[#111827] font-bold mb-2">
               {es ? 'Aliados que ya nos respaldan' : 'Allies already supporting us'}
             </h4>
             <p className="text-xs text-gray-400 mb-8">{es ? 'Organizaciones que confían activamente en nuestro impacto social' : 'Organizations actively trusting our social impact'}</p>
@@ -656,10 +656,10 @@ export default function Page({ params: { lang } }: PageProps) {
               ].map((ally, i) => (
                 <div
                   key={i}
-                  className="bg-[#fafbfd] border border-gray-200 rounded-2xl py-4 px-5 text-center min-w-[140px] flex-1 sm:flex-none shadow-sm hover:border-primary transition-colors"
+                  className="bg-gray-50 border border-gray-200 rounded-2xl py-4 px-5 text-center min-w-[140px] flex-1 sm:flex-none shadow-sm hover:border-primary transition-colors"
                 >
                   <div className="text-2xl mb-1.5">{ally.icon}</div>
-                  <div className="text-xs font-bold text-[#0c2340] whitespace-nowrap">{ally.name.split(' ')[0]}</div>
+                  <div className="text-xs font-bold text-[#111827] whitespace-nowrap">{ally.name.split(' ')[0]}</div>
                   <div className="text-[9px] text-gray-400 font-semibold mt-1">{ally.type}</div>
                 </div>
               ))}
@@ -674,7 +674,7 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 5. Contact CTA */}
-      <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-[#0c2340] via-[#142d4c] to-[#2466a8] relative overflow-hidden">
+      <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary relative overflow-hidden">
         <div className="absolute inset-0 bg-radial-gradient(circle, rgba(232,168,56,0.06), transparent 70%) pointer-events-none" />
         
         <div className="container mx-auto max-w-3xl relative z-10 text-center">
@@ -694,7 +694,7 @@ export default function Page({ params: { lang } }: PageProps) {
               href="https://wa.me/59170106276"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#25d366] hover:bg-[#25d366]/90 text-white font-extrabold text-sm sm:text-base px-8 py-3.5 sm:py-4 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[#25d366]/20 min-h-[44px] flex items-center justify-center gap-2"
+              className="bg-[#22c55e] hover:bg-[#22c55e]/90 text-white font-extrabold text-sm sm:text-base px-8 py-3.5 sm:py-4 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[#22c55e]/20 min-h-[44px] flex items-center justify-center gap-2"
             >
               <span className="text-xl">💬</span>
               {es ? 'Escribir al 70106276' : 'Message 70106276'}

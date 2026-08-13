@@ -4,529 +4,279 @@ import Link from 'next/link'
 import type { Locale } from '@/lib/i18n'
 
 interface PageProps {
-  params: {
-    lang: Locale
-  }
+  params: { lang: Locale }
 }
 
 export default function Page({ params: { lang } }: PageProps) {
   const es = lang === 'es'
   const [activeLevel, setActiveLevel] = useState(0)
+  const [openService, setOpenService] = useState<number | null>(null)
 
-  const officialAreas = [
+  // ── Áreas de terapia oficiales (del documento de la fundación) ────────────
+  const areas = [
     {
-      id: 'conducta',
-      title: es ? 'Terapia de Conducta' : 'Behavior Therapy',
       icon: '🧠',
-      color: '#8c3cbd',
-      bg: 'bg-[#8c3cbd]/10',
-      borderColor: 'border-[#8c3cbd]/20',
-      borderHover: 'hover:border-[#8c3cbd]',
-      textColor: 'text-[#8c3cbd]',
+      title: es ? 'Terapia de Conducta' : 'Behavioral Therapy',
+      color: 'accent' as const,
+      border: 'border-accent',
+      bg: 'bg-accent/10',
+      text: 'text-accent',
+      desc: es
+        ? 'Acompañamos a los niños en el desarrollo de habilidades sociales, autorregulación y rutinas positivas en el entorno familiar y escolar.'
+        : 'We support children in developing social skills, self-regulation, and positive routines in family and school environments.',
       items: es
-        ? [
-            'Diseñar planes para mejorar el comportamiento adaptativo.',
-            'Trabajar con padres para reforzar conductas positivas en casa.'
-          ]
-        : [
-            'Design plans to improve adaptive behavior.',
-            'Work with parents to reinforce positive behaviors at home.'
-          ]
+        ? ['Habilidades sociales', 'Autorregulación emocional', 'Rutinas positivas', 'Independencia funcional']
+        : ['Social skills', 'Emotional self-regulation', 'Positive routines', 'Functional independence'],
     },
     {
-      id: 'lenguaje',
+      icon: '🗣️',
       title: es ? 'Terapia de Lenguaje' : 'Speech Therapy',
-      icon: '🗣️',
-      color: '#229cc2',
-      bg: 'bg-[#229cc2]/10',
-      borderColor: 'border-[#229cc2]/20',
-      borderHover: 'hover:border-[#229cc2]',
-      textColor: 'text-[#229cc2]',
+      color: 'secondary' as const,
+      border: 'border-secondary',
+      bg: 'bg-secondary/10',
+      text: 'text-secondary',
+      desc: es
+        ? 'Evaluamos y tratamos dificultades del lenguaje implementando estrategias que favorezcan la comunicación efectiva, incluyendo sistemas aumentativos y alternativos.'
+        : 'We evaluate and treat language difficulties, implementing strategies that promote effective communication, including augmentative and alternative systems.',
       items: es
-        ? [
-            'Evaluar y tratar dificultades del lenguaje en niños con síndrome de Down.',
-            'Implementar estrategias que favorezcan la comunicación efectiva.'
-          ]
-        : [
-            'Evaluate and treat language difficulties in children with Down syndrome.',
-            'Implement strategies that promote effective communication.'
-          ]
-    },
-    {
-      id: 'fisioterapia',
-      title: es ? 'Fisioterapia' : 'Physiotherapy',
-      icon: '💪',
-      color: '#2466a8',
-      bg: 'bg-[#2466a8]/10',
-      borderColor: 'border-[#2466a8]/20',
-      borderHover: 'hover:border-[#2466a8]',
-      textColor: 'text-[#2466a8]',
-      items: es
-        ? [
-            'Mejorar la movilidad y habilidades motoras de los niños.',
-            'Diseñar ejercicios adaptados a las necesidades individuales.'
-          ]
-        : [
-            'Improve mobility and motor skills of children.',
-            'Design exercises adapted to individual needs.'
-          ]
-    },
-    {
-      id: 'psicomotricidad',
-      title: es ? 'Psicomotricidad' : 'Psychomotor Therapy',
-      icon: '🤸',
-      color: '#e86840',
-      bg: 'bg-[#e86840]/10',
-      borderColor: 'border-[#e86840]/20',
-      borderHover: 'hover:border-[#e86840]',
-      textColor: 'text-[#e86840]',
-      items: es
-        ? [
-            'Potenciar habilidades motoras gruesas y finas.',
-            'Favorecer la coordinación y el equilibrio.'
-          ]
-        : [
-            'Enhance gross and fine motor skills.',
-            'Promote coordination and balance.'
-          ]
-    },
-    {
-      id: 'educativa',
-      title: es ? 'Educativa (Pre-Kínder, Kínder, Primaria)' : 'Educational (Pre-Kinder, Kinder, Primary)',
-      icon: '🎒',
-      color: '#2d8a4e',
-      bg: 'bg-[#2d8a4e]/10',
-      borderColor: 'border-[#2d8a4e]/20',
-      borderHover: 'hover:border-[#2d8a4e]',
-      textColor: 'text-[#2d8a4e]',
-      items: es
-        ? [
-            'Diseñar actividades educativas inclusivas y personalizadas.',
-            'Trabajar en habilidades académicas y sociales para preparar a los niños para la educación formal.'
-          ]
-        : [
-            'Design inclusive and personalized educational activities.',
-            'Work on academic and social skills to prepare children for formal education.'
-          ]
-    }
-  ]
-
-  const levels = [
-    {
-      age: es ? '0 – 2 años' : '0 – 2 years',
-      name: es ? 'Manos Chiquitas' : 'Little Hands',
-      icon: '🍼',
-      color: 'border-[#229cc2] text-[#229cc2]',
-      accentColor: '#229cc2',
-      bg: 'bg-[#229cc2]/10',
-      photo: '👶',
-      photoLabel: es ? 'Sesión de estimulación temprana' : 'Early stimulation session',
-      desc: es 
-        ? 'Intervención desde los primeros meses de vida. Trabajamos con la familia como eje central del desarrollo, potenciando cada logro temprano mediante estimulación multisensorial, vínculo afectivo y acompañamiento profesional permanente.'
-        : 'Intervention from the first months of life. We work with the family as the central axis of development, enhancing each early milestone through multisensorial stimulation, affective bonding, and permanent professional support.',
-      highlights: es 
-        ? ['Estimulación multisensorial', 'Vínculo madre-hijo', 'Desarrollo neuromotor', 'Orientación familiar intensiva']
-        : ['Multisensorial stimulation', 'Mother-child bond', 'Neuromotor development', 'Intensive family guidance'],
-    },
-    {
-      age: es ? '3 – 7 años' : '3 – 7 years',
-      name: es ? 'Aventuras sin Límites' : 'Limitless Adventures',
-      icon: '🎨',
-      color: 'border-[#ffc500] text-[#b38600]',
-      accentColor: '#ffc500',
-      bg: 'bg-[#ffc500]/15',
-      photo: '🧒',
-      photoLabel: es ? 'Actividades lúdicas y terapéuticas' : 'Playful and therapeutic activities',
-      desc: es 
-        ? 'Etapa de máxima exploración y aprendizaje. A través del juego, el arte y actividades lúdicas estructuradas, desarrollamos habilidades sociales, motoras y cognitivas que preparan al niño para la inclusión educativa.'
-        : 'Stage of maximum exploration and learning. Through play, art, and structured playful activities, we develop social, motor, and cognitive skills that prepare the child for educational inclusion.',
-      highlights: es 
-        ? ['Aprendizaje a través del juego', 'Habilidades sociales', 'Pre-lectoescritura', 'Inclusión educativa activa']
-        : ['Play-based learning', 'Social skills', 'Pre-literacy skills', 'Active educational inclusion'],
-    },
-    {
-      age: es ? '8 – 14 años' : '8 – 14 years',
-      name: es ? 'Oportunidades para Todos' : 'Opportunities for All',
-      icon: '📖',
-      color: 'border-[#8c3cbd] text-[#8c3cbd]',
-      accentColor: '#8c3cbd',
-      bg: 'bg-[#8c3cbd]/10',
-      photo: '👦',
-      photoLabel: es ? 'Apoyo pedagógico y autonomía' : 'Pedagogical support and autonomy',
-      desc: es 
-        ? 'Fortalecimiento académico con adaptaciones curriculares, desarrollo de habilidades de autonomía personal y preparación progresiva para la vida independiente. Los estudiantes asisten al centro y a su unidad educativa de origen.'
-        : 'Academic strengthening with curricular adaptations, development of personal autonomy skills, and progressive preparation for independent living. Students attend both the center and their regular school.',
-      highlights: es 
-        ? ['Adaptación curricular', 'Autonomía personal', 'Habilidades para la vida', 'Libreta del sistema regular']
-        : ['Curricular adaptation', 'Personal autonomy', 'Life skills', 'Regular system school records'],
-    },
-    {
-      age: es ? '15+ años' : '15+ years',
-      name: es ? 'Programa Crecer' : 'Crecer Program',
-      icon: '🌱',
-      color: 'border-[#2d8a4e] text-[#2d8a4e]',
-      accentColor: '#2d8a4e',
-      bg: 'bg-[#2d8a4e]/10',
-      photo: '🧑',
-      photoLabel: es ? 'Formación pre-laboral' : 'Pre-vocational training',
-      desc: es 
-        ? 'Formación pre-laboral e inserción en el mundo del trabajo. Desarrollamos competencias para la vida adulta autónoma: habilidades socio-laborales, manejo del dinero, transporte, y relaciones interpersonales en contextos reales.'
-        : 'Pre-vocational training and job market integration. We develop skills for autonomous adult life: socio-labor skills, money management, transport, and interpersonal relations in real contexts.',
-      highlights: es 
-        ? ['Inserción laboral', 'Vida independiente', 'Competencias socio-laborales', 'Inclusión comunitaria']
-        : ['Job placement', 'Independent living', 'Socio-labor skills', 'Community inclusion'],
-    },
-  ]
-
-  const services = [
-    {
-      name: es ? 'Estimulación temprana' : 'Early stimulation',
-      icon: '👶',
-      color: '#229cc2',
-      bg: 'bg-[#229cc2]/10',
-      borderColor: 'border-[#229cc2]/20',
-      desc: es 
-        ? 'Intervención desde los primeros meses para potenciar el desarrollo neuromotor y sensorial. Cada sesión combina técnicas especializadas con un ambiente cálido y afectivo que fortalece el vínculo familiar.'
-        : 'Intervention from the first months to boost neuromotor and sensory development. Each session combines specialized techniques with a warm, caring environment that strengthens the family bond.',
-      details: es 
-        ? ['Desarrollo neuromotor', 'Estimulación sensorial', 'Masaje infantil terapéutico', 'Guía a padres para estimulación en casa']
-        : ['Neuromotor development', 'Sensory stimulation', 'Therapeutic baby massage', 'Parent guide for home stimulation'],
-    },
-    {
-      name: es ? 'Terapia de lenguaje' : 'Speech therapy',
-      icon: '🗣️',
-      color: '#1a8a7d',
-      bg: 'bg-[#1a8a7d]/10',
-      borderColor: 'border-[#1a8a7d]/20',
-      desc: es 
-        ? 'Trabajamos la respiración, el control orofacial y la articulación de sonidos para mejorar la comunicación y el habla de forma divertida y funcional. Incluimos sistemas aumentativos cuando es necesario.'
-        : 'We work on breathing, orofacial control, and speech sounds articulation to improve communication and speech in a fun, functional way. We include augmentative systems when necessary.',
-      details: es 
         ? ['Control orofacial', 'Articulación fonética', 'Lenguaje expresivo y comprensivo', 'Comunicación funcional']
         : ['Orofacial control', 'Phonetic articulation', 'Expressive and receptive language', 'Functional communication'],
     },
     {
-      name: es ? 'Psicomotricidad' : 'Psychomotor therapy',
-      icon: '🤸',
-      color: '#e86840',
-      bg: 'bg-[#e86840]/10',
-      borderColor: 'border-[#e86840]/20',
-      desc: es 
-        ? 'Fortalecemos la coordinación, equilibrio y esquema corporal para favorecer la autonomía, la concentración y la expresión corporal a través de circuitos, juegos y actividades vivenciales.'
-        : 'We strengthen coordination, balance, and body schema to favor autonomy, concentration, and body expression through circuits, games, and experiential activities.',
-      details: es 
-        ? ['Coordinación motora gruesa', 'Motricidad fina', 'Esquema corporal', 'Equilibrio y lateralidad']
-        : ['Gross motor coordination', 'Fine motor skills', 'Body schema', 'Balance and laterality'],
-    },
-    {
-      name: es ? 'Fisioterapia' : 'Physiotherapy',
       icon: '💪',
-      color: '#2466a8',
-      bg: 'bg-[#2466a8]/10',
-      borderColor: 'border-[#2466a8]/20',
-      desc: es 
-        ? 'Intervenimos desde la estimulación temprana para mejorar aspectos como tono muscular, postura y movilidad, adaptando ejercicios a cada etapa de desarrollo con un enfoque lúdico y respetuoso.'
-        : 'We intervene from early stimulation to improve aspects such as muscle tone, posture, and mobility, adapting exercises to each development stage with a playful, respectful approach.',
-      details: es 
-        ? ['Tono muscular', 'Postura y alineación', 'Movilidad funcional', 'Ejercicios adaptativos']
-        : ['Muscle tone', 'Posture and alignment', 'Functional mobility', 'Adaptive exercises'],
+      title: es ? 'Fisioterapia' : 'Physiotherapy',
+      color: 'secondary' as const,
+      border: 'border-secondary',
+      bg: 'bg-secondary/10',
+      text: 'text-secondary',
+      desc: es
+        ? 'Intervenimos desde la estimulación temprana para mejorar el tono muscular, la postura y la movilidad, adaptando ejercicios a cada etapa de desarrollo.'
+        : 'We intervene from early stimulation to improve muscle tone, posture, and mobility, adapting exercises to each developmental stage.',
+      items: es
+        ? ['Estimulación temprana motora', 'Rehabilitación neuromuscular', 'Tono muscular y postura', 'Movilidad funcional']
+        : ['Motor early stimulation', 'Neuromuscular rehabilitation', 'Muscle tone and posture', 'Functional mobility'],
     },
     {
-      name: es ? 'Terapia de conducta' : 'Behavioral therapy',
-      icon: '🧠',
-      color: '#8c3cbd',
-      bg: 'bg-[#8c3cbd]/10',
-      borderColor: 'border-[#8c3cbd]/20',
-      desc: es 
-        ? 'Acompañamos a los niños en el desarrollo de habilidades sociales, autorregulación y rutinas positively dentro de su entorno familiar y escolar para mejorar la independencia y la convivencia.'
-        : 'We support children in developing social skills, self-regulation, and positive routines within their family and school environment to improve independence and coexistence.',
-      details: es 
-        ? ['Habilidades sociales', 'Autorregulación', 'Rutinas positivas', 'Independencia funcional']
-        : ['Social skills', 'Self-regulation', 'Positive routines', 'Functional independence'],
-    },
-    {
-      name: es ? 'Estimulación neuro-cognitiva' : 'Neuro-cognitive stimulation',
-      icon: '🧩',
-      color: '#ffc500',
-      bg: 'bg-[#ffc500]/15',
-      borderColor: 'border-[#ffc500]/30',
-      desc: es 
-        ? 'Intervención orientada a potenciar las funciones cognitivas en niños con síndrome de Down, favoreciendo el desarrollo del lenguaje, la atención, la memoria y las habilidades de aprendizaje.'
-        : 'Intervention oriented to enhance cognitive functions in children with Down syndrome, favoring the development of speech, attention, memory, and learning skills.',
-      details: es 
-        ? ['Atención y concentración', 'Memoria de trabajo', 'Funciones ejecutivas', 'Razonamiento lógico']
-        : ['Attention and concentration', 'Working memory', 'Executive functions', 'Logical reasoning'],
-    },
-    {
-      name: es ? 'Apoyo pedagógico' : 'Pedagogical support',
-      icon: '📝',
-      color: '#2d8a4e',
-      bg: 'bg-[#2d8a4e]/10',
-      borderColor: 'border-[#2d8a4e]/20',
-      desc: es 
-        ? 'Realizamos adaptaciones curriculares según las capacidades y ritmo de cada niño, promoviendo el aprendizaje significativo. Nuestros estudiantes cuentan con libreta de educación regular.'
-        : 'We perform curricular adaptations according to the abilities and pace of each child, promoting meaningful learning. Our students are integrated into regular school systems.',
-      details: es 
-        ? ['Adaptaciones curriculares', 'Lectoescritura adaptada', 'Matemáticas funcionales', 'Libreta del sistema regular']
-        : ['Curricular adaptations', 'Adapted reading and writing', 'Functional math', 'Regular system integration'],
-    },
-    {
-      name: es ? 'Orientación familiar' : 'Family guidance',
-      icon: '👨‍👩‍👧',
-      color: '#e84393',
-      bg: 'bg-[#e84393]/10',
-      borderColor: 'border-[#e84393]/20',
-      desc: es 
-        ? 'Ofrecemos sesiones virtuales gratuitas, atención desde Trabajo Social y Psicología, y una red de apoyo donde las familias comparten experiencias y crecen juntas en el proceso de crianza.'
-        : 'We offer free virtual sessions, care from Social Work and Psychology, and a support network where families share experiences and grow together in parenting.',
-      details: es 
-        ? ['Sesiones virtuales gratuitas', 'Red de apoyo para padres', 'Contención emocional', 'Estrategias para el hogar']
-        : ['Free virtual sessions', 'Parent support network', 'Emotional containment', 'Home strategies'],
+      icon: '🤸',
+      title: es ? 'Psicomotricidad' : 'Psychomotor Therapy',
+      color: 'primary' as const,
+      border: 'border-primary',
+      bg: 'bg-primary/15',
+      text: 'text-primary-700',
+      desc: es
+        ? 'Fortalecemos la coordinación, equilibrio y esquema corporal para favorecer la autonomía y la expresión corporal a través de circuitos, juegos y actividades vivenciales.'
+        : 'We strengthen coordination, balance, and body schema to foster autonomy and body expression through circuits, games, and experiential activities.',
+      items: es
+        ? ['Coordinación motora gruesa y fina', 'Esquema corporal', 'Equilibrio y lateralidad', 'Integración bilateral']
+        : ['Gross and fine motor coordination', 'Body schema', 'Balance and laterality', 'Bilateral integration'],
     },
   ]
 
-  const facts = [
-    { icon: '🏫', label: es ? 'Niveles educativos' : 'Educational levels', value: es ? 'Pre Kínder · Kínder · Primaria' : 'Pre Kínder · Kínder · Primary', bg: 'bg-[#229cc2]/10', border: 'border-[#229cc2]/20' },
-    { icon: '🧑‍🤝‍🧑', label: es ? 'Inclusión activa' : 'Active inclusion', value: es ? 'Asisten al centro + escuela regular' : 'Attend center + regular school', bg: 'bg-[#ffc500]/15', border: 'border-[#ffc500]/30' },
-    { icon: '📋', label: es ? 'Acreditación' : 'Accreditation', value: es ? 'Libreta de la educación regular' : 'Regular education school record', bg: 'bg-[#8c3cbd]/10', border: 'border-[#8c3cbd]/20' },
-    { icon: '🌱', label: es ? 'Hasta bachiller' : 'Up to graduation', value: es ? 'Trayectoria educativa completa' : 'Complete educational path', bg: 'bg-[#2d8a4e]/10', border: 'border-[#2d8a4e]/20' },
+  // ── Niveles educativos (del documento oficial) ────────────────────────────
+  const levels = [
+    {
+      label: es ? 'Pre-Kínder' : 'Pre-Kinder',
+      age: es ? '3 – 5 años' : '3 – 5 years',
+      icon: '🌱',
+      border: 'border-accent',
+      bg: 'bg-accent/10',
+      text: 'text-accent',
+      activeBg: 'bg-accent',
+      desc: es
+        ? 'Actividades lúdicas orientadas al desarrollo cognitivo temprano. Introducimos progresivamente conceptos de lectura, escritura y matemáticas adaptadas al perfil comunicativo del niño, trabajando de la mano con la familia.'
+        : 'Play-based activities focused on early cognitive development. We progressively introduce reading, writing, and math concepts adapted to the child\'s communicative profile, working hand-in-hand with families.',
+      highlights: es
+        ? ['Estimulación sensorial y motora', 'Desarrollo del lenguaje inicial', 'Habilidades socioemocionales', 'Juego funcional y estructurado']
+        : ['Sensory and motor stimulation', 'Early language development', 'Socioemotional skills', 'Functional and structured play'],
+    },
+    {
+      label: es ? 'Kínder' : 'Kinder',
+      age: es ? '5 – 6 años' : '5 – 6 years',
+      icon: '📚',
+      border: 'border-secondary',
+      bg: 'bg-secondary/10',
+      text: 'text-secondary',
+      activeBg: 'bg-secondary',
+      desc: es
+        ? 'Consolidamos habilidades fundamentales: lectoescritura inicial, operaciones matemáticas básicas y habilidades de convivencia. Preparamos al niño para la transición a educación primaria regular con acompañamiento terapéutico.'
+        : 'We consolidate fundamental skills: basic reading and writing, math operations, and coexistence skills. We prepare children for the transition to regular primary education with therapeutic support.',
+      highlights: es
+        ? ['Lectoescritura inicial', 'Matemáticas básicas', 'Convivencia y normas', 'Preparación para primaria']
+        : ['Basic reading and writing', 'Basic mathematics', 'Coexistence and norms', 'Primary school preparation'],
+    },
+    {
+      label: es ? 'Primaria' : 'Primary',
+      age: es ? '6+ años' : '6+ years',
+      icon: '🎓',
+      border: 'border-primary',
+      bg: 'bg-primary/15',
+      text: 'text-primary-700',
+      activeBg: 'bg-primary',
+      desc: es
+        ? 'Los estudiantes de primaria en el Centro Lápiz en Mano asisten paralelamente al centro y a una escuela regular. Realizamos adaptaciones curriculares personalizadas y coordinamos con los docentes escolares para garantizar una inclusión educativa real y exitosa.'
+        : 'Primary students at Centro Lápiz en Mano attend both our center and a regular school simultaneously. We make personalized curricular adaptations and coordinate with school teachers to ensure real and successful educational inclusion.',
+      highlights: es
+        ? ['Adaptaciones curriculares', 'Coordinación con escuelas', 'Libreta del sistema regular', 'Trayectoria hasta bachiller']
+        : ['Curricular adaptations', 'School coordination', 'Regular system grade book', 'Path through graduation'],
+    },
+  ]
+
+  // ── Servicios complementarios ──────────────────────────────────────────────
+  const services = [
+    {
+      icon: '🧩',
+      title: es ? 'Estimulación Neuro-cognitiva' : 'Neuro-cognitive Stimulation',
+      desc: es
+        ? 'Potenciamos las funciones cognitivas: atención, memoria de trabajo, funciones ejecutivas y razonamiento lógico adaptado al perfil de cada niño con síndrome de Down.'
+        : 'We enhance cognitive functions: attention, working memory, executive functions, and logical reasoning adapted to each child\'s Down syndrome profile.',
+    },
+    {
+      icon: '👨‍👩‍👧',
+      title: es ? 'Orientación Familiar' : 'Family Guidance',
+      desc: es
+        ? 'Sesiones con padres y madres para compartir estrategias, resolver dudas y empoderar a la familia como co-terapeutas en el hogar. Incluye sesiones virtuales gratuitas.'
+        : 'Sessions with parents to share strategies, resolve doubts, and empower families as co-therapists at home. Includes free virtual sessions.',
+    },
+    {
+      icon: '🏫',
+      title: es ? 'Coordinación Escolar' : 'School Coordination',
+      desc: es
+        ? 'Trabajamos directamente con los docentes de la escuela regular del niño para diseñar adaptaciones curriculares y garantizar la continuidad del aprendizaje en ambos entornos.'
+        : 'We work directly with the child\'s regular school teachers to design curricular adaptations and ensure learning continuity in both environments.',
+    },
+    {
+      icon: '📊',
+      title: es ? 'Evaluación Continua' : 'Ongoing Evaluation',
+      desc: es
+        ? 'Reevaluamos periódicamente el progreso de cada niño y ajustamos el plan de intervención para mantener metas relevantes y alcanzables en cada etapa de su desarrollo.'
+        : 'We periodically reevaluate each child\'s progress and adjust the intervention plan to maintain relevant and achievable goals at each development stage.',
+    },
   ]
 
   const activeLv = levels[activeLevel]
 
   return (
-    <div className="overflow-x-hidden w-full bg-[#fafbfd]">
-      
-      {/* 1. Header Hero */}
-      <section className="relative min-h-[520px] flex items-center bg-gradient-to-br from-[#0c2340] via-[#163a60] to-[#2466a8] py-16 px-4 overflow-hidden">
-        {/* Decoraciones de fondo animadas */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
-          <div className="absolute -top-[15%] -right-[10%] w-[350px] h-[350px] md:w-[550px] md:h-[550px] rounded-full border border-white/5 opacity-40 animate-pulse" />
-          <div className="absolute -bottom-[25%] -left-[8%] w-[250px] h-[250px] md:w-[450px] md:h-[450px] rounded-full bg-radial-gradient(circle, rgba(255,197,0,0.08), transparent 70%)" />
-          <div className="absolute top-[20%] left-[12%] text-white/10 text-4xl animate-float">⭐</div>
-          <div className="absolute top-[50%] right-[18%] text-white/10 text-5xl animate-float" style={{ animationDelay: '1.5s' }}>🌟</div>
+    <div className="bg-white">
+
+      {/* ── Hero ──────────────────────────────────────────────────────────── */}
+      <section className="relative bg-primary overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/3" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/4" />
         </div>
 
-        {/* Wave bottom */}
-        <div className="absolute bottom-0 left-0 right-0 z-10">
-          <svg viewBox="0 0 1440 90" fill="none" className="block w-full h-8 md:h-16 lg:h-20 text-[#fafbfd] fill-current">
-            <path d="M0 50C240 20 480 70 720 40C960 10 1200 60 1440 35V90H0Z" />
+        <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-2 text-sm text-gray-800/70 mb-8">
+            <Link href={`/${lang}`} className="hover:text-gray-900 transition-colors">
+              {es ? 'Inicio' : 'Home'}
+            </Link>
+            <span>/</span>
+            <span className="font-semibold text-gray-900">Mi Escuelita Down</span>
+          </nav>
+
+          <div className="max-w-3xl">
+            <span className="inline-block bg-white/30 text-gray-900 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">
+              {es ? 'Programa Especializado' : 'Specialized Program'}
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+              Mi Escuelita Down
+            </h1>
+            <p className="text-lg md:text-xl text-gray-800 leading-relaxed mb-8 max-w-2xl">
+              {es
+                ? 'Intervención terapéutica y educativa integral para niños y niñas con síndrome de Down, desde la estimulación temprana hasta la inclusión escolar plena.'
+                : 'Comprehensive therapeutic and educational intervention for children with Down syndrome, from early stimulation to full school inclusion.'}
+            </p>
+
+            <div className="flex flex-wrap gap-4">
+              <a
+                href="#areas"
+                className="inline-flex items-center gap-2 bg-gray-900 text-white font-bold px-6 py-3 rounded-full hover:bg-gray-800 transition-colors min-h-[44px]"
+              >
+                {es ? 'Ver áreas de intervención' : 'See intervention areas'}
+              </a>
+              <a
+                href="https://wa.me/59170106276"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white text-gray-900 font-bold px-6 py-3 rounded-full hover:bg-gray-100 transition-colors min-h-[44px]"
+              >
+                <svg className="w-5 h-5 text-green-600" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                {es ? 'Consultar por WhatsApp' : 'WhatsApp inquiry'}
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Wave */}
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg viewBox="0 0 1440 60" className="w-full h-8 md:h-12 fill-white">
+            <path d="M0 30C360 60 1080 0 1440 30V60H0Z" />
           </svg>
         </div>
+      </section>
 
-        <div className="container mx-auto max-w-6xl relative z-20 mt-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-left">
-            
-            {/* Columna Izquierda con animación de entrada */}
-            <div className="animate-fade-slide-up">
-              <div className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-md border border-white/15 rounded-full py-1.5 pl-2.5 pr-4 mb-6 shadow-md">
-                <span className="w-6 h-6 rounded-full bg-[#ffc500] flex items-center justify-center text-xs text-black font-extrabold shadow-sm select-none">🌟</span>
-                <span className="text-white/90 text-xs font-bold tracking-wide select-none">Fundación Pro-21</span>
+      {/* ── Stats rápidos ─────────────────────────────────────────────────── */}
+      <section className="py-10 border-b border-gray-100">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto text-center">
+            {[
+              { icon: '👶', val: '0 – 14+', label: es ? 'años atendidos' : 'years served' },
+              { icon: '🏫', val: '3', label: es ? 'niveles educativos' : 'educational levels' },
+              { icon: '💛', val: '4', label: es ? 'áreas terapéuticas' : 'therapy areas' },
+              { icon: '🎓', val: '8', label: es ? 'años de trayectoria' : 'years of experience' },
+            ].map((s) => (
+              <div key={s.label} className="flex flex-col items-center gap-1">
+                <span className="text-3xl">{s.icon}</span>
+                <span className="text-2xl font-extrabold text-gray-900">{s.val}</span>
+                <span className="text-sm text-gray-500">{s.label}</span>
               </div>
-
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-normal leading-[1.1] mb-3 tracking-tight">
-                Programa de Intervención <br />
-                <span className="font-bold italic text-[#ffc500]">Escuelita Down</span>
-              </h1>
-              <p className="text-lg md:text-xl font-medium text-white/60 italic mb-6">
-                &ldquo;{es ? 'Creciendo sin límites desde un enfoque centrado en la persona' : 'Growing without limits with a person-centered approach'}&rdquo;
-              </p>
-
-              <p className="text-sm md:text-base text-white/80 leading-relaxed mb-8 max-w-lg">
-                {es 
-                  ? 'El Programa de Intervención – Escuelita Down es una iniciativa de la Fundación Pro-21, creada para responder a las necesidades de niños y niñas con síndrome de Down y de sus familias, promoviendo su desarrollo integral.'
-                  : 'The Escuelita Down Intervention Program is an initiative of Fundación Pro-21, created to respond to the needs of children with Down syndrome and their families.'}
-              </p>
-
-              <div className="flex flex-wrap gap-4 items-center">
-                <a
-                  href="#areas-oficiales"
-                  className="bg-[#ffc500] hover:bg-[#ffc500]/90 text-black font-extrabold text-sm px-8 py-3.5 rounded-full transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] shadow-lg shadow-[#ffc500]/20 min-h-[44px] flex items-center justify-center"
-                >
-                  {es ? 'Ver áreas de intervención' : 'View intervention areas'}
-                </a>
-                <a
-                  href="https://wa.me/59170106276"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="border-2 border-white/20 hover:border-white/50 bg-transparent hover:bg-white/5 text-white font-bold text-sm px-8 py-3.5 rounded-full transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] min-h-[44px] flex items-center justify-center gap-2"
-                >
-                  <span className="text-lg">💬</span>
-                  {es ? 'Contactar por WhatsApp' : 'Contact via WhatsApp'}
-                </a>
-              </div>
-            </div>
-
-            {/* Columna Derecha con tarjeta visual rediseñada */}
-            <div className="relative hidden lg:block pl-6 animate-fade-slide-up" style={{ animationDelay: '0.2s' }}>
-              <div className="relative bg-white/95 backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-2xl space-y-6 text-left hover:shadow-primary/10 transition-all duration-500">
-                
-                {/* Header de la tarjeta */}
-                <div className="flex items-center justify-between pb-4 border-b border-gray-100">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-[#ffc500]/20 text-[#b38600] flex items-center justify-center text-2xl font-bold shadow-sm">
-                      🌟
-                    </div>
-                    <div>
-                      <h3 className="font-serif text-lg font-bold text-[#0c2340]">
-                        {es ? 'Escuelita Down' : 'Escuelita Down'}
-                      </h3>
-                      <p className="text-xs text-gray-400 font-semibold">
-                        {es ? 'Desarrollo integral personalizado' : 'Personalized integral care'}
-                      </p>
-                    </div>
-                  </div>
-                  <span className="bg-[#229cc2]/10 text-[#229cc2] font-extrabold text-xs px-3.5 py-1.5 rounded-full border border-[#229cc2]/20 select-none">
-                    {es ? '5 Áreas Terapéuticas' : '5 Therapeutic Areas'}
-                  </span>
-                </div>
-
-                {/* Grid de 5 Áreas */}
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="bg-[#8c3cbd]/10 border border-[#8c3cbd]/20 rounded-2xl p-3 flex items-center gap-2.5 transition-transform hover:scale-[1.02]">
-                    <span className="text-xl select-none">🧠</span>
-                    <div>
-                      <div className="text-xs font-bold text-[#0c2340]">{es ? 'Conducta' : 'Behavior'}</div>
-                      <div className="text-[9px] text-gray-500">{es ? 'Planes adaptativos' : 'Adaptive plans'}</div>
-                    </div>
-                  </div>
-
-                  <div className="bg-[#229cc2]/10 border border-[#229cc2]/20 rounded-2xl p-3 flex items-center gap-2.5 transition-transform hover:scale-[1.02]">
-                    <span className="text-xl select-none">🗣️</span>
-                    <div>
-                      <div className="text-xs font-bold text-[#0c2340]">{es ? 'Lenguaje' : 'Speech'}</div>
-                      <div className="text-[9px] text-gray-500">{es ? 'Comunicación' : 'Communication'}</div>
-                    </div>
-                  </div>
-
-                  <div className="bg-[#2466a8]/10 border border-[#2466a8]/20 rounded-2xl p-3 flex items-center gap-2.5 transition-transform hover:scale-[1.02]">
-                    <span className="text-xl select-none">💪</span>
-                    <div>
-                      <div className="text-xs font-bold text-[#0c2340]">{es ? 'Fisioterapia' : 'Physio'}</div>
-                      <div className="text-[9px] text-gray-500">{es ? 'Movilidad' : 'Mobility'}</div>
-                    </div>
-                  </div>
-
-                  <div className="bg-[#e86840]/10 border border-[#e86840]/20 rounded-2xl p-3 flex items-center gap-2.5 transition-transform hover:scale-[1.02]">
-                    <span className="text-xl select-none">🤸</span>
-                    <div>
-                      <div className="text-xs font-bold text-[#0c2340]">{es ? 'Psicomotricidad' : 'Psychomotor'}</div>
-                      <div className="text-[9px] text-gray-500">{es ? 'Coordinación' : 'Coordination'}</div>
-                    </div>
-                  </div>
-
-                  <div className="col-span-2 bg-[#2d8a4e]/10 border border-[#2d8a4e]/20 rounded-2xl p-3 flex items-center gap-2.5 transition-transform hover:scale-[1.02]">
-                    <span className="text-xl select-none">🎒</span>
-                    <div>
-                      <div className="text-xs font-bold text-[#0c2340]">{es ? 'Educativa (Pre-Kínder, Kínder, Primaria)' : 'Educational (Pre-K, K, Primary)'}</div>
-                      <div className="text-[9px] text-gray-500">{es ? 'Habilidades académicas e inclusión' : 'Academic skills & inclusion'}</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Footer limpio de la tarjeta */}
-                <div className="bg-[#fafbfd] border border-gray-100 rounded-2xl p-3.5 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs select-none">✨</span>
-                    <span className="text-xs font-bold text-gray-700">
-                      {es ? 'Atención Interdisciplinaria' : 'Interdisciplinary Care'}
-                    </span>
-                  </div>
-                  <span className="text-[11px] text-gray-400 font-semibold">La Paz, Bolivia</span>
-                </div>
-
-              </div>
-            </div>
-
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 2. Sección Institucional (Rediseño visual elegante de 2 columnas) */}
-      <section className="py-16 md:py-20 px-4 bg-white border-b border-gray-100">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-            
-            {/* Bloque 1: Acompañamiento Especializado */}
-            <div className="bg-gradient-to-br from-[#2466a8]/5 via-[#fafbfd] to-white rounded-3xl p-8 md:p-10 border border-[#2466a8]/20 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
-              <div>
-                <div className="inline-flex items-center gap-2 bg-[#2466a8]/10 border border-[#2466a8]/20 rounded-full px-4 py-1.5 mb-6 select-none">
-                  <span className="text-sm">🌱</span>
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#2466a8]">
-                    {es ? 'Acompañamiento Especializado' : 'Specialized Accompaniment'}
-                  </span>
-                </div>
-                <h3 className="font-serif text-2xl font-bold text-[#0c2340] mb-4 leading-snug">
-                  {es ? 'Atención Individual e Interdisciplinaria' : 'Individual & Interdisciplinary Care'}
-                </h3>
-                <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-                  {es 
-                    ? 'A través de un equipo interdisciplinario, el programa ofrece acompañamiento especializado durante las primeras etapas del desarrollo, fortaleciendo habilidades cognitivas, comunicativas, motoras, sociales y adaptativas. Cada intervención se planifica de manera individual, considerando las características, fortalezas y necesidades de cada niño o niña, así como la participación activa de su familia como parte fundamental del proceso.'
-                    : 'Through an interdisciplinary team, the program offers specialized accompaniment during the early stages of development, strengthening cognitive, communicative, motor, social, and adaptive skills. Each intervention is planned individually, considering the characteristics, strengths, and needs of each child, as well as the active participation of their family as a fundamental part of the process.'}
-                </p>
-              </div>
-            </div>
-
-            {/* Bloque 2: Autonomía e Inclusión */}
-            <div className="bg-gradient-to-br from-[#2d8a4e]/5 via-[#fafbfd] to-white rounded-3xl p-8 md:p-10 border border-[#2d8a4e]/20 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
-              <div>
-                <div className="inline-flex items-center gap-2 bg-[#2d8a4e]/10 border border-[#2d8a4e]/20 rounded-full px-4 py-1.5 mb-6 select-none">
-                  <span className="text-sm">💖</span>
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#2d8a4e]">
-                    {es ? 'Inclusión & Calidad de Vida' : 'Inclusion & Quality of Life'}
-                  </span>
-                </div>
-                <h3 className="font-serif text-2xl font-bold text-[#0c2340] mb-4 leading-snug">
-                  {es ? 'Desarrollo de Autonomía y Bienestar' : 'Autonomy & Well-being Development'}
-                </h3>
-                <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-                  {es 
-                    ? 'Con este programa, la Fundación Pro-21 busca favorecer el desarrollo de la autonomía, la inclusión y la participación plena en los diferentes ámbitos de la vida, brindando herramientas que contribuyan al bienestar y a una mejor calidad de vida para cada familia.'
-                    : 'With this program, Fundación Pro-21 seeks to promote the development of autonomy, inclusion, and full participation in different areas of life, providing tools that contribute to the well-being and a better quality of life for each family.'}
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Sección Oficial de Áreas de Intervención Terapéutica */}
-      <section id="areas-oficiales" className="py-16 md:py-24 px-4 bg-[#fafbfd]">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12 max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[#229cc2]/10 border border-[#229cc2]/20 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">🎯</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#229cc2]">
-                {es ? 'Áreas Terapéuticas Oficiales' : 'Official Therapeutic Areas'}
-              </span>
-            </div>
-            <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl text-[#0c2340] font-bold tracking-tight mb-4">
-              {es ? 'El programa contempla las siguientes áreas de intervención terapéutica:' : 'The program contemplates the following areas of therapeutic intervention:'}
+      {/* ── Áreas de terapia ──────────────────────────────────────────────── */}
+      <section id="areas" className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <span className="text-xs font-bold uppercase tracking-widest text-primary bg-primary/10 px-4 py-1.5 rounded-full">
+              {es ? 'Intervención especializada' : 'Specialized intervention'}
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mt-4 mb-4">
+              {es ? 'Áreas de Terapia' : 'Therapy Areas'}
             </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              {es
+                ? 'Cada niño recibe un plan de intervención personalizado que integra las cuatro áreas terapéuticas según sus necesidades individuales.'
+                : 'Each child receives a personalized intervention plan that integrates the four therapy areas based on their individual needs.'}
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto text-left">
-            {officialAreas.map((area) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {areas.map((area) => (
               <div
-                key={area.id}
-                className={`bg-white rounded-3xl p-7 border-2 ${area.borderColor} ${area.borderHover} transition-all duration-300 flex flex-col justify-between shadow-sm hover:shadow-lg hover:-translate-y-1 ${area.id === 'educativa' ? 'md:col-span-2 lg:col-span-2' : ''}`}
+                key={area.title}
+                className={`bg-white rounded-2xl p-6 border-l-4 ${area.border} shadow-sm hover:shadow-md transition-shadow`}
               >
-                <div>
-                  <div className={`w-12 h-12 rounded-2xl ${area.bg} flex items-center justify-center text-2xl mb-5 shadow-sm`}>
+                <div className="flex items-start gap-4">
+                  <div className={`w-12 h-12 ${area.bg} rounded-xl flex items-center justify-center text-2xl flex-shrink-0`}>
                     {area.icon}
                   </div>
-                  <h3 className="font-serif text-xl font-bold text-[#0c2340] mb-4">
-                    {area.title}
-                  </h3>
-                  <ul className="space-y-3">
-                    {area.items.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-sm text-gray-700">
-                        <span className="font-bold mt-0.5" style={{ color: area.color }}>•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="flex-1">
+                    <h3 className={`font-bold text-lg ${area.text} mb-2`}>{area.title}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">{area.desc}</p>
+                    <ul className="grid grid-cols-2 gap-1">
+                      {area.items.map((item) => (
+                        <li key={item} className="flex items-center gap-1.5 text-xs text-gray-500">
+                          <span className="w-1.5 h-1.5 rounded-full bg-gray-300 flex-shrink-0" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             ))}
@@ -534,293 +284,155 @@ export default function Page({ params: { lang } }: PageProps) {
         </div>
       </section>
 
-      {/* 4. Strip de Datos Clave */}
-      <section className="bg-white py-10 px-4 border-t border-b border-gray-200/50">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {facts.map((f, i) => (
-              <div
-                key={i}
-                className={`flex items-center gap-4 p-5 rounded-2xl bg-white border ${f.border} shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 select-none`}
-              >
-                <div className={`w-12 h-12 rounded-xl ${f.bg} flex items-center justify-center text-2xl flex-shrink-0`}>
-                  {f.icon}
-                </div>
-                <div>
-                  <div className="text-[10px] font-bold text-gray-400 tracking-wider uppercase">{f.label}</div>
-                  <div className="text-sm font-bold text-[#0c2340] mt-0.5 leading-snug">{f.value}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Niveles de Crecimiento (Sin scrollbar, en Grid limpio de 4 columnas) */}
-      <section id="niveles" className="py-16 md:py-24 px-4 bg-[#fafbfd]">
-        <div className="container mx-auto max-w-6xl">
-          
-          <div className="text-center mb-12 max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[#ffc500]/15 border border-[#ffc500]/30 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">🗺️</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#b38600]">
-                {es ? 'Un camino de crecimiento' : 'A growth path'}
-              </span>
-            </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#0c2340] font-normal tracking-tight mb-4">
-              {es ? '4 niveles, una vida de oportunidades' : '4 levels, a life of opportunities'}
+      {/* ── Niveles educativos ────────────────────────────────────────────── */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-10">
+            <span className="text-xs font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-4 py-1.5 rounded-full">
+              {es ? 'Educación inclusiva' : 'Inclusive education'}
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mt-4 mb-4">
+              {es ? 'Niveles Educativos' : 'Educational Levels'}
             </h2>
-            <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">
-              {es 
-                ? 'Desde los primeros meses hasta la vida adulta, cada etapa está diseñada para potenciar el desarrollo integral del niño.'
-                : 'From the first months to adult life, each stage is designed to boost the child\'s comprehensive development.'}
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              {es
+                ? 'Nuestros estudiantes cuentan con libreta de la educación regular y reciben adaptaciones curriculares en cada etapa.'
+                : 'Our students hold a regular education grade book and receive curricular adaptations at each stage.'}
             </p>
           </div>
 
-          {/* Selector de Niveles (Grid de 4 columnas sin scrollbars ni desbordamientos) */}
-          <div className="mb-10">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-4 max-w-5xl mx-auto">
-              {levels.map((l, i) => {
-                const isSelected = activeLevel === i
-                return (
-                  <button
-                    key={i}
-                    onClick={() => setActiveLevel(i)}
-                    className={`w-full p-4 rounded-2xl border-2 text-left transition-all duration-300 focus:outline-none min-h-[76px] flex items-center gap-3.5 ${
-                      isSelected 
-                        ? `${l.color} bg-white shadow-lg shadow-black/5 scale-[1.02]` 
-                        : 'border-gray-200 bg-white/80 hover:bg-white text-gray-500 hover:border-gray-300'
-                    }`}
-                  >
-                    <div className={`w-11 h-11 rounded-full flex items-center justify-center text-2xl flex-shrink-0 shadow-inner ${isSelected ? l.bg : 'bg-gray-100'}`}>
-                      {l.icon}
-                    </div>
-                    <div className="overflow-hidden">
-                      <div className={`text-[10px] font-bold tracking-wider uppercase truncate ${isSelected ? '' : 'text-gray-400'}`}>{l.age}</div>
-                      <div className="text-xs sm:text-sm font-bold mt-0.5 text-gray-900 truncate">{l.name}</div>
-                    </div>
-                  </button>
-                )
-              })}
-            </div>
-          </div>
-
-          {/* Detalle del nivel seleccionado */}
-          {activeLv && (
-            <div className="max-w-5xl mx-auto transition-all duration-500 animate-fade-slide-up">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-md">
-                
-                {/* Lado izquierdo */}
-                <div className={`lg:col-span-5 ${activeLv.bg} flex items-center justify-center p-8 min-h-[300px] relative`}>
-                  <div className="absolute top-6 left-6 inline-flex items-center gap-2 bg-white/90 border border-white/30 rounded-full px-3.5 py-1 shadow-sm">
-                    <span className="text-base select-none">{activeLv.icon}</span>
-                    <span className="text-xs font-bold text-[#0c2340]">{activeLv.name}</span>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-6xl mb-3 animate-float">{activeLv.photo}</div>
-                    <p className="font-serif text-sm text-[#0c2340] font-bold">{activeLv.photoLabel}</p>
-                    <p className="text-[10px] text-gray-400 mt-1">{es ? 'Imagen real del Centro Lápiz en Mano' : 'Lápiz en Mano Center photo'}</p>
-                  </div>
-                </div>
-
-                {/* Lado derecho */}
-                <div className="lg:col-span-7 p-8 lg:p-12 flex flex-col justify-center text-left">
-                  <div className="inline-flex items-center bg-gray-100 text-gray-600 font-bold text-xs px-3 py-1.5 rounded-full mb-4 w-fit select-none">
-                    {activeLv.age}
-                  </div>
-                  <h3 className="font-serif text-2xl md:text-3xl text-[#0c2340] font-bold mb-4 leading-tight">
-                    {activeLv.name}
-                  </h3>
-                  <p className="text-sm md:text-base text-gray-500 leading-relaxed mb-6">
-                    {activeLv.desc}
-                  </p>
-
-                  <div className="text-[10px] font-bold text-gray-400 tracking-wider uppercase mb-3.5 pt-4 border-t border-gray-100">
-                    {es ? 'Enfoque de esta etapa' : 'Focus of this stage'}
-                  </div>
-                  
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {activeLv.highlights.map((h) => (
-                      <div
-                        key={h}
-                        className={`flex items-center gap-2.5 p-2 rounded-xl text-xs font-semibold text-gray-700 ${activeLv.bg}`}
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#0c2340] flex-shrink-0" style={{ backgroundColor: activeLv.accentColor }} />
-                        <span>{h}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          )}
-
-        </div>
-      </section>
-
-      {/* 6. Servicios Terapéuticos (Desplegados completas en Grid, SIN ACORDEONES CERRADOS) */}
-      <section className="py-16 md:py-24 px-4 bg-[#f7f5f0] border-t border-b border-gray-200/50">
-        <div className="container mx-auto max-w-6xl">
-          
-          <div className="text-center mb-12 max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[#229cc2]/10 border border-[#229cc2]/20 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">🩺</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#229cc2]">
-                {es ? 'Servicios Terapéuticos Integrales' : 'Comprehensive Therapeutic Services'}
-              </span>
-            </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#0c2340] font-normal tracking-tight mb-4">
-              {es ? '8 áreas de atención integral abiertas al scroll' : '8 areas of comprehensive care'}
-            </h2>
-            <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">
-              {es 
-                ? 'Conoce a detalle cada una de nuestras especialidades mientras navegas por la página.' 
-                : 'Learn about each of our specialties as you scroll through the page.'}
-            </p>
-          </div>
-
-          {/* Grid de 8 Servicios desplegados totalmente abiertos */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto text-left">
-            {services.map((s) => (
-              <div
-                key={s.name}
-                className={`bg-white rounded-3xl p-6 md:p-8 border ${s.borderColor} shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between`}
+          {/* Tabs */}
+          <div className="flex justify-center gap-2 mb-8 flex-wrap">
+            {levels.map((lv, i) => (
+              <button
+                key={lv.label}
+                onClick={() => setActiveLevel(i)}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm transition-all min-h-[44px] ${
+                  activeLevel === i
+                    ? `${lv.activeBg} text-white shadow-md`
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                }`}
               >
-                <div>
-                  <div className="flex items-center gap-4 mb-4 select-none">
-                    <div className={`w-13 h-13 rounded-2xl ${s.bg} flex items-center justify-center text-3xl shadow-sm flex-shrink-0`}>
-                      {s.icon}
-                    </div>
-                    <div>
-                      <h4 className="font-serif text-lg md:text-xl font-bold text-[#0c2340] leading-snug">
-                        {s.name}
-                      </h4>
-                      <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">
-                        {es ? 'Especialidad terapéutica' : 'Therapeutic specialty'}
-                      </span>
-                    </div>
-                  </div>
-
-                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed mb-6">
-                    {s.desc}
-                  </p>
-
-                  <div className="text-[10px] font-bold text-gray-400 tracking-wider uppercase mb-3 select-none">
-                    {es ? 'Técnicas y áreas clave' : 'Key techniques & areas'}
-                  </div>
-
-                  <div className="flex flex-wrap gap-2">
-                    {s.details.map((d) => (
-                      <span
-                        key={d}
-                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-gray-700 ${s.bg}`}
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: s.color }} />
-                        {d}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
+                <span>{lv.icon}</span>
+                <span>{lv.label}</span>
+                <span className={`text-xs px-2 py-0.5 rounded-full ${activeLevel === i ? 'bg-white/20' : 'bg-gray-200 text-gray-500'}`}>
+                  {lv.age}
+                </span>
+              </button>
             ))}
           </div>
 
+          {/* Panel activo */}
+          <div className={`max-w-4xl mx-auto bg-white rounded-2xl border ${activeLv.border} shadow-sm overflow-hidden`}>
+            <div className={`${activeLv.bg} p-6 flex items-center gap-4`}>
+              <span className="text-4xl">{activeLv.icon}</span>
+              <div>
+                <h3 className={`text-xl font-extrabold ${activeLv.text}`}>{activeLv.label}</h3>
+                <span className="text-sm text-gray-500">{activeLv.age}</span>
+              </div>
+            </div>
+            <div className="p-6">
+              <p className="text-gray-700 leading-relaxed mb-6">{activeLv.desc}</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {activeLv.highlights.map((h) => (
+                  <div key={h} className={`flex items-center gap-3 p-3 rounded-xl ${activeLv.bg}`}>
+                    <span className={`w-2 h-2 rounded-full ${activeLv.activeBg} flex-shrink-0`} />
+                    <span className="text-sm font-medium text-gray-700">{h}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* 7. Sección para las Familias */}
-      <section className="py-16 md:py-24 px-4 bg-[#fafbfd]">
-        <div className="container mx-auto max-w-5xl">
-          
-          <div className="text-center mb-12 max-w-md mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[#e84393]/10 border border-[#e84393]/20 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">👨‍👩‍👧</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#e84393]">
-                {es ? 'Para las familias' : 'For families'}
-              </span>
-            </div>
-            <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl text-[#0c2340] font-normal tracking-tight">
-              {es ? 'La familia es parte del equipo' : 'The family is part of the team'}
+      {/* ── Servicios complementarios ─────────────────────────────────────── */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-10">
+            <span className="text-xs font-bold uppercase tracking-widest text-accent bg-accent/10 px-4 py-1.5 rounded-full">
+              {es ? 'Apoyo integral' : 'Comprehensive support'}
+            </span>
+            <h2 className="text-3xl font-extrabold text-gray-900 mt-4 mb-4">
+              {es ? 'Servicios Complementarios' : 'Complementary Services'}
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto">
+            {services.map((svc, i) => (
+              <div key={svc.title} className="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow">
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
+                  style={{ backgroundColor: i % 2 === 0 ? 'rgba(140,60,189,0.1)' : 'rgba(34,156,194,0.1)' }}
+                >
+                  {svc.icon}
+                </div>
+                <h3 className="font-bold text-gray-900 mb-2">{svc.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{svc.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Proceso de ingreso ────────────────────────────────────────────── */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-extrabold text-gray-900 mb-4">
+              {es ? '¿Cómo ingresar al programa?' : 'How to join the program?'}
+            </h2>
+          </div>
+          <div className="flex flex-col md:flex-row gap-4 max-w-4xl mx-auto">
             {[
-              {
-                icon: '🎥',
-                title: es ? 'Sesiones virtuales gratuitas' : 'Free virtual sessions',
-                desc: es 
-                  ? 'Orientación personalizada sobre el proceso y desarrollo de su hijo, desde las áreas de Trabajo Social y Psicología, considerando sus características individuales.'
-                  : 'Personalized guidance on your child\'s process and development, from Social Work and Psychology, considering their individual characteristics.',
-                bg: 'bg-[#229cc2]/10',
-                border: 'border-[#229cc2]/20'
-              },
-              {
-                icon: '🤝',
-                title: es ? 'Red de apoyo para padres' : 'Parent support network',
-                desc: es 
-                  ? 'Espacio de acompañamiento y contención donde las familias comparten experiencias, fortalecen vínculos y crecen juntas en el proceso de crianza y desarrollo.'
-                  : 'A space for support and containment where families share experiences, strengthen bonds, and grow together in parenting and development.',
-                bg: 'bg-[#ffc500]/15',
-                border: 'border-[#ffc500]/30'
-              }
-            ].map((item, i) => (
-              <div
-                key={i}
-                className={`bg-white rounded-3xl p-8 border ${item.border} shadow-sm flex flex-col items-start text-left transition-all hover:shadow-lg hover:-translate-y-1`}
-              >
-                <div className={`w-14 h-14 rounded-2xl ${item.bg} flex items-center justify-center text-3xl mb-5 shadow-sm`}>
-                  {item.icon}
+              { n: '1', icon: '📞', title: es ? 'Contacto inicial' : 'Initial contact', desc: es ? 'Contáctanos por WhatsApp o formulario para agendar una primera conversación.' : 'Contact us via WhatsApp or form to schedule a first conversation.' },
+              { n: '2', icon: '🔍', title: es ? 'Evaluación' : 'Evaluation', desc: es ? 'Realizamos una evaluación integral del niño para diseñar un plan personalizado.' : 'We conduct a comprehensive evaluation to design a personalized plan.' },
+              { n: '3', icon: '📋', title: es ? 'Plan de intervención' : 'Intervention plan', desc: es ? 'Elaboramos objetivos claros y seleccionamos las áreas terapéuticas prioritarias.' : 'We set clear objectives and select priority therapy areas.' },
+              { n: '4', icon: '🌱', title: es ? 'Inicio del programa' : 'Program start', desc: es ? 'El niño comienza sus sesiones. La familia recibe orientación permanente.' : 'The child starts sessions. The family receives ongoing guidance.' },
+            ].map((step) => (
+              <div key={step.n} className="flex-1 flex flex-col items-center text-center p-5 bg-white rounded-2xl border border-gray-100 shadow-sm">
+                <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center font-extrabold text-gray-900 text-lg mb-3">
+                  {step.n}
                 </div>
-                <h4 className="font-serif text-lg md:text-xl text-[#0c2340] font-bold mb-3">
-                  {item.title}
-                </h4>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  {item.desc}
-                </p>
+                <span className="text-2xl mb-2">{step.icon}</span>
+                <h3 className="font-bold text-gray-900 mb-2">{step.title}</h3>
+                <p className="text-gray-600 text-sm">{step.desc}</p>
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
-      {/* 8. CTA Inscripciones 2026 */}
-      <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-[#0c2340] via-[#163a60] to-[#2466a8] relative overflow-hidden">
-        <div className="container mx-auto max-w-3xl relative z-10 text-center">
-          <span className="text-5xl block mb-5 animate-float">🌟</span>
-          <h2 className="font-serif text-3xl md:text-4xl text-white font-normal leading-tight mb-4">
-            {es ? 'Inscripciones abiertas — Gestión 2026' : 'Enrollments Open — 2026 Term'}
+      {/* ── CTA Final ─────────────────────────────────────────────────────── */}
+      <section className="py-16 bg-primary">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+            {es ? '¿Tu hijo tiene síndrome de Down?' : 'Does your child have Down syndrome?'}
           </h2>
-          
-          <p className="font-serif text-base md:text-lg text-white/60 italic max-w-xl mx-auto mb-6 leading-relaxed">
-            &ldquo;{es 
-              ? 'El síndrome de Down no es una barrera, sino una manera diferente y valiosa de aprender, crecer y desarrollar todo el potencial.' 
-              : 'Down syndrome is not a barrier, but a different and valuable way to learn, grow, and develop one\'s full potential.'}&rdquo;
+          <p className="text-gray-800 text-lg mb-8 max-w-xl mx-auto">
+            {es
+              ? 'Contáctanos hoy. Evaluamos gratuitamente a cada niño y diseñamos un plan adaptado a sus necesidades.'
+              : 'Contact us today. We evaluate each child free of charge and design a plan adapted to their needs.'}
           </p>
-
-          <p className="text-sm md:text-base text-white/80 max-w-lg mx-auto leading-relaxed mb-10">
-            {es 
-              ? 'Contamos con cupos limitados porque priorizamos la calidad, el acompañamiento cercano y una atención verdaderamente significativa para cada niño.'
-              : 'We have limited places because we prioritize quality, close support, and a truly meaningful care for each child.'}
-          </p>
-
-          <div className="flex justify-center">
+          <div className="flex flex-wrap justify-center gap-4">
             <a
               href="https://wa.me/59170106276"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#25d366] hover:bg-[#25d366]/90 text-white font-extrabold text-sm sm:text-base px-8 py-3.5 sm:py-4 rounded-full transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] shadow-lg shadow-[#25d366]/20 min-h-[44px] flex items-center justify-center gap-2"
+              className="inline-flex items-center gap-2 bg-gray-900 text-white font-bold px-8 py-4 rounded-full hover:bg-gray-800 transition-colors min-h-[52px]"
             >
-              <span className="text-xl">💬</span>
-              {es ? 'Reservar cupo — 70106276' : 'Reserve place — 70106276'}
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              WhatsApp: 70106276
             </a>
+            <Link
+              href={`/${lang}/contacto`}
+              className="inline-flex items-center gap-2 bg-white text-gray-900 font-bold px-8 py-4 rounded-full hover:bg-gray-100 transition-colors min-h-[52px]"
+            >
+              {es ? 'Formulario de contacto' : 'Contact form'}
+            </Link>
           </div>
-
-          <p className="text-xs text-white/40 mt-4 font-medium">
-            {es ? 'Inicio oficial de clases: Febrero 2026' : 'Official start of classes: February 2026'}
-          </p>
         </div>
       </section>
 

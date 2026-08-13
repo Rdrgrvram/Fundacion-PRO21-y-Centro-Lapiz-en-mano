@@ -19,9 +19,9 @@ export default function Page({ params: { lang } }: PageProps) {
       id: 'fisio',
       name: es ? 'Fisioterapia' : 'Physiotherapy',
       icon: '💪',
-      color: '#2466a8',
-      colorClass: 'border-[#2466a8] text-[#2466a8]',
-      bg: 'bg-[#e8f1fa]',
+      color: '#229cc2',
+      colorClass: 'border-secondary text-secondary',
+      bg: 'bg-secondary/10',
       desc: es 
         ? 'Intervención desde la estimulación temprana para mejorar el tono muscular, la postura y la movilidad, adaptando ejercicios a cada etapa.'
         : 'Intervention from early stimulation to improve muscle tone, posture, and mobility, adapting exercises to each stage.',
@@ -34,9 +34,9 @@ export default function Page({ params: { lang } }: PageProps) {
       id: 'psicomotricidad',
       name: es ? 'Psicomotricidad' : 'Psychomotor therapy',
       icon: '🤸',
-      color: '#e86840',
-      colorClass: 'border-[#e86840] text-[#e86840]',
-      bg: 'bg-[#fef0e8]',
+      color: '#8c3cbd',
+      colorClass: 'border-accent text-accent',
+      bg: 'bg-accent/10',
       desc: es 
         ? 'Fortalecimiento de la coordinación, equilibrio y esquema corporal para favorecer la autonomía, la concentración y la expresión corporal.'
         : 'Strengthening coordination, balance, and body schema to favor autonomy, concentration, and body expression.',
@@ -49,9 +49,9 @@ export default function Page({ params: { lang } }: PageProps) {
       id: 'lenguaje',
       name: es ? 'Terapia de lenguaje' : 'Speech therapy',
       icon: '🗣️',
-      color: '#1a8a7d',
-      colorClass: 'border-[#1a8a7d] text-[#1a8a7d]',
-      bg: 'bg-[#e0f5f0]',
+      color: '#229cc2',
+      colorClass: 'border-secondary text-secondary',
+      bg: 'bg-secondary/10',
       desc: es 
         ? 'Trabajo en respiración, control orofacial y articulación de sonidos para mejorar la comunicación y el habla de forma divertida y funcional.'
         : 'Work on breathing, orofacial control, and speech sounds articulation to improve communication and speech in a fun, functional way.',
@@ -64,9 +64,9 @@ export default function Page({ params: { lang } }: PageProps) {
       id: 'conducta',
       name: es ? 'Psicología y conducta' : 'Psychology & behavior',
       icon: '🧠',
-      color: '#6c5ce7',
-      colorClass: 'border-[#6c5ce7] text-[#6c5ce7]',
-      bg: 'bg-[#f0edff]',
+      color: '#8c3cbd',
+      colorClass: 'border-accent text-accent',
+      bg: 'bg-accent/10',
       desc: es 
         ? 'Acompañamiento en el desarrollo de habilidades sociales, autorregulación y rutinas positivas dentro del entorno familiar y escolar.'
         : 'Support in developing social skills, self-regulation, and positive routines within the family and school environment.',
@@ -79,9 +79,9 @@ export default function Page({ params: { lang } }: PageProps) {
       id: 'pedagogia',
       name: es ? 'Pedagogía y Parvularia' : 'Pedagogy & Early Years',
       icon: '📖',
-      color: '#2d8a4e',
-      colorClass: 'border-[#2d8a4e] text-[#2d8a4e]',
-      bg: 'bg-[#e5f5eb]',
+      color: '#229cc2',
+      colorClass: 'border-secondary text-secondary',
+      bg: 'bg-secondary/10',
       desc: es 
         ? 'Adaptaciones curriculares según las capacidades y ritmo de cada niño, promoviendo el aprendizaje significativo y la inclusión educativa.'
         : 'Curricular adaptations based on each child\'s capabilities and pace, promoting meaningful learning and educational inclusion.',
@@ -94,9 +94,9 @@ export default function Page({ params: { lang } }: PageProps) {
       id: 'social',
       name: es ? 'Trabajo social' : 'Social Work',
       icon: '🤝',
-      color: '#e84393',
-      colorClass: 'border-[#e84393] text-[#e84393]',
-      bg: 'bg-[#fdf2f8]',
+      color: '#8c3cbd',
+      colorClass: 'border-accent text-accent',
+      bg: 'bg-[#f5edfb]',
       desc: es 
         ? 'Orientación, acompañamiento social y contención emocional para las familias, estructurando la red de apoyo necesaria en el hogar.'
         : 'Guidance, social support, and emotional containment for families, structuring the necessary support network at home.',
@@ -119,8 +119,8 @@ export default function Page({ params: { lang } }: PageProps) {
       photo: '/images/equipo/belen-lazcano.jpg',
       initials: 'BL',
       areaId: 'fisio',
-      color: '#2466a8',
-      bg: 'bg-[#e8f1fa]'
+      color: '#229cc2',
+      bg: 'bg-secondary/10'
     },
     {
       id: 'wara-valdivia',
@@ -133,8 +133,8 @@ export default function Page({ params: { lang } }: PageProps) {
       photo: '/images/equipo/wara-valdivia.jpg',
       initials: 'WV',
       areaId: 'psicomotricidad',
-      color: '#e86840',
-      bg: 'bg-[#fef0e8]'
+      color: '#8c3cbd',
+      bg: 'bg-accent/10'
     },
     {
       id: 'yasmanni-peralta',
@@ -147,8 +147,8 @@ export default function Page({ params: { lang } }: PageProps) {
       photo: '/images/equipo/yasmanni-peralta.png',
       initials: 'YP',
       areaId: 'lenguaje',
-      color: '#1a8a7d',
-      bg: 'bg-[#e0f5f0]'
+      color: '#229cc2',
+      bg: 'bg-secondary/10'
     },
     {
       id: 'monica-medina',
@@ -161,8 +161,8 @@ export default function Page({ params: { lang } }: PageProps) {
       photo: '/images/equipo/monica-medina.jpg',
       initials: 'MM',
       areaId: 'conducta',
-      color: '#6c5ce7',
-      bg: 'bg-[#f0edff]'
+      color: '#8c3cbd',
+      bg: 'bg-accent/10'
     },
     {
       id: 'ana-copa',
@@ -175,8 +175,8 @@ export default function Page({ params: { lang } }: PageProps) {
       photo: '/images/equipo/ana-copa.png',
       initials: 'AC',
       areaId: 'conducta',
-      color: '#6c5ce7',
-      bg: 'bg-[#f0edff]'
+      color: '#8c3cbd',
+      bg: 'bg-accent/10'
     },
     {
       id: 'luis-machicado',
@@ -189,8 +189,8 @@ export default function Page({ params: { lang } }: PageProps) {
       photo: '',
       initials: 'LM',
       areaId: 'conducta',
-      color: '#6c5ce7',
-      bg: 'bg-[#f0edff]'
+      color: '#8c3cbd',
+      bg: 'bg-accent/10'
     },
     {
       id: 'helan-medrano',
@@ -203,8 +203,8 @@ export default function Page({ params: { lang } }: PageProps) {
       photo: '',
       initials: 'HM',
       areaId: 'conducta',
-      color: '#6c5ce7',
-      bg: 'bg-[#f0edff]'
+      color: '#8c3cbd',
+      bg: 'bg-accent/10'
     },
     {
       id: 'megan',
@@ -217,8 +217,8 @@ export default function Page({ params: { lang } }: PageProps) {
       photo: '/images/equipo/megan.jpg',
       initials: 'ME',
       areaId: 'pedagogia',
-      color: '#2d8a4e',
-      bg: 'bg-[#e5f5eb]'
+      color: '#229cc2',
+      bg: 'bg-secondary/10'
     },
     {
       id: 'benita-rosales',
@@ -231,16 +231,16 @@ export default function Page({ params: { lang } }: PageProps) {
       photo: '/images/equipo/benita-rosales.jpg',
       initials: 'BR',
       areaId: 'social',
-      color: '#e84393',
-      bg: 'bg-[#fdf2f8]'
+      color: '#8c3cbd',
+      bg: 'bg-[#f5edfb]'
     }
   ]
 
   const stats = [
-    { n: '10+', l: es ? 'Profesionales' : 'Staff members', icon: '👩‍⚕️', color: '#2466a8', bg: 'bg-[#e8f1fa]' },
-    { n: '6', l: es ? 'Áreas de especialidad' : 'Specialized areas', icon: '🏥', color: '#e86840', bg: 'bg-[#fef0e8]' },
-    { n: '3', l: es ? 'Programas activos' : 'Active programs', icon: '📋', color: '#2d8a4e', bg: 'bg-[#e5f5eb]' },
-    { n: '100%', l: es ? 'Dedicación integral' : 'Dedicated care', icon: '💛', color: '#e8a838', bg: 'bg-[#fdf6e3]' }
+    { n: '10+', l: es ? 'Profesionales' : 'Staff members', icon: '👩‍⚕️', color: '#229cc2', bg: 'bg-secondary/10' },
+    { n: '6', l: es ? 'Áreas de especialidad' : 'Specialized areas', icon: '🏥', color: '#8c3cbd', bg: 'bg-accent/10' },
+    { n: '3', l: es ? 'Programas activos' : 'Active programs', icon: '📋', color: '#229cc2', bg: 'bg-secondary/10' },
+    { n: '100%', l: es ? 'Dedicación integral' : 'Dedicated care', icon: '💛', color: '#ffc500', bg: 'bg-primary/15' }
   ]
 
   const volunteers = ['Paola', 'Wanda', 'Alejandra']
@@ -253,10 +253,10 @@ export default function Page({ params: { lang } }: PageProps) {
     : team
 
   return (
-    <div className="overflow-x-hidden w-full bg-[#fafbfd]">
+    <div className="overflow-x-hidden w-full bg-gray-50">
       
       {/* 1. Page Hero */}
-      <section className="relative min-h-[400px] flex items-center bg-gradient-to-br from-[#0c2340] via-[#142d4c] to-[#2466a8] py-16 px-4 overflow-hidden">
+      <section className="relative min-h-[400px] flex items-center bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary py-16 px-4 overflow-hidden">
         {/* Decoraciones */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
           <div className="absolute -top-[15%] -right-[8%] w-[350px] h-[350px] md:w-[550px] md:h-[550px] rounded-full border border-white/5 opacity-30 animate-pulse" />
@@ -267,7 +267,7 @@ export default function Page({ params: { lang } }: PageProps) {
 
         {/* Wave bottom */}
         <div className="absolute bottom-0 left-0 right-0 z-10">
-          <svg viewBox="0 0 1440 80" fill="none" className="block w-full h-8 md:h-16 lg:h-20 text-[#fafbfd] fill-current">
+          <svg viewBox="0 0 1440 80" fill="none" className="block w-full h-8 md:h-16 lg:h-20 text-[#f9fafb] fill-current">
             <path d="M0 45C360 15 720 65 1080 35C1260 20 1380 30 1440 28V80H0Z" />
           </svg>
         </div>
@@ -301,7 +301,7 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 2. Stats Bar Strip */}
-      <section className="bg-[#fafbfd] py-10 px-4 border-b border-gray-200/50">
+      <section className="bg-gray-50 py-10 px-4 border-b border-gray-200/50">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {stats.map((s, i) => (
@@ -323,13 +323,13 @@ export default function Page({ params: { lang } }: PageProps) {
         <div className="container mx-auto max-w-6xl">
           
           <div className="text-center mb-12 max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[#fdf6e3] border border-[#e8a838]/15 rounded-full px-4 py-1.5 mb-3 select-none">
+            <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">🩺</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#e8a838]">
+              <span className="text-xs font-bold uppercase tracking-wider text-primary-700">
                 {es ? 'Filosofía de trabajo' : 'Work philosophy'}
               </span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#0c2340] font-normal tracking-tight mb-4">
+            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">
               {es ? '¿Qué significa ser multidisciplinario?' : 'What does multidisciplinary mean?'}
             </h2>
             <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">
@@ -348,11 +348,11 @@ export default function Page({ params: { lang } }: PageProps) {
             ].map((p, i) => (
               <div
                 key={i}
-                className="bg-[#fafbfd] border border-gray-200 rounded-3xl p-6 flex flex-col justify-between hover:shadow-sm hover:border-gray-300 transition-all duration-300 h-full"
+                className="bg-gray-50 border border-gray-200 rounded-3xl p-6 flex flex-col justify-between hover:shadow-sm hover:border-gray-300 transition-all duration-300 h-full"
               >
                 <div>
                   <div className="text-3xl mb-4 select-none">{p.icon}</div>
-                  <h4 className="font-serif text-base text-[#0c2340] font-bold mb-2">{p.title}</h4>
+                  <h4 className="font-serif text-base text-[#111827] font-bold mb-2">{p.title}</h4>
                   <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">{p.desc}</p>
                 </div>
               </div>
@@ -363,17 +363,17 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 4. Areas Grid Filter & Staff Profile Cards List */}
-      <section className="py-16 md:py-24 px-4 bg-[#f7f5f0] border-t border-b border-gray-200/50">
+      <section className="py-16 md:py-24 px-4 bg-[#f9fafb] border-t border-b border-gray-200/50">
         <div className="container mx-auto max-w-6xl">
           
           <div className="text-center mb-12 max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[#e8f1fa] border border-[#2466a8]/15 rounded-full px-4 py-1.5 mb-3 select-none">
+            <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">🏥</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#2466a8]">
+              <span className="text-xs font-bold uppercase tracking-wider text-secondary">
                 {es ? 'Áreas de especialidad' : 'Specialized Areas'}
               </span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#0c2340] font-normal tracking-tight mb-4">
+            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">
               {es ? 'Conoce a Nuestro Equipo' : 'Meet Our Team'}
             </h2>
             <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">
@@ -392,7 +392,7 @@ export default function Page({ params: { lang } }: PageProps) {
                   key={a.id}
                   onClick={() => setSelectedArea(isSelected ? null : i)}
                   className={`bg-white rounded-2xl overflow-hidden border cursor-pointer shadow-sm transition-all duration-300 hover:shadow-md ${
-                    isSelected ? 'border-primary shadow-[#2466a8]/5 scale-[1.01]' : 'border-gray-200/80 hover:border-gray-300'
+                    isSelected ? 'border-primary shadow-[#229cc2]/5 scale-[1.01]' : 'border-gray-200/80 hover:border-gray-300'
                   }`}
                 >
                   <div className="h-1 w-full" style={{ backgroundColor: a.color }} />
@@ -402,7 +402,7 @@ export default function Page({ params: { lang } }: PageProps) {
                         {a.icon}
                       </div>
                       <div>
-                        <h4 className="text-sm font-bold text-[#0c2340] leading-snug">
+                        <h4 className="text-sm font-bold text-[#111827] leading-snug">
                           {a.name}
                         </h4>
                         <span className="text-[9px] text-gray-400 font-semibold block mt-0.5">
@@ -410,7 +410,7 @@ export default function Page({ params: { lang } }: PageProps) {
                         </span>
                       </div>
                     </div>
-                    <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs transition-transform duration-300 ${isSelected ? 'bg-primary/20 text-[#0c2340] rotate-180' : 'bg-gray-50 text-gray-400'}`}>
+                    <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs transition-transform duration-300 ${isSelected ? 'bg-primary/20 text-[#111827] rotate-180' : 'bg-gray-50 text-gray-400'}`}>
                       ▾
                     </div>
                   </div>
@@ -429,7 +429,7 @@ export default function Page({ params: { lang } }: PageProps) {
                 <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-1">
                   {es ? 'Competencias de esta área' : 'Competencies in this area'}
                 </span>
-                <h4 className="font-serif text-lg font-bold text-[#0c2340] mb-2">{selectedData.name}</h4>
+                <h4 className="font-serif text-lg font-bold text-[#111827] mb-2">{selectedData.name}</h4>
                 <p className="text-xs text-gray-500 leading-relaxed mb-4">{selectedData.desc}</p>
                 <div className="flex flex-wrap gap-2">
                   {selectedData.skills.map((s, idx) => (
@@ -475,10 +475,10 @@ export default function Page({ params: { lang } }: PageProps) {
                     </div>
 
                     {/* Member Information */}
-                    <h3 className="font-serif text-lg font-bold text-[#0c2340] leading-snug">
+                    <h3 className="font-serif text-lg font-bold text-[#111827] leading-snug">
                       {m.name}
                     </h3>
-                    <p className="text-[11px] font-bold uppercase tracking-wider text-[#0c2340]/60 mt-1 select-none">
+                    <p className="text-[11px] font-bold uppercase tracking-wider text-[#111827]/60 mt-1 select-none">
                       {m.role}
                     </p>
 
@@ -518,13 +518,13 @@ export default function Page({ params: { lang } }: PageProps) {
         <div className="container mx-auto max-w-5xl">
           
           <div className="text-center mb-12 max-w-xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[#e5f5eb] border border-[#2d8a4e]/15 rounded-full px-4 py-1.5 mb-3 select-none">
+            <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">🔗</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#2d8a4e]">
+              <span className="text-xs font-bold uppercase tracking-wider text-secondary">
                 {es ? 'Trabajo en red' : 'Network work'}
               </span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#0c2340] font-normal tracking-tight mb-4">
+            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">
               {es ? 'El niño y su familia en el centro' : 'The child and family at the center'}
             </h2>
             <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">
@@ -539,9 +539,9 @@ export default function Page({ params: { lang } }: PageProps) {
           {/* Versión Desktop: Red circular interactiva */}
           <div className="hidden md:block relative w-[480px] h-[480px] mx-auto select-none">
             {/* Nodo Central */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full bg-gradient-to-br from-primary to-[#e8a838] flex flex-col items-center justify-center text-center shadow-lg shadow-primary/20 z-20">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full bg-gradient-to-br from-primary to-[#ffc500] flex flex-col items-center justify-center text-center shadow-lg shadow-primary/20 z-20">
               <span className="text-2xl mb-0.5 block">👧</span>
-              <span className="font-serif text-[10px] text-[#0c2340] font-bold leading-tight">
+              <span className="font-serif text-[10px] text-[#111827] font-bold leading-tight">
                 {es ? 'El Niño y' : 'The Child &'}<br />{es ? 'su Familia' : 'Family'}
               </span>
             </div>
@@ -578,13 +578,13 @@ export default function Page({ params: { lang } }: PageProps) {
             <div className="absolute left-[26px] top-6 bottom-6 w-0.5 bg-dashed border-l border-primary/30" />
             
             {/* Nodo Central (Móvil) */}
-            <div className="relative flex items-center gap-4 bg-gradient-to-r from-primary to-[#e8a838] p-4 rounded-2xl shadow-sm z-10 mb-8 max-w-[280px]">
+            <div className="relative flex items-center gap-4 bg-gradient-to-r from-primary to-[#ffc500] p-4 rounded-2xl shadow-sm z-10 mb-8 max-w-[280px]">
               <div className="w-11 h-11 rounded-full bg-white flex items-center justify-center text-xl shadow-inner flex-shrink-0">
                 👧
               </div>
               <div>
-                <h4 className="font-serif text-sm text-[#0c2340] font-bold leading-tight">{es ? 'El Niño y su Familia' : 'The Child and Family'}</h4>
-                <p className="text-[10px] text-[#0c2340]/60 font-semibold uppercase mt-0.5">{es ? 'Centro de la red' : 'Red Core'}</p>
+                <h4 className="font-serif text-sm text-[#111827] font-bold leading-tight">{es ? 'El Niño y su Familia' : 'The Child and Family'}</h4>
+                <p className="text-[10px] text-[#111827]/60 font-semibold uppercase mt-0.5">{es ? 'Centro de la red' : 'Red Core'}</p>
               </div>
             </div>
 
@@ -597,7 +597,7 @@ export default function Page({ params: { lang } }: PageProps) {
                     {a.icon}
                   </div>
                   <div>
-                    <h5 className="text-xs font-bold text-[#0c2340]">{a.name}</h5>
+                    <h5 className="text-xs font-bold text-[#111827]">{a.name}</h5>
                     <p className="text-[9px] text-gray-400 font-semibold">{es ? 'Intervención integral' : 'Integral Care'}</p>
                   </div>
                 </div>
@@ -609,17 +609,17 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 6. Volunteers List */}
-      <section className="py-16 px-4 bg-[#fafbfd]">
+      <section className="py-16 px-4 bg-gray-50">
         <div className="container mx-auto max-w-4xl text-center">
           
           <div className="text-center mb-10 max-w-md mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[#fdf2f8] border border-[#e84393]/15 rounded-full px-4 py-1.5 mb-3 select-none">
+            <div className="inline-flex items-center gap-2 bg-[#f5edfb] border border-accent/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">🤝</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#e84393]">
+              <span className="text-xs font-bold uppercase tracking-wider text-accent">
                 {es ? 'Voluntariado' : 'Volunteering'}
               </span>
             </div>
-            <h2 className="font-serif text-2xl md:text-3xl text-[#0c2340] font-normal tracking-tight mb-2">
+            <h2 className="font-serif text-2xl md:text-3xl text-[#111827] font-normal tracking-tight mb-2">
               {es ? 'Nuestros Voluntarios' : 'Our Volunteers'}
             </h2>
             <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
@@ -648,7 +648,7 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 7. Join Team CTA */}
-      <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-[#0c2340] via-[#142d4c] to-[#2466a8] relative overflow-hidden">
+      <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary relative overflow-hidden">
         <div className="absolute inset-0 bg-radial-gradient(circle, rgba(232,168,56,0.06), transparent 70%) pointer-events-none" />
         
         <div className="container mx-auto max-w-3xl relative z-10 text-center">
