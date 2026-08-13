@@ -129,7 +129,7 @@ export default function Page({ params: { lang } }: PageProps) {
     <div className="overflow-x-hidden w-full bg-[#fafbfd]">
       
       {/* 1. Hero Section */}
-      <section className="relative min-h-[480px] flex items-center bg-gradient-to-br from-[#0a2e16] via-[#1e6b38] to-[#2d8a4e] py-16 px-4 overflow-hidden">
+      <section className="relative min-h-[480px] flex items-center bg-gradient-to-br from-[#0c2340] via-[#163a60] to-[#229cc2] py-16 px-4 overflow-hidden">
         {/* Decoraciones */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
           <div className="absolute -top-[15%] -right-[10%] w-[350px] h-[350px] md:w-[550px] md:h-[550px] rounded-full border border-white/5 opacity-30" />
@@ -165,16 +165,16 @@ export default function Page({ params: { lang } }: PageProps) {
 
               <p className="text-sm md:text-base text-white/70 leading-relaxed mb-8 max-w-lg">
                 {es 
-                  ? 'No todos los niños aprenden de la misma manera, y eso no es un problema — es una oportunidad. Identificamos las necesidades específicas de cada estudiante y construimos el camino que mejor se adapta a su forma de aprender.'
-                  : 'Not all children learn the same way, and that is not a problem — it is an opportunity. We identify each student\'s specific needs and build the path that best adapts to their learning style.'}
+                  ? 'El Programa Pasos Firmes es una iniciativa de la Fundación Pro-21 diseñada para acompañar a niños, niñas y adolescentes durante su trayectoria educativa, brindando apoyo integral de acuerdo con sus necesidades, capacidades y etapas de desarrollo.'
+                  : 'The Pasos Firmes Program is an initiative of Fundación Pro-21 designed to accompany children and adolescents during their educational journey, providing comprehensive support according to their needs, abilities, and stages of development.'}
               </p>
 
               <div className="flex flex-wrap gap-4 items-center">
                 <a
-                  href="#dificultades"
-                  className="bg-primary hover:bg-primary/95 text-black font-extrabold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-md shadow-primary/10 min-h-[44px] flex items-center justify-center"
+                  href="#areas-intervencion"
+                  className="bg-[#ffc500] hover:bg-[#ffc500]/90 text-black font-extrabold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-md shadow-[#ffc500]/20 min-h-[44px] flex items-center justify-center"
                 >
-                  {es ? '¿Qué dificultades atendemos?' : 'What do we address?'}
+                  {es ? 'Ver áreas de intervención' : 'View areas of intervention'}
                 </a>
                 <a
                   href="https://wa.me/59170106276"
@@ -188,36 +188,300 @@ export default function Page({ params: { lang } }: PageProps) {
               </div>
             </div>
 
-            {/* Imagen ilustrativa en Desktop */}
-            <div className="relative hidden lg:block">
-              <div className="aspect-[4/4.2] rounded-3xl bg-gradient-to-br from-[#e5f5eb] to-[#fdf6e3] overflow-hidden border-[4.5px] border-white/10 shadow-2xl relative flex items-center justify-center p-8">
-                <div className="text-center">
-                  <div className="text-6xl mb-4 animate-[float_4s_ease-in-out_infinite]">📚</div>
-                  <h3 className="font-serif text-lg text-[#0c2340] font-bold max-w-[200px] leading-snug mx-auto">
-                    {es ? 'Sesiones psicopedagógicas individuales' : 'Individual psychopedagogical sessions'}
-                  </h3>
-                  <p className="text-xs text-gray-500 mt-2 font-medium">{es ? 'Aprendizaje adaptado a cada ritmo' : 'Learning adapted to each pace'}</p>
+            {/* Composición visual destacada en Desktop */}
+            <div className="relative hidden lg:block pl-6">
+              <div className="relative bg-white/95 backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-2xl space-y-6 text-left">
+                
+                {/* Header de la tarjeta */}
+                <div className="flex items-center justify-between pb-4 border-b border-gray-100">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-2xl bg-[#229cc2]/10 text-[#229cc2] flex items-center justify-center text-2xl font-bold shadow-sm">
+                      📚
+                    </div>
+                    <div>
+                      <h3 className="font-serif text-lg font-bold text-[#0c2340]">
+                        {es ? 'Programa Pasos Firmes' : 'Pasos Firmes Program'}
+                      </h3>
+                      <p className="text-xs text-gray-400 font-semibold">
+                        {es ? 'Atención integral & personalizada' : 'Comprehensive & personalized care'}
+                      </p>
+                    </div>
+                  </div>
+                  <span className="bg-[#ffc500]/20 text-[#b38600] font-extrabold text-xs px-3.5 py-1.5 rounded-full border border-[#ffc500]/30 select-none">
+                    {es ? '4 Áreas' : '4 Areas'}
+                  </span>
                 </div>
-              </div>
 
-              {/* Floating Badge 1 */}
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-xl border border-gray-100 flex items-center gap-3.5 animate-[float_4s_ease-in-out_infinite]">
-                <div className="w-11 h-11 rounded-xl bg-[#f0edff] flex items-center justify-center text-xl">🧠</div>
-                <div className="text-left">
-                  <div className="text-xs font-bold text-[#0c2340] leading-tight">{es ? 'Evaluación' : 'Evaluation'}</div>
-                  <div className="text-[10px] text-gray-400 font-semibold mt-0.5">{es ? 'neuropsicológica completa' : 'complete neuropsychological'}</div>
+                {/* Grid de Mini-Áreas con los colores institucionales */}
+                <div className="grid grid-cols-2 gap-3.5">
+                  <div className="bg-[#229cc2]/8 border border-[#229cc2]/20 rounded-2xl p-3.5 flex items-center gap-3">
+                    <span className="text-2xl select-none">🎒</span>
+                    <div>
+                      <div className="text-xs font-bold text-[#0c2340]">{es ? 'Primaria' : 'Primary'}</div>
+                      <div className="text-[10px] text-gray-500">{es ? 'Estrategias a medida' : 'Tailored strategies'}</div>
+                    </div>
+                  </div>
+
+                  <div className="bg-[#8c3cbd]/8 border border-[#8c3cbd]/20 rounded-2xl p-3.5 flex items-center gap-3">
+                    <span className="text-2xl select-none">🎓</span>
+                    <div>
+                      <div className="text-xs font-bold text-[#0c2340]">{es ? 'Secundaria' : 'Secondary'}</div>
+                      <div className="text-[10px] text-gray-500">{es ? 'Proyecto de vida' : 'Life project'}</div>
+                    </div>
+                  </div>
+
+                  <div className="bg-[#ffc500]/12 border border-[#ffc500]/25 rounded-2xl p-3.5 flex items-center gap-3">
+                    <span className="text-2xl select-none">👨‍👩‍👧‍👦</span>
+                    <div>
+                      <div className="text-xs font-bold text-[#0c2340]">{es ? 'Grupos Padres' : 'Parent Groups'}</div>
+                      <div className="text-[10px] text-gray-500">{es ? 'Acompañamiento' : 'Support group'}</div>
+                    </div>
+                  </div>
+
+                  <div className="bg-[#2d8a4e]/10 border border-[#2d8a4e]/20 rounded-2xl p-3.5 flex items-center gap-3">
+                    <span className="text-2xl select-none">🤝</span>
+                    <div>
+                      <div className="text-xs font-bold text-[#0c2340]">{es ? 'Individual' : 'Individual'}</div>
+                      <div className="text-[10px] text-gray-500">{es ? 'Terapia directa' : 'Direct therapy'}</div>
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              {/* Floating Badge 2 */}
-              <div className="absolute -top-4 -right-4 bg-green rounded-xl py-2 px-4 shadow-lg shadow-green/20 flex flex-col items-center justify-center animate-[float_5s_ease-in-out_infinite_1.5s]">
-                <span className="font-serif text-xl font-bold text-white leading-none">7</span>
-                <span className="text-[9px] text-white/95 font-extrabold uppercase tracking-wider mt-0.5">{es ? 'Áreas' : 'Areas'}</span>
+                {/* Footer destacado dentro de la tarjeta */}
+                <div className="bg-[#fafbfd] border border-gray-100 rounded-2xl p-3.5 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs select-none">✨</span>
+                    <span className="text-xs font-bold text-gray-700">
+                      {es ? 'Enfoque 100% Inclusivo' : '100% Inclusive Focus'}
+                    </span>
+                  </div>
+                  <span className="text-[11px] text-gray-400 font-semibold">La Paz, Bolivia</span>
+                </div>
+
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* 1.5. Propósito y Enfoque Inclusivo (Texto Oficial) */}
+      <section className="py-12 md:py-16 px-4 bg-white border-b border-gray-100">
+        <div className="container mx-auto max-w-5xl">
+          <div className="bg-gradient-to-br from-[#229cc2]/10 via-[#fafbfd] to-[#8c3cbd]/10 rounded-3xl p-8 md:p-12 border border-[#229cc2]/20 shadow-sm">
+            <div className="max-w-3xl mx-auto text-center space-y-6">
+              <div className="inline-flex items-center gap-2 bg-[#229cc2]/10 border border-[#229cc2]/20 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#229cc2]">
+                <span>🌱</span> {es ? 'Propósito y Enfoque Inclusivo' : 'Purpose and Inclusive Focus'}
+              </div>
+              
+              <p className="text-base sm:text-lg md:text-xl text-[#0c2340] leading-relaxed font-medium">
+                {es 
+                  ? 'El programa tiene como propósito fortalecer los procesos de aprendizaje, promover la autonomía y favorecer la participación activa de cada estudiante en los diferentes espacios educativos y sociales. A través de intervenciones personalizadas, se busca identificar fortalezas y necesidades de apoyo, proporcionando herramientas que contribuyan al desarrollo académico, emocional, social y vocacional.'
+                  : 'The program aims to strengthen learning processes, promote autonomy, and foster active participation of each student in different educational and social settings. Through personalized interventions, it seeks to identify strengths and support needs, providing tools that contribute to academic, emotional, social, and vocational development.'}
+              </p>
+              
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed pt-4 border-t border-gray-200/60">
+                {es 
+                  ? 'Desde un enfoque inclusivo, el Programa Pasos Firmes acompaña tanto a estudiantes de nivel primario como secundario, promoviendo la confianza en sus habilidades, la construcción de proyectos personales y la preparación para una participación plena en la comunidad y en futuros espacios de formación o inserción laboral.'
+                  : 'From an inclusive approach, the Pasos Firmes Program accompanies both primary and secondary level students, promoting confidence in their abilities, the construction of personal life projects, and preparation for full participation in the community and future training or labor integration spaces.'}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 1.8. Áreas de Intervención (Texto Oficial) */}
+      <section id="areas-intervencion" className="py-16 md:py-24 px-4 bg-[#fafbfd]">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-12 max-w-2xl mx-auto">
+            <div className="inline-flex items-center gap-2 bg-[#229cc2]/10 border border-[#229cc2]/20 rounded-full px-4 py-1.5 mb-3 select-none">
+              <span className="text-sm">🎯</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#229cc2]">
+                {es ? 'Áreas de Intervención' : 'Areas of Intervention'}
+              </span>
+            </div>
+            <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl text-[#0c2340] font-bold tracking-tight mb-4">
+              {es ? 'El programa contempla las siguientes áreas de intervención:' : 'The program contemplates the following areas of intervention:'}
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
+            {/* Intervenciones Estudiantes Primaria */}
+            <div className="bg-white rounded-3xl p-8 border-2 border-[#229cc2]/20 shadow-sm hover:shadow-md hover:border-[#229cc2] transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-[#229cc2]/10 text-[#229cc2] flex items-center justify-center text-2xl mb-5 shadow-sm">
+                  🎒
+                </div>
+                <h3 className="font-serif text-xl font-bold text-[#0c2340] mb-4">
+                  {es ? 'Intervenciones Estudiantes Primaria' : 'Primary Student Interventions'}
+                </h3>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3 text-sm text-gray-700">
+                    <span className="text-[#229cc2] font-bold mt-0.5">•</span>
+                    <span>{es ? 'Identificar dificultades de aprendizaje específicas y diseñar estrategias personalizadas.' : 'Identify specific learning difficulties and design personalized strategies.'}</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-sm text-gray-700">
+                    <span className="text-[#229cc2] font-bold mt-0.5">•</span>
+                    <span>{es ? 'Proporcionar apoyo académico y emocional a estudiantes en primaria.' : 'Provide academic and emotional support to primary school students.'}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Intervenciones Estudiantes Secundaria */}
+            <div className="bg-white rounded-3xl p-8 border-2 border-[#8c3cbd]/20 shadow-sm hover:shadow-md hover:border-[#8c3cbd] transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-[#8c3cbd]/10 text-[#8c3cbd] flex items-center justify-center text-2xl mb-5 shadow-sm">
+                  🎓
+                </div>
+                <h3 className="font-serif text-xl font-bold text-[#0c2340] mb-4">
+                  {es ? 'Intervenciones Estudiantes Secundaria' : 'Secondary Student Interventions'}
+                </h3>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3 text-sm text-gray-700">
+                    <span className="text-[#8c3cbd] font-bold mt-0.5">•</span>
+                    <span>{es ? 'Enfocar las actividades en la inclusión social y laboral futura.' : 'Focus activities on future social and labor inclusion.'}</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-sm text-gray-700">
+                    <span className="text-[#8c3cbd] font-bold mt-0.5">•</span>
+                    <span>{es ? 'Ofrecer proyecto de vida y talleres prácticos.' : 'Offer life projects and practical workshops.'}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Grupos de terapia para Padres */}
+            <div className="bg-white rounded-3xl p-8 border-2 border-[#ffc500]/30 shadow-sm hover:shadow-md hover:border-[#ffc500] transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-[#ffc500]/15 text-[#d99b00] flex items-center justify-center text-2xl mb-5 shadow-sm">
+                  👨‍👩‍👧‍👦
+                </div>
+                <h3 className="font-serif text-xl font-bold text-[#0c2340] mb-3">
+                  {es ? 'Intervenciones en grupos de terapia' : 'Group Therapy Interventions'}
+                </h3>
+                <p className="text-sm text-gray-700 leading-relaxed font-medium">
+                  {es ? 'Dirigido a padres de familia' : 'Directed to parents and families'}
+                </p>
+              </div>
+            </div>
+
+            {/* Terapia individual */}
+            <div className="bg-white rounded-3xl p-8 border-2 border-[#229cc2]/20 shadow-sm hover:shadow-md hover:border-[#229cc2] transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-[#229cc2]/10 text-[#229cc2] flex items-center justify-center text-2xl mb-5 shadow-sm">
+                  🤝
+                </div>
+                <h3 className="font-serif text-xl font-bold text-[#0c2340] mb-3">
+                  {es ? 'Intervención en terapia individual' : 'Individual Therapy Intervention'}
+                </h3>
+                <p className="text-sm text-gray-700 leading-relaxed font-medium">
+                  {es ? 'Para los padres, niños y adolescentes' : 'For parents, children, and adolescents'}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 1.9. Galería de Fotos de Actividades (Fotos Reales de las Sesiones) */}
+      <section className="py-16 md:py-24 px-4 bg-white border-t border-b border-gray-100">
+        <div className="container mx-auto max-w-6xl">
+          
+          <div className="text-center mb-12 max-w-2xl mx-auto">
+            <div className="inline-flex items-center gap-2 bg-[#ffc500]/15 border border-[#ffc500]/30 rounded-full px-4 py-1.5 mb-3 select-none">
+              <span className="text-sm">📸</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#b38600]">
+                {es ? 'Fotos de Actividades' : 'Activity Photos'}
+              </span>
+            </div>
+            <h2 className="font-serif text-3xl md:text-4xl text-[#0c2340] font-bold tracking-tight mb-4">
+              {es ? 'Nuestras Sesiones en Acción' : 'Our Sessions in Action'}
+            </h2>
+            <p className="text-sm text-gray-600 max-w-lg mx-auto leading-relaxed">
+              {es 
+                ? 'Experiencias vivenciales, terapéuticas y educativas diseñadas para potenciar el desarrollo integral, la autonomía y la creatividad de cada niño.' 
+                : 'Experiential, therapeutic, and educational experiences designed to boost each child\'s integral development, autonomy, and creativity.'}
+            </p>
+
+            {/* Aviso de Autorización Escrita */}
+            <div className="mt-4 inline-flex items-center gap-2 bg-[#fafbfd] border border-gray-200 rounded-full px-4 py-1.5 text-xs text-gray-600 font-medium shadow-sm">
+              <span>🔒</span>
+              <span>{es ? 'Fotos de las actividades del centro. Cuentan con la autorización escrita de los papás.' : 'Photos of center activities. They have written parental authorization.'}</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+            {[
+              {
+                src: '/images/actividades/mercado-autonomia.jpg',
+                alt: es ? 'Mercado adaptado y cálculo funcional' : 'Adapted market and functional math',
+                badge: es ? '🛒 Autonomía Cotidiana' : '🛒 Daily Autonomy',
+                title: es ? 'Mercado Adaptado & Cálculo' : 'Adapted Market & Math',
+                desc: es ? 'Práctica de cálculo funcional, pesaje en balanza y habilidades de compra en contextos reales.' : 'Functional math, weighing scale practice, and shopping skills in real-life contexts.',
+                border: 'border-[#ffc500]/30',
+                textColor: 'text-[#b38600]'
+              },
+              {
+                src: '/images/actividades/estimulacion-sensorial.jpg',
+                alt: es ? 'Estimulación sensorial y manipulación' : 'Sensory stimulation and manipulation',
+                badge: es ? '🌽 Estimulación Sensorial' : '🌽 Sensory Stimulation',
+                title: es ? 'Texturas & Motricidad Fina' : 'Textures & Fine Motor',
+                desc: es ? 'Desgrane de maíz y manipulación táctil para desarrollar coordinación bimanual y concentración.' : 'Corn deshelling and tactile manipulation to build bimanual coordination and focus.',
+                border: 'border-[#229cc2]/20',
+                textColor: 'text-[#229cc2]'
+              },
+              {
+                src: '/images/actividades/psicomotricidad-bolos.jpg',
+                alt: es ? 'Juegos de psicomotricidad y equilibrio' : 'Psychomotor games and balance',
+                badge: es ? '🎳 Psicomotricidad' : '🎳 Psychomotor',
+                title: es ? 'Juegos & Coordinación' : 'Games & Coordination',
+                desc: es ? 'Circuito lúdico con bolos para ejercitar control postural, precisión motora y enfoque.' : 'Playful bowling circuit to exercise postural control, motor precision, and focus.',
+                border: 'border-[#8c3cbd]/20',
+                textColor: 'text-[#8c3cbd]'
+              },
+              {
+                src: '/images/actividades/trazos-cognitivos.jpg',
+                alt: es ? 'Grafomotricidad y trazos cognitivos' : 'Graphomotor and cognitive tracing',
+                badge: es ? '✏️ Grafomotricidad' : '✏️ Graphomotor',
+                title: es ? 'Trazos & Apoyo Escolar' : 'Tracing & Academic Support',
+                desc: es ? 'Ejercicios de concentración, patrón visual y coloreado adaptado para fortalecer la lectoescritura.' : 'Focus exercises, visual patterns, and adapted coloring to strengthen literacy.',
+                border: 'border-[#2d8a4e]/20',
+                textColor: 'text-[#2d8a4e]'
+              }
+            ].map((img, idx) => (
+              <div
+                key={idx}
+                className={`bg-white rounded-3xl overflow-hidden border ${img.border} shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group`}
+              >
+                <div className="relative aspect-[3/4] overflow-hidden bg-gray-100">
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute top-3 left-3 z-10">
+                    <span className={`inline-block backdrop-blur-md bg-white/95 ${img.textColor} font-extrabold text-[11px] px-3 py-1 rounded-full shadow-sm`}>
+                      {img.badge}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-5 flex flex-col justify-between flex-1">
+                  <div>
+                    <h3 className="font-serif text-lg font-bold text-[#0c2340] mb-2 leading-snug">
+                      {img.title}
+                    </h3>
+                    <p className="text-xs text-gray-600 leading-relaxed">
+                      {img.desc}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
 
       {/* 2. Difficulties We Address Section */}
       <section id="dificultades" className="py-16 md:py-24 px-4 bg-[#fafbfd]">
@@ -492,7 +756,7 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 6. CTA / Enrollment */}
-      <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-[#0a2e16] via-[#1e6b38] to-[#2d8a4e] relative overflow-hidden">
+      <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-[#0c2340] via-[#163a60] to-[#229cc2] relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
           <div className="absolute top-[15%] left-[15%] text-white/5 text-4xl transform rotate-12">📖</div>
           <div className="absolute bottom-[20%] right-[25%] text-white/5 text-5xl transform -rotate-12">✏️</div>
