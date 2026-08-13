@@ -211,8 +211,8 @@ export default function Page({ params: { lang } }: PageProps) {
 
         {/* Wave */}
         <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 60" className="w-full h-8 md:h-12 fill-white">
-            <path d="M0 30C360 60 1080 0 1440 30V60H0Z" />
+          <svg viewBox="0 0 1440 60" preserveAspectRatio="none" className="w-full h-10 md:h-14 fill-white">
+            <path d="M0 0 Q360 60 720 30 Q1080 0 1440 0 L1440 60 L0 60 Z" />
           </svg>
         </div>
       </section>
