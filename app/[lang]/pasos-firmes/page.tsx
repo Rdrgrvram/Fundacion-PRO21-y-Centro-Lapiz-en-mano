@@ -4,29 +4,46 @@ import Button from '@/components/ui/Button'
 
 export const metadata: Metadata = {
   title: 'Pasos Firmes | Fundación PRO-21',
+  description:
+    'Programa de intervención para niños, niñas y adolescentes con dificultades de aprendizaje, con acompañamiento activo a familias.',
 }
 
 const INTERVENCIONES = [
   {
     icon: '📖',
     titulo: 'Estudiantes de Primaria',
-    descripcion:
-      'Apoyo en lectoescritura, cálculo y atención para niños con dislexia, discalculia o dificultades de aprendizaje. Trabajo coordinado con la escuela regular.',
+    descripcionEs:
+      'Identificamos dificultades de aprendizaje específicas y diseñamos estrategias personalizadas, brindando apoyo académico y emocional a cada estudiante.',
+    descripcionEn:
+      'We identify specific learning difficulties and design personalized strategies, providing academic and emotional support to each student.',
     etiqueta: 'Primaria',
   },
   {
     icon: '🎓',
     titulo: 'Estudiantes de Secundaria',
-    descripcion:
-      'Intervención en organización escolar, comprensión lectora, técnicas de estudio y manejo de la ansiedad académica para adolescentes.',
+    descripcionEs:
+      'Enfocamos las actividades en la inclusión social y laboral futura, ofreciendo proyecto de vida y talleres prácticos para adolescentes.',
+    descripcionEn:
+      'We focus activities on future social and labor inclusion, offering life project planning and practical workshops for adolescents.',
     etiqueta: 'Secundaria',
   },
   {
     icon: '👨‍👩‍👧',
-    titulo: 'Grupos de Terapia para Padres',
-    descripcion:
-      'Espacios grupales de orientación y acompañamiento para que las familias comprendan las dificultades de sus hijos y fortalezcan el apoyo en el hogar.',
+    titulo: 'Terapia Grupal para Familias',
+    descripcionEs:
+      'Espacios grupales de orientación y acompañamiento para que las familias comprendan las necesidades de sus hijos y fortalezcan el apoyo en el hogar.',
+    descripcionEn:
+      'Group guidance sessions for families to understand their children\'s needs and strengthen home support.',
     etiqueta: 'Familias',
+  },
+  {
+    icon: '🫂',
+    titulo: 'Terapia Individual',
+    descripcionEs:
+      'Intervención en terapia individual para los padres, niños y adolescentes que requieren acompañamiento personalizado en su proceso.',
+    descripcionEn:
+      'Individual therapy sessions for parents, children and adolescents who need personalized support in their process.',
+    etiqueta: 'Individual',
   },
 ]
 
@@ -40,10 +57,10 @@ export default function Page({ params }: { params: { lang: Locale } }) {
         <div className="container mx-auto max-w-3xl text-center">
           <span className="text-5xl">👣</span>
           <h1 className="mt-4 text-4xl font-bold text-gray-900">Pasos Firmes</h1>
-          <p className="mt-4 text-lg text-gray-600 max-w-xl mx-auto">
+          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
             {es
-              ? 'Programa de intervención para estudiantes con dislexia, déficit de atención y otras dificultades de aprendizaje, con acompañamiento activo a las familias.'
-              : 'Intervention program for students with dyslexia, attention deficit, and other learning difficulties, with active family support.'}
+              ? 'Programa de la Fundación PRO-21 diseñado para acompañar a niños, niñas y adolescentes durante su trayectoria educativa, brindando apoyo integral según sus necesidades, capacidades y etapas de desarrollo. Desde un enfoque inclusivo, fortalecemos los procesos de aprendizaje y promovemos la autonomía.'
+              : 'Program of Fundación PRO-21 designed to support children and adolescents throughout their educational journey, providing comprehensive support according to their needs, capabilities and developmental stages. From an inclusive approach, we strengthen learning processes and promote autonomy.'}
           </p>
         </div>
       </section>
@@ -56,11 +73,11 @@ export default function Page({ params }: { params: { lang: Locale } }) {
           </h2>
           <p className="text-gray-500 mb-8">
             {es
-              ? 'El programa atiende a estudiantes de distintos niveles educativos e involucra activamente a las familias.'
-              : 'The program serves students from different educational levels and actively involves families.'}
+              ? 'El programa atiende a estudiantes de distintos niveles educativos e involucra activamente a las familias en el proceso terapéutico.'
+              : 'The program serves students from different educational levels and actively involves families in the therapeutic process.'}
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {INTERVENCIONES.map((item) => (
               <div
                 key={item.titulo}
@@ -73,7 +90,9 @@ export default function Page({ params }: { params: { lang: Locale } }) {
                   </span>
                 </div>
                 <h3 className="font-bold text-gray-900">{item.titulo}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed flex-1">{item.descripcion}</p>
+                <p className="text-sm text-gray-600 leading-relaxed flex-1">
+                  {es ? item.descripcionEs : item.descripcionEn}
+                </p>
               </div>
             ))}
           </div>
@@ -81,12 +100,16 @@ export default function Page({ params }: { params: { lang: Locale } }) {
       </section>
 
       {/* Nota metodológica */}
-      <section className="bg-accent/5 border-l-4 border-accent mx-4 mb-4 rounded-r-xl px-6 py-5 max-w-3xl mx-auto">
-        <p className="text-gray-700 text-sm leading-relaxed">
-          {es
-            ? '🔍 Todas las intervenciones parten de una evaluación diagnóstica individualizada. El plan de trabajo se actualiza periódicamente en coordinación con la familia y, cuando corresponde, con la institución educativa.'
-            : '🔍 All interventions start from an individualized diagnostic evaluation. The work plan is updated periodically in coordination with the family and, when appropriate, with the educational institution.'}
-        </p>
+      <section className="py-4 px-4">
+        <div className="container mx-auto max-w-3xl">
+          <div className="bg-accent/5 border-l-4 border-accent rounded-r-xl px-6 py-5">
+            <p className="text-gray-700 text-sm leading-relaxed">
+              {es
+                ? '🔍 Todas las intervenciones parten de una evaluación diagnóstica individualizada. El plan de trabajo se actualiza periódicamente en coordinación con la familia y, cuando corresponde, con la institución educativa.'
+                : '🔍 All interventions start from an individualized diagnostic evaluation. The work plan is updated periodically in coordination with the family and, when appropriate, with the educational institution.'}
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* CTA */}
@@ -96,9 +119,14 @@ export default function Page({ params }: { params: { lang: Locale } }) {
             ? '¿Tu hijo tiene dificultades en la escuela? Podemos ayudarte a encontrar el camino.'
             : 'Is your child struggling at school? We can help you find the way forward.'}
         </p>
-        <Button href={`/${params.lang}/contacto`} size="lg">
-          {es ? 'Hablar con un especialista' : 'Talk to a specialist'}
-        </Button>
+        <div className="flex flex-wrap gap-3 justify-center">
+          <Button href={`/${params.lang}/contacto`} size="lg">
+            {es ? 'Hablar con un especialista' : 'Talk to a specialist'}
+          </Button>
+          <Button href="https://wa.me/59170106276" external variant="outline" size="lg">
+            WhatsApp
+          </Button>
+        </div>
       </section>
     </>
   )
