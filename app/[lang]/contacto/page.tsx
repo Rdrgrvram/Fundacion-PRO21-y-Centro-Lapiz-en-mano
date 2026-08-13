@@ -16,19 +16,19 @@ export default function Page({ params: { lang } }: PageProps) {
   const [formSent, setFormSent] = useState(false)
 
   const reasons = [
-    { label: es ? 'Quiero inscribir a mi hijo/a' : 'I want to enroll my child', icon: '🌟', colorClass: 'border-[#2466a8] text-[#2466a8] hover:bg-[#2466a8]/5' },
-    { label: es ? 'Solicitar una evaluación' : 'Request an evaluation', icon: '🔍', colorClass: 'border-[#e86840] text-[#e86840] hover:bg-[#e86840]/5' },
-    { label: es ? 'Ser voluntario/a' : 'Become a volunteer', icon: '🙌', colorClass: 'border-[#1a8a7d] text-[#1a8a7d] hover:bg-[#1a8a7d]/5' },
-    { label: es ? 'Alianza institucional' : 'Institutional alliance', icon: '🤝', colorClass: 'border-[#6c5ce7] text-[#6c5ce7] hover:bg-[#6c5ce7]/5' },
-    { label: es ? 'Donación o patrocinio' : 'Donation or sponsorship', icon: '💛', colorClass: 'border-[#e8a838] text-[#e8a838] hover:bg-[#e8a838]/5' },
-    { label: es ? 'Prensa o medios' : 'Press or media', icon: '📰', colorClass: 'border-[#2d8a4e] text-[#2d8a4e] hover:bg-[#2d8a4e]/5' },
+    { label: es ? 'Quiero inscribir a mi hijo/a' : 'I want to enroll my child', icon: '🌟', colorClass: 'border-secondary text-secondary hover:bg-secondary/5' },
+    { label: es ? 'Solicitar una evaluación' : 'Request an evaluation', icon: '🔍', colorClass: 'border-accent text-accent hover:bg-accent/5' },
+    { label: es ? 'Ser voluntario/a' : 'Become a volunteer', icon: '🙌', colorClass: 'border-secondary text-secondary hover:bg-secondary/5' },
+    { label: es ? 'Alianza institucional' : 'Institutional alliance', icon: '🤝', colorClass: 'border-accent text-accent hover:bg-accent/5' },
+    { label: es ? 'Donación o patrocinio' : 'Donation or sponsorship', icon: '💛', colorClass: 'border-primary text-primary-700 hover:bg-primary/5' },
+    { label: es ? 'Prensa o medios' : 'Press or media', icon: '📰', colorClass: 'border-secondary text-secondary hover:bg-secondary/5' },
     { label: es ? 'Otro motivo' : 'Other reason', icon: '💬', colorClass: 'border-gray-500 text-gray-500 hover:bg-gray-500/5' }
   ]
 
   const contactInfo = [
-    { icon: '📱', title: 'WhatsApp', primary: '+591 70106276', secondary: es ? 'Respuesta en menos de 2 horas' : 'Reply in less than 2 hours', href: CONTACT.whatsapp, action: es ? 'Escribir ahora' : 'Write now', color: '#25d366', bg: 'bg-[#e8faf0]' },
-    { icon: '✉️', title: es ? 'Correo electrónico' : 'Email', primary: CONTACT.email, secondary: es ? 'Respuesta en 24 horas' : 'Reply in 24 hours', href: `mailto:${CONTACT.email}`, action: es ? 'Enviar correo' : 'Send email', color: '#2466a8', bg: 'bg-[#e8f1fa]' },
-    { icon: '📞', title: es ? 'Teléfono' : 'Phone', primary: '+591 70106276', secondary: es ? 'Lunes a viernes, 8:00 – 18:00' : 'Monday to Friday, 8:00 – 18:00', href: `tel:${CONTACT.phone}`, action: es ? 'Llamar' : 'Call', color: '#1a8a7d', bg: 'bg-[#e0f5f0]' }
+    { icon: '📱', title: 'WhatsApp', primary: '+591 70106276', secondary: es ? 'Respuesta en menos de 2 horas' : 'Reply in less than 2 hours', href: CONTACT.whatsapp, action: es ? 'Escribir ahora' : 'Write now', color: '#22c55e', bg: 'bg-green-50' },
+    { icon: '✉️', title: es ? 'Correo electrónico' : 'Email', primary: CONTACT.email, secondary: es ? 'Respuesta en 24 horas' : 'Reply in 24 hours', href: `mailto:${CONTACT.email}`, action: es ? 'Enviar correo' : 'Send email', color: '#229cc2', bg: 'bg-secondary/10' },
+    { icon: '📞', title: es ? 'Teléfono' : 'Phone', primary: '+591 70106276', secondary: es ? 'Lunes a viernes, 8:00 – 18:00' : 'Monday to Friday, 8:00 – 18:00', href: `tel:${CONTACT.phone}`, action: es ? 'Llamar' : 'Call', color: '#229cc2', bg: 'bg-secondary/10' }
   ]
 
   const hours = [
@@ -38,23 +38,23 @@ export default function Page({ params: { lang } }: PageProps) {
   ]
 
   const socialLinks = [
-    { name: 'Facebook', handle: 'Centro Lapiz en Mano', color: '#1877f2', bg: 'bg-[#e8f0fe]', url: 'https://facebook.com/Centro_Lapiz_en_Mano' },
-    { name: 'Instagram', handle: '@Centro_Lapiz_en_Mano', color: '#e4405f', bg: 'bg-[#fce8ec]', url: CONTACT.social.instagram },
-    { name: 'TikTok', handle: '@lapiz.en.mano65', color: '#111', bg: 'bg-[#f0f0f0]', url: CONTACT.social.tiktok }
+    { name: 'Facebook', handle: 'Centro Lapiz en Mano', color: '#229cc2', bg: 'bg-[#eff6ff]', url: 'https://facebook.com/Centro_Lapiz_en_Mano' },
+    { name: 'Instagram', handle: '@Centro_Lapiz_en_Mano', color: '#8c3cbd', bg: 'bg-[#f5edfb]', url: CONTACT.social.instagram },
+    { name: 'TikTok', handle: '@lapiz.en.mano65', color: '#111827', bg: 'bg-[#f3f4f6]', url: CONTACT.social.tiktokLapiz }
   ]
 
   const faqs = [
-    { q: es ? '¿Cómo inscribo a mi hijo?' : 'How do I enroll my child?', a: es ? 'Agenda una evaluación inicial de diagnóstico escribiendo a nuestro WhatsApp. Nuestro equipo multidisciplinario sugerirá el programa terapéutico o escolar adecuado.' : 'Schedule an initial diagnostic evaluation by messaging our WhatsApp. Our team will suggest the appropriate therapeutic or school program.', icon: '🌟', color: '#2466a8' },
-    { q: es ? '¿Tiene costo la atención?' : 'Is there a cost for care?', a: es ? 'Cada programa cuenta con cuotas mensuales solidarias. Si la familia no puede cubrirlas, contamos con becas parciales y completas. Ningún niño queda sin atención por motivos económicos.' : 'Each program has supportive monthly fees. If a family cannot cover them, we offer partial and full scholarships. No child is left without care due to economic reasons.', icon: '💰', color: '#e8a838' },
-    { q: es ? '¿Se requiere diagnóstico previo?' : 'Is a prior diagnosis required?', a: es ? 'No es necesario. Puedes consultarnos ante cualquier señal de alerta en el desarrollo, comunicación o conducta de tu hijo. Nosotros realizamos la evaluación correspondiente.' : 'It is not necessary. You can consult us for any developmental, communication, or behavioral warning sign in your child. We perform the evaluation.', icon: '📋', color: '#1a8a7d' },
-    { q: es ? '¿Atienden fuera de La Paz?' : 'Do you serve outside La Paz?', a: es ? 'La atención terapéutica y escolar presencial es en La Paz. Sin embargo, ofrecemos orientación familiar y capacitaciones virtuales para todo el país.' : 'Physical therapy and school care are in La Paz. However, we offer family guidance and virtual training sessions nationwide.', icon: '🌎', color: '#e86840' }
+    { q: es ? '¿Cómo inscribo a mi hijo?' : 'How do I enroll my child?', a: es ? 'Agenda una evaluación inicial de diagnóstico escribiendo a nuestro WhatsApp. Nuestro equipo multidisciplinario sugerirá el programa terapéutico o escolar adecuado.' : 'Schedule an initial diagnostic evaluation by messaging our WhatsApp. Our team will suggest the appropriate therapeutic or school program.', icon: '🌟', color: '#229cc2' },
+    { q: es ? '¿Tiene costo la atención?' : 'Is there a cost for care?', a: es ? 'Cada programa cuenta con cuotas mensuales solidarias. Si la familia no puede cubrirlas, contamos con becas parciales y completas. Ningún niño queda sin atención por motivos económicos.' : 'Each program has supportive monthly fees. If a family cannot cover them, we offer partial and full scholarships. No child is left without care due to economic reasons.', icon: '💰', color: '#ffc500' },
+    { q: es ? '¿Se requiere diagnóstico previo?' : 'Is a prior diagnosis required?', a: es ? 'No es necesario. Puedes consultarnos ante cualquier señal de alerta en el desarrollo, comunicación o conducta de tu hijo. Nosotros realizamos la evaluación correspondiente.' : 'It is not necessary. You can consult us for any developmental, communication, or behavioral warning sign in your child. We perform the evaluation.', icon: '📋', color: '#229cc2' },
+    { q: es ? '¿Atienden fuera de La Paz?' : 'Do you serve outside La Paz?', a: es ? 'La atención terapéutica y escolar presencial es en La Paz. Sin embargo, ofrecemos orientación familiar y capacitaciones virtuales para todo el país.' : 'Physical therapy and school care are in La Paz. However, we offer family guidance and virtual training sessions nationwide.', icon: '🌎', color: '#8c3cbd' }
   ]
 
   return (
-    <div className="overflow-x-hidden w-full bg-[#fafbfd]">
+    <div className="overflow-x-hidden w-full bg-gray-50">
       
       {/* 1. Page Hero */}
-      <section className="relative min-h-[400px] flex items-center bg-gradient-to-br from-[#0c2340] via-[#142d4c] to-[#2466a8] py-16 px-4 overflow-hidden">
+      <section className="relative min-h-[400px] flex items-center bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary py-16 px-4 overflow-hidden">
         {/* Decoraciones */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
           <div className="absolute -top-[15%] -right-[8%] w-[350px] h-[350px] md:w-[500px] md:h-[500px] rounded-full border border-white/5 opacity-30" />
@@ -63,7 +63,7 @@ export default function Page({ params: { lang } }: PageProps) {
 
         {/* Wave bottom */}
         <div className="absolute bottom-0 left-0 right-0 z-10">
-          <svg viewBox="0 0 1440 70" fill="none" className="block w-full h-8 md:h-16 lg:h-20 text-[#fafbfd] fill-current">
+          <svg viewBox="0 0 1440 70" fill="none" className="block w-full h-8 md:h-16 lg:h-20 text-[#f9fafb] fill-current">
             <path d="M0 30C360 55 720 15 1080 40C1260 50 1380 42 1440 38V70H0Z" />
           </svg>
         </div>
@@ -97,7 +97,7 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 2. Quick Contact Cards Grid */}
-      <section className="py-12 px-4 bg-[#fafbfd]">
+      <section className="py-12 px-4 bg-gray-50">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {contactInfo.map((c, i) => (
@@ -115,7 +115,7 @@ export default function Page({ params: { lang } }: PageProps) {
                     </div>
                     <div>
                       <div className="text-[10px] font-bold text-gray-400 tracking-wider uppercase">{c.title}</div>
-                      <div className="text-sm sm:text-base font-bold text-[#0c2340] mt-0.5 break-all">{c.primary}</div>
+                      <div className="text-sm sm:text-base font-bold text-[#111827] mt-0.5 break-all">{c.primary}</div>
                     </div>
                   </div>
                   <p className="text-xs text-gray-400 font-semibold mb-6">
@@ -137,7 +137,7 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 3. Form and Info columns */}
-      <section className="py-12 md:py-16 px-4 bg-[#fafbfd]">
+      <section className="py-12 md:py-16 px-4 bg-gray-50">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             
@@ -146,7 +146,7 @@ export default function Page({ params: { lang } }: PageProps) {
               {!formSent ? (
                 <>
                   <div>
-                    <h3 className="font-serif text-2xl text-[#0c2340] font-bold mb-1.5">
+                    <h3 className="font-serif text-2xl text-[#111827] font-bold mb-1.5">
                       {es ? 'Envíanos un mensaje' : 'Send us a message'}
                     </h3>
                     <p className="text-xs sm:text-sm text-gray-400 mb-8 leading-relaxed">
@@ -197,7 +197,7 @@ export default function Page({ params: { lang } }: PageProps) {
                             type={f.type}
                             placeholder={f.placeholder}
                             required
-                            className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#2466a8] bg-[#fafbfd] focus:outline-none text-xs sm:text-sm"
+                            className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-secondary bg-gray-50 focus:outline-none text-xs sm:text-sm"
                           />
                         </div>
                       ))}
@@ -211,7 +211,7 @@ export default function Page({ params: { lang } }: PageProps) {
                           rows={4}
                           placeholder={es ? 'Escribe aquí tu consulta en detalle...' : 'Write here your inquiry in detail...'}
                           required
-                          className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#2466a8] bg-[#fafbfd] focus:outline-none text-xs sm:text-sm resize-y"
+                          className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-secondary bg-gray-50 focus:outline-none text-xs sm:text-sm resize-y"
                         />
                       </div>
                     </div>
@@ -219,7 +219,7 @@ export default function Page({ params: { lang } }: PageProps) {
 
                   <button
                     onClick={() => setFormSent(true)}
-                    className="w-full mt-8 bg-gradient-to-r from-[#2466a8] to-[#1a8a7d] text-white font-extrabold text-xs sm:text-sm py-3.5 px-6 rounded-full transition-all hover:scale-[1.01] active:scale-[0.99] shadow-md shadow-[#2466a8]/10 min-h-[44px]"
+                    className="w-full mt-8 bg-gradient-to-r from-[#229cc2] to-[#229cc2] text-white font-extrabold text-xs sm:text-sm py-3.5 px-6 rounded-full transition-all hover:scale-[1.01] active:scale-[0.99] shadow-md shadow-[#229cc2]/10 min-h-[44px]"
                   >
                     {es ? 'Enviar mensaje' : 'Send message'}
                   </button>
@@ -227,7 +227,7 @@ export default function Page({ params: { lang } }: PageProps) {
               ) : (
                 <div className="text-center py-16 px-4 flex flex-col items-center justify-center h-full">
                   <span className="text-5xl block mb-4 select-none">✅</span>
-                  <h3 className="font-serif text-xl sm:text-2xl text-[#0c2340] font-bold mb-3">
+                  <h3 className="font-serif text-xl sm:text-2xl text-[#111827] font-bold mb-3">
                     {es ? '¡Mensaje recibido!' : 'Message received!'}
                   </h3>
                   <p className="text-xs sm:text-sm text-gray-500 leading-relaxed mb-6 max-w-sm">
@@ -236,13 +236,13 @@ export default function Page({ params: { lang } }: PageProps) {
                       : 'Thank you very much for writing to us. Our team will contact you within the next 24 business hours through the medium you specified.'}
                   </p>
                   
-                  <div className="mt-4 p-4 bg-[#e8faf0] border border-[#25d366]/20 rounded-2xl flex flex-col items-center gap-2 max-w-xs select-none">
+                  <div className="mt-4 p-4 bg-green-50 border border-[#22c55e]/20 rounded-2xl flex flex-col items-center gap-2 max-w-xs select-none">
                     <span className="text-xs font-bold text-gray-500">{es ? '¿Deseas respuesta inmediata?' : 'Need immediate answer?'}</span>
                     <a
                       href={CONTACT.whatsapp}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-[#25d366] hover:bg-[#25d366]/90 text-white font-extrabold text-xs px-5 py-2.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] min-h-[44px] flex items-center justify-center gap-1.5"
+                      className="bg-[#22c55e] hover:bg-[#22c55e]/90 text-white font-extrabold text-xs px-5 py-2.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] min-h-[44px] flex items-center justify-center gap-1.5"
                     >
                       <span className="text-lg">💬</span>
                       {es ? 'WhatsApp directo' : 'Direct WhatsApp'}
@@ -251,7 +251,7 @@ export default function Page({ params: { lang } }: PageProps) {
 
                   <button
                     onClick={() => setFormSent(false)}
-                    className="text-xs font-bold text-[#2466a8] hover:underline mt-8"
+                    className="text-xs font-bold text-secondary hover:underline mt-8"
                   >
                     {es ? '← Enviar otro mensaje' : '← Send another message'}
                   </button>
@@ -265,11 +265,11 @@ export default function Page({ params: { lang } }: PageProps) {
               {/* Mapa de Ubicación */}
               <div className="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between min-h-[220px]">
                 <div className="flex items-center gap-3.5 mb-4 select-none">
-                  <div className="w-10 h-10 rounded-xl bg-[#fef0e8] flex items-center justify-center text-xl shadow-inner">
+                  <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-xl shadow-inner">
                     📍
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-[#0c2340] leading-none">{es ? 'Centro Lápiz en Mano' : 'Lápiz en Mano Center'}</h4>
+                    <h4 className="text-sm font-bold text-[#111827] leading-none">{es ? 'Centro Lápiz en Mano' : 'Lápiz en Mano Center'}</h4>
                     <p className="text-[10px] text-gray-400 font-semibold mt-1">{es ? 'La Paz, Bolivia' : 'La Paz, Bolivia'}</p>
                   </div>
                 </div>
@@ -292,16 +292,16 @@ export default function Page({ params: { lang } }: PageProps) {
               {/* Horarios de Atención */}
               <div className="bg-white rounded-3xl p-6 border border-gray-200/80 shadow-sm">
                 <div className="flex items-center gap-3.5 mb-4 select-none">
-                  <div className="w-10 h-10 rounded-xl bg-[#fdf6e3] flex items-center justify-center text-xl shadow-inner">
+                  <div className="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center text-xl shadow-inner">
                     🕐
                   </div>
-                  <h4 className="text-sm font-bold text-[#0c2340]">{es ? 'Horarios de atención' : 'Opening Hours'}</h4>
+                  <h4 className="text-sm font-bold text-[#111827]">{es ? 'Horarios de atención' : 'Opening Hours'}</h4>
                 </div>
                 <div className="divide-y divide-gray-100 flex flex-col gap-0.5">
                   {hours.map((h, i) => (
                     <div key={i} className="flex justify-between items-center py-2.5 text-xs">
                       <span className={`font-semibold ${h.active ? 'text-gray-700' : 'text-gray-400'}`}>{h.day}</span>
-                      <span className={`font-bold px-2.5 py-0.5 rounded-full ${h.active ? 'bg-[#e5f5eb] text-[#2d8a4e]' : 'bg-gray-100 text-gray-400'}`}>
+                      <span className={`font-bold px-2.5 py-0.5 rounded-full ${h.active ? 'bg-secondary/10 text-secondary' : 'bg-gray-100 text-gray-400'}`}>
                         {h.time}
                       </span>
                     </div>
@@ -312,10 +312,10 @@ export default function Page({ params: { lang } }: PageProps) {
               {/* Enlaces de Redes */}
               <div className="bg-white rounded-3xl p-6 border border-gray-200/80 shadow-sm">
                 <div className="flex items-center gap-3.5 mb-4 select-none">
-                  <div className="w-10 h-10 rounded-xl bg-[#e8f1fa] flex items-center justify-center text-xl shadow-inner">
+                  <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-xl shadow-inner">
                     🌐
                   </div>
-                  <h4 className="text-sm font-bold text-[#0c2340]">{es ? 'Presencia digital' : 'Digital Presence'}</h4>
+                  <h4 className="text-sm font-bold text-[#111827]">{es ? 'Presencia digital' : 'Digital Presence'}</h4>
                 </div>
                 <div className="grid grid-cols-3 gap-2.5 select-none">
                   {socialLinks.map((s, idx) => (
@@ -340,17 +340,17 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 4. Quick FAQs List */}
-      <section className="py-16 md:py-24 px-4 bg-[#f7f5f0] border-t border-b border-gray-200/50">
+      <section className="py-16 md:py-24 px-4 bg-[#f9fafb] border-t border-b border-gray-200/50">
         <div className="container mx-auto max-w-6xl">
           
           <div className="text-center mb-12 max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[#fdf6e3] border border-[#e8a838]/15 rounded-full px-4 py-1.5 mb-3 select-none">
+            <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">⚡</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#e8a838]">
+              <span className="text-xs font-bold uppercase tracking-wider text-primary-700">
                 {es ? 'Preguntas y respuestas' : 'Questions and answers'}
               </span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#0c2340] font-normal tracking-tight mb-4">
+            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">
               {es ? 'Preguntas frecuentes rápidas' : 'Quick Frequently Asked Questions'}
             </h2>
           </div>
@@ -368,7 +368,7 @@ export default function Page({ params: { lang } }: PageProps) {
                   {faq.icon}
                 </div>
                 <div>
-                  <h4 className="font-serif text-base md:text-lg text-[#0c2340] font-bold mb-2">
+                  <h4 className="font-serif text-base md:text-lg text-[#111827] font-bold mb-2">
                     {faq.q}
                   </h4>
                   <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
@@ -382,7 +382,7 @@ export default function Page({ params: { lang } }: PageProps) {
           <div className="text-center mt-10 select-none">
             <Link
               href={`/${lang}/familias`}
-              className="text-xs sm:text-sm font-bold text-[#2466a8] hover:underline"
+              className="text-xs sm:text-sm font-bold text-secondary hover:underline"
             >
               {es ? 'Ver todas las preguntas frecuentes de familias →' : 'See all family FAQs →'}
             </Link>
@@ -392,9 +392,9 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 5. Direct WhatsApp Cta */}
-      <section className="py-16 px-4 bg-[#fafbfd]">
+      <section className="py-16 px-4 bg-gray-50">
         <div className="container mx-auto max-w-4xl">
-          <div className="bg-gradient-to-r from-[#128c52] to-[#25d366] rounded-3xl p-8 md:p-12 text-center text-white relative overflow-hidden shadow-xl shadow-[#25d366]/10">
+          <div className="bg-gradient-to-r from-[#22c55e] to-[#22c55e] rounded-3xl p-8 md:p-12 text-center text-white relative overflow-hidden shadow-xl shadow-[#22c55e]/10">
             <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
               <div className="absolute top-1/2 right-[10%] w-44 h-44 rounded-full border border-white/5" />
               <div className="absolute top-1/2 right-[20%] w-32 h-32 rounded-full border border-white/5" />
@@ -428,7 +428,7 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 6. Footer philosophy card */}
-      <section className="py-16 px-4 bg-gradient-to-br from-[#0c2340] via-[#142d4c] to-[#2466a8]">
+      <section className="py-16 px-4 bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary">
         <div className="container mx-auto max-w-2xl text-center text-white/75 relative">
           <span className="text-4xl block mb-4 select-none">💛</span>
           <p className="font-serif text-lg sm:text-xl font-bold italic leading-relaxed mb-6">

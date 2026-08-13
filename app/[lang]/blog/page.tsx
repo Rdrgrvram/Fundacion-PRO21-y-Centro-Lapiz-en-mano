@@ -22,10 +22,10 @@ export default async function Page({ params: { lang } }: Props) {
   const posts = await getAllPosts()
 
   return (
-    <div className="overflow-x-hidden w-full bg-[#fafbfd]">
+    <div className="overflow-x-hidden w-full bg-gray-50">
       
       {/* Hero Section */}
-      <section className="relative min-h-[360px] flex items-center bg-gradient-to-br from-[#0c2340] via-[#142d4c] to-[#2466a8] py-16 px-4 overflow-hidden text-center">
+      <section className="relative min-h-[360px] flex items-center bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary py-16 px-4 overflow-hidden text-center">
         {/* Decoraciones */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
           <div className="absolute -top-[15%] -right-[8%] w-[300px] h-[300px] rounded-full border border-white/5 opacity-30" />
@@ -34,7 +34,7 @@ export default async function Page({ params: { lang } }: Props) {
 
         {/* Wave bottom */}
         <div className="absolute bottom-0 left-0 right-0 z-10">
-          <svg viewBox="0 0 1440 70" fill="none" className="block w-full h-8 md:h-12 lg:h-16 text-[#fafbfd] fill-current">
+          <svg viewBox="0 0 1440 70" fill="none" className="block w-full h-8 md:h-12 lg:h-16 text-[#f9fafb] fill-current">
             <path d="M0 30C360 55 720 15 1080 40C1260 50 1380 42 1440 38V70H0Z" />
           </svg>
         </div>
@@ -68,7 +68,7 @@ export default async function Page({ params: { lang } }: Props) {
       </section>
 
       {/* Grid de Artículos */}
-      <section className="py-16 md:py-24 px-4 bg-[#fafbfd]">
+      <section className="py-16 md:py-24 px-4 bg-gray-50">
         <div className="container mx-auto max-w-6xl">
           
           {posts.length === 0 ? (
@@ -90,7 +90,7 @@ export default async function Page({ params: { lang } }: Props) {
                 >
                   <div>
                     {/* Cabecera visual simulada/placeholder */}
-                    <div className="h-44 bg-gradient-to-br from-[#e8f1fa] to-[#fafbfd] flex items-center justify-center text-4xl relative overflow-hidden select-none border-b border-gray-100">
+                    <div className="h-44 bg-gradient-to-br from-[#e8f7fb] to-[#f9fafb] flex items-center justify-center text-4xl relative overflow-hidden select-none border-b border-gray-100">
                       <span className="animate-pulse">📰</span>
                       <span className="absolute bottom-3 right-3 text-[9px] font-bold text-gray-400 bg-white px-2 py-0.5 rounded-full shadow-sm">
                         {post.date}
@@ -98,7 +98,7 @@ export default async function Page({ params: { lang } }: Props) {
                     </div>
 
                     <div className="p-6">
-                      <h2 className="font-serif text-base sm:text-lg text-[#0c2340] font-bold mb-3 leading-snug line-clamp-2">
+                      <h2 className="font-serif text-base sm:text-lg text-[#111827] font-bold mb-3 leading-snug line-clamp-2">
                         {post.title}
                       </h2>
                       <p className="text-xs sm:text-sm text-gray-500 leading-relaxed line-clamp-3">
@@ -125,7 +125,7 @@ export default async function Page({ params: { lang } }: Props) {
       </section>
 
       {/* Footer CTA */}
-      <section className="py-16 px-4 bg-gradient-to-br from-[#0c2340] via-[#142d4c] to-[#2466a8]">
+      <section className="py-16 px-4 bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary">
         <div className="container mx-auto max-w-2xl text-center text-white/80 relative z-10">
           <span className="text-5xl block mb-4 select-none">👋</span>
           <h2 className="font-serif text-2xl sm:text-3xl text-white font-normal leading-tight mb-4">

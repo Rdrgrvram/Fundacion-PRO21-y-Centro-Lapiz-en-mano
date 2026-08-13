@@ -22,40 +22,40 @@ export default function Page({ params: { lang } }: PageProps) {
   const es = lang === 'es'
 
   const values = [
-    { name: es ? 'Inclusión radical' : 'Radical Inclusion', icon: '🤝', desc: es ? 'Eliminamos barreras y creamos espacios donde cada persona es valorada por sus capacidades únicas.' : 'We remove barriers and create spaces where every person is valued for their unique abilities.', color: 'border-[#2466a8]', bg: 'bg-[#e8f1fa]' },
-    { name: es ? 'Empoderamiento auténtico' : 'Authentic Empowerment', icon: '💪', desc: es ? 'Fortalecemos la confianza y autonomía de cada niño, niña y familia que acompaña nuestros programas.' : 'We strengthen the confidence and autonomy of each child and family accompanying our programs.', color: 'border-[#e86840]', bg: 'bg-[#fef0e8]' },
-    { name: es ? 'Autogestión como meta' : 'Self-management as Goal', icon: '🎯', desc: es ? 'Trabajamos para que cada persona desarrolle las herramientas necesarias para dirigir su propia vida.' : 'We work so that each person develops the necessary tools to direct their own life.', color: 'border-[#1a8a7d]', bg: 'bg-[#e0f5f0]' },
-    { name: es ? 'Innovación con propósito' : 'Purposeful Innovation', icon: '💡', desc: es ? 'Buscamos nuevas formas de intervención terapéutica y educativa con impacto real y medible.' : 'We seek new ways of therapeutic and educational intervention with real and measurable impact.', color: 'border-[#e8a838]', bg: 'bg-[#fdf6e3]' },
-    { name: es ? 'Equidad adaptativa' : 'Adaptive Equity', icon: '⚖️', desc: es ? 'Adaptamos nuestros programas al ritmo y las necesidades individuales, garantizando igualdad de oportunidades.' : 'We adapt our programs to individual rhythm and needs, guaranteeing equal opportunities.', color: 'border-[#6c5ce7]', bg: 'bg-[#f0edff]' },
-    { name: es ? 'Desarrollo holístico' : 'Holistic Development', icon: '🌱', desc: es ? 'Atendemos todas las dimensiones del ser: cognitiva, física, emocional, social y familiar.' : 'We attend all dimensions of the being: cognitive, physical, emotional, social, and family.', color: 'border-[#2d8a4e]', bg: 'bg-[#e5f5eb]' },
-    { name: es ? 'Liderazgo colaborativo' : 'Collaborative Leadership', icon: '🤲', desc: es ? 'Construimos redes de trabajo entre familias, profesionales, instituciones y la comunidad.' : 'We build working networks between families, professionals, institutions, and the community.', color: 'border-[#2466a8]', bg: 'bg-[#e8f1fa]' },
-    { name: es ? 'Compromiso comunitario' : 'Community Commitment', icon: '🏘️', desc: es ? 'Devolvemos a la comunidad con programas abiertos, campañas de sensibilización y formación continua.' : 'We give back to the community with open programs, awareness campaigns, and continuous training.', color: 'border-[#e86840]', bg: 'bg-[#fef0e8]' },
+    { name: es ? 'Inclusión radical' : 'Radical Inclusion', icon: '🤝', desc: es ? 'Eliminamos barreras y creamos espacios donde cada persona es valorada por sus capacidades únicas.' : 'We remove barriers and create spaces where every person is valued for their unique abilities.', color: 'border-secondary', bg: 'bg-secondary/10' },
+    { name: es ? 'Empoderamiento auténtico' : 'Authentic Empowerment', icon: '💪', desc: es ? 'Fortalecemos la confianza y autonomía de cada niño, niña y familia que acompaña nuestros programas.' : 'We strengthen the confidence and autonomy of each child and family accompanying our programs.', color: 'border-accent', bg: 'bg-accent/10' },
+    { name: es ? 'Autogestión como meta' : 'Self-management as Goal', icon: '🎯', desc: es ? 'Trabajamos para que cada persona desarrolle las herramientas necesarias para dirigir su propia vida.' : 'We work so that each person develops the necessary tools to direct their own life.', color: 'border-secondary', bg: 'bg-secondary/10' },
+    { name: es ? 'Innovación con propósito' : 'Purposeful Innovation', icon: '💡', desc: es ? 'Buscamos nuevas formas de intervención terapéutica y educativa con impacto real y medible.' : 'We seek new ways of therapeutic and educational intervention with real and measurable impact.', color: 'border-primary', bg: 'bg-primary/15' },
+    { name: es ? 'Equidad adaptativa' : 'Adaptive Equity', icon: '⚖️', desc: es ? 'Adaptamos nuestros programas al ritmo y las necesidades individuales, garantizando igualdad de oportunidades.' : 'We adapt our programs to individual rhythm and needs, guaranteeing equal opportunities.', color: 'border-accent', bg: 'bg-accent/10' },
+    { name: es ? 'Desarrollo holístico' : 'Holistic Development', icon: '🌱', desc: es ? 'Atendemos todas las dimensiones del ser: cognitiva, física, emocional, social y familiar.' : 'We attend all dimensions of the being: cognitive, physical, emotional, social, and family.', color: 'border-secondary', bg: 'bg-secondary/10' },
+    { name: es ? 'Liderazgo colaborativo' : 'Collaborative Leadership', icon: '🤲', desc: es ? 'Construimos redes de trabajo entre familias, profesionales, instituciones y la comunidad.' : 'We build working networks between families, professionals, institutions, and the community.', color: 'border-secondary', bg: 'bg-secondary/10' },
+    { name: es ? 'Compromiso comunitario' : 'Community Commitment', icon: '🏘️', desc: es ? 'Devolvemos a la comunidad con programas abiertos, campañas de sensibilización y formación continua.' : 'We give back to the community with open programs, awareness campaigns, and continuous training.', color: 'border-accent', bg: 'bg-accent/10' },
   ]
 
   const timeline = [
-    { year: '2021', title: es ? 'Nace Centro Lápiz en Mano' : 'Lápiz en Mano Center is born', desc: es ? 'Se funda el Centro de Educación Complementaria Lápiz en Mano en la ciudad de La Paz, con la visión de brindar atención integral a niños y niñas con necesidades especiales.' : 'The Lápiz en Mano Complementary Education Center is founded in La Paz, with the vision of providing comprehensive care to children with special needs.', icon: '🏠', color: '#2466a8' },
-    { year: '2021', title: es ? 'Mi Escuelita Inclusiva Down' : 'Mi Escuelita Inclusiva Down', desc: es ? 'Se inaugura el primer programa especializado para niños con síndrome de Down, ofreciendo estimulación temprana, terapia de lenguaje, fisioterapia y apoyo pedagógico.' : 'The first specialized program for children with Down syndrome is inaugurated, offering early stimulation, speech therapy, physiotherapy, and pedagogical support.', icon: '🌟', color: '#e8a838' },
-    { year: '2022', title: es ? 'Fundación PRO-21' : 'PRO-21 Foundation', desc: es ? 'Se constituye formalmente la Fundación PRO-21 como entidad sin fines de lucro, ampliando el alcance institucional y la capacidad de gestionar cooperación nacional e internacional.' : 'The PRO-21 Foundation is formally established as a non-profit entity, expanding institutional reach and the capacity to manage national and international cooperation.', icon: '📋', color: '#1a8a7d' },
-    { year: '2023', title: es ? 'Aula Wawitas' : 'Aula Wawitas', desc: es ? 'Se lanza el segundo programa especializado, enfocado en niños con autismo y otras condiciones del neurodesarrollo, incorporando detección temprana y evaluación multidisciplinaria.' : 'The second specialized program is launched, focused on children with autism and other neurodevelopmental conditions, incorporating early detection and multidisciplinary evaluation.', icon: '🧩', color: '#e86840' },
-    { year: '2024', title: es ? 'Pasos Firmes' : 'Pasos Firmes', desc: es ? 'Nace el tercer programa, dirigido a niños con dificultades de aprendizaje, atención y desempeño escolar. Se completa la oferta integral de la fundación.' : 'The third program is born, aimed at children with learning, attention, and school performance difficulties. The foundation\'s comprehensive offering is completed.', icon: '📚', color: '#2d8a4e' },
-    { year: '2025', title: es ? 'Reconocimiento y crecimiento' : 'Recognition and growth', desc: es ? 'La fundación gana visibilidad nacional e internacional. Se fortalecen alianzas con organizaciones y se superan las 100 familias acompañadas.' : 'The foundation gains national and international visibility. Alliances with organizations are strengthened, and over 100 accompanied families are reached.', icon: '🌎', color: '#6c5ce7' },
-    { year: '2026', title: es ? 'Proyección digital' : 'Digital projection', desc: es ? 'Alianza con la UCB para el desarrollo de la plataforma web institucional. Inicio de la estrategia de cooperación internacional y presencia digital profesional.' : 'Alliance with UCB for the development of the institutional web platform. Start of the international cooperation strategy and professional digital presence.', icon: '🚀', color: '#0c2340' },
+    { year: '2021', title: es ? 'Nace Centro Lápiz en Mano' : 'Lápiz en Mano Center is born', desc: es ? 'Se funda el Centro de Educación Complementaria Lápiz en Mano en la ciudad de La Paz, con la visión de brindar atención integral a niños y niñas con necesidades especiales.' : 'The Lápiz en Mano Complementary Education Center is founded in La Paz, with the vision of providing comprehensive care to children with special needs.', icon: '🏠', color: '#229cc2' },
+    { year: '2021', title: es ? 'Mi Escuelita Inclusiva Down' : 'Mi Escuelita Inclusiva Down', desc: es ? 'Se inaugura el primer programa especializado para niños con síndrome de Down, ofreciendo estimulación temprana, terapia de lenguaje, fisioterapia y apoyo pedagógico.' : 'The first specialized program for children with Down syndrome is inaugurated, offering early stimulation, speech therapy, physiotherapy, and pedagogical support.', icon: '🌟', color: '#ffc500' },
+    { year: '2022', title: es ? 'Fundación PRO-21' : 'PRO-21 Foundation', desc: es ? 'Se constituye formalmente la Fundación PRO-21 como entidad sin fines de lucro, ampliando el alcance institucional y la capacidad de gestionar cooperación nacional e internacional.' : 'The PRO-21 Foundation is formally established as a non-profit entity, expanding institutional reach and the capacity to manage national and international cooperation.', icon: '📋', color: '#229cc2' },
+    { year: '2023', title: es ? 'Aula Wawitas' : 'Aula Wawitas', desc: es ? 'Se lanza el segundo programa especializado, enfocado en niños con autismo y otras condiciones del neurodesarrollo, incorporando detección temprana y evaluación multidisciplinaria.' : 'The second specialized program is launched, focused on children with autism and other neurodevelopmental conditions, incorporating early detection and multidisciplinary evaluation.', icon: '🧩', color: '#8c3cbd' },
+    { year: '2024', title: es ? 'Pasos Firmes' : 'Pasos Firmes', desc: es ? 'Nace el tercer programa, dirigido a niños con dificultades de aprendizaje, atención y desempeño escolar. Se completa la oferta integral de la fundación.' : 'The third program is born, aimed at children with learning, attention, and school performance difficulties. The foundation\'s comprehensive offering is completed.', icon: '📚', color: '#229cc2' },
+    { year: '2025', title: es ? 'Reconocimiento y crecimiento' : 'Recognition and growth', desc: es ? 'La fundación gana visibilidad nacional e internacional. Se fortalecen alianzas con organizaciones y se superan las 100 familias acompañadas.' : 'The foundation gains national and international visibility. Alliances with organizations are strengthened, and over 100 accompanied families are reached.', icon: '🌎', color: '#8c3cbd' },
+    { year: '2026', title: es ? 'Proyección digital' : 'Digital projection', desc: es ? 'Alianza con la UCB para el desarrollo de la plataforma web institucional. Inicio de la estrategia de cooperación internacional y presencia digital profesional.' : 'Alliance with UCB for the development of the institutional web platform. Start of the international cooperation strategy and professional digital presence.', icon: '🚀', color: '#111827' },
   ]
 
   const teamTeaser = [
-    { title: es ? 'Terapia de lenguaje' : 'Speech therapy', icon: '🗣️', bg: 'bg-[#e8f1fa]' },
-    { title: es ? 'Fisioterapia' : 'Physiotherapy', icon: '🦿', bg: 'bg-[#e0f5f0]' },
-    { title: es ? 'Psicomotricidad' : 'Psychomotricity', icon: '🤸', bg: 'bg-[#fdf6e3]' },
-    { title: es ? 'Psicología' : 'Psychology', icon: '🧠', bg: 'bg-[#f0edff]' },
-    { title: es ? 'Trabajo social' : 'Social work', icon: '🤝', bg: 'bg-[#fef0e8]' },
-    { title: es ? 'Pedagogía' : 'Pedagogy', icon: '📖', bg: 'bg-[#e5f5eb]' },
+    { title: es ? 'Terapia de lenguaje' : 'Speech therapy', icon: '🗣️', bg: 'bg-secondary/10' },
+    { title: es ? 'Fisioterapia' : 'Physiotherapy', icon: '🦿', bg: 'bg-secondary/10' },
+    { title: es ? 'Psicomotricidad' : 'Psychomotricity', icon: '🤸', bg: 'bg-primary/15' },
+    { title: es ? 'Psicología' : 'Psychology', icon: '🧠', bg: 'bg-accent/10' },
+    { title: es ? 'Trabajo social' : 'Social work', icon: '🤝', bg: 'bg-accent/10' },
+    { title: es ? 'Pedagogía' : 'Pedagogy', icon: '📖', bg: 'bg-secondary/10' },
   ]
 
   return (
-    <div className="overflow-x-hidden w-full bg-[#fafbfd]">
+    <div className="overflow-x-hidden w-full bg-gray-50">
       
       {/* 1. Page Hero Section */}
-      <section className="relative min-h-[400px] flex items-center bg-gradient-to-br from-[#0c2340] via-[#142d4c] to-[#2466a8] py-16 px-4 overflow-hidden">
+      <section className="relative min-h-[400px] flex items-center bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary py-16 px-4 overflow-hidden">
         {/* Decoraciones */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
           <div className="absolute -top-[20%] -right-[10%] w-[300px] h-[300px] md:w-[600px] md:h-[600px] rounded-full border border-white/5" />
@@ -64,7 +64,7 @@ export default function Page({ params: { lang } }: PageProps) {
 
         {/* Ola inferior */}
         <div className="absolute bottom-0 left-0 right-0 z-10">
-          <svg viewBox="0 0 1440 90" fill="none" className="block w-full h-8 md:h-16 lg:h-20 text-[#fafbfd] fill-current">
+          <svg viewBox="0 0 1440 90" fill="none" className="block w-full h-8 md:h-16 lg:h-20 text-[#f9fafb] fill-current">
             <path d="M0 40C360 80 720 10 1080 50C1260 70 1380 60 1440 55V90H0Z" />
           </svg>
         </div>
@@ -104,11 +104,11 @@ export default function Page({ params: { lang } }: PageProps) {
             
             {/* PRO-21 Card */}
             <div className="w-full lg:w-[46%] bg-white rounded-3xl p-8 md:p-10 border border-gray-200/80 shadow-sm transition-all hover:shadow-md hover:border-gray-300 flex flex-col">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#2466a8] to-[#1a8a7d] flex items-center justify-center font-serif text-xl font-bold text-white mb-6 shadow-md shadow-[#2466a8]/10 select-none">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#229cc2] to-[#229cc2] flex items-center justify-center font-serif text-xl font-bold text-white mb-6 shadow-md shadow-[#229cc2]/10 select-none">
                 P21
               </div>
-              <h3 className="font-serif text-2xl text-[#0c2340] font-bold mb-1">Fundación PRO-21</h3>
-              <p className="text-xs font-semibold text-[#1a8a7d] italic tracking-wide mb-5">
+              <h3 className="font-serif text-2xl text-[#111827] font-bold mb-1">Fundación PRO-21</h3>
+              <p className="text-xs font-semibold text-secondary italic tracking-wide mb-5">
                 {es ? 'Promoviendo el bienestar integral' : 'Promoting comprehensive well-being'}
               </p>
               <p className="text-sm text-gray-500 leading-relaxed">
@@ -120,20 +120,20 @@ export default function Page({ params: { lang } }: PageProps) {
 
             {/* Separador / Conector (Horizontal en Desktop, Vertical en Móvil) */}
             <div className="w-full lg:w-[8%] flex lg:flex-col items-center justify-center gap-4 py-4 lg:py-0 select-none">
-              <div className="h-0.5 lg:h-full w-full lg:w-0.5 bg-gradient-to-r lg:bg-gradient-to-b from-transparent via-[#e8a838] to-transparent flex-1" />
-              <div className="w-11 h-11 rounded-full bg-[#fdf6e3] border-2 border-primary flex items-center justify-center text-lg shadow-sm flex-shrink-0">
+              <div className="h-0.5 lg:h-full w-full lg:w-0.5 bg-gradient-to-r lg:bg-gradient-to-b from-transparent via-[#ffc500] to-transparent flex-1" />
+              <div className="w-11 h-11 rounded-full bg-primary/15 border-2 border-primary flex items-center justify-center text-lg shadow-sm flex-shrink-0">
                 🤝
               </div>
-              <div className="h-0.5 lg:h-full w-full lg:w-0.5 bg-gradient-to-r lg:bg-gradient-to-b from-transparent via-[#e8a838] to-transparent flex-1" />
+              <div className="h-0.5 lg:h-full w-full lg:w-0.5 bg-gradient-to-r lg:bg-gradient-to-b from-transparent via-[#ffc500] to-transparent flex-1" />
             </div>
 
             {/* Lápiz en Mano Card */}
             <div className="w-full lg:w-[46%] bg-white rounded-3xl p-8 md:p-10 border border-gray-200/80 shadow-sm transition-all hover:shadow-md hover:border-gray-300 flex flex-col">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-[#e86840] flex items-center justify-center text-3xl mb-6 shadow-md shadow-primary/10 select-none">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-[#8c3cbd] flex items-center justify-center text-3xl mb-6 shadow-md shadow-primary/10 select-none">
                 ✏️
               </div>
-              <h3 className="font-serif text-2xl text-[#0c2340] font-bold mb-1">Centro Lápiz en Mano</h3>
-              <p className="text-xs font-semibold text-[#e86840] italic tracking-wide mb-5">
+              <h3 className="font-serif text-2xl text-[#111827] font-bold mb-1">Centro Lápiz en Mano</h3>
+              <p className="text-xs font-semibold text-accent italic tracking-wide mb-5">
                 {es ? 'Centro de Educación Complementaria' : 'Complementary Education Center'}
               </p>
               <p className="text-sm text-gray-500 leading-relaxed">
@@ -152,13 +152,13 @@ export default function Page({ params: { lang } }: PageProps) {
         <div className="container mx-auto max-w-6xl">
           
           <div className="text-center mb-12 max-w-md mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[#e8f1fa] border border-[#2466a8]/15 rounded-full px-4 py-1.5 mb-3 select-none">
+            <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">📌</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#2466a8]">
+              <span className="text-xs font-bold uppercase tracking-wider text-secondary">
                 {es ? 'Identidad institucional' : 'Institutional Identity'}
               </span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#0c2340] font-normal tracking-tight">
+            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight">
               {es ? 'Lo que nos define' : 'What defines us'}
             </h2>
           </div>
@@ -168,9 +168,9 @@ export default function Page({ params: { lang } }: PageProps) {
               {
                 label: es ? 'Misión' : 'Mission',
                 icon: '🎯',
-                color: 'border-[#2466a8]',
-                textColor: 'text-[#2466a8]',
-                bgColor: 'bg-[#e8f1fa]',
+                color: 'border-secondary',
+                textColor: 'text-secondary',
+                bgColor: 'bg-secondary/10',
                 text: es 
                   ? 'Ser una institución líder en la promoción del bienestar integral de personas con y sin discapacidad mediante la implementación de programas de intervención y proyectos de formación, fortaleciendo la inclusión, el empoderamiento y la autogestión como pilares de desarrollo humano.'
                   : 'To be a leading institution in promoting the comprehensive well-being of people with and without disabilities through the implementation of intervention programs and training projects, strengthening inclusion, empowerment, and self-management as pillars of human development.'
@@ -178,9 +178,9 @@ export default function Page({ params: { lang } }: PageProps) {
               {
                 label: es ? 'Visión' : 'Vision',
                 icon: '🔭',
-                color: 'border-[#e86840]',
-                textColor: 'text-[#e86840]',
-                bgColor: 'bg-[#fef0e8]',
+                color: 'border-accent',
+                textColor: 'text-accent',
+                bgColor: 'bg-accent/10',
                 text: es 
                   ? 'Ser referentes a nivel nacional como la principal institución en la promoción del bienestar integral, destacándonos por programas de intervención y proyectos de formación innovadores y efectivos que transformen vidas y construyan una sociedad más justa e inclusiva.'
                   : 'To be national references as the main institution in promoting comprehensive well-being, standing out for innovative and effective intervention programs and training projects that transform lives and build a more just and inclusive society.'
@@ -188,9 +188,9 @@ export default function Page({ params: { lang } }: PageProps) {
               {
                 label: es ? 'Objetivo' : 'Objective',
                 icon: '🧭',
-                color: 'border-[#1a8a7d]',
-                textColor: 'text-[#1a8a7d]',
-                bgColor: 'bg-[#e0f5f0]',
+                color: 'border-secondary',
+                textColor: 'text-secondary',
+                bgColor: 'bg-secondary/10',
                 text: es 
                   ? 'Implementar programas de intervención y proyectos de formación que atiendan las necesidades específicas de niños, niñas y adolescentes con síndrome de Down, autismo, dificultades de aprendizaje y otras condiciones del neurodesarrollo, promoviendo su desarrollo integral, autonomía e inserción activa en la sociedad.'
                   : 'To implement intervention programs and training projects that meet the specific needs of children and adolescents with Down syndrome, autism, learning difficulties, and other neurodevelopmental conditions, promoting their comprehensive development, autonomy, and active integration into society.'
@@ -220,17 +220,17 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 4. Values Section (1 Col in mobile, 2 in tablet, 4 in desktop) */}
-      <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-[#f7f5f0] to-white">
+      <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-[#f9fafb] to-white">
         <div className="container mx-auto max-w-6xl">
           
           <div className="text-center mb-12 max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[#fdf6e3] border border-[#e8a838]/15 rounded-full px-4 py-1.5 mb-3 select-none">
+            <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">💛</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#e8a838]">
+              <span className="text-xs font-bold uppercase tracking-wider text-primary-700">
                 {es ? 'Nuestros valores' : 'Our Values'}
               </span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#0c2340] font-normal tracking-tight mb-4">
+            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">
               {es ? 'Los principios que nos guían' : 'The principles that guide us'}
             </h2>
             <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">
@@ -250,14 +250,14 @@ export default function Page({ params: { lang } }: PageProps) {
                   <div className={`w-11 h-11 rounded-xl ${v.bg} flex items-center justify-center text-xl mb-4 transition-all duration-300 group-hover:scale-105`}>
                     {v.icon}
                   </div>
-                  <h4 className="font-serif text-base text-[#0c2340] font-bold mb-2">
+                  <h4 className="font-serif text-base text-[#111827] font-bold mb-2">
                     {v.name}
                   </h4>
                   <p className="text-xs text-gray-500 leading-relaxed">
                     {v.desc}
                   </p>
                 </div>
-                <div className="w-8 h-1 bg-gray-200 rounded-full mt-5 group-hover:bg-[#2466a8] transition-colors" />
+                <div className="w-8 h-1 bg-gray-200 rounded-full mt-5 group-hover:bg-secondary transition-colors" />
               </div>
             ))}
           </div>
@@ -270,13 +270,13 @@ export default function Page({ params: { lang } }: PageProps) {
         <div className="container mx-auto max-w-4xl">
           
           <div className="text-center mb-16 max-w-md mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[#e0f5f0] border border-[#1a8a7d]/15 rounded-full px-4 py-1.5 mb-3 select-none">
+            <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">📅</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#1a8a7d]">
+              <span className="text-xs font-bold uppercase tracking-wider text-secondary">
                 {es ? 'Nuestra trayectoria' : 'Our Journey'}
               </span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#0c2340] font-normal tracking-tight mb-4">
+            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">
               {es ? 'Cada paso cuenta' : 'Every step counts'}
             </h2>
             <p className="text-sm text-gray-500 leading-relaxed">
@@ -291,9 +291,9 @@ export default function Page({ params: { lang } }: PageProps) {
             
             {/* LÍNEA DE TIEMPO: */}
             {/* Desktop: línea central vertical */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#e8a838]/0 via-[#e8a838]/80 to-[#e8a838]/0 transform -translate-x-1/2" />
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#ffc500]/0 via-[#ffc500]/80 to-[#ffc500]/0 transform -translate-x-1/2" />
             {/* Mobile: línea izquierda vertical */}
-            <div className="block md:hidden absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#e8a838]/10 via-[#e8a838]/80 to-[#e8a838]/0" />
+            <div className="block md:hidden absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#ffc500]/10 via-[#ffc500]/80 to-[#ffc500]/0" />
 
             {/* Listado de hitos */}
             <div className="space-y-12 md:space-y-8 relative">
@@ -308,9 +308,9 @@ export default function Page({ params: { lang } }: PageProps) {
                     {/* Contenido Izquierdo (Sólo par en desktop, vacío en móvil) */}
                     <div className="hidden md:block text-right">
                       {isLeft && (
-                        <div className="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm hover:border-[#2466a8]/30 transition-all duration-300 mr-6">
+                        <div className="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm hover:border-secondary/30 transition-all duration-300 mr-6">
                           <span className="inline-block text-xs font-bold px-3 py-1 bg-secondary/10 text-secondary rounded-full mb-3">{item.year}</span>
-                          <h4 className="font-serif text-lg text-[#0c2340] font-bold mb-2">{item.title}</h4>
+                          <h4 className="font-serif text-lg text-[#111827] font-bold mb-2">{item.title}</h4>
                           <p className="text-xs text-gray-500 leading-relaxed">{item.desc}</p>
                         </div>
                       )}
@@ -318,7 +318,7 @@ export default function Page({ params: { lang } }: PageProps) {
 
                     {/* Nodo de la línea de tiempo (Alineado a la izquierda en móvil, al centro en desktop) */}
                     <div className="flex justify-start pl-0 md:pl-0 md:justify-center relative z-20 mb-4 md:mb-0">
-                      <div className="w-11 h-11 md:w-12 md:h-12 rounded-full bg-white border-[3px] border-[#e8a838] flex items-center justify-center text-xl shadow-md absolute left-0 md:relative md:left-auto">
+                      <div className="w-11 h-11 md:w-12 md:h-12 rounded-full bg-white border-[3px] border-primary flex items-center justify-center text-xl shadow-md absolute left-0 md:relative md:left-auto">
                         {item.icon}
                       </div>
                     </div>
@@ -326,9 +326,9 @@ export default function Page({ params: { lang } }: PageProps) {
                     {/* Contenido Derecho (Impar en desktop, TODOS en móvil) */}
                     <div className="pl-14 md:pl-6 text-left">
                       {!isLeft && (
-                        <div className="hidden md:block bg-white rounded-3xl p-6 border border-gray-200 shadow-sm hover:border-[#2466a8]/30 transition-all duration-300">
+                        <div className="hidden md:block bg-white rounded-3xl p-6 border border-gray-200 shadow-sm hover:border-secondary/30 transition-all duration-300">
                           <span className="inline-block text-xs font-bold px-3 py-1 bg-secondary/10 text-secondary rounded-full mb-3">{item.year}</span>
-                          <h4 className="font-serif text-lg text-[#0c2340] font-bold mb-2">{item.title}</h4>
+                          <h4 className="font-serif text-lg text-[#111827] font-bold mb-2">{item.title}</h4>
                           <p className="text-xs text-gray-500 leading-relaxed">{item.desc}</p>
                         </div>
                       )}
@@ -336,7 +336,7 @@ export default function Page({ params: { lang } }: PageProps) {
                       {/* Tarjeta de visualización móvil obligatoria */}
                       <div className="block md:hidden bg-white rounded-2xl p-5 sm:p-6 border border-gray-200 shadow-sm">
                         <span className="inline-block text-[10px] font-bold px-2.5 py-0.5 bg-secondary/10 text-secondary rounded-full mb-2">{item.year}</span>
-                        <h4 className="font-serif text-base text-[#0c2340] font-bold mb-1.5">{item.title}</h4>
+                        <h4 className="font-serif text-base text-[#111827] font-bold mb-1.5">{item.title}</h4>
                         <p className="text-xs text-gray-500 leading-relaxed">{item.desc}</p>
                       </div>
                     </div>
@@ -352,7 +352,7 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 6. Team Teaser Section */}
-      <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-[#0c2340] via-[#142d4c] to-[#2466a8] relative overflow-hidden">
+      <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary relative overflow-hidden">
         <div className="absolute inset-0 bg-radial-gradient(circle, rgba(232,168,56,0.04), transparent 70%) pointer-events-none" />
         
         <div className="container mx-auto max-w-6xl relative z-20">
@@ -403,7 +403,7 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 7. CTA Banner */}
-      <section className="py-16 px-4 bg-[#fafbfd]">
+      <section className="py-16 px-4 bg-gray-50">
         <div className="container mx-auto max-w-4xl">
           <div className="bg-white rounded-3xl border border-gray-200/80 shadow-md p-8 md:p-12 text-center relative overflow-hidden">
             <div className="absolute -top-10 -right-10 w-44 h-44 rounded-full bg-radial-gradient(circle, rgba(232,168,56,0.15), transparent 70%) pointer-events-none" />
@@ -411,7 +411,7 @@ export default function Page({ params: { lang } }: PageProps) {
 
             <div className="relative z-10 max-w-xl mx-auto">
               <span className="text-4xl mb-4 block animate-[float_4s_ease-in-out_infinite]">💛</span>
-              <h3 className="font-serif text-2xl md:text-3xl text-[#0c2340] font-bold mb-4">
+              <h3 className="font-serif text-2xl md:text-3xl text-[#111827] font-bold mb-4">
                 {es ? '¿Quieres ser parte de esta historia?' : 'Want to be part of this story?'}
               </h3>
               <p className="text-sm text-gray-500 leading-relaxed mb-8">
