@@ -4,13 +4,15 @@ export const CONTACT = {
   whatsapp: 'https://wa.me/59170106276',
   email: 'fundacionpro211@gmail.com',
   social: {
-    // TODO: confirmar handles exactos con la fundación
-    instagram: 'https://www.instagram.com/fundacionpro21',
-    tiktok: 'https://www.tiktok.com/@fundacionpro21',
+    facebook: 'https://www.facebook.com/share/1EcmcUjMYb/',
+    instagram: 'https://www.instagram.com/centro_lapiz_en_mano',
+    tiktokPro21: 'https://www.tiktok.com/@fundacionpro21',
+    tiktokLapiz: 'https://www.tiktok.com/@lapiz.en.mano65',
   },
   donation: {
     bank: 'Banco Sol',
     account: '2633243-000-001',
     holder: 'Monica Medina Rosales',
+    note: 'La cuenta se actualizará una vez concluido el trámite institucional.',
   },
 } as const
