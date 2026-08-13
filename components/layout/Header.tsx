@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import type { Locale } from '@/lib/i18n'
 import Nav, { NAV_ITEMS } from './Nav'
@@ -43,13 +44,24 @@ export default function Header({ lang }: HeaderProps) {
         <div className="container mx-auto px-4 flex items-center justify-between h-16 md:h-20">
           
           {/* Logo / Identidad */}
-          <Link href={`/${lang}`} className="flex flex-col group py-1.5 focus:outline-none">
-            <span className="font-extrabold text-lg md:text-xl tracking-tight text-secondary group-hover:text-primary transition-colors">
-              Fundación PRO-21
-            </span>
-            <span className="text-[10px] md:text-xs font-semibold text-gray-500 tracking-wider uppercase">
-              Centro Lápiz en Mano
-            </span>
+          <Link href={`/${lang}`} className="flex items-center gap-2 md:gap-3 group py-1.5 focus:outline-none" aria-label="Inicio — Fundación PRO-21 y Centro Lápiz en Mano">
+            <Image
+              src="/icons/logo-pro21.png"
+              alt="Fundación PRO-21"
+              width={40}
+              height={48}
+              className="h-10 md:h-12 w-auto object-contain"
+              priority
+            />
+            <div className="w-px h-8 bg-gray-200 flex-shrink-0" />
+            <Image
+              src="/icons/logo-lapiz.png"
+              alt="Centro Lápiz en Mano"
+              width={40}
+              height={40}
+              className="h-10 md:h-12 w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Menú de navegación de escritorio (hidden on screens < 1280px) */}
@@ -101,9 +113,10 @@ export default function Header({ lang }: HeaderProps) {
           <div className="fixed top-0 right-0 bottom-0 w-[300px] max-w-[85vw] bg-white z-50 shadow-2xl flex flex-col p-6 transition-transform duration-300 transform translate-x-0 overflow-y-auto">
             {/* Header del cajón */}
             <div className="flex items-center justify-between pb-4 border-b border-gray-100 mb-6">
-              <div className="flex flex-col">
-                <span className="font-bold text-base text-secondary">Fundación PRO-21</span>
-                <span className="text-[10px] text-gray-500 font-semibold uppercase">Lápiz en Mano</span>
+              <div className="flex items-center gap-2">
+                <Image src="/icons/logo-pro21.png" alt="Fundación PRO-21" width={32} height={38} className="h-9 w-auto object-contain" />
+                <div className="w-px h-7 bg-gray-200" />
+                <Image src="/icons/logo-lapiz.png" alt="Centro Lápiz en Mano" width={32} height={32} className="h-9 w-auto object-contain" />
               </div>
               <button
                 onClick={() => setIsOpen(false)}

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import type { Locale } from '@/lib/i18n'
 import { CONTACT } from '@/lib/contact'
 
@@ -14,8 +15,11 @@ export default function Footer({ lang }: FooterProps) {
 
           {/* Columna 1: Identidad + contacto */}
           <div>
-            <h3 className="font-bold text-lg mb-3">Fundación PRO-21</h3>
-            <p className="text-gray-400 text-sm">Centro Lápiz en Mano</p>
+            <div className="flex items-center gap-3 mb-4">
+              <Image src="/icons/logo-pro21.png" alt="Fundación PRO-21" width={40} height={48} className="h-12 w-auto object-contain brightness-0 invert" />
+              <div className="w-px h-10 bg-white/20" />
+              <Image src="/icons/logo-lapiz.png" alt="Centro Lápiz en Mano" width={40} height={40} className="h-12 w-auto object-contain brightness-0 invert" />
+            </div>
 
             <ul className="mt-4 space-y-2 text-sm text-gray-400">
               <li className="flex gap-2">
