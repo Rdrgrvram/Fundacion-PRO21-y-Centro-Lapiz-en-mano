@@ -41,7 +41,7 @@ export default function Header({ lang }: HeaderProps) {
 
       {/* Header principal */}
       <header className="w-full bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
-        <div className="container mx-auto px-4 flex items-center justify-between h-16 md:h-20">
+        <div className="w-full pl-2 pr-4 md:pl-4 md:pr-6 flex items-center justify-between h-16 md:h-20">
           
           {/* Logo / Identidad */}
           <Link href={`/${lang}`} className="flex items-center gap-2 md:gap-3 group py-1.5 focus:outline-none" aria-label="Inicio — Fundación PRO-21 y Centro Lápiz en Mano">
