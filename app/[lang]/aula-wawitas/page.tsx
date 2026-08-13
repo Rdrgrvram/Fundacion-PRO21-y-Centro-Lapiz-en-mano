@@ -4,6 +4,8 @@ import Button from '@/components/ui/Button'
 
 export const metadata: Metadata = {
   title: 'Aula Wawitas | Fundación PRO-21',
+  description:
+    'Programa de estimulación y aprendizaje temprano para niños y niñas en edad preescolar. Tres niveles de atención de 3 a 5 años.',
 }
 
 const NIVELES = [
@@ -11,22 +13,28 @@ const NIVELES = [
     icon: '🌱',
     nivel: 'Estimulación Parvulario',
     edad: '3 años',
-    descripcion:
-      'Estimulación temprana multisensorial para fortalecer habilidades cognitivas, motrices y de comunicación en un ambiente estructurado y afectivo.',
+    descripcionEs:
+      'Implementamos actividades sensoriales y de exploración para niños pequeños, trabajando en habilidades socioemocionales iniciales en un ambiente afectivo y estimulante.',
+    descripcionEn:
+      'We implement sensory and exploration activities for young children, working on initial socio-emotional skills in an affective and stimulating environment.',
   },
   {
     icon: '⭐',
-    nivel: 'Pre-Kinder',
+    nivel: 'Estimulación Pre-Kínder',
     edad: '4 años',
-    descripcion:
-      'Iniciación escolar con rutinas predecibles, apoyo en la regulación sensorial y desarrollo de habilidades de atención y juego compartido.',
+    descripcionEs:
+      'Diseñamos actividades lúdicas para el desarrollo cognitivo temprano e introducimos conceptos básicos de lectura, escritura y matemáticas adaptados a la edad.',
+    descripcionEn:
+      'We design play-based activities for early cognitive development and introduce basic concepts of reading, writing and mathematics adapted to the age.',
   },
   {
     icon: '🎓',
-    nivel: 'Kinder',
+    nivel: 'Estimulación Kínder',
     edad: '5 años',
-    descripcion:
-      'Preparación para la inclusión escolar con trabajo en autonomía, comunicación funcional y habilidades preacadémicas adaptadas.',
+    descripcionEs:
+      'Consolidamos las habilidades previas y trabajamos en la preparación para la transición a primaria, fortaleciendo la autonomía y la socialización.',
+    descripcionEn:
+      'We consolidate previous skills and work on preparation for the transition to primary school, strengthening autonomy and socialization.',
   },
 ]
 
@@ -40,10 +48,10 @@ export default function Page({ params }: { params: { lang: Locale } }) {
         <div className="container mx-auto max-w-3xl text-center">
           <span className="text-5xl">🌈</span>
           <h1 className="mt-4 text-4xl font-bold text-gray-900">Aula Wawitas</h1>
-          <p className="mt-4 text-lg text-gray-600 max-w-xl mx-auto">
+          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
             {es
-              ? 'Programa de atención especializada para niños y niñas con autismo y neurodivergencia, organizado por niveles de edad.'
-              : 'Specialized care program for children with autism and neurodivergence, organized by age levels.'}
+              ? 'Programa de la Fundación PRO-21 orientado a fortalecer el desarrollo integral de niños y niñas en edad preescolar, mediante experiencias de aprendizaje significativas que respetan el ritmo, las capacidades y las necesidades de cada participante.'
+              : 'Program of Fundación PRO-21 aimed at strengthening the integral development of preschool-age children, through meaningful learning experiences that respect the pace, capabilities and needs of each participant.'}
           </p>
         </div>
       </section>
@@ -52,12 +60,12 @@ export default function Page({ params }: { params: { lang: Locale } }) {
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            {es ? 'Niveles de Atención por Edad' : 'Care Levels by Age'}
+            {es ? 'Niveles de Estimulación' : 'Stimulation Levels'}
           </h2>
           <p className="text-gray-500 mb-8">
             {es
-              ? 'El programa está estructurado en tres niveles que acompañan el desarrollo del niño desde los 3 hasta los 5 años.'
-              : 'The program is structured in three levels that accompany the child\'s development from age 3 to 5.'}
+              ? 'El programa está organizado en tres niveles adecuados a la etapa de desarrollo de cada niño, desde los 3 hasta los 5 años.'
+              : "The program is organized in three levels suited to each child's developmental stage, from 3 to 5 years of age."}
           </p>
 
           <div className="flex flex-col gap-6">
@@ -79,7 +87,9 @@ export default function Page({ params }: { params: { lang: Locale } }) {
                       {item.edad}
                     </span>
                   </div>
-                  <p className="text-gray-600 leading-relaxed">{item.descripcion}</p>
+                  <p className="text-gray-600 leading-relaxed">
+                    {es ? item.descripcionEs : item.descripcionEn}
+                  </p>
                 </div>
               </div>
             ))}
@@ -87,16 +97,32 @@ export default function Page({ params }: { params: { lang: Locale } }) {
         </div>
       </section>
 
+      {/* Enfoque del programa */}
+      <section className="bg-gray-50 py-12 px-4">
+        <div className="container mx-auto max-w-3xl text-center">
+          <p className="text-gray-700 leading-relaxed">
+            {es
+              ? '🤝 El programa reconoce el papel fundamental de las familias en el proceso educativo, promoviendo su participación y acompañamiento constante durante cada etapa del desarrollo del niño.'
+              : '🤝 The program recognizes the fundamental role of families in the educational process, promoting their active participation and constant support at each stage of the child\'s development.'}
+          </p>
+        </div>
+      </section>
+
       {/* CTA */}
-      <section className="bg-gray-50 py-12 px-4 text-center">
+      <section className="py-12 px-4 text-center">
         <p className="text-gray-600 mb-6">
           {es
-            ? '¿Buscas atención especializada para tu hijo con autismo? Estamos aquí para ayudarte.'
-            : 'Looking for specialized care for your child with autism? We are here to help.'}
+            ? '¿Tienes un hijo en edad preescolar? Conoce cómo Aula Wawitas puede acompañar su desarrollo.'
+            : 'Do you have a preschool-age child? Learn how Aula Wawitas can support their development.'}
         </p>
-        <Button href={`/${params.lang}/contacto`} variant="secondary" size="lg">
-          {es ? 'Solicitar información' : 'Request information'}
-        </Button>
+        <div className="flex flex-wrap gap-3 justify-center">
+          <Button href={`/${params.lang}/contacto`} variant="secondary" size="lg">
+            {es ? 'Solicitar información' : 'Request information'}
+          </Button>
+          <Button href="https://wa.me/59170106276" external variant="outline" size="lg">
+            WhatsApp
+          </Button>
+        </div>
       </section>
     </>
   )
