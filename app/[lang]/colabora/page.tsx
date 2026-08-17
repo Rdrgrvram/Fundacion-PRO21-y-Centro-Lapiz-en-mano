@@ -17,6 +17,38 @@ export default function Page({ params: { lang } }: PageProps) {
   const [selectedVolArea, setSelectedVolArea] = useState<number | null>(null)
   const [openAlliance, setOpenAlliance] = useState<number | null>(null)
   const [formSent, setFormSent] = useState(false)
+  const [volSending, setVolSending] = useState(false)
+  const [volError, setVolError] = useState('')
+  const [volDisponibilidad, setVolDisponibilidad] = useState('')
+  const [volForm, setVolForm] = useState({ nombre: '', email: '', telefono: '', profesion: '' })
+
+  const handleVolunteerSubmit = async () => {
+    if (!volForm.nombre || !volForm.email) {
+      setVolError(es ? 'Nombre y correo son obligatorios.' : 'Name and email are required.')
+      return
+    }
+    setVolSending(true)
+    setVolError('')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: volForm.nombre,
+          email: volForm.email,
+          phone: volForm.telefono,
+          message: `Inscripción como voluntario/a.\nProfesión: ${volForm.profesion}\nDisponibilidad: ${volDisponibilidad || 'No especificada'}`,
+          program: es ? 'Voluntariado' : 'Volunteering',
+        }),
+      })
+      if (!res.ok) throw new Error()
+      setFormSent(true)
+    } catch {
+      setVolError(es ? 'Error al enviar. Intenta de nuevo.' : 'Send error. Please try again.')
+    } finally {
+      setVolSending(false)
+    }
+  }
 
   const donationTiers = [
     {
@@ -453,12 +485,12 @@ export default function Page({ params: { lang } }: PageProps) {
                   
                   <div className="space-y-4">
                     {[
-                      { label: es ? 'Nombre completo' : 'Full name', placeholder: es ? 'Ej: María Flores' : 'E.g., Maria Flores', type: 'text' },
-                      { label: es ? 'Correo electrónico' : 'Email address', placeholder: 'maria@example.com', type: 'email' },
-                      { label: es ? 'Teléfono / WhatsApp' : 'Phone / WhatsApp', placeholder: '+591 ...', type: 'tel' },
-                      { label: es ? 'Profesión o Carrera' : 'Profession or Career', placeholder: es ? 'Ej: Psicóloga' : 'E.g., Psychologist', type: 'text' }
+                      { label: es ? 'Nombre completo' : 'Full name', placeholder: es ? 'Ej: María Flores' : 'E.g., Maria Flores', type: 'text', key: 'nombre' as const },
+                      { label: es ? 'Correo electrónico' : 'Email address', placeholder: 'maria@example.com', type: 'email', key: 'email' as const },
+                      { label: es ? 'Teléfono / WhatsApp' : 'Phone / WhatsApp', placeholder: '+591 ...', type: 'tel', key: 'telefono' as const },
+                      { label: es ? 'Profesión o Carrera' : 'Profession or Career', placeholder: es ? 'Ej: Psicóloga' : 'E.g., Psychologist', type: 'text', key: 'profesion' as const }
                     ].map((f) => (
-                      <div key={f.label}>
+                      <div key={f.key}>
                         <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1 block select-none">
                           {f.label}
                         </label>
@@ -466,21 +498,28 @@ export default function Page({ params: { lang } }: PageProps) {
                           type={f.type}
                           placeholder={f.placeholder}
                           required
+                          value={volForm[f.key]}
+                          onChange={(e) => setVolForm(prev => ({ ...prev, [f.key]: e.target.value }))}
                           className="w-full px-4 py-2.5 rounded-xl border-2 border-gray-200 focus:border-secondary bg-gray-50 focus:outline-none text-xs sm:text-sm"
                         />
                       </div>
                     ))}
-                    
+
                     <div>
                       <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1 block select-none">
                         {es ? 'Disponibilidad horaria semanal' : 'Weekly time availability'}
                       </label>
-                      <div className="flex gap-2 select-none">
+                      <div className="flex gap-2 select-none flex-wrap">
                         {['2-4 hrs', '4-8 hrs', '8+ hrs', es ? 'Flexible' : 'Flexible'].map((h) => (
                           <button
                             key={h}
                             type="button"
-                            className="px-3 py-1.5 rounded-full border border-gray-300 bg-white hover:bg-gray-50 text-[10px] sm:text-xs font-bold text-gray-600 transition-colors"
+                            onClick={() => setVolDisponibilidad(h)}
+                            className={`px-3 py-1.5 rounded-full border text-[10px] sm:text-xs font-bold transition-colors ${
+                              volDisponibilidad === h
+                                ? 'bg-secondary text-white border-secondary'
+                                : 'border-gray-300 bg-white hover:bg-gray-50 text-gray-600'
+                            }`}
                           >
                             {h}
                           </button>
@@ -489,11 +528,18 @@ export default function Page({ params: { lang } }: PageProps) {
                     </div>
                   </div>
 
+                  {volError && (
+                    <p className="mt-3 text-xs text-red-500 font-semibold">{volError}</p>
+                  )}
+
                   <button
-                    onClick={() => setFormSent(true)}
-                    className="w-full mt-6 bg-gradient-to-r from-[#229cc2] to-[#229cc2] hover:scale-[1.01] active:scale-[0.99] text-white font-extrabold text-xs sm:text-sm py-3 px-6 rounded-full transition-all shadow-md shadow-[#229cc2]/10 min-h-[44px]"
+                    onClick={handleVolunteerSubmit}
+                    disabled={volSending}
+                    className="w-full mt-6 bg-gradient-to-r from-[#229cc2] to-[#229cc2] hover:scale-[1.01] active:scale-[0.99] text-white font-extrabold text-xs sm:text-sm py-3 px-6 rounded-full transition-all shadow-md shadow-[#229cc2]/10 min-h-[44px] disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    {es ? 'Enviar inscripción' : 'Submit registration'}
+                    {volSending
+                      ? (es ? 'Enviando...' : 'Sending...')
+                      : (es ? 'Enviar inscripción' : 'Submit registration')}
                   </button>
                 </>
               ) : (
