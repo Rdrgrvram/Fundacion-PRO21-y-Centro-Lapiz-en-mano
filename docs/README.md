@@ -33,6 +33,8 @@ El sitio cubre 11 secciones, es bilingüe (español/inglés), responsive, y cuen
 | [`ROADMAP.md`](./ROADMAP.md) | Plan de trabajo semana a semana, hitos y entregables |
 | [`CONTENT.md`](./CONTENT.md) | Guía de contenido por sección — tracker de materiales recibidos |
 | [`TEAM.md`](./TEAM.md) | Roles, responsabilidades y registro de horas del equipo |
+| [`SCRUM.md`](./SCRUM.md) | Metodología Scrum, ceremonias, backlog y definición de Done |
+| [`CONTRIBUTING.md`](./CONTRIBUTING.md) | Guía para nuevos desarrolladores — setup, ramas, convenciones |
 | [`ENTREVISTA.md`](./ENTREVISTA.md) | Guía para la reunión inicial con la fundación |
 
 ---
@@ -41,8 +43,8 @@ El sitio cubre 11 secciones, es bilingüe (español/inglés), responsive, y cuen
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/ucb-sistemas/fundacion-pro21.git
-cd fundacion-pro21
+git clone https://github.com/Rdrgrvram/Fundacion-PRO21-y-Centro-Lapiz-en-mano.git
+cd Fundacion-PRO21-y-Centro-Lapiz-en-mano
 
 # Instalar dependencias
 npm install
