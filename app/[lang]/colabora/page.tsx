@@ -18,6 +18,7 @@ export default function Page({ params: { lang } }: PageProps) {
   const [openAlliance, setOpenAlliance] = useState<number | null>(null)
   const [formSent, setFormSent] = useState(false)
 
+
   // Volunteer form state
   const [volName, setVolName] = useState('')
   const [volEmail, setVolEmail] = useState('')
