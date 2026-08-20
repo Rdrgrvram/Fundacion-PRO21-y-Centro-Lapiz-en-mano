@@ -1,0 +1,256 @@
+es:
+  hero:
+    badge: Para las familias
+    title_line1: No caminan
+    title_line2: solos
+    subtitle: Sabemos que detrás de cada niño que atendemos hay una familia que también necesita acompañamiento, formación y contención. Este espacio es para ustedes.
+  welcome_letter:
+    title: 'Querida familia:'
+    text: 'Recibir un diagnóstico es un momento de gran sensibilidad que cambia la vida. Sentir temor, dudas o tristeza es completamente natural — y no significa que debas recorrer este camino en soledad. Estamos aquí para acompañarte en cada paso: con información profesional clara, apoyo psicológico constante y una red de familias que entienden exactamente tu vivencia.'
+    signature: — El equipo de la Fundación PRO-21 y Centro Lápiz en Mano
+  sessions_section:
+    badge: Sesiones virtuales gratuitas
+    title: Orientación profesional desde casa
+    subtitle: Sesiones sin costo con especialistas del centro, diseñadas para responder tus inquietudes vivenciales y familiares.
+  virtual_sessions:
+    - title: Orientación psicológica
+      icon: 🧠
+      desc: Sesiones individuales con psicólogos para abordar el impacto emocional del diagnóstico, manejar la ansiedad, el duelo y la culpa, y fortalecer la salud mental de los padres.
+      freq: Semanal
+      duration: 45 min
+      color: accent
+    - title: Trabajo social
+      icon: 🤝
+      desc: Orientación sobre derechos, acceso a servicios públicos, trámites de discapacidad, becas educativas y redes de apoyo institucional disponibles en Bolivia.
+      freq: Quincenal
+      duration: 60 min
+      color: secondary
+    - title: Charlas temáticas
+      icon: 🎓
+      desc: Talleres formativos sobre temas como estimulación en casa, manejo de conducta, alimentación, sexualidad, autonomía y transición a la vida adulta.
+      freq: Mensual
+      duration: 90 min
+      color: accent
+    - title: Interconsulta con especialistas
+      icon: 🩺
+      desc: Sesiones donde los padres pueden hacer preguntas directas al fisioterapeuta, fonoaudiólogo o terapeuta conductual de su hijo sobre el progreso y las estrategias.
+      freq: Mensual
+      duration: 30 min
+      color: secondary
+  sessions_note: 100% gratuitas. No requieres estar inscrito en programas presenciales para asistir.
+  network_section:
+    badge: Red de apoyo familiar
+    title: Nadie comprende mejor que quien lo vive
+    subtitle: Comunidad de padres y madres que comparten experiencias cotidianas y celebran el desarrollo pleno de sus hijos.
+  support_network:
+    - title: Encuentros presenciales
+      icon: ☕
+      desc: Reuniones mensuales en el Centro Lápiz en Mano donde las familias comparten experiencias y se apoyan mutuamente en un espacio seguro.
+      color: primary
+    - title: Grupo de WhatsApp
+      icon: 📱
+      desc: Comunidad activa de padres y madres donde compartir recursos, resolver dudas cotidianas y coordinar actividades.
+      color: secondary
+    - title: Padres mentores
+      icon: 💛
+      desc: Familias con más tiempo en la fundación acompañan a las familias nuevas durante sus primeros meses, compartiendo su experiencia.
+      color: accent
+    - title: Eventos familiares
+      icon: 🎉
+      desc: Celebraciones, paseos inclusivos, talleres recreativos y actividades donde los niños y sus familias disfrutan juntos.
+      color: accent
+  guides_section:
+    badge: Material educativo
+    title: Guías y recursos descargables
+    subtitle: Material elaborado por nuestros profesionales para guiar las actividades formativas, sensoriales y de rutina diaria en casa.
+  guides:
+    - title: Guía de estimulación temprana en casa
+      icon: 👶
+      desc: Actividades prácticas organizadas por edad para estimular el desarrollo de tu hijo desde el hogar.
+      pages: 24 págs.
+      program: Mi Escuelita Down
+      color: secondary
+    - title: Estrategias para el manejo de conducta
+      icon: 🧩
+      desc: Técnicas basadas en evidencia para abordar conductas desafiantes con paciencia y efectividad.
+      pages: 18 págs.
+      program: Aula Wawitas
+      color: accent
+    - title: Cómo apoyar las tareas escolares
+      icon: 📚
+      desc: 'Guía práctica para padres de niños con dificultades de aprendizaje: organización y motivación.'
+      pages: 20 págs.
+      program: Pasos Firmes
+      color: secondary
+    - title: Derechos de la discapacidad en Bolivia
+      icon: ⚖️
+      desc: Resumen de la normativa boliviana, trámites de certificación, acceso a salud, educación y beneficios.
+      pages: 16 págs.
+      program: Todos los programas
+      color: accent
+    - title: Pictogramas para la rutina diaria
+      icon: 🖼️
+      desc: 'Set descargable de pictogramas para estructurar rutinas visuales: higiene, alimentación y ocio.'
+      pages: 12 láminas
+      program: Aula Wawitas
+      color: secondary
+    - title: Guía de alimentación y nutrición
+      icon: 🥗
+      desc: Recomendaciones nutricionales y manejo de selectividad alimentaria para niños con TEA.
+      pages: 22 págs.
+      program: Aula Wawitas
+      color: primary
+  guides_note: El material se actualiza de acuerdo a las recomendaciones curriculares del Ministerio de Educación de Bolivia.
+  faq_section:
+    badge: Preguntas frecuentes
+    title: Respuestas a las dudas más comunes
+    subtitle: Si tu consulta no se encuentra resuelta, escríbenos directamente y te ayudaremos.
+  faqs:
+    - q: ¿Necesito un diagnóstico para inscribir a mi hijo?
+      a: No. Si observas señales que te preocupan o tu hijo tiene dificultades en algún área del desarrollo o el aprendizaje, puedes consultarnos directamente. Nuestro equipo realizará una evaluación integral como primer paso.
+    - q: ¿Cuánto cuesta el programa?
+      a: Cada programa tiene una cuota mensual accesible. Para familias con dificultades económicas, contamos con un sistema de becas parciales y totales financiadas por donaciones. Ningún niño deja de recibir atención por razones económicas.
+    - q: ¿Con qué frecuencia son las terapias?
+      a: Depende del plan de intervención de cada niño. Generalmente las sesiones son de 2 a 4 veces por semana, combinando distintas áreas terapéuticas. El plan se diseña junto con la familia.
+    - q: ¿Mi hijo puede asistir a una escuela regular al mismo tiempo?
+      a: Sí, y lo promovemos activamente. Los niños de Mi Escuelita Inclusiva Down asisten tanto al Centro Lápiz en Mano como a su unidad educativa de origen. Nuestro enfoque es la inclusión educativa, no la segregación.
+    - q: ¿Ofrecen atención en horarios flexibles?
+      a: Sí. Entendemos que muchas familias trabajan. Coordinamos los horarios de las sesiones terapéuticas para adaptarnos a las necesidades de cada familia, incluyendo opciones en la tarde.
+    - q: ¿Qué pasa si vivimos fuera de La Paz?
+      a: Ofrecemos sesiones virtuales gratuitas de orientación para familias de cualquier parte de Bolivia. Para la atención presencial, recibimos familias que puedan desplazarse a nuestro centro en La Paz.
+    - q: ¿Cómo puedo saber cuál programa es el adecuado para mi hijo?
+      a: Agenda una evaluación inicial gratuita. Nuestro equipo multidisciplinario evaluará a tu hijo y te recomendará el programa y las áreas de intervención más adecuadas para sus necesidades.
+    - q: ¿Los padres participan en las terapias?
+      a: Sí. Consideramos a la familia como parte fundamental del proceso. Los padres participan en sesiones de orientación, reciben estrategias para el hogar, y coordinan activamente con los terapeutas.
+  cta:
+    title: ¿Necesitas orientación para tu familia?
+    text: Si acabas de recibir un diagnóstico, si tienes dudas sobre el desarrollo de tu hijo, o si simplemente necesitas chatear con un profesional de contención — estamos aquí.
+    note: La primera consulta de orientación familiar es gratuita y sin compromisos.
+en:
+  hero:
+    badge: For families
+    title_line1: You do not walk
+    title_line2: alone
+    subtitle: We know that behind every child we support there is a family that also needs guidance, training, and emotional support. This space is for you.
+  welcome_letter:
+    title: 'Dear family:'
+    text: 'Receiving a diagnosis is a highly sensitive, life-changing moment. Feeling fear, doubts, or sadness is completely natural — and it does not mean you have to walk this path alone. We are here to support you at every step: with clear professional information, constant psychological support, and a network of families who understand exactly what you are experiencing.'
+    signature: — The team of PRO-21 Foundation and Lápiz en Mano Center
+  sessions_section:
+    badge: Free virtual sessions
+    title: Professional guidance from home
+    subtitle: Cost-free sessions with center specialists, designed to answer your everyday family concerns.
+  virtual_sessions:
+    - title: Psychological orientation
+      icon: 🧠
+      desc: Individual sessions with psychologists to address the emotional impact of diagnosis, manage anxiety, grief, and guilt, and strengthen parents' mental health.
+      freq: Weekly
+      duration: 45 min
+      color: accent
+    - title: Social work
+      icon: 🤝
+      desc: Orientation on rights, access to public services, disability certificate procedures, educational scholarships, and institutional networks in Bolivia.
+      freq: Fortnightly
+      duration: 60 min
+      color: secondary
+    - title: Thematic talks
+      icon: 🎓
+      desc: Training workshops on topics such as stimulation at home, behavior management, nutrition, sexuality, autonomy, and transition to adult life.
+      freq: Monthly
+      duration: 90 min
+      color: accent
+    - title: Interconsultation with specialists
+      icon: 🩺
+      desc: Sessions where parents can ask direct questions to their child's physical therapist, speech therapist, or behavioral therapist about progress.
+      freq: Monthly
+      duration: 30 min
+      color: secondary
+  sessions_note: 100% free. You do not need to be enrolled in in-person programs to attend.
+  network_section:
+    badge: Family support network
+    title: No one understands better than those who live it
+    subtitle: Community of parents sharing daily experiences and celebrating the full development of their children.
+  support_network:
+    - title: In-person meetings
+      icon: ☕
+      desc: Monthly meetings at the Lápiz en Mano Center where families share experiences and support each other in a safe space.
+      color: primary
+    - title: WhatsApp Group
+      icon: 📱
+      desc: Active community of parents to share resources, solve daily doubts, and coordinate activities.
+      color: secondary
+    - title: Mentor Parents
+      icon: 💛
+      desc: Families with more time in the foundation accompany new families during their first months, sharing their experience.
+      color: accent
+    - title: Family events
+      icon: 🎉
+      desc: Celebrations, inclusive outings, recreational workshops, and activities where children and families enjoy together.
+      color: accent
+  guides_section:
+    badge: Educational material
+    title: Downloadable Guides & Resources
+    subtitle: Material prepared by our professionals to guide educational, sensory, and daily routine activities at home.
+  guides:
+    - title: Early stimulation guide at home
+      icon: 👶
+      desc: Practical activities organized by age to stimulate your child's development from home.
+      pages: 24 pages
+      program: Mi Escuelita Down
+      color: secondary
+    - title: Behavior management strategies
+      icon: 🧩
+      desc: Evidence-based techniques to address challenging behaviors with patience and effectiveness.
+      pages: 18 pages
+      program: Aula Wawitas
+      color: accent
+    - title: How to support school homework
+      icon: 📚
+      desc: 'Practical guide for parents of children with learning difficulties: organization and motivation.'
+      pages: 20 pages
+      program: Pasos Firmes
+      color: secondary
+    - title: Disability rights in Bolivia
+      icon: ⚖️
+      desc: Summary of Bolivian regulations, certification procedures, access to health, education, and benefits.
+      pages: 16 pages
+      program: All programs
+      color: accent
+    - title: Pictograms for daily routines
+      icon: 🖼️
+      desc: 'Downloadable set of pictograms to structure visual routines: hygiene, eating, and leisure.'
+      pages: 12 sheets
+      program: Aula Wawitas
+      color: secondary
+    - title: Nutrition and feeding guide
+      icon: 🥗
+      desc: Nutritional recommendations and food selectivity management for children with ASD.
+      pages: 22 pages
+      program: Aula Wawitas
+      color: primary
+  guides_note: The material is updated in accordance with the educational curriculum of the Ministry of Education of Bolivia.
+  faq_section:
+    badge: Frequently asked questions
+    title: Answers to the most common doubts
+    subtitle: If your inquiry is not resolved here, message us directly and we will help.
+  faqs:
+    - q: Do I need a diagnosis to enroll my child?
+      a: No. If you notice concerning signs or your child has difficulties in any area of development or learning, you can consult us directly. Our team will perform a comprehensive evaluation.
+    - q: How much does the program cost?
+      a: Each program has an affordable monthly fee. For families with economic difficulties, we have a system of partial and full scholarships funded by donations. No child is left without care due to economic reasons.
+    - q: How often are the therapies?
+      a: It depends on each child's intervention plan. Generally, sessions are 2 to 4 times a week, combining different therapeutic areas. The plan is designed together with the family.
+    - q: Can my child attend a regular school at the same time?
+      a: Yes, and we actively promote it. Children from Mi Escuelita Down attend both the Lápiz en Mano Center and their school of origin. Our focus is educational inclusion, not segregation.
+    - q: Do you offer flexible hours?
+      a: Yes. We understand that many families work. We coordinate therapeutic sessions to adapt to each family's needs, including afternoon options.
+    - q: What if we live outside La Paz?
+      a: We offer free virtual guidance sessions for families from any part of Bolivia. For in-person care, we receive families who can travel to our center in La Paz.
+    - q: How can I know which program is right for my child?
+      a: Schedule a free initial evaluation. Our multidisciplinary team will evaluate your child and recommend the most suitable program and intervention areas.
+    - q: Do parents participate in the therapies?
+      a: Yes. We consider the family as a fundamental part of the process. Parents participate in orientation sessions, receive home strategies, and actively coordinate with therapists.
+  cta:
+    title: Need guidance for your family?
+    text: If you have just received a diagnosis, if you have doubts about your child's development, or if you simply need to chat with a support professional — we are here.
+    note: The first family orientation consultation is free and with no commitments.

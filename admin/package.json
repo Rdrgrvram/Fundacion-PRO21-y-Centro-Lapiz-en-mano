@@ -1,0 +1,11 @@
+{
+  "name": "fundacion-pro21-admin",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Panel de administración (Decap CMS). Proyecto npm aislado a propósito: decap-cms-app necesita React 19, mientras el sitio (Next.js 14) usa React 18 — mantenerlos en árboles de node_modules separados evita que ambas versiones terminen mezcladas en el mismo bundle. scripts/build-admin.mjs compila esto hacia public/admin/bundle.js.",
+  "dependencies": {
+    "decap-cms-app": "3.15.1",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  }
+}

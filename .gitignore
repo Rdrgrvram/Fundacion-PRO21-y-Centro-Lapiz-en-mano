@@ -10,6 +10,9 @@ out/
 # Mockups — build de Vite (no va al repo)
 mockups/dist/
 
+# Panel admin (Decap CMS) — bundle generado por scripts/build-admin.mjs en cada build
+public/admin/bundle.js
+
 # Variables de entorno — NUNCA subir al repositorio
 .env
 .env.local

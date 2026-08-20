@@ -1,13 +1,19 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Locale } from '@/lib/i18n'
-import { CONTACT } from '@/lib/contact'
+import { getSiteSettings } from '@/lib/cms'
+import { getAllPrograms } from '@/lib/content'
+import { waLink } from '@/lib/utils'
 
 interface FooterProps {
   lang: Locale
 }
 
 export default function Footer({ lang }: FooterProps) {
+  const settings = getSiteSettings(lang)
+  const programs = getAllPrograms(lang)
+  const { contact, social, footer } = settings
+
   return (
     <footer className="bg-gray-900 text-white mt-auto">
       <div className="container mx-auto px-4 py-12">
@@ -24,18 +30,18 @@ export default function Footer({ lang }: FooterProps) {
             <ul className="mt-4 space-y-2 text-sm text-gray-400">
               <li className="flex gap-2">
                 <span>📍</span>
-                <span>{CONTACT.address}</span>
+                <span>{contact.address}</span>
               </li>
               <li className="flex gap-2">
                 <span>📞</span>
-                <a href={CONTACT.whatsapp} className="underline hover:text-white" target="_blank" rel="noopener noreferrer">
-                  {CONTACT.phone}
+                <a href={waLink(contact.whatsapp_number)} className="underline hover:text-white" target="_blank" rel="noopener noreferrer">
+                  {contact.phone_display}
                 </a>
               </li>
               <li className="flex gap-2">
                 <span>✉️</span>
-                <a href={`mailto:${CONTACT.email}`} className="underline hover:text-white">
-                  {CONTACT.email}
+                <a href={`mailto:${contact.email}`} className="underline hover:text-white">
+                  {contact.email}
                 </a>
               </li>
             </ul>
@@ -43,7 +49,7 @@ export default function Footer({ lang }: FooterProps) {
             {/* Redes sociales */}
             <div className="mt-5 flex gap-3">
               <a
-                href={CONTACT.social.instagram}
+                href={social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -54,7 +60,7 @@ export default function Footer({ lang }: FooterProps) {
                 </svg>
               </a>
               <a
-                href={CONTACT.social.tiktokLapiz}
+                href={social.tiktok_lapiz}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="TikTok"
@@ -69,29 +75,27 @@ export default function Footer({ lang }: FooterProps) {
 
           {/* Columna 2: Programas */}
           <div>
-            <h3 className="font-bold text-lg mb-3">Programas</h3>
+            <h3 className="font-bold text-lg mb-3">{footer.programs_title}</h3>
             <ul className="space-y-1 text-gray-400 text-sm">
-              <li><Link href={`/${lang}/mi-escuelita-down`} className="hover:text-white">Mi Escuelita Down</Link></li>
-              <li><Link href={`/${lang}/aula-wawitas`} className="hover:text-white">Aula Wawitas</Link></li>
-              <li><Link href={`/${lang}/pasos-firmes`} className="hover:text-white">Pasos Firmes</Link></li>
+              {programs.map((p) => (
+                <li key={p.slug}><Link href={`/${lang}/${p.slug}`} className="hover:text-white">{p.title}</Link></li>
+              ))}
             </ul>
           </div>
 
           {/* Columna 3: Institución */}
           <div>
-            <h3 className="font-bold text-lg mb-3">Institución</h3>
+            <h3 className="font-bold text-lg mb-3">{footer.institution_title}</h3>
             <ul className="space-y-1 text-gray-400 text-sm">
-              <li><Link href={`/${lang}/quienes-somos`} className="hover:text-white">Quiénes somos</Link></li>
-              <li><Link href={`/${lang}/equipo`} className="hover:text-white">Equipo</Link></li>
-              <li><Link href={`/${lang}/impacto`} className="hover:text-white">Impacto</Link></li>
-              <li><Link href={`/${lang}/colabora`} className="hover:text-white">Colabora</Link></li>
-              <li><Link href={`/${lang}/contacto`} className="hover:text-white">Contacto</Link></li>
+              {footer.institution_links.map((link) => (
+                <li key={link.route}><Link href={`/${lang}/${link.route}`} className="hover:text-white">{link.label}</Link></li>
+              ))}
             </ul>
           </div>
         </div>
 
         <div className="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500 text-xs">
-          <p>© {new Date().getFullYear()} Fundación PRO-21. Desarrollado por estudiantes de Ingeniería de Sistemas, UCB La Paz.</p>
+          <p>© {new Date().getFullYear()} {footer.copyright}</p>
         </div>
       </div>
     </footer>

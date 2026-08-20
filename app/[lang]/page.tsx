@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import type { Locale } from '@/lib/i18n'
-import { getTranslation } from '@/lib/i18n'
+import { getAllTeamAreas, getAllTestimonials } from '@/lib/content'
+import { getHomeContent } from '@/lib/cms'
+import type { AccentColor } from '@/lib/palette'
 
 export const metadata: Metadata = {
   title: 'Fundación PRO-21 y Centro Lápiz en Mano | La Paz, Bolivia',
@@ -9,86 +11,24 @@ export const metadata: Metadata = {
     'Intervención terapéutica y educativa especializada para niños con síndrome de Down, autismo y dificultades de aprendizaje en La Paz, Bolivia.',
 }
 
+// Estilos de tarjeta por programa — Tailwind JIT necesita clases literales en
+// el código fuente, así que el color que llega del CMS (un enum) se resuelve
+// acá, no se interpola directo. Ver lib/palette.ts para el mismo patrón.
+const PROGRAM_STYLES: Record<AccentColor, { bg: string; textBtn: string; textAccent: string }> = {
+  primary: { bg: 'bg-primary', textBtn: 'text-gray-900', textAccent: 'text-primary-700' },
+  secondary: { bg: 'bg-secondary', textBtn: 'text-white', textAccent: 'text-secondary' },
+  accent: { bg: 'bg-accent', textBtn: 'text-white', textAccent: 'text-accent' },
+}
+
 export default function Page({ params }: { params: { lang: Locale } }) {
   const { lang } = params
-  const t = getTranslation(lang)
   const es = lang === 'es'
 
-  const programs = [
-    {
-      href: `/${lang}/mi-escuelita-down`,
-      icon: '🌟',
-      color: 'bg-primary',
-      textBtn: 'text-gray-900',
-      border: 'border-primary',
-      textAccent: 'text-primary-700',
-      badge: es ? 'Síndrome de Down' : 'Down Syndrome',
-      title: 'Mi Escuelita Down',
-      desc: es
-        ? 'Intervención terapéutica y educativa integral desde estimulación temprana hasta inclusión en primaria regular. Terapia de lenguaje, conducta, fisioterapia y psicomotricidad.'
-        : 'Comprehensive therapeutic and educational intervention from early stimulation to regular primary inclusion. Speech, behavioral, physiotherapy, and psychomotor therapy.',
-      ages: es ? '0 – 14+ años' : '0 – 14+ years',
-    },
-    {
-      href: `/${lang}/aula-wawitas`,
-      icon: '🧸',
-      color: 'bg-secondary',
-      textBtn: 'text-white',
-      border: 'border-secondary',
-      textAccent: 'text-secondary',
-      badge: es ? 'Programa Preescolar' : 'Preschool Program',
-      title: 'Aula Wawitas',
-      desc: es
-        ? 'Estimulación y educación preescolar integral para niños de 3 a 5 años. Tres niveles: Parvulario, Pre-Kínder y Kínder, con preparación para la escuela regular.'
-        : 'Comprehensive preschool stimulation and education for children ages 3 to 5. Three levels: Nursery, Pre-Kinder and Kinder, with preparation for regular school.',
-      ages: es ? '3 – 5 años' : '3 – 5 years',
-    },
-    {
-      href: `/${lang}/pasos-firmes`,
-      icon: '📚',
-      color: 'bg-accent',
-      textBtn: 'text-white',
-      border: 'border-accent',
-      textAccent: 'text-accent',
-      badge: es ? 'Dificultades de aprendizaje' : 'Learning difficulties',
-      title: 'Pasos Firmes',
-      desc: es
-        ? 'Apoyo psicopedagógico para niños y adolescentes con dislexia, disgrafía, discalculia, TDAH y bajo rendimiento escolar. Modalidades individuales y grupales.'
-        : 'Psychopedagogical support for children and adolescents with dyslexia, dysgraphia, dyscalculia, ADHD, and low school performance. Individual and group modalities.',
-      ages: es ? 'Primaria y Secundaria' : 'Primary and Secondary',
-    },
-  ]
-
-  const stats = [
-    { val: '70+', label: es ? 'niños atendidos' : 'children served', icon: '👶' },
-    { val: '8',   label: es ? 'años de experiencia' : 'years of experience', icon: '🏫' },
-    { val: '10',  label: es ? 'profesionales' : 'professionals', icon: '👩‍⚕️' },
-    { val: '3',   label: es ? 'programas activos' : 'active programs', icon: '🎯' },
-  ]
-
-  const testimonials = [
-    {
-      quote: es
-        ? 'Cuando recibimos el diagnóstico sentimos que el mundo se detenía. En Lápiz en Mano encontramos no solo terapia, sino una familia que nos enseñó a ver las capacidades antes que las limitaciones.'
-        : 'When we received the diagnosis, we felt the world stop. At Lápiz en Mano, we found not only therapy but a family that taught us to see abilities before limitations.',
-      name: 'Familia Quispe',
-      program: 'Mi Escuelita Down',
-    },
-    {
-      quote: es
-        ? 'Mi hijo llegó al centro sin poder expresarse. Hoy nos cuenta su día con detalle. Los profesionales son extraordinarios y el ambiente que han creado es único.'
-        : 'My son arrived at the center unable to express himself. Today he tells us about his day in detail. The professionals are extraordinary and the environment they have created is unique.',
-      name: 'Familia Mamani',
-      program: 'Aula Wawitas',
-    },
-    {
-      quote: es
-        ? 'Pasos Firmes cambió la relación de mi hija con la escuela. Pasó de llorar cada mañana a querer ir. El equipo no solo trabaja con los niños, trabaja con toda la familia.'
-        : 'Pasos Firmes changed my daughter\'s relationship with school. She went from crying every morning to wanting to go. The team doesn\'t just work with children, they work with the whole family.',
-      name: 'Familia Torrez',
-      program: 'Pasos Firmes',
-    },
-  ]
+  const content = getHomeContent(lang)
+  const testimonials = getAllTestimonials(lang).filter((t) => t.featuredHome)
+  // La vista previa del equipo reusa las áreas de especialidad ya migradas en
+  // la Fase 2 — evita duplicar la misma lista de roles en dos lugares.
+  const teamAreas = getAllTeamAreas(lang)
 
   return (
     <div className="bg-white">
@@ -114,23 +54,12 @@ export default function Page({ params }: { params: { lang: Locale } }) {
 
             {/* Headline */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-[1.05] mb-6">
-              {es ? (
-                <>
-                  Cada niño tiene<br />
-                  <span className="text-primary">un potencial único</span>
-                </>
-              ) : (
-                <>
-                  Every child has<br />
-                  <span className="text-primary">a unique potential</span>
-                </>
-              )}
+              {content.hero.title_line1}<br />
+              <span className="text-primary">{content.hero.title_line2}</span>
             </h1>
 
             <p className="text-lg md:text-xl text-white/70 max-w-2xl mb-10 leading-relaxed">
-              {es
-                ? 'Fundación PRO-21 y Centro Lápiz en Mano brindamos atención terapéutica y educativa especializada a niños con síndrome de Down, dificultades preescolares y dificultades de aprendizaje.'
-                : 'PRO-21 Foundation and Lápiz en Mano Center provide specialized therapeutic and educational care for children with Down syndrome, preschool needs, and learning difficulties.'}
+              {content.hero.subtitle}
             </p>
 
             {/* CTAs */}
@@ -139,7 +68,7 @@ export default function Page({ params }: { params: { lang: Locale } }) {
                 href={`/${lang}/mi-escuelita-down`}
                 className="inline-flex items-center gap-2 bg-primary text-gray-900 font-extrabold px-8 py-4 rounded-full hover:bg-primary/90 transition-colors min-h-[52px] text-base"
               >
-                {es ? 'Ver programas' : 'See programs'}
+                {content.hero.cta_primary}
               </Link>
               <a
                 href="https://wa.me/59170106276"
@@ -168,10 +97,10 @@ export default function Page({ params }: { params: { lang: Locale } }) {
       <section className="py-12 border-b border-gray-100">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
-            {stats.map((s) => (
-              <div key={s.label} className="flex flex-col items-center text-center gap-2">
+            {content.stats.map((s, i) => (
+              <div key={i} className="flex flex-col items-center text-center gap-2">
                 <span className="text-4xl">{s.icon}</span>
-                <span className="text-3xl font-extrabold text-gray-900">{s.val}</span>
+                <span className="text-3xl font-extrabold text-gray-900">{s.value}</span>
                 <span className="text-sm text-gray-500 leading-tight">{s.label}</span>
               </div>
             ))}
@@ -184,56 +113,57 @@ export default function Page({ params }: { params: { lang: Locale } }) {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <span className="text-xs font-bold uppercase tracking-widest text-primary bg-primary/10 px-4 py-1.5 rounded-full">
-              {es ? 'Nuestros programas' : 'Our programs'}
+              {content.programs_teaser.badge}
             </span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mt-4 mb-4">
-              {es ? '¿En qué podemos ayudarte?' : 'How can we help you?'}
+              {content.programs_teaser.title}
             </h2>
             <p className="text-gray-500 max-w-2xl mx-auto">
-              {es
-                ? 'Tres programas especializados que atienden diferentes necesidades del desarrollo infantil, con un enfoque integral y personalizado.'
-                : 'Three specialized programs addressing different childhood development needs, with a comprehensive and personalized approach.'}
+              {content.programs_teaser.subtitle}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {programs.map((p) => (
-              <div
-                key={p.title}
-                className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-all group flex flex-col"
-              >
-                {/* Color top bar */}
-                <div className={`h-2 ${p.color}`} />
+            {content.programs_teaser.cards.map((p) => {
+              const style = PROGRAM_STYLES[p.color]
+              return (
+                <div
+                  key={p.slug}
+                  className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-all group flex flex-col"
+                >
+                  {/* Color top bar */}
+                  <div className={`h-2 ${style.bg}`} />
 
-                <div className="p-6 flex-1 flex flex-col">
-                  {/* Badge + icon */}
-                  <div className="flex items-center justify-between mb-4">
-                    <span className={`text-xs font-bold uppercase tracking-wide ${p.textAccent} bg-gray-50 px-3 py-1 rounded-full`}>
-                      {p.badge}
-                    </span>
-                    <span className="text-3xl">{p.icon}</span>
+                  <div className="p-6 flex-1 flex flex-col">
+                    {/* Badge + icon */}
+                    <div className="flex items-center justify-between mb-4">
+                      <span className={`text-xs font-bold uppercase tracking-wide ${style.textAccent} bg-gray-50 px-3 py-1 rounded-full`}>
+                        {p.badge}
+                      </span>
+                      <span className="text-3xl">{p.icon}</span>
+                    </div>
+
+                    <h3 className="text-xl font-extrabold text-gray-900 mb-3">{p.title}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed flex-1 mb-4">{p.desc}</p>
+
+                    {/* Age range */}
+                    <div className="flex items-center gap-2 text-xs text-gray-400 mb-5">
+                      <span>📅</span>
+                      <span>{p.ages}</span>
+                    </div>
+
+                    {/* CTA */}
+                    <Link
+                      href={`/${lang}/${p.slug}`}
+                      className={`inline-flex items-center justify-center gap-2 ${style.bg} ${style.textBtn} font-bold px-5 py-2.5 rounded-xl hover:opacity-90 transition-all group-hover:scale-[1.02] min-h-[44px] text-sm`}
+                    >
+                      {es ? 'Conocer programa' : 'Learn more'}
+                      <span className="group-hover:translate-x-1 transition-transform">→</span>
+                    </Link>
                   </div>
-
-                  <h3 className="text-xl font-extrabold text-gray-900 mb-3">{p.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed flex-1 mb-4">{p.desc}</p>
-
-                  {/* Age range */}
-                  <div className="flex items-center gap-2 text-xs text-gray-400 mb-5">
-                    <span>📅</span>
-                    <span>{p.ages}</span>
-                  </div>
-
-                  {/* CTA */}
-                  <Link
-                    href={p.href}
-                    className={`inline-flex items-center justify-center gap-2 ${p.color} ${p.textBtn} font-bold px-5 py-2.5 rounded-xl hover:opacity-90 transition-all group-hover:scale-[1.02] min-h-[44px] text-sm`}
-                  >
-                    {es ? 'Conocer programa' : 'Learn more'}
-                    <span className="group-hover:translate-x-1 transition-transform">→</span>
-                  </Link>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </section>
@@ -244,33 +174,26 @@ export default function Page({ params }: { params: { lang: Locale } }) {
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <span className="text-xs font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-4 py-1.5 rounded-full">
-                {es ? 'Quiénes somos' : 'Who we are'}
+                {content.mission.badge}
               </span>
               <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mt-4 mb-6">
-                {es ? 'Nuestra Misión' : 'Our Mission'}
+                {content.mission.title}
               </h2>
               <p className="text-gray-600 leading-relaxed mb-6">
-                {es
-                  ? 'Nuestro compromiso es con los derechos de los niños y niñas con síndrome de Down, neurodivergencia y dificultades de aprendizaje a recibir una educación integral de calidad, inclusiva y personalizada que les permita desarrollar todo su potencial.'
-                  : 'Our commitment is to the rights of children with Down syndrome, neurodivergence, and learning difficulties to receive quality, inclusive, and personalized comprehensive education that allows them to develop their full potential.'}
+                {content.mission.text}
               </p>
               <Link
                 href={`/${lang}/quienes-somos`}
                 className="inline-flex items-center gap-2 text-secondary font-bold hover:gap-3 transition-all"
               >
-                {es ? 'Conocer nuestra historia' : 'Learn our history'}
+                {content.mission.link_text}
                 <span>→</span>
               </Link>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              {[
-                { icon: '🤝', title: es ? 'Inclusión radical' : 'Radical inclusion', desc: es ? 'Eliminamos barreras y creamos espacios donde cada niño es valorado.' : 'We remove barriers and create spaces where every child is valued.' },
-                { icon: '💡', title: es ? 'Innovación con propósito' : 'Purposeful innovation', desc: es ? 'Metodologías basadas en evidencia y adaptadas a cada perfil.' : 'Evidence-based methodologies adapted to each profile.' },
-                { icon: '👨‍👩‍👧', title: es ? 'Familia como aliada' : 'Family as ally', desc: es ? 'Los padres son parte central del proceso terapéutico.' : 'Parents are a central part of the therapeutic process.' },
-                { icon: '🌱', title: es ? 'Desarrollo holístico' : 'Holistic development', desc: es ? 'Atendemos todas las dimensiones: cognitiva, física, social y emocional.' : 'We attend all dimensions: cognitive, physical, social, and emotional.' },
-              ].map((v) => (
-                <div key={v.title} className="bg-gray-50 rounded-xl p-4 border border-gray-100">
+              {content.values.map((v, i) => (
+                <div key={i} className="bg-gray-50 rounded-xl p-4 border border-gray-100">
                   <span className="text-2xl mb-2 block">{v.icon}</span>
                   <h4 className="font-bold text-gray-900 text-sm mb-1">{v.title}</h4>
                   <p className="text-xs text-gray-500 leading-relaxed">{v.desc}</p>
@@ -294,17 +217,17 @@ export default function Page({ params }: { params: { lang: Locale } }) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {testimonials.map((t, i) => (
+            {testimonials.map((item) => (
               <blockquote
-                key={i}
+                key={item.slug}
                 className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col gap-4"
               >
-                <div className="text-primary text-3xl font-serif leading-none">"</div>
-                <p className="text-gray-700 text-sm leading-relaxed italic flex-1">{t.quote}</p>
+                <div className="text-primary text-3xl font-serif leading-none">&ldquo;</div>
+                <p className="text-gray-700 text-sm leading-relaxed italic flex-1">{item.body}</p>
                 <footer className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
-                  <span className="font-bold text-gray-900 text-sm">{t.name}</span>
+                  <span className="font-bold text-gray-900 text-sm">{item.family}</span>
                   <span className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary-700 font-semibold">
-                    {t.program}
+                    {item.program}
                   </span>
                 </footer>
               </blockquote>
@@ -317,32 +240,23 @@ export default function Page({ params }: { params: { lang: Locale } }) {
       <section className="py-16 bg-white border-t border-gray-100">
         <div className="container mx-auto px-4 text-center">
           <span className="text-xs font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-4 py-1.5 rounded-full">
-            {es ? 'Equipo profesional' : 'Professional team'}
+            {content.team_preview.badge}
           </span>
           <h2 className="text-3xl font-extrabold text-gray-900 mt-4 mb-4">
-            {es ? '10 profesionales a tu lado' : '10 professionals by your side'}
+            {content.team_preview.title}
           </h2>
           <p className="text-gray-500 max-w-xl mx-auto mb-8">
-            {es
-              ? 'Nuestro equipo multidisciplinario incluye terapeutas de lenguaje, fisioterapeutas, psicomotricistas, psicólogos, trabajadores sociales y pedagogos.'
-              : 'Our multidisciplinary team includes speech therapists, physiotherapists, psychomotricity specialists, psychologists, social workers, and educators.'}
+            {content.team_preview.text}
           </p>
 
           <div className="flex flex-wrap justify-center gap-3 mb-8">
-            {[
-              { icon: '🗣️', label: es ? 'Terapia de lenguaje' : 'Speech therapy' },
-              { icon: '💪', label: es ? 'Fisioterapia' : 'Physiotherapy' },
-              { icon: '🤸', label: es ? 'Psicomotricidad' : 'Psychomotricity' },
-              { icon: '🧠', label: es ? 'Psicología' : 'Psychology' },
-              { icon: '🤝', label: es ? 'Trabajo social' : 'Social work' },
-              { icon: '📖', label: es ? 'Pedagogía' : 'Pedagogy' },
-            ].map((r) => (
+            {teamAreas.map((area) => (
               <div
-                key={r.label}
+                key={area.slug}
                 className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-full px-4 py-2 text-sm text-gray-700 font-medium"
               >
-                <span>{r.icon}</span>
-                <span>{r.label}</span>
+                <span>{area.icon}</span>
+                <span>{area.name}</span>
               </div>
             ))}
           </div>
@@ -360,12 +274,10 @@ export default function Page({ params }: { params: { lang: Locale } }) {
       <section className="py-16 bg-primary">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
-            {es ? '¿Quieres saber si podemos ayudar a tu hijo?' : 'Want to know if we can help your child?'}
+            {content.cta.title}
           </h2>
           <p className="text-gray-800 text-lg mb-8 max-w-xl mx-auto">
-            {es
-              ? 'Contáctanos hoy. Realizamos una primera evaluación sin costo y te orientamos hacia el programa más adecuado.'
-              : 'Contact us today. We conduct a free first evaluation and guide you to the most appropriate program.'}
+            {content.cta.text}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a

@@ -4,15 +4,17 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import type { Locale } from '@/lib/i18n'
-import Nav, { NAV_ITEMS } from './Nav'
+import type { SiteSettingsContent } from '@/lib/cms-schemas'
+import Nav from './Nav'
 import LanguageSwitcher from './LanguageSwitcher'
 import AccessibilityBar from './AccessibilityBar'
 
 interface HeaderProps {
   lang: Locale
+  settings: SiteSettingsContent
 }
 
-export default function Header({ lang }: HeaderProps) {
+export default function Header({ lang, settings }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
   const es = lang === 'es'
@@ -65,7 +67,7 @@ export default function Header({ lang }: HeaderProps) {
           </Link>
 
           {/* Menú de navegación de escritorio (hidden on screens < 1280px) */}
-          <Nav lang={lang} />
+          <Nav lang={lang} items={settings.nav} />
 
           {/* Acciones del Header (Idioma + Colaborar en Escritorio) */}
           <div className="hidden xl:flex items-center gap-4">
@@ -74,7 +76,7 @@ export default function Header({ lang }: HeaderProps) {
               href={`/${lang}/colabora`}
               className="bg-primary text-black hover:bg-primary/90 font-bold text-sm px-5 py-2.5 rounded-full transition-all hover:scale-[1.02] shadow-md shadow-primary/10 min-h-[44px] flex items-center justify-center"
             >
-              {es ? 'Colaborar ♥' : 'Support us ♥'}
+              {settings.header.cta_label}
             </Link>
           </div>
 
@@ -129,21 +131,21 @@ export default function Header({ lang }: HeaderProps) {
 
             {/* Enlaces de navegación */}
             <nav className="flex flex-col gap-1.5 flex-1">
-              {NAV_ITEMS.map(({ key, label }) => {
-                const href = `/${lang}/${key}`
+              {settings.nav.map(({ route, label }) => {
+                const href = `/${lang}/${route}`
                 const isActive = pathname === href || pathname?.startsWith(href + '/')
                 return (
                   <Link
-                    key={key}
+                    key={route}
                     href={href}
                     onClick={() => setIsOpen(false)}
                     className={`min-h-[44px] px-4 rounded-xl flex items-center text-sm font-semibold transition-all ${
-                      isActive 
-                        ? 'bg-secondary/10 text-secondary' 
+                      isActive
+                        ? 'bg-secondary/10 text-secondary'
                         : 'text-gray-700 hover:bg-gray-50 hover:text-secondary'
                     }`}
                   >
-                    {label[lang]}
+                    {label}
                   </Link>
                 )
               })}
@@ -156,10 +158,10 @@ export default function Header({ lang }: HeaderProps) {
                 onClick={() => setIsOpen(false)}
                 className="bg-primary text-black hover:bg-primary/90 font-extrabold text-sm py-3 px-4 rounded-xl text-center shadow-lg shadow-primary/10 transition-all active:scale-[0.98] min-h-[44px] flex items-center justify-center"
               >
-                {es ? 'Colaborar ahora' : 'Support now'}
+                {settings.header.cta_label}
               </Link>
               <div className="text-[10px] text-gray-400 text-center font-medium">
-                La Paz · Bolivia
+                {settings.header.tagline}
               </div>
             </div>
 
