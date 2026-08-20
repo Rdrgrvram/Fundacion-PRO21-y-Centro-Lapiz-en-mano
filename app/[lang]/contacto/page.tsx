@@ -14,6 +14,16 @@ export default function Page({ params: { lang } }: PageProps) {
   const es = lang === 'es'
   const [selectedReason, setSelectedReason] = useState<number | null>(null)
   const [formSent, setFormSent] = useState(false)
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+    honeypot: '',
+  })
+  const [startTime] = useState<number>(() => Date.now())
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
 
   const reasons = [
     { label: es ? 'Quiero inscribir a mi hijo/a' : 'I want to enroll my child', icon: '🌟', colorClass: 'border-secondary text-secondary hover:bg-secondary/5' },
@@ -24,6 +34,92 @@ export default function Page({ params: { lang } }: PageProps) {
     { label: es ? 'Prensa o medios' : 'Press or media', icon: '📰', colorClass: 'border-secondary text-secondary hover:bg-secondary/5' },
     { label: es ? 'Otro motivo' : 'Other reason', icon: '💬', colorClass: 'border-gray-500 text-gray-500 hover:bg-gray-500/5' }
   ]
+
+  const [fieldErrors, setFieldErrors] = useState<{ name?: string; email?: string; phone?: string; message?: string }>({})
+
+  const validateForm = () => {
+    const errors: { name?: string; email?: string; phone?: string; message?: string } = {}
+
+    // 1. Nombre completo
+    if (!formData.name.trim()) {
+      errors.name = es ? 'El nombre completo es obligatorio.' : 'Full name is required.'
+    } else if (formData.name.trim().length < 2) {
+      errors.name = es ? 'El nombre debe tener al menos 2 caracteres.' : 'Name must be at least 2 characters.'
+    }
+
+    // 2. Correo electrónico (Regex estricto)
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+    if (!formData.email.trim()) {
+      errors.email = es ? 'El correo electrónico es obligatorio.' : 'Email address is required.'
+    } else if (!emailRegex.test(formData.email.trim())) {
+      errors.email = es ? 'Ingresa un correo válido (ejemplo: nombre@dominio.com).' : 'Enter a valid email (e.g. name@domain.com).'
+    }
+
+    // 3. Teléfono / WhatsApp
+    const digitsOnly = formData.phone.trim().replace(/\D/g, '')
+    if (!formData.phone.trim()) {
+      errors.phone = es ? 'El teléfono o WhatsApp es obligatorio.' : 'Phone or WhatsApp is required.'
+    } else if (digitsOnly.length < 6) {
+      errors.phone = es ? 'Ingresa un número válido (mínimo 6 dígitos).' : 'Enter a valid phone number (at least 6 digits).'
+    }
+
+    // 4. Mensaje
+    if (!formData.message.trim()) {
+      errors.message = es ? 'El mensaje es obligatorio.' : 'Message is required.'
+    } else if (formData.message.trim().length < 5) {
+      errors.message = es ? 'El mensaje debe tener al menos 5 caracteres.' : 'Message must be at least 5 characters.'
+    }
+
+    setFieldErrors(errors)
+    return Object.keys(errors).length === 0
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setErrorMessage('')
+
+    // Anti-spam honeypot
+    if (formData.honeypot) {
+      return
+    }
+
+    // Strict Client Validation
+    if (!validateForm()) {
+      setErrorMessage(es ? 'Por favor corrige los errores antes de enviar.' : 'Please fix the errors before sending.')
+      return
+    }
+
+    setStatus('submitting')
+
+    try {
+      const reasonText = selectedReason !== null ? reasons[selectedReason].label : ''
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone.trim(),
+          message: formData.message.trim(),
+          reason: reasonText,
+          honeypot: formData.honeypot,
+          startTime,
+        }),
+      })
+
+      const data = await res.json()
+      if (res.ok && data.ok) {
+        setStatus('success')
+        setFormSent(true)
+      } else {
+        setStatus('error')
+        setErrorMessage(data.error || (es ? 'Hubo un problema al enviar tu mensaje.' : 'There was a problem sending your message.'))
+      }
+    } catch {
+      setStatus('error')
+      setErrorMessage(es ? 'Error de conexión. Inténtalo de nuevo o contáctanos por WhatsApp.' : 'Connection error. Please try again or contact us via WhatsApp.')
+    }
+  }
 
   const contactInfo = [
     { icon: '📱', title: 'WhatsApp', primary: '+591 70106276', secondary: es ? 'Respuesta en menos de 2 horas' : 'Reply in less than 2 hours', href: CONTACT.whatsapp, action: es ? 'Escribir ahora' : 'Write now', color: '#22c55e', bg: 'bg-green-50' },
@@ -144,16 +240,37 @@ export default function Page({ params: { lang } }: PageProps) {
             {/* Formulario de Mensaje */}
             <div className="lg:col-span-7 bg-white rounded-3xl p-6 md:p-10 border border-gray-200 shadow-sm text-left flex flex-col justify-between">
               {!formSent ? (
-                <>
+                <form onSubmit={handleSubmit} noValidate className="flex flex-col justify-between h-full">
+                  {/* Honeypot field - Anti Spam */}
+                  <div className="hidden" aria-hidden="true" style={{ display: 'none' }}>
+                    <label htmlFor="b_hp_address">Leave this field empty</label>
+                    <input
+                      type="text"
+                      id="b_hp_address"
+                      name="b_hp_address"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={formData.honeypot}
+                      onChange={(e) => setFormData({ ...formData, honeypot: e.target.value })}
+                    />
+                  </div>
+
                   <div>
                     <h3 className="font-serif text-2xl text-[#111827] font-bold mb-1.5">
                       {es ? 'Envíanos un mensaje' : 'Send us a message'}
                     </h3>
-                    <p className="text-xs sm:text-sm text-gray-400 mb-8 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-gray-400 mb-6 leading-relaxed">
                       {es 
                         ? 'Completa los siguientes datos y nuestro equipo te responderá en menos de 24 horas hábiles.' 
                         : 'Complete the following fields and our team will respond within 24 working hours.'}
                     </p>
+
+                    {errorMessage && (
+                      <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-2xl text-red-700 text-xs sm:text-sm font-semibold flex items-center gap-2">
+                        <span>⚠️</span>
+                        <span>{errorMessage}</span>
+                      </div>
+                    )}
 
                     <div className="space-y-4">
                       {/* Selector de Motivo */}
@@ -183,47 +300,123 @@ export default function Page({ params: { lang } }: PageProps) {
                         </div>
                       </div>
 
-                      {/* Campos comunes */}
-                      {[
-                        { label: es ? 'Nombre completo' : 'Full name', placeholder: es ? 'Tu nombre completo' : 'Your full name', type: 'text' },
-                        { label: es ? 'Correo electrónico' : 'Email address', placeholder: 'ejemplo@correo.com', type: 'email' },
-                        { label: es ? 'Teléfono / WhatsApp' : 'Phone / WhatsApp', placeholder: '+591 ...', type: 'tel' }
-                      ].map((f) => (
-                        <div key={f.label}>
-                          <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1 block select-none">
-                            {f.label}
-                          </label>
-                          <input
-                            type={f.type}
-                            placeholder={f.placeholder}
-                            required
-                            className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-secondary bg-gray-50 focus:outline-none text-xs sm:text-sm"
-                          />
-                        </div>
-                      ))}
+                      {/* Nombre completo */}
+                      <div>
+                        <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1 block select-none">
+                          {es ? 'Nombre completo *' : 'Full name *'}
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={formData.name}
+                          onChange={(e) => {
+                            setFormData({ ...formData, name: e.target.value })
+                            if (fieldErrors.name) setFieldErrors({ ...fieldErrors, name: undefined })
+                          }}
+                          placeholder={es ? 'Tu nombre completo' : 'Your full name'}
+                          className={`w-full px-4 py-3 rounded-xl border-2 bg-gray-50 focus:outline-none text-xs sm:text-sm transition-colors ${
+                            fieldErrors.name ? 'border-red-500 focus:border-red-600 bg-red-50/20' : 'border-gray-200 focus:border-secondary'
+                          }`}
+                        />
+                        {fieldErrors.name && (
+                          <p className="text-xs text-red-600 font-semibold mt-1 flex items-center gap-1">
+                            <span>•</span> {fieldErrors.name}
+                          </p>
+                        )}
+                      </div>
+
+                      {/* Correo electrónico */}
+                      <div>
+                        <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1 block select-none">
+                          {es ? 'Correo electrónico *' : 'Email address *'}
+                        </label>
+                        <input
+                          type="email"
+                          required
+                          value={formData.email}
+                          onChange={(e) => {
+                            setFormData({ ...formData, email: e.target.value })
+                            if (fieldErrors.email) setFieldErrors({ ...fieldErrors, email: undefined })
+                          }}
+                          placeholder="ejemplo@correo.com"
+                          className={`w-full px-4 py-3 rounded-xl border-2 bg-gray-50 focus:outline-none text-xs sm:text-sm transition-colors ${
+                            fieldErrors.email ? 'border-red-500 focus:border-red-600 bg-red-50/20' : 'border-gray-200 focus:border-secondary'
+                          }`}
+                        />
+                        {fieldErrors.email && (
+                          <p className="text-xs text-red-600 font-semibold mt-1 flex items-center gap-1">
+                            <span>•</span> {fieldErrors.email}
+                          </p>
+                        )}
+                      </div>
+
+                      {/* Teléfono / WhatsApp */}
+                      <div>
+                        <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1 block select-none">
+                          {es ? 'Teléfono / WhatsApp *' : 'Phone / WhatsApp *'}
+                        </label>
+                        <input
+                          type="tel"
+                          required
+                          value={formData.phone}
+                          onChange={(e) => {
+                            setFormData({ ...formData, phone: e.target.value })
+                            if (fieldErrors.phone) setFieldErrors({ ...fieldErrors, phone: undefined })
+                          }}
+                          placeholder="+591 ..."
+                          className={`w-full px-4 py-3 rounded-xl border-2 bg-gray-50 focus:outline-none text-xs sm:text-sm transition-colors ${
+                            fieldErrors.phone ? 'border-red-500 focus:border-red-600 bg-red-50/20' : 'border-gray-200 focus:border-secondary'
+                          }`}
+                        />
+                        {fieldErrors.phone && (
+                          <p className="text-xs text-red-600 font-semibold mt-1 flex items-center gap-1">
+                            <span>•</span> {fieldErrors.phone}
+                          </p>
+                        )}
+                      </div>
 
                       {/* Mensaje */}
                       <div>
                         <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1 block select-none">
-                          {es ? 'Mensaje o consulta' : 'Message or inquiry'}
+                          {es ? 'Mensaje o consulta *' : 'Message or inquiry *'}
                         </label>
                         <textarea
                           rows={4}
-                          placeholder={es ? 'Escribe aquí tu consulta en detalle...' : 'Write here your inquiry in detail...'}
                           required
-                          className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-secondary bg-gray-50 focus:outline-none text-xs sm:text-sm resize-y"
+                          value={formData.message}
+                          onChange={(e) => {
+                            setFormData({ ...formData, message: e.target.value })
+                            if (fieldErrors.message) setFieldErrors({ ...fieldErrors, message: undefined })
+                          }}
+                          placeholder={es ? 'Escribe aquí tu consulta en detalle...' : 'Write here your inquiry in detail...'}
+                          className={`w-full px-4 py-3 rounded-xl border-2 bg-gray-50 focus:outline-none text-xs sm:text-sm resize-y transition-colors ${
+                            fieldErrors.message ? 'border-red-500 focus:border-red-600 bg-red-50/20' : 'border-gray-200 focus:border-secondary'
+                          }`}
                         />
+                        {fieldErrors.message && (
+                          <p className="text-xs text-red-600 font-semibold mt-1 flex items-center gap-1">
+                            <span>•</span> {fieldErrors.message}
+                          </p>
+                        )}
                       </div>
                     </div>
                   </div>
 
                   <button
-                    onClick={() => setFormSent(true)}
-                    className="w-full mt-8 bg-gradient-to-r from-[#229cc2] to-[#229cc2] text-white font-extrabold text-xs sm:text-sm py-3.5 px-6 rounded-full transition-all hover:scale-[1.01] active:scale-[0.99] shadow-md shadow-[#229cc2]/10 min-h-[44px]"
+                    type="submit"
+                    disabled={status === 'submitting'}
+                    className="w-full mt-8 bg-gradient-to-r from-[#229cc2] to-[#229cc2] text-white font-extrabold text-xs sm:text-sm py-3.5 px-6 rounded-full transition-all hover:scale-[1.01] active:scale-[0.99] shadow-md shadow-[#229cc2]/10 min-h-[44px] disabled:opacity-50 flex items-center justify-center gap-2"
                   >
-                    {es ? 'Enviar mensaje' : 'Send message'}
+                    {status === 'submitting' ? (
+                      <>
+                        <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        <span>{es ? 'Enviando mensaje...' : 'Sending message...'}</span>
+                      </>
+                    ) : (
+                      <span>{es ? 'Enviar mensaje' : 'Send message'}</span>
+                    )}
                   </button>
-                </>
+                </form>
               ) : (
                 <div className="text-center py-16 px-4 flex flex-col items-center justify-center h-full">
                   <span className="text-5xl block mb-4 select-none">✅</span>
@@ -250,7 +443,11 @@ export default function Page({ params: { lang } }: PageProps) {
                   </div>
 
                   <button
-                    onClick={() => setFormSent(false)}
+                    onClick={() => {
+                      setFormSent(false)
+                      setStatus('idle')
+                      setFormData({ name: '', email: '', phone: '', message: '', honeypot: '' })
+                    }}
                     className="text-xs font-bold text-secondary hover:underline mt-8"
                   >
                     {es ? '← Enviar otro mensaje' : '← Send another message'}

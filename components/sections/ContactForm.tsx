@@ -6,7 +6,9 @@ const PROGRAMS = ['Mi Escuelita Down', 'Aula Wawitas', 'Pasos Firmes', 'Informac
 
 export default function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
-  const [form, setForm] = useState({ name: '', email: '', phone: '', program: '', message: '' })
+  const [form, setForm] = useState({ name: '', email: '', phone: '', program: '', message: '', honeypot: '' })
+  const [startTime] = useState<number>(() => Date.now())
+  const [errorMsg, setErrorMsg] = useState('')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -14,16 +16,35 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setErrorMsg('')
+
+    if (form.honeypot) return
+
+    if (!form.name.trim() || !form.email.trim() || !form.phone.trim() || !form.message.trim()) {
+      setErrorMsg('Por favor completa todos los campos obligatorios.')
+      return
+    }
+
     setStatus('loading')
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          ...form,
+          startTime,
+        }),
       })
-      setStatus(res.ok ? 'success' : 'error')
+      const data = await res.json()
+      if (res.ok && data.ok) {
+        setStatus('success')
+      } else {
+        setStatus('error')
+        setErrorMsg(data.error || 'Hubo un error al enviar el formulario.')
+      }
     } catch {
       setStatus('error')
+      setErrorMsg('Error de conexión. Inténtalo más tarde.')
     }
   }
 
@@ -38,6 +59,18 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      {/* Campo Honeypot - Anti Spam */}
+      <div className="hidden" aria-hidden="true" style={{ display: 'none' }}>
+        <input
+          name="honeypot"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={form.honeypot}
+          onChange={handleChange}
+        />
+      </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <input
           name="name" type="text" placeholder="Tu nombre *" required value={form.name} onChange={handleChange}
@@ -50,7 +83,7 @@ export default function ContactForm() {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <input
-          name="phone" type="tel" placeholder="Teléfono / WhatsApp" value={form.phone} onChange={handleChange}
+          name="phone" type="tel" placeholder="Teléfono / WhatsApp *" required value={form.phone} onChange={handleChange}
           className="input"
         />
         <select name="program" value={form.program} onChange={handleChange} className="input">
@@ -62,8 +95,8 @@ export default function ContactForm() {
         name="message" placeholder="Tu mensaje *" required rows={5} value={form.message} onChange={handleChange}
         className="input resize-none"
       />
-      {status === 'error' && (
-        <p className="text-red-600 text-sm">Hubo un error. Por favor intenta de nuevo o contáctanos por WhatsApp.</p>
+      {errorMsg && (
+        <p className="text-red-600 text-sm font-semibold">{errorMsg}</p>
       )}
       <Button type="submit" size="lg" className="w-full" disabled={status === 'loading'}>
         {status === 'loading' ? 'Enviando...' : 'Enviar mensaje'}
