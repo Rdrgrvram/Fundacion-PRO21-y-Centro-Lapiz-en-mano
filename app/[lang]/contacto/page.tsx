@@ -282,7 +282,7 @@ export default function Page({ params: { lang } }: PageProps) {
                   href="https://maps.google.com/?q=La+Paz+Bolivia"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-3 rounded-xl border border-gray-200 hover:border-primary bg-white hover:bg-gray-50 text-xs font-bold text-center text-gray-600 hover:text-primary transition-all select-none min-h-[44px] flex items-center justify-center gap-1.5"
+                  className="w-full py-3 rounded-xl border border-gray-200 hover:border-primary-700 bg-white hover:bg-gray-50 text-xs font-bold text-center text-gray-600 hover:text-primary-700 transition-all select-none min-h-[44px] flex items-center justify-center gap-1.5"
                 >
                   {es ? 'Abrir en Google Maps' : 'Open in Google Maps'}
                   <span>→</span>

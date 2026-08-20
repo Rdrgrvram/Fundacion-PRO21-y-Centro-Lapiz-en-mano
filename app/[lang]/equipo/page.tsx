@@ -281,12 +281,12 @@ export default function Page({ params: { lang } }: PageProps) {
             {es ? (
               <>
                 Profesionales con <br />
-                <span className="font-bold italic text-primary">vocación y amor</span>
+                <span className="font-bold italic text-primary-100">vocación y amor</span>
               </>
             ) : (
               <>
                 Professionals with <br />
-                <span className="font-bold italic text-primary">vocation and love</span>
+                <span className="font-bold italic text-primary-100">vocation and love</span>
               </>
             )}
           </h1>

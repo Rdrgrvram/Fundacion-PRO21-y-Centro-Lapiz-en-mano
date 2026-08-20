@@ -325,7 +325,7 @@ export default function Page({ params: { lang } }: PageProps) {
                     {es ? 'Monto personalizado (Bs)' : 'Custom amount (Bs)'}
                   </div>
                   <div className="relative mb-5 max-w-xs">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 font-serif text-lg text-primary font-bold select-none">Bs</span>
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 font-serif text-lg text-primary-700 font-bold select-none">Bs</span>
                     <input
                       type="number"
                       placeholder="0.00"

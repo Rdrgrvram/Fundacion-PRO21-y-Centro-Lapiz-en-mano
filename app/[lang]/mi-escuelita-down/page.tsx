@@ -242,7 +242,7 @@ export default function Page({ params: { lang } }: PageProps) {
       <section id="areas" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="text-xs font-bold uppercase tracking-widest text-primary bg-primary/10 px-4 py-1.5 rounded-full">
+            <span className="text-xs font-bold uppercase tracking-widest text-primary-700 bg-primary/10 px-4 py-1.5 rounded-full">
               {es ? 'Intervención especializada' : 'Specialized intervention'}
             </span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mt-4 mb-4">

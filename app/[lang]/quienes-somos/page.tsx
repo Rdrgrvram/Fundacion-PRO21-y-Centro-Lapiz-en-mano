@@ -81,12 +81,12 @@ export default function Page({ params: { lang } }: PageProps) {
             {es ? (
               <>
                 Dos instituciones, <br className="hidden sm:inline" />
-                <span className="font-bold italic text-primary">una misión</span>
+                <span className="font-bold italic text-primary-100">una misión</span>
               </>
             ) : (
               <>
                 Two institutions, <br className="hidden sm:inline" />
-                <span className="font-bold italic text-primary">one mission</span>
+                <span className="font-bold italic text-primary-100">one mission</span>
               </>
             )}
           </h1>

@@ -340,7 +340,7 @@ export default function Page({ params: { lang } }: PageProps) {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
-            <span className="text-xs font-bold uppercase tracking-widest text-primary bg-primary/15 px-4 py-1.5 rounded-full">
+            <span className="text-xs font-bold uppercase tracking-widest text-primary-700 bg-primary/15 px-4 py-1.5 rounded-full">
               {es ? 'Nuestro proceso' : 'Our process'}
             </span>
             <h2 className="text-3xl font-extrabold text-gray-900 mt-4 mb-4">

@@ -183,7 +183,7 @@ export default function Page({ params }: { params: { lang: Locale } }) {
       <section className="py-16 md:py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="text-xs font-bold uppercase tracking-widest text-primary bg-primary/10 px-4 py-1.5 rounded-full">
+            <span className="text-xs font-bold uppercase tracking-widest text-primary-700 bg-primary/10 px-4 py-1.5 rounded-full">
               {es ? 'Nuestros programas' : 'Our programs'}
             </span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mt-4 mb-4">
@@ -299,7 +299,7 @@ export default function Page({ params }: { params: { lang: Locale } }) {
                 key={i}
                 className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col gap-4"
               >
-                <div className="text-primary text-3xl font-serif leading-none">"</div>
+                <div className="text-primary-700 text-3xl font-serif leading-none">&ldquo;</div>
                 <p className="text-gray-700 text-sm leading-relaxed italic flex-1">{t.quote}</p>
                 <footer className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
                   <span className="font-bold text-gray-900 text-sm">{t.name}</span>
