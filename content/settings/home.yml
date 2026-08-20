@@ -1,0 +1,140 @@
+es:
+  hero:
+    title_line1: Cada niño tiene
+    title_line2: un potencial único
+    subtitle: Fundación PRO-21 y Centro Lápiz en Mano brindamos atención terapéutica y educativa especializada a niños con síndrome de Down, dificultades preescolares y dificultades de aprendizaje.
+    cta_primary: Ver programas
+  stats:
+    - icon: 👶
+      value: 70+
+      label: niños atendidos
+    - icon: 🏫
+      value: '8'
+      label: años de experiencia
+    - icon: 👩‍⚕️
+      value: '10'
+      label: profesionales
+    - icon: 🎯
+      value: '3'
+      label: programas activos
+  programs_teaser:
+    badge: Nuestros programas
+    title: ¿En qué podemos ayudarte?
+    subtitle: Tres programas especializados que atienden diferentes necesidades del desarrollo infantil, con un enfoque integral y personalizado.
+    cards:
+      - slug: mi-escuelita-down
+        icon: 🌟
+        color: primary
+        badge: Síndrome de Down
+        title: Mi Escuelita Down
+        desc: Intervención terapéutica y educativa integral desde estimulación temprana hasta inclusión en primaria regular. Terapia de lenguaje, conducta, fisioterapia y psicomotricidad.
+        ages: 0 – 14+ años
+      - slug: aula-wawitas
+        icon: 🧸
+        color: secondary
+        badge: Programa Preescolar
+        title: Aula Wawitas
+        desc: 'Estimulación y educación preescolar integral para niños de 3 a 5 años. Tres niveles: Parvulario, Pre-Kínder y Kínder, con preparación para la escuela regular.'
+        ages: 3 – 5 años
+      - slug: pasos-firmes
+        icon: 📚
+        color: accent
+        badge: Dificultades de aprendizaje
+        title: Pasos Firmes
+        desc: Apoyo psicopedagógico para niños y adolescentes con dislexia, disgrafía, discalculia, TDAH y bajo rendimiento escolar. Modalidades individuales y grupales.
+        ages: Primaria y Secundaria
+  mission:
+    badge: Quiénes somos
+    title: Nuestra Misión
+    text: Nuestro compromiso es con los derechos de los niños y niñas con síndrome de Down, neurodivergencia y dificultades de aprendizaje a recibir una educación integral de calidad, inclusiva y personalizada que les permita desarrollar todo su potencial.
+    link_text: Conocer nuestra historia
+  values:
+    - icon: 🤝
+      title: Inclusión radical
+      desc: Eliminamos barreras y creamos espacios donde cada niño es valorado.
+    - icon: 💡
+      title: Innovación con propósito
+      desc: Metodologías basadas en evidencia y adaptadas a cada perfil.
+    - icon: 👨‍👩‍👧
+      title: Familia como aliada
+      desc: Los padres son parte central del proceso terapéutico.
+    - icon: 🌱
+      title: Desarrollo holístico
+      desc: 'Atendemos todas las dimensiones: cognitiva, física, social y emocional.'
+  team_preview:
+    badge: Equipo profesional
+    title: 10 profesionales a tu lado
+    text: Nuestro equipo multidisciplinario incluye terapeutas de lenguaje, fisioterapeutas, psicomotricistas, psicólogos, trabajadores sociales y pedagogos.
+  cta:
+    title: ¿Quieres saber si podemos ayudar a tu hijo?
+    text: Contáctanos hoy. Realizamos una primera evaluación sin costo y te orientamos hacia el programa más adecuado.
+en:
+  hero:
+    title_line1: Every child has
+    title_line2: a unique potential
+    subtitle: PRO-21 Foundation and Lápiz en Mano Center provide specialized therapeutic and educational care for children with Down syndrome, preschool needs, and learning difficulties.
+    cta_primary: See programs
+  stats:
+    - icon: 👶
+      value: 70+
+      label: children served
+    - icon: 🏫
+      value: '8'
+      label: years of experience
+    - icon: 👩‍⚕️
+      value: '10'
+      label: professionals
+    - icon: 🎯
+      value: '3'
+      label: active programs
+  programs_teaser:
+    badge: Our programs
+    title: How can we help you?
+    subtitle: Three specialized programs addressing different childhood development needs, with a comprehensive and personalized approach.
+    cards:
+      - slug: mi-escuelita-down
+        icon: 🌟
+        color: primary
+        badge: Down Syndrome
+        title: Mi Escuelita Down
+        desc: Comprehensive therapeutic and educational intervention from early stimulation to regular primary inclusion. Speech, behavioral, physiotherapy, and psychomotor therapy.
+        ages: 0 – 14+ years
+      - slug: aula-wawitas
+        icon: 🧸
+        color: secondary
+        badge: Preschool Program
+        title: Aula Wawitas
+        desc: 'Comprehensive preschool stimulation and education for children ages 3 to 5. Three levels: Nursery, Pre-Kinder and Kinder, with preparation for regular school.'
+        ages: 3 – 5 years
+      - slug: pasos-firmes
+        icon: 📚
+        color: accent
+        badge: Learning difficulties
+        title: Pasos Firmes
+        desc: Psychopedagogical support for children and adolescents with dyslexia, dysgraphia, dyscalculia, ADHD, and low school performance. Individual and group modalities.
+        ages: Primary and Secondary
+  mission:
+    badge: Who we are
+    title: Our Mission
+    text: Our commitment is to the rights of children with Down syndrome, neurodivergence, and learning difficulties to receive quality, inclusive, and personalized comprehensive education that allows them to develop their full potential.
+    link_text: Learn our history
+  values:
+    - icon: 🤝
+      title: Radical inclusion
+      desc: We remove barriers and create spaces where every child is valued.
+    - icon: 💡
+      title: Purposeful innovation
+      desc: Evidence-based methodologies adapted to each profile.
+    - icon: 👨‍👩‍👧
+      title: Family as ally
+      desc: Parents are a central part of the therapeutic process.
+    - icon: 🌱
+      title: Holistic development
+      desc: 'We attend all dimensions: cognitive, physical, social, and emotional.'
+  team_preview:
+    badge: Professional team
+    title: 10 professionals by your side
+    text: Our multidisciplinary team includes speech therapists, physiotherapists, psychomotricity specialists, psychologists, social workers, and educators.
+  cta:
+    title: Want to know if we can help your child?
+    text: Contact us today. We conduct a free first evaluation and guide you to the most appropriate program.

@@ -15,5 +15,7 @@ export function cx(...classes: (string | undefined | false | null)[]): string {
 /** URL base del sitio */
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://fundacionpro21.org'
 
-/** Número de WhatsApp de la fundación (con código de Bolivia) */
-export const WHATSAPP_NUMBER = '59170106276'
+/** Construye un enlace de WhatsApp a partir del número (con código de país, sin '+') */
+export function waLink(whatsappNumber: string, message?: string): string {
+  return message ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}` : `https://wa.me/${whatsappNumber}`
+}

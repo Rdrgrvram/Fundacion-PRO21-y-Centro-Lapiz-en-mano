@@ -1,5 +1,6 @@
 import { getTranslation, type Locale } from '@/lib/i18n'
-import { WHATSAPP_NUMBER } from '@/lib/utils'
+import { getSiteSettings } from '@/lib/cms'
+import { waLink } from '@/lib/utils'
 
 interface WhatsAppButtonProps {
   lang: Locale
@@ -8,16 +9,13 @@ interface WhatsAppButtonProps {
 }
 
 // Botón flotante de WhatsApp — visible en todas las páginas
-export default function WhatsAppButton({
-  lang,
-  phone = WHATSAPP_NUMBER,
-  message,
-}: WhatsAppButtonProps) {
+export default function WhatsAppButton({ lang, phone, message }: WhatsAppButtonProps) {
   const t = getTranslation(lang)
+  const settings = getSiteSettings(lang)
   const defaultMessage = t['whatsapp.message']
   const ariaLabel = t['whatsapp.label']
   const finalMessage = message ?? defaultMessage
-  const url = `https://wa.me/${phone}?text=${encodeURIComponent(finalMessage)}`
+  const url = waLink(phone ?? settings.contact.whatsapp_number, finalMessage)
 
   return (
     <a

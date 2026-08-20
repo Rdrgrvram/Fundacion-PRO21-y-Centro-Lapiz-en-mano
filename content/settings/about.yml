@@ -1,0 +1,212 @@
+es:
+  hero:
+    badge: Nuestra historia
+    title_line1: Dos instituciones,
+    title_line2: una misión
+    subtitle: Fundación PRO-21 y Centro Lápiz en Mano trabajan juntos desde La Paz, Bolivia, para brindar atención integral y especializada, promoviendo la inclusión y el desarrollo humano.
+  identity:
+    pro21:
+      tagline: Promoviendo el bienestar integral
+      description: Entidad sin fines de lucro constituida formalmente para ampliar el alcance institucional, gestionar cooperación nacional e internacional, y desarrollar programas de intervención y proyectos de formación innovadores enfocados en la inclusión y el empoderamiento.
+    lapiz:
+      tagline: Centro de Educación Complementaria
+      description: Centro operativo donde se ejecutan los programas terapéuticos y educativos. Espacio físico inclusivo, seguro y especializado donde los niños y niñas reciben atención personalizada de un equipo multidisciplinario comprometido con su desarrollo integral.
+  mission_section:
+    badge: Identidad institucional
+    title: Lo que nos define
+  mission_cards:
+    - icon: 🎯
+      color: secondary
+      label: Misión
+      text: Nuestro compromiso es con los derechos de los niños y niñas con síndrome de Down, neurodivergencia y dificultades de aprendizaje a recibir una educación integral de calidad, inclusiva y personalizada que les permita desarrollar todo su potencial. Creamos un ambiente acogedor y seguro donde los niños se sientan incluidos, valorados y respetados, siendo referencia en la promoción de la educación inclusiva e igualdad de oportunidades.
+    - icon: 🔭
+      color: accent
+      label: Visión
+      text: Ser el centro líder de referencia auto sostenible en el departamento de La Paz y en Bolivia, en la promoción de la educación inclusiva para niños y niñas con síndrome de Down, neurodivergencia y dificultades de aprendizaje, ofreciendo una intervención psico-socio-educativa integral y proporcionando herramientas necesarias para su inclusión educativa, social y laboral.
+    - icon: 🧭
+      color: secondary
+      label: Objetivo
+      text: Brindar atención terapéutica y educativa de calidad a niños y niñas con síndrome de Down, neurodivergencia y dificultades de aprendizaje, promoviendo su desarrollo integral, autonomía e inclusión activa en la sociedad boliviana mediante un equipo multidisciplinario comprometido.
+  values_section:
+    badge: Nuestros valores
+    title: Los principios que nos guían
+    subtitle: Ocho valores fundamentales que orientan cada decisión, cada terapia y cada interacción con las familias.
+  values:
+    - icon: 🤝
+      color: secondary
+      name: Inclusión radical
+      desc: Eliminamos barreras y creamos espacios donde cada persona es valorada por sus capacidades únicas.
+    - icon: 💪
+      color: accent
+      name: Empoderamiento auténtico
+      desc: Fortalecemos la confianza y autonomía de cada niño, niña y familia que acompaña nuestros programas.
+    - icon: 🎯
+      color: secondary
+      name: Autogestión como meta
+      desc: Trabajamos para que cada persona desarrolle las herramientas necesarias para dirigir su propia vida.
+    - icon: 💡
+      color: primary
+      name: Innovación con propósito
+      desc: Buscamos nuevas formas de intervención terapéutica y educativa con impacto real y medible.
+    - icon: ⚖️
+      color: accent
+      name: Equidad adaptativa
+      desc: Adaptamos nuestros programas al ritmo y las necesidades individuales, garantizando igualdad de oportunidades.
+    - icon: 🌱
+      color: secondary
+      name: Desarrollo holístico
+      desc: 'Atendemos todas las dimensiones del ser: cognitiva, física, emocional, social y familiar.'
+    - icon: 🤲
+      color: secondary
+      name: Liderazgo colaborativo
+      desc: Construimos redes de trabajo entre familias, profesionales, instituciones y la comunidad.
+    - icon: 🏘️
+      color: accent
+      name: Compromiso comunitario
+      desc: Devolvemos a la comunidad con programas abiertos, campañas de sensibilización y formación continua.
+  timeline_section:
+    badge: Nuestra trayectoria
+    title: Cada paso cuenta
+    subtitle: Desde 2021, un camino de crecimiento constante al servicio de la inclusión.
+  timeline:
+    - year: '2021'
+      icon: 🏠
+      title: Nace Centro Lápiz en Mano
+      desc: Se funda el Centro de Educación Complementaria Lápiz en Mano en la ciudad de La Paz, con la visión de brindar atención integral a niños y niñas con necesidades especiales.
+    - year: '2021'
+      icon: 🌟
+      title: Mi Escuelita Inclusiva Down
+      desc: Se inaugura el primer programa especializado para niños con síndrome de Down, ofreciendo estimulación temprana, terapia de lenguaje, fisioterapia y apoyo pedagógico.
+    - year: '2022'
+      icon: 📋
+      title: Fundación PRO-21
+      desc: Se constituye formalmente la Fundación PRO-21 como entidad sin fines de lucro, ampliando el alcance institucional y la capacidad de gestionar cooperación nacional e internacional.
+    - year: '2023'
+      icon: 🧩
+      title: Aula Wawitas
+      desc: Se lanza el segundo programa especializado, enfocado en niños con autismo y otras condiciones del neurodesarrollo, incorporando detección temprana y evaluación multidisciplinaria.
+    - year: '2024'
+      icon: 📚
+      title: Pasos Firmes
+      desc: Nace el tercer programa, dirigido a niños con dificultades de aprendizaje, atención y desempeño escolar. Se completa la oferta integral de la fundación.
+    - year: '2025'
+      icon: 🌎
+      title: Reconocimiento y crecimiento
+      desc: La fundación gana visibilidad nacional e internacional. Se fortalecen alianzas con organizaciones y se superan las 100 familias acompañadas.
+    - year: '2026'
+      icon: 🚀
+      title: Proyección digital
+      desc: Alianza con la UCB para el desarrollo de la plataforma web institucional. Inicio de la estrategia de cooperación internacional y presencia digital profesional.
+  team_section:
+    badge: Nuestro equipo
+    title: Profesionales con vocación
+    subtitle: Un equipo multidisciplinario de 10 profesionales especializados dedicados al desarrollo integral de cada niño y su familia.
+  cta:
+    title: ¿Quieres ser parte de esta historia?
+    text: Tu apoyo transforma vidas. Dona, sé voluntario o conviértete en aliado de la inclusión en Bolivia.
+en:
+  hero:
+    badge: Our history
+    title_line1: Two institutions,
+    title_line2: one mission
+    subtitle: PRO-21 Foundation and Lápiz en Mano Center work together from La Paz, Bolivia, to provide comprehensive and specialized care, promoting inclusion and human development.
+  identity:
+    pro21:
+      tagline: Promoting comprehensive well-being
+      description: A non-profit entity formally established to expand institutional reach, manage national and international cooperation, and develop innovative intervention programs and training projects focused on inclusion and empowerment.
+    lapiz:
+      tagline: Complementary Education Center
+      description: The operational center where therapeutic and educational programs are executed. A physical, safe, inclusive, and specialized space where children receive personalized care from a multidisciplinary team committed to their comprehensive development.
+  mission_section:
+    badge: Institutional Identity
+    title: What defines us
+  mission_cards:
+    - icon: 🎯
+      color: secondary
+      label: Mission
+      text: Our commitment is to the rights of children with Down syndrome, neurodivergence, and learning difficulties to receive quality, inclusive, and personalized comprehensive education that allows them to develop their full potential. We create a welcoming and safe environment where children feel included, valued, and respected, serving as a reference in promoting inclusive education and equal opportunities.
+    - icon: 🔭
+      color: accent
+      label: Vision
+      text: To be the leading self-sustaining reference center in the department of La Paz and in Bolivia, promoting inclusive education for children with Down syndrome, neurodivergence, and learning difficulties, offering comprehensive psycho-socio-educational intervention and providing tools necessary for their educational, social, and labor inclusion.
+    - icon: 🧭
+      color: secondary
+      label: Objective
+      text: To provide quality therapeutic and educational care to children with Down syndrome, neurodivergence, and learning difficulties, promoting their comprehensive development, autonomy, and active inclusion in Bolivian society through a committed multidisciplinary team.
+  values_section:
+    badge: Our Values
+    title: The principles that guide us
+    subtitle: Eight fundamental values that guide every decision, therapy, and family interaction.
+  values:
+    - icon: 🤝
+      color: secondary
+      name: Radical Inclusion
+      desc: We remove barriers and create spaces where every person is valued for their unique abilities.
+    - icon: 💪
+      color: accent
+      name: Authentic Empowerment
+      desc: We strengthen the confidence and autonomy of each child and family accompanying our programs.
+    - icon: 🎯
+      color: secondary
+      name: Self-management as Goal
+      desc: We work so that each person develops the necessary tools to direct their own life.
+    - icon: 💡
+      color: primary
+      name: Purposeful Innovation
+      desc: We seek new ways of therapeutic and educational intervention with real and measurable impact.
+    - icon: ⚖️
+      color: accent
+      name: Adaptive Equity
+      desc: We adapt our programs to individual rhythm and needs, guaranteeing equal opportunities.
+    - icon: 🌱
+      color: secondary
+      name: Holistic Development
+      desc: 'We attend all dimensions of the being: cognitive, physical, emotional, social, and family.'
+    - icon: 🤲
+      color: secondary
+      name: Collaborative Leadership
+      desc: We build working networks between families, professionals, institutions, and the community.
+    - icon: 🏘️
+      color: accent
+      name: Community Commitment
+      desc: We give back to the community with open programs, awareness campaigns, and continuous training.
+  timeline_section:
+    badge: Our Journey
+    title: Every step counts
+    subtitle: Since 2021, a path of constant growth at the service of inclusion.
+  timeline:
+    - year: '2021'
+      icon: 🏠
+      title: Lápiz en Mano Center is born
+      desc: The Lápiz en Mano Complementary Education Center is founded in La Paz, with the vision of providing comprehensive care to children with special needs.
+    - year: '2021'
+      icon: 🌟
+      title: Mi Escuelita Inclusiva Down
+      desc: The first specialized program for children with Down syndrome is inaugurated, offering early stimulation, speech therapy, physiotherapy, and pedagogical support.
+    - year: '2022'
+      icon: 📋
+      title: PRO-21 Foundation
+      desc: The PRO-21 Foundation is formally established as a non-profit entity, expanding institutional reach and the capacity to manage national and international cooperation.
+    - year: '2023'
+      icon: 🧩
+      title: Aula Wawitas
+      desc: The second specialized program is launched, focused on children with autism and other neurodevelopmental conditions, incorporating early detection and multidisciplinary evaluation.
+    - year: '2024'
+      icon: 📚
+      title: Pasos Firmes
+      desc: The third program is born, aimed at children with learning, attention, and school performance difficulties. The foundation's comprehensive offering is completed.
+    - year: '2025'
+      icon: 🌎
+      title: Recognition and growth
+      desc: The foundation gains national and international visibility. Alliances with organizations are strengthened, and over 100 accompanied families are reached.
+    - year: '2026'
+      icon: 🚀
+      title: Digital projection
+      desc: Alliance with UCB for the development of the institutional web platform. Start of the international cooperation strategy and professional digital presence.
+  team_section:
+    badge: Our Team
+    title: Professionals with Vocation
+    subtitle: A multidisciplinary team of 10 specialized professionals dedicated to the comprehensive development of each child and their family.
+  cta:
+    title: Want to be part of this story?
+    text: Your support transforms lives. Donate, volunteer, or become an ally of inclusion in Bolivia.

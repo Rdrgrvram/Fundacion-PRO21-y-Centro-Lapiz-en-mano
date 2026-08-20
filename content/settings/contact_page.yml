@@ -1,0 +1,144 @@
+es:
+  hero:
+    badge: Canales de comunicación
+    title_line1: Estamos a un mensaje de
+    title_line2: distancia
+    subtitle: Ya sea que busques inscribir a tu hijo, realizar prácticas profesionales, proponer una alianza o hacernos llegar tus dudas, estamos listos para escucharte.
+  reasons:
+    - label: Quiero inscribir a mi hijo/a
+      icon: 🌟
+      color: secondary
+    - label: Solicitar una evaluación
+      icon: 🔍
+      color: accent
+    - label: Ser voluntario/a
+      icon: 🙌
+      color: secondary
+    - label: Alianza institucional
+      icon: 🤝
+      color: accent
+    - label: Donación o patrocinio
+      icon: 💛
+      color: primary
+    - label: Prensa o medios
+      icon: 📰
+      color: secondary
+    - label: Otro motivo
+      icon: 💬
+      color: neutral
+  form_section:
+    title: Envíanos un mensaje
+    subtitle: Completa los siguientes datos y nuestro equipo te responderá en menos de 24 horas hábiles.
+  map_card:
+    title: Centro Lápiz en Mano
+    subtitle: La Paz, Bolivia
+  hours_title: Horarios de atención
+  hours:
+    - day: Lunes a viernes
+      time: 8:00 – 12:00 / 14:00 – 18:00
+      active: true
+    - day: Sábados
+      time: 9:00 – 12:00 (con cita)
+      active: true
+    - day: Domingos y feriados
+      time: Cerrado
+      active: false
+  social_title: Presencia digital
+  faq_section:
+    badge: Preguntas y respuestas
+    title: Preguntas frecuentes rápidas
+  faqs:
+    - q: ¿Cómo inscribo a mi hijo?
+      a: Agenda una evaluación inicial de diagnóstico escribiendo a nuestro WhatsApp. Nuestro equipo multidisciplinario sugerirá el programa terapéutico o escolar adecuado.
+      icon: 🌟
+      color: secondary
+    - q: ¿Tiene costo la atención?
+      a: Cada programa cuenta con cuotas mensuales solidarias. Si la familia no puede cubrirlas, contamos con becas parciales y completas. Ningún niño queda sin atención por motivos económicos.
+      icon: 💰
+      color: primary
+    - q: ¿Se requiere diagnóstico previo?
+      a: No es necesario. Puedes consultarnos ante cualquier señal de alerta en el desarrollo, comunicación o conducta de tu hijo. Nosotros realizamos la evaluación correspondiente.
+      icon: 📋
+      color: secondary
+    - q: ¿Atienden fuera de La Paz?
+      a: La atención terapéutica y escolar presencial es en La Paz. Sin embargo, ofrecemos orientación familiar y capacitaciones virtuales para todo el país.
+      icon: 🌎
+      color: accent
+  whatsapp_cta:
+    title: ¿Prefieres una respuesta inmediata?
+    text: Escríbenos directamente por WhatsApp y recibirás atención personalizada en menos de 2 horas hábiles. Sin esperas.
+  closing_quote:
+    text: Creemos que el síndrome de Down no es una barrera, sino una manera diferente y valiosa de aprender, crecer y desarrollar todo su potencial.
+    attribution: Fundación PRO-21 & Centro Lápiz en Mano
+en:
+  hero:
+    badge: Communication channels
+    title_line1: We are just a message
+    title_line2: away
+    subtitle: Whether you want to enroll your child, complete professional practice, propose an alliance, or ask questions, we are ready to listen.
+  reasons:
+    - label: I want to enroll my child
+      icon: 🌟
+      color: secondary
+    - label: Request an evaluation
+      icon: 🔍
+      color: accent
+    - label: Become a volunteer
+      icon: 🙌
+      color: secondary
+    - label: Institutional alliance
+      icon: 🤝
+      color: accent
+    - label: Donation or sponsorship
+      icon: 💛
+      color: primary
+    - label: Press or media
+      icon: 📰
+      color: secondary
+    - label: Other reason
+      icon: 💬
+      color: neutral
+  form_section:
+    title: Send us a message
+    subtitle: Complete the following fields and our team will respond within 24 working hours.
+  map_card:
+    title: Lápiz en Mano Center
+    subtitle: La Paz, Bolivia
+  hours_title: Opening Hours
+  hours:
+    - day: Monday to Friday
+      time: 8:00 – 12:00 / 14:00 – 18:00
+      active: true
+    - day: Saturdays
+      time: 9:00 – 12:00 (by appt)
+      active: true
+    - day: Sundays & holidays
+      time: Closed
+      active: false
+  social_title: Digital Presence
+  faq_section:
+    badge: Questions and answers
+    title: Quick Frequently Asked Questions
+  faqs:
+    - q: How do I enroll my child?
+      a: Schedule an initial diagnostic evaluation by messaging our WhatsApp. Our team will suggest the appropriate therapeutic or school program.
+      icon: 🌟
+      color: secondary
+    - q: Is there a cost for care?
+      a: Each program has supportive monthly fees. If a family cannot cover them, we offer partial and full scholarships. No child is left without care due to economic reasons.
+      icon: 💰
+      color: primary
+    - q: Is a prior diagnosis required?
+      a: It is not necessary. You can consult us for any developmental, communication, or behavioral warning sign in your child. We perform the evaluation.
+      icon: 📋
+      color: secondary
+    - q: Do you serve outside La Paz?
+      a: Physical therapy and school care are in La Paz. However, we offer family guidance and virtual training sessions nationwide.
+      icon: 🌎
+      color: accent
+  whatsapp_cta:
+    title: Do you prefer an immediate response?
+    text: Write to us directly on WhatsApp and you will receive personalized attention in less than 2 business hours. No waiting.
+  closing_quote:
+    text: We believe Down syndrome is not a barrier, but a different and valuable way to learn, grow, and develop one's full potential.
+    attribution: PRO-21 Foundation & Lápiz en Mano Center

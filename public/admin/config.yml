@@ -3,27 +3,815 @@
 
 backend:
   name: github
-  # TODO: actualizar con el nombre real del repositorio tras crearlo en GitHub
-  repo: ucb-sistemas/fundacion-pro21
-  branch: main
-  # Para desarrollo local usar: npx decap-server
-  # local_backend: true
+  repo: Rdrgrvram/Fundacion-PRO21-y-Centro-Lapiz-en-mano
+  branch: master
+  # Origen público del sitio + endpoint de la función OAuth propia (app/api/auth).
+  # Actualizar base_url si el dominio de producción cambia.
+  base_url: https://fundacionpro21.org
+  auth_endpoint: api/auth
+
+# Para desarrollo local usar: npx decap-server (bypasea el login de GitHub por completo).
+# OJO: local_backend va a nivel raíz del config, NO anidado dentro de "backend:" —
+# ahí Decap simplemente lo ignora sin avisar.
+local_backend: true
+
+# Cada cambio del admin genera un borrador -> PR -> revisión antes de llegar a producción
+publish_mode: editorial_workflow
 
 # Carpeta donde se guardan las imágenes subidas desde el CMS
 media_folder: public/images/uploads
 public_folder: /images/uploads
+max_file_size: 512000 # ~500KB por imagen — evita inflar el repo con el tiempo
 
 # Idioma del panel de administración
 locale: es
 
+# Contenido bilingüe: un archivo por idioma (<slug>.<locale>.<ext>), con pestaña ES/EN
+# en el editor. Ver docs/CMS_DEVELOPMENT_PLAN.md §1.1 para la justificación.
+i18n:
+  structure: multiple_files
+  locales: [es, en]
+  default_locale: es
+
 # ── Colecciones de contenido ─────────────────────────────────────────────────
+# Orden y etiquetas pensados para que el panel se recorra "página por página"
+# del sitio real (Decap no soporta carpetas/grupos nativos en el menú lateral,
+# así que esto se logra con: 1) orden = orden de navegación del sitio,
+# 2) emoji + nombre de página en el label, 3) "description" — visible bajo
+# cada colección en el menú — diciendo en qué página exacta aparece).
 
 collections:
 
-  # ── Blog / Noticias ──────────────────────────────────────────────────────
+  # ── Configuración general (aparece en TODAS las páginas) ───────────────────
+  - name: site_settings
+    label: "⚙️ Configuración general"
+    description: "Datos globales que aparecen en TODO el sitio: contacto, redes sociales, menú de navegación, pie de página. Cambios acá afectan todas las páginas a la vez."
+    i18n:
+      structure: single_file
+      locales: [es, en]
+    files:
+      - name: content
+        label: Configuración general
+        file: content/settings/site_settings.yml
+        i18n: true
+        fields:
+          - label: "Datos de contacto"
+            name: contact
+            widget: object
+            fields:
+              - { label: Dirección, name: address, widget: string, i18n: true }
+              - { label: "Teléfono (para mostrar)", name: phone_display, widget: string, hint: "Ej. 70106276, sin código de país" }
+              - { label: "Número de WhatsApp (con código de país)", name: whatsapp_number, widget: string, hint: "Ej. 59170106276 — sin '+' ni espacios. Se usa para todos los botones de WhatsApp del sitio." }
+              - { label: Correo electrónico, name: email, widget: string }
+          - label: "Redes sociales"
+            name: social
+            widget: object
+            fields:
+              - { label: Facebook, name: facebook, widget: string }
+              - { label: Instagram, name: instagram, widget: string }
+              - { label: "TikTok — Fundación PRO-21", name: tiktok_pro21, widget: string }
+              - { label: "TikTok — Centro Lápiz en Mano", name: tiktok_lapiz, widget: string }
+          - label: "Menú de navegación"
+            name: nav
+            widget: list
+            hint: "El orden acá define el orden del menú. No agregues ni quites páginas — solo edita las etiquetas o reordénalas."
+            fields:
+              - { label: Página, name: route, widget: select, options: [quienes-somos, mi-escuelita-down, aula-wawitas, pasos-firmes, equipo, impacto, familias, blog, colabora, contacto] }
+              - { label: Etiqueta del menú, name: label, widget: string, i18n: true }
+          - label: "Encabezado (Header)"
+            name: header
+            widget: object
+            fields:
+              - { label: "Texto del botón 'Colaborar'", name: cta_label, widget: string, i18n: true }
+              - { label: "Lema bajo el logo (menú móvil)", name: tagline, widget: string, i18n: true }
+          - label: "Pie de página (Footer)"
+            name: footer
+            widget: object
+            fields:
+              - { label: "Título de columna Programas", name: programs_title, widget: string, i18n: true }
+              - { label: "Título de columna Institución", name: institution_title, widget: string, i18n: true }
+              - label: "Enlaces de la columna Institución"
+                name: institution_links
+                widget: list
+                fields:
+                  - { label: Página, name: route, widget: select, options: [quienes-somos, mi-escuelita-down, aula-wawitas, pasos-firmes, equipo, impacto, familias, blog, colabora, contacto] }
+                  - { label: Etiqueta, name: label, widget: string, i18n: true }
+              - { label: "Texto de copyright (sin el año, se agrega automáticamente)", name: copyright, widget: string, i18n: true }
+
+  # ── Página: Inicio ─────────────────────────────────────────────────────────
+  # Las colecciones "files" (singletons) solo soportan i18n con
+  # structure: single_file — un único YAML con es:/en: anidados — a diferencia
+  # de las colecciones "folder" de arriba, que usan multiple_files (un archivo
+  # por idioma). Por eso esta colección pisa el structure global.
+  - name: home
+    label: "🏠 Inicio"
+    description: "Contenido completo de la página de Inicio (portada del sitio): hero, cifras, programas, misión y CTA."
+    i18n:
+      structure: single_file
+      locales: [es, en]
+    files:
+      - name: content
+        label: Contenido de Inicio
+        file: content/settings/home.yml
+        i18n: true
+        fields:
+          - label: "Hero (portada)"
+            name: hero
+            widget: object
+            fields:
+              - { label: "Título — línea 1", name: title_line1, widget: string, i18n: true }
+              - { label: "Título — línea 2 (resaltada en amarillo)", name: title_line2, widget: string, i18n: true }
+              - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
+              - { label: "Texto del botón principal", name: cta_primary, widget: string, i18n: true }
+          - label: "Cifras rápidas"
+            name: stats
+            widget: list
+            min: 4
+            max: 4
+            fields:
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: Valor, name: value, widget: string, i18n: true }
+              - { label: Etiqueta, name: label, widget: string, i18n: true }
+          - label: "Sección: Programas"
+            name: programs_teaser
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
+              - label: "Tarjetas de programa"
+                name: cards
+                widget: list
+                min: 3
+                max: 3
+                fields:
+                  - { label: Programa, name: slug, widget: select, options: [mi-escuelita-down, aula-wawitas, pasos-firmes], hint: "Determina a qué página enlaza la tarjeta" }
+                  - { label: "Ícono (emoji)", name: icon, widget: string }
+                  - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
+                  - { label: Etiqueta, name: badge, widget: string, i18n: true }
+                  - { label: Título, name: title, widget: string, i18n: duplicate }
+                  - { label: Descripción, name: desc, widget: text, i18n: true }
+                  - { label: "Rango de edad", name: ages, widget: string, i18n: true }
+          - label: "Sección: Misión (resumen)"
+            name: mission
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Texto, name: text, widget: text, i18n: true }
+              - { label: "Texto del enlace", name: link_text, widget: string, i18n: true }
+          - label: "Valores destacados"
+            name: values
+            widget: list
+            min: 4
+            max: 4
+            fields:
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Descripción, name: desc, widget: text, i18n: true }
+          - label: "Sección: Vista previa del equipo"
+            name: team_preview
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Texto, name: text, widget: text, i18n: true }
+          - label: "CTA final"
+            name: cta
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Texto, name: text, widget: text, i18n: true }
+
+  # ── Página: Quiénes Somos ──────────────────────────────────────────────────
+  - name: about
+    label: "🏛️ Quiénes Somos"
+    description: "Contenido completo de la página Quiénes Somos: identidad institucional, misión/visión/objetivo, valores y línea de tiempo."
+    i18n:
+      structure: single_file
+      locales: [es, en]
+    files:
+      - name: content
+        label: Contenido de Quiénes Somos
+        file: content/settings/about.yml
+        i18n: true
+        fields:
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: "Título — línea 1", name: title_line1, widget: string, i18n: true }
+              - { label: "Título — línea 2 (resaltada)", name: title_line2, widget: string, i18n: true }
+              - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
+          - label: "Tarjetas de identidad"
+            name: identity
+            widget: object
+            fields:
+              - label: "Fundación PRO-21"
+                name: pro21
+                widget: object
+                fields:
+                  - { label: Lema, name: tagline, widget: string, i18n: true }
+                  - { label: Descripción, name: description, widget: text, i18n: true }
+              - label: "Centro Lápiz en Mano"
+                name: lapiz
+                widget: object
+                fields:
+                  - { label: Lema, name: tagline, widget: string, i18n: true }
+                  - { label: Descripción, name: description, widget: text, i18n: true }
+          - label: "Sección: Misión/Visión/Objetivo"
+            name: mission_section
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
+          - label: "Tarjetas de Misión/Visión/Objetivo"
+            name: mission_cards
+            widget: list
+            min: 3
+            max: 3
+            fields:
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
+              - { label: Etiqueta, name: label, widget: string, i18n: true }
+              - { label: Texto, name: text, widget: text, i18n: true }
+          - label: "Sección: Valores"
+            name: values_section
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
+          - label: "Valores institucionales"
+            name: values
+            widget: list
+            fields:
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
+              - { label: Nombre, name: name, widget: string, i18n: true }
+              - { label: Descripción, name: desc, widget: text, i18n: true }
+          - label: "Sección: Línea de tiempo"
+            name: timeline_section
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
+          - label: "Hitos de la línea de tiempo"
+            name: timeline
+            widget: list
+            fields:
+              - { label: Año, name: year, widget: string }
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Descripción, name: desc, widget: text, i18n: true }
+          - label: "Sección: Vista previa del equipo"
+            name: team_section
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
+          - label: "CTA final"
+            name: cta
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Texto, name: text, widget: text, i18n: true }
+
+  # ── Páginas: Mi Escuelita Down / Aula Wawitas / Pasos Firmes ──────────────
+  # Folder collection (no singleton): usa multiple_files, igual que Equipo —
+  # no necesita el override single_file que sí llevan Inicio/Quiénes Somos.
+  - name: programs
+    label: "🎓 Programas"
+    label_singular: Programa
+    description: "Cada entrada es la página completa de un programa (Mi Escuelita Down, Aula Wawitas o Pasos Firmes): hero, cifras, áreas/pilares, niveles o modalidades, y cómo inscribirse."
+    folder: content/programs
+    create: false
+    delete: false
+    i18n: true
+    slug: "{{slug}}"
+    preview_path: "/{{locale}}/{{slug}}"
+    media_folder: "/public/images/uploads/programas"
+    public_folder: "/images/uploads/programas"
+    fields:
+      - { label: "Nombre del programa", name: title, widget: string, i18n: duplicate }
+      - label: Hero
+        name: hero
+        widget: object
+        fields:
+          - { label: "Etiqueta (badge)", name: badge, widget: string, i18n: true }
+          - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
+          - { label: "Color de fondo", name: color, widget: select, options: [primary, secondary, accent] }
+      - label: "Cifras rápidas"
+        name: stats
+        widget: list
+        min: 4
+        max: 4
+        fields:
+          - { label: "Ícono (emoji)", name: icon, widget: string }
+          - { label: Valor, name: value, widget: string, i18n: true }
+          - { label: Etiqueta, name: label, widget: string, i18n: true }
+      - label: "Bloque 1 (ej. Áreas de terapia / Pilares / Dificultades atendidas)"
+        name: section_1
+        widget: object
+        fields:
+          - { label: Etiqueta, name: badge, widget: string, i18n: true }
+          - { label: "Título de sección", name: title, widget: string, i18n: true }
+          - { label: Subtítulo, name: subtitle, widget: text, i18n: true, required: false }
+          - { label: "Formato visual", name: layout, widget: select, options: [tarjetas, acordeón], default: tarjetas, hint: "Acordeón: el texto se oculta hasta hacer clic (útil para 5-6+ ítems)" }
+          - label: Ítems
+            name: items
+            widget: list
+            fields:
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: "Etiqueta corta (opcional)", name: tag, widget: string, i18n: true, required: false, hint: "Ej. 'Lectura' — solo si aplica" }
+              - { label: Descripción, name: desc, widget: text, i18n: true, required: false }
+              - label: "Sub-puntos (opcional)"
+                name: items
+                widget: list
+                required: false
+                field: { label: Punto, name: point, widget: string, i18n: true }
+      - label: "Bloque 2 — pestañas (ej. Niveles / Modalidades de atención)"
+        name: section_2
+        widget: object
+        fields:
+          - { label: Etiqueta, name: badge, widget: string, i18n: true }
+          - { label: "Título de sección", name: title, widget: string, i18n: true }
+          - { label: Subtítulo, name: subtitle, widget: text, i18n: true, required: false }
+          - label: Pestañas
+            name: tabs
+            widget: list
+            fields:
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
+              - { label: Etiqueta, name: label, widget: string, i18n: true }
+              - { label: "Rango de edad (opcional)", name: age_range, widget: string, i18n: true, required: false }
+              - { label: Descripción, name: desc, widget: text, i18n: true }
+              - label: "Puntos destacados"
+                name: highlights
+                widget: list
+                field: { label: Punto, name: point, widget: string, i18n: true }
+      - label: "Bloque 3 (opcional — ej. Servicios complementarios / Áreas de estimulación)"
+        name: section_3
+        widget: object
+        required: false
+        fields:
+          - { label: Etiqueta, name: badge, widget: string, i18n: true }
+          - { label: "Título de sección", name: title, widget: string, i18n: true }
+          - label: Ítems
+            name: items
+            widget: list
+            fields:
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Descripción, name: desc, widget: text, i18n: true, required: false }
+      - label: "Sección: Cómo ingresar / Pasos de intervención"
+        name: enrollment
+        widget: object
+        fields:
+          - { label: "Etiqueta (opcional)", name: badge, widget: string, i18n: true, required: false }
+          - { label: "Título de sección", name: title, widget: string, i18n: true }
+          - { label: "Subtítulo (opcional)", name: subtitle, widget: text, i18n: true, required: false }
+          - label: Pasos
+            name: steps
+            widget: list
+            fields:
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Descripción, name: desc, widget: text, i18n: true }
+      - label: "CTA final"
+        name: cta
+        widget: object
+        fields:
+          - { label: Título, name: title, widget: string, i18n: true }
+          - { label: Texto, name: text, widget: text, i18n: true }
+
+  # ── Página: Inicio + Impacto ──────────────────────────────────────────────
+  - name: testimonios
+    label: "💬 Testimonios (Inicio / Impacto)"
+    label_singular: Testimonio
+    description: "Aparece en: página de Inicio (sección de testimonios) y página de Impacto (carrusel). Marcá los checkboxes para elegir en cuál(es) se muestra cada uno."
+    folder: content/testimonios
+    create: true
+    slug: "{{slug}}"
+    i18n: true
+    summary: "{{family}} — {{program}}"
+    fields:
+      - { label: Nombre de la familia, name: family, widget: string, i18n: duplicate }
+      - label: Programa
+        name: program
+        widget: select
+        options:
+          - Mi Escuelita Down
+          - Aula Wawitas
+          - Pasos Firmes
+      - { label: "Ícono (emoji)", name: icon, widget: string, required: false }
+      - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent], default: secondary }
+      - { label: "Orden de aparición", name: order, widget: number, value_type: int, default: 0 }
+      - { label: "Mostrar en Inicio", name: featured_home, widget: boolean, default: false, hint: "Aparece en la sección de testimonios de la página de Inicio" }
+      - { label: "Mostrar en Impacto", name: featured_impacto, widget: boolean, default: false, hint: "Aparece en el carrusel de testimonios de la página de Impacto" }
+      - { label: Testimonio, name: body, widget: markdown, i18n: true }
+
+  # ── Página: Equipo ─────────────────────────────────────────────────────────
+  - name: team_areas
+    label: "👥 Equipo — Áreas de especialidad"
+    label_singular: Área
+    description: "Aparece en: página de Equipo → filtro de áreas de especialidad y ficha de cada profesional."
+    folder: content/team_areas
+    create: true
+    slug: "{{slug}}"
+    i18n: true
+    fields:
+      - { label: Nombre, name: name, widget: string, i18n: true }
+      - { label: "Ícono (emoji)", name: icon, widget: string }
+      - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
+      - { label: Descripción, name: desc, widget: text, i18n: true }
+      - label: Competencias
+        name: skills
+        widget: list
+        field: { label: Competencia, name: skill, widget: string, i18n: true }
+      - label: Programas relacionados
+        name: programs
+        widget: list
+        field:
+          label: Programa
+          name: program
+          widget: select
+          options: [Mi Escuelita Down, Aula Wawitas, Pasos Firmes]
+
+  - name: equipo
+    label: "👥 Equipo — Profesionales"
+    label_singular: Miembro del equipo
+    description: "Aparece en: página de Equipo → tarjetas de cada profesional."
+    folder: content/equipo
+    create: true
+    slug: "{{slug}}"
+    i18n: true
+    fields:
+      - { label: Nombre completo, name: name, widget: string, i18n: duplicate }
+      - { label: Cargo, name: role, widget: string, i18n: true }
+      - { label: Especialidad, name: specialty, widget: string, i18n: true }
+      - label: Área de especialidad
+        name: area
+        widget: relation
+        collection: team_areas
+        search_fields: [name]
+        display_fields: [name]
+        value_field: "{{slug}}"
+      - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
+      - { label: Foto, name: photo, widget: image, required: false, hint: "Opcional — si se deja vacío se muestran las iniciales" }
+      - { label: "Iniciales (si no hay foto)", name: initials, widget: string, pattern: ["^.{1,3}$", "Máximo 3 caracteres"] }
+      - { label: Descripción breve, name: bio, widget: text, i18n: true }
+
+  - name: volunteers
+    label: "👥 Equipo — Voluntarios"
+    label_singular: Voluntario/a
+    description: "Aparece en: página de Equipo → sección de voluntarios."
+    folder: content/volunteers
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Nombre, name: name, widget: string }
+
+  # ── Página: Impacto ────────────────────────────────────────────────────────
+  - name: impact
+    label: "📊 Impacto"
+    description: "Contenido completo de la página de Impacto: hero, cifras, informes anuales (PDF), desglose de uso de fondos, medios y galería de fotos."
+    i18n:
+      structure: single_file
+      locales: [es, en]
+    files:
+      - name: content
+        label: Contenido de Impacto
+        file: content/settings/impact.yml
+        i18n: true
+        fields:
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: "Título — línea 1", name: title_line1, widget: string, i18n: true }
+              - { label: "Título — línea 2 (resaltada)", name: title_line2, widget: string, i18n: true }
+              - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
+          - label: "Sección: Cifras"
+            name: stats_section
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: "Subtítulo (opcional)", name: subtitle, widget: text, i18n: true, required: false }
+          - label: Cifras
+            name: stats
+            widget: list
+            fields:
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
+              - { label: Valor, name: value, widget: string, i18n: true }
+              - { label: "Sufijo (opcional, ej. '+')", name: suffix, widget: string, i18n: true, required: false }
+              - { label: Etiqueta, name: label, widget: string, i18n: true }
+          - label: "Sección: Testimonios"
+            name: testimonials_section
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: "Subtítulo (opcional)", name: subtitle, widget: text, i18n: true, required: false }
+          - label: "Sección: Informes"
+            name: reports_section
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: "Subtítulo (opcional)", name: subtitle, widget: text, i18n: true, required: false }
+          - label: "Informes anuales"
+            name: reports
+            widget: list
+            fields:
+              - { label: Año, name: year, widget: string }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Descripción, name: desc, widget: text, i18n: true }
+              - { label: "Archivo PDF", name: file, widget: file, required: false, hint: "Sube el informe en PDF. Si se deja vacío, el botón de descarga redirige a WhatsApp." }
+          - { label: "Título del desglose de informes", name: reports_breakdown_title, widget: string, i18n: true }
+          - label: "Desglose de informes (uso de fondos)"
+            name: reports_breakdown
+            widget: list
+            fields:
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Descripción, name: desc, widget: text, i18n: true }
+          - label: "Sección: Medios"
+            name: media_section
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: "Subtítulo (opcional)", name: subtitle, widget: text, i18n: true, required: false }
+          - label: "Menciones en medios"
+            name: media
+            widget: list
+            fields:
+              - { label: Medio, name: outlet, widget: string }
+              - { label: "Tipo (ej. Nota, Reportaje)", name: type, widget: string, i18n: true }
+              - { label: Descripción, name: desc, widget: text, i18n: true }
+              - { label: Año, name: year, widget: string }
+              - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
+          - label: "Sección: Galería"
+            name: gallery_section
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: "Subtítulo (opcional)", name: subtitle, widget: text, i18n: true, required: false }
+          - { label: "Categorías de la galería", name: gallery_categories, widget: list, i18n: true, hint: "Una por línea, ej. Terapias, Eventos, Familias" }
+          - label: "Fotos de la galería"
+            name: gallery
+            widget: list
+            fields:
+              - { label: Foto, name: image, widget: image }
+              - { label: "Texto alternativo (accesibilidad)", name: alt, widget: string, i18n: true }
+          - { label: "Nota de la galería", name: gallery_note, widget: text, i18n: true }
+          - label: "CTA final"
+            name: cta
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Texto, name: text, widget: text, i18n: true }
+
+  # ── Página: Colabora ───────────────────────────────────────────────────────
+  - name: collaborate
+    label: "🤝 Colabora"
+    description: "Contenido completo de la página Colabora: donaciones, datos bancarios, voluntariado y alianzas institucionales."
+    i18n:
+      structure: single_file
+      locales: [es, en]
+    files:
+      - name: content
+        label: Contenido de Colabora
+        file: content/settings/collaborate.yml
+        i18n: true
+        fields:
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: "Título — línea 1", name: title_line1, widget: string, i18n: true }
+              - { label: "Título — línea 2 (resaltada)", name: title_line2, widget: string, i18n: true }
+              - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
+          - label: "Cifras destacadas del hero"
+            name: hero_highlights
+            widget: list
+            fields:
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: Valor, name: value, widget: string, i18n: true }
+              - { label: Etiqueta, name: label, widget: string, i18n: true }
+          - label: "Sección: Donaciones"
+            name: donation_section
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: "Subtítulo (opcional)", name: subtitle, widget: text, i18n: true, required: false }
+          - label: "Niveles de donación"
+            name: donation_tiers
+            widget: list
+            fields:
+              - { label: "Monto (Bs)", name: amount, widget: string }
+              - { label: "Monto (USD, opcional)", name: usd, widget: string, required: false }
+              - { label: Etiqueta, name: label, widget: string, i18n: true }
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
+              - { label: "Frase de impacto", name: impact, widget: string, i18n: true }
+              - { label: "Ítems incluidos", name: items, widget: list, i18n: true }
+              - { label: "Destacado (más popular)", name: featured, widget: boolean, required: false, default: false }
+          - label: "Datos bancarios"
+            name: donation_bank
+            widget: object
+            fields:
+              - { label: Banco, name: bank, widget: string }
+              - { label: "Número de cuenta", name: account, widget: string }
+              - { label: Titular, name: holder, widget: string }
+              - { label: "Nota (opcional)", name: note, widget: text, i18n: true }
+          - label: "Métodos de pago"
+            name: payment_methods
+            widget: list
+            fields:
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Líneas, name: lines, widget: list, i18n: true }
+          - { label: "Nota de pago", name: payment_note, widget: text, i18n: true }
+          - label: "Sección: Voluntariado"
+            name: volunteer_section
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: "Subtítulo (opcional)", name: subtitle, widget: text, i18n: true, required: false }
+          - label: "Áreas de voluntariado"
+            name: volunteer_areas
+            widget: list
+            fields:
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Descripción, name: desc, widget: text, i18n: true }
+              - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
+          - label: "Beneficios de ser voluntario/a"
+            name: volunteer_perks
+            widget: list
+            fields:
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: Texto, name: text, widget: string, i18n: true }
+          - label: "Testimonio de voluntario/a"
+            name: volunteer_testimonial
+            widget: object
+            fields:
+              - { label: Cita, name: quote, widget: text, i18n: true }
+              - { label: "Rol / nombre", name: role, widget: string, i18n: true }
+          - label: "Sección: Alianzas"
+            name: alliances_section
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: "Subtítulo (opcional)", name: subtitle, widget: text, i18n: true, required: false }
+          - label: "Tipos de alianza"
+            name: partner_types
+            widget: list
+            fields:
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
+              - { label: Descripción, name: desc, widget: text, i18n: true }
+              - { label: Beneficios, name: benefits, widget: list, i18n: true }
+          - { label: "Título de aliados actuales", name: allies_title, widget: string, i18n: true }
+          - { label: "Subtítulo de aliados actuales", name: allies_subtitle, widget: text, i18n: true }
+          - label: "Aliados actuales"
+            name: allies
+            widget: list
+            fields:
+              - { label: Nombre, name: name, widget: string, i18n: duplicate }
+              - { label: Tipo, name: type, widget: string, i18n: true }
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+          - label: "CTA final"
+            name: cta
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Texto, name: text, widget: text, i18n: true }
+
+  # ── Página: Familias ───────────────────────────────────────────────────────
+  - name: families
+    label: "👨‍👩‍👧 Familias"
+    description: "Contenido completo de la página Familias: carta de bienvenida, sesiones virtuales, red de apoyo, guías descargables (PDF) y preguntas frecuentes."
+    i18n:
+      structure: single_file
+      locales: [es, en]
+    files:
+      - name: content
+        label: Contenido de Familias
+        file: content/settings/families.yml
+        i18n: true
+        fields:
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: "Título — línea 1", name: title_line1, widget: string, i18n: true }
+              - { label: "Título — línea 2 (resaltada)", name: title_line2, widget: string, i18n: true }
+              - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
+          - label: "Carta de bienvenida"
+            name: welcome_letter
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Texto, name: text, widget: text, i18n: true }
+              - { label: Firma, name: signature, widget: string, i18n: true }
+          - label: "Sección: Sesiones virtuales"
+            name: sessions_section
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: "Subtítulo (opcional)", name: subtitle, widget: text, i18n: true, required: false }
+          - label: "Sesiones virtuales"
+            name: virtual_sessions
+            widget: list
+            fields:
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: Descripción, name: desc, widget: text, i18n: true }
+              - { label: Frecuencia, name: freq, widget: string, i18n: true }
+              - { label: Duración, name: duration, widget: string, i18n: true }
+              - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
+          - { label: "Nota de sesiones", name: sessions_note, widget: text, i18n: true }
+          - label: "Sección: Red de apoyo"
+            name: network_section
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: "Subtítulo (opcional)", name: subtitle, widget: text, i18n: true, required: false }
+          - label: "Red de apoyo"
+            name: support_network
+            widget: list
+            fields:
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: Descripción, name: desc, widget: text, i18n: true }
+              - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
+          - label: "Sección: Guías descargables"
+            name: guides_section
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: "Subtítulo (opcional)", name: subtitle, widget: text, i18n: true, required: false }
+          - label: "Guías descargables"
+            name: guides
+            widget: list
+            fields:
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: Descripción, name: desc, widget: text, i18n: true }
+              - { label: "Nº de páginas", name: pages, widget: string, i18n: true }
+              - { label: Programa, name: program, widget: string, i18n: true }
+              - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
+              - { label: "Archivo PDF", name: file, widget: file, required: false, hint: "Sube la guía en PDF. Si se deja vacío, el botón de descarga redirige a WhatsApp." }
+          - { label: "Nota de guías", name: guides_note, widget: text, i18n: true }
+          - label: "Sección: Preguntas frecuentes"
+            name: faq_section
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: "Subtítulo (opcional)", name: subtitle, widget: text, i18n: true, required: false }
+          - label: "Preguntas frecuentes"
+            name: faqs
+            widget: list
+            fields:
+              - { label: Pregunta, name: q, widget: string, i18n: true }
+              - { label: Respuesta, name: a, widget: text, i18n: true }
+          - label: "CTA final"
+            name: cta
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Texto, name: text, widget: text, i18n: true }
+              - { label: Nota, name: note, widget: string, i18n: true }
+
+  # ── Página: Blog ───────────────────────────────────────────────────────────
   - name: blog
-    label: Blog / Noticias
+    label: "📰 Blog"
     label_singular: Publicación
+    description: "Aparece en: página de Blog (listado) y su propia página individual por publicación."
     folder: content/blog
     create: true
     slug: "{{slug}}"
@@ -35,34 +823,79 @@ collections:
       - { label: Resumen (para la lista), name: excerpt, widget: text }
       - { label: Contenido, name: body, widget: markdown }
 
-  # ── Equipo ───────────────────────────────────────────────────────────────
-  - name: equipo
-    label: Equipo profesional
-    label_singular: Miembro del equipo
-    folder: content/equipo
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: Nombre completo, name: name, widget: string }
-      - { label: Cargo, name: role, widget: string }
-      - { label: Especialidad, name: specialty, widget: string }
-      - { label: Foto, name: photo, widget: image, required: false }
-      - { label: Descripción breve, name: bio, widget: text }
-
-  # ── Testimonios ──────────────────────────────────────────────────────────
-  - name: testimonios
-    label: Testimonios de familias
-    label_singular: Testimonio
-    folder: content/testimonios
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: Nombre de la familia, name: family, widget: string }
-      - label: Programa
-        name: program
-        widget: select
-        options:
-          - Mi Escuelita Down
-          - Aula Wawitas
-          - Pasos Firmes
-      - { label: Testimonio, name: body, widget: markdown }
+  # ── Página: Contacto ───────────────────────────────────────────────────────
+  - name: contact_page
+    label: "✉️ Contacto"
+    description: "Contenido completo de la página de Contacto: hero, motivos de consulta, tarjeta de ubicación, horarios, redes sociales y preguntas frecuentes."
+    i18n:
+      structure: single_file
+      locales: [es, en]
+    files:
+      - name: content
+        label: Contenido de Contacto
+        file: content/settings/contact_page.yml
+        i18n: true
+        fields:
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: "Título — línea 1", name: title_line1, widget: string, i18n: true }
+              - { label: "Título — línea 2 (resaltada)", name: title_line2, widget: string, i18n: true }
+              - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
+          - label: "Motivos de consulta"
+            name: reasons
+            widget: list
+            fields:
+              - { label: Etiqueta, name: label, widget: string, i18n: true }
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent, neutral] }
+          - label: "Sección: Formulario"
+            name: form_section
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
+          - label: "Tarjeta de ubicación"
+            name: map_card
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Subtítulo, name: subtitle, widget: string, i18n: true }
+          - { label: "Título de horarios", name: hours_title, widget: string, i18n: true }
+          - label: Horarios
+            name: hours
+            widget: list
+            fields:
+              - { label: Día, name: day, widget: string, i18n: true }
+              - { label: Horario, name: time, widget: string, i18n: true }
+              - { label: Activo (no cerrado), name: active, widget: boolean, default: true }
+          - { label: "Título de redes sociales", name: social_title, widget: string, i18n: true }
+          - label: "Sección: Preguntas frecuentes"
+            name: faq_section
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: "Subtítulo (opcional)", name: subtitle, widget: text, i18n: true, required: false }
+          - label: "Preguntas frecuentes rápidas"
+            name: faqs
+            widget: list
+            fields:
+              - { label: Pregunta, name: q, widget: string, i18n: true }
+              - { label: Respuesta, name: a, widget: text, i18n: true }
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
+          - label: "CTA de WhatsApp directo"
+            name: whatsapp_cta
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Texto, name: text, widget: text, i18n: true }
+          - label: "Cita de cierre"
+            name: closing_quote
+            widget: object
+            fields:
+              - { label: Texto, name: text, widget: text, i18n: true }
+              - { label: Atribución, name: attribution, widget: string, i18n: true }

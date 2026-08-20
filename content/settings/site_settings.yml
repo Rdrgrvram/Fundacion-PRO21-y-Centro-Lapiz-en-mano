@@ -1,0 +1,101 @@
+es:
+  contact:
+    address: Calle Luis Espinal Nro. 126, Zona Plan Autopista, Municipio de La Paz
+    phone_display: "70106276"
+    whatsapp_number: "59170106276"
+    email: fundacionpro211@gmail.com
+  social:
+    facebook: https://www.facebook.com/share/1EcmcUjMYb/
+    instagram: https://www.instagram.com/centro_lapiz_en_mano
+    tiktok_pro21: https://www.tiktok.com/@fundacionpro21
+    tiktok_lapiz: https://www.tiktok.com/@lapiz.en.mano65
+  nav:
+    - route: quienes-somos
+      label: Quiénes somos
+    - route: mi-escuelita-down
+      label: Mi Escuelita Down
+    - route: aula-wawitas
+      label: Aula Wawitas
+    - route: pasos-firmes
+      label: Pasos Firmes
+    - route: equipo
+      label: Equipo
+    - route: impacto
+      label: Impacto
+    - route: familias
+      label: Familias
+    - route: blog
+      label: Blog
+    - route: colabora
+      label: Colabora
+    - route: contacto
+      label: Contacto
+  header:
+    cta_label: Colaborar ♥
+    tagline: La Paz · Bolivia
+  footer:
+    programs_title: Programas
+    institution_title: Institución
+    institution_links:
+      - route: quienes-somos
+        label: Quiénes somos
+      - route: equipo
+        label: Equipo
+      - route: impacto
+        label: Impacto
+      - route: colabora
+        label: Colabora
+      - route: contacto
+        label: Contacto
+    copyright: Fundación PRO-21. Desarrollado por estudiantes de Ingeniería de Sistemas, UCB La Paz.
+
+en:
+  contact:
+    address: Calle Luis Espinal Nro. 126, Zona Plan Autopista, Municipio de La Paz
+    phone_display: "70106276"
+    whatsapp_number: "59170106276"
+    email: fundacionpro211@gmail.com
+  social:
+    facebook: https://www.facebook.com/share/1EcmcUjMYb/
+    instagram: https://www.instagram.com/centro_lapiz_en_mano
+    tiktok_pro21: https://www.tiktok.com/@fundacionpro21
+    tiktok_lapiz: https://www.tiktok.com/@lapiz.en.mano65
+  nav:
+    - route: quienes-somos
+      label: About us
+    - route: mi-escuelita-down
+      label: Mi Escuelita Down
+    - route: aula-wawitas
+      label: Aula Wawitas
+    - route: pasos-firmes
+      label: Pasos Firmes
+    - route: equipo
+      label: Team
+    - route: impacto
+      label: Impact
+    - route: familias
+      label: Families
+    - route: blog
+      label: Blog
+    - route: colabora
+      label: Support us
+    - route: contacto
+      label: Contact
+  header:
+    cta_label: Support us ♥
+    tagline: La Paz · Bolivia
+  footer:
+    programs_title: Programs
+    institution_title: Institution
+    institution_links:
+      - route: quienes-somos
+        label: About us
+      - route: equipo
+        label: Team
+      - route: impacto
+        label: Impact
+      - route: colabora
+        label: Support us
+      - route: contacto
+        label: Contact
+    copyright: PRO-21 Foundation. Developed by Systems Engineering students, UCB La Paz.

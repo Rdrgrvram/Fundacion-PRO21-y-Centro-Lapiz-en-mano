@@ -1,4 +1,5 @@
 import { locales, type Locale } from '@/lib/i18n'
+import { getSiteSettings } from '@/lib/cms'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import WhatsAppButton from '@/components/ui/WhatsAppButton'
@@ -15,10 +16,11 @@ interface LangLayoutProps {
 
 export default function LangLayout({ children, params: { lang } }: LangLayoutProps) {
   if (!locales.includes(lang)) notFound()
+  const settings = getSiteSettings(lang)
 
   return (
     <>
-      <Header lang={lang} />
+      <Header lang={lang} settings={settings} />
       <main>{children}</main>
       <Footer lang={lang} />
       <WhatsAppButton lang={lang} />
