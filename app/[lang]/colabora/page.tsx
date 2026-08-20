@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { CONTACT } from '@/lib/contact'
 import type { Locale } from '@/lib/i18n'
 
@@ -70,7 +71,16 @@ export default function Page({ params: { lang } }: PageProps) {
     }
   ]
 
-  const paymentMethods = [
+  interface PaymentMethod {
+    icon: string
+    title: string
+    color: string
+    bg: string
+    lines: string[]
+    qrImage?: string
+  }
+
+  const paymentMethods: PaymentMethod[] = [
     {
       icon: '🏦',
       title: es ? 'Transferencia bancaria' : 'Bank transfer',
@@ -89,7 +99,8 @@ export default function Page({ params: { lang } }: PageProps) {
       bg: 'bg-secondary/10',
       lines: es 
         ? ['Escanea desde tu app bancaria.', 'Compatible con Simple QR en Bolivia.']
-        : ['Scan from your banking app.', 'Compatible with Simple QR in Bolivia.']
+        : ['Scan from your banking app.', 'Compatible with Simple QR in Bolivia.'],
+      qrImage: '/images/qr-donacion.jpg'
     },
     {
       icon: '🌐',
@@ -370,13 +381,25 @@ export default function Page({ params: { lang } }: PageProps) {
                     <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-xl shadow-sm flex-shrink-0 select-none">
                       {m.icon}
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <h4 className="text-xs sm:text-sm font-bold text-[#111827] mb-0.5">{m.title}</h4>
                       {m.lines.map((line, lidx) => (
                         <div key={lidx} className="text-[11px] text-gray-500 font-semibold leading-relaxed">
                           {line}
                         </div>
                       ))}
+                      {m.qrImage && (
+                        <div className="mt-4 border border-gray-200 rounded-2xl p-3 bg-white max-w-[200px] shadow-sm">
+                          <Image
+                            src={m.qrImage}
+                            alt={es ? 'Código QR para donación' : 'Donation QR code'}
+                            width={180}
+                            height={180}
+                            className="w-full h-auto object-contain rounded-lg animate-fade-in"
+                            priority
+                          />
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}
