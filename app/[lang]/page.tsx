@@ -3,10 +3,16 @@ import Link from 'next/link'
 import type { Locale } from '@/lib/i18n'
 import { getTranslation } from '@/lib/i18n'
 
-export const metadata: Metadata = {
-  title: 'Fundación PRO-21 y Centro Lápiz en Mano | La Paz, Bolivia',
-  description:
-    'Intervención terapéutica y educativa especializada para niños con síndrome de Down, autismo y dificultades de aprendizaje en La Paz, Bolivia.',
+export async function generateMetadata({ params: { lang } }: { params: { lang: Locale } }): Promise<Metadata> {
+  const es = lang === 'es'
+  return {
+    title: es
+      ? 'Fundación PRO-21 y Centro Lápiz en Mano | La Paz, Bolivia'
+      : 'PRO-21 Foundation & Lápiz en Mano Center | La Paz, Bolivia',
+    description: es
+      ? 'Intervención terapéutica y educativa especializada para niños con síndrome de Down, autismo y dificultades de aprendizaje en La Paz, Bolivia.'
+      : 'Specialized therapeutic and educational care for children with Down syndrome, autism, and learning difficulties in La Paz, Bolivia.',
+  }
 }
 
 export default function Page({ params }: { params: { lang: Locale } }) {
@@ -299,7 +305,7 @@ export default function Page({ params }: { params: { lang: Locale } }) {
                 key={i}
                 className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col gap-4"
               >
-                <div className="text-primary text-3xl font-serif leading-none">"</div>
+                <div className="text-primary text-3xl font-serif leading-none">&ldquo;</div>
                 <p className="text-gray-700 text-sm leading-relaxed italic flex-1">{t.quote}</p>
                 <footer className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
                   <span className="font-bold text-gray-900 text-sm">{t.name}</span>

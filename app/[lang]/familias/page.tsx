@@ -3,9 +3,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { CONTACT } from '@/lib/contact'
 import type { Locale } from '@/lib/i18n'
-//.
-//.
-//.cortaaaaaaaaa
+
 interface PageProps {
   params: {
     lang: Locale

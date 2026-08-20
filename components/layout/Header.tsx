@@ -44,7 +44,7 @@ export default function Header({ lang }: HeaderProps) {
         <div className="w-full pl-2 pr-4 md:pl-4 md:pr-6 flex items-center justify-between h-16 md:h-20">
           
           {/* Logo / Identidad */}
-          <Link href={`/${lang}`} className="flex items-center gap-2 md:gap-3 group py-1.5 focus:outline-none" aria-label="Inicio — Fundación PRO-21 y Centro Lápiz en Mano">
+          <Link href={`/${lang}`} className="flex items-center gap-2 md:gap-3 group py-1.5 focus:outline-none" aria-label={es ? 'Inicio — Fundación PRO-21 y Centro Lápiz en Mano' : 'Home — PRO-21 Foundation & Lápiz en Mano Center'}>
             <Image
               src="/icons/logo-pro21.png"
               alt="Fundación PRO-21"

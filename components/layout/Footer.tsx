@@ -69,7 +69,7 @@ export default function Footer({ lang }: FooterProps) {
 
           {/* Columna 2: Programas */}
           <div>
-            <h3 className="font-bold text-lg mb-3">Programas</h3>
+            <h3 className="font-bold text-lg mb-3">{lang === 'es' ? 'Programas' : 'Programs'}</h3>
             <ul className="space-y-1 text-gray-400 text-sm">
               <li><Link href={`/${lang}/mi-escuelita-down`} className="hover:text-white">Mi Escuelita Down</Link></li>
               <li><Link href={`/${lang}/aula-wawitas`} className="hover:text-white">Aula Wawitas</Link></li>
@@ -79,19 +79,19 @@ export default function Footer({ lang }: FooterProps) {
 
           {/* Columna 3: Institución */}
           <div>
-            <h3 className="font-bold text-lg mb-3">Institución</h3>
+            <h3 className="font-bold text-lg mb-3">{lang === 'es' ? 'Institución' : 'Organization'}</h3>
             <ul className="space-y-1 text-gray-400 text-sm">
-              <li><Link href={`/${lang}/quienes-somos`} className="hover:text-white">Quiénes somos</Link></li>
-              <li><Link href={`/${lang}/equipo`} className="hover:text-white">Equipo</Link></li>
-              <li><Link href={`/${lang}/impacto`} className="hover:text-white">Impacto</Link></li>
-              <li><Link href={`/${lang}/colabora`} className="hover:text-white">Colabora</Link></li>
-              <li><Link href={`/${lang}/contacto`} className="hover:text-white">Contacto</Link></li>
+              <li><Link href={`/${lang}/quienes-somos`} className="hover:text-white">{lang === 'es' ? 'Quiénes somos' : 'About us'}</Link></li>
+              <li><Link href={`/${lang}/equipo`} className="hover:text-white">{lang === 'es' ? 'Equipo' : 'Team'}</Link></li>
+              <li><Link href={`/${lang}/impacto`} className="hover:text-white">{lang === 'es' ? 'Impacto' : 'Impact'}</Link></li>
+              <li><Link href={`/${lang}/colabora`} className="hover:text-white">{lang === 'es' ? 'Colabora' : 'Support us'}</Link></li>
+              <li><Link href={`/${lang}/contacto`} className="hover:text-white">{lang === 'es' ? 'Contacto' : 'Contact'}</Link></li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500 text-xs">
-          <p>© {new Date().getFullYear()} Fundación PRO-21. Desarrollado por estudiantes de Ingeniería de Sistemas, UCB La Paz.</p>
+          <p>© {new Date().getFullYear()} Fundación PRO-21. {lang === 'es' ? 'Todos los derechos reservados. Desarrollado por estudiantes de Ingeniería de Sistemas, UCB La Paz.' : 'All rights reserved. Developed by Systems Engineering students, UCB La Paz.'}</p>
         </div>
       </div>
     </footer>
