@@ -18,6 +18,80 @@ export default function Page({ params: { lang } }: PageProps) {
   const [openAlliance, setOpenAlliance] = useState<number | null>(null)
   const [formSent, setFormSent] = useState(false)
 
+  // Volunteer form state
+  const [volName, setVolName] = useState('')
+  const [volEmail, setVolEmail] = useState('')
+  const [volPhone, setVolPhone] = useState('')
+  const [volProfession, setVolProfession] = useState('')
+  const [volAvailability, setVolAvailability] = useState('2-4 hrs')
+  const [volMotivation, setVolMotivation] = useState('')
+  const [volSubmitting, setVolSubmitting] = useState(false)
+  const [volError, setVolError] = useState<string | null>(null)
+  const [volValidationErrors, setVolValidationErrors] = useState<Record<string, string>>({})
+
+  const handleVolunteerSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setVolError(null)
+    const errors: Record<string, string> = {}
+
+    if (!volName.trim()) {
+      errors.name = es ? 'El nombre completo es obligatorio' : 'Full name is required'
+    }
+    if (!volEmail.trim()) {
+      errors.email = es ? 'El correo electrónico es obligatorio' : 'Email is required'
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(volEmail.trim())) {
+      errors.email = es ? 'Ingresa un correo electrónico válido' : 'Enter a valid email address'
+    }
+    if (!volProfession.trim()) {
+      errors.profession = es ? 'La profesión o carrera es obligatoria' : 'Profession or career is required'
+    }
+    if (!volMotivation.trim()) {
+      errors.motivation = es ? 'Por favor dinos tu motivación o mensaje' : 'Please tell us your motivation'
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setVolValidationErrors(errors)
+      return
+    }
+
+    setVolValidationErrors({})
+    setVolSubmitting(true)
+
+    try {
+      const selectedAreaTitle = selectedVolArea !== null ? volunteerAreas[selectedVolArea]?.title : ''
+      const res = await fetch('/api/volunteer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: volName,
+          email: volEmail,
+          phone: volPhone,
+          profession: volProfession,
+          availability: volAvailability,
+          area: selectedAreaTitle,
+          motivation: volMotivation,
+        }),
+      })
+
+      const data = await res.json()
+      if (!res.ok) {
+        throw new Error(data.error || (es ? 'Error al enviar el formulario' : 'Error submitting form'))
+      }
+
+      setFormSent(true)
+      setVolName('')
+      setVolEmail('')
+      setVolPhone('')
+      setVolProfession('')
+      setVolMotivation('')
+    } catch (err: any) {
+      console.error(err)
+      setVolError(err.message || (es ? 'Ocurrió un error al enviar tu solicitud.' : 'An error occurred while sending.'))
+    } finally {
+      setVolSubmitting(false)
+    }
+  }
+
   const donationTiers = [
     {
       amount: 'Bs 100',
@@ -446,56 +520,140 @@ export default function Page({ params: { lang } }: PageProps) {
             {/* Lado Formulario */}
             <div className="bg-white rounded-3xl p-6 md:p-8 border border-gray-200 shadow-sm text-left">
               {!formSent ? (
-                <>
+                <form onSubmit={handleVolunteerSubmit}>
                   <h4 className="font-serif text-lg md:text-xl text-[#111827] font-bold mb-6">
                     {es ? 'Inscríbete como voluntario' : 'Register as volunteer'}
                   </h4>
                   
                   <div className="space-y-4">
-                    {[
-                      { label: es ? 'Nombre completo' : 'Full name', placeholder: es ? 'Ej: María Flores' : 'E.g., Maria Flores', type: 'text' },
-                      { label: es ? 'Correo electrónico' : 'Email address', placeholder: 'maria@example.com', type: 'email' },
-                      { label: es ? 'Teléfono / WhatsApp' : 'Phone / WhatsApp', placeholder: '+591 ...', type: 'tel' },
-                      { label: es ? 'Profesión o Carrera' : 'Profession or Career', placeholder: es ? 'Ej: Psicóloga' : 'E.g., Psychologist', type: 'text' }
-                    ].map((f) => (
-                      <div key={f.label}>
-                        <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1 block select-none">
-                          {f.label}
-                        </label>
-                        <input
-                          type={f.type}
-                          placeholder={f.placeholder}
-                          required
-                          className="w-full px-4 py-2.5 rounded-xl border-2 border-gray-200 focus:border-secondary bg-gray-50 focus:outline-none text-xs sm:text-sm"
-                        />
-                      </div>
-                    ))}
-                    
+                    {/* Nombre completo */}
+                    <div>
+                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1 block select-none">
+                        {es ? 'Nombre completo *' : 'Full name *'}
+                      </label>
+                      <input
+                        type="text"
+                        placeholder={es ? 'Ej: María Flores' : 'E.g., Maria Flores'}
+                        value={volName}
+                        onChange={(e) => setVolName(e.target.value)}
+                        className={`w-full px-4 py-2.5 rounded-xl border-2 bg-gray-50 focus:outline-none text-xs sm:text-sm ${
+                          volValidationErrors.name ? 'border-red-400 focus:border-red-500' : 'border-gray-200 focus:border-secondary'
+                        }`}
+                      />
+                      {volValidationErrors.name && (
+                        <p className="text-[10px] text-red-500 mt-1 font-semibold">{volValidationErrors.name}</p>
+                      )}
+                    </div>
+
+                    {/* Correo electrónico */}
+                    <div>
+                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1 block select-none">
+                        {es ? 'Correo electrónico *' : 'Email address *'}
+                      </label>
+                      <input
+                        type="email"
+                        placeholder="maria@example.com"
+                        value={volEmail}
+                        onChange={(e) => setVolEmail(e.target.value)}
+                        className={`w-full px-4 py-2.5 rounded-xl border-2 bg-gray-50 focus:outline-none text-xs sm:text-sm ${
+                          volValidationErrors.email ? 'border-red-400 focus:border-red-500' : 'border-gray-200 focus:border-secondary'
+                        }`}
+                      />
+                      {volValidationErrors.email && (
+                        <p className="text-[10px] text-red-500 mt-1 font-semibold">{volValidationErrors.email}</p>
+                      )}
+                    </div>
+
+                    {/* Teléfono / WhatsApp */}
+                    <div>
+                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1 block select-none">
+                        {es ? 'Teléfono / WhatsApp' : 'Phone / WhatsApp'}
+                      </label>
+                      <input
+                        type="tel"
+                        placeholder="+591 ..."
+                        value={volPhone}
+                        onChange={(e) => setVolPhone(e.target.value)}
+                        className="w-full px-4 py-2.5 rounded-xl border-2 border-gray-200 focus:border-secondary bg-gray-50 focus:outline-none text-xs sm:text-sm"
+                      />
+                    </div>
+
+                    {/* Profesión o Carrera */}
+                    <div>
+                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1 block select-none">
+                        {es ? 'Profesión o Carrera *' : 'Profession or Career *'}
+                      </label>
+                      <input
+                        type="text"
+                        placeholder={es ? 'Ej: Psicóloga' : 'E.g., Psychologist'}
+                        value={volProfession}
+                        onChange={(e) => setVolProfession(e.target.value)}
+                        className={`w-full px-4 py-2.5 rounded-xl border-2 bg-gray-50 focus:outline-none text-xs sm:text-sm ${
+                          volValidationErrors.profession ? 'border-red-400 focus:border-red-500' : 'border-gray-200 focus:border-secondary'
+                        }`}
+                      />
+                      {volValidationErrors.profession && (
+                        <p className="text-[10px] text-red-500 mt-1 font-semibold">{volValidationErrors.profession}</p>
+                      )}
+                    </div>
+
+                    {/* Disponibilidad */}
                     <div>
                       <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1 block select-none">
                         {es ? 'Disponibilidad horaria semanal' : 'Weekly time availability'}
                       </label>
-                      <div className="flex gap-2 select-none">
+                      <div className="flex gap-2 select-none flex-wrap">
                         {['2-4 hrs', '4-8 hrs', '8+ hrs', es ? 'Flexible' : 'Flexible'].map((h) => (
                           <button
                             key={h}
                             type="button"
-                            className="px-3 py-1.5 rounded-full border border-gray-300 bg-white hover:bg-gray-50 text-[10px] sm:text-xs font-bold text-gray-600 transition-colors"
+                            onClick={() => setVolAvailability(h)}
+                            className={`px-3 py-1.5 rounded-full border text-[10px] sm:text-xs font-bold transition-colors ${
+                              volAvailability === h
+                                ? 'bg-secondary text-white border-secondary shadow-sm'
+                                : 'border-gray-300 bg-white hover:bg-gray-50 text-gray-600'
+                            }`}
                           >
                             {h}
                           </button>
                         ))}
                       </div>
                     </div>
+
+                    {/* Motivación */}
+                    <div>
+                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1 block select-none">
+                        {es ? 'Motivación o mensaje *' : 'Motivation or message *'}
+                      </label>
+                      <textarea
+                        rows={3}
+                        placeholder={es ? '¿Por qué te gustaría colaborar con nosotros?' : 'Why would you like to volunteer with us?'}
+                        value={volMotivation}
+                        onChange={(e) => setVolMotivation(e.target.value)}
+                        className={`w-full px-4 py-2.5 rounded-xl border-2 bg-gray-50 focus:outline-none text-xs sm:text-sm resize-y ${
+                          volValidationErrors.motivation ? 'border-red-400 focus:border-red-500' : 'border-gray-200 focus:border-secondary'
+                        }`}
+                      />
+                      {volValidationErrors.motivation && (
+                        <p className="text-[10px] text-red-500 mt-1 font-semibold">{volValidationErrors.motivation}</p>
+                      )}
+                    </div>
                   </div>
 
+                  {volError && (
+                    <div className="mt-4 p-3 bg-red-50 border border-red-200 text-red-600 rounded-xl text-xs font-semibold">
+                      ⚠️ {volError}
+                    </div>
+                  )}
+
                   <button
-                    onClick={() => setFormSent(true)}
-                    className="w-full mt-6 bg-gradient-to-r from-[#229cc2] to-[#229cc2] hover:scale-[1.01] active:scale-[0.99] text-white font-extrabold text-xs sm:text-sm py-3 px-6 rounded-full transition-all shadow-md shadow-[#229cc2]/10 min-h-[44px]"
+                    type="submit"
+                    disabled={volSubmitting}
+                    className="w-full mt-6 bg-gradient-to-r from-[#229cc2] to-[#229cc2] hover:scale-[1.01] active:scale-[0.99] text-white font-extrabold text-xs sm:text-sm py-3 px-6 rounded-full transition-all shadow-md shadow-[#229cc2]/10 min-h-[44px] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {es ? 'Enviar inscripción' : 'Submit registration'}
+                    {volSubmitting ? (es ? 'Enviando postulación...' : 'Submitting application...') : (es ? 'Enviar inscripción' : 'Submit registration')}
                   </button>
-                </>
+                </form>
               ) : (
                 <div className="text-center py-12 px-4">
                   <span className="text-5xl block mb-4 select-none">🎉</span>
