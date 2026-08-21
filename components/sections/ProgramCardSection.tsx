@@ -31,7 +31,7 @@ export default function ProgramCardSection({ id, section, alt = false }: Program
           {section.subtitle && <p className="text-gray-600 max-w-2xl mx-auto">{section.subtitle}</p>}
         </div>
 
-        <div className={`grid grid-cols-1 ${cols} gap-5 max-w-6xl mx-auto`}>
+        <div className={`grid grid-cols-1 ${cols} gap-5 max-w-6xl mx-auto ${isAccordion ? 'items-start' : ''}`}>
           {section.items.map((item, i) => {
             const style = EXTENDED_PALETTE[item.color]
             const isOpen = openIndex === i
