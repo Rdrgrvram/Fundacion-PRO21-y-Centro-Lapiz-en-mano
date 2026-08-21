@@ -159,7 +159,7 @@ export const collaborateSchema = z.object({
     })
   ),
   donation_bank: z.object({ bank: z.string(), account: z.string(), holder: z.string(), note: z.string() }),
-  payment_methods: z.array(z.object({ icon: z.string(), title: z.string(), lines: z.array(z.string()) })),
+  payment_methods: z.array(z.object({ icon: z.string(), title: z.string(), lines: z.array(z.string()), qrImage: z.string().optional() })),
   payment_note: z.string(),
   volunteer_section: sectionHeader,
   volunteer_areas: z.array(z.object({ icon: z.string(), title: z.string(), desc: z.string(), color: accentColor })),
