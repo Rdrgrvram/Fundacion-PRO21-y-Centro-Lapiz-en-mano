@@ -16,36 +16,73 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
   const [selectedVolArea, setSelectedVolArea] = useState<number | null>(null)
   const [openAlliance, setOpenAlliance] = useState<number | null>(null)
   const [formSent, setFormSent] = useState(false)
-  const [volSending, setVolSending] = useState(false)
-  const [volError, setVolError] = useState('')
-  const [volDisponibilidad, setVolDisponibilidad] = useState('')
-  const [volForm, setVolForm] = useState({ nombre: '', email: '', telefono: '', profesion: '' })
+
+  // Formulario de voluntariado (US-17)
+  const [volName, setVolName] = useState('')
+  const [volEmail, setVolEmail] = useState('')
+  const [volPhone, setVolPhone] = useState('')
+  const [volProfession, setVolProfession] = useState('')
+  const [volAvailability, setVolAvailability] = useState('2-4 hrs')
+  const [volMotivation, setVolMotivation] = useState('')
+  const [volSubmitting, setVolSubmitting] = useState(false)
+  const [volError, setVolError] = useState<string | null>(null)
+  const [volValidationErrors, setVolValidationErrors] = useState<Record<string, string>>({})
 
   const handleVolunteerSubmit = async () => {
-    if (!volForm.nombre || !volForm.email) {
-      setVolError(es ? 'Nombre y correo son obligatorios.' : 'Name and email are required.')
+    setVolError(null)
+    const errors: Record<string, string> = {}
+
+    if (!volName.trim()) {
+      errors.name = es ? 'El nombre completo es obligatorio' : 'Full name is required'
+    }
+    if (!volEmail.trim()) {
+      errors.email = es ? 'El correo electrónico es obligatorio' : 'Email is required'
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(volEmail.trim())) {
+      errors.email = es ? 'Ingresa un correo electrónico válido' : 'Enter a valid email address'
+    }
+    if (!volProfession.trim()) {
+      errors.profession = es ? 'La profesión o carrera es obligatoria' : 'Profession or career is required'
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setVolValidationErrors(errors)
       return
     }
-    setVolSending(true)
-    setVolError('')
+
+    setVolValidationErrors({})
+    setVolSubmitting(true)
+
     try {
-      const res = await fetch('/api/contact', {
+      const selectedAreaTitle = selectedVolArea !== null ? content.volunteer_areas[selectedVolArea]?.title : ''
+      const res = await fetch('/api/volunteer', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: volForm.nombre,
-          email: volForm.email,
-          phone: volForm.telefono,
-          message: `Inscripción como voluntario/a.\nProfesión: ${volForm.profesion}\nDisponibilidad: ${volDisponibilidad || 'No especificada'}`,
-          program: es ? 'Voluntariado' : 'Volunteering',
+          name: volName,
+          email: volEmail,
+          phone: volPhone,
+          profession: volProfession,
+          availability: volAvailability,
+          area: selectedAreaTitle,
+          motivation: volMotivation,
         }),
       })
-      if (!res.ok) throw new Error()
+
+      const data = await res.json()
+      if (!res.ok) {
+        throw new Error(data.error || (es ? 'Error al enviar el formulario' : 'Error submitting form'))
+      }
+
       setFormSent(true)
-    } catch {
-      setVolError(es ? 'Error al enviar. Intenta de nuevo.' : 'Send error. Please try again.')
+      setVolName('')
+      setVolEmail('')
+      setVolPhone('')
+      setVolProfession('')
+      setVolMotivation('')
+    } catch (err: any) {
+      setVolError(err.message || (es ? 'Ocurrió un error al enviar tu solicitud.' : 'An error occurred while sending.'))
     } finally {
-      setVolSending(false)
+      setVolSubmitting(false)
     }
   }
 
@@ -266,21 +303,26 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
                   <h4 className="font-serif text-lg md:text-xl text-[#111827] font-bold mb-6">{es ? 'Inscríbete como voluntario' : 'Register as volunteer'}</h4>
                   <div className="space-y-4">
                     {[
-                      { label: es ? 'Nombre completo' : 'Full name', placeholder: es ? 'Ej: María Flores' : 'E.g., Maria Flores', type: 'text', key: 'nombre' as const },
-                      { label: es ? 'Correo electrónico' : 'Email address', placeholder: 'maria@example.com', type: 'email', key: 'email' as const },
-                      { label: es ? 'Teléfono / WhatsApp' : 'Phone / WhatsApp', placeholder: '+591 ...', type: 'tel', key: 'telefono' as const },
-                      { label: es ? 'Profesión o Carrera' : 'Profession or Career', placeholder: es ? 'Ej: Psicóloga' : 'E.g., Psychologist', type: 'text', key: 'profesion' as const },
+                      { label: es ? 'Nombre completo' : 'Full name', placeholder: es ? 'Ej: María Flores' : 'E.g., Maria Flores', type: 'text', value: volName, set: setVolName, err: 'name' },
+                      { label: es ? 'Correo electrónico' : 'Email address', placeholder: 'maria@example.com', type: 'email', value: volEmail, set: setVolEmail, err: 'email' },
+                      { label: es ? 'Teléfono / WhatsApp' : 'Phone / WhatsApp', placeholder: '+591 ...', type: 'tel', value: volPhone, set: setVolPhone, err: null },
+                      { label: es ? 'Profesión o Carrera' : 'Profession or Career', placeholder: es ? 'Ej: Psicóloga' : 'E.g., Psychologist', type: 'text', value: volProfession, set: setVolProfession, err: 'profession' },
                     ].map((f) => (
-                      <div key={f.key}>
+                      <div key={f.label}>
                         <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1 block select-none">{f.label}</label>
                         <input
                           type={f.type}
                           placeholder={f.placeholder}
                           required
-                          value={volForm[f.key]}
-                          onChange={(e) => setVolForm((prev) => ({ ...prev, [f.key]: e.target.value }))}
-                          className="w-full px-4 py-2.5 rounded-xl border-2 border-gray-200 focus:border-secondary bg-gray-50 focus:outline-none text-xs sm:text-sm"
+                          value={f.value}
+                          onChange={(e) => f.set(e.target.value)}
+                          className={`w-full px-4 py-2.5 rounded-xl border-2 bg-gray-50 focus:outline-none text-xs sm:text-sm ${
+                            f.err && volValidationErrors[f.err] ? 'border-red-300 focus:border-red-400' : 'border-gray-200 focus:border-secondary'
+                          }`}
                         />
+                        {f.err && volValidationErrors[f.err] && (
+                          <p className="mt-1 text-[10px] text-red-500 font-semibold">{volValidationErrors[f.err]}</p>
+                        )}
                       </div>
                     ))}
                     <div>
@@ -292,9 +334,9 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
                           <button
                             key={h}
                             type="button"
-                            onClick={() => setVolDisponibilidad(h)}
+                            onClick={() => setVolAvailability(h)}
                             className={`px-3 py-1.5 rounded-full border text-[10px] sm:text-xs font-bold transition-colors ${
-                              volDisponibilidad === h ? 'bg-secondary text-white border-secondary' : 'border-gray-300 bg-white hover:bg-gray-50 text-gray-600'
+                              volAvailability === h ? 'bg-secondary text-white border-secondary' : 'border-gray-300 bg-white hover:bg-gray-50 text-gray-600'
                             }`}
                           >
                             {h}
@@ -302,16 +344,28 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
                         ))}
                       </div>
                     </div>
+                    <div>
+                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1 block select-none">
+                        {es ? 'Motivación o mensaje (opcional)' : 'Motivation or message (optional)'}
+                      </label>
+                      <textarea
+                        rows={3}
+                        value={volMotivation}
+                        onChange={(e) => setVolMotivation(e.target.value)}
+                        placeholder={es ? 'Cuéntanos por qué quieres ser voluntario/a...' : 'Tell us why you want to volunteer...'}
+                        className="w-full px-4 py-2.5 rounded-xl border-2 border-gray-200 focus:border-secondary bg-gray-50 focus:outline-none text-xs sm:text-sm resize-y"
+                      />
+                    </div>
                   </div>
 
                   {volError && <p className="mt-3 text-xs text-red-500 font-semibold">{volError}</p>}
 
                   <button
                     onClick={handleVolunteerSubmit}
-                    disabled={volSending}
+                    disabled={volSubmitting}
                     className="w-full mt-6 bg-gradient-to-r from-[#229cc2] to-[#229cc2] hover:scale-[1.01] active:scale-[0.99] text-white font-extrabold text-xs sm:text-sm py-3 px-6 rounded-full transition-all shadow-md shadow-[#229cc2]/10 min-h-[44px] disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    {volSending ? (es ? 'Enviando...' : 'Sending...') : es ? 'Enviar inscripción' : 'Submit registration'}
+                    {volSubmitting ? (es ? 'Enviando...' : 'Sending...') : es ? 'Enviar inscripción' : 'Submit registration'}
                   </button>
                 </>
               ) : (
