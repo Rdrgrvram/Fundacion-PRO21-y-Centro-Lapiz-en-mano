@@ -9,14 +9,21 @@ interface Props {
 
 export default function LanguageSwitcher({ lang }: Props) {
   const pathname = usePathname()
-  // Reemplazar el prefijo de idioma en la ruta actual
   const otherLang: Locale = lang === 'es' ? 'en' : 'es'
-  const otherPath = pathname?.replace(`/${lang}`, `/${otherLang}`) ?? `/${otherLang}`
+
+  // Reemplazo seguro: solo el prefijo /es o /en al inicio de la ruta
+  let otherPath = `/${otherLang}`
+  if (pathname) {
+    otherPath = pathname.replace(new RegExp(`^/${lang}`), `/${otherLang}`)
+    if (!otherPath.startsWith(`/${otherLang}`)) {
+      otherPath = `/${otherLang}`
+    }
+  }
 
   return (
     <Link
       href={otherPath}
-      className="text-sm font-medium text-gray-500 hover:text-primary border border-gray-200 rounded px-2 py-1"
+      className="text-sm font-medium text-gray-500 hover:text-primary border border-gray-200 rounded px-2 py-1 transition-colors"
       title={lang === 'es' ? 'Switch to English' : 'Cambiar a Español'}
     >
       {lang === 'es' ? 'EN' : 'ES'}
