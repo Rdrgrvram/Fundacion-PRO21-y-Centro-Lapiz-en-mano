@@ -6,8 +6,8 @@ interface BadgeProps {
 }
 
 const COLORS: Record<BadgeColor, string> = {
-  primary:   'bg-primary/10 text-primary',
-  secondary: 'bg-secondary/10 text-secondary',
+  primary:   'bg-primary/10 text-primary-900',
+  secondary: 'bg-secondary/10 text-secondary-700',
   green:     'bg-green-100 text-green-700',
   blue:      'bg-blue-100 text-blue-700',
   orange:    'bg-orange-100 text-orange-700',
