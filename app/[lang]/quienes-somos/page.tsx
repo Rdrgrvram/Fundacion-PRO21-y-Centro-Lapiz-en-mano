@@ -338,17 +338,17 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 7. CTA Banner */}
-      <section className="py-16 md:py-20 px-4 bg-primary relative overflow-hidden">
+      <section className="py-16 md:py-24 px-4 bg-primary relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-black/5 rounded-full -translate-y-1/2 translate-x-1/3" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/5 rounded-full translate-y-1/2 -translate-x-1/4" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-black/5 rounded-full -translate-y-1/2 translate-x-1/3" />
+          <div className="absolute bottom-1/4 -left-16 w-64 h-64 bg-black/5 rounded-full" />
         </div>
         <div className="container mx-auto max-w-3xl relative z-10 text-center">
-          <span className="text-4xl mb-4 block select-none">💛</span>
-          <h3 className="text-2xl md:text-3xl text-gray-900 font-bold mb-4">
+          <span className="text-5xl mb-5 block select-none">💛</span>
+          <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold mb-4">
             {content.cta.title}
-          </h3>
-          <p className="text-sm text-gray-800/80 leading-relaxed mb-8 max-w-xl mx-auto">
+          </h2>
+          <p className="text-sm md:text-base text-gray-800/80 leading-relaxed mb-8 max-w-xl mx-auto">
             {content.cta.text}
           </p>
           <div className="flex flex-wrap gap-4 justify-center items-center">
