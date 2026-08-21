@@ -28,6 +28,8 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
   const [sending, setSending] = useState(false)
   const [error, setError] = useState('')
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
+  const [honeypot, setHoneypot] = useState('')
+  const [startTime] = useState(() => Date.now())
 
   const handleSubmit = async () => {
     if (!form.name || !form.email || !form.message) {
@@ -43,12 +45,15 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
         body: JSON.stringify({
           ...form,
           program: selectedReason !== null ? content.reasons[selectedReason].label : undefined,
+          honeypot,
+          startTime,
         }),
       })
-      if (!res.ok) throw new Error()
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) throw new Error(data.error)
       setFormSent(true)
-    } catch {
-      setError(es ? 'Hubo un error. Intenta de nuevo o contáctanos por WhatsApp.' : 'Something went wrong. Please try again or contact us via WhatsApp.')
+    } catch (err: any) {
+      setError(err.message || (es ? 'Hubo un error. Intenta de nuevo o contáctanos por WhatsApp.' : 'Something went wrong. Please try again or contact us via WhatsApp.'))
     } finally {
       setSending(false)
     }
@@ -201,6 +206,18 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
                       </div>
                     </div>
                   </div>
+
+                  {/* Honeypot anti-spam: invisible para humanos, los bots lo rellenan */}
+                  <input
+                    type="text"
+                    name="website"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                    className="absolute opacity-0 pointer-events-none -z-10 w-0 h-0"
+                    aria-hidden="true"
+                  />
 
                   {error && <p className="mt-3 text-xs text-red-500 font-semibold">{error}</p>}
 
