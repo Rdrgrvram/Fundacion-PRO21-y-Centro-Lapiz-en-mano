@@ -1,11 +1,12 @@
 import type { Locale } from '@/lib/i18n'
-import type { Program } from '@/lib/content'
+import { getAllTestimonials, type Program } from '@/lib/content'
 import { getSiteSettings } from '@/lib/cms'
 import ProgramHero from './ProgramHero'
 import ProgramStatsRow from './ProgramStatsRow'
 import ProgramCardSection from './ProgramCardSection'
 import ProgramTabSection from './ProgramTabSection'
 import ProgramEnrollmentSteps from './ProgramEnrollmentSteps'
+import ProgramTestimonial from './ProgramTestimonial'
 import ProgramCTA from './ProgramCTA'
 
 interface ProgramPageLayoutProps {
@@ -18,14 +19,16 @@ interface ProgramPageLayoutProps {
 // datos. Ver docs/CMS-DOCUMENTATION.md §4.1 (ejemplo trabajado a fondo).
 export default function ProgramPageLayout({ lang, program }: ProgramPageLayoutProps) {
   const { contact } = getSiteSettings(lang)
+  const testimonial = getAllTestimonials(lang).find((t) => t.program === program.title)
   return (
     <div className="bg-white">
       <ProgramHero lang={lang} program={program} whatsappNumber={contact.whatsapp_number} />
       <ProgramStatsRow stats={program.stats} />
       <ProgramCardSection id="section-1" section={program.section1} alt />
       <ProgramTabSection id="section-2" section={program.section2} />
-      {program.section3 && <ProgramCardSection section={program.section3} alt />}
+      {program.section3 && <ProgramCardSection section={program.section3} alt compact />}
       <ProgramEnrollmentSteps section={program.enrollment} />
+      {testimonial && <ProgramTestimonial testimonial={testimonial} />}
       <ProgramCTA lang={lang} program={program} whatsappNumber={contact.whatsapp_number} phoneDisplay={contact.phone_display} />
     </div>
   )

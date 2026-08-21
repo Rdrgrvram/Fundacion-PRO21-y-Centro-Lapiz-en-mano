@@ -22,9 +22,14 @@ interface ProgramCardSectionProps {
   id?: string
   section: ProgramCardSectionData
   alt?: boolean
+  // Las secciones "complementarias" (section3) usan una ficha más chica que
+  // las de la sección principal (section1) — así se lee de un vistazo cuál es
+  // el núcleo del programa y cuál es apoyo adicional, en vez de que todo pese
+  // lo mismo en la página.
+  compact?: boolean
 }
 
-export default function ProgramCardSection({ id, section, alt = false }: ProgramCardSectionProps) {
+export default function ProgramCardSection({ id, section, alt = false, compact = false }: ProgramCardSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   const isAccordion = section.layout === 'acordeón'
   const cols = getCols(section.items.length)
@@ -104,17 +109,31 @@ export default function ProgramCardSection({ id, section, alt = false }: Program
             // Ficha "siempre expandida": layout vertical y centrado en vez de
             // ícono+texto horizontal — más compacto, sin lista interna de 2
             // columnas, así que no se rompe el texto palabra por palabra.
+            //
+            // En modo `compact` (servicios complementarios) todo se reduce un
+            // escalón — ícono, borde, texto — para que quede claro que es
+            // información secundaria frente a la sección principal.
             return (
               <div
                 key={i}
-                className={`flex flex-col items-center text-center bg-white rounded-2xl p-6 border-t-4 ${style.border} shadow-sm hover:shadow-md transition-shadow duration-300`}
+                className={`flex flex-col items-center text-center bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 ${
+                  compact ? `p-5 border-t-2 ${style.border}` : `p-6 border-t-4 ${style.border}`
+                }`}
               >
-                <div className={`w-14 h-14 ${style.bg} rounded-2xl flex items-center justify-center text-3xl mb-4`}>
+                <div
+                  className={`${style.bg} rounded-2xl flex items-center justify-center ${
+                    compact ? 'w-11 h-11 text-xl mb-3' : 'w-14 h-14 text-3xl mb-4'
+                  }`}
+                >
                   {item.icon}
                 </div>
-                <h3 className={`font-bold text-base sm:text-lg ${style.text}`}>{item.title}</h3>
+                <h3 className={`font-bold ${style.text} ${compact ? 'text-sm' : 'text-base sm:text-lg'}`}>{item.title}</h3>
                 {item.tag && <span className="text-[10px] text-gray-400 uppercase tracking-wide mt-0.5 mb-2">{item.tag}</span>}
-                {item.desc && <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-3">{item.desc}</p>}
+                {item.desc && (
+                  <p className={`text-gray-600 leading-relaxed mb-3 ${compact ? 'text-xs line-clamp-2' : 'text-sm line-clamp-3'}`}>
+                    {item.desc}
+                  </p>
+                )}
                 {tags}
               </div>
             )

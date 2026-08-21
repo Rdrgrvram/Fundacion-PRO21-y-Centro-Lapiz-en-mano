@@ -115,7 +115,9 @@ section_3:
         - Self-care routines
         - Emotional expression
 enrollment:
+  badge: Our process
   title: How to enroll your child?
+  subtitle: A simple, guided process, from the first contact to the start of the program.
   steps:
     - icon: 📞
       title: Initial contact

@@ -115,7 +115,9 @@ section_3:
         - Rutinas de autocuidado
         - Expresión emocional
 enrollment:
+  badge: Nuestro proceso
   title: ¿Cómo inscribir a tu hijo?
+  subtitle: Un proceso simple y acompañado, desde el primer contacto hasta el inicio del programa.
   steps:
     - icon: 📞
       title: Contacto inicial

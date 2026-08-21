@@ -26,7 +26,7 @@ section_1:
     - icon: 🧠
       color: accent
       title: Terapia de Conducta
-      desc: Acompañamos a los niños en el desarrollo de habilidades sociales, autorregulación y rutinas positivas en el entorno familiar y escolar.
+      desc: Acompañamos a los niños en el desarrollo de habilidades sociales, autorregulación y rutinas positivas.
       items:
         - Habilidades sociales
         - Autorregulación emocional
@@ -35,7 +35,7 @@ section_1:
     - icon: 🗣️
       color: secondary
       title: Terapia de Lenguaje
-      desc: Evaluamos y tratamos dificultades del lenguaje implementando estrategias que favorezcan la comunicación efectiva, incluyendo sistemas aumentativos y alternativos.
+      desc: Evaluamos y tratamos dificultades del lenguaje con estrategias que favorecen la comunicación efectiva.
       items:
         - Control orofacial
         - Articulación fonética
@@ -44,7 +44,7 @@ section_1:
     - icon: 💪
       color: secondary
       title: Fisioterapia
-      desc: Intervenimos desde la estimulación temprana para mejorar el tono muscular, la postura y la movilidad, adaptando ejercicios a cada etapa de desarrollo.
+      desc: Intervenimos desde la estimulación temprana para mejorar el tono muscular, la postura y la movilidad.
       items:
         - Estimulación temprana motora
         - Rehabilitación neuromuscular
@@ -53,7 +53,7 @@ section_1:
     - icon: 🤸
       color: primary
       title: Psicomotricidad
-      desc: Fortalecemos la coordinación, equilibrio y esquema corporal para favorecer la autonomía y la expresión corporal a través de circuitos, juegos y actividades vivenciales.
+      desc: Fortalecemos la coordinación, el equilibrio y el esquema corporal a través de circuitos, juegos y actividades vivenciales.
       items:
         - Coordinación motora gruesa y fina
         - Esquema corporal
@@ -115,7 +115,9 @@ section_3:
       title: Evaluación Continua
       desc: Reevaluamos periódicamente el progreso de cada niño y ajustamos el plan de intervención para mantener metas relevantes y alcanzables en cada etapa de su desarrollo.
 enrollment:
+  badge: Nuestro proceso
   title: ¿Cómo ingresar al programa?
+  subtitle: Un proceso simple y acompañado, desde el primer contacto hasta el inicio de las sesiones.
   steps:
     - icon: 📞
       title: Contacto inicial
