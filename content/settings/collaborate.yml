@@ -76,6 +76,7 @@ es:
       lines:
         - Escanea desde tu app bancaria.
         - Compatible con Simple QR en Bolivia.
+      qrImage: /images/qr-donacion.jpg
     - icon: 🌐
       title: Donación internacional
       lines:
@@ -256,6 +257,7 @@ en:
       lines:
         - Scan from your banking app.
         - Compatible with Simple QR in Bolivia.
+      qrImage: /images/qr-donacion.jpg
     - icon: 🌐
       title: International donation
       lines:

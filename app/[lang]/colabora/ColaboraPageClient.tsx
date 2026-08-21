@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import Image from 'next/image'
 import type { Locale } from '@/lib/i18n'
 import type { CollaborateContent } from '@/lib/cms-schemas'
 import { PALETTE } from '@/lib/palette'
@@ -245,6 +246,17 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
                         ))}
                         {isBank && content.donation_bank.note && (
                           <div className="text-[10px] text-gray-400 italic mt-1">{content.donation_bank.note}</div>
+                        )}
+                        {m.qrImage && (
+                          <div className="mt-3 border border-gray-200 rounded-2xl p-3 bg-white max-w-[180px] shadow-sm">
+                            <Image
+                              src={m.qrImage}
+                              alt={es ? 'Código QR para donación' : 'Donation QR code'}
+                              width={160}
+                              height={160}
+                              className="w-full h-auto object-contain rounded-lg"
+                            />
+                          </div>
                         )}
                       </div>
                     </div>
