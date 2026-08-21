@@ -19,7 +19,7 @@ export default function TeamMember({ name, role, specialty, bio, photo }: TeamMe
         )}
       </div>
       <h3 className="font-bold text-lg">{name}</h3>
-      <p className="text-primary text-sm font-medium">{role}</p>
+      <p className="text-secondary-700 text-sm font-medium">{role}</p>
       {specialty && <p className="text-gray-500 text-xs mt-1">{specialty}</p>}
       {bio && <p className="text-gray-600 text-sm mt-3">{bio}</p>}
     </div>

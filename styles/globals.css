@@ -13,15 +13,74 @@
 
 /* ── Clase para alto contraste (accesibilidad) ──────────────────────────── */
 .high-contrast {
-  --color-primary: #000000;
-  --color-secondary: #000000;
-  --color-text: #000000;
   background-color: #ffffff !important;
   color: #000000 !important;
 }
 
+.high-contrast,
 .high-contrast * {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #000000 !important;
   border-color: #000000 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* Enlaces legibles con subrayado y color distintivo */
+.high-contrast a {
+  text-decoration: underline !important;
+  color: #0000ee !important;
+}
+
+.high-contrast a:hover,
+.high-contrast a:focus {
+  color: #000000 !important;
+  background-color: #ffff00 !important; /* Fondo amarillo en hover para máxima visibilidad */
+}
+
+/* Controles interactivos con bordes negros sólidos */
+.high-contrast button,
+.high-contrast a.button,
+.high-contrast a[role="button"],
+.high-contrast input,
+.high-contrast select,
+.high-contrast textarea {
+  border: 2px solid #000000 !important;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  outline: 2px solid transparent !important;
+}
+
+/* Efectos hover/focus invertidos para interactividad clara */
+.high-contrast button:hover,
+.high-contrast button:focus,
+.high-contrast a.button:hover,
+.high-contrast a.button:focus,
+.high-contrast a[role="button"]:hover,
+.high-contrast a[role="button"]:focus,
+.high-contrast input:focus,
+.high-contrast select:focus,
+.high-contrast textarea:focus {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* Tratamiento para imágenes e íconos en alto contraste */
+.high-contrast img,
+.high-contrast video {
+  filter: grayscale(100%) contrast(120%) !important;
+}
+
+.high-contrast svg {
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+.high-contrast svg * {
+  fill: currentColor !important;
+  stroke: currentColor !important;
+  background-color: transparent !important;
 }
 
 /* ── Componentes reutilizables ───────────────────────────────────────────── */
