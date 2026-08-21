@@ -26,7 +26,7 @@ section_1:
     - icon: 🧠
       color: accent
       title: Behavioral Therapy
-      desc: We support children in developing social skills, self-regulation, and positive routines in family and school environments.
+      desc: We support children in developing social skills, self-regulation, and positive routines.
       items:
         - Social skills
         - Emotional self-regulation
@@ -35,7 +35,7 @@ section_1:
     - icon: 🗣️
       color: secondary
       title: Speech Therapy
-      desc: We evaluate and treat language difficulties, implementing strategies that promote effective communication, including augmentative and alternative systems.
+      desc: We evaluate and treat language difficulties with strategies that promote effective communication.
       items:
         - Orofacial control
         - Phonetic articulation
@@ -44,7 +44,7 @@ section_1:
     - icon: 💪
       color: secondary
       title: Physiotherapy
-      desc: We intervene from early stimulation to improve muscle tone, posture, and mobility, adapting exercises to each developmental stage.
+      desc: We intervene from early stimulation to improve muscle tone, posture, and mobility.
       items:
         - Motor early stimulation
         - Neuromuscular rehabilitation
@@ -53,7 +53,7 @@ section_1:
     - icon: 🤸
       color: primary
       title: Psychomotor Therapy
-      desc: We strengthen coordination, balance, and body schema to foster autonomy and body expression through circuits, games, and experiential activities.
+      desc: We strengthen coordination, balance, and body schema through circuits, games, and experiential activities.
       items:
         - Gross and fine motor coordination
         - Body schema
@@ -115,7 +115,9 @@ section_3:
       title: Ongoing Evaluation
       desc: We periodically reevaluate each child's progress and adjust the intervention plan to maintain relevant and achievable goals at each development stage.
 enrollment:
+  badge: Our process
   title: How to join the program?
+  subtitle: A simple, guided process, from the first contact to the start of sessions.
   steps:
     - icon: 📞
       title: Initial contact
