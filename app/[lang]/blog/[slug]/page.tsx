@@ -45,7 +45,7 @@ export default async function BlogPostPage({ params: { lang, slug } }: Props) {
             ⏱ {post.date}
           </time>
           
-          <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#0c2340] font-bold leading-tight mb-4">
+          <h1 className="font-sans text-2xl sm:text-3xl md:text-4xl text-[#0c2340] font-bold leading-tight mb-4">
             {post.title}
           </h1>
 
@@ -62,7 +62,7 @@ export default async function BlogPostPage({ params: { lang, slug } }: Props) {
         {/* Contenido principal en HTML renderizado */}
         <div 
           className="text-gray-700 text-xs sm:text-sm md:text-base leading-relaxed space-y-4 prose prose-indigo max-w-none 
-          prose-headings:font-serif prose-headings:text-[#0c2340] prose-headings:font-bold
+          prose-headings:font-sans prose-headings:text-[#0c2340] prose-headings:font-bold
           prose-p:mb-4 prose-p:leading-relaxed prose-strong:text-[#0c2340] prose-strong:font-bold"
           dangerouslySetInnerHTML={{ __html: post.contentHtml }}
         />

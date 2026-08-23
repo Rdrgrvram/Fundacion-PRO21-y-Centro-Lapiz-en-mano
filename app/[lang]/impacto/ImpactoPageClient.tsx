@@ -47,32 +47,42 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
     <div className="overflow-x-hidden w-full bg-gray-50">
 
       {/* 1. Page Hero */}
-      <section className="relative min-h-[440px] flex items-center bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary py-16 px-4 overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
-          <div className="absolute -top-[15%] -right-[8%] w-[350px] h-[350px] md:w-[500px] md:h-[500px] rounded-full border border-white/5 opacity-30" />
-          <div className="absolute -bottom-[20%] -left-[6%] w-[250px] h-[250px] md:w-[400px] md:h-[400px] rounded-full bg-radial-gradient(circle, rgba(232,168,56,0.06), transparent 70%)" />
+      <section className="relative bg-secondary overflow-hidden">
+        {/* Decoraciones */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/3" />
+          <div className="absolute bottom-1/4 -left-16 w-64 h-64 bg-white/10 rounded-full" />
         </div>
 
+        <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-2 text-sm text-white/70 mb-8">
+            <a href={`/${lang}`} className="hover:text-white transition-colors">
+              {es ? 'Inicio' : 'Home'}
+            </a>
+            <span>/</span>
+            <span className="font-semibold text-white">{es ? 'Impacto' : 'Impact'}</span>
+          </nav>
+
+          <div className="max-w-3xl">
+            <span className="inline-block bg-white/20 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">
+              {content.hero.badge}
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+              {content.hero.title_line1} <br />
+              <span className="text-primary font-extrabold">{content.hero.title_line2}</span>
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-8 max-w-2xl">
+              {content.hero.subtitle}
+            </p>
+          </div>
+        </div>
+
+        {/* Wave bottom */}
         <div className="absolute bottom-0 left-0 right-0 z-10">
           <svg viewBox="0 0 1440 80" fill="none" className="block w-full h-8 md:h-16 lg:h-20 text-[#f9fafb] fill-current">
             <path d="M0 40C360 70 720 15 1080 45C1260 60 1380 50 1440 48V80H0Z" />
           </svg>
-        </div>
-
-        <div className="container mx-auto max-w-4xl text-center relative z-20 mt-8">
-          <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full py-1 px-3.5 mb-5 select-none">
-            <span className="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-[10px] text-black font-extrabold">✦</span>
-            <span className="text-white/80 text-xs font-semibold">{content.hero.badge}</span>
-          </div>
-
-          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-normal leading-tight mb-4">
-            {content.hero.title_line1} <br />
-            <span className="font-bold italic text-primary">{content.hero.title_line2}</span>
-          </h1>
-
-          <p className="text-sm md:text-base lg:text-lg text-white/70 max-w-xl mx-auto leading-relaxed">
-            {content.hero.subtitle}
-          </p>
         </div>
       </section>
 
@@ -84,7 +94,7 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
               <span className="text-sm">📊</span>
               <span className="text-xs font-bold uppercase tracking-wider text-primary-700">{content.stats_section.badge}</span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight">{content.stats_section.title}</h2>
+            <h2 className="font-sans text-3xl md:text-4xl text-[#111827] font-bold tracking-tight">{content.stats_section.title}</h2>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto text-left">
@@ -94,7 +104,7 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
                   <div className={`w-12 h-12 rounded-xl ${PALETTE[s.color].bg} flex items-center justify-center text-2xl mb-4 shadow-sm select-none`}>
                     {s.icon}
                   </div>
-                  <div className="font-serif text-3xl sm:text-4xl font-bold text-gray-900 leading-none mb-2">
+                  <div className="font-sans text-3xl sm:text-4xl font-bold text-gray-900 leading-none mb-2">
                     <Counter end={s.value} suffix={s.suffix ?? ''} />
                   </div>
                   <p className="text-xs font-bold text-gray-400 uppercase tracking-wide">{s.label}</p>
@@ -113,14 +123,14 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
               <span className="text-sm">💛</span>
               <span className="text-xs font-bold uppercase tracking-wider text-[#8c3cbd]">{content.testimonials_section.badge}</span>
             </div>
-            <h2 className="font-serif text-2xl md:text-3xl text-[#111827] font-normal tracking-tight">{content.testimonials_section.title}</h2>
+            <h2 className="font-sans text-2xl md:text-3xl text-[#111827] font-bold tracking-tight">{content.testimonials_section.title}</h2>
           </div>
 
           {activeT && (
             <div className="bg-white rounded-3xl p-8 md:p-12 border border-gray-200 shadow-sm text-left relative overflow-hidden mb-6 animate-[fadeSlideUp_0.5s_cubic-bezier(0.16,1,0.3,1)]">
-              <span className="absolute top-2 left-6 font-serif text-8xl text-gray-100 pointer-events-none select-none">&ldquo;</span>
+              <span className="absolute top-2 left-6 font-sans text-8xl text-gray-100 pointer-events-none select-none">&ldquo;</span>
               <div className="relative z-10">
-                <p className="font-serif text-base sm:text-lg md:text-xl text-[#111827] font-bold italic leading-relaxed mb-6">
+                <p className="font-sans text-base sm:text-lg md:text-xl text-[#111827] font-bold italic leading-relaxed mb-6">
                   &ldquo;{activeT.body}&rdquo;
                 </p>
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-t border-gray-100 pt-6">
@@ -175,7 +185,7 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
               <span className="text-sm">🔍</span>
               <span className="text-xs font-bold uppercase tracking-wider text-secondary">{content.reports_section.badge}</span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.reports_section.title}</h2>
+            <h2 className="font-sans text-3xl md:text-4xl text-[#111827] font-bold tracking-tight mb-4">{content.reports_section.title}</h2>
             {content.reports_section.subtitle && <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">{content.reports_section.subtitle}</p>}
           </div>
 
@@ -233,7 +243,7 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
               <span className="text-sm">📰</span>
               <span className="text-xs font-bold uppercase tracking-wider text-accent">{content.media_section.badge}</span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.media_section.title}</h2>
+            <h2 className="font-sans text-3xl md:text-4xl text-[#111827] font-bold tracking-tight mb-4">{content.media_section.title}</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto text-left">
@@ -272,7 +282,7 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
               <span className="text-sm">📷</span>
               <span className="text-xs font-bold uppercase tracking-wider text-secondary">{content.gallery_section.badge}</span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.gallery_section.title}</h2>
+            <h2 className="font-sans text-3xl md:text-4xl text-[#111827] font-bold tracking-tight mb-4">{content.gallery_section.title}</h2>
           </div>
 
           <div className="flex flex-wrap gap-2 justify-center mb-8 select-none">
@@ -309,7 +319,7 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
         <div className="absolute inset-0 bg-radial-gradient(circle, rgba(232,168,56,0.06), transparent 70%) pointer-events-none" />
         <div className="container mx-auto max-w-3xl relative z-10 text-center">
           <span className="text-5xl block mb-5 animate-[float_4s_ease-in-out_infinite] select-none">🌍</span>
-          <h2 className="font-serif text-3xl md:text-4xl text-white font-normal leading-tight mb-4">{content.cta.title}</h2>
+          <h2 className="font-sans text-3xl md:text-4xl text-white font-bold leading-tight mb-4">{content.cta.title}</h2>
           <p className="text-sm md:text-base text-white/70 max-w-xl mx-auto leading-relaxed mb-10">{content.cta.text}</p>
           <div className="flex flex-wrap gap-4 justify-center items-center">
             <Link

@@ -221,7 +221,7 @@ export default function Page({ params }: { params: { lang: Locale } }) {
                 key={item.slug}
                 className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col gap-4"
               >
-                <div className="text-primary-700 text-3xl font-serif leading-none">&ldquo;</div>
+                <div className="text-primary-700 text-3xl font-sans leading-none">&ldquo;</div>
                 <p className="text-gray-700 text-sm leading-relaxed italic flex-1">{item.body}</p>
                 <footer className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
                   <span className="font-bold text-gray-900 text-sm">{item.family}</span>

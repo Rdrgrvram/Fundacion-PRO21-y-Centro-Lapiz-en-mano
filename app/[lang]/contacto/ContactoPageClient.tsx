@@ -75,30 +75,42 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
     <div className="overflow-x-hidden w-full bg-gray-50">
 
       {/* 1. Page Hero */}
-      <section className="relative min-h-[400px] flex items-center bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary py-16 px-4 overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
-          <div className="absolute -top-[15%] -right-[8%] w-[350px] h-[350px] md:w-[500px] md:h-[500px] rounded-full border border-white/5 opacity-30" />
-          <div className="absolute top-[60%] right-[15%] w-3.5 h-3.5 rounded-full bg-primary/80 animate-ping" />
+      <section className="relative bg-secondary overflow-hidden">
+        {/* Decoraciones */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/3" />
+          <div className="absolute bottom-1/4 -left-16 w-64 h-64 bg-white/10 rounded-full" />
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 z-10">
-          <svg viewBox="0 0 1440 70" fill="none" className="block w-full h-8 md:h-16 lg:h-20 text-[#f9fafb] fill-current">
-            <path d="M0 30C360 55 720 15 1080 40C1260 50 1380 42 1440 38V70H0Z" />
-          </svg>
-        </div>
+        <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-2 text-sm text-white/70 mb-8">
+            <a href={`/${lang}`} className="hover:text-white transition-colors">
+              {es ? 'Inicio' : 'Home'}
+            </a>
+            <span>/</span>
+            <span className="font-semibold text-white">{es ? 'Contacto' : 'Contact'}</span>
+          </nav>
 
-        <div className="container mx-auto max-w-4xl text-center relative z-20 mt-8">
-          <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full py-1 px-3.5 mb-5 select-none">
-            <span className="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-[10px] text-black font-extrabold">✦</span>
-            <span className="text-white/80 text-xs font-semibold">{content.hero.badge}</span>
+          <div className="max-w-3xl">
+            <span className="inline-block bg-white/20 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">
+              {content.hero.badge}
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+              {content.hero.title_line1} <br />
+              <span className="text-primary font-extrabold">{content.hero.title_line2}</span>
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-8 max-w-2xl">
+              {content.hero.subtitle}
+            </p>
           </div>
+        </div>
 
-          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-normal leading-tight mb-4">
-            {content.hero.title_line1} <br />
-            <span className="font-bold italic text-primary">{content.hero.title_line2}</span>
-          </h1>
-
-          <p className="text-sm md:text-base lg:text-lg text-white/70 max-w-xl mx-auto leading-relaxed">{content.hero.subtitle}</p>
+        {/* Wave bottom */}
+        <div className="absolute bottom-0 left-0 right-0 z-10">
+          <svg viewBox="0 0 1440 80" fill="none" className="block w-full h-8 md:h-16 lg:h-20 text-[#fafbfd] fill-current">
+            <path d="M0 45C320 20 640 60 960 35C1200 15 1380 40 1440 38V80H0Z" />
+          </svg>
         </div>
       </section>
 
@@ -144,7 +156,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
               {!formSent ? (
                 <>
                   <div>
-                    <h3 className="font-serif text-2xl text-[#111827] font-bold mb-1.5">{content.form_section.title}</h3>
+                    <h3 className="font-sans text-2xl text-[#111827] font-bold mb-1.5">{content.form_section.title}</h3>
                     <p className="text-xs sm:text-sm text-gray-400 mb-8 leading-relaxed">{content.form_section.subtitle}</p>
 
                     <div className="space-y-4">
@@ -232,7 +244,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
               ) : (
                 <div className="text-center py-16 px-4 flex flex-col items-center justify-center h-full">
                   <span className="text-5xl block mb-4 select-none">✅</span>
-                  <h3 className="font-serif text-xl sm:text-2xl text-[#111827] font-bold mb-3">{es ? '¡Mensaje recibido!' : 'Message received!'}</h3>
+                  <h3 className="font-sans text-xl sm:text-2xl text-[#111827] font-bold mb-3">{es ? '¡Mensaje recibido!' : 'Message received!'}</h3>
                   <p className="text-xs sm:text-sm text-gray-500 leading-relaxed mb-6 max-w-sm">
                     {es
                       ? 'Muchas gracias por escribirnos. Nuestro equipo se pondrá en contacto contigo en las próximas 24 horas hábiles por el medio que indicaste.'
@@ -327,7 +339,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
               <span className="text-sm">⚡</span>
               <span className="text-xs font-bold uppercase tracking-wider text-primary-700">{content.faq_section.badge}</span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.faq_section.title}</h2>
+            <h2 className="font-sans text-3xl md:text-4xl text-[#111827] font-bold tracking-tight mb-4">{content.faq_section.title}</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto text-left">
@@ -337,7 +349,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
                   {faq.icon}
                 </div>
                 <div>
-                  <h4 className="font-serif text-base md:text-lg text-[#111827] font-bold mb-2">{faq.q}</h4>
+                  <h4 className="font-sans text-base md:text-lg text-[#111827] font-bold mb-2">{faq.q}</h4>
                   <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">{faq.a}</p>
                 </div>
               </div>
@@ -362,7 +374,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
             </div>
             <div className="relative z-10 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-8">
               <div className="max-w-md">
-                <h3 className="font-serif text-2xl md:text-3xl text-white font-bold mb-3 leading-snug">{content.whatsapp_cta.title}</h3>
+                <h3 className="font-sans text-2xl md:text-3xl text-white font-bold mb-3 leading-snug">{content.whatsapp_cta.title}</h3>
                 <p className="text-xs sm:text-sm text-white/80 leading-relaxed">{content.whatsapp_cta.text}</p>
               </div>
               <a
@@ -372,7 +384,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
                 className="bg-white/15 hover:bg-white/25 border border-white/20 backdrop-blur-md px-8 py-5 rounded-2xl text-white transition-all hover:scale-[1.02] active:scale-[0.98] flex flex-col items-center justify-center min-h-[44px] select-none"
               >
                 <span className="text-3xl mb-1 block">💬</span>
-                <span className="font-serif text-xl font-bold leading-none">70106276</span>
+                <span className="font-sans text-xl font-bold leading-none">70106276</span>
                 <span className="text-[10px] text-white/70 font-semibold mt-1">{es ? 'Presiona para chatear' : 'Tap to chat'}</span>
               </a>
             </div>
@@ -384,7 +396,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
       <section className="py-16 px-4 bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary">
         <div className="container mx-auto max-w-2xl text-center text-white/75 relative">
           <span className="text-4xl block mb-4 select-none">💛</span>
-          <p className="font-serif text-lg sm:text-xl font-bold italic leading-relaxed mb-6">&ldquo;{content.closing_quote.text}&rdquo;</p>
+          <p className="font-sans text-lg sm:text-xl font-bold italic leading-relaxed mb-6">&ldquo;{content.closing_quote.text}&rdquo;</p>
           <div className="w-12 h-0.5 bg-primary/30 mx-auto mb-4" />
           <span className="text-xs text-white/40 font-semibold uppercase tracking-widest block">{content.closing_quote.attribution}</span>
         </div>

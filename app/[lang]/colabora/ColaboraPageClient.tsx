@@ -91,32 +91,35 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
     <div className="overflow-x-hidden w-full bg-gray-50">
 
       {/* 1. Hero Section */}
-      <section className="relative min-h-[480px] flex items-center bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary py-16 px-4 overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
-          <div className="absolute -top-[12%] -right-[8%] w-[350px] h-[350px] md:w-[500px] md:h-[500px] rounded-full border border-white/5 opacity-30" />
-          <div className="absolute -bottom-[20%] -left-[6%] w-[250px] h-[250px] md:w-[400px] md:h-[400px] rounded-full bg-radial-gradient(circle, rgba(252,197,0,0.05), transparent 70%)" />
+      <section className="relative bg-secondary overflow-hidden">
+        {/* Decoraciones */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/3" />
+          <div className="absolute bottom-1/4 -left-16 w-64 h-64 bg-white/10 rounded-full" />
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 z-10">
-          <svg viewBox="0 0 1440 80" fill="none" className="block w-full h-8 md:h-16 lg:h-20 text-[#f9fafb] fill-current">
-            <path d="M0 45C320 20 640 60 960 35C1200 15 1380 40 1440 38V80H0Z" />
-          </svg>
-        </div>
+        <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-2 text-sm text-white/70 mb-8">
+            <a href={`/${lang}`} className="hover:text-white transition-colors">
+              {es ? 'Inicio' : 'Home'}
+            </a>
+            <span>/</span>
+            <span className="font-semibold text-white">{es ? 'Colabora' : 'Donate'}</span>
+          </nav>
 
-        <div className="container mx-auto max-w-6xl relative z-20 mt-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-left">
             <div>
-              <div className="inline-flex items-center gap-2.5 bg-white/8 backdrop-blur-md border border-white/10 rounded-full py-1.5 pl-2.5 pr-4 mb-6 shadow-md select-none">
-                <span className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-xs text-black font-extrabold shadow-sm select-none">❤️</span>
-                <span className="text-white/90 text-xs font-semibold">{content.hero.badge}</span>
-              </div>
+              <span className="inline-block bg-white/20 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">
+                {content.hero.badge}
+              </span>
 
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-normal leading-[1.1] mb-4 tracking-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
                 {content.hero.title_line1} <br />
-                <span className="font-bold italic text-primary">{content.hero.title_line2}</span>
+                <span className="text-primary font-extrabold">{content.hero.title_line2}</span>
               </h1>
 
-              <p className="text-sm md:text-base text-white/70 leading-relaxed mb-8 max-w-lg">{content.hero.subtitle}</p>
+              <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-8 max-w-lg">{content.hero.subtitle}</p>
 
               <div className="flex flex-wrap gap-4 items-center">
                 <a href="#donaciones" className="bg-primary hover:bg-primary/95 text-black font-extrabold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-md shadow-primary/10 min-h-[44px] flex items-center justify-center">
@@ -132,7 +135,7 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
               {content.hero_highlights.map((s, i) => (
                 <div key={i} className="bg-white/5 border border-white/8 backdrop-blur-md rounded-2xl p-5 text-center hover:bg-white/10 transition-all select-none">
                   <div className="text-2xl mb-1.5">{s.icon}</div>
-                  <div className="font-serif text-2xl text-primary font-bold leading-none">{s.value}</div>
+                  <div className="font-sans text-2xl text-primary font-bold leading-none">{s.value}</div>
                   <div className="text-[10px] sm:text-xs text-white/60 font-semibold mt-2 leading-tight">{s.label}</div>
                 </div>
               ))}
@@ -149,7 +152,7 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
               <span className="text-sm">💛</span>
               <span className="text-xs font-bold uppercase tracking-wider text-primary-700">{content.donation_section.badge}</span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.donation_section.title}</h2>
+            <h2 className="font-sans text-3xl md:text-4xl text-[#111827] font-bold tracking-tight mb-4">{content.donation_section.title}</h2>
             {content.donation_section.subtitle && <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">{content.donation_section.subtitle}</p>}
           </div>
 
@@ -173,7 +176,7 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
                     <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4 transition-all duration-300 ${isSelected ? 'bg-primary text-black' : PALETTE[tier.color].bg}`}>
                       {tier.icon}
                     </div>
-                    <div className="font-serif text-2xl font-bold text-gray-900 leading-none mb-1">{tier.amount}</div>
+                    <div className="font-sans text-2xl font-bold text-gray-900 leading-none mb-1">{tier.amount}</div>
                     {tier.usd && <span className="text-[10px] text-gray-400 font-semibold block mb-3">{tier.usd} USD</span>}
                     <div className="text-xs font-bold text-gray-700 uppercase tracking-wide mb-2">{tier.label}</div>
                     <p className="text-xs text-gray-400 leading-relaxed mb-4 min-h-[48px]">{tier.impact}</p>
@@ -199,13 +202,13 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
                     {es ? 'Monto personalizado (Bs)' : 'Custom amount (Bs)'}
                   </div>
                   <div className="relative mb-5 max-w-xs">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 font-serif text-lg text-primary font-bold select-none">Bs</span>
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 font-sans text-lg text-primary font-bold select-none">Bs</span>
                     <input
                       type="number"
                       placeholder="0.00"
                       value={customAmount}
                       onChange={(e) => setCustomAmount(e.target.value)}
-                      className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 focus:border-primary rounded-xl font-serif text-lg focus:outline-none bg-gray-50"
+                      className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 focus:border-primary rounded-xl font-sans text-lg focus:outline-none bg-gray-50"
                     />
                   </div>
                   <p className="text-xs text-gray-500 leading-relaxed max-w-sm">{content.payment_note}</p>
@@ -276,7 +279,7 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
               <span className="text-sm">🙌</span>
               <span className="text-xs font-bold uppercase tracking-wider text-secondary">{content.volunteer_section.badge}</span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.volunteer_section.title}</h2>
+            <h2 className="font-sans text-3xl md:text-4xl text-[#111827] font-bold tracking-tight mb-4">{content.volunteer_section.title}</h2>
             {content.volunteer_section.subtitle && <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">{content.volunteer_section.subtitle}</p>}
           </div>
 
@@ -312,7 +315,7 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
             <div className="bg-white rounded-3xl p-6 md:p-8 border border-gray-200 shadow-sm text-left">
               {!formSent ? (
                 <>
-                  <h4 className="font-serif text-lg md:text-xl text-[#111827] font-bold mb-6">{es ? 'Inscríbete como voluntario' : 'Register as volunteer'}</h4>
+                  <h4 className="font-sans text-lg md:text-xl text-[#111827] font-bold mb-6">{es ? 'Inscríbete como voluntario' : 'Register as volunteer'}</h4>
                   <div className="space-y-4">
                     {[
                       { label: es ? 'Nombre completo' : 'Full name', placeholder: es ? 'Ej: María Flores' : 'E.g., Maria Flores', type: 'text', value: volName, set: setVolName, err: 'name' },
@@ -383,7 +386,7 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
               ) : (
                 <div className="text-center py-12 px-4">
                   <span className="text-5xl block mb-4 select-none">🎉</span>
-                  <h3 className="font-serif text-xl text-[#111827] font-bold mb-3">{es ? '¡Inscripción recibida!' : 'Registration received!'}</h3>
+                  <h3 className="font-sans text-xl text-[#111827] font-bold mb-3">{es ? '¡Inscripción recibida!' : 'Registration received!'}</h3>
                   <p className="text-xs sm:text-sm text-gray-500 leading-relaxed mb-6">
                     {es
                       ? 'Muchas gracias por tu postulación. El equipo de Trabajo Social revisará tu perfil y te contactará en los próximos días por WhatsApp.'
@@ -398,7 +401,7 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
 
             <div className="flex flex-col gap-6 justify-between text-left">
               <div className="bg-white rounded-3xl p-6 md:p-8 border border-gray-200 shadow-sm flex-1">
-                <h4 className="font-serif text-lg text-[#111827] font-bold mb-4">{es ? '¿Qué implica el voluntariado?' : 'What does volunteering involve?'}</h4>
+                <h4 className="font-sans text-lg text-[#111827] font-bold mb-4">{es ? '¿Qué implica el voluntariado?' : 'What does volunteering involve?'}</h4>
                 <div className="space-y-4">
                   {content.volunteer_perks.map((item, idx) => (
                     <div key={idx} className="flex items-center gap-3.5 pb-3 border-b border-gray-100 last:border-0 last:pb-0">
@@ -410,8 +413,8 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
               </div>
 
               <div className="bg-gradient-to-br from-[#e8f7fb] to-[#e8f7fb] rounded-3xl p-6 border border-secondary/10 relative overflow-hidden flex flex-col justify-center">
-                <span className="absolute top-1 left-2 font-serif text-7xl text-secondary/5 pointer-events-none select-none">&ldquo;</span>
-                <p className="font-serif text-sm text-[#111827] font-bold italic leading-relaxed mb-4 relative z-10">
+                <span className="absolute top-1 left-2 font-sans text-7xl text-secondary/5 pointer-events-none select-none">&ldquo;</span>
+                <p className="font-sans text-sm text-[#111827] font-bold italic leading-relaxed mb-4 relative z-10">
                   &laquo;{content.volunteer_testimonial.quote}&raquo;
                 </p>
                 <div className="flex items-center gap-3 relative z-10">
@@ -435,7 +438,7 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
               <span className="text-sm">🤝</span>
               <span className="text-xs font-bold uppercase tracking-wider text-accent">{content.alliances_section.badge}</span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.alliances_section.title}</h2>
+            <h2 className="font-sans text-3xl md:text-4xl text-[#111827] font-bold tracking-tight mb-4">{content.alliances_section.title}</h2>
             {content.alliances_section.subtitle && <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">{content.alliances_section.subtitle}</p>}
           </div>
 
@@ -456,7 +459,7 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
                         {p.icon}
                       </div>
                       <div className="flex-1">
-                        <h4 className="font-serif text-lg text-[#111827] font-bold leading-snug">{p.title}</h4>
+                        <h4 className="font-sans text-lg text-[#111827] font-bold leading-snug">{p.title}</h4>
                         <p className="text-xs sm:text-sm text-gray-500 mt-2 leading-relaxed">{p.desc}</p>
                       </div>
                       <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300 ${isOpen ? 'bg-accent/10 text-accent rotate-180' : 'bg-gray-50 text-gray-400'}`}>▾</div>
@@ -482,7 +485,7 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
           </div>
 
           <div className="bg-white rounded-3xl border border-gray-200 p-6 md:p-8 max-w-5xl mx-auto shadow-sm text-center select-none">
-            <h4 className="font-serif text-lg text-[#111827] font-bold mb-2">{content.allies_title}</h4>
+            <h4 className="font-sans text-lg text-[#111827] font-bold mb-2">{content.allies_title}</h4>
             <p className="text-xs text-gray-400 mb-8">{content.allies_subtitle}</p>
             <div className="flex flex-wrap gap-4 justify-center items-center">
               {content.allies.map((ally, i) => (
@@ -506,7 +509,7 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
         <div className="absolute inset-0 bg-radial-gradient(circle, rgba(232,168,56,0.06), transparent 70%) pointer-events-none" />
         <div className="container mx-auto max-w-3xl relative z-10 text-center">
           <span className="text-5xl block mb-5 animate-[float_4s_ease-in-out_infinite] select-none">❤️</span>
-          <h2 className="font-serif text-3xl md:text-4xl text-white font-normal leading-tight mb-4">{content.cta.title}</h2>
+          <h2 className="font-sans text-3xl md:text-4xl text-white font-bold leading-tight mb-4">{content.cta.title}</h2>
           <p className="text-sm md:text-base text-white/70 max-w-xl mx-auto leading-relaxed mb-10">{content.cta.text}</p>
           <div className="flex flex-wrap gap-4 justify-center items-center">
             <a

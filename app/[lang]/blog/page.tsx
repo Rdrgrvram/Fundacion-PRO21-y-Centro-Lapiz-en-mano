@@ -25,11 +25,46 @@ export default async function Page({ params: { lang } }: Props) {
     <div className="overflow-x-hidden w-full bg-gray-50">
       
       {/* Hero Section */}
-      <section className="relative min-h-[360px] flex items-center bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary py-16 px-4 overflow-hidden text-center">
+      <section className="relative bg-secondary overflow-hidden">
         {/* Decoraciones */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
-          <div className="absolute -top-[15%] -right-[8%] w-[300px] h-[300px] rounded-full border border-white/5 opacity-30" />
-          <div className="absolute -bottom-[20%] -left-[6%] w-[250px] h-[250px] rounded-full bg-radial-gradient(circle, rgba(232,168,56,0.06), transparent 70%)" />
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/3" />
+          <div className="absolute bottom-1/4 -left-16 w-64 h-64 bg-white/10 rounded-full" />
+        </div>
+
+        <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-2 text-sm text-white/70 mb-8">
+            <Link href={`/${lang}`} className="hover:text-white transition-colors">
+              {es ? 'Inicio' : 'Home'}
+            </Link>
+            <span>/</span>
+            <span className="font-semibold text-white">Blog</span>
+          </nav>
+
+          <div className="max-w-3xl">
+            <span className="inline-block bg-white/20 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">
+              {es ? 'Noticias y Artículos' : 'News & Articles'}
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+              {es ? (
+                <>
+                  Blog de la <br />
+                  <span className="text-primary font-bold">Comunidad</span>
+                </>
+              ) : (
+                <>
+                  Community <br />
+                  <span className="text-primary font-bold">Blog</span>
+                </>
+              )}
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-8 max-w-2xl">
+              {es 
+                ? 'Novedades sobre eventos, campañas de recaudación, metodologías terapéuticas y testimonios de superación en Bolivia.'
+                : 'Updates on events, fundraising campaigns, therapeutic methodologies, and stories of growth in Bolivia.'}
+            </p>
+          </div>
         </div>
 
         {/* Wave bottom */}
@@ -37,33 +72,6 @@ export default async function Page({ params: { lang } }: Props) {
           <svg viewBox="0 0 1440 70" fill="none" className="block w-full h-8 md:h-12 lg:h-16 text-[#f9fafb] fill-current">
             <path d="M0 30C360 55 720 15 1080 40C1260 50 1380 42 1440 38V70H0Z" />
           </svg>
-        </div>
-
-        <div className="container mx-auto max-w-4xl relative z-20 mt-8">
-          <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full py-1 px-3.5 mb-5 select-none">
-            <span className="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-[10px] text-black font-extrabold">📰</span>
-            <span className="text-white/80 text-xs font-semibold">{es ? 'Noticias y Artículos' : 'News & Articles'}</span>
-          </div>
-
-          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-normal leading-tight mb-4">
-            {es ? (
-              <>
-                Blog de la <br />
-                <span className="font-bold italic text-primary">Comunidad</span>
-              </>
-            ) : (
-              <>
-                Community <br />
-                <span className="font-bold italic text-primary">Blog</span>
-              </>
-            )}
-          </h1>
-
-          <p className="text-sm md:text-base text-white/70 max-w-xl mx-auto leading-relaxed">
-            {es 
-              ? 'Novedades sobre eventos, campañas de recaudación, metodologías terapéuticas y testimonios de superación en Bolivia.'
-              : 'Updates on events, fundraising campaigns, therapeutic methodologies, and stories of growth in Bolivia.'}
-          </p>
         </div>
       </section>
 
@@ -74,7 +82,7 @@ export default async function Page({ params: { lang } }: Props) {
           {posts.length === 0 ? (
             <div className="text-center py-20 bg-white rounded-3xl border border-gray-200 max-w-md mx-auto shadow-sm select-none">
               <span className="text-4xl block mb-3">📭</span>
-              <h3 className="font-serif text-lg text-gray-700 font-bold mb-1">
+              <h3 className="font-sans text-lg text-gray-700 font-bold mb-1">
                 {es ? 'No hay artículos publicados' : 'No posts published yet'}
               </h3>
               <p className="text-xs text-gray-400">
@@ -98,7 +106,7 @@ export default async function Page({ params: { lang } }: Props) {
                     </div>
 
                     <div className="p-6">
-                      <h2 className="font-serif text-base sm:text-lg text-[#111827] font-bold mb-3 leading-snug line-clamp-2">
+                      <h2 className="font-sans text-base sm:text-lg text-[#111827] font-bold mb-3 leading-snug line-clamp-2">
                         {post.title}
                       </h2>
                       <p className="text-xs sm:text-sm text-gray-500 leading-relaxed line-clamp-3">
@@ -128,7 +136,7 @@ export default async function Page({ params: { lang } }: Props) {
       <section className="py-16 px-4 bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary">
         <div className="container mx-auto max-w-2xl text-center text-white/80 relative z-10">
           <span className="text-5xl block mb-4 select-none">👋</span>
-          <h2 className="font-serif text-2xl sm:text-3xl text-white font-normal leading-tight mb-4">
+          <h2 className="font-sans text-2xl sm:text-3xl text-white font-normal leading-tight mb-4">
             {es ? '¿Quieres contarnos tu historia?' : 'Want to share your story with us?'}
           </h2>
           <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-8 max-w-md mx-auto">

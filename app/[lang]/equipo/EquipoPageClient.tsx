@@ -299,7 +299,7 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
           <div className="hidden md:block relative w-[480px] h-[480px] mx-auto select-none">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full bg-gradient-to-br from-primary to-[#ffc500] flex flex-col items-center justify-center text-center shadow-lg shadow-primary/20 z-20">
               <span className="text-2xl mb-0.5 block">👧</span>
-              <span className="font-serif text-[10px] text-gray-900 font-bold leading-tight">
+              <span className="font-sans text-[10px] text-gray-900 font-bold leading-tight">
                 {es ? 'El Niño y' : 'The Child &'}<br />{es ? 'su Familia' : 'Family'}
               </span>
             </div>
