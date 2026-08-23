@@ -38,9 +38,10 @@ module.exports = {
         },
       },
 
-      // Tipografía — TODO: confirmar con la fundación
+      // Tipografía oficial
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
 
       // Contenedor centralizado
