@@ -106,6 +106,7 @@
 /* ── Fuente base ─────────────────────────────────────────────────────────── */
 body {
   color: var(--color-text);
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
   font-display: swap;
 }
 
