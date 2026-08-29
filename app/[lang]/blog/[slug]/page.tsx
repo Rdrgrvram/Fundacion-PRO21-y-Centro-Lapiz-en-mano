@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getPostBySlug, getAllPosts } from '@/lib/content'
 import type { Locale } from '@/lib/i18n'
+import Icon from '@/components/ui/Icon'
+import BrandLogo from '@/components/ui/BrandLogo'
 
 interface Props {
   params: { lang: Locale; slug: string }
@@ -55,8 +57,8 @@ export default async function BlogPostPage({ params: { lang, slug } }: Props) {
         </div>
 
         {/* Imagen del post si existiese, sino banner elegante de la fundación */}
-        <div className="h-48 sm:h-64 rounded-2xl bg-gradient-to-br from-secondary-50 to-gray-50 border border-gray-150 flex items-center justify-center text-5xl mb-8 select-none shadow-sm">
-          <span>📰</span>
+        <div className="h-48 sm:h-64 rounded-2xl bg-gradient-to-br from-secondary-50 to-gray-50 border border-gray-150 flex items-center justify-center mb-8 select-none shadow-sm">
+          <Icon name="newspaper" className="h-12 w-12 text-secondary/40" />
         </div>
 
         {/* Contenido principal en HTML renderizado */}
@@ -70,8 +72,8 @@ export default async function BlogPostPage({ params: { lang, slug } }: Props) {
         {/* Sección de compartir / final */}
         <div className="border-t border-gray-100 pt-6 mt-10 flex flex-col sm:flex-row justify-between items-center gap-4 select-none">
           <div className="flex items-center gap-3">
-            <span className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-xs text-black font-extrabold shadow-inner">
-              ✦
+            <span className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-gray-900 shadow-inner">
+              <Icon name="sparkle" className="h-4 w-4" />
             </span>
             <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">
               {es ? 'Fundación PRO-21 y Centro Lápiz en Mano' : 'PRO-21 Foundation & Lápiz en Mano'}
@@ -82,9 +84,9 @@ export default async function BlogPostPage({ params: { lang, slug } }: Props) {
             href="https://wa.me/59170106276"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-bold text-green-500 hover:underline flex items-center gap-1 min-h-[44px]"
+            className="text-xs font-bold text-green-700 hover:underline flex items-center gap-1.5 min-h-[44px]"
           >
-            <span>💬</span>
+            <BrandLogo name="whatsapp" className="h-4 w-4" />
             <span>{es ? 'Compartir comentarios por WhatsApp' : 'Share comments on WhatsApp'}</span>
           </a>
         </div>
