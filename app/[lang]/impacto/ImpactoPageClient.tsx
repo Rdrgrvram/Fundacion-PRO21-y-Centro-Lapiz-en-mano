@@ -306,8 +306,8 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
                   <div className="p-6 md:p-8 flex flex-col justify-between min-h-[140px]">
                     <div className="flex justify-between items-center mb-4 select-none">
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl flex items-center justify-center font-bold text-white text-xs" style={{ backgroundColor: hex }}>
-                          {m.outlet.charAt(0)}
+                        <div className="w-9 h-9 rounded-xl flex items-center justify-center text-white" style={{ backgroundColor: hex }}>
+                          <Icon name={/tele|tv/i.test(m.type) ? 'tv' : /prensa|press/i.test(m.type) ? 'newspaper' : 'globe'} className="h-4 w-4" />
                         </div>
                         <div>
                           <h4 className="text-xs sm:text-sm font-bold text-gray-900 leading-none">{m.outlet}</h4>
