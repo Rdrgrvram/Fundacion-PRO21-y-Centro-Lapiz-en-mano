@@ -5,6 +5,7 @@ import type { Locale } from '@/lib/i18n'
 import type { FamiliesContent } from '@/lib/cms-schemas'
 import { PALETTE } from '@/lib/palette'
 import ProtagonistPhoto from '@/components/sections/ProtagonistPhoto'
+import Icon from '@/components/ui/Icon'
 
 interface FamiliasPageClientProps {
   lang: Locale
@@ -78,7 +79,7 @@ export default function FamiliasPageClient({ lang, content }: FamiliasPageClient
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">🎥</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               <span className="text-xs font-bold uppercase tracking-wider text-accent">{content.sessions_section.badge}</span>
             </div>
             <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold tracking-tight mb-4">{content.sessions_section.title}</h2>
@@ -92,12 +93,14 @@ export default function FamiliasPageClient({ lang, content }: FamiliasPageClient
                 <div key={idx} className="bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300">
                   <div className="h-1.5 w-full" style={{ backgroundColor: style.hex }} />
                   <div className="p-6 md:p-8 flex items-start gap-5">
-                    <div className={`w-12 h-12 rounded-2xl ${style.bg} flex items-center justify-center text-2xl flex-shrink-0 select-none shadow-inner`}>{s.icon}</div>
+                    <div className={`w-12 h-12 rounded-2xl ${style.bg} flex items-center justify-center flex-shrink-0 select-none shadow-inner`}>
+                      <Icon emoji={s.icon} className="h-6 w-6 text-gray-700" />
+                    </div>
                     <div>
                       <h4 className="text-base sm:text-lg text-gray-900 font-bold mb-2">{s.title}</h4>
                       <div className="flex gap-2 mb-4 select-none">
                         <span className={`text-[9px] font-bold px-2.5 py-0.5 rounded-full ${style.bg}`} style={{ color: style.hex }}>{s.freq}</span>
-                        <span className="text-[9px] text-gray-400 font-bold px-2.5 py-0.5 rounded-full bg-gray-150">⏱ {s.duration}</span>
+                        <span className="text-[9px] text-gray-400 font-bold px-2.5 py-0.5 rounded-full bg-gray-150">{s.duration}</span>
                       </div>
                       <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">{s.desc}</p>
                     </div>
@@ -109,7 +112,7 @@ export default function FamiliasPageClient({ lang, content }: FamiliasPageClient
 
           <div className="text-center mt-10 select-none">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-secondary/10 border border-secondary/10 text-xs font-semibold text-gray-700">
-              <span>✅</span>
+              <Icon name="check-circle" className="h-4 w-4 flex-shrink-0 text-secondary" />
               <span>{content.sessions_note}</span>
             </div>
           </div>
@@ -121,7 +124,7 @@ export default function FamiliasPageClient({ lang, content }: FamiliasPageClient
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">🤝</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               <span className="text-xs font-bold uppercase tracking-wider text-accent">{content.network_section.badge}</span>
             </div>
             <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold tracking-tight mb-4">{content.network_section.title}</h2>
@@ -131,8 +134,8 @@ export default function FamiliasPageClient({ lang, content }: FamiliasPageClient
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto text-left">
             {content.support_network.map((item, idx) => (
               <div key={idx} className="bg-white rounded-3xl p-6 md:p-8 border border-gray-200 shadow-sm flex items-start gap-5 hover:shadow-md transition-all duration-300">
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0 text-white select-none shadow-md" style={{ backgroundColor: PALETTE[item.color].hex }}>
-                  {item.icon}
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 text-white select-none shadow-md" style={{ backgroundColor: PALETTE[item.color].hex }}>
+                  <Icon emoji={item.icon} className="h-7 w-7" />
                 </div>
                 <div>
                   <h4 className="text-base sm:text-lg text-gray-900 font-bold mb-2">{item.title}</h4>
@@ -149,7 +152,7 @@ export default function FamiliasPageClient({ lang, content }: FamiliasPageClient
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">📄</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
               <span className="text-xs font-bold uppercase tracking-wider text-secondary">{content.guides_section.badge}</span>
             </div>
             <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold tracking-tight mb-4">{content.guides_section.title}</h2>
@@ -162,8 +165,8 @@ export default function FamiliasPageClient({ lang, content }: FamiliasPageClient
               return (
                 <div key={idx} className="bg-white rounded-3xl border border-gray-200 overflow-hidden flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                   <div>
-                    <div className={`p-6 flex items-center justify-center text-5xl relative min-h-[96px] ${style.bg}`}>
-                      <span className="select-none animate-[float_4s_ease-in-out_infinite]">{g.icon}</span>
+                    <div className={`p-6 flex items-center justify-center relative min-h-[96px] ${style.bg}`}>
+                      <Icon emoji={g.icon} className="h-9 w-9 text-gray-700" />
                       <span className="absolute top-3 right-3 text-[9px] font-bold px-2 py-0.5 bg-white rounded-full text-gray-500 select-none shadow-sm">{g.pages}</span>
                     </div>
                     <div className="p-6">
@@ -180,7 +183,7 @@ export default function FamiliasPageClient({ lang, content }: FamiliasPageClient
                       className="w-full py-2.5 rounded-xl border flex items-center justify-center gap-1.5 text-xs font-bold transition-all"
                       style={{ color: style.hex, borderColor: `${style.hex}20` }}
                     >
-                      <span>⬇️</span>
+                      <Icon name="download" className="h-4 w-4" />
                       <span>{g.file ? (es ? 'Descargar PDF' : 'Download PDF') : es ? 'Solicitar PDF por WhatsApp' : 'Request PDF via WhatsApp'}</span>
                     </a>
                   </div>
@@ -200,7 +203,7 @@ export default function FamiliasPageClient({ lang, content }: FamiliasPageClient
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">❓</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-primary-700" />
               <span className="text-xs font-bold uppercase tracking-wider text-primary-700">{content.faq_section.badge}</span>
             </div>
             <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold tracking-tight mb-4">{content.faq_section.title}</h2>

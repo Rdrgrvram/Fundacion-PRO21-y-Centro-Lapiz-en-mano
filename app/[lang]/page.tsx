@@ -6,6 +6,7 @@ import { getAllTeamAreas, getAllTeamMembers, getAllTestimonials } from '@/lib/co
 import { getHomeContent } from '@/lib/cms'
 import type { AccentColor } from '@/lib/palette'
 import ProtagonistPhoto from '@/components/sections/ProtagonistPhoto'
+import Icon from '@/components/ui/Icon'
 
 export const metadata: Metadata = {
   title: 'Fundación PRO-21 y Centro Lápiz en Mano | La Paz, Bolivia',
@@ -132,8 +133,8 @@ export default function Page({ params }: { params: { lang: Locale } }) {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
             {content.stats.map((s, i) => (
-              <div key={i} className="flex flex-col items-center text-center gap-2">
-                <span className="text-4xl">{s.icon}</span>
+              <div key={i} className="flex flex-col items-center text-center gap-1.5">
+                <Icon emoji={s.icon} className="h-6 w-6 text-secondary" />
                 <span className="text-3xl font-extrabold text-gray-900">{s.value}</span>
                 <span className="text-sm text-gray-500 leading-tight">{s.label}</span>
               </div>
@@ -174,7 +175,7 @@ export default function Page({ params }: { params: { lang: Locale } }) {
                       <span className={`text-xs font-bold uppercase tracking-wide ${style.textAccent} bg-gray-50 px-3 py-1 rounded-full`}>
                         {p.badge}
                       </span>
-                      <span className="text-3xl">{p.icon}</span>
+                      <Icon emoji={p.icon} className={`h-7 w-7 ${style.textAccent}`} />
                     </div>
 
                     <h3 className="text-xl font-extrabold text-gray-900 mb-3">{p.title}</h3>
@@ -182,7 +183,7 @@ export default function Page({ params }: { params: { lang: Locale } }) {
 
                     {/* Age range */}
                     <div className="flex items-center gap-2 text-xs text-gray-400 mb-5">
-                      <span>📅</span>
+                      <Icon name="calendar" className="h-4 w-4" />
                       <span>{p.ages}</span>
                     </div>
 
@@ -235,7 +236,7 @@ export default function Page({ params }: { params: { lang: Locale } }) {
               <div className="mt-8 grid grid-cols-2 gap-4">
                 {content.values.map((v, i) => (
                   <div key={i} className="bg-gray-50 rounded-xl p-4 border border-gray-100">
-                    <span className="text-2xl mb-2 block">{v.icon}</span>
+                    <Icon emoji={v.icon} className="mb-2 h-5 w-5 text-secondary" />
                     <h4 className="font-bold text-gray-900 text-sm mb-1">{v.title}</h4>
                     <p className="text-xs text-gray-500 leading-relaxed">{v.desc}</p>
                   </div>
@@ -316,7 +317,7 @@ export default function Page({ params }: { params: { lang: Locale } }) {
                 key={area.slug}
                 className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-full px-4 py-2 text-sm text-gray-700 font-medium"
               >
-                <span>{area.icon}</span>
+                <Icon emoji={area.icon} className="h-4 w-4 text-secondary" />
                 <span>{area.name}</span>
               </div>
             ))}
