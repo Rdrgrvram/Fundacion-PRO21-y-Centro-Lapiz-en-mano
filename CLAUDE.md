@@ -176,6 +176,8 @@ El dueño del proyecto expresó que sentía que la interfaz/estructura actual no
 - Verificado: `npx tsc --noEmit` + `npx next build` OK (32 páginas SSG).
 - Mockups de referencia: evolución `9bcb1db3-6faa-4bfa-954b-7e44376c9f6c`, libre `a9379b78-3d78-45b2-9a5a-53dcfb7c561a`.
 
+Commit `997182f` completa Inicio (foto en la sección de Misión: `mission.image`) y **reselecciona todas las fotos** priorizando ternura y contexto, sin repetir ninguna entre páginas (Inicio hero: retrato-sonrisa; Inicio Misión: pintura-tinas-color; Quiénes Somos: nino-cubo-rubik —con el banner real de la fundación—; Mi Escuelita Down: bandeja-arena-sensorial; Aula Wawitas: grupo-orejas-conejo; Pasos Firmes: escritura-pizarra-circulos; Impacto: bandeja-cuentas-color; Colabora: juego-mesa-cartas —con una voluntaria—; Familias: juego-agua-sensorial).
+
 **Pendiente:** la rama `v2` no está mergeada a `develop` — el dueño la revisa primero. Blog / Contacto / Equipo no recibieron los cambios (no eran "páginas principales"). La variante "audaz" (foto full-bleed + cita como titular) quedó anotada, no explorada.
 
 ### Estilo de trabajo acordado con el usuario

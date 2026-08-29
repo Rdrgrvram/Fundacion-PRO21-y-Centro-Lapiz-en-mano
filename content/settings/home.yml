@@ -52,6 +52,7 @@ es:
     title: Nuestra Misión
     text: Nuestro compromiso es con los derechos de los niños y niñas con síndrome de Down, neurodivergencia y dificultades de aprendizaje a recibir una educación integral de calidad, inclusiva y personalizada que les permita desarrollar todo su potencial.
     link_text: Conocer nuestra historia
+    image: /images/actividades-reales/pintura-tinas-color.jpg
   values:
     - icon: 🤝
       title: Inclusión radical
@@ -126,6 +127,7 @@ en:
     title: Our Mission
     text: Our commitment is to the rights of children with Down syndrome, neurodivergence, and learning difficulties to receive quality, inclusive, and personalized comprehensive education that allows them to develop their full potential.
     link_text: Learn our history
+    image: /images/actividades-reales/pintura-tinas-color.jpg
   values:
     - icon: 🤝
       title: Radical inclusion

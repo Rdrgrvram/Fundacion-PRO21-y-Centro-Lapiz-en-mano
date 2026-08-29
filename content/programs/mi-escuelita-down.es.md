@@ -4,7 +4,7 @@ hero:
   badge: Programa Especializado
   subtitle: Intervención terapéutica y educativa integral para niños y niñas con síndrome de Down, desde la estimulación temprana hasta la inclusión escolar plena.
   color: primary
-  image: /images/actividades-reales/terapia-individual-tarjetas.jpg
+  image: /images/actividades-reales/bandeja-arena-sensorial.jpg
   quote: En Lápiz en Mano encontramos no solo terapia, sino una familia que nos enseñó a ver las capacidades antes que las limitaciones.
   quote_author: Familia Quispe
   quote_context: Mi Escuelita Down
