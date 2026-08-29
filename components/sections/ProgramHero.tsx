@@ -79,6 +79,7 @@ export default function ProgramHero({ lang, program, whatsappNumber }: ProgramHe
               quote={program.hero.quote}
               author={program.hero.quoteAuthor}
               context={program.hero.quoteContext}
+              quoteTone={program.hero.color === 'primary' ? 'dark' : 'light'}
               blobs={HERO_BLOBS[program.hero.color]}
               priority
               className="mt-12 lg:mt-0"
