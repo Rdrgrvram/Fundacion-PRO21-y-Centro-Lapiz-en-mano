@@ -29,11 +29,31 @@ export default function Header({ lang, settings }: HeaderProps) {
   // Colapsar la barra de accesibilidad al hacer scroll — sus controles (tamaño
   // de texto, contraste) se ajustan una vez y quedan guardados en localStorage,
   // así que no necesitan ocupar espacio de forma permanente en cada scroll.
+  //
+  // Histéresis + rAF: colapsar la barra reacomoda el layout (~44px). Con un solo
+  // umbral, ese reacomodo podía volver a cruzarlo y hacer que la barra "rebotara".
+  // Se colapsa recién a 160px y se re-expande solo por encima de 40px — la banda
+  // muerta (120px) es mucho mayor que la altura de la barra, así que no hay bucle.
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 24)
-    handleScroll()
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+    let raf = 0
+    const update = () => {
+      raf = 0
+      const y = window.scrollY
+      setScrolled((prev) => {
+        if (!prev && y > 160) return true
+        if (prev && y < 40) return false
+        return prev
+      })
+    }
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (raf) cancelAnimationFrame(raf)
+    }
   }, [])
 
   // Deshabilitar scroll en el cuerpo cuando el menú móvil está abierto

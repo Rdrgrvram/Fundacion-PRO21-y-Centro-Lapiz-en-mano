@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { EXTENDED_PALETTE } from '@/lib/palette'
 import type { ProgramTabSection as ProgramTabSectionData } from '@/lib/content'
+import Icon from '@/components/ui/Icon'
 
 interface ProgramTabSectionProps {
   id?: string
@@ -38,7 +39,7 @@ export default function ProgramTabSection({ id, section }: ProgramTabSectionProp
                   isActive ? `${tStyle.bgSolid} ${tStyle.textOn} shadow-md` : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
-                <span>{t.icon}</span>
+                <Icon emoji={t.icon} className="h-4 w-4" />
                 <span>{t.label}</span>
                 {t.ageRange && (
                   <span className={`text-xs px-2 py-0.5 rounded-full ${isActive ? 'bg-white/20' : 'bg-gray-200 text-gray-500'}`}>
@@ -53,7 +54,7 @@ export default function ProgramTabSection({ id, section }: ProgramTabSectionProp
         {/* Panel activo */}
         <div className={`max-w-4xl mx-auto bg-white rounded-2xl border ${style.border} shadow-sm overflow-hidden`}>
           <div className={`${style.bg} p-6 flex items-center gap-4`}>
-            <span className="text-4xl">{tab.icon}</span>
+            <Icon emoji={tab.icon} className={`h-9 w-9 ${style.text}`} />
             <div>
               <h3 className={`text-xl font-extrabold ${style.text}`}>{tab.label}</h3>
               {tab.ageRange && <span className="text-sm text-gray-500">{tab.ageRange}</span>}

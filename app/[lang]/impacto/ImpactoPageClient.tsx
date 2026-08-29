@@ -7,6 +7,7 @@ import type { Testimonial } from '@/lib/content'
 import type { ImpactContent } from '@/lib/cms-schemas'
 import { PALETTE } from '@/lib/palette'
 import ProtagonistPhoto from '@/components/sections/ProtagonistPhoto'
+import Icon from '@/components/ui/Icon'
 
 // Mismo tratamiento de "ficha de actividad" (inclinación + borde de color +
 // caption al hover) que components/sections/ProgramGallery.tsx — ambas
@@ -109,7 +110,7 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">📊</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-primary-700" />
               <span className="text-xs font-bold uppercase tracking-wider text-primary-700">{content.stats_section.badge}</span>
             </div>
             <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold tracking-tight">{content.stats_section.title}</h2>
@@ -119,8 +120,8 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
             {content.stats.map((s, i) => (
               <div key={i} className="bg-white rounded-3xl p-6 md:p-8 border border-gray-200 shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300 h-full">
                 <div>
-                  <div className={`w-12 h-12 rounded-xl ${PALETTE[s.color].bg} flex items-center justify-center text-2xl mb-4 shadow-sm select-none`}>
-                    {s.icon}
+                  <div className={`w-12 h-12 rounded-xl ${PALETTE[s.color].bg} flex items-center justify-center mb-4 shadow-sm select-none`}>
+                    <Icon emoji={s.icon} className="h-6 w-6 text-gray-700" />
                   </div>
                   <div className="font-display text-5xl sm:text-6xl md:text-7xl font-bold text-gray-900 leading-[0.9] mb-3 tracking-tight tabular-nums">
                     <Counter end={s.value} suffix={s.suffix ?? ''} />
@@ -165,7 +166,7 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
         <div className="container mx-auto max-w-4xl text-center">
           <div className="text-center mb-10 max-w-md mx-auto">
             <div className="inline-flex items-center gap-2 bg-accent-50 border border-accent/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">💛</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               <span className="text-xs font-bold uppercase tracking-wider text-accent">{content.testimonials_section.badge}</span>
             </div>
             <h2 className="text-2xl md:text-3xl text-gray-900 font-extrabold tracking-tight">{content.testimonials_section.title}</h2>
@@ -180,8 +181,8 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
                 </p>
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-t border-gray-100 pt-6">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full flex items-center justify-center text-2xl text-white select-none shadow-md" style={{ backgroundColor: PALETTE[activeT.color].hex }}>
-                      {activeT.icon}
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center text-white select-none shadow-md" style={{ backgroundColor: PALETTE[activeT.color].hex }}>
+                      <Icon emoji={activeT.icon} className="h-6 w-6" />
                     </div>
                     <div>
                       <h4 className="text-xs sm:text-sm font-bold text-gray-900">{activeT.family}</h4>
@@ -211,7 +212,7 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
                   idx === activeTestimonial ? 'border-primary bg-white shadow-sm scale-[1.01]' : 'border-gray-200 bg-white/70 hover:bg-white text-gray-500'
                 }`}
               >
-                <span className="text-xl">{tm.icon}</span>
+                <Icon emoji={tm.icon} className="h-5 w-5 flex-shrink-0 text-secondary" />
                 <div>
                   <div className="text-[10px] font-bold text-gray-900 leading-tight">{tm.family}</div>
                   <div className="text-[8px] text-gray-400 font-semibold truncate max-w-[64px] sm:max-w-xs">{tm.program}</div>
@@ -227,7 +228,7 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">🔍</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
               <span className="text-xs font-bold uppercase tracking-wider text-secondary">{content.reports_section.badge}</span>
             </div>
             <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold tracking-tight mb-4">{content.reports_section.title}</h2>
@@ -243,7 +244,9 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
                 {content.reports.map((r, idx) => (
                   <div key={idx} className="bg-gray-50 rounded-2xl p-5 border border-gray-200/80 flex items-center justify-between hover:border-secondary/20 transition-all select-none hover:translate-x-1">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-white border border-gray-150 flex items-center justify-center text-2xl flex-shrink-0">📊</div>
+                      <div className="w-12 h-12 rounded-xl bg-white border border-gray-150 flex items-center justify-center flex-shrink-0">
+                        <Icon name="newspaper" className="h-5 w-5 text-secondary-700" />
+                      </div>
                       <div>
                         <h4 className="text-xs sm:text-sm font-bold text-gray-900 leading-snug">{r.title}</h4>
                         <p className="text-[10px] text-gray-400 font-semibold mt-0.5">{r.desc}</p>
@@ -267,7 +270,9 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 {content.reports_breakdown.map((item, idx) => (
                   <div key={idx} className="bg-white rounded-2xl p-5 border border-gray-200/80 shadow-sm flex flex-col justify-between">
-                    <div className={`w-9 h-9 rounded-xl ${PALETTE[item.color].bg} flex items-center justify-center text-xl mb-3 shadow-inner select-none`}>{item.icon}</div>
+                    <div className={`w-9 h-9 rounded-xl ${PALETTE[item.color].bg} flex items-center justify-center mb-3 shadow-inner select-none`}>
+                      <Icon emoji={item.icon} className="h-5 w-5 text-gray-700" />
+                    </div>
                     <div>
                       <h4 className="text-xs font-bold text-gray-900 mb-0.5">{item.title}</h4>
                       <p className="text-[10px] text-gray-400 leading-normal font-semibold">{item.desc}</p>
@@ -285,7 +290,7 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">📰</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               <span className="text-xs font-bold uppercase tracking-wider text-accent">{content.media_section.badge}</span>
             </div>
             <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold tracking-tight mb-4">{content.media_section.title}</h2>
@@ -324,7 +329,7 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">📷</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
               <span className="text-xs font-bold uppercase tracking-wider text-secondary">{content.gallery_section.badge}</span>
             </div>
             <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold tracking-tight mb-4">{content.gallery_section.title}</h2>

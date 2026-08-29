@@ -6,6 +6,7 @@ import { getAllTeamAreas } from '@/lib/content'
 import { getAboutContent } from '@/lib/cms'
 import { PALETTE, type AccentColor } from '@/lib/palette'
 import ProtagonistPhoto from '@/components/sections/ProtagonistPhoto'
+import Icon from '@/components/ui/Icon'
 
 interface PageProps {
   params: {
@@ -112,8 +113,8 @@ export default function Page({ params: { lang } }: PageProps) {
             {/* Separador */}
             <div className="w-full lg:w-[8%] flex lg:flex-col items-center justify-center gap-4 py-4 lg:py-0 select-none">
               <div className="h-0.5 lg:h-full w-full lg:w-0.5 bg-gradient-to-r lg:bg-gradient-to-b from-transparent via-primary to-transparent flex-1" />
-              <div className="w-11 h-11 rounded-full bg-primary/15 border-2 border-primary flex items-center justify-center text-lg shadow-sm flex-shrink-0">
-                🤝
+              <div className="w-11 h-11 rounded-full bg-primary/15 border-2 border-primary flex items-center justify-center shadow-sm flex-shrink-0">
+                <Icon name="heart" className="h-5 w-5 text-primary-700" />
               </div>
               <div className="h-0.5 lg:h-full w-full lg:w-0.5 bg-gradient-to-r lg:bg-gradient-to-b from-transparent via-primary to-transparent flex-1" />
             </div>
@@ -142,7 +143,7 @@ export default function Page({ params: { lang } }: PageProps) {
 
           <div className="text-center mb-12 max-w-md mx-auto">
             <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">📌</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
               <span className="text-xs font-bold uppercase tracking-wider text-secondary">
                 {content.mission_section.badge}
               </span>
@@ -163,8 +164,8 @@ export default function Page({ params: { lang } }: PageProps) {
                 >
                   <div className={`h-1.5 w-full bg-gradient-to-r ${style.from} to-white`} />
                   <div className="p-8 flex-1 flex flex-col">
-                    <div className={`w-12 h-12 rounded-xl ${palette.bg} flex items-center justify-center text-2xl mb-5 shadow-sm`}>
-                      {card.icon}
+                    <div className={`w-12 h-12 rounded-xl ${palette.bg} flex items-center justify-center mb-5 shadow-sm`}>
+                      <Icon emoji={card.icon} className={`h-6 w-6 ${style.text}`} />
                     </div>
                     <div className={`text-[10px] font-bold tracking-widest uppercase mb-2 ${style.text}`}>
                       {card.label}
@@ -187,7 +188,7 @@ export default function Page({ params: { lang } }: PageProps) {
 
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">💛</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-primary-700" />
               <span className="text-xs font-bold uppercase tracking-wider text-primary-700">
                 {content.values_section.badge}
               </span>
@@ -207,8 +208,8 @@ export default function Page({ params: { lang } }: PageProps) {
                 className="group p-6 rounded-2xl bg-white border border-gray-200 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-gray-300 flex flex-col justify-between h-full"
               >
                 <div>
-                  <div className={`w-11 h-11 rounded-xl ${PALETTE[v.color].bg} flex items-center justify-center text-xl mb-4 transition-all duration-300 group-hover:scale-105`}>
-                    {v.icon}
+                  <div className={`w-11 h-11 rounded-xl ${PALETTE[v.color].bg} flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-105`}>
+                    <Icon emoji={v.icon} className={`h-5 w-5 ${CARD_STYLES[v.color].text}`} />
                   </div>
                   <h4 className="text-base text-gray-900 font-bold mb-2">
                     {v.name}
@@ -231,7 +232,7 @@ export default function Page({ params: { lang } }: PageProps) {
 
           <div className="text-center mb-16 max-w-md mx-auto">
             <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">📅</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
               <span className="text-xs font-bold uppercase tracking-wider text-secondary">
                 {content.timeline_section.badge}
               </span>
@@ -267,8 +268,8 @@ export default function Page({ params: { lang } }: PageProps) {
                     </div>
 
                     <div className="flex justify-start pl-0 md:pl-0 md:justify-center relative z-20 mb-4 md:mb-0">
-                      <div className="w-11 h-11 md:w-12 md:h-12 rounded-full bg-white border-[3px] border-primary flex items-center justify-center text-xl shadow-md absolute left-0 md:relative md:left-auto">
-                        {item.icon}
+                      <div className="w-11 h-11 md:w-12 md:h-12 rounded-full bg-white border-[3px] border-primary flex items-center justify-center shadow-md absolute left-0 md:relative md:left-auto">
+                        <Icon emoji={item.icon} className="h-5 w-5 text-primary-700" />
                       </div>
                     </div>
 
@@ -327,8 +328,8 @@ export default function Page({ params: { lang } }: PageProps) {
                 key={area.slug}
                 className="bg-white/10 border border-white/20 p-5 rounded-2xl text-center transition-all duration-300 hover:bg-white/20 hover:-translate-y-1 select-none flex flex-col items-center justify-center min-h-[110px]"
               >
-                <div className="w-11 h-11 rounded-xl bg-white/20 flex items-center justify-center text-2xl mb-3">
-                  {area.icon}
+                <div className="w-11 h-11 rounded-xl bg-white/20 flex items-center justify-center mb-3">
+                  <Icon emoji={area.icon} className="h-6 w-6 text-white" />
                 </div>
                 <div className="text-xs font-semibold text-white/90 leading-tight">
                   {area.name}

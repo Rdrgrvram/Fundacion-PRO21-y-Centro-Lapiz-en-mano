@@ -26,7 +26,6 @@ export default function ProgramEnrollmentSteps({ section }: { section: ProgramSt
                 <div className={`w-10 h-10 rounded-full ${style.bgSolid} flex items-center justify-center font-extrabold ${style.textOn} text-lg mb-3`}>
                   {i + 1}
                 </div>
-                <span className="text-2xl mb-2">{step.icon}</span>
                 <h3 className="font-bold text-gray-900 mb-2">{step.title}</h3>
                 <p className="text-gray-600 text-sm">{step.desc}</p>
               </div>

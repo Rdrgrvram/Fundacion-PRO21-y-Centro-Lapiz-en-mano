@@ -5,6 +5,7 @@ import type { Locale } from '@/lib/i18n'
 import type { CollaborateContent } from '@/lib/cms-schemas'
 import { PALETTE } from '@/lib/palette'
 import ProtagonistPhoto from '@/components/sections/ProtagonistPhoto'
+import Icon from '@/components/ui/Icon'
 
 interface ColaboraPageClientProps {
   lang: Locale
@@ -108,7 +109,9 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-left">
             <div>
               <div className="inline-flex items-center gap-2.5 bg-white/8 backdrop-blur-md border border-white/10 rounded-full py-1.5 pl-2.5 pr-4 mb-6 shadow-md select-none">
-                <span className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-xs text-black font-extrabold shadow-sm select-none">❤️</span>
+                <span className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-gray-900 shadow-sm select-none">
+                  <Icon name="heart" className="h-3.5 w-3.5" />
+                </span>
                 <span className="text-white/90 text-xs font-semibold">{content.hero.badge}</span>
               </div>
 
@@ -132,7 +135,7 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
             <div className="grid grid-cols-2 gap-4">
               {content.hero_highlights.map((s, i) => (
                 <div key={i} className="bg-white/5 border border-white/8 backdrop-blur-md rounded-2xl p-5 text-center hover:bg-white/10 transition-all select-none">
-                  <div className="text-2xl mb-1.5">{s.icon}</div>
+                  <Icon emoji={s.icon} className="mx-auto mb-1.5 h-5 w-5 text-white/80" />
                   <div className="text-2xl text-white font-extrabold leading-none">{s.value}</div>
                   <div className="text-[10px] sm:text-xs text-white/60 font-semibold mt-2 leading-tight">{s.label}</div>
                 </div>
@@ -147,7 +150,7 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">💛</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-primary-700" />
               <span className="text-xs font-bold uppercase tracking-wider text-primary-700">{content.donation_section.badge}</span>
             </div>
             <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold tracking-tight mb-4">{content.donation_section.title}</h2>
@@ -171,8 +174,8 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
                   )}
                   <div className="h-1 w-full" style={{ backgroundColor: hex }} />
                   <div className="p-6">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4 transition-all duration-300 ${isSelected ? 'bg-primary text-black' : PALETTE[tier.color].bg}`}>
-                      {tier.icon}
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-all duration-300 ${isSelected ? 'bg-primary text-gray-900' : `${PALETTE[tier.color].bg} text-gray-700`}`}>
+                      <Icon emoji={tier.icon} className="h-6 w-6" />
                     </div>
                     <div className="text-2xl font-bold text-gray-900 leading-none mb-1">{tier.amount}</div>
                     {tier.usd && <span className="text-[10px] text-gray-400 font-semibold block mb-3">{tier.usd} USD</span>}
@@ -219,7 +222,7 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
                     rel="noopener noreferrer"
                     className="bg-primary hover:bg-primary/95 text-black font-extrabold text-sm sm:text-base px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-md shadow-primary/10 min-h-[44px] inline-flex items-center gap-2"
                   >
-                    <span>💛</span>
+                    <Icon name="heart" className="h-4 w-4" />
                     {es ? 'Confirmar donación por WhatsApp' : 'Confirm donation via WhatsApp'}
                   </a>
                   <p className="text-[10px] text-gray-400 mt-2">
@@ -239,7 +242,9 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
                     : m.lines
                   return (
                     <div key={idx} className="bg-gray-50 border border-gray-200/80 rounded-2xl p-4 flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-xl shadow-sm flex-shrink-0 select-none">{m.icon}</div>
+                      <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-sm flex-shrink-0 select-none">
+                        <Icon emoji={m.icon} className="h-5 w-5 text-secondary-700" />
+                      </div>
                       <div>
                         <h4 className="text-xs sm:text-sm font-bold text-gray-900 mb-0.5">{m.title}</h4>
                         {lines.map((line, lidx) => (
@@ -274,7 +279,7 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">🙌</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
               <span className="text-xs font-bold uppercase tracking-wider text-secondary">{content.volunteer_section.badge}</span>
             </div>
             <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold tracking-tight mb-4">{content.volunteer_section.title}</h2>
@@ -296,7 +301,7 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
                       isSelected ? 'border-secondary bg-secondary/10 text-gray-900 shadow-sm' : 'border-gray-200 bg-white text-gray-500 hover:bg-gray-50'
                     }`}
                   >
-                    <span className="text-2xl mb-2">{a.icon}</span>
+                    <Icon emoji={a.icon} className={`mb-2 h-6 w-6 ${isSelected ? 'text-secondary-700' : 'text-gray-400'}`} />
                     <span className="text-[10px] font-bold leading-tight">{a.title}</span>
                   </button>
                 )
@@ -304,7 +309,7 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
             </div>
             {selectedVolArea !== null && (
               <div className="mt-4 p-4 rounded-xl bg-white border border-gray-200 max-w-xl mx-auto text-xs font-semibold text-gray-600 animate-fade-slide-up text-left">
-                💡 <strong className="text-secondary">{content.volunteer_areas[selectedVolArea].title}:</strong> {content.volunteer_areas[selectedVolArea].desc}
+                <Icon name="bulb" className="mr-1.5 inline h-4 w-4 align-[-2px] text-secondary" /><strong className="text-secondary">{content.volunteer_areas[selectedVolArea].title}:</strong> {content.volunteer_areas[selectedVolArea].desc}
               </div>
             )}
           </div>
@@ -383,7 +388,7 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
                 </>
               ) : (
                 <div className="text-center py-12 px-4">
-                  <span className="text-5xl block mb-4 select-none">🎉</span>
+                  <Icon name="check-circle" className="mx-auto mb-4 h-12 w-12 text-secondary" />
                   <h3 className="text-xl text-gray-900 font-bold mb-3">{es ? '¡Inscripción recibida!' : 'Registration received!'}</h3>
                   <p className="text-xs sm:text-sm text-gray-500 leading-relaxed mb-6">
                     {es
@@ -403,7 +408,7 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
                 <div className="space-y-4">
                   {content.volunteer_perks.map((item, idx) => (
                     <div key={idx} className="flex items-center gap-3.5 pb-3 border-b border-gray-100 last:border-0 last:pb-0">
-                      <span className="text-xl select-none">{item.icon}</span>
+                      <Icon emoji={item.icon} className="h-5 w-5 flex-shrink-0 text-secondary" />
                       <span className="text-xs sm:text-sm font-semibold text-gray-600">{item.text}</span>
                     </div>
                   ))}
@@ -442,7 +447,7 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">🤝</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               <span className="text-xs font-bold uppercase tracking-wider text-accent">{content.alliances_section.badge}</span>
             </div>
             <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold tracking-tight mb-4">{content.alliances_section.title}</h2>
@@ -462,8 +467,8 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
                   <div className="h-1 w-full" style={{ backgroundColor: hex }} />
                   <div className="p-6 md:p-8">
                     <div className="flex items-start justify-between gap-4">
-                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0 transition-all duration-300 ${isOpen ? PALETTE[p.color].bg : 'bg-gray-100'}`}>
-                        {p.icon}
+                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 transition-all duration-300 ${isOpen ? PALETTE[p.color].bg : 'bg-gray-100'}`}>
+                        <Icon emoji={p.icon} className="h-7 w-7 text-gray-700" />
                       </div>
                       <div className="flex-1">
                         <h4 className="text-lg text-gray-900 font-bold leading-snug">{p.title}</h4>
@@ -495,13 +500,26 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
             <h4 className="text-lg text-gray-900 font-bold mb-2">{content.allies_title}</h4>
             <p className="text-xs text-gray-400 mb-8">{content.allies_subtitle}</p>
             <div className="flex flex-wrap gap-4 justify-center items-center">
-              {content.allies.map((ally, i) => (
-                <div key={i} className="bg-gray-50 border border-gray-200 rounded-2xl py-4 px-5 text-center min-w-[140px] flex-1 sm:flex-none shadow-sm hover:border-primary transition-colors">
-                  <div className="text-2xl mb-1.5">{ally.icon}</div>
-                  <div className="text-xs font-bold text-gray-900 whitespace-nowrap">{ally.name.split(' ')[0]}</div>
-                  <div className="text-[9px] text-gray-400 font-semibold mt-1">{ally.type}</div>
-                </div>
-              ))}
+              {content.allies.map((ally, i) => {
+                const initials = ally.name
+                  .split(/\s+/)
+                  .slice(0, 2)
+                  .map((w) => w.charAt(0))
+                  .join('')
+                  .toUpperCase()
+                return (
+                  <div
+                    key={i}
+                    className="bg-gray-50 border border-gray-200 rounded-2xl py-4 px-5 text-center min-w-[150px] flex-1 sm:flex-none shadow-sm hover:border-primary transition-colors flex flex-col items-center gap-2"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-sm font-extrabold text-gray-700">
+                      {initials}
+                    </div>
+                    <div className="text-xs font-bold text-gray-900 leading-tight">{ally.name}</div>
+                    <div className="text-[9px] text-gray-400 font-semibold">{ally.type}</div>
+                  </div>
+                )
+              })}
               <div className="border-2 border-dashed border-gray-200 rounded-2xl py-4 px-5 min-w-[140px] flex items-center justify-center flex-col text-gray-400 flex-1 sm:flex-none">
                 <span className="text-xl font-bold">+</span>
                 <span className="text-[10px] font-bold mt-1">{es ? 'Tu organización' : 'Your organization'}</span>

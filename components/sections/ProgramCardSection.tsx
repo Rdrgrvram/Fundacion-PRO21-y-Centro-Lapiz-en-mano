@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { EXTENDED_PALETTE } from '@/lib/palette'
 import type { ProgramCardSection as ProgramCardSectionData } from '@/lib/content'
+import Icon from '@/components/ui/Icon'
 
 // Elige el número de columnas que mejor reparte los items en filas completas,
 // para evitar filas "huérfanas" con 1-2 tarjetas sueltas y mucho espacio vacío.
@@ -72,8 +73,8 @@ export default function ProgramCardSection({ id, section, alt = false, compact =
               return (
                 <button key={i} onClick={() => setOpenIndex(isOpen ? null : i)} className={cardClass}>
                   <div className="flex items-start gap-4">
-                    <div className={`w-12 h-12 ${style.bg} rounded-xl flex items-center justify-center text-2xl flex-shrink-0`}>
-                      {item.icon}
+                    <div className={`w-12 h-12 ${style.bg} rounded-xl flex items-center justify-center flex-shrink-0`}>
+                      <Icon emoji={item.icon} className={`h-6 w-6 ${style.text}`} />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
@@ -122,10 +123,10 @@ export default function ProgramCardSection({ id, section, alt = false, compact =
               >
                 <div
                   className={`${style.bg} rounded-2xl flex items-center justify-center ${
-                    compact ? 'w-11 h-11 text-xl mb-3' : 'w-14 h-14 text-3xl mb-4'
+                    compact ? 'w-11 h-11 mb-3' : 'w-14 h-14 mb-4'
                   }`}
                 >
-                  {item.icon}
+                  <Icon emoji={item.icon} className={`${compact ? 'h-5 w-5' : 'h-7 w-7'} ${style.text}`} />
                 </div>
                 <h3 className={`font-bold ${style.text} ${compact ? 'text-sm' : 'text-base sm:text-lg'}`}>{item.title}</h3>
                 {item.tag && <span className="text-[10px] text-gray-400 uppercase tracking-wide mt-0.5 mb-2">{item.tag}</span>}
