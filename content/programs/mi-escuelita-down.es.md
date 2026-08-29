@@ -4,6 +4,10 @@ hero:
   badge: Programa Especializado
   subtitle: Intervención terapéutica y educativa integral para niños y niñas con síndrome de Down, desde la estimulación temprana hasta la inclusión escolar plena.
   color: primary
+  image: /images/actividades-reales/terapia-individual-tarjetas.jpg
+  quote: En Lápiz en Mano encontramos no solo terapia, sino una familia que nos enseñó a ver las capacidades antes que las limitaciones.
+  quote_author: Familia Quispe
+  quote_context: Mi Escuelita Down
 stats:
   - icon: 👶
     value: 0 – 14+
@@ -114,6 +118,22 @@ section_3:
       color: secondary
       title: Evaluación Continua
       desc: Reevaluamos periódicamente el progreso de cada niño y ajustamos el plan de intervención para mantener metas relevantes y alcanzables en cada etapa de su desarrollo.
+gallery:
+  badge: Así vivimos el programa
+  title: Un vistazo a nuestras sesiones
+  photos:
+    - image: /images/actividades-reales/pesca-sensorial.jpg
+      alt: Niño realizando una actividad de pesca sensorial con letras de colores
+    - image: /images/actividades-reales/bandeja-arena-sensorial.jpg
+      alt: Niño explorando una bandeja de arena en terapia sensorial
+    - image: /images/actividades-reales/bandeja-cuentas-color.jpg
+      alt: Niño trabajando con una bandeja de cuentas de colores
+    - image: /images/actividades-reales/terapia-individual-tarjetas.jpg
+      alt: Sesión de terapia individual con tarjetas didácticas
+    - image: /images/actividades-reales/juego-agua-sensorial.jpg
+      alt: Dos niños en actividad de estimulación sensorial con agua
+    - image: /images/actividades-reales/pintura-arroz-color.jpg
+      alt: Niña pintando con arroz de colores en actividad sensorial
 enrollment:
   badge: Nuestro proceso
   title: ¿Cómo ingresar al programa?

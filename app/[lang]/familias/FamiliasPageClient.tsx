@@ -1,8 +1,10 @@
 'use client'
 import { useState } from 'react'
+import Link from 'next/link'
 import type { Locale } from '@/lib/i18n'
 import type { FamiliesContent } from '@/lib/cms-schemas'
 import { PALETTE } from '@/lib/palette'
+import ProtagonistPhoto from '@/components/sections/ProtagonistPhoto'
 
 interface FamiliasPageClientProps {
   lang: Locale
@@ -17,45 +19,55 @@ export default function FamiliasPageClient({ lang, content }: FamiliasPageClient
     <div className="overflow-x-hidden w-full bg-gray-50">
 
       {/* 1. Hero Section */}
-      <section className="relative min-h-[440px] flex items-center bg-gradient-to-br from-[#1a1a1a] via-[#6b234e] to-[#8c3cbd] py-16 px-4 overflow-hidden">
+      <section className="relative bg-accent overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
-          <div className="absolute -top-[15%] -right-[8%] w-[350px] h-[350px] md:w-[550px] md:h-[550px] rounded-full border border-white/5 opacity-30" />
-          <div className="absolute -bottom-[20%] -left-[6%] w-[250px] h-[250px] md:w-[450px] md:h-[450px] rounded-full bg-radial-gradient(circle, rgba(232,168,56,0.06), transparent 70%)" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/3" />
+          <div className="absolute bottom-1/4 -left-16 w-64 h-64 bg-white/10 rounded-full" />
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 z-10">
-          <svg viewBox="0 0 1440 80" fill="none" className="block w-full h-8 md:h-16 lg:h-20 text-[#f9fafb] fill-current">
-            <path d="M0 45C320 20 640 60 960 35C1200 15 1380 40 1440 38V80H0Z" />
+          <svg viewBox="0 0 1440 60" preserveAspectRatio="none" fill="none" className="block w-full h-8 md:h-16 lg:h-20 text-gray-50 fill-current">
+            <path d="M0 0 Q360 60 720 30 Q1080 0 1440 0 L1440 60 L0 60 Z" />
           </svg>
         </div>
 
-        <div className="container mx-auto max-w-4xl text-center relative z-20 mt-8">
-          <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full py-1 px-3.5 mb-5 select-none">
-            <span className="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-[10px] text-black font-extrabold">✦</span>
-            <span className="text-white/80 text-xs font-semibold">{content.hero.badge}</span>
+        <div className="container mx-auto px-4 py-16 md:py-24 relative z-20">
+          <nav className="flex items-center gap-2 text-white/60 text-xs mb-8">
+            <Link href={`/${lang}`} className="hover:text-white transition-colors">{es ? 'Inicio' : 'Home'}</Link>
+            <span>/</span>
+            <span className="text-white font-semibold">{es ? 'Familias' : 'Families'}</span>
+          </nav>
+
+          <div className="inline-flex items-center gap-2 bg-white/15 border border-white/20 rounded-full px-4 py-1.5 mb-5">
+            <span className="text-xs font-bold uppercase tracking-wider text-white select-none">{content.hero.badge}</span>
           </div>
 
-          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-normal leading-tight mb-4">
-            {content.hero.title_line1} <br />
-            <span className="font-bold italic text-primary">{content.hero.title_line2}</span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-extrabold leading-tight mb-4">
+            {content.hero.title_line1} <br className="hidden sm:inline" />
+            <span className="font-extrabold text-primary">{content.hero.title_line2}</span>
           </h1>
 
-          <p className="text-sm md:text-base lg:text-lg text-white/70 max-w-xl mx-auto leading-relaxed">{content.hero.subtitle}</p>
+          <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-2xl leading-relaxed">{content.hero.subtitle}</p>
         </div>
       </section>
 
-      {/* 2. Welcome Letter Block */}
-      <section className="py-12 px-4 bg-gray-50">
-        <div className="container mx-auto max-w-4xl">
-          <div className="bg-gradient-to-br from-[#fdf2f8] to-[#fdf6e3] rounded-3xl p-8 md:p-10 border border-accent/10 shadow-sm text-left relative overflow-hidden">
-            <div className="absolute -top-10 -right-10 w-36 h-36 rounded-full bg-radial-gradient(circle, rgba(232,168,56,0.1), transparent 70%) pointer-events-none" />
-            <div className="flex flex-col sm:flex-row items-start gap-6 relative z-10">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#8c3cbd] to-[#e86840] text-white flex items-center justify-center text-3xl shadow-md flex-shrink-0 select-none">💌</div>
-              <div>
-                <h3 className="font-serif text-xl sm:text-2xl text-[#111827] font-bold mb-3">{content.welcome_letter.title}</h3>
-                <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">{content.welcome_letter.text}</p>
-                <p className="text-xs sm:text-sm font-bold text-accent italic mt-4">{content.welcome_letter.signature}</p>
-              </div>
+      {/* 2. Welcome Letter Block — carta + foto protagonista con cita real */}
+      <section className="py-12 md:py-16 px-4 bg-gray-50">
+        <div className="container mx-auto max-w-5xl">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            {content.welcome_letter.image && (
+              <ProtagonistPhoto
+                src={content.welcome_letter.image}
+                alt={es ? 'Actividad en el Centro Lápiz en Mano' : 'Activity at Lápiz en Mano Center'}
+                quote={content.welcome_letter.quote}
+                author={content.welcome_letter.quote_author}
+                blobs={['accent', 'secondary']}
+              />
+            )}
+            <div className="bg-gradient-to-br from-accent-50 to-primary-50 rounded-3xl p-8 md:p-10 border border-accent/10 shadow-sm text-left">
+              <h3 className="font-display text-2xl sm:text-3xl text-gray-900 font-bold mb-3">{content.welcome_letter.title}</h3>
+              <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">{content.welcome_letter.text}</p>
+              <p className="text-xs sm:text-sm font-bold text-accent italic mt-4">{content.welcome_letter.signature}</p>
             </div>
           </div>
         </div>
@@ -69,7 +81,7 @@ export default function FamiliasPageClient({ lang, content }: FamiliasPageClient
               <span className="text-sm">🎥</span>
               <span className="text-xs font-bold uppercase tracking-wider text-accent">{content.sessions_section.badge}</span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.sessions_section.title}</h2>
+            <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold tracking-tight mb-4">{content.sessions_section.title}</h2>
             {content.sessions_section.subtitle && <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">{content.sessions_section.subtitle}</p>}
           </div>
 
@@ -82,7 +94,7 @@ export default function FamiliasPageClient({ lang, content }: FamiliasPageClient
                   <div className="p-6 md:p-8 flex items-start gap-5">
                     <div className={`w-12 h-12 rounded-2xl ${style.bg} flex items-center justify-center text-2xl flex-shrink-0 select-none shadow-inner`}>{s.icon}</div>
                     <div>
-                      <h4 className="font-serif text-base sm:text-lg text-[#111827] font-bold mb-2">{s.title}</h4>
+                      <h4 className="text-base sm:text-lg text-gray-900 font-bold mb-2">{s.title}</h4>
                       <div className="flex gap-2 mb-4 select-none">
                         <span className={`text-[9px] font-bold px-2.5 py-0.5 rounded-full ${style.bg}`} style={{ color: style.hex }}>{s.freq}</span>
                         <span className="text-[9px] text-gray-400 font-bold px-2.5 py-0.5 rounded-full bg-gray-150">⏱ {s.duration}</span>
@@ -105,14 +117,14 @@ export default function FamiliasPageClient({ lang, content }: FamiliasPageClient
       </section>
 
       {/* 4. Support Network Directory */}
-      <section className="py-16 px-4 bg-[#f7f5f0]">
+      <section className="py-16 px-4 bg-gray-50">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-[#fdf2f8] border border-accent/15 rounded-full px-4 py-1.5 mb-3 select-none">
+            <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">🤝</span>
               <span className="text-xs font-bold uppercase tracking-wider text-accent">{content.network_section.badge}</span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.network_section.title}</h2>
+            <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold tracking-tight mb-4">{content.network_section.title}</h2>
             {content.network_section.subtitle && <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">{content.network_section.subtitle}</p>}
           </div>
 
@@ -123,7 +135,7 @@ export default function FamiliasPageClient({ lang, content }: FamiliasPageClient
                   {item.icon}
                 </div>
                 <div>
-                  <h4 className="font-serif text-base sm:text-lg text-[#111827] font-bold mb-2">{item.title}</h4>
+                  <h4 className="text-base sm:text-lg text-gray-900 font-bold mb-2">{item.title}</h4>
                   <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
@@ -140,7 +152,7 @@ export default function FamiliasPageClient({ lang, content }: FamiliasPageClient
               <span className="text-sm">📄</span>
               <span className="text-xs font-bold uppercase tracking-wider text-secondary">{content.guides_section.badge}</span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.guides_section.title}</h2>
+            <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold tracking-tight mb-4">{content.guides_section.title}</h2>
             {content.guides_section.subtitle && <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">{content.guides_section.subtitle}</p>}
           </div>
 
@@ -156,7 +168,7 @@ export default function FamiliasPageClient({ lang, content }: FamiliasPageClient
                     </div>
                     <div className="p-6">
                       <span className="text-[9px] font-bold uppercase tracking-wide mb-1 block" style={{ color: style.hex }}>{g.program}</span>
-                      <h4 className="font-serif text-sm sm:text-base text-[#111827] font-bold mb-2 leading-snug">{g.title}</h4>
+                      <h4 className="text-sm sm:text-base text-gray-900 font-bold mb-2 leading-snug">{g.title}</h4>
                       <p className="text-xs text-gray-400 leading-relaxed mb-4 min-h-[48px]">{g.desc}</p>
                     </div>
                   </div>
@@ -184,14 +196,14 @@ export default function FamiliasPageClient({ lang, content }: FamiliasPageClient
       </section>
 
       {/* 6. FAQ Accordions List */}
-      <section id="faq" className="py-16 md:py-24 px-4 bg-[#f7f5f0] border-b border-gray-200/50">
+      <section id="faq" className="py-16 md:py-24 px-4 bg-gray-50 border-b border-gray-200/50">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">❓</span>
               <span className="text-xs font-bold uppercase tracking-wider text-primary-700">{content.faq_section.badge}</span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.faq_section.title}</h2>
+            <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold tracking-tight mb-4">{content.faq_section.title}</h2>
             {content.faq_section.subtitle && <p className="text-sm text-gray-500 max-w-md mx-auto leading-relaxed">{content.faq_section.subtitle}</p>}
           </div>
 
@@ -206,10 +218,10 @@ export default function FamiliasPageClient({ lang, content }: FamiliasPageClient
                 >
                   <div className="flex items-center justify-between p-5 select-none">
                     <div className="flex items-center gap-4">
-                      <div className={`w-9 h-9 rounded-xl flex items-center justify-center font-serif text-sm font-bold transition-all duration-300 ${isOpen ? 'bg-primary text-black' : 'bg-gray-100 text-gray-400'}`}>
+                      <div className={`w-9 h-9 rounded-xl flex items-center justify-center text-sm font-bold transition-all duration-300 ${isOpen ? 'bg-primary text-black' : 'bg-gray-100 text-gray-400'}`}>
                         {i + 1}
                       </div>
-                      <h4 className="text-xs sm:text-sm font-bold text-[#111827] leading-snug">{faq.q}</h4>
+                      <h4 className="text-xs sm:text-sm font-bold text-gray-900 leading-snug">{faq.q}</h4>
                     </div>
                     <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold transition-all duration-300 ${isOpen ? 'bg-primary/10 text-primary-700 rotate-180' : 'bg-gray-50 text-gray-400'}`}>▾</div>
                   </div>
@@ -226,21 +238,19 @@ export default function FamiliasPageClient({ lang, content }: FamiliasPageClient
       </section>
 
       {/* 7. Contact / Orientation CTA */}
-      <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-[#1a1a1a] via-[#6b234e] to-[#8c3cbd] relative overflow-hidden">
-        <div className="absolute inset-0 bg-radial-gradient(circle, rgba(232,168,56,0.06), transparent 70%) pointer-events-none" />
-        <div className="container mx-auto max-w-3xl relative z-10 text-center">
-          <span className="text-5xl block mb-5 animate-[float_4s_ease-in-out_infinite] select-none">💛</span>
-          <h2 className="font-serif text-3xl md:text-4xl text-white font-normal leading-tight mb-4">{content.cta.title}</h2>
-          <p className="text-sm md:text-base text-white/70 max-w-xl mx-auto leading-relaxed mb-6">{content.cta.text}</p>
-          <p className="text-xs sm:text-sm text-white/55 italic max-w-md mx-auto mb-10">{content.cta.note}</p>
-          <div className="flex justify-center">
+      <section className="py-16 bg-accent">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">{content.cta.title}</h2>
+          <p className="text-white/90 text-lg mb-2 max-w-xl mx-auto">{content.cta.text}</p>
+          <p className="text-sm text-white/70 max-w-md mx-auto mb-8">{content.cta.note}</p>
+          <div className="flex flex-wrap justify-center gap-4">
             <a
               href="https://wa.me/59170106276"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#22c55e] hover:bg-[#22c55e]/90 text-white font-extrabold text-sm sm:text-base px-8 py-3.5 sm:py-4 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[#22c55e]/20 min-h-[44px] flex items-center justify-center gap-2"
+              className="inline-flex items-center gap-2 bg-gray-900 text-white font-bold px-8 py-4 rounded-full hover:bg-gray-800 transition-colors min-h-[52px]"
             >
-              <span className="text-xl">💬</span>
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
               {es ? 'Escríbenos por WhatsApp — 70106276' : 'Message us on WhatsApp — 70106276'}
             </a>
           </div>

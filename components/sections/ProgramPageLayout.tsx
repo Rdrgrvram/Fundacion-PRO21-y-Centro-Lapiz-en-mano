@@ -5,6 +5,7 @@ import ProgramHero from './ProgramHero'
 import ProgramStatsRow from './ProgramStatsRow'
 import ProgramCardSection from './ProgramCardSection'
 import ProgramTabSection from './ProgramTabSection'
+import ProgramGallery from './ProgramGallery'
 import ProgramEnrollmentSteps from './ProgramEnrollmentSteps'
 import ProgramTestimonial from './ProgramTestimonial'
 import ProgramCTA from './ProgramCTA'
@@ -27,6 +28,7 @@ export default function ProgramPageLayout({ lang, program }: ProgramPageLayoutPr
       <ProgramCardSection id="section-1" section={program.section1} alt />
       <ProgramTabSection id="section-2" section={program.section2} />
       {program.section3 && <ProgramCardSection section={program.section3} alt compact />}
+      <ProgramGallery section={program.gallery} color={program.hero.color} />
       <ProgramEnrollmentSteps section={program.enrollment} />
       {testimonial && <ProgramTestimonial testimonial={testimonial} />}
       <ProgramCTA lang={lang} program={program} whatsappNumber={contact.whatsapp_number} phoneDisplay={contact.phone_display} />

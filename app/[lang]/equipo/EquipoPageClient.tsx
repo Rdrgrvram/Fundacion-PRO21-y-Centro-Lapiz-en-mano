@@ -139,7 +139,7 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
       </section>
 
       {/* 4. Areas Grid Filter & Staff Profile Cards List */}
-      <section className="py-16 md:py-24 px-4 bg-[#f9fafb] border-t border-b border-gray-200/50">
+      <section className="py-16 md:py-24 px-4 bg-gray-50 border-t border-b border-gray-200/50">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
@@ -167,7 +167,7 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
                   key={a.slug}
                   onClick={() => setSelectedArea(isSelected ? null : i)}
                   className={`bg-white rounded-2xl overflow-hidden border cursor-pointer shadow-sm transition-all duration-300 hover:shadow-md ${
-                    isSelected ? 'border-primary shadow-[#229cc2]/5 scale-[1.01]' : 'border-gray-200/80 hover:border-gray-300'
+                    isSelected ? 'border-primary shadow-secondary/5 scale-[1.01]' : 'border-gray-200/80 hover:border-gray-300'
                   }`}
                 >
                   <div className="h-1 w-full" style={{ backgroundColor: palette.hex }} />
@@ -297,9 +297,9 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
           </div>
 
           <div className="hidden md:block relative w-[480px] h-[480px] mx-auto select-none">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full bg-gradient-to-br from-primary to-[#ffc500] flex flex-col items-center justify-center text-center shadow-lg shadow-primary/20 z-20">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full bg-gradient-to-br from-primary to-primary flex flex-col items-center justify-center text-center shadow-lg shadow-primary/20 z-20">
               <span className="text-2xl mb-0.5 block">👧</span>
-              <span className="font-serif text-[10px] text-gray-900 font-bold leading-tight">
+              <span className="text-[10px] text-gray-900 font-bold leading-tight">
                 {es ? 'El Niño y' : 'The Child &'}<br />{es ? 'su Familia' : 'Family'}
               </span>
             </div>
@@ -332,7 +332,7 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
           <div className="block md:hidden max-w-sm mx-auto text-left select-none relative">
             <div className="absolute left-[26px] top-6 bottom-6 w-0.5 bg-dashed border-l border-primary/30" />
 
-            <div className="relative flex items-center gap-4 bg-gradient-to-r from-primary to-[#ffc500] p-4 rounded-2xl shadow-sm z-10 mb-8 max-w-[280px]">
+            <div className="relative flex items-center gap-4 bg-gradient-to-r from-primary to-primary p-4 rounded-2xl shadow-sm z-10 mb-8 max-w-[280px]">
               <div className="w-11 h-11 rounded-full bg-white flex items-center justify-center text-xl shadow-inner flex-shrink-0">
                 👧
               </div>

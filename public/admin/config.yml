@@ -123,6 +123,10 @@ collections:
               - { label: "Título — línea 2 (resaltada en amarillo)", name: title_line2, widget: string, i18n: true }
               - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
               - { label: "Texto del botón principal", name: cta_primary, widget: string, i18n: true }
+              - { label: "Foto del hero", name: image, widget: image, hint: "Foto real del centro — se muestra en una forma orgánica junto al título" }
+              - { label: "Cita de familia (sobre la foto)", name: quote, widget: text, i18n: true }
+              - { label: "Autor de la cita", name: quote_author, widget: string, i18n: true }
+              - { label: "Programa de la cita", name: quote_program, widget: string, i18n: true }
           - label: "Cifras rápidas"
             name: stats
             widget: list
@@ -220,6 +224,7 @@ collections:
                 fields:
                   - { label: Lema, name: tagline, widget: string, i18n: true }
                   - { label: Descripción, name: description, widget: text, i18n: true }
+              - { label: "Foto de la sección", name: image, widget: image, required: false, hint: "Foto real — se muestra en forma orgánica sobre las dos instituciones" }
           - label: "Sección: Misión/Visión/Objetivo"
             name: mission_section
             widget: object
@@ -304,6 +309,10 @@ collections:
           - { label: "Etiqueta (badge)", name: badge, widget: string, i18n: true }
           - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
           - { label: "Color de fondo", name: color, widget: select, options: [primary, secondary, accent] }
+          - { label: "Foto del hero", name: image, widget: image, required: false, hint: "Foto real — se muestra en forma orgánica junto al título" }
+          - { label: "Cita de familia (sobre la foto)", name: quote, widget: text, i18n: true, required: false }
+          - { label: "Autor de la cita", name: quote_author, widget: string, i18n: true, required: false }
+          - { label: "Contexto de la cita", name: quote_context, widget: string, i18n: true, required: false }
       - label: "Cifras rápidas"
         name: stats
         widget: list
@@ -370,6 +379,19 @@ collections:
               - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
               - { label: Título, name: title, widget: string, i18n: true }
               - { label: Descripción, name: desc, widget: text, i18n: true, required: false }
+      - label: "Sección: Galería de fotos"
+        name: gallery
+        widget: object
+        required: false
+        fields:
+          - { label: "Etiqueta (opcional)", name: badge, widget: string, i18n: true, required: false }
+          - { label: "Título de sección", name: title, widget: string, i18n: true }
+          - label: Fotos
+            name: photos
+            widget: list
+            fields:
+              - { label: Foto, name: image, widget: image }
+              - { label: "Texto alternativo (accesibilidad)", name: alt, widget: string, i18n: true }
       - label: "Sección: Cómo ingresar / Pasos de intervención"
         name: enrollment
         widget: object
@@ -499,6 +521,15 @@ collections:
               - { label: "Título — línea 1", name: title_line1, widget: string, i18n: true }
               - { label: "Título — línea 2 (resaltada)", name: title_line2, widget: string, i18n: true }
               - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
+          - label: "Historia destacada (cita sobre foto)"
+            name: featured_story
+            widget: object
+            required: false
+            fields:
+              - { label: Foto, name: image, widget: image }
+              - { label: Cita, name: quote, widget: text, i18n: true }
+              - { label: Autor, name: author, widget: string, i18n: true }
+              - { label: Contexto (programa), name: context, widget: string, i18n: true }
           - label: "Sección: Cifras"
             name: stats_section
             widget: object
@@ -576,6 +607,7 @@ collections:
             fields:
               - { label: Foto, name: image, widget: image }
               - { label: "Texto alternativo (accesibilidad)", name: alt, widget: string, i18n: true }
+              - { label: Categoría, name: category, widget: string, required: false, hint: "Debe coincidir exactamente con una de las Categorías de la galería de arriba (ej. Mi Escuelita), para que el filtro funcione" }
           - { label: "Nota de la galería", name: gallery_note, widget: text, i18n: true }
           - label: "CTA final"
             name: cta
@@ -674,6 +706,7 @@ collections:
             fields:
               - { label: Cita, name: quote, widget: text, i18n: true }
               - { label: "Rol / nombre", name: role, widget: string, i18n: true }
+              - { label: "Foto (se muestra en forma orgánica)", name: image, widget: image, required: false }
           - label: "Sección: Alianzas"
             name: alliances_section
             widget: object
@@ -734,6 +767,9 @@ collections:
               - { label: Título, name: title, widget: string, i18n: true }
               - { label: Texto, name: text, widget: text, i18n: true }
               - { label: Firma, name: signature, widget: string, i18n: true }
+              - { label: "Foto junto a la carta", name: image, widget: image, required: false }
+              - { label: "Cita de familia (sobre la foto)", name: quote, widget: text, i18n: true, required: false }
+              - { label: "Autor de la cita", name: quote_author, widget: string, i18n: true, required: false }
           - label: "Sección: Sesiones virtuales"
             name: sessions_section
             widget: object

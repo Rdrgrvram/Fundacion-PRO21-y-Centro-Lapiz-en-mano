@@ -28,14 +28,14 @@ export default async function BlogPostPage({ params: { lang, slug } }: Props) {
   if (!post) notFound()
 
   return (
-    <div className="overflow-x-hidden w-full bg-[#fafbfd] py-12 px-4 sm:py-16 md:py-20">
+    <div className="overflow-x-hidden w-full bg-gray-50 py-12 px-4 sm:py-16 md:py-20">
       <article className="container mx-auto max-w-2xl bg-white rounded-3xl border border-gray-200 p-6 sm:p-10 md:p-12 shadow-sm text-left">
         
         {/* Encabezado del artículo */}
         <div className="border-b border-gray-100 pb-6 mb-8 select-none">
           <Link
             href={`/${lang}/blog`}
-            className="text-xs font-bold text-[#2466a8] hover:underline flex items-center gap-1 mb-6 min-h-[44px] min-w-[44px]"
+            className="text-xs font-bold text-secondary-700 hover:underline flex items-center gap-1 mb-6 min-h-[44px] min-w-[44px]"
           >
             <span>←</span>
             <span>{es ? 'Volver al Blog' : 'Back to Blog'}</span>
@@ -45,7 +45,7 @@ export default async function BlogPostPage({ params: { lang, slug } }: Props) {
             ⏱ {post.date}
           </time>
           
-          <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#0c2340] font-bold leading-tight mb-4">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl text-gray-900 font-extrabold leading-tight mb-4">
             {post.title}
           </h1>
 
@@ -55,15 +55,15 @@ export default async function BlogPostPage({ params: { lang, slug } }: Props) {
         </div>
 
         {/* Imagen del post si existiese, sino banner elegante de la fundación */}
-        <div className="h-48 sm:h-64 rounded-2xl bg-gradient-to-br from-[#e8f1fa] to-[#fafbfd] border border-gray-150 flex items-center justify-center text-5xl mb-8 select-none shadow-sm">
+        <div className="h-48 sm:h-64 rounded-2xl bg-gradient-to-br from-secondary-50 to-gray-50 border border-gray-150 flex items-center justify-center text-5xl mb-8 select-none shadow-sm">
           <span>📰</span>
         </div>
 
         {/* Contenido principal en HTML renderizado */}
         <div 
           className="text-gray-700 text-xs sm:text-sm md:text-base leading-relaxed space-y-4 prose prose-indigo max-w-none 
-          prose-headings:font-serif prose-headings:text-[#0c2340] prose-headings:font-bold
-          prose-p:mb-4 prose-p:leading-relaxed prose-strong:text-[#0c2340] prose-strong:font-bold"
+          prose-headings:text-gray-900 prose-headings:font-extrabold
+          prose-p:mb-4 prose-p:leading-relaxed prose-strong:text-gray-900 prose-strong:font-bold"
           dangerouslySetInnerHTML={{ __html: post.contentHtml }}
         />
 
@@ -82,7 +82,7 @@ export default async function BlogPostPage({ params: { lang, slug } }: Props) {
             href="https://wa.me/59170106276"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-bold text-[#25d366] hover:underline flex items-center gap-1 min-h-[44px]"
+            className="text-xs font-bold text-green-500 hover:underline flex items-center gap-1 min-h-[44px]"
           >
             <span>💬</span>
             <span>{es ? 'Compartir comentarios por WhatsApp' : 'Share comments on WhatsApp'}</span>

@@ -8,6 +8,7 @@ import type { SiteSettingsContent } from '@/lib/cms-schemas'
 import Nav from './Nav'
 import LanguageSwitcher from './LanguageSwitcher'
 import AccessibilityBar from './AccessibilityBar'
+import Button from '@/components/ui/Button'
 
 interface HeaderProps {
   lang: Locale
@@ -16,6 +17,7 @@ interface HeaderProps {
 
 export default function Header({ lang, settings }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
   const es = lang === 'es'
 
@@ -23,6 +25,16 @@ export default function Header({ lang, settings }: HeaderProps) {
   useEffect(() => {
     setIsOpen(false)
   }, [pathname])
+
+  // Colapsar la barra de accesibilidad al hacer scroll — sus controles (tamaño
+  // de texto, contraste) se ajustan una vez y quedan guardados en localStorage,
+  // así que no necesitan ocupar espacio de forma permanente en cada scroll.
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 24)
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   // Deshabilitar scroll en el cuerpo cuando el menú móvil está abierto
   useEffect(() => {
@@ -38,8 +50,10 @@ export default function Header({ lang, settings }: HeaderProps) {
 
   return (
     <div className="sticky top-0 z-50 w-full flex flex-col">
-      {/* Barra de accesibilidad global */}
-      <AccessibilityBar lang={lang} />
+      {/* Barra de accesibilidad global — se colapsa al hacer scroll */}
+      <div className={`overflow-hidden transition-[max-height] duration-300 ease-in-out ${scrolled ? 'max-h-0' : 'max-h-16'}`}>
+        <AccessibilityBar lang={lang} />
+      </div>
 
       {/* Header principal */}
       <header className="w-full bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
@@ -70,18 +84,15 @@ export default function Header({ lang, settings }: HeaderProps) {
           <Nav lang={lang} items={settings.nav} />
 
           {/* Acciones del Header (Idioma + Colaborar en Escritorio) */}
-          <div className="hidden xl:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
             <LanguageSwitcher lang={lang} />
-            <Link
-              href={`/${lang}/colabora`}
-              className="bg-primary text-black hover:bg-primary/90 font-bold text-sm px-5 py-2.5 rounded-full transition-all hover:scale-[1.02] shadow-md shadow-primary/10 min-h-[44px] flex items-center justify-center"
-            >
+            <Button href={`/${lang}/colabora`} variant="primary" className="rounded-full">
               {settings.header.cta_label}
-            </Link>
+            </Button>
           </div>
 
           {/* Controles para Móvil/Tablet */}
-          <div className="flex xl:hidden items-center gap-2">
+          <div className="flex lg:hidden items-center gap-2">
             <LanguageSwitcher lang={lang} />
             
             {/* Botón Hamburguesa */}
@@ -104,7 +115,7 @@ export default function Header({ lang, settings }: HeaderProps) {
 
       {/* Cajón de Navegación Móvil (Drawer) */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 xl:hidden">
+        <div className="fixed inset-0 z-50 lg:hidden">
           {/* Overlay de fondo */}
           <div 
             className="fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300"
@@ -153,13 +164,9 @@ export default function Header({ lang, settings }: HeaderProps) {
 
             {/* Footer del cajón móvil */}
             <div className="mt-8 pt-6 border-t border-gray-100 flex flex-col gap-3">
-              <Link
-                href={`/${lang}/colabora`}
-                onClick={() => setIsOpen(false)}
-                className="bg-primary text-black hover:bg-primary/90 font-extrabold text-sm py-3 px-4 rounded-xl text-center shadow-lg shadow-primary/10 transition-all active:scale-[0.98] min-h-[44px] flex items-center justify-center"
-              >
+              <Button href={`/${lang}/colabora`} variant="primary" size="lg" className="w-full rounded-xl">
                 {settings.header.cta_label}
-              </Link>
+              </Button>
               <div className="text-[10px] text-gray-400 text-center font-medium">
                 {settings.header.tagline}
               </div>

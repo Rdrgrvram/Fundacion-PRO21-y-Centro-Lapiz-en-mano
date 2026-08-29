@@ -1,9 +1,13 @@
 es:
   hero:
-    title_line1: Cada niño tiene
-    title_line2: un potencial único
-    subtitle: Fundación PRO-21 y Centro Lápiz en Mano brindamos atención terapéutica y educativa especializada a niños con síndrome de Down, dificultades preescolares y dificultades de aprendizaje.
+    title_line1: Terapia y escuela especializada
+    title_line2: para tu hijo
+    subtitle: Síndrome de Down, autismo y dificultades de aprendizaje. Hacemos una primera evaluación sin costo y te orientamos al programa adecuado.
     cta_primary: Ver programas
+    image: /images/actividades-reales/retrato-sonrisa.jpg
+    quote: En Lápiz en Mano encontramos no solo terapia, sino una familia que nos enseñó a ver las capacidades antes que las limitaciones.
+    quote_author: Familia Quispe
+    quote_program: Mi Escuelita Down
   stats:
     - icon: 👶
       value: 70+
@@ -70,10 +74,14 @@ es:
     text: Contáctanos hoy. Realizamos una primera evaluación sin costo y te orientamos hacia el programa más adecuado.
 en:
   hero:
-    title_line1: Every child has
-    title_line2: a unique potential
-    subtitle: PRO-21 Foundation and Lápiz en Mano Center provide specialized therapeutic and educational care for children with Down syndrome, preschool needs, and learning difficulties.
+    title_line1: Specialized therapy and school
+    title_line2: for your child
+    subtitle: Down syndrome, autism, and learning difficulties. We run a free first evaluation and guide you to the right program.
     cta_primary: See programs
+    image: /images/actividades-reales/retrato-sonrisa.jpg
+    quote: At Lápiz en Mano, we found not only therapy but a family that taught us to see abilities before limitations.
+    quote_author: Familia Quispe
+    quote_program: Mi Escuelita Down
   stats:
     - icon: 👶
       value: 70+

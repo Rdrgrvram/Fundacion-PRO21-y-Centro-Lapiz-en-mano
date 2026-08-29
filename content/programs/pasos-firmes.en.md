@@ -4,6 +4,10 @@ hero:
   badge: Psychopedagogical support
   subtitle: 'Specialized psychopedagogical intervention for children and adolescents with learning difficulties: dyslexia, dysgraphia, dyscalculia, ADHD, and low school performance.'
   color: accent
+  image: /images/actividades-reales/escritura-numeros-pizarra.jpg
+  quote: Pasos Firmes changed my daughter's relationship with school. She went from crying every morning to wanting to go.
+  quote_author: Familia Torrez
+  quote_context: Pasos Firmes
 stats:
   - icon: 📖
     value: '6'
@@ -94,6 +98,22 @@ section_2:
         - Personalized follow-up
         - Higher session frequency
         - Direct family communication
+gallery:
+  badge: A look inside our interventions
+  title: See the program in action
+  photos:
+    - image: /images/actividades-reales/juego-mesa-cartas.jpg
+      alt: Students playing a card game in a group activity
+    - image: /images/actividades-reales/rompecabezas-geometrico.jpg
+      alt: Student solving a geometric shapes puzzle
+    - image: /images/actividades-reales/manualidad-esqueleto-memoria.jpg
+      alt: Student doing a memory and fine-motor-skills craft
+    - image: /images/actividades-reales/grupo-mesa-actividad.jpg
+      alt: Group of students working together at a table activity
+    - image: /images/actividades-reales/escritura-numeros-pizarra.jpg
+      alt: Student practicing writing numbers on a whiteboard
+    - image: /images/actividades-reales/escritura-pizarra-circulos.jpg
+      alt: Student practicing handwriting strokes on a whiteboard
 enrollment:
   badge: Our process
   title: 6 Intervention Steps
