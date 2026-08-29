@@ -306,9 +306,16 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
                   <div className="p-6 md:p-8 flex flex-col justify-between min-h-[140px]">
                     <div className="flex justify-between items-center mb-4 select-none">
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl flex items-center justify-center text-white" style={{ backgroundColor: hex }}>
-                          <Icon name={/tele|tv/i.test(m.type) ? 'tv' : /prensa|press/i.test(m.type) ? 'newspaper' : 'globe'} className="h-4 w-4" />
-                        </div>
+                        {m.logo ? (
+                          <div className="w-9 h-9 rounded-xl bg-white border border-gray-200 flex items-center justify-center p-1">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src={m.logo} alt={m.outlet} className="max-h-full max-w-full object-contain" />
+                          </div>
+                        ) : (
+                          <div className="w-9 h-9 rounded-xl flex items-center justify-center text-white" style={{ backgroundColor: hex }}>
+                            <Icon name={/tele|tv/i.test(m.type) ? 'tv' : /prensa|press/i.test(m.type) ? 'newspaper' : 'globe'} className="h-4 w-4" />
+                          </div>
+                        )}
                         <div>
                           <h4 className="text-xs sm:text-sm font-bold text-gray-900 leading-none">{m.outlet}</h4>
                           <span className="text-[9px] text-gray-400 font-semibold mt-1 block">{m.type}</span>

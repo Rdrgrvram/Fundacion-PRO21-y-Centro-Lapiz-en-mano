@@ -594,6 +594,7 @@ collections:
               - { label: Descripción, name: desc, widget: text, i18n: true }
               - { label: Año, name: year, widget: string }
               - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
+              - { label: "Logo del medio (opcional)", name: logo, widget: image, required: false, hint: "SVG o PNG con fondo transparente. Si se deja vacío se muestra un ícono según el tipo." }
           - label: "Sección: Galería"
             name: gallery_section
             widget: object
@@ -732,7 +733,7 @@ collections:
             fields:
               - { label: Nombre, name: name, widget: string, i18n: duplicate }
               - { label: Tipo, name: type, widget: string, i18n: true }
-              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: "Logo (opcional)", name: logo, widget: image, required: false, hint: "SVG o PNG con fondo transparente. Si se deja vacío se muestran las iniciales." }
           - label: "CTA final"
             name: cta
             widget: object
