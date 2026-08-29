@@ -5,6 +5,7 @@ import Image from 'next/image'
 import type { Locale } from '@/lib/i18n'
 import type { TeamArea, TeamMember, Volunteer } from '@/lib/content'
 import { PALETTE } from '@/lib/palette'
+import Icon from '@/components/ui/Icon'
 
 interface EquipoPageClientProps {
   lang: Locale
@@ -18,10 +19,10 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
   const [selectedArea, setSelectedArea] = useState<number | null>(null)
 
   const stats = [
-    { n: `${team.length}+`, l: es ? 'Profesionales' : 'Staff members', icon: '👩‍⚕️' },
-    { n: String(areas.length), l: es ? 'Áreas de especialidad' : 'Specialized areas', icon: '🏥' },
-    { n: '3', l: es ? 'Programas activos' : 'Active programs', icon: '📋' },
-    { n: '100%', l: es ? 'Dedicación integral' : 'Dedicated care', icon: '💛' },
+    { n: `${team.length}+`, l: es ? 'Profesionales' : 'Staff members', icon: 'activity' },
+    { n: String(areas.length), l: es ? 'Áreas de especialidad' : 'Specialized areas', icon: 'puzzle' },
+    { n: '3', l: es ? 'Programas activos' : 'Active programs', icon: 'clipboard' },
+    { n: '100%', l: es ? 'Dedicación integral' : 'Dedicated care', icon: 'heart' },
   ]
 
   const selectedData = selectedArea !== null ? areas[selectedArea] : null
@@ -54,12 +55,12 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
             {es ? (
               <>
                 Profesionales con <br />
-                <span className="font-bold italic text-primary">vocación y amor</span>
+                <span className="italic font-normal">vocación y amor</span>
               </>
             ) : (
               <>
                 Professionals with <br />
-                <span className="font-bold italic text-primary">vocation and love</span>
+                <span className="italic font-normal">vocation and love</span>
               </>
             )}
           </h1>
@@ -87,7 +88,7 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
                 key={i}
                 className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col items-center text-center transition-all duration-300 hover:shadow-md select-none"
               >
-                <div className="text-3xl mb-2">{s.icon}</div>
+                <Icon name={s.icon} className="mx-auto mb-2 h-6 w-6 text-secondary" />
                 <div className="text-2xl sm:text-3xl font-bold text-gray-900 leading-none">{s.n}</div>
                 <div className="text-xs text-gray-400 font-semibold mt-2">{s.l}</div>
               </div>
@@ -101,7 +102,7 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">🩺</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-primary-700" />
               <span className="text-xs font-bold uppercase tracking-wider text-primary-700">
                 {es ? 'Filosofía de trabajo' : 'Work philosophy'}
               </span>
@@ -118,17 +119,17 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
             {[
-              { icon: '🔄', title: es ? 'Trabajo coordinado' : 'Coordinated work', desc: es ? 'Todas las áreas comparten información y diseñan planes conjuntos, evitando intervenciones aisladas.' : 'All areas share information and design joint plans, avoiding isolated interventions.' },
-              { icon: '👁️', title: es ? 'Mirada integral' : 'Integral view', desc: es ? 'No tratamos síntomas: acompañamos a una persona completa en sus dimensiones física, cognitiva, emocional y social.' : 'We do not treat symptoms: we support a whole person in their physical, cognitive, emotional, and social dimensions.' },
-              { icon: '👨‍👩‍👧', title: es ? 'Familia como aliada' : 'Family as ally', desc: es ? 'Los padres y madres no son espectadores: son parte activa de la terapia, con orientación continua.' : 'Parents are not spectators: they are active participants in therapy, with continuous guidance.' },
-              { icon: '📊', title: es ? 'Evaluación continua' : 'Continuous evaluation', desc: es ? 'Cada plan de intervención se revisa periódicamente según los avances y necesidades individuales.' : 'Each intervention plan is periodically reviewed based on individual progress and needs.' },
+              { icon: 'refresh', title: es ? 'Trabajo coordinado' : 'Coordinated work', desc: es ? 'Todas las áreas comparten información y diseñan planes conjuntos, evitando intervenciones aisladas.' : 'All areas share information and design joint plans, avoiding isolated interventions.' },
+              { icon: 'eye', title: es ? 'Mirada integral' : 'Integral view', desc: es ? 'No tratamos síntomas: acompañamos a una persona completa en sus dimensiones física, cognitiva, emocional y social.' : 'We do not treat symptoms: we support a whole person in their physical, cognitive, emotional, and social dimensions.' },
+              { icon: 'users', title: es ? 'Familia como aliada' : 'Family as ally', desc: es ? 'Los padres y madres no son espectadores: son parte activa de la terapia, con orientación continua.' : 'Parents are not spectators: they are active participants in therapy, with continuous guidance.' },
+              { icon: 'chart', title: es ? 'Evaluación continua' : 'Continuous evaluation', desc: es ? 'Cada plan de intervención se revisa periódicamente según los avances y necesidades individuales.' : 'Each intervention plan is periodically reviewed based on individual progress and needs.' },
             ].map((p, i) => (
               <div
                 key={i}
                 className="bg-gray-50 border border-gray-200 rounded-3xl p-6 flex flex-col justify-between hover:shadow-sm hover:border-gray-300 transition-all duration-300 h-full"
               >
                 <div>
-                  <div className="text-3xl mb-4 select-none">{p.icon}</div>
+                  <Icon name={p.icon} className="mb-4 h-7 w-7 text-secondary" />
                   <h4 className="text-base text-gray-900 font-bold mb-2">{p.title}</h4>
                   <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">{p.desc}</p>
                 </div>
@@ -143,7 +144,7 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">🏥</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
               <span className="text-xs font-bold uppercase tracking-wider text-secondary">
                 {es ? 'Áreas de especialidad' : 'Specialized Areas'}
               </span>
@@ -195,10 +196,10 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
           {selectedData && (
             <div className="max-w-5xl mx-auto mb-10 text-left bg-white rounded-3xl border border-gray-200/80 p-6 md:p-8 shadow-sm flex flex-col md:flex-row gap-6 items-start md:items-center animate-fadeIn">
               <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl text-white shadow-md flex-shrink-0 select-none"
+                className="w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-md flex-shrink-0 select-none"
                 style={{ backgroundColor: PALETTE[selectedData.color].hex }}
               >
-                {selectedData.icon}
+                <Icon emoji={selectedData.icon} className="h-6 w-6" />
               </div>
               <div className="flex-1">
                 <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-1">
@@ -281,7 +282,7 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12 max-w-xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">🔗</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
               <span className="text-xs font-bold uppercase tracking-wider text-secondary">
                 {es ? 'Trabajo en red' : 'Network work'}
               </span>
@@ -298,7 +299,7 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
 
           <div className="hidden md:block relative w-[480px] h-[480px] mx-auto select-none">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full bg-gradient-to-br from-primary to-primary flex flex-col items-center justify-center text-center shadow-lg shadow-primary/20 z-20">
-              <span className="text-2xl mb-0.5 block">👧</span>
+              <Icon name="smile" className="mb-1 h-6 w-6 text-gray-900" />
               <span className="text-[10px] text-gray-900 font-bold leading-tight">
                 {es ? 'El Niño y' : 'The Child &'}<br />{es ? 'su Familia' : 'Family'}
               </span>
@@ -320,7 +321,7 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
                   className="absolute w-16 h-16 rounded-2xl bg-white border border-gray-200 shadow-sm flex flex-col items-center justify-center hover:scale-110 hover:border-primary hover:shadow-md transition-all duration-300 z-10"
                   title={a.name}
                 >
-                  <span className="text-xl block">{a.icon}</span>
+                  <Icon emoji={a.icon} className="h-5 w-5 text-secondary" />
                   <span className="text-[8px] font-extrabold text-gray-400 mt-1 max-w-[50px] overflow-hidden text-ellipsis whitespace-nowrap">
                     {a.name.split(' ')[0]}
                   </span>
@@ -333,8 +334,8 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
             <div className="absolute left-[26px] top-6 bottom-6 w-0.5 bg-dashed border-l border-primary/30" />
 
             <div className="relative flex items-center gap-4 bg-gradient-to-r from-primary to-primary p-4 rounded-2xl shadow-sm z-10 mb-8 max-w-[280px]">
-              <div className="w-11 h-11 rounded-full bg-white flex items-center justify-center text-xl shadow-inner flex-shrink-0">
-                👧
+              <div className="w-11 h-11 rounded-full bg-white flex items-center justify-center shadow-inner flex-shrink-0 text-gray-900">
+                <Icon name="smile" className="h-5 w-5" />
               </div>
               <div>
                 <h4 className="text-sm text-gray-900 font-bold leading-tight">{es ? 'El Niño y su Familia' : 'The Child and Family'}</h4>
@@ -365,7 +366,7 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
         <div className="container mx-auto max-w-4xl text-center">
           <div className="text-center mb-10 max-w-md mx-auto">
             <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">🤝</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               <span className="text-xs font-bold uppercase tracking-wider text-accent">
                 {es ? 'Voluntariado' : 'Volunteering'}
               </span>
@@ -386,7 +387,7 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
                 key={v.slug}
                 className="bg-white border border-gray-200 rounded-full py-2.5 px-6 shadow-sm flex items-center gap-2.5 hover:border-primary hover:shadow-md transition-all duration-300"
               >
-                <span className="text-gray-400 select-none">👤</span>
+                <Icon name="users" className="h-4 w-4 text-gray-400" />
                 <span className="text-xs sm:text-sm font-bold text-gray-700">{v.name}</span>
                 <span className="text-[10px] text-accent font-bold px-2 py-0.5 bg-accent/10 rounded-full select-none">
                   {es ? 'Voluntaria' : 'Volunteer'}
@@ -398,14 +399,9 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
       </section>
 
       {/* 7. Join Team CTA */}
-      <section className="py-16 md:py-24 px-4 bg-accent relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/3" />
-          <div className="absolute bottom-1/4 -left-16 w-64 h-64 bg-white/10 rounded-full" />
-        </div>
-
-        <div className="container mx-auto max-w-3xl relative z-10 text-center">
-          <span className="text-5xl block mb-5 select-none">🩺</span>
+      {/* CTA final — plano, sin círculos ni emoji glifo (ver DESIGN_STANDARD.md) */}
+      <section className="py-16 md:py-24 px-4 bg-accent">
+        <div className="container mx-auto max-w-3xl text-center">
           <h2 className="text-3xl md:text-4xl text-white font-extrabold leading-tight mb-4">
             {es ? '¿Quieres unirte a nuestro equipo?' : 'Want to join our team?'}
           </h2>

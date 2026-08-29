@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { getAllPosts } from '@/lib/content'
 import type { Locale } from '@/lib/i18n'
 import type { Metadata } from 'next'
+import Icon from '@/components/ui/Icon'
 
 interface Props {
   params: { lang: Locale }
@@ -78,7 +79,7 @@ export default async function Page({ params: { lang } }: Props) {
           
           {posts.length === 0 ? (
             <div className="text-center py-20 bg-white rounded-3xl border border-gray-200 max-w-md mx-auto shadow-sm select-none">
-              <span className="text-4xl block mb-3">📭</span>
+              <Icon name="newspaper" className="mx-auto mb-3 h-10 w-10 text-gray-300" />
               <h3 className="text-lg text-gray-700 font-bold mb-1">
                 {es ? 'No hay artículos publicados' : 'No posts published yet'}
               </h3>
@@ -95,8 +96,8 @@ export default async function Page({ params: { lang } }: Props) {
                 >
                   <div>
                     {/* Cabecera visual simulada/placeholder */}
-                    <div className="h-44 bg-gradient-to-br from-secondary-50 to-gray-50 flex items-center justify-center text-4xl relative overflow-hidden select-none border-b border-gray-100">
-                      <span className="animate-pulse">📰</span>
+                    <div className="h-44 bg-gradient-to-br from-secondary-50 to-gray-50 flex items-center justify-center relative overflow-hidden select-none border-b border-gray-100">
+                      <Icon name="newspaper" className="h-10 w-10 text-secondary/40" />
                       <span className="absolute bottom-3 right-3 text-[9px] font-bold text-gray-400 bg-white px-2 py-0.5 rounded-full shadow-sm">
                         {post.date}
                       </span>
