@@ -4,7 +4,7 @@ hero:
   badge: Psychopedagogical support
   subtitle: 'Specialized psychopedagogical intervention for children and adolescents with learning difficulties: dyslexia, dysgraphia, dyscalculia, ADHD, and low school performance.'
   color: accent
-  image: /images/actividades-reales/escritura-numeros-pizarra.jpg
+  image: /images/actividades-reales/escritura-pizarra-circulos.jpg
   quote: Pasos Firmes changed my daughter's relationship with school. She went from crying every morning to wanting to go.
   quote_author: Familia Torrez
   quote_context: Pasos Firmes

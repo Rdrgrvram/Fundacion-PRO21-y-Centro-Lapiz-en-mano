@@ -204,7 +204,15 @@ export default function Page({ params }: { params: { lang: Locale } }) {
       {/* ── Misión (snippet) ─────────────────────────────────────────────── */}
       <section className="py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            {content.mission.image && (
+              <ProtagonistPhoto
+                src={content.mission.image}
+                alt={es ? 'Actividad en el Centro Lápiz en Mano' : 'Activity at Lápiz en Mano Center'}
+                blobs={['primary', 'secondary']}
+              />
+            )}
+
             <div>
               <span className="text-xs font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-4 py-1.5 rounded-full">
                 {content.mission.badge}
@@ -222,16 +230,16 @@ export default function Page({ params }: { params: { lang: Locale } }) {
                 {content.mission.link_text}
                 <span>→</span>
               </Link>
-            </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              {content.values.map((v, i) => (
-                <div key={i} className="bg-gray-50 rounded-xl p-4 border border-gray-100">
-                  <span className="text-2xl mb-2 block">{v.icon}</span>
-                  <h4 className="font-bold text-gray-900 text-sm mb-1">{v.title}</h4>
-                  <p className="text-xs text-gray-500 leading-relaxed">{v.desc}</p>
-                </div>
-              ))}
+              <div className="mt-8 grid grid-cols-2 gap-4">
+                {content.values.map((v, i) => (
+                  <div key={i} className="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                    <span className="text-2xl mb-2 block">{v.icon}</span>
+                    <h4 className="font-bold text-gray-900 text-sm mb-1">{v.title}</h4>
+                    <p className="text-xs text-gray-500 leading-relaxed">{v.desc}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

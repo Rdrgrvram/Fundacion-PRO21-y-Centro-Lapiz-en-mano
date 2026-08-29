@@ -43,6 +43,7 @@ export const homeSchema = z.object({
     title: z.string(),
     text: z.string(),
     link_text: z.string(),
+    image: z.string().optional(),
   }),
   values: z.array(
     z.object({

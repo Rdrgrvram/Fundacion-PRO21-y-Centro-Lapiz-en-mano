@@ -4,7 +4,7 @@ hero:
   badge: Specialized Program
   subtitle: Comprehensive therapeutic and educational intervention for children with Down syndrome, from early stimulation to full school inclusion.
   color: primary
-  image: /images/actividades-reales/terapia-individual-tarjetas.jpg
+  image: /images/actividades-reales/bandeja-arena-sensorial.jpg
   quote: At Lápiz en Mano, we found not only therapy but a family that taught us to see abilities before limitations.
   quote_author: Familia Quispe
   quote_context: Mi Escuelita Down

@@ -164,6 +164,7 @@ collections:
               - { label: Título, name: title, widget: string, i18n: true }
               - { label: Texto, name: text, widget: text, i18n: true }
               - { label: "Texto del enlace", name: link_text, widget: string, i18n: true }
+              - { label: "Foto de la sección", name: image, widget: image, required: false, hint: "Foto real — se muestra en forma orgánica junto a la misión" }
           - label: "Valores destacados"
             name: values
             widget: list

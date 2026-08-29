@@ -4,7 +4,7 @@ hero:
   badge: Apoyo psicopedagógico
   subtitle: 'Intervención psicopedagógica especializada para niños y adolescentes con dificultades de aprendizaje: dislexia, disgrafía, discalculia, TDAH y bajo rendimiento escolar.'
   color: accent
-  image: /images/actividades-reales/escritura-numeros-pizarra.jpg
+  image: /images/actividades-reales/escritura-pizarra-circulos.jpg
   quote: Pasos Firmes cambió la relación de mi hija con la escuela. Pasó de llorar cada mañana a querer ir.
   quote_author: Familia Torrez
   quote_context: Pasos Firmes
