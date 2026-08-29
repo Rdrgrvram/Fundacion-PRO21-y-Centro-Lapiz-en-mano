@@ -111,6 +111,7 @@ export default function Page({ params }: { params: { lang: Locale } }) {
               quote={content.hero.quote}
               author={content.hero.quote_author}
               context={content.hero.quote_program}
+              quoteTone="light"
               priority
               className="mt-12 lg:mt-0"
             />

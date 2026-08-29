@@ -29,7 +29,7 @@
 
 - **Importante — el contenedor NO lleva `max-w`.** Solo el `<p>` de subtítulo se restringe con `max-w-2xl`. Agregar `max-w-3xl` (o cualquier otro) al contenedor entero rompe la alineación horizontal frente a otras páginas (bug real detectado y corregido en Familias/Blog/Contacto/Impacto — el contenido arrancaba más a la derecha y más angosto que en Quiénes Somos).
   - Excepción legítima 1: **Colabora**, cuyo hero tiene un grid de 2 columnas con tarjetas de estadísticas y sí necesita `max-w-6xl` por la densidad de ese contenido — no replicar esa excepción en heroes de texto simple.
-  - Excepción legítima 2: **Inicio**, cuyo hero usa `grid lg:grid-cols-2` — columna de texto (badge + H1 + subtítulo + CTAs) a la izquierda, columna de foto a la derecha. La foto real vive en una **forma orgánica** (`rounded-[46%_54%_57%_43%_/_52%_46%_54%_48%]`) con dos **blobs de color de marca** detrás (`bg-secondary/40`, `bg-accent/40`, cada uno con su propio border-radius orgánico) y una **cita real de familia** superpuesta sobre un degradado `from-gray-900` para contraste AA. Foto y cita se editan desde el CMS (`hero.image`, `hero.quote`, `hero.quote_author`, `hero.quote_program` en `content/settings/home.yml`). El H1 de Inicio baja a `lg:text-5xl xl:text-6xl` (no `xl:text-7xl`) porque ahora vive en media columna.
+  - Excepción legítima 2: **Inicio**, cuyo hero usa `grid lg:grid-cols-2` — columna de texto (badge + H1 + subtítulo + CTAs) a la izquierda, columna de foto a la derecha. La foto real vive en una **forma orgánica** (`rounded-[46%_54%_57%_43%_/_52%_46%_54%_48%]`) con dos **blobs de color de marca** detrás (`bg-secondary/40`, `bg-accent/40`, cada uno con su propio border-radius orgánico) y una **cita real de familia** como pie de foto debajo de la forma (nunca superpuesta). Foto y cita se editan desde el CMS (`hero.image`, `hero.quote`, `hero.quote_author`, `hero.quote_program` en `content/settings/home.yml`). El H1 de Inicio baja a `lg:text-5xl xl:text-6xl` (no `xl:text-7xl`) porque ahora vive en media columna.
     - Regla de las formas orgánicas: solo para la **foto protagonista** de una sección (hero de Inicio). El resto de fotos del sitio siguen en rectángulos redondeados (`rounded-2xl`). No convertir todas las fotos en blobs.
     - El titular de Inicio es **directo y específico** ("Terapia y escuela especializada para tu hijo"), no un eslogan abstracto — un padre que llega buscando ayuda entiende en 3 segundos qué ofrece la fundación. La frase inspiradora anterior puede vivir en la sección de misión.
 - **Titular directo — regla general.** El `<h1>` de cada hero debe decir qué hace la fundación / qué ofrece la página, no un eslogan abstracto. Aplicado en rama `v2` a Impacto ("Nuestro impacto, en cifras e historias reales"), Colabora ("Doná, ofrecé tu tiempo o sé aliado") y Familias ("Acompañamiento y recursos para tu familia"). Quiénes Somos ("Dos instituciones, una misión") se mantiene: ya es específico. Los heroes de programa usan el nombre del programa, que ya es directo.
@@ -132,8 +132,9 @@ Implementado en `components/sections/ProgramHero.tsx` para los 3 programas; inli
 
 Componente reutilizable para la **foto protagonista de una sección**: foto real en forma
 orgánica (`rounded-[46%_54%…]`) + dos blobs de color de marca detrás (`bg-{color}/40`,
-cada uno con su propio border-radius orgánico) + cita real de familia opcional superpuesta
-sobre degradado `from-gray-900` (contraste AA).
+cada uno con su propio border-radius orgánico) + cita real de familia opcional como
+**pie de foto DEBAJO de la forma** (nunca superpuesta — el recorte orgánico corta el texto).
+La prop `quoteTone` (`'light' | 'dark'`) ajusta el color del pie según el fondo de la sección.
 
 - Se usa en: hero de Inicio, hero de los 3 programas (`ProgramHero.tsx`), sección de
   identidad de Quiénes Somos, historia destacada de Impacto, testimonio de voluntariado en
