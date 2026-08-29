@@ -167,16 +167,16 @@ es:
   allies:
     - name: Universidad Católica Boliviana
       type: UCB La Paz
-      icon: 🎓
+      logo: /images/logos/ucb.png
     - name: Red Uno de Bolivia
       type: Televisión
-      icon: 📺
+      logo: /images/logos/red-uno.png
     - name: ATB Red Nacional
       type: Televisión
-      icon: 🎬
+      logo: /images/logos/atb.png
     - name: Página Siete
       type: Prensa
-      icon: 📰
+      logo: /images/logos/pagina-siete.png
   cta:
     title: ¿Tienes dudas sobre cómo apoyar?
     text: Escríbenos directamente y te explicamos detalladamente cómo tu aporte se traduce en materiales de estimulación, sesiones terapéuticas o becas de estudio.
@@ -349,16 +349,16 @@ en:
   allies:
     - name: Universidad Católica Boliviana
       type: UCB La Paz
-      icon: 🎓
+      logo: /images/logos/ucb.png
     - name: Red Uno de Bolivia
       type: Television
-      icon: 📺
+      logo: /images/logos/red-uno.png
     - name: ATB Red Nacional
       type: Television
-      icon: 🎬
+      logo: /images/logos/atb.png
     - name: Página Siete
       type: Press
-      icon: 📰
+      logo: /images/logos/pagina-siete.png
   cta:
     title: Questions about how to support?
     text: Write to us directly and we will explain in detail how your support translates into stimulation materials, therapy sessions, or study scholarships.

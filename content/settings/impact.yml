@@ -86,16 +86,19 @@ es:
       desc: Cobertura especial del incidente durante los conflictos en La Paz, visibilizando el centro.
       year: '2026'
       color: accent
+      logo: /images/logos/red-uno.png
     - outlet: ATB Digital
       type: Televisión
       desc: Reportaje sobre los programas de inclusión educativa para niños con síndrome de Down.
       year: '2026'
       color: secondary
+      logo: /images/logos/atb.png
     - outlet: Página Siete
       type: Prensa escrita
       desc: Artículo sobre la labor del Centro Lápiz en Mano y la importancia de la estimulación temprana.
       year: '2025'
       color: secondary
+      logo: /images/logos/pagina-siete.png
     - outlet: Redes Internacionales
       type: Digital
       desc: Acompañamiento y notas de solidaridad internacional tras la difusión de prensa.
@@ -219,16 +222,19 @@ en:
       desc: Special coverage of the incident during conflicts in La Paz, making the center visible.
       year: '2026'
       color: accent
+      logo: /images/logos/red-uno.png
     - outlet: ATB Digital
       type: Television
       desc: Report on educational inclusion programs for children with Down syndrome in Bolivia.
       year: '2026'
       color: secondary
+      logo: /images/logos/atb.png
     - outlet: Página Siete
       type: Press outlet
       desc: Article on the work of Lápiz en Mano Center and the importance of early stimulation.
       year: '2025'
       color: secondary
+      logo: /images/logos/pagina-siete.png
     - outlet: Redes Internacionales
       type: Digital media
       desc: Accompaniment and international solidarity notes after press releases.
