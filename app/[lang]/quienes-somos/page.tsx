@@ -91,6 +91,7 @@ export default function Page({ params: { lang } }: PageProps) {
               alt={es ? 'Actividad en el Centro Lápiz en Mano' : 'Activity at Lápiz en Mano Center'}
               ratio="square"
               blobs={['secondary', 'accent']}
+              focus="center 15%"
               className="mb-12 max-w-sm"
             />
           )}

@@ -13,6 +13,14 @@ const HERO_BLOBS: Record<AccentColor, [AccentColor, AccentColor]> = {
   accent: ['primary', 'secondary'],
 }
 
+// object-position por programa — evita cortar caras en la forma orgánica.
+// primary = Mi Escuelita Down, secondary = Aula Wawitas, accent = Pasos Firmes.
+const HERO_FOCUS: Record<AccentColor, string> = {
+  primary: 'center 14%',
+  secondary: 'center 28%',
+  accent: 'center 22%',
+}
+
 interface ProgramHeroProps {
   lang: Locale
   program: Program
@@ -80,6 +88,7 @@ export default function ProgramHero({ lang, program, whatsappNumber }: ProgramHe
               author={program.hero.quoteAuthor}
               context={program.hero.quoteContext}
               quoteTone={program.hero.color === 'primary' ? 'dark' : 'light'}
+              focus={HERO_FOCUS[program.hero.color]}
               blobs={HERO_BLOBS[program.hero.color]}
               priority
               className="mt-12 lg:mt-0"

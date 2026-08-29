@@ -63,6 +63,7 @@ export default function FamiliasPageClient({ lang, content }: FamiliasPageClient
                 quote={content.welcome_letter.quote}
                 author={content.welcome_letter.quote_author}
                 blobs={['accent', 'secondary']}
+                focus="center 26%"
               />
             )}
             <div className="bg-gradient-to-br from-accent-50 to-primary-50 rounded-3xl p-8 md:p-10 border border-accent/10 shadow-sm text-left">

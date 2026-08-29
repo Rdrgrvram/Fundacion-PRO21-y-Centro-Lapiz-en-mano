@@ -212,6 +212,7 @@ export default function Page({ params }: { params: { lang: Locale } }) {
                 src={content.mission.image}
                 alt={es ? 'Actividad en el Centro Lápiz en Mano' : 'Activity at Lápiz en Mano Center'}
                 blobs={['primary', 'secondary']}
+                focus="center 32%"
               />
             )}
 

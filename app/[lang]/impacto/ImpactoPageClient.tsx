@@ -144,6 +144,7 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
                 alt={es ? `Actividad del programa ${content.featured_story.context}` : `${content.featured_story.context} program activity`}
                 blobs={['secondary', 'primary']}
                 ratio="square"
+                focus="center 14%"
               />
               <div>
                 <span className="inline-block text-xs font-bold uppercase tracking-wider text-accent bg-accent-50 px-4 py-1.5 rounded-full">
