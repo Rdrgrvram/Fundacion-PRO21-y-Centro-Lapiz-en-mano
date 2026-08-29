@@ -24,6 +24,8 @@ interface ProtagonistPhotoProps {
   context?: string
   /** Tono del pie de foto según el fondo de la sección. */
   quoteTone?: 'light' | 'dark'
+  /** `object-position` de la foto — ajustar para no cortar caras. Por defecto 'center 20%'. */
+  focus?: string
   /** Colores de los dos blobs de fondo. Por defecto secondary + accent. */
   blobs?: [AccentColor, AccentColor]
   ratio?: 'portrait' | 'square'
@@ -45,6 +47,7 @@ export default function ProtagonistPhoto({
   author,
   context,
   quoteTone = 'dark',
+  focus = 'center 20%',
   blobs = ['secondary', 'accent'],
   ratio = 'portrait',
   priority = false,
@@ -83,7 +86,8 @@ export default function ProtagonistPhoto({
             fill
             priority={priority}
             sizes="(min-width: 1024px) 42vw, 90vw"
-            className="object-cover object-[center_18%]"
+            className="object-cover"
+            style={{ objectPosition: focus }}
           />
         </figure>
       </div>

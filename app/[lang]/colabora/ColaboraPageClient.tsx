@@ -421,6 +421,7 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
                   alt={es ? 'Actividad de voluntariado en el Centro Lápiz en Mano' : 'Volunteering activity at Lápiz en Mano Center'}
                   ratio="square"
                   blobs={['secondary', 'accent']}
+                  focus="center 26%"
                 />
               )}
 
