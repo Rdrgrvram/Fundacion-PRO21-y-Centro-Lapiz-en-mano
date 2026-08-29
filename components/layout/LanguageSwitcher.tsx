@@ -23,7 +23,7 @@ export default function LanguageSwitcher({ lang }: Props) {
   return (
     <Link
       href={otherPath}
-      className="text-sm font-medium text-gray-500 hover:text-primary border border-gray-200 rounded px-2 py-1 transition-colors"
+      className="min-h-[44px] min-w-[44px] flex items-center justify-center text-sm font-medium text-gray-500 hover:text-primary-700 border border-gray-200 rounded px-2 py-1 transition-colors"
       title={lang === 'es' ? 'Switch to English' : 'Cambiar a Español'}
     >
       {lang === 'es' ? 'EN' : 'ES'}

@@ -75,30 +75,35 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
     <div className="overflow-x-hidden w-full bg-gray-50">
 
       {/* 1. Page Hero */}
-      <section className="relative min-h-[400px] flex items-center bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary py-16 px-4 overflow-hidden">
+      <section className="relative bg-accent overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
-          <div className="absolute -top-[15%] -right-[8%] w-[350px] h-[350px] md:w-[500px] md:h-[500px] rounded-full border border-white/5 opacity-30" />
-          <div className="absolute top-[60%] right-[15%] w-3.5 h-3.5 rounded-full bg-primary/80 animate-ping" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/3" />
+          <div className="absolute bottom-1/4 -left-16 w-64 h-64 bg-white/10 rounded-full" />
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 z-10">
-          <svg viewBox="0 0 1440 70" fill="none" className="block w-full h-8 md:h-16 lg:h-20 text-[#f9fafb] fill-current">
-            <path d="M0 30C360 55 720 15 1080 40C1260 50 1380 42 1440 38V70H0Z" />
+          <svg viewBox="0 0 1440 60" preserveAspectRatio="none" fill="none" className="block w-full h-8 md:h-16 lg:h-20 text-gray-50 fill-current">
+            <path d="M0 0 Q360 60 720 30 Q1080 0 1440 0 L1440 60 L0 60 Z" />
           </svg>
         </div>
 
-        <div className="container mx-auto max-w-4xl text-center relative z-20 mt-8">
-          <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full py-1 px-3.5 mb-5 select-none">
-            <span className="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-[10px] text-black font-extrabold">✦</span>
-            <span className="text-white/80 text-xs font-semibold">{content.hero.badge}</span>
+        <div className="container mx-auto px-4 py-16 md:py-24 relative z-20">
+          <nav className="flex items-center gap-2 text-white/60 text-xs mb-8">
+            <Link href={`/${lang}`} className="hover:text-white transition-colors">{es ? 'Inicio' : 'Home'}</Link>
+            <span>/</span>
+            <span className="text-white font-semibold">{es ? 'Contacto' : 'Contact'}</span>
+          </nav>
+
+          <div className="inline-flex items-center gap-2 bg-white/15 border border-white/20 rounded-full px-4 py-1.5 mb-5">
+            <span className="text-xs font-bold uppercase tracking-wider text-white select-none">{content.hero.badge}</span>
           </div>
 
-          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-normal leading-tight mb-4">
-            {content.hero.title_line1} <br />
-            <span className="font-bold italic text-primary">{content.hero.title_line2}</span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-extrabold leading-tight mb-4">
+            {content.hero.title_line1} <br className="hidden sm:inline" />
+            <span className="font-extrabold text-primary">{content.hero.title_line2}</span>
           </h1>
 
-          <p className="text-sm md:text-base lg:text-lg text-white/70 max-w-xl mx-auto leading-relaxed">{content.hero.subtitle}</p>
+          <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-2xl leading-relaxed">{content.hero.subtitle}</p>
         </div>
       </section>
 
@@ -119,7 +124,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
                     <div className={`w-14 h-14 rounded-2xl ${c.bg} flex items-center justify-center text-3xl flex-shrink-0 shadow-sm`}>{c.icon}</div>
                     <div>
                       <div className="text-[10px] font-bold text-gray-400 tracking-wider uppercase">{c.title}</div>
-                      <div className="text-sm sm:text-base font-bold text-[#111827] mt-0.5 break-all">{c.primary}</div>
+                      <div className="text-sm sm:text-base font-bold text-gray-900 mt-0.5 break-all">{c.primary}</div>
                     </div>
                   </div>
                   <p className="text-xs text-gray-400 font-semibold mb-6">{c.secondary}</p>
@@ -144,7 +149,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
               {!formSent ? (
                 <>
                   <div>
-                    <h3 className="font-serif text-2xl text-[#111827] font-bold mb-1.5">{content.form_section.title}</h3>
+                    <h3 className="text-2xl text-gray-900 font-bold mb-1.5">{content.form_section.title}</h3>
                     <p className="text-xs sm:text-sm text-gray-400 mb-8 leading-relaxed">{content.form_section.subtitle}</p>
 
                     <div className="space-y-4">
@@ -224,7 +229,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
                   <button
                     onClick={handleSubmit}
                     disabled={sending}
-                    className="w-full mt-8 bg-gradient-to-r from-[#229cc2] to-[#229cc2] text-white font-extrabold text-xs sm:text-sm py-3.5 px-6 rounded-full transition-all hover:scale-[1.01] active:scale-[0.99] shadow-md shadow-[#229cc2]/10 min-h-[44px] disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="w-full mt-8 bg-gradient-to-r from-secondary to-secondary text-white font-extrabold text-xs sm:text-sm py-3.5 px-6 rounded-full transition-all hover:scale-[1.01] active:scale-[0.99] shadow-md shadow-secondary/10 min-h-[44px] disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     {sending ? (es ? 'Enviando...' : 'Sending...') : es ? 'Enviar mensaje' : 'Send message'}
                   </button>
@@ -232,19 +237,19 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
               ) : (
                 <div className="text-center py-16 px-4 flex flex-col items-center justify-center h-full">
                   <span className="text-5xl block mb-4 select-none">✅</span>
-                  <h3 className="font-serif text-xl sm:text-2xl text-[#111827] font-bold mb-3">{es ? '¡Mensaje recibido!' : 'Message received!'}</h3>
+                  <h3 className="text-xl sm:text-2xl text-gray-900 font-bold mb-3">{es ? '¡Mensaje recibido!' : 'Message received!'}</h3>
                   <p className="text-xs sm:text-sm text-gray-500 leading-relaxed mb-6 max-w-sm">
                     {es
                       ? 'Muchas gracias por escribirnos. Nuestro equipo se pondrá en contacto contigo en las próximas 24 horas hábiles por el medio que indicaste.'
                       : 'Thank you very much for writing to us. Our team will contact you within the next 24 business hours through the medium you specified.'}
                   </p>
-                  <div className="mt-4 p-4 bg-green-50 border border-[#22c55e]/20 rounded-2xl flex flex-col items-center gap-2 max-w-xs select-none">
+                  <div className="mt-4 p-4 bg-green-50 border border-green-500/20 rounded-2xl flex flex-col items-center gap-2 max-w-xs select-none">
                     <span className="text-xs font-bold text-gray-500">{es ? '¿Deseas respuesta inmediata?' : 'Need immediate answer?'}</span>
                     <a
                       href={whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-[#22c55e] hover:bg-[#22c55e]/90 text-white font-extrabold text-xs px-5 py-2.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] min-h-[44px] flex items-center justify-center gap-1.5"
+                      className="bg-green-500 hover:bg-green-500/90 text-white font-extrabold text-xs px-5 py-2.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] min-h-[44px] flex items-center justify-center gap-1.5"
                     >
                       <span className="text-lg">💬</span>
                       {es ? 'WhatsApp directo' : 'Direct WhatsApp'}
@@ -263,7 +268,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
                 <div className="flex items-center gap-3.5 mb-4 select-none">
                   <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-xl shadow-inner">📍</div>
                   <div>
-                    <h4 className="text-sm font-bold text-[#111827] leading-none">{content.map_card.title}</h4>
+                    <h4 className="text-sm font-bold text-gray-900 leading-none">{content.map_card.title}</h4>
                     <p className="text-[10px] text-gray-400 font-semibold mt-1">{content.map_card.subtitle}</p>
                   </div>
                 </div>
@@ -282,7 +287,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
               <div className="bg-white rounded-3xl p-6 border border-gray-200/80 shadow-sm">
                 <div className="flex items-center gap-3.5 mb-4 select-none">
                   <div className="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center text-xl shadow-inner">🕐</div>
-                  <h4 className="text-sm font-bold text-[#111827]">{content.hours_title}</h4>
+                  <h4 className="text-sm font-bold text-gray-900">{content.hours_title}</h4>
                 </div>
                 <div className="divide-y divide-gray-100 flex flex-col gap-0.5">
                   {content.hours.map((h, i) => (
@@ -297,7 +302,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
               <div className="bg-white rounded-3xl p-6 border border-gray-200/80 shadow-sm">
                 <div className="flex items-center gap-3.5 mb-4 select-none">
                   <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-xl shadow-inner">🌐</div>
-                  <h4 className="text-sm font-bold text-[#111827]">{content.social_title}</h4>
+                  <h4 className="text-sm font-bold text-gray-900">{content.social_title}</h4>
                 </div>
                 <div className="grid grid-cols-3 gap-2.5 select-none">
                   {socialLinks.map((s, idx) => (
@@ -320,14 +325,14 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
       </section>
 
       {/* 4. Quick FAQs List */}
-      <section className="py-16 md:py-24 px-4 bg-[#f9fafb] border-t border-b border-gray-200/50">
+      <section className="py-16 md:py-24 px-4 bg-gray-50 border-t border-b border-gray-200/50">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="text-sm">⚡</span>
               <span className="text-xs font-bold uppercase tracking-wider text-primary-700">{content.faq_section.badge}</span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.faq_section.title}</h2>
+            <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold tracking-tight mb-4">{content.faq_section.title}</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto text-left">
@@ -337,7 +342,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
                   {faq.icon}
                 </div>
                 <div>
-                  <h4 className="font-serif text-base md:text-lg text-[#111827] font-bold mb-2">{faq.q}</h4>
+                  <h4 className="text-base md:text-lg text-gray-900 font-bold mb-2">{faq.q}</h4>
                   <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">{faq.a}</p>
                 </div>
               </div>
@@ -355,14 +360,14 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
       {/* 5. Direct WhatsApp Cta */}
       <section className="py-16 px-4 bg-gray-50">
         <div className="container mx-auto max-w-4xl">
-          <div className="bg-gradient-to-r from-[#22c55e] to-[#22c55e] rounded-3xl p-8 md:p-12 text-center text-white relative overflow-hidden shadow-xl shadow-[#22c55e]/10">
+          <div className="bg-green-500 rounded-3xl p-8 md:p-12 text-center text-white relative overflow-hidden shadow-xl shadow-green-500/10">
             <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
               <div className="absolute top-1/2 right-[10%] w-44 h-44 rounded-full border border-white/5" />
               <div className="absolute top-1/2 right-[20%] w-32 h-32 rounded-full border border-white/5" />
             </div>
             <div className="relative z-10 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-8">
               <div className="max-w-md">
-                <h3 className="font-serif text-2xl md:text-3xl text-white font-bold mb-3 leading-snug">{content.whatsapp_cta.title}</h3>
+                <h3 className="text-2xl md:text-3xl text-white font-bold mb-3 leading-snug">{content.whatsapp_cta.title}</h3>
                 <p className="text-xs sm:text-sm text-white/80 leading-relaxed">{content.whatsapp_cta.text}</p>
               </div>
               <a
@@ -372,7 +377,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
                 className="bg-white/15 hover:bg-white/25 border border-white/20 backdrop-blur-md px-8 py-5 rounded-2xl text-white transition-all hover:scale-[1.02] active:scale-[0.98] flex flex-col items-center justify-center min-h-[44px] select-none"
               >
                 <span className="text-3xl mb-1 block">💬</span>
-                <span className="font-serif text-xl font-bold leading-none">70106276</span>
+                <span className="text-xl font-bold leading-none">70106276</span>
                 <span className="text-[10px] text-white/70 font-semibold mt-1">{es ? 'Presiona para chatear' : 'Tap to chat'}</span>
               </a>
             </div>
@@ -381,12 +386,12 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
       </section>
 
       {/* 6. Footer philosophy card */}
-      <section className="py-16 px-4 bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary">
-        <div className="container mx-auto max-w-2xl text-center text-white/75 relative">
+      <section className="py-16 px-4 bg-gray-50">
+        <div className="container mx-auto max-w-2xl text-center relative">
           <span className="text-4xl block mb-4 select-none">💛</span>
-          <p className="font-serif text-lg sm:text-xl font-bold italic leading-relaxed mb-6">&ldquo;{content.closing_quote.text}&rdquo;</p>
+          <p className="font-serif text-lg sm:text-xl font-bold italic text-gray-900 leading-relaxed mb-6">&ldquo;{content.closing_quote.text}&rdquo;</p>
           <div className="w-12 h-0.5 bg-primary/30 mx-auto mb-4" />
-          <span className="text-xs text-white/40 font-semibold uppercase tracking-widest block">{content.closing_quote.attribution}</span>
+          <span className="text-xs text-gray-600 font-semibold uppercase tracking-widest block">{content.closing_quote.attribution}</span>
         </div>
       </section>
 

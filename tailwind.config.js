@@ -38,9 +38,12 @@ module.exports = {
         },
       },
 
-      // Tipografía — TODO: confirmar con la fundación
+      // Tipografía oficial
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        // Display — Fraunces (cargada en app/layout.tsx). Solo titulares y citas.
+        display: ['var(--font-display)', 'ui-serif', 'Georgia', 'Cambria', 'serif'],
       },
 
       // Contenedor centralizado

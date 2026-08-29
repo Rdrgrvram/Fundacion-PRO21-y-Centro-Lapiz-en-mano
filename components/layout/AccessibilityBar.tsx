@@ -60,9 +60,9 @@ export default function AccessibilityBar({ lang }: AccessibilityBarProps) {
   }
 
   return (
-    <div className="bg-[#0c2340] text-white text-xs py-1.5 px-4 border-b border-white/10 flex flex-wrap items-center justify-between gap-3 min-h-[44px]">
+    <div className="bg-secondary-700 text-white text-xs py-1.5 px-4 border-b border-white/10 flex flex-wrap items-center justify-between gap-3 min-h-[44px]">
       <span className="text-white/60 font-medium select-none">
-        {es ? 'Centro Lápiz en Mano · La Paz, Bolivia' : 'Centro Lápiz en Mano · La Paz, Bolivia'}
+        {es ? 'Centro Lápiz en Mano · La Paz, Bolivia' : 'Lápiz en Mano Center · La Paz, Bolivia'}
       </span>
       <div className="flex items-center gap-2 flex-wrap">
         <span className="text-white/60 select-none mr-1">{es ? 'Accesibilidad:' : 'Accessibility:'}</span>

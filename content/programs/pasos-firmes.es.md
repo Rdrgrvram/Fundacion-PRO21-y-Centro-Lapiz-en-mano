@@ -4,6 +4,10 @@ hero:
   badge: Apoyo psicopedagógico
   subtitle: 'Intervención psicopedagógica especializada para niños y adolescentes con dificultades de aprendizaje: dislexia, disgrafía, discalculia, TDAH y bajo rendimiento escolar.'
   color: accent
+  image: /images/actividades-reales/escritura-numeros-pizarra.jpg
+  quote: Pasos Firmes cambió la relación de mi hija con la escuela. Pasó de llorar cada mañana a querer ir.
+  quote_author: Familia Torrez
+  quote_context: Pasos Firmes
 stats:
   - icon: 📖
     value: '6'
@@ -94,6 +98,22 @@ section_2:
         - Seguimiento personalizado
         - Mayor frecuencia de sesiones
         - Comunicación directa con familia
+gallery:
+  badge: Así vivimos el programa
+  title: Un vistazo a nuestras intervenciones
+  photos:
+    - image: /images/actividades-reales/juego-mesa-cartas.jpg
+      alt: Estudiantes jugando con cartas en actividad grupal
+    - image: /images/actividades-reales/rompecabezas-geometrico.jpg
+      alt: Estudiante resolviendo un rompecabezas de figuras geométricas
+    - image: /images/actividades-reales/manualidad-esqueleto-memoria.jpg
+      alt: Estudiante realizando una manualidad de memoria y motricidad fina
+    - image: /images/actividades-reales/grupo-mesa-actividad.jpg
+      alt: Grupo de estudiantes trabajando juntos en una actividad de mesa
+    - image: /images/actividades-reales/escritura-numeros-pizarra.jpg
+      alt: Estudiante practicando escritura de números en una pizarra
+    - image: /images/actividades-reales/escritura-pizarra-circulos.jpg
+      alt: Estudiante practicando trazos en una pizarra blanca
 enrollment:
   badge: Nuestro proceso
   title: 6 Pasos de Intervención

@@ -1,8 +1,17 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Fraunces } from 'next/font/google'
 import '../styles/globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
+
+// Tipografía display — solo para titulares de hero/sección/CTA y citas destacadas
+// (ver styles/globals.css y docs/DESIGN_STANDARD.md). El cuerpo sigue en Inter.
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  variable: '--font-display',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: 'Fundación PRO-21 | Centro Lápiz en Mano — La Paz, Bolivia',
@@ -13,7 +22,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es">
+    <html lang="es" className={fraunces.variable}>
       <body className={inter.className}>{children}</body>
     </html>
   )

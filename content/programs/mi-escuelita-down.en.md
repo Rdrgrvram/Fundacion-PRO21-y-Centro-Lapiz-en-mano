@@ -4,6 +4,10 @@ hero:
   badge: Specialized Program
   subtitle: Comprehensive therapeutic and educational intervention for children with Down syndrome, from early stimulation to full school inclusion.
   color: primary
+  image: /images/actividades-reales/terapia-individual-tarjetas.jpg
+  quote: At Lápiz en Mano, we found not only therapy but a family that taught us to see abilities before limitations.
+  quote_author: Familia Quispe
+  quote_context: Mi Escuelita Down
 stats:
   - icon: 👶
     value: 0 – 14+
@@ -114,6 +118,22 @@ section_3:
       color: secondary
       title: Ongoing Evaluation
       desc: We periodically reevaluate each child's progress and adjust the intervention plan to maintain relevant and achievable goals at each development stage.
+gallery:
+  badge: A look inside our sessions
+  title: See the program in action
+  photos:
+    - image: /images/actividades-reales/pesca-sensorial.jpg
+      alt: Child doing a sensory fishing activity with colored letters
+    - image: /images/actividades-reales/bandeja-arena-sensorial.jpg
+      alt: Child exploring a sand tray during sensory therapy
+    - image: /images/actividades-reales/bandeja-cuentas-color.jpg
+      alt: Child working with a tray of colored beads
+    - image: /images/actividades-reales/terapia-individual-tarjetas.jpg
+      alt: Individual therapy session with educational cards
+    - image: /images/actividades-reales/juego-agua-sensorial.jpg
+      alt: Two children in a water-based sensory stimulation activity
+    - image: /images/actividades-reales/pintura-arroz-color.jpg
+      alt: Girl painting with colored rice in a sensory activity
 enrollment:
   badge: Our process
   title: How to join the program?

@@ -8,6 +8,12 @@ export const homeSchema = z.object({
     title_line2: z.string(),
     subtitle: z.string(),
     cta_primary: z.string(),
+    // Foto real + cita de familia superpuesta — patrón de hero documentado en
+    // docs/DESIGN_STANDARD.md (excepción de Inicio, igual que el grid de Colabora).
+    image: z.string(),
+    quote: z.string(),
+    quote_author: z.string(),
+    quote_program: z.string(),
   }),
   stats: z.array(
     z.object({
@@ -74,6 +80,8 @@ export const aboutSchema = z.object({
   identity: z.object({
     pro21: z.object({ tagline: z.string(), description: z.string() }),
     lapiz: z.object({ tagline: z.string(), description: z.string() }),
+    // Foto protagonista de la sección de identidad (opcional).
+    image: z.string().optional(),
   }),
   mission_section: sectionHeader,
   mission_cards: z.array(
@@ -117,6 +125,10 @@ export const impactSchema = z.object({
   hero: z.object({ badge: z.string(), title_line1: z.string(), title_line2: z.string(), subtitle: z.string() }),
   stats_section: sectionHeader,
   stats: z.array(z.object({ icon: z.string(), color: accentColor, value: z.string(), suffix: z.string().optional(), label: z.string() })),
+  // Historia destacada — cita real de familia sobre foto, antes de los testimonios.
+  featured_story: z
+    .object({ image: z.string(), quote: z.string(), author: z.string(), context: z.string() })
+    .optional(),
   testimonials_section: sectionHeader,
   reports_section: sectionHeader,
   reports: z.array(
@@ -133,7 +145,7 @@ export const impactSchema = z.object({
   media: z.array(z.object({ outlet: z.string(), type: z.string(), desc: z.string(), year: z.string(), color: accentColor })),
   gallery_section: sectionHeader,
   gallery_categories: z.array(z.string()),
-  gallery: z.array(z.object({ image: z.string(), alt: z.string() })),
+  gallery: z.array(z.object({ image: z.string(), alt: z.string(), category: z.string().optional() })),
   gallery_note: z.string(),
   cta: z.object({ title: z.string(), text: z.string() }),
 })
@@ -164,7 +176,7 @@ export const collaborateSchema = z.object({
   volunteer_section: sectionHeader,
   volunteer_areas: z.array(z.object({ icon: z.string(), title: z.string(), desc: z.string(), color: accentColor })),
   volunteer_perks: z.array(z.object({ icon: z.string(), text: z.string() })),
-  volunteer_testimonial: z.object({ quote: z.string(), role: z.string() }),
+  volunteer_testimonial: z.object({ quote: z.string(), role: z.string(), image: z.string().optional() }),
   alliances_section: sectionHeader,
   partner_types: z.array(z.object({ icon: z.string(), title: z.string(), color: accentColor, desc: z.string(), benefits: z.array(z.string()) })),
   allies_title: z.string(),
@@ -179,7 +191,15 @@ export type CollaborateContent = z.infer<typeof collaborateSchema>
 
 export const familiesSchema = z.object({
   hero: z.object({ badge: z.string(), title_line1: z.string(), title_line2: z.string(), subtitle: z.string() }),
-  welcome_letter: z.object({ title: z.string(), text: z.string(), signature: z.string() }),
+  welcome_letter: z.object({
+    title: z.string(),
+    text: z.string(),
+    signature: z.string(),
+    // Foto protagonista + cita real de familia junto a la carta (opcional).
+    image: z.string().optional(),
+    quote: z.string().optional(),
+    quote_author: z.string().optional(),
+  }),
   sessions_section: sectionHeader,
   virtual_sessions: z.array(z.object({ title: z.string(), icon: z.string(), desc: z.string(), freq: z.string(), duration: z.string(), color: accentColor })),
   sessions_note: z.string(),

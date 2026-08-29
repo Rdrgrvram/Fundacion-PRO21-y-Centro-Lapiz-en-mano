@@ -1,9 +1,14 @@
 es:
   hero:
     badge: Impacto y transparencia
-    title_line1: Historias que
-    title_line2: transforman vidas
+    title_line1: Nuestro impacto, en
+    title_line2: cifras e historias reales
     subtitle: Detrás de cada cifra hay un niño que encontró su espacio de inclusión. Detrás de cada reporte anual hay un compromiso inquebrantable con la transparencia.
+  featured_story:
+    image: /images/actividades-reales/grupo-orejas-conejo.jpg
+    quote: El equipo no solo trabaja con los niños, trabaja con toda la familia.
+    author: Familia Torrez
+    context: Pasos Firmes
   stats_section:
     badge: Nuestras cifras
     title: El impacto consolidado en números
@@ -129,9 +134,14 @@ es:
 en:
   hero:
     badge: Impact & transparency
-    title_line1: Stories that
-    title_line2: transform lives
+    title_line1: Our impact, in
+    title_line2: real numbers and stories
     subtitle: Behind every number is a child who found their space of inclusion. Behind every annual report is an unwavering commitment to transparency.
+  featured_story:
+    image: /images/actividades-reales/grupo-orejas-conejo.jpg
+    quote: The team doesn't just work with children, they work with the whole family.
+    author: Familia Torrez
+    context: Pasos Firmes
   stats_section:
     badge: Our metrics
     title: Consolidated impact in numbers
@@ -234,22 +244,48 @@ en:
     - Pasos Firmes
     - Events
   gallery:
-    - image: /images/wawitas/learning-activity.png
-      alt: Child doing a learning activity in the classroom
-    - image: /images/wawitas/outdoor-play.png
-      alt: Children playing outdoors at the center
-    - image: /images/wawitas/sensory-room.png
-      alt: Center's sensory stimulation room
-    - image: /images/wawitas/therapy-session.png
-      alt: Individual therapy session with a child
     - image: /images/actividades/estimulacion-sensorial.jpg
       alt: Sensory stimulation activity
-    - image: /images/actividades/mercado-autonomia.jpg
-      alt: Market-style autonomy activity
+      category: Mi Escuelita
     - image: /images/actividades/psicomotricidad-bolos.jpg
       alt: Psychomotor activity with bowling pins
+      category: Mi Escuelita
+    - image: /images/actividades-reales/pesca-sensorial.jpg
+      alt: Child doing a sensory fishing activity with colored letters
+      category: Mi Escuelita
+    - image: /images/actividades-reales/bandeja-arena-sensorial.jpg
+      alt: Child exploring a sand tray during sensory therapy
+      category: Mi Escuelita
+    - image: /images/actividades-reales/terapia-individual-tarjetas.jpg
+      alt: Individual therapy session with educational cards
+      category: Mi Escuelita
+    - image: /images/actividades-reales/nino-cubo-rubik.jpg
+      alt: Child holding a cube at the Lápiz en Mano Center
+      category: Aula Wawitas
+    - image: /images/actividades-reales/retrato-sonrisa.jpg
+      alt: Girl smiling during a classroom activity
+      category: Aula Wawitas
+    - image: /images/actividades-reales/pintura-tinas-color.jpg
+      alt: Children finger-painting in colored tubs
+      category: Aula Wawitas
+    - image: /images/actividades/mercado-autonomia.jpg
+      alt: Market-style autonomy activity
+      category: Pasos Firmes
     - image: /images/actividades/trazos-cognitivos.jpg
       alt: Cognitive stimulation drawing activity
+      category: Pasos Firmes
+    - image: /images/actividades-reales/juego-mesa-cartas.jpg
+      alt: Students playing a card game in a group activity
+      category: Pasos Firmes
+    - image: /images/actividades-reales/rompecabezas-geometrico.jpg
+      alt: Student solving a geometric shapes puzzle
+      category: Pasos Firmes
+    - image: /images/actividades-reales/escritura-numeros-pizarra.jpg
+      alt: Student practicing writing numbers on a whiteboard
+      category: Pasos Firmes
+    - image: /images/actividades-reales/grupo-orejas-conejo.jpg
+      alt: Group of children in a special activity at the center
+      category: Eventos
   gallery_note: '* Illustrative and real photos of internal use under consent of legal guardianship.'
   cta:
     title: Want to be part of this transformation?

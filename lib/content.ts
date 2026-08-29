@@ -262,14 +262,35 @@ export interface ProgramStepSection {
   steps: ProgramStep[]
 }
 
+export interface ProgramGalleryPhoto {
+  src: string
+  alt: string
+}
+
+export interface ProgramGallerySection {
+  badge?: string
+  title: string
+  photos: ProgramGalleryPhoto[]
+}
+
 export interface Program {
   slug: string
   title: string
-  hero: { badge: string; subtitle: string; color: AccentColor }
+  hero: {
+    badge: string
+    subtitle: string
+    color: AccentColor
+    // Foto protagonista + cita real de familia (opcional). Ver ProtagonistPhoto.
+    image?: string
+    quote?: string
+    quoteAuthor?: string
+    quoteContext?: string
+  }
   stats: ProgramStat[]
   section1: ProgramCardSection
   section2: ProgramTabSection
   section3?: ProgramCardSection
+  gallery?: ProgramGallerySection
   enrollment: ProgramStepSection
   cta: { title: string; text: string }
 }
@@ -282,6 +303,10 @@ function parseProgram(slug: string, data: Record<string, any>): Program {
       badge: data.hero?.badge ?? '',
       subtitle: data.hero?.subtitle ?? '',
       color: (data.hero?.color as AccentColor) ?? 'secondary',
+      image: data.hero?.image || undefined,
+      quote: data.hero?.quote || undefined,
+      quoteAuthor: data.hero?.quote_author || undefined,
+      quoteContext: data.hero?.quote_context || undefined,
     },
     stats: data.stats ?? [],
     section1: {
@@ -322,6 +347,16 @@ function parseProgram(slug: string, data: Record<string, any>): Program {
             color: (it.color as AccentColor) ?? 'secondary',
             title: it.title ?? '',
             desc: it.desc ?? '',
+          })),
+        }
+      : undefined,
+    gallery: data.gallery
+      ? {
+          badge: data.gallery.badge || undefined,
+          title: data.gallery.title ?? '',
+          photos: (data.gallery.photos ?? []).map((p: any) => ({
+            src: p.image ?? '',
+            alt: p.alt ?? '',
           })),
         }
       : undefined,

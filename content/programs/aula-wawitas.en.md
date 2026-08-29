@@ -4,6 +4,10 @@ hero:
   badge: Preschool Program
   subtitle: Comprehensive preschool stimulation and education program for children ages 3 to 5, preparing them for a successful transition to regular primary education.
   color: secondary
+  image: /images/actividades-reales/grupo-orejas-conejo.jpg
+  quote: My son arrived at the center unable to express himself. Today he tells us about his day in detail.
+  quote_author: Familia Mamani
+  quote_context: Aula Wawitas
 stats:
   - icon: 🧸
     value: '3'
@@ -114,6 +118,22 @@ section_3:
         - Coexistence norms
         - Self-care routines
         - Emotional expression
+gallery:
+  badge: A look inside our classrooms
+  title: See the program in action
+  photos:
+    - image: /images/actividades-reales/nino-cubo-rubik.jpg
+      alt: Child holding a cube at the Lápiz en Mano Center
+    - image: /images/actividades-reales/retrato-sonrisa.jpg
+      alt: Girl smiling during a classroom activity
+    - image: /images/actividades-reales/pintura-tinas-color.jpg
+      alt: Children finger-painting in colored tubs
+    - image: /images/actividades-reales/estimulacion-tactil.jpg
+      alt: Child in a tactile stimulation activity with sensory materials
+    - image: /images/actividades-reales/pintura-bandeja-individual.jpg
+      alt: Girl painting in an individual tray
+    - image: /images/actividades-reales/bandeja-sensorial-cuentas.jpg
+      alt: Girl exploring a sensory tray with colored beads
 enrollment:
   badge: Our process
   title: How to enroll your child?

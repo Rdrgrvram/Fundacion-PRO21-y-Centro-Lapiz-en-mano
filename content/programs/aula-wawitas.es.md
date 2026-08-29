@@ -4,6 +4,10 @@ hero:
   badge: Programa Preescolar
   subtitle: Programa de estimulación y educación preescolar integral para niños y niñas de 3 a 5 años, preparándolos para una transición exitosa a la educación primaria regular.
   color: secondary
+  image: /images/actividades-reales/grupo-orejas-conejo.jpg
+  quote: Mi hijo llegó al centro sin poder expresarse. Hoy nos cuenta su día con detalle.
+  quote_author: Familia Mamani
+  quote_context: Aula Wawitas
 stats:
   - icon: 🧸
     value: '3'
@@ -114,6 +118,22 @@ section_3:
         - Normas de convivencia
         - Rutinas de autocuidado
         - Expresión emocional
+gallery:
+  badge: Así vivimos el programa
+  title: Un vistazo a nuestras aulas
+  photos:
+    - image: /images/actividades-reales/nino-cubo-rubik.jpg
+      alt: Niño sosteniendo un cubo en el Centro Lápiz en Mano
+    - image: /images/actividades-reales/retrato-sonrisa.jpg
+      alt: Niña sonriendo durante una actividad en el aula
+    - image: /images/actividades-reales/pintura-tinas-color.jpg
+      alt: Niños pintando con las manos en tinas de colores
+    - image: /images/actividades-reales/estimulacion-tactil.jpg
+      alt: Niño en actividad de estimulación táctil con materiales sensoriales
+    - image: /images/actividades-reales/pintura-bandeja-individual.jpg
+      alt: Niña pintando en una bandeja individual
+    - image: /images/actividades-reales/bandeja-sensorial-cuentas.jpg
+      alt: Niña explorando una bandeja sensorial con cuentas de colores
 enrollment:
   badge: Nuestro proceso
   title: ¿Cómo inscribir a tu hijo?

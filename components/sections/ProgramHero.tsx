@@ -1,8 +1,17 @@
 import Link from 'next/link'
 import type { Locale } from '@/lib/i18n'
-import { EXTENDED_PALETTE } from '@/lib/palette'
+import { EXTENDED_PALETTE, type AccentColor } from '@/lib/palette'
 import type { Program } from '@/lib/content'
 import { waLink } from '@/lib/utils'
+import ProtagonistPhoto from '@/components/sections/ProtagonistPhoto'
+
+// Blobs de fondo para la foto — dos colores de marca distintos al del hero,
+// para que contrasten sobre el fondo sólido del programa.
+const HERO_BLOBS: Record<AccentColor, [AccentColor, AccentColor]> = {
+  primary: ['secondary', 'accent'],
+  secondary: ['primary', 'accent'],
+  accent: ['primary', 'secondary'],
+}
 
 interface ProgramHeroProps {
   lang: Locale
@@ -30,11 +39,12 @@ export default function ProgramHero({ lang, program, whatsappNumber }: ProgramHe
           <span className={`font-semibold ${style.textOn}`}>{program.title}</span>
         </nav>
 
-        <div className="max-w-3xl">
+        <div className={program.hero.image ? 'grid lg:grid-cols-2 lg:gap-14 lg:items-center' : ''}>
+          <div className="max-w-3xl">
           <span className={`inline-block bg-white/20 ${style.textOn} text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6`}>
             {program.hero.badge}
           </span>
-          <h1 className={`text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 ${style.textOn}`}>
+          <h1 className={`text-4xl md:text-5xl font-extrabold leading-tight mb-6 ${style.textOn}`}>
             {program.title}
           </h1>
           <p className={`text-lg md:text-xl leading-relaxed mb-8 max-w-2xl ${style.textOn === 'text-white' ? 'text-white/90' : 'text-gray-800'}`}>
@@ -60,6 +70,20 @@ export default function ProgramHero({ lang, program, whatsappNumber }: ProgramHe
               {es ? 'Consultar por WhatsApp' : 'WhatsApp inquiry'}
             </a>
           </div>
+          </div>
+
+          {program.hero.image && (
+            <ProtagonistPhoto
+              src={program.hero.image}
+              alt={es ? `Actividad del programa ${program.title}` : `${program.title} program activity`}
+              quote={program.hero.quote}
+              author={program.hero.quoteAuthor}
+              context={program.hero.quoteContext}
+              blobs={HERO_BLOBS[program.hero.color]}
+              priority
+              className="mt-12 lg:mt-0"
+            />
+          )}
         </div>
       </div>
 

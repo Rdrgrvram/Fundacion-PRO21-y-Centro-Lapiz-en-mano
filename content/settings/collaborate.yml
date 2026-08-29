@@ -1,8 +1,8 @@
 es:
   hero:
     badge: Colabora con nosotros
-    title_line1: Tu apoyo
-    title_line2: transforma vidas
+    title_line1: Doná, ofrecé tu tiempo
+    title_line2: o sé aliado
     subtitle: Existen muchas formas de ser parte de este camino inclusivo. Aportando una donación, brindando voluntariado o firmando una alianza corporativa, estás sembrando esperanza en Bolivia.
   hero_highlights:
     - icon: 👨‍👩‍👧
@@ -124,6 +124,7 @@ es:
   volunteer_testimonial:
     quote: Llegué al Centro como practicante de fonoaudiología y decidí quedarme como voluntaria. Ver cómo un niño pronuncia sus primeras palabras es el regalo más grande de mi vida profesional.
     role: Terapia de lenguaje
+    image: /images/actividades-reales/grupo-mesa-actividad.jpg
   alliances_section:
     badge: Alianzas de valor
     title: Trabajemos juntos por la inclusión
@@ -182,8 +183,8 @@ es:
 en:
   hero:
     badge: Support us
-    title_line1: Your support
-    title_line2: transforms lives
+    title_line1: Donate, give your time
+    title_line2: or become an ally
     subtitle: There are many ways to be part of this inclusive path. By providing a donation, volunteering, or signing a corporate alliance, you are sowing hope in Bolivia.
   hero_highlights:
     - icon: 👨‍👩‍👧
@@ -305,6 +306,7 @@ en:
   volunteer_testimonial:
     quote: I came to the Center as a speech therapy intern and decided to stay as a volunteer. Seeing how a child pronounces their first words is the greatest gift of my professional life.
     role: Speech therapy
+    image: /images/actividades-reales/grupo-mesa-actividad.jpg
   alliances_section:
     badge: Valuable Alliances
     title: Let's work together for inclusion

@@ -5,6 +5,7 @@ import type { Locale } from '@/lib/i18n'
 import { getAllTeamAreas } from '@/lib/content'
 import { getAboutContent } from '@/lib/cms'
 import { PALETTE, type AccentColor } from '@/lib/palette'
+import ProtagonistPhoto from '@/components/sections/ProtagonistPhoto'
 
 interface PageProps {
   params: {
@@ -63,7 +64,9 @@ export default function Page({ params: { lang } }: PageProps) {
 
           <h1 id="nosotros-titulo" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-extrabold leading-tight mb-4">
             {content.hero.title_line1} <br className="hidden sm:inline" />
-            <span className="font-bold italic text-primary">{content.hero.title_line2}</span>
+            {/* Itálica de la fuente display, sin color de acento — evita el fallo
+                de contraste de text-primary sobre bg-secondary (ver DESIGN_STANDARD.md). */}
+            <span className="italic font-normal">{content.hero.title_line2}</span>
           </h1>
 
           <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-2xl leading-relaxed">
@@ -81,6 +84,15 @@ export default function Page({ params: { lang } }: PageProps) {
       {/* 2. Identity - Two Institutions */}
       <section className="py-12 md:py-20 px-4">
         <div className="container mx-auto max-w-6xl">
+          {content.identity.image && (
+            <ProtagonistPhoto
+              src={content.identity.image}
+              alt={es ? 'Actividad en el Centro Lápiz en Mano' : 'Activity at Lápiz en Mano Center'}
+              ratio="square"
+              blobs={['secondary', 'accent']}
+              className="mb-12 max-w-sm"
+            />
+          )}
           <div className="flex flex-col lg:flex-row items-stretch justify-between gap-8 lg:gap-0">
 
             {/* PRO-21 Card */}
@@ -99,11 +111,11 @@ export default function Page({ params: { lang } }: PageProps) {
 
             {/* Separador */}
             <div className="w-full lg:w-[8%] flex lg:flex-col items-center justify-center gap-4 py-4 lg:py-0 select-none">
-              <div className="h-0.5 lg:h-full w-full lg:w-0.5 bg-gradient-to-r lg:bg-gradient-to-b from-transparent via-[#ffc500] to-transparent flex-1" />
+              <div className="h-0.5 lg:h-full w-full lg:w-0.5 bg-gradient-to-r lg:bg-gradient-to-b from-transparent via-primary to-transparent flex-1" />
               <div className="w-11 h-11 rounded-full bg-primary/15 border-2 border-primary flex items-center justify-center text-lg shadow-sm flex-shrink-0">
                 🤝
               </div>
-              <div className="h-0.5 lg:h-full w-full lg:w-0.5 bg-gradient-to-r lg:bg-gradient-to-b from-transparent via-[#ffc500] to-transparent flex-1" />
+              <div className="h-0.5 lg:h-full w-full lg:w-0.5 bg-gradient-to-r lg:bg-gradient-to-b from-transparent via-primary to-transparent flex-1" />
             </div>
 
             {/* Lápiz en Mano Card */}
@@ -170,7 +182,7 @@ export default function Page({ params: { lang } }: PageProps) {
       </section>
 
       {/* 4. Values Section */}
-      <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-[#f9fafb] to-white">
+      <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto max-w-6xl">
 
           <div className="text-center mb-12 max-w-2xl mx-auto">
@@ -233,8 +245,8 @@ export default function Page({ params: { lang } }: PageProps) {
           </div>
 
           <div className="relative">
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#ffc500]/0 via-[#ffc500]/80 to-[#ffc500]/0 transform -translate-x-1/2" />
-            <div className="block md:hidden absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#ffc500]/10 via-[#ffc500]/80 to-[#ffc500]/0" />
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/0 via-primary/80 to-primary/0 transform -translate-x-1/2" />
+            <div className="block md:hidden absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/10 via-primary/80 to-primary/0" />
 
             <div className="space-y-12 md:space-y-8 relative">
               {content.timeline.map((item, idx) => {
@@ -337,14 +349,9 @@ export default function Page({ params: { lang } }: PageProps) {
         </div>
       </section>
 
-      {/* 7. CTA Banner */}
-      <section className="py-16 md:py-24 px-4 bg-primary relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-black/5 rounded-full -translate-y-1/2 translate-x-1/3" />
-          <div className="absolute bottom-1/4 -left-16 w-64 h-64 bg-black/5 rounded-full" />
-        </div>
-        <div className="container mx-auto max-w-3xl relative z-10 text-center">
-          <span className="text-5xl mb-5 block select-none">💛</span>
+      {/* 7. CTA Banner — plano, sin círculos ni emoji glifo (ver DESIGN_STANDARD.md § CTA final) */}
+      <section className="py-16 md:py-24 px-4 bg-primary">
+        <div className="container mx-auto max-w-3xl text-center">
           <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold mb-4">
             {content.cta.title}
           </h2>
