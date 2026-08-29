@@ -513,9 +513,16 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
                     key={i}
                     className="bg-gray-50 border border-gray-200 rounded-2xl py-4 px-5 text-center min-w-[150px] flex-1 sm:flex-none shadow-sm hover:border-primary transition-colors flex flex-col items-center gap-2"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-sm font-extrabold text-gray-700">
-                      {initials}
-                    </div>
+                    {ally.logo ? (
+                      <div className="h-10 flex items-center justify-center">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={ally.logo} alt={ally.name} className="max-h-10 max-w-[120px] w-auto object-contain" />
+                      </div>
+                    ) : (
+                      <div className="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-sm font-extrabold text-gray-700">
+                        {initials}
+                      </div>
+                    )}
                     <div className="text-xs font-bold text-gray-900 leading-tight">{ally.name}</div>
                     <div className="text-[9px] text-gray-400 font-semibold">{ally.type}</div>
                   </div>

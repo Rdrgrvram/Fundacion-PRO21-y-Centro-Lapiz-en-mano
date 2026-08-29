@@ -143,7 +143,7 @@ export const impactSchema = z.object({
   reports_breakdown_title: z.string(),
   reports_breakdown: z.array(z.object({ icon: z.string(), color: accentColor, title: z.string(), desc: z.string() })),
   media_section: sectionHeader,
-  media: z.array(z.object({ outlet: z.string(), type: z.string(), desc: z.string(), year: z.string(), color: accentColor })),
+  media: z.array(z.object({ outlet: z.string(), type: z.string(), desc: z.string(), year: z.string(), color: accentColor, logo: z.string().optional() })),
   gallery_section: sectionHeader,
   gallery_categories: z.array(z.string()),
   gallery: z.array(z.object({ image: z.string(), alt: z.string(), category: z.string().optional() })),
@@ -182,7 +182,7 @@ export const collaborateSchema = z.object({
   partner_types: z.array(z.object({ icon: z.string(), title: z.string(), color: accentColor, desc: z.string(), benefits: z.array(z.string()) })),
   allies_title: z.string(),
   allies_subtitle: z.string(),
-  allies: z.array(z.object({ name: z.string(), type: z.string(), icon: z.string() })),
+  allies: z.array(z.object({ name: z.string(), type: z.string(), icon: z.string().optional(), logo: z.string().optional() })),
   cta: z.object({ title: z.string(), text: z.string() }),
 })
 
