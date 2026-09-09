@@ -82,56 +82,49 @@ export default function Page({ params: { lang } }: PageProps) {
         </div>
       </section>
 
-      {/* 2. Identity - Two Institutions */}
+      {/* 2. Identity - Two Institutions — foto protagonista + las dos tarjetas
+          apiladas al lado (2 columnas). Ver DESIGN_STANDARD.md § Foto protagonista. */}
       <section className="py-12 md:py-20 px-4">
         <div className="container mx-auto max-w-6xl">
-          {content.identity.image && (
-            <ProtagonistPhoto
-              src={content.identity.image}
-              alt={es ? 'Actividad en el Centro Lápiz en Mano' : 'Activity at Lápiz en Mano Center'}
-              ratio="square"
-              blobs={['secondary', 'accent']}
-              focus="center 15%"
-              className="mb-12 max-w-sm"
-            />
-          )}
-          <div className="flex flex-col lg:flex-row items-stretch justify-between gap-8 lg:gap-0">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
-            {/* PRO-21 Card */}
-            <div className="w-full lg:w-[46%] bg-white rounded-3xl p-8 md:p-10 border border-gray-200/80 shadow-sm transition-all hover:shadow-md hover:border-gray-300 flex flex-col">
-              <div className="w-16 h-16 mb-6 select-none">
-                <Image src="/icons/logo-pro21.png" alt="Fundación PRO-21" width={64} height={64} className="w-full h-full object-contain" />
-              </div>
-              <h3 className="text-2xl text-gray-900 font-bold mb-1">Fundación PRO-21</h3>
-              <p className="text-xs font-semibold text-secondary italic tracking-wide mb-5">
-                {content.identity.pro21.tagline}
-              </p>
-              <p className="text-sm text-gray-500 leading-relaxed">
-                {content.identity.pro21.description}
-              </p>
-            </div>
+            {content.identity.image && (
+              <ProtagonistPhoto
+                src={content.identity.image}
+                alt={es ? 'Actividad en el Centro Lápiz en Mano' : 'Activity at Lápiz en Mano Center'}
+                blobs={['secondary', 'accent']}
+                focus="center 15%"
+              />
+            )}
 
-            {/* Separador */}
-            <div className="w-full lg:w-[8%] flex lg:flex-col items-center justify-center gap-4 py-4 lg:py-0 select-none">
-              <div className="h-0.5 lg:h-full w-full lg:w-0.5 bg-gradient-to-r lg:bg-gradient-to-b from-transparent via-primary to-transparent flex-1" />
-              <div className="w-11 h-11 rounded-full bg-primary/15 border-2 border-primary flex items-center justify-center shadow-sm flex-shrink-0">
-                <Icon name="heart" className="h-5 w-5 text-primary-700" />
+            <div className="flex flex-col gap-6">
+              {/* PRO-21 Card */}
+              <div className="bg-white rounded-3xl p-7 md:p-8 border border-gray-200/80 shadow-sm transition-all hover:shadow-md hover:border-gray-300">
+                <div className="w-14 h-14 mb-5 select-none">
+                  <Image src="/icons/logo-pro21.png" alt="Fundación PRO-21" width={56} height={56} className="w-full h-full object-contain" />
+                </div>
+                <h3 className="text-xl md:text-2xl text-gray-900 font-bold mb-1">Fundación PRO-21</h3>
+                <p className="text-xs font-semibold text-secondary italic tracking-wide mb-4">
+                  {content.identity.pro21.tagline}
+                </p>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  {content.identity.pro21.description}
+                </p>
               </div>
-              <div className="h-0.5 lg:h-full w-full lg:w-0.5 bg-gradient-to-r lg:bg-gradient-to-b from-transparent via-primary to-transparent flex-1" />
-            </div>
 
-            {/* Lápiz en Mano Card */}
-            <div className="w-full lg:w-[46%] bg-white rounded-3xl p-8 md:p-10 border border-gray-200/80 shadow-sm transition-all hover:shadow-md hover:border-gray-300 flex flex-col">
-              <div className="w-16 h-16 mb-6 select-none">
-                <Image src="/icons/logo-lapiz.png" alt="Centro Lápiz en Mano" width={64} height={64} className="w-full h-full object-contain" />
+              {/* Lápiz en Mano Card */}
+              <div className="bg-white rounded-3xl p-7 md:p-8 border border-gray-200/80 shadow-sm transition-all hover:shadow-md hover:border-gray-300">
+                <div className="w-14 h-14 mb-5 select-none">
+                  <Image src="/icons/logo-lapiz.png" alt="Centro Lápiz en Mano" width={56} height={56} className="w-full h-full object-contain" />
+                </div>
+                <h3 className="text-xl md:text-2xl text-gray-900 font-bold mb-1">Centro Lápiz en Mano</h3>
+                <p className="text-xs font-semibold text-accent italic tracking-wide mb-4">
+                  {content.identity.lapiz.tagline}
+                </p>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  {content.identity.lapiz.description}
+                </p>
               </div>
-              <h3 className="text-2xl text-gray-900 font-bold mb-1">Centro Lápiz en Mano</h3>
-              <p className="text-xs font-semibold text-accent italic tracking-wide mb-5">
-                {content.identity.lapiz.tagline}
-              </p>
-              <p className="text-sm text-gray-500 leading-relaxed">
-                {content.identity.lapiz.description}
-              </p>
             </div>
 
           </div>

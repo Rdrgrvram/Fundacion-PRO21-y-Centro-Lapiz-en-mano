@@ -81,17 +81,16 @@ export default function ProgramHero({ lang, program, whatsappNumber }: ProgramHe
           </div>
 
           {program.hero.image && (
+            // Sin cita en el hero — el testimonio real de la familia ya aparece
+            // completo más abajo (sección de testimonios del programa). Poner la
+            // cita también acá era redundante y alargaba la columna de foto.
             <ProtagonistPhoto
               src={program.hero.image}
               alt={es ? `Actividad del programa ${program.title}` : `${program.title} program activity`}
-              quote={program.hero.quote}
-              author={program.hero.quoteAuthor}
-              context={program.hero.quoteContext}
-              quoteTone={program.hero.color === 'primary' ? 'dark' : 'light'}
               focus={HERO_FOCUS[program.hero.color]}
               blobs={HERO_BLOBS[program.hero.color]}
               priority
-              className="mt-12 lg:mt-0"
+              className="mt-12 max-w-sm lg:mt-0 lg:max-w-sm"
             />
           )}
         </div>
