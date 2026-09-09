@@ -46,3 +46,7 @@ yarn-error.log*
 
 # Archivos de prueba
 public/TEST.MD
+
+# Playwright MCP screenshots/snapshots
+.playwright-mcp/
+v2-*.png

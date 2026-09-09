@@ -44,7 +44,7 @@ export default function ProgramGallery({ section, color }: ProgramGalleryProps) 
         <div className="text-center mb-10 max-w-2xl mx-auto">
           {section.badge && (
             <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">📷</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
               <span className="text-xs font-bold uppercase tracking-wider text-secondary">{section.badge}</span>
             </div>
           )}

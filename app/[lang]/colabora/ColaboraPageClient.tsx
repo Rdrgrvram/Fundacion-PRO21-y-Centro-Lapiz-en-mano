@@ -115,7 +115,9 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
                 <span className="text-white/90 text-xs font-semibold">{content.hero.badge}</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-extrabold leading-tight mb-4 tracking-tight">
+              {/* lg:text-5xl (no 6xl): "Doná, ofrecé tu tiempo" entra en una línea
+                  en media columna sin dejar "tiempo" huérfano. */}
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl text-white font-extrabold leading-tight mb-4 tracking-tight text-balance">
                 {content.hero.title_line1} <br />
                 <span className="font-extrabold">{content.hero.title_line2}</span>
               </h1>
@@ -422,6 +424,7 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
                   ratio="square"
                   blobs={['secondary', 'accent']}
                   focus="center 26%"
+                  className="max-w-xs lg:max-w-xs"
                 />
               )}
 
@@ -431,7 +434,9 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
                   &laquo;{content.volunteer_testimonial.quote}&raquo;
                 </p>
                 <div className="flex items-center gap-3 relative z-10">
-                  <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white text-base select-none">🩺</div>
+                  <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white select-none">
+                    <Icon name="activity" className="h-5 w-5" />
+                  </div>
                   <div>
                     <div className="text-xs font-bold text-gray-900">{es ? 'Voluntaria activa' : 'Active Volunteer'}</div>
                     <div className="text-[10px] text-gray-500 font-semibold">{content.volunteer_testimonial.role}</div>

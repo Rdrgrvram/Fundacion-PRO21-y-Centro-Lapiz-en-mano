@@ -102,7 +102,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-extrabold leading-tight mb-4">
             {content.hero.title_line1} <br className="hidden sm:inline" />
-            <span className="font-extrabold text-primary">{content.hero.title_line2}</span>
+            <span className="italic font-normal">{content.hero.title_line2}</span>
           </h1>
 
           <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-2xl leading-relaxed">{content.hero.subtitle}</p>
@@ -128,7 +128,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
                     </div>
                     <div>
                       <div className="text-[10px] font-bold text-gray-400 tracking-wider uppercase">{c.title}</div>
-                      <div className="text-sm sm:text-base font-bold text-gray-900 mt-0.5 break-all">{c.primary}</div>
+                      <div className="text-sm font-bold text-gray-900 mt-0.5 break-words">{c.primary}</div>
                     </div>
                   </div>
                   <p className="text-xs text-gray-400 font-semibold mb-6">{c.secondary}</p>

@@ -45,7 +45,7 @@ export default function FamiliasPageClient({ lang, content }: FamiliasPageClient
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-extrabold leading-tight mb-4">
             {content.hero.title_line1} <br className="hidden sm:inline" />
-            <span className="font-extrabold text-primary">{content.hero.title_line2}</span>
+            <span className="italic font-normal">{content.hero.title_line2}</span>
           </h1>
 
           <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-2xl leading-relaxed">{content.hero.subtitle}</p>
