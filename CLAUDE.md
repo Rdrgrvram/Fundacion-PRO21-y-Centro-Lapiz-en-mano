@@ -180,7 +180,11 @@ Commit `997182f` completa Inicio (foto en la sección de Misión: `mission.image
 
 Trabajo posterior en `v2` (commits `36f7c0f`..`ee6fc0e`): cita de ProtagonistPhoto como pie de foto (no superpuesta) + prop `focus`; fix del rebote de la barra de accesibilidad (histéresis); **migración completa de emoji→íconos** (`components/ui/Icon.tsx` + `BrandLogo.tsx`) en TODAS las páginas incl. Blog / Contacto / Equipo; logos reales de redes en Contacto/Footer; campo `logo` para aliados y medios + logos reales de UCB / Red Uno / ATB / Página Siete en `public/images/logos/`.
 
-**Pendiente:** la rama `v2` no está mergeada a `develop` — el dueño la revisa primero (pasada visual: peso de titulares Fraunces, recortes de foto, hero amarillo, sección Misión, tamaño de íconos). Decisiones de contenido pendientes de reunión (consentimiento de fotos para web, testimonios, cuenta institucional de donaciones, autorización de logos de aliados). La variante "audaz" del hero quedó anotada, no explorada.
+**Pasada visual (sep 2026, plugin Playwright MCP):** se revisaron las 11 páginas en desktop + móvil con navegador real. Resultado: Fraunces OK (no pesado), recortes de foto (`focus`) OK, hero amarillo OK, números de Impacto excelentes, logos renderizando, barra de accesibilidad **no rebota** (verificado). Ajustes aplicados en `696c48c`: heroes de programa sin cita (redundante) + foto más chica; Colabora hero sin "tiempo" huérfano; Contacto correo sin corte; Contacto/Familias hero línea 2 en itálica blanca; Quiénes Somos identidad a 2 columnas; foto de voluntaria más chica. Las "galerías vacías" en screenshots eran lazy-load, no bug.
+
+**Rama `v2` MERGEADA a `develop`** (sep 2026, fast-forward, 11 commits `f27abc7`..`696c48c`). Se pueden borrar la rama `v2` local y sus screenshots (`.playwright-mcp/`, ya en `.gitignore`).
+
+**Pendiente (decisiones de la reunión con la Fundación, no de código):** consentimiento de fotos de menores para web pública, autorización de testimonios, cuenta institucional de donaciones, autorización formal de los logos de aliados. La variante "audaz" del hero quedó anotada, no explorada. Detalles menores anotados sin hacer: foto de voluntaria en Colabora aún deja algo de hueco bajo el form; diagrama de red de Equipo se ve algo sobrio.
 
 ### Estilo de trabajo acordado con el usuario
 - Consultar antes de cambios no triviales o de criterio; el usuario aprueba con respuestas cortas tipo "sigue" cuando está de acuerdo.
