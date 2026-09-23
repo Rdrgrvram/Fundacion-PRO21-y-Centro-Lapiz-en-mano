@@ -4,6 +4,8 @@ hero:
   badge: Psychopedagogical support
   subtitle: 'Specialized psychopedagogical intervention for children and adolescents with learning difficulties: dyslexia, dysgraphia, dyscalculia, ADHD, and low school performance.'
   color: accent
+  cta_details_label: See details
+  cta_whatsapp_label: WhatsApp inquiry
 stats:
   - icon: 📖
     value: '6'
@@ -120,4 +122,5 @@ enrollment:
 cta:
   title: Is your child struggling at school?
   text: Don't wait any longer. Early intervention makes the difference. Contact us and we'll evaluate your child free of charge.
+  link_label: Contact form
 ---

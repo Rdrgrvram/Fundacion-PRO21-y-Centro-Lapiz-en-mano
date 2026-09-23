@@ -1,0 +1,122 @@
+es:
+  hero:
+    badge: Nuestro equipo
+    title_line1: Profesionales con
+    title_line2: vocación y amor
+    subtitle: Un equipo multidisciplinario que trabaja de forma coordinada, poniendo al niño y su familia en el centro de cada intervención para lograr avances significativos.
+  stats:
+    - icon: 👩‍⚕️
+      value: ''
+      label: Profesionales
+    - icon: 🏥
+      value: ''
+      label: Áreas de especialidad
+    - icon: 📋
+      value: '3'
+      label: Programas activos
+    - icon: 💛
+      value: 100%
+      label: Dedicación integral
+  philosophy_section:
+    badge: Filosofía de trabajo
+    title: ¿Qué significa ser multidisciplinario?
+    subtitle: No es sólo tener muchas especialidades bajo un mismo techo. Es un equipo que piensa, planifica y actúa coordinadamente por y para el niño.
+  philosophy_items:
+    - icon: 🔄
+      title: Trabajo coordinado
+      desc: Todas las áreas comparten información y diseñan planes conjuntos, evitando intervenciones aisladas.
+    - icon: 👁️
+      title: Mirada integral
+      desc: No tratamos síntomas; acompañamos a una persona completa en sus dimensiones física, cognitiva, emocional y social.
+    - icon: 👨‍👩‍👧
+      title: Familia como aliada
+      desc: Los padres y madres no son espectadores; son parte activa de la terapia, con orientación continua.
+    - icon: 📊
+      title: Evaluación continua
+      desc: Cada plan de intervención se revisa periódicamente según los avances y necesidades individuales.
+  team_grid_section:
+    badge: Áreas de especialidad
+    title: Conoce a Nuestro Equipo
+    subtitle: Filtra por área para conocer a los profesionales, su especialidad y formación complementaria.
+    staff_count_label: Profesionales
+    competencies_label: Competencias de esta área
+    specialty_label: Especialidad médica
+    clear_filter_label: Limpiar filtro
+  network_section:
+    badge: Trabajo en red
+    title: El niño y su familia en el centro
+    subtitle: 'Cada profesional aporta desde su especialidad, pero todos interactúan con el mismo núcleo: el bienestar pleno de la familia.'
+    center_label: El Niño y su Familia
+    center_sublabel: Centro de la red
+    node_caption: Intervención integral
+  volunteers_section:
+    badge: Voluntariado
+    title: Nuestros Voluntarios
+    subtitle: Agradecemos de corazón a quienes dedican su tiempo y energía a apoyar de forma desinteresada a la fundación.
+    tag_label: Voluntaria
+  cta:
+    title: ¿Quieres unirte a nuestro equipo?
+    text: Buscamos fisioterapeutas, psicopedagogos, fonoaudiólogos, psicólogos clínicos y educadores que deseen poner su conocimiento al servicio de la inclusión integral en La Paz.
+    primary_label: Postular ahora
+    secondary_label: Ser voluntario
+en:
+  hero:
+    badge: Our team
+    title_line1: Professionals with
+    title_line2: vocation and love
+    subtitle: A multidisciplinary team working coordinately, placing the child and family at the center of every intervention to achieve meaningful progress.
+  stats:
+    - icon: 👩‍⚕️
+      value: ''
+      label: Staff members
+    - icon: 🏥
+      value: ''
+      label: Specialized areas
+    - icon: 📋
+      value: '3'
+      label: Active programs
+    - icon: 💛
+      value: 100%
+      label: Dedicated care
+  philosophy_section:
+    badge: Work philosophy
+    title: What does multidisciplinary mean?
+    subtitle: It is not just having many specialties under one roof. It is a team that thinks, plans, and acts coordinately by and for the child.
+  philosophy_items:
+    - icon: 🔄
+      title: Coordinated work
+      desc: All areas share information and design joint plans, avoiding isolated interventions.
+    - icon: 👁️
+      title: Integral view
+      desc: We do not treat symptoms; we support a whole person in their physical, cognitive, emotional, and social dimensions.
+    - icon: 👨‍👩‍👧
+      title: Family as ally
+      desc: Parents are not spectators; they are active participants in therapy, with continuous guidance.
+    - icon: 📊
+      title: Continuous evaluation
+      desc: Each intervention plan is periodically reviewed based on individual progress and needs.
+  team_grid_section:
+    badge: Specialized Areas
+    title: Meet Our Team
+    subtitle: Filter by area to meet the professionals, their specialty, and educational background.
+    staff_count_label: Staff
+    competencies_label: Competencies in this area
+    specialty_label: Medical Specialty
+    clear_filter_label: Clear filter
+  network_section:
+    badge: Network work
+    title: The child and family at the center
+    subtitle: Each professional contributes from their specialty, but all interact with the same core; the family's full well-being.
+    center_label: The Child and Family
+    center_sublabel: Network core
+    node_caption: Integral Care
+  volunteers_section:
+    badge: Volunteering
+    title: Our Volunteers
+    subtitle: We sincerely thank those who donate their time and energy to selflessly support our foundation.
+    tag_label: Volunteer
+  cta:
+    title: Want to join our team?
+    text: We look for physiotherapists, psychopedagogues, speech therapists, clinical psychologists, and educators who wish to put their knowledge at the service of integral inclusion in La Paz.
+    primary_label: Apply now
+    secondary_label: Become a volunteer

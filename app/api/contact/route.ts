@@ -1,4 +1,5 @@
 import { Resend } from 'resend'
+import { getSiteSettings } from '@/lib/cms'
 
 export async function POST(req: Request) {
   try {
@@ -15,9 +16,10 @@ export async function POST(req: Request) {
     }
 
     const resend = new Resend(apiKey)
+    const { email: destinationEmail } = getSiteSettings('es').contact
     await resend.emails.send({
       from: 'web@fundacionpro21.org',
-      to: 'contacto@fundacionpro21.org',
+      to: destinationEmail,
       subject: `[Web] Mensaje de ${name}${program ? ` — ${program}` : ''}`,
       text: `Nombre: ${name}\nEmail: ${email}\nTeléfono: ${phone ?? 'No proporcionado'}\nPrograma de interés: ${program ?? 'General'}\n\nMensaje:\n${message}`,
     })

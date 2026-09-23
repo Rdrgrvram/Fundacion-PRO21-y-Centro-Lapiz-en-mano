@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:cms": "node scripts/dev-cms.mjs",
     "build:admin": "npm --prefix admin install && node scripts/build-admin.mjs",
     "build": "npm run build:admin && next build",
     "start": "next start",
     "lint": "next lint",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "test:cms": "playwright test"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
@@ -22,6 +24,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^20.0.0",
     "@types/react": "^18.3.0",

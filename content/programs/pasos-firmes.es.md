@@ -4,6 +4,8 @@ hero:
   badge: Apoyo psicopedagógico
   subtitle: 'Intervención psicopedagógica especializada para niños y adolescentes con dificultades de aprendizaje: dislexia, disgrafía, discalculia, TDAH y bajo rendimiento escolar.'
   color: accent
+  cta_details_label: Ver detalles
+  cta_whatsapp_label: Consultar por WhatsApp
 stats:
   - icon: 📖
     value: '6'
@@ -120,4 +122,5 @@ enrollment:
 cta:
   title: ¿Tu hijo tiene dificultades en la escuela?
   text: No esperes más. La intervención temprana marca la diferencia. Contáctanos y evaluamos a tu hijo gratuitamente.
+  link_label: Formulario de contacto
 ---

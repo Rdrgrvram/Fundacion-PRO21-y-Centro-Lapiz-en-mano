@@ -39,7 +39,7 @@ export default function Header({ lang, settings }: HeaderProps) {
   return (
     <div className="sticky top-0 z-50 w-full flex flex-col">
       {/* Barra de accesibilidad global */}
-      <AccessibilityBar lang={lang} />
+      <AccessibilityBar lang={lang} settings={settings} />
 
       {/* Header principal */}
       <header className="w-full bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
@@ -48,8 +48,8 @@ export default function Header({ lang, settings }: HeaderProps) {
           {/* Logo / Identidad */}
           <Link href={`/${lang}`} className="flex items-center gap-2 md:gap-3 group py-1.5 focus:outline-none" aria-label="Inicio — Fundación PRO-21 y Centro Lápiz en Mano">
             <Image
-              src="/icons/logo-pro21.png"
-              alt="Fundación PRO-21"
+              src={settings.logo_pro21}
+              alt={settings.logo_pro21_alt}
               width={40}
               height={48}
               className="h-10 md:h-12 w-auto object-contain"
@@ -57,8 +57,8 @@ export default function Header({ lang, settings }: HeaderProps) {
             />
             <div className="w-px h-8 bg-gray-200 flex-shrink-0" />
             <Image
-              src="/icons/logo-lapiz.png"
-              alt="Centro Lápiz en Mano"
+              src={settings.logo_lapiz}
+              alt={settings.logo_lapiz_alt}
               width={40}
               height={40}
               className="h-10 md:h-12 w-auto object-contain"
@@ -116,9 +116,9 @@ export default function Header({ lang, settings }: HeaderProps) {
             {/* Header del cajón */}
             <div className="flex items-center justify-between pb-4 border-b border-gray-100 mb-6">
               <div className="flex items-center gap-2">
-                <Image src="/icons/logo-pro21.png" alt="Fundación PRO-21" width={32} height={38} className="h-9 w-auto object-contain" />
+                <Image src={settings.logo_pro21} alt={settings.logo_pro21_alt} width={32} height={38} className="h-9 w-auto object-contain" />
                 <div className="w-px h-7 bg-gray-200" />
-                <Image src="/icons/logo-lapiz.png" alt="Centro Lápiz en Mano" width={32} height={32} className="h-9 w-auto object-contain" />
+                <Image src={settings.logo_lapiz} alt={settings.logo_lapiz_alt} width={32} height={32} className="h-9 w-auto object-contain" />
               </div>
               <button
                 onClick={() => setIsOpen(false)}

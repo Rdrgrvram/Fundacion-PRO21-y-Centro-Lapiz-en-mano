@@ -7,6 +7,7 @@ es:
   stats_section:
     badge: Nuestras cifras
     title: El impacto consolidado en números
+    subtitle: Cada número representa una historia real de inclusión y progreso.
   stats:
     - icon: 👨‍👩‍👧
       color: secondary
@@ -37,10 +38,14 @@ es:
   testimonials_section:
     badge: Voces de las familias
     title: Lo que dicen de nosotros
+    subtitle: Historias en primera persona de las familias que forman parte de nuestra comunidad.
   reports_section:
     badge: Transparencia institucional
     title: Rendición de cuentas anual
     subtitle: La confianza se construye publicando informes de gestión claros para cooperantes, aliados y familias.
+    list_label: Informes Anuales Disponibles
+    download_label: Descargar PDF
+    request_label: Solicitar
   reports:
     - year: '2025'
       title: Informe anual de gestión 2025
@@ -75,6 +80,7 @@ es:
   media_section:
     badge: Impacto social en medios
     title: Difusión en prensa y televisión
+    subtitle: Así hablan de nuestro trabajo la prensa y la televisión boliviana.
   media:
     - outlet: Red Uno de Bolivia
       type: Televisión
@@ -99,6 +105,7 @@ es:
   gallery_section:
     badge: Galería del centro
     title: Momentos que nos inspiran
+    subtitle: Un vistazo a la vida diaria en nuestros programas y actividades.
   gallery_categories:
     - Todos
     - Mi Escuelita
@@ -108,24 +115,34 @@ es:
   gallery:
     - image: /images/wawitas/learning-activity.png
       alt: Niño realizando una actividad de aprendizaje en el aula
+      category: Aula Wawitas
     - image: /images/wawitas/outdoor-play.png
       alt: Niños jugando al aire libre en el centro
+      category: Aula Wawitas
     - image: /images/wawitas/sensory-room.png
       alt: Sala de estimulación sensorial del centro
+      category: Aula Wawitas
     - image: /images/wawitas/therapy-session.png
       alt: Sesión de terapia individual con un niño
+      category: Aula Wawitas
     - image: /images/actividades/estimulacion-sensorial.jpg
       alt: Actividad de estimulación sensorial
+      category: Eventos
     - image: /images/actividades/mercado-autonomia.jpg
       alt: Actividad de autonomía tipo mercado
+      category: Eventos
     - image: /images/actividades/psicomotricidad-bolos.jpg
       alt: Actividad de psicomotricidad con bolos
+      category: Eventos
     - image: /images/actividades/trazos-cognitivos.jpg
       alt: Actividad de trazos y estimulación cognitiva
+      category: Eventos
   gallery_note: '* Fotografías ilustrativas y reales de uso interno bajo consentimiento de tutoría legal.'
   cta:
     title: ¿Quieres ser parte de esta transformación?
     text: Cada boliviano donado, cada hora de voluntariado y cada alianza estratégica multiplica el impacto social, permitiéndonos acoger a más niños y niñas en lista de espera.
+    cta_label: Colaborar ahora
+    secondary_label: Solicitar informes
 en:
   hero:
     badge: Impact & transparency
@@ -135,6 +152,7 @@ en:
   stats_section:
     badge: Our metrics
     title: Consolidated impact in numbers
+    subtitle: Every number represents a real story of inclusion and progress.
   stats:
     - icon: 👨‍👩‍👧
       color: secondary
@@ -165,10 +183,14 @@ en:
   testimonials_section:
     badge: Voices of families
     title: What they say about us
+    subtitle: First-hand stories from the families that are part of our community.
   reports_section:
     badge: Institutional Transparency
     title: Annual Accountability
     subtitle: Trust is built by publishing clear management reports for partners, allies, and families.
+    list_label: Available Annual Reports
+    download_label: Download PDF
+    request_label: Request
   reports:
     - year: '2025'
       title: 2025 Annual Management Report
@@ -203,6 +225,7 @@ en:
   media_section:
     badge: Outreach in media
     title: Broadcasting in press and television
+    subtitle: How Bolivian press and television talk about our work.
   media:
     - outlet: Red Uno de Bolivia
       type: Television
@@ -227,6 +250,7 @@ en:
   gallery_section:
     badge: Center Gallery
     title: Moments that inspire us
+    subtitle: A glimpse into daily life across our programs and activities.
   gallery_categories:
     - All
     - Mi Escuelita
@@ -236,21 +260,31 @@ en:
   gallery:
     - image: /images/wawitas/learning-activity.png
       alt: Child doing a learning activity in the classroom
+      category: Aula Wawitas
     - image: /images/wawitas/outdoor-play.png
       alt: Children playing outdoors at the center
+      category: Aula Wawitas
     - image: /images/wawitas/sensory-room.png
       alt: Center's sensory stimulation room
+      category: Aula Wawitas
     - image: /images/wawitas/therapy-session.png
       alt: Individual therapy session with a child
+      category: Aula Wawitas
     - image: /images/actividades/estimulacion-sensorial.jpg
       alt: Sensory stimulation activity
+      category: Events
     - image: /images/actividades/mercado-autonomia.jpg
       alt: Market-style autonomy activity
+      category: Events
     - image: /images/actividades/psicomotricidad-bolos.jpg
       alt: Psychomotor activity with bowling pins
+      category: Events
     - image: /images/actividades/trazos-cognitivos.jpg
       alt: Cognitive stimulation drawing activity
+      category: Events
   gallery_note: '* Illustrative and real photos of internal use under consent of legal guardianship.'
   cta:
     title: Want to be part of this transformation?
     text: Every Bolivian Peso donated, every hour of volunteering, and every strategic alliance multiplies the social impact, allowing us to welcome more children on the waiting list.
+    cta_label: Collaborate now
+    secondary_label: Request reports

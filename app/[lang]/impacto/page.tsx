@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { getAllTestimonials } from '@/lib/content'
-import { getImpactContent } from '@/lib/cms'
+import { getImpactContent, getSiteSettings } from '@/lib/cms'
 import type { Locale } from '@/lib/i18n'
 import ImpactoPageClient from './ImpactoPageClient'
 
@@ -19,6 +19,14 @@ export async function generateMetadata({ params: { lang } }: PageProps): Promise
 export default function Page({ params: { lang } }: PageProps) {
   const content = getImpactContent(lang)
   const testimonials = getAllTestimonials(lang).filter((t) => t.featuredImpacto)
+  const whatsappNumber = getSiteSettings(lang).contact.whatsapp_number
 
-  return <ImpactoPageClient lang={lang} content={content} testimonials={testimonials} />
+  return (
+    <ImpactoPageClient
+      lang={lang}
+      content={content}
+      testimonials={testimonials}
+      whatsappNumber={whatsappNumber}
+    />
+  )
 }

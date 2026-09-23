@@ -57,7 +57,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
   const contactInfo = [
     { icon: '📱', title: 'WhatsApp', primary: `+591 ${contact.phone_display}`, secondary: es ? 'Respuesta en menos de 2 horas' : 'Reply in less than 2 hours', href: whatsappUrl, action: es ? 'Escribir ahora' : 'Write now', hex: '#22c55e', bg: 'bg-green-50' },
     { icon: '✉️', title: es ? 'Correo electrónico' : 'Email', primary: contact.email, secondary: es ? 'Respuesta en 24 horas' : 'Reply in 24 hours', href: `mailto:${contact.email}`, action: es ? 'Enviar correo' : 'Send email', hex: PALETTE.secondary.hex, bg: PALETTE.secondary.bg },
-    { icon: '📞', title: es ? 'Teléfono' : 'Phone', primary: `+591 ${contact.phone_display}`, secondary: es ? 'Lunes a viernes, 8:00 – 18:00' : 'Monday to Friday, 8:00 – 18:00', href: `tel:${contact.phone_display}`, action: es ? 'Llamar' : 'Call', hex: PALETTE.secondary.hex, bg: PALETTE.secondary.bg },
+    { icon: '📞', title: es ? 'Teléfono' : 'Phone', primary: `+591 ${contact.phone_display}`, secondary: es ? 'Lunes a viernes, 8:00 – 18:00' : 'Monday to Friday, 8:00 – 18:00', href: `tel:+591${contact.phone_display}`, action: es ? 'Llamar' : 'Call', hex: PALETTE.secondary.hex, bg: PALETTE.secondary.bg },
   ]
 
   const socialLinks = [
@@ -233,7 +233,14 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
                       {es ? 'WhatsApp directo' : 'Direct WhatsApp'}
                     </a>
                   </div>
-                  <button onClick={() => setFormSent(false)} className="text-xs font-bold text-secondary hover:underline mt-8">
+                  <button
+                    onClick={() => {
+                      setFormSent(false)
+                      setForm({ name: '', email: '', phone: '', message: '' })
+                      setSelectedReason(null)
+                    }}
+                    className="text-xs font-bold text-secondary hover:underline mt-8"
+                  >
                     {es ? '← Enviar otro mensaje' : '← Send another message'}
                   </button>
                 </div>
@@ -252,7 +259,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
                 </div>
                 <p className="text-xs text-gray-500 leading-relaxed mb-5">{contact.address}</p>
                 <a
-                  href="https://maps.google.com/?q=La+Paz+Bolivia"
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.address)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-3 rounded-xl border border-gray-200 hover:border-primary bg-white hover:bg-gray-50 text-xs font-bold text-center text-gray-600 hover:text-primary transition-all select-none min-h-[44px] flex items-center justify-center gap-1.5"
@@ -355,7 +362,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
                 className="bg-white/15 hover:bg-white/25 border border-white/20 backdrop-blur-md px-8 py-5 rounded-2xl text-white transition-all hover:scale-[1.02] active:scale-[0.98] flex flex-col items-center justify-center min-h-[44px] select-none"
               >
                 <span className="text-3xl mb-1 block">💬</span>
-                <span className="font-serif text-xl font-bold leading-none">70106276</span>
+                <span className="font-serif text-xl font-bold leading-none">+591 {contact.phone_display}</span>
                 <span className="text-[10px] text-white/70 font-semibold mt-1">{es ? 'Presiona para chatear' : 'Tap to chat'}</span>
               </a>
             </div>

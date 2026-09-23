@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { getProgramBySlug } from '@/lib/content'
+import { getProgramBySlug } from '@/lib/cms'
 import type { Locale } from '@/lib/i18n'
 import ProgramPageLayout from '@/components/sections/ProgramPageLayout'
 

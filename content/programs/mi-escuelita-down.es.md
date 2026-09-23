@@ -4,6 +4,8 @@ hero:
   badge: Programa Especializado
   subtitle: Intervención terapéutica y educativa integral para niños y niñas con síndrome de Down, desde la estimulación temprana hasta la inclusión escolar plena.
   color: primary
+  cta_details_label: Ver detalles
+  cta_whatsapp_label: Consultar por WhatsApp
 stats:
   - icon: 👶
     value: 0 – 14+
@@ -132,4 +134,5 @@ enrollment:
 cta:
   title: ¿Tu hijo tiene síndrome de Down?
   text: Contáctanos hoy. Evaluamos gratuitamente a cada niño y diseñamos un plan adaptado a sus necesidades.
+  link_label: Formulario de contacto
 ---

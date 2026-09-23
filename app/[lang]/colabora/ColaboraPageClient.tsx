@@ -3,13 +3,16 @@ import { useState } from 'react'
 import type { Locale } from '@/lib/i18n'
 import type { CollaborateContent } from '@/lib/cms-schemas'
 import { PALETTE } from '@/lib/palette'
+import { waLink } from '@/lib/utils'
 
 interface ColaboraPageClientProps {
   lang: Locale
   content: CollaborateContent
+  whatsappNumber: string
+  email: string
 }
 
-export default function ColaboraPageClient({ lang, content }: ColaboraPageClientProps) {
+export default function ColaboraPageClient({ lang, content, whatsappNumber, email }: ColaboraPageClientProps) {
   const es = lang === 'es'
   const [selectedTier, setSelectedTier] = useState(1)
   const [customAmount, setCustomAmount] = useState('')
@@ -82,10 +85,10 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
 
               <div className="flex flex-wrap gap-4 items-center">
                 <a href="#donaciones" className="bg-primary hover:bg-primary/95 text-black font-extrabold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-md shadow-primary/10 min-h-[44px] flex items-center justify-center">
-                  {es ? 'Donar ahora' : 'Donate now'}
+                  {content.hero.donate_label}
                 </a>
                 <a href="#voluntariado" className="border-2 border-white/20 hover:border-white/50 bg-transparent hover:bg-white/5 text-white font-bold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] min-h-[44px] flex items-center justify-center">
-                  {es ? 'Ser voluntario' : 'Volunteer'}
+                  {content.hero.volunteer_label}
                 </a>
               </div>
             </div>
@@ -175,7 +178,7 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
 
                 <div className="mt-8 select-none">
                   <a
-                    href="https://wa.me/59170106276"
+                    href={waLink(whatsappNumber)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-primary hover:bg-primary/95 text-black font-extrabold text-sm sm:text-base px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-md shadow-primary/10 min-h-[44px] inline-flex items-center gap-2"
@@ -194,7 +197,7 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
                   {es ? 'Medios de depósito autorizados' : 'Authorized deposit methods'}
                 </div>
                 {content.payment_methods.map((m, idx) => {
-                  const isBank = idx === 0
+                  const isBank = m.is_bank ?? false
                   const lines = isBank
                     ? [content.donation_bank.bank, `${es ? 'Cta' : 'Acct'}: ${content.donation_bank.account}`, content.donation_bank.holder]
                     : m.lines
@@ -420,9 +423,9 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
             <p className="text-xs text-gray-400 mb-8">{content.allies_subtitle}</p>
             <div className="flex flex-wrap gap-4 justify-center items-center">
               {content.allies.map((ally, i) => (
-                <div key={i} className="bg-gray-50 border border-gray-200 rounded-2xl py-4 px-5 text-center min-w-[140px] flex-1 sm:flex-none shadow-sm hover:border-primary transition-colors">
+                <div key={i} className="bg-gray-50 border border-gray-200 rounded-2xl py-4 px-5 text-center min-w-[140px] max-w-[180px] flex-1 sm:flex-none shadow-sm hover:border-primary transition-colors">
                   <div className="text-2xl mb-1.5">{ally.icon}</div>
-                  <div className="text-xs font-bold text-[#111827] whitespace-nowrap">{ally.name.split(' ')[0]}</div>
+                  <div className="text-xs font-bold text-[#111827] leading-snug">{ally.name}</div>
                   <div className="text-[9px] text-gray-400 font-semibold mt-1">{ally.type}</div>
                 </div>
               ))}
@@ -444,16 +447,16 @@ export default function ColaboraPageClient({ lang, content }: ColaboraPageClient
           <p className="text-sm md:text-base text-white/70 max-w-xl mx-auto leading-relaxed mb-10">{content.cta.text}</p>
           <div className="flex flex-wrap gap-4 justify-center items-center">
             <a
-              href="https://wa.me/59170106276"
+              href={waLink(whatsappNumber)}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#22c55e] hover:bg-[#22c55e]/90 text-white font-extrabold text-sm sm:text-base px-8 py-3.5 sm:py-4 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[#22c55e]/20 min-h-[44px] flex items-center justify-center gap-2"
             >
               <span className="text-xl">💬</span>
-              {es ? 'Escribir al 70106276' : 'Message 70106276'}
+              {es ? 'Escribir por WhatsApp' : 'Message us on WhatsApp'}
             </a>
             <a
-              href="mailto:contacto@fundacionpro21.org"
+              href={`mailto:${email}`}
               className="border border-white/20 hover:border-white/50 bg-white/5 text-white font-bold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] min-h-[44px] flex items-center justify-center"
             >
               {es ? 'Enviar correo' : 'Send email'}

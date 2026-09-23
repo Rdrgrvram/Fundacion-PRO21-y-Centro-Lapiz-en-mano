@@ -4,6 +4,8 @@ hero:
   badge: Programa Preescolar
   subtitle: Programa de estimulación y educación preescolar integral para niños y niñas de 3 a 5 años, preparándolos para una transición exitosa a la educación primaria regular.
   color: secondary
+  cta_details_label: Ver detalles
+  cta_whatsapp_label: Consultar por WhatsApp
 stats:
   - icon: 🧸
     value: '3'
@@ -132,4 +134,5 @@ enrollment:
 cta:
   title: ¿Tu hijo tiene entre 3 y 5 años?
   text: El Aula Wawitas recibe niños de 3 a 5 años. Contáctanos para conocer disponibilidad y comenzar el proceso de inscripción.
+  link_label: Formulario de contacto
 ---

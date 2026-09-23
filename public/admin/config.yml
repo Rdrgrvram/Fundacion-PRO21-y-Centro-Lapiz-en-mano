@@ -55,6 +55,10 @@ collections:
         file: content/settings/site_settings.yml
         i18n: true
         fields:
+          - { label: "Logo PRO-21", name: logo_pro21, widget: image }
+          - { label: "Texto alternativo — Logo PRO-21", name: logo_pro21_alt, widget: string, i18n: true }
+          - { label: "Logo Lápiz en Mano", name: logo_lapiz, widget: image }
+          - { label: "Texto alternativo — Logo Lápiz en Mano", name: logo_lapiz_alt, widget: string, i18n: true }
           - label: "Datos de contacto"
             name: contact
             widget: object
@@ -123,6 +127,7 @@ collections:
               - { label: "Título — línea 2 (resaltada en amarillo)", name: title_line2, widget: string, i18n: true }
               - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
               - { label: "Texto del botón principal", name: cta_primary, widget: string, i18n: true }
+              - { label: "Badge (ubicación)", name: badge, widget: string, i18n: true }
           - label: "Cifras rápidas"
             name: stats
             widget: list
@@ -139,6 +144,7 @@ collections:
               - { label: Etiqueta, name: badge, widget: string, i18n: true }
               - { label: Título, name: title, widget: string, i18n: true }
               - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
+              - { label: "Texto del botón (compartido por las 3 tarjetas)", name: cta_label, widget: string, i18n: true }
               - label: "Tarjetas de programa"
                 name: cards
                 widget: list
@@ -160,6 +166,12 @@ collections:
               - { label: Título, name: title, widget: string, i18n: true }
               - { label: Texto, name: text, widget: text, i18n: true }
               - { label: "Texto del enlace", name: link_text, widget: string, i18n: true }
+          - label: "Sección: Testimonios"
+            name: testimonials_section
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
           - label: "Valores destacados"
             name: values
             widget: list
@@ -176,12 +188,14 @@ collections:
               - { label: Etiqueta, name: badge, widget: string, i18n: true }
               - { label: Título, name: title, widget: string, i18n: true }
               - { label: Texto, name: text, widget: text, i18n: true }
+              - { label: "Texto del botón", name: cta_label, widget: string, i18n: true }
           - label: "CTA final"
             name: cta
             widget: object
             fields:
               - { label: Título, name: title, widget: string, i18n: true }
               - { label: Texto, name: text, widget: text, i18n: true }
+              - { label: "Texto del botón de contacto", name: link_label, widget: string, i18n: true }
 
   # ── Página: Quiénes Somos ──────────────────────────────────────────────────
   - name: about
@@ -273,12 +287,15 @@ collections:
               - { label: Etiqueta, name: badge, widget: string, i18n: true }
               - { label: Título, name: title, widget: string, i18n: true }
               - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
+              - { label: "Texto del botón", name: cta_label, widget: string, i18n: true }
           - label: "CTA final"
             name: cta
             widget: object
             fields:
               - { label: Título, name: title, widget: string, i18n: true }
               - { label: Texto, name: text, widget: text, i18n: true }
+              - { label: "Texto del botón principal", name: cta_label, widget: string, i18n: true }
+              - { label: "Texto del botón secundario", name: secondary_label, widget: string, i18n: true }
 
   # ── Páginas: Mi Escuelita Down / Aula Wawitas / Pasos Firmes ──────────────
   # Folder collection (no singleton): usa multiple_files, igual que Equipo —
@@ -304,6 +321,8 @@ collections:
           - { label: "Etiqueta (badge)", name: badge, widget: string, i18n: true }
           - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
           - { label: "Color de fondo", name: color, widget: select, options: [primary, secondary, accent] }
+          - { label: "Texto del botón 'Ver detalles'", name: cta_details_label, widget: string, i18n: true }
+          - { label: "Texto del botón de WhatsApp", name: cta_whatsapp_label, widget: string, i18n: true }
       - label: "Cifras rápidas"
         name: stats
         widget: list
@@ -390,6 +409,7 @@ collections:
         fields:
           - { label: Título, name: title, widget: string, i18n: true }
           - { label: Texto, name: text, widget: text, i18n: true }
+          - { label: "Texto del botón de contacto", name: link_label, widget: string, i18n: true }
 
   # ── Página: Inicio + Impacto ──────────────────────────────────────────────
   - name: testimonios
@@ -418,6 +438,87 @@ collections:
       - { label: Testimonio, name: body, widget: markdown, i18n: true }
 
   # ── Página: Equipo ─────────────────────────────────────────────────────────
+  - name: equipo_page
+    label: "👥 Equipo — Contenido de página"
+    description: "Contenido fijo de la página de Equipo: hero, filosofía de trabajo, sección de red, voluntariado y CTA. Las fichas de cada profesional se editan en las 3 colecciones de abajo (Áreas, Profesionales, Voluntarios)."
+    i18n:
+      structure: single_file
+      locales: [es, en]
+    files:
+      - name: content
+        label: Contenido de Equipo
+        file: content/settings/equipo_page.yml
+        i18n: true
+        fields:
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: "Título — línea 1", name: title_line1, widget: string, i18n: true }
+              - { label: "Título — línea 2 (resaltada)", name: title_line2, widget: string, i18n: true }
+              - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
+          - label: "Cifras rápidas"
+            name: stats
+            widget: list
+            min: 4
+            max: 4
+            fields:
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: "Valor (dejar vacío en las primeras 2 — se calculan solas desde Profesionales y Áreas)", name: value, widget: string, i18n: true, required: false }
+              - { label: Etiqueta, name: label, widget: string, i18n: true }
+          - label: "Sección: Filosofía de trabajo"
+            name: philosophy_section
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
+          - label: "Tarjetas de filosofía"
+            name: philosophy_items
+            widget: list
+            fields:
+              - { label: "Ícono (emoji)", name: icon, widget: string }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Descripción, name: desc, widget: text, i18n: true }
+          - label: "Sección: Grilla de equipo (filtro + fichas)"
+            name: team_grid_section
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
+              - { label: "Etiqueta de conteo (ej. 'Profesionales' en '3 Profesionales')", name: staff_count_label, widget: string, i18n: true }
+              - { label: "Etiqueta 'Competencias de esta área'", name: competencies_label, widget: string, i18n: true }
+              - { label: "Etiqueta 'Especialidad médica'", name: specialty_label, widget: string, i18n: true }
+              - { label: "Texto del botón 'Limpiar filtro'", name: clear_filter_label, widget: string, i18n: true }
+          - label: "Sección: Trabajo en red"
+            name: network_section
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
+              - { label: "Texto del nodo central", name: center_label, widget: string, i18n: true }
+              - { label: "Subtítulo del nodo central (solo móvil)", name: center_sublabel, widget: string, i18n: true }
+              - { label: "Descripción bajo cada área (móvil)", name: node_caption, widget: string, i18n: true }
+          - label: "Sección: Voluntariado"
+            name: volunteers_section
+            widget: object
+            fields:
+              - { label: Etiqueta, name: badge, widget: string, i18n: true }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
+              - { label: "Etiqueta de cada voluntario/a (ej. 'Voluntaria')", name: tag_label, widget: string, i18n: true }
+          - label: "CTA final"
+            name: cta
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Texto, name: text, widget: text, i18n: true }
+              - { label: "Texto del botón principal", name: primary_label, widget: string, i18n: true }
+              - { label: "Texto del botón secundario", name: secondary_label, widget: string, i18n: true }
+
   - name: team_areas
     label: "👥 Equipo — Áreas de especialidad"
     label_singular: Área
@@ -458,11 +559,15 @@ collections:
       - { label: Especialidad, name: specialty, widget: string, i18n: true }
       - label: Área de especialidad
         name: area
-        widget: relation
-        collection: team_areas
-        search_fields: [name]
-        display_fields: [name]
-        value_field: "{{slug}}"
+        widget: select
+        hint: "Si se agrega/renombra un área en 'Equipo — Áreas de especialidad', actualizar esta lista de opciones a mano (antes era widget: relation, pero tenía un bug nativo de Decap que marcaba 'cambios pendientes' sin que el usuario tocara nada)"
+        options:
+          - { label: "Psicología y conducta", value: conducta }
+          - { label: Fisioterapia, value: fisio }
+          - { label: "Terapia de lenguaje", value: lenguaje }
+          - { label: "Pedagogía y Parvularia", value: pedagogia }
+          - { label: Psicomotricidad, value: psicomotricidad }
+          - { label: "Trabajo social", value: social }
       - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
       - { label: Foto, name: photo, widget: image, required: false, hint: "Opcional — si se deja vacío se muestran las iniciales" }
       - { label: "Iniciales (si no hay foto)", name: initials, widget: string, pattern: ["^.{1,3}$", "Máximo 3 caracteres"] }
@@ -529,6 +634,9 @@ collections:
               - { label: Etiqueta, name: badge, widget: string, i18n: true }
               - { label: Título, name: title, widget: string, i18n: true }
               - { label: "Subtítulo (opcional)", name: subtitle, widget: text, i18n: true, required: false }
+              - { label: "Etiqueta de la columna de informes", name: list_label, widget: string, i18n: true }
+              - { label: "Texto del botón de descarga (cuando hay PDF)", name: download_label, widget: string, i18n: true }
+              - { label: "Texto del botón de solicitud (cuando no hay PDF)", name: request_label, widget: string, i18n: true }
           - label: "Informes anuales"
             name: reports
             widget: list
@@ -576,6 +684,7 @@ collections:
             fields:
               - { label: Foto, name: image, widget: image }
               - { label: "Texto alternativo (accesibilidad)", name: alt, widget: string, i18n: true }
+              - { label: Categoría, name: category, widget: string, hint: "Debe coincidir EXACTO con una de las 'Categorías de la galería' de arriba (ej. 'Aula Wawitas') — de eso depende el filtro de la galería en el sitio." }
           - { label: "Nota de la galería", name: gallery_note, widget: text, i18n: true }
           - label: "CTA final"
             name: cta
@@ -583,6 +692,8 @@ collections:
             fields:
               - { label: Título, name: title, widget: string, i18n: true }
               - { label: Texto, name: text, widget: text, i18n: true }
+              - { label: "Texto del botón principal", name: cta_label, widget: string, i18n: true }
+              - { label: "Texto del botón secundario (WhatsApp)", name: secondary_label, widget: string, i18n: true }
 
   # ── Página: Colabora ───────────────────────────────────────────────────────
   - name: collaborate
@@ -605,6 +716,8 @@ collections:
               - { label: "Título — línea 1", name: title_line1, widget: string, i18n: true }
               - { label: "Título — línea 2 (resaltada)", name: title_line2, widget: string, i18n: true }
               - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
+              - { label: "Texto del botón de donar", name: donate_label, widget: string, i18n: true }
+              - { label: "Texto del botón de voluntariado", name: volunteer_label, widget: string, i18n: true }
           - label: "Cifras destacadas del hero"
             name: hero_highlights
             widget: list
@@ -646,6 +759,7 @@ collections:
               - { label: "Ícono (emoji)", name: icon, widget: string }
               - { label: Título, name: title, widget: string, i18n: true }
               - { label: Líneas, name: lines, widget: list, i18n: true }
+              - { label: "¿Es transferencia bancaria?", name: is_bank, widget: boolean, required: false, default: false, hint: "Marcar SOLO en el método de transferencia bancaria — sus 'Líneas' se ignoran y se arman automáticamente con los 'Datos bancarios' de abajo." }
           - { label: "Nota de pago", name: payment_note, widget: text, i18n: true }
           - label: "Sección: Voluntariado"
             name: volunteer_section
@@ -817,9 +931,11 @@ collections:
     slug: "{{slug}}"
     preview_path: "/es/blog/{{slug}}"
     fields:
+      - { label: "Visible en el sitio", name: visible, widget: boolean, default: true, required: false, hint: "Si se desactiva, la entrada deja de existir públicamente (error 404) hasta reactivarla. También se puede cambiar desde el panel rápido en /admin/blog." }
       - { label: Título, name: title, widget: string }
       - { label: Fecha de publicación, name: date, widget: datetime, format: "YYYY-MM-DD" }
       - { label: Imagen destacada, name: image, widget: image, required: false }
+      - { label: "PDF adjunto (opcional)", name: pdf, widget: file, required: false, hint: "Si se sube, al hacer clic en la imagen del blog en el listado público se abre este PDF en vez del artículo." }
       - { label: Resumen (para la lista), name: excerpt, widget: text }
       - { label: Contenido, name: body, widget: markdown }
 

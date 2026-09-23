@@ -8,6 +8,7 @@ export const homeSchema = z.object({
     title_line2: z.string(),
     subtitle: z.string(),
     cta_primary: z.string(),
+    badge: z.string(),
   }),
   stats: z.array(
     z.object({
@@ -20,6 +21,7 @@ export const homeSchema = z.object({
     badge: z.string(),
     title: z.string(),
     subtitle: z.string(),
+    cta_label: z.string(),
     cards: z.array(
       z.object({
         slug: z.string(),
@@ -38,6 +40,10 @@ export const homeSchema = z.object({
     text: z.string(),
     link_text: z.string(),
   }),
+  testimonials_section: z.object({
+    badge: z.string(),
+    title: z.string(),
+  }),
   values: z.array(
     z.object({
       icon: z.string(),
@@ -49,10 +55,12 @@ export const homeSchema = z.object({
     badge: z.string(),
     title: z.string(),
     text: z.string(),
+    cta_label: z.string(),
   }),
   cta: z.object({
     title: z.string(),
     text: z.string(),
+    link_label: z.string(),
   }),
 })
 
@@ -102,10 +110,14 @@ export const aboutSchema = z.object({
       desc: z.string(),
     })
   ),
-  team_section: sectionHeader,
+  team_section: sectionHeader.extend({
+    cta_label: z.string(),
+  }),
   cta: z.object({
     title: z.string(),
     text: z.string(),
+    cta_label: z.string(),
+    secondary_label: z.string(),
   }),
 })
 
@@ -118,7 +130,11 @@ export const impactSchema = z.object({
   stats_section: sectionHeader,
   stats: z.array(z.object({ icon: z.string(), color: accentColor, value: z.string(), suffix: z.string().optional(), label: z.string() })),
   testimonials_section: sectionHeader,
-  reports_section: sectionHeader,
+  reports_section: sectionHeader.extend({
+    list_label: z.string(),
+    download_label: z.string(),
+    request_label: z.string(),
+  }),
   reports: z.array(
     z.object({
       year: z.string(),
@@ -133,9 +149,9 @@ export const impactSchema = z.object({
   media: z.array(z.object({ outlet: z.string(), type: z.string(), desc: z.string(), year: z.string(), color: accentColor })),
   gallery_section: sectionHeader,
   gallery_categories: z.array(z.string()),
-  gallery: z.array(z.object({ image: z.string(), alt: z.string() })),
+  gallery: z.array(z.object({ image: z.string(), alt: z.string(), category: z.string() })),
   gallery_note: z.string(),
-  cta: z.object({ title: z.string(), text: z.string() }),
+  cta: z.object({ title: z.string(), text: z.string(), cta_label: z.string(), secondary_label: z.string() }),
 })
 
 export type ImpactContent = z.infer<typeof impactSchema>
@@ -143,7 +159,14 @@ export type ImpactContent = z.infer<typeof impactSchema>
 // ── Colabora ─────────────────────────────────────────────────────────────────
 
 export const collaborateSchema = z.object({
-  hero: z.object({ badge: z.string(), title_line1: z.string(), title_line2: z.string(), subtitle: z.string() }),
+  hero: z.object({
+    badge: z.string(),
+    title_line1: z.string(),
+    title_line2: z.string(),
+    subtitle: z.string(),
+    donate_label: z.string(),
+    volunteer_label: z.string(),
+  }),
   hero_highlights: z.array(z.object({ icon: z.string(), value: z.string(), label: z.string() })),
   donation_section: sectionHeader,
   donation_tiers: z.array(
@@ -159,7 +182,9 @@ export const collaborateSchema = z.object({
     })
   ),
   donation_bank: z.object({ bank: z.string(), account: z.string(), holder: z.string(), note: z.string() }),
-  payment_methods: z.array(z.object({ icon: z.string(), title: z.string(), lines: z.array(z.string()) })),
+  payment_methods: z.array(
+    z.object({ icon: z.string(), title: z.string(), lines: z.array(z.string()), is_bank: z.boolean().optional() })
+  ),
   payment_note: z.string(),
   volunteer_section: sectionHeader,
   volunteer_areas: z.array(z.object({ icon: z.string(), title: z.string(), desc: z.string(), color: accentColor })),
@@ -241,6 +266,10 @@ const siteRoute = z.enum([
 ])
 
 export const siteSettingsSchema = z.object({
+  logo_pro21: z.string(),
+  logo_pro21_alt: z.string(),
+  logo_lapiz: z.string(),
+  logo_lapiz_alt: z.string(),
   contact: z.object({
     address: z.string(),
     phone_display: z.string(),
@@ -267,3 +296,150 @@ export const siteSettingsSchema = z.object({
 })
 
 export type SiteSettingsContent = z.infer<typeof siteSettingsSchema>
+
+// ── Programas (colección folder, 3 entradas fijas) ────────────────────────────
+
+const programCardItem = z.object({
+  icon: z.string(),
+  color: accentColor,
+  title: z.string(),
+  tag: z.string().optional(),
+  desc: z.string().optional(),
+  items: z.array(z.string()).optional(),
+})
+
+const programCardSection = z.object({
+  badge: z.string(),
+  title: z.string(),
+  subtitle: z.string().optional(),
+  layout: z.enum(['tarjetas', 'acordeón']).default('tarjetas'),
+  items: z.array(programCardItem),
+})
+
+export type ProgramCardSectionContent = z.infer<typeof programCardSection>
+
+const programTabSection = z.object({
+  badge: z.string(),
+  title: z.string(),
+  subtitle: z.string().optional(),
+  tabs: z.array(
+    z.object({
+      icon: z.string(),
+      color: accentColor,
+      label: z.string(),
+      age_range: z.string().optional(),
+      desc: z.string(),
+      highlights: z.array(z.string()),
+    })
+  ),
+})
+
+export type ProgramTabSectionContent = z.infer<typeof programTabSection>
+
+export const programSchema = z.object({
+  title: z.string(),
+  hero: z.object({
+    badge: z.string(),
+    subtitle: z.string(),
+    color: accentColor,
+    cta_details_label: z.string(),
+    cta_whatsapp_label: z.string(),
+  }),
+  stats: z.array(z.object({ icon: z.string(), value: z.string(), label: z.string() })),
+  section_1: programCardSection,
+  section_2: programTabSection,
+  section_3: programCardSection.optional(),
+  enrollment: z.object({
+    badge: z.string().optional(),
+    title: z.string(),
+    subtitle: z.string().optional(),
+    steps: z.array(z.object({ icon: z.string(), title: z.string(), desc: z.string() })),
+  }),
+  cta: z.object({
+    title: z.string(),
+    text: z.string(),
+    link_label: z.string(),
+  }),
+})
+
+export type ProgramContent = z.infer<typeof programSchema>
+
+// ── Equipo (singleton de página — hero/filosofía/red/CTA; team_areas, equipo y
+// volunteers siguen siendo colecciones folder aparte, sin cambios acá) ─────────
+
+export const equipoPageSchema = z.object({
+  hero: z.object({
+    badge: z.string(),
+    title_line1: z.string(),
+    title_line2: z.string(),
+    subtitle: z.string(),
+  }),
+  // El "valor" de las 2 primeras cifras se calcula en runtime (team.length /
+  // areas.length) — el campo `value` del CMS se ignora para esos 2 índices,
+  // por eso queda opcional/vacío en el contenido semilla. Los últimos 2 sí usan
+  // el valor tal cual viene del CMS.
+  stats: z.array(z.object({ icon: z.string(), value: z.string().optional(), label: z.string() })).length(4),
+  philosophy_section: sectionHeader,
+  philosophy_items: z.array(z.object({ icon: z.string(), title: z.string(), desc: z.string() })),
+  team_grid_section: z.object({
+    badge: z.string(),
+    title: z.string(),
+    subtitle: z.string(),
+    staff_count_label: z.string(),
+    competencies_label: z.string(),
+    specialty_label: z.string(),
+    clear_filter_label: z.string(),
+  }),
+  network_section: z.object({
+    badge: z.string(),
+    title: z.string(),
+    subtitle: z.string(),
+    center_label: z.string(),
+    center_sublabel: z.string(),
+    node_caption: z.string(),
+  }),
+  volunteers_section: sectionHeader.extend({
+    tag_label: z.string(),
+  }),
+  cta: z.object({
+    title: z.string(),
+    text: z.string(),
+    primary_label: z.string(),
+    secondary_label: z.string(),
+  }),
+})
+
+export type EquipoPageContent = z.infer<typeof equipoPageSchema>
+
+// ── Colecciones folder de Equipo: team_areas / equipo / volunteers ────────────
+
+export const teamAreaSchema = z.object({
+  name: z.string(),
+  icon: z.string(),
+  color: accentColor,
+  desc: z.string(),
+  skills: z.array(z.string()),
+  programs: z.array(z.string()),
+})
+
+export type TeamAreaContent = z.infer<typeof teamAreaSchema>
+
+export const teamMemberSchema = z.object({
+  name: z.string(),
+  role: z.string(),
+  specialty: z.string(),
+  bio: z.string(),
+  photo: z.string().optional(),
+  initials: z.string(),
+  area: z.string(),
+  color: accentColor,
+})
+
+export type TeamMemberContent = z.infer<typeof teamMemberSchema>
+
+// Sin i18n (un solo .md por persona, no <slug>.es.md/<slug>.en.md).
+export const volunteerSchema = z.object({
+  name: z.string(),
+})
+
+export type VolunteerContent = z.infer<typeof volunteerSchema>

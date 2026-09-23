@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getFamiliesContent } from '@/lib/cms'
+import { getFamiliesContent, getSiteSettings } from '@/lib/cms'
 import type { Locale } from '@/lib/i18n'
 import FamiliasPageClient from './FamiliasPageClient'
 
@@ -17,5 +17,6 @@ export async function generateMetadata({ params: { lang } }: PageProps): Promise
 
 export default function Page({ params: { lang } }: PageProps) {
   const content = getFamiliesContent(lang)
-  return <FamiliasPageClient lang={lang} content={content} />
+  const { whatsapp_number } = getSiteSettings(lang).contact
+  return <FamiliasPageClient lang={lang} content={content} whatsappNumber={whatsapp_number} />
 }

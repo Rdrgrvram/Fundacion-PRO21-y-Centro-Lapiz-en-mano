@@ -4,6 +4,8 @@ hero:
   badge: Specialized Program
   subtitle: Comprehensive therapeutic and educational intervention for children with Down syndrome, from early stimulation to full school inclusion.
   color: primary
+  cta_details_label: See details
+  cta_whatsapp_label: WhatsApp inquiry
 stats:
   - icon: 👶
     value: 0 – 14+
@@ -132,4 +134,5 @@ enrollment:
 cta:
   title: Does your child have Down syndrome?
   text: Contact us today. We evaluate each child free of charge and design a plan adapted to their needs.
+  link_label: Contact form
 ---

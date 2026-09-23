@@ -4,6 +4,7 @@ es:
     title_line2: un potencial único
     subtitle: Fundación PRO-21 y Centro Lápiz en Mano brindamos atención terapéutica y educativa especializada a niños con síndrome de Down, dificultades preescolares y dificultades de aprendizaje.
     cta_primary: Ver programas
+    badge: La Paz, Bolivia
   stats:
     - icon: 👶
       value: 70+
@@ -21,6 +22,7 @@ es:
     badge: Nuestros programas
     title: ¿En qué podemos ayudarte?
     subtitle: Tres programas especializados que atienden diferentes necesidades del desarrollo infantil, con un enfoque integral y personalizado.
+    cta_label: Conocer programa
     cards:
       - slug: mi-escuelita-down
         icon: 🌟
@@ -48,6 +50,9 @@ es:
     title: Nuestra Misión
     text: Nuestro compromiso es con los derechos de los niños y niñas con síndrome de Down, neurodivergencia y dificultades de aprendizaje a recibir una educación integral de calidad, inclusiva y personalizada que les permita desarrollar todo su potencial.
     link_text: Conocer nuestra historia
+  testimonials_section:
+    badge: Lo que dicen las familias
+    title: Historias que nos motivan
   values:
     - icon: 🤝
       title: Inclusión radical
@@ -65,15 +70,18 @@ es:
     badge: Equipo profesional
     title: 10 profesionales a tu lado
     text: Nuestro equipo multidisciplinario incluye terapeutas de lenguaje, fisioterapeutas, psicomotricistas, psicólogos, trabajadores sociales y pedagogos.
+    cta_label: Conocer al equipo
   cta:
     title: ¿Quieres saber si podemos ayudar a tu hijo?
     text: Contáctanos hoy. Realizamos una primera evaluación sin costo y te orientamos hacia el programa más adecuado.
+    link_label: Formulario de contacto
 en:
   hero:
     title_line1: Every child has
     title_line2: a unique potential
     subtitle: PRO-21 Foundation and Lápiz en Mano Center provide specialized therapeutic and educational care for children with Down syndrome, preschool needs, and learning difficulties.
     cta_primary: See programs
+    badge: La Paz, Bolivia
   stats:
     - icon: 👶
       value: 70+
@@ -91,6 +99,7 @@ en:
     badge: Our programs
     title: How can we help you?
     subtitle: Three specialized programs addressing different childhood development needs, with a comprehensive and personalized approach.
+    cta_label: Learn more
     cards:
       - slug: mi-escuelita-down
         icon: 🌟
@@ -118,6 +127,9 @@ en:
     title: Our Mission
     text: Our commitment is to the rights of children with Down syndrome, neurodivergence, and learning difficulties to receive quality, inclusive, and personalized comprehensive education that allows them to develop their full potential.
     link_text: Learn our history
+  testimonials_section:
+    badge: What families say
+    title: Stories that motivate us
   values:
     - icon: 🤝
       title: Radical inclusion
@@ -135,6 +147,8 @@ en:
     badge: Professional team
     title: 10 professionals by your side
     text: Our multidisciplinary team includes speech therapists, physiotherapists, psychomotricity specialists, psychologists, social workers, and educators.
+    cta_label: Meet the team
   cta:
     title: Want to know if we can help your child?
     text: Contact us today. We conduct a free first evaluation and guide you to the most appropriate program.
+    link_label: Contact form
