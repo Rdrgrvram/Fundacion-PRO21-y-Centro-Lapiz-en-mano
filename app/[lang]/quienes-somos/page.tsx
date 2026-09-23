@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-import type { Locale } from '@/lib/i18n'
-import { getAllTeamAreas } from '@/lib/content'
-import { getAboutContent } from '@/lib/cms'
+import { getTranslation, type Locale } from '@/lib/i18n'
+import { getAboutContent, getSiteSettings, getAllTeamAreas } from '@/lib/cms'
+import { getNavLabel } from '@/lib/utils'
 import { PALETTE, type AccentColor } from '@/lib/palette'
 
 interface PageProps {
@@ -32,8 +32,9 @@ const CARD_STYLES: Record<AccentColor, { text: string; from: string }> = {
 }
 
 export default function Page({ params: { lang } }: PageProps) {
-  const es = lang === 'es'
   const content = getAboutContent(lang)
+  const settings = getSiteSettings(lang)
+  const t = getTranslation(lang)
   // La vista previa del equipo reusa las áreas de especialidad ya migradas en
   // la Fase 2, igual que en la página de Inicio — evita duplicar la lista.
   const teamAreas = getAllTeamAreas(lang)
@@ -50,9 +51,9 @@ export default function Page({ params: { lang } }: PageProps) {
 
         <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
           <nav className="flex items-center gap-2 text-white/60 text-xs mb-8">
-            <Link href={`/${lang}`} className="hover:text-white transition-colors">{es ? 'Inicio' : 'Home'}</Link>
+            <Link href={`/${lang}`} className="hover:text-white transition-colors">{t['nav.home']}</Link>
             <span>/</span>
-            <span className="text-white font-semibold">{es ? 'Quiénes Somos' : 'About Us'}</span>
+            <span className="text-white font-semibold">{getNavLabel(settings.nav, 'quienes-somos') ?? t['nav.about']}</span>
           </nav>
 
           <div className="inline-flex items-center gap-2 bg-white/15 border border-white/20 rounded-full px-4 py-1.5 mb-5">
@@ -86,7 +87,7 @@ export default function Page({ params: { lang } }: PageProps) {
             {/* PRO-21 Card */}
             <div className="w-full lg:w-[46%] bg-white rounded-3xl p-8 md:p-10 border border-gray-200/80 shadow-sm transition-all hover:shadow-md hover:border-gray-300 flex flex-col">
               <div className="w-16 h-16 mb-6 select-none">
-                <Image src="/icons/logo-pro21.png" alt="Fundación PRO-21" width={64} height={64} className="w-full h-full object-contain" />
+                <Image src={settings.logo_pro21} alt={settings.logo_pro21_alt} width={64} height={64} className="w-full h-full object-contain" />
               </div>
               <h3 className="text-2xl text-gray-900 font-bold mb-1">Fundación PRO-21</h3>
               <p className="text-xs font-semibold text-secondary italic tracking-wide mb-5">
@@ -109,7 +110,7 @@ export default function Page({ params: { lang } }: PageProps) {
             {/* Lápiz en Mano Card */}
             <div className="w-full lg:w-[46%] bg-white rounded-3xl p-8 md:p-10 border border-gray-200/80 shadow-sm transition-all hover:shadow-md hover:border-gray-300 flex flex-col">
               <div className="w-16 h-16 mb-6 select-none">
-                <Image src="/icons/logo-lapiz.png" alt="Centro Lápiz en Mano" width={64} height={64} className="w-full h-full object-contain" />
+                <Image src={settings.logo_lapiz} alt={settings.logo_lapiz_alt} width={64} height={64} className="w-full h-full object-contain" />
               </div>
               <h3 className="text-2xl text-gray-900 font-bold mb-1">Centro Lápiz en Mano</h3>
               <p className="text-xs font-semibold text-accent italic tracking-wide mb-5">
@@ -330,7 +331,7 @@ export default function Page({ params: { lang } }: PageProps) {
               href={`/${lang}/equipo`}
               className="bg-primary hover:bg-primary/95 text-black font-extrabold text-sm px-8 py-3.5 sm:py-4 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-black/10 min-h-[44px] min-w-[44px] inline-flex items-center justify-center"
             >
-              {es ? 'Conoce al equipo completo →' : 'Meet the entire team →'}
+              {content.team_section.cta_label} →
             </Link>
           </div>
 
@@ -356,13 +357,13 @@ export default function Page({ params: { lang } }: PageProps) {
               href={`/${lang}/colabora`}
               className="bg-gray-900 hover:bg-gray-800 text-white font-extrabold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg min-h-[44px] min-w-[44px] flex items-center justify-center"
             >
-              {es ? 'Colaborar ahora' : 'Support now'}
+              {content.cta.cta_label}
             </Link>
             <Link
               href={`/${lang}/contacto`}
               className="border-2 border-gray-900/30 hover:border-gray-900/60 bg-transparent text-gray-900 font-bold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] min-h-[44px] min-w-[44px] flex items-center justify-center"
             >
-              {es ? 'Contactar' : 'Contact'}
+              {content.cta.secondary_label}
             </Link>
           </div>
         </div>

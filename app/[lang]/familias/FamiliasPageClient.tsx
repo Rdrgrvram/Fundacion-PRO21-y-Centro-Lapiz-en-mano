@@ -3,13 +3,15 @@ import { useState } from 'react'
 import type { Locale } from '@/lib/i18n'
 import type { FamiliesContent } from '@/lib/cms-schemas'
 import { PALETTE } from '@/lib/palette'
+import { waLink } from '@/lib/utils'
 
 interface FamiliasPageClientProps {
   lang: Locale
   content: FamiliesContent
+  whatsappNumber: string
 }
 
-export default function FamiliasPageClient({ lang, content }: FamiliasPageClientProps) {
+export default function FamiliasPageClient({ lang, content, whatsappNumber }: FamiliasPageClientProps) {
   const es = lang === 'es'
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
@@ -162,7 +164,7 @@ export default function FamiliasPageClient({ lang, content }: FamiliasPageClient
                   </div>
                   <div className="px-6 pb-6 select-none">
                     <a
-                      href={g.file || 'https://wa.me/59170106276'}
+                      href={g.file || waLink(whatsappNumber)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full py-2.5 rounded-xl border flex items-center justify-center gap-1.5 text-xs font-bold transition-all"
@@ -235,13 +237,13 @@ export default function FamiliasPageClient({ lang, content }: FamiliasPageClient
           <p className="text-xs sm:text-sm text-white/55 italic max-w-md mx-auto mb-10">{content.cta.note}</p>
           <div className="flex justify-center">
             <a
-              href="https://wa.me/59170106276"
+              href={waLink(whatsappNumber)}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#22c55e] hover:bg-[#22c55e]/90 text-white font-extrabold text-sm sm:text-base px-8 py-3.5 sm:py-4 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[#22c55e]/20 min-h-[44px] flex items-center justify-center gap-2"
             >
               <span className="text-xl">💬</span>
-              {es ? 'Escríbenos por WhatsApp — 70106276' : 'Message us on WhatsApp — 70106276'}
+              {es ? 'Escríbenos por WhatsApp' : 'Message us on WhatsApp'}
             </a>
           </div>
         </div>

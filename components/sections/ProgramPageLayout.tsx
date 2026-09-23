@@ -1,6 +1,5 @@
 import type { Locale } from '@/lib/i18n'
-import type { Program } from '@/lib/content'
-import { getSiteSettings } from '@/lib/cms'
+import { getSiteSettings, type Program } from '@/lib/cms'
 import ProgramHero from './ProgramHero'
 import ProgramStatsRow from './ProgramStatsRow'
 import ProgramCardSection from './ProgramCardSection'
@@ -22,11 +21,11 @@ export default function ProgramPageLayout({ lang, program }: ProgramPageLayoutPr
     <div className="bg-white">
       <ProgramHero lang={lang} program={program} whatsappNumber={contact.whatsapp_number} />
       <ProgramStatsRow stats={program.stats} />
-      <ProgramCardSection id="section-1" section={program.section1} alt />
-      <ProgramTabSection id="section-2" section={program.section2} />
-      {program.section3 && <ProgramCardSection section={program.section3} alt />}
+      <ProgramCardSection id="section-1" section={program.section_1} alt />
+      <ProgramTabSection id="section-2" section={program.section_2} />
+      {program.section_3 && <ProgramCardSection section={program.section_3} alt />}
       <ProgramEnrollmentSteps section={program.enrollment} />
-      <ProgramCTA lang={lang} program={program} whatsappNumber={contact.whatsapp_number} phoneDisplay={contact.phone_display} />
+      <ProgramCTA lang={lang} program={program} whatsappNumber={contact.whatsapp_number} />
     </div>
   )
 }

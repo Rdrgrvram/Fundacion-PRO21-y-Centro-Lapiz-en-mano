@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import type { Locale } from '@/lib/i18n'
 import { getSiteSettings } from '@/lib/cms'
-import { getAllPrograms } from '@/lib/content'
+import { getAllPrograms } from '@/lib/cms'
 import { waLink } from '@/lib/utils'
 
 interface FooterProps {
@@ -22,9 +22,9 @@ export default function Footer({ lang }: FooterProps) {
           {/* Columna 1: Identidad + contacto */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <Image src="/icons/logo-pro21.png" alt="Fundación PRO-21" width={40} height={48} className="h-12 w-auto object-contain" />
+              <Image src={settings.logo_pro21} alt={settings.logo_pro21_alt} width={40} height={48} className="h-12 w-auto object-contain" />
               <div className="w-px h-10 bg-white/20" />
-              <Image src="/icons/logo-lapiz.png" alt="Centro Lápiz en Mano" width={40} height={40} className="h-12 w-auto object-contain" />
+              <Image src={settings.logo_lapiz} alt={settings.logo_lapiz_alt} width={40} height={40} className="h-12 w-auto object-contain" />
             </div>
 
             <ul className="mt-4 space-y-2 text-sm text-gray-400">
@@ -49,6 +49,17 @@ export default function Footer({ lang }: FooterProps) {
             {/* Redes sociales */}
             <div className="mt-5 flex gap-3">
               <a
+                href={social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                  <path d="M22 12.06C22 6.505 17.523 2 12 2S2 6.505 2 12.06c0 5.022 3.657 9.184 8.438 9.94v-7.03H7.898v-2.91h2.54V9.845c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.91h-2.33V22c4.78-.756 8.437-4.918 8.437-9.94z"/>
+                </svg>
+              </a>
+              <a
                 href={social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -63,7 +74,18 @@ export default function Footer({ lang }: FooterProps) {
                 href={social.tiktok_lapiz}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="TikTok"
+                aria-label="TikTok — Centro Lápiz en Mano"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                  <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/>
+                </svg>
+              </a>
+              <a
+                href={social.tiktok_pro21}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok — Fundación PRO-21"
                 className="text-gray-400 hover:text-white transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">

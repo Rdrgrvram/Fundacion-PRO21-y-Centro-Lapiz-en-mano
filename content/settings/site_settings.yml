@@ -1,4 +1,8 @@
 es:
+  logo_pro21: /icons/logo-pro21.png
+  logo_pro21_alt: Fundación PRO-21
+  logo_lapiz: /icons/logo-lapiz.png
+  logo_lapiz_alt: Centro Lápiz en Mano
   contact:
     address: Calle Luis Espinal Nro. 126, Zona Plan Autopista, Municipio de La Paz
     phone_display: "70106276"
@@ -50,6 +54,10 @@ es:
     copyright: Fundación PRO-21. Desarrollado por estudiantes de Ingeniería de Sistemas, UCB La Paz.
 
 en:
+  logo_pro21: /icons/logo-pro21.png
+  logo_pro21_alt: PRO-21 Foundation
+  logo_lapiz: /icons/logo-lapiz.png
+  logo_lapiz_alt: Lápiz en Mano Center
   contact:
     address: Calle Luis Espinal Nro. 126, Zona Plan Autopista, Municipio de La Paz
     phone_display: "70106276"

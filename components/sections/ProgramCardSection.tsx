@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { EXTENDED_PALETTE } from '@/lib/palette'
-import type { ProgramCardSection as ProgramCardSectionData } from '@/lib/content'
+import type { ProgramCardSectionContent as ProgramCardSectionData } from '@/lib/cms-schemas'
 
 const COLS: Record<number, string> = {
   2: 'sm:grid-cols-2',

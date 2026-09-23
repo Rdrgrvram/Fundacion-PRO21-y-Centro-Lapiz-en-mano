@@ -1,12 +1,14 @@
 'use client'
 import { useState, useEffect } from 'react'
 import type { Locale } from '@/lib/i18n'
+import type { SiteSettingsContent } from '@/lib/cms-schemas'
 
 interface AccessibilityBarProps {
   lang: Locale
+  settings: SiteSettingsContent
 }
 
-export default function AccessibilityBar({ lang }: AccessibilityBarProps) {
+export default function AccessibilityBar({ lang, settings }: AccessibilityBarProps) {
   const [fontSize, setFontSize] = useState(100)
   const [highContrast, setHighContrast] = useState(false)
   const es = lang === 'es'
@@ -62,7 +64,7 @@ export default function AccessibilityBar({ lang }: AccessibilityBarProps) {
   return (
     <div className="bg-[#0c2340] text-white text-xs py-1.5 px-4 border-b border-white/10 flex flex-wrap items-center justify-between gap-3 min-h-[44px]">
       <span className="text-white/60 font-medium select-none">
-        {es ? 'Fundacion PRO21 - Centro Lápiz en Mano · La Paz, Bolivia' : 'Fundacion PRO21 - Centro Lápiz en Mano · La Paz, Bolivia'}
+        {settings.logo_pro21_alt} - {settings.logo_lapiz_alt} · {settings.header.tagline}
       </span>
       <div className="flex items-center gap-2 flex-wrap">
         <span className="text-white/60 select-none mr-1">{es ? 'Accesibilidad:' : 'Accessibility:'}</span>

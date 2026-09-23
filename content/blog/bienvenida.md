@@ -1,4 +1,5 @@
 ---
+visible: true
 title: Bienvenidos al nuevo sitio de Fundación PRO-21
 date: 2026-07-01
 image: /images/uploads/bienvenida.jpg

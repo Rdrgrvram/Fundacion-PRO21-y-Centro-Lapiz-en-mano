@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { EXTENDED_PALETTE } from '@/lib/palette'
-import type { ProgramTabSection as ProgramTabSectionData } from '@/lib/content'
+import type { ProgramTabSectionContent as ProgramTabSectionData } from '@/lib/cms-schemas'
 
 interface ProgramTabSectionProps {
   id?: string
@@ -40,9 +40,9 @@ export default function ProgramTabSection({ id, section }: ProgramTabSectionProp
               >
                 <span>{t.icon}</span>
                 <span>{t.label}</span>
-                {t.ageRange && (
+                {t.age_range && (
                   <span className={`text-xs px-2 py-0.5 rounded-full ${isActive ? 'bg-white/20' : 'bg-gray-200 text-gray-500'}`}>
-                    {t.ageRange}
+                    {t.age_range}
                   </span>
                 )}
               </button>
@@ -56,7 +56,7 @@ export default function ProgramTabSection({ id, section }: ProgramTabSectionProp
             <span className="text-4xl">{tab.icon}</span>
             <div>
               <h3 className={`text-xl font-extrabold ${style.text}`}>{tab.label}</h3>
-              {tab.ageRange && <span className="text-sm text-gray-500">{tab.ageRange}</span>}
+              {tab.age_range && <span className="text-sm text-gray-500">{tab.age_range}</span>}
             </div>
           </div>
           <div className="p-6">

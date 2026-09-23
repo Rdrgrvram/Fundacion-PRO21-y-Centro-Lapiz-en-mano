@@ -4,6 +4,8 @@ hero:
   badge: Preschool Program
   subtitle: Comprehensive preschool stimulation and education program for children ages 3 to 5, preparing them for a successful transition to regular primary education.
   color: secondary
+  cta_details_label: See details
+  cta_whatsapp_label: WhatsApp inquiry
 stats:
   - icon: 🧸
     value: '3'
@@ -132,4 +134,5 @@ enrollment:
 cta:
   title: Is your child between 3 and 5 years old?
   text: Aula Wawitas accepts children ages 3 to 5. Contact us to check availability and start the enrollment process.
+  link_label: Contact form
 ---

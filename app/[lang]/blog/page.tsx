@@ -1,5 +1,8 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { getAllPosts } from '@/lib/content'
+import { getSiteSettings } from '@/lib/cms'
+import { waLink } from '@/lib/utils'
 import type { Locale } from '@/lib/i18n'
 import type { Metadata } from 'next'
 
@@ -20,6 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function Page({ params: { lang } }: Props) {
   const es = lang === 'es'
   const posts = await getAllPosts()
+  const whatsappUrl = waLink(getSiteSettings(lang).contact.whatsapp_number)
 
   return (
     <div className="overflow-x-hidden w-full bg-gray-50">
@@ -89,13 +93,30 @@ export default async function Page({ params: { lang } }: Props) {
                   className="bg-white rounded-3xl border border-gray-200 overflow-hidden flex flex-col justify-between hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 h-full"
                 >
                   <div>
-                    {/* Cabecera visual simulada/placeholder */}
-                    <div className="h-44 bg-gradient-to-br from-[#e8f7fb] to-[#f9fafb] flex items-center justify-center text-4xl relative overflow-hidden select-none border-b border-gray-100">
-                      <span className="animate-pulse">📰</span>
+                    {/* Cabecera visual: imagen destacada real si existe, o placeholder
+                        decorativo como respaldo. El clic abre el PDF adjunto (si lo hay)
+                        en vez de llevar al artículo — insignia visible para que quede
+                        claro qué va a pasar antes de hacer clic. */}
+                    <Link
+                      href={post.pdf ?? `/${lang}/blog/${post.slug}`}
+                      target={post.pdf ? '_blank' : undefined}
+                      rel={post.pdf ? 'noopener noreferrer' : undefined}
+                      className="h-44 bg-gradient-to-br from-[#e8f7fb] to-[#f9fafb] flex items-center justify-center text-4xl relative overflow-hidden select-none border-b border-gray-100 block"
+                    >
+                      {post.image ? (
+                        <Image src={post.image} alt={post.title} fill className="object-cover" />
+                      ) : (
+                        <span className="animate-pulse">📰</span>
+                      )}
                       <span className="absolute bottom-3 right-3 text-[9px] font-bold text-gray-400 bg-white px-2 py-0.5 rounded-full shadow-sm">
                         {post.date}
                       </span>
-                    </div>
+                      {post.pdf && (
+                        <span className="absolute top-3 left-3 text-[9px] font-bold text-white bg-secondary px-2.5 py-1 rounded-full shadow-sm whitespace-nowrap select-none">
+                          📄 PDF
+                        </span>
+                      )}
+                    </Link>
 
                     <div className="p-6">
                       <h2 className="font-serif text-base sm:text-lg text-[#111827] font-bold mb-3 leading-snug line-clamp-2">
@@ -138,7 +159,7 @@ export default async function Page({ params: { lang } }: Props) {
           </p>
           <div className="flex justify-center">
             <a
-              href="https://wa.me/59170106276"
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-primary hover:bg-primary/95 text-black font-extrabold text-xs sm:text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] min-h-[44px] flex items-center justify-center gap-1.5 shadow-lg shadow-primary/10 select-none"

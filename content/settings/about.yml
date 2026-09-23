@@ -101,9 +101,12 @@ es:
     badge: Nuestro equipo
     title: Profesionales con vocación
     subtitle: Un equipo multidisciplinario de 10 profesionales especializados dedicados al desarrollo integral de cada niño y su familia.
+    cta_label: Conoce al equipo completo
   cta:
     title: ¿Quieres ser parte de esta historia?
     text: Tu apoyo transforma vidas. Dona, sé voluntario o conviértete en aliado de la inclusión en Bolivia.
+    cta_label: Colaborar ahora
+    secondary_label: Contactar
 en:
   hero:
     badge: Our history
@@ -207,6 +210,9 @@ en:
     badge: Our Team
     title: Professionals with Vocation
     subtitle: A multidisciplinary team of 10 specialized professionals dedicated to the comprehensive development of each child and their family.
+    cta_label: Meet the entire team
   cta:
     title: Want to be part of this story?
     text: Your support transforms lives. Donate, volunteer, or become an ally of inclusion in Bolivia.
+    cta_label: Support now
+    secondary_label: Contact

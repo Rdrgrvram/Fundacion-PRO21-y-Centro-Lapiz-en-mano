@@ -1,6 +1,6 @@
-import type { ProgramStat } from '@/lib/content'
+import type { Program } from '@/lib/cms'
 
-export default function ProgramStatsRow({ stats }: { stats: ProgramStat[] }) {
+export default function ProgramStatsRow({ stats }: { stats: Program['stats'] }) {
   return (
     <section className="py-10 border-b border-gray-100">
       <div className="container mx-auto px-4">

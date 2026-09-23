@@ -1,7 +1,10 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { getPostBySlug, getAllPosts } from '@/lib/content'
+import { getSiteSettings } from '@/lib/cms'
+import { waLink } from '@/lib/utils'
 import type { Locale } from '@/lib/i18n'
 
 interface Props {
@@ -26,6 +29,7 @@ export default async function BlogPostPage({ params: { lang, slug } }: Props) {
   const es = lang === 'es'
   const post = await getPostBySlug(slug)
   if (!post) notFound()
+  const whatsappUrl = waLink(getSiteSettings(lang).contact.whatsapp_number)
 
   return (
     <div className="overflow-x-hidden w-full bg-[#fafbfd] py-12 px-4 sm:py-16 md:py-20">
@@ -52,11 +56,23 @@ export default async function BlogPostPage({ params: { lang, slug } }: Props) {
           <p className="text-xs sm:text-sm text-gray-400 font-semibold italic leading-relaxed">
             {post.excerpt}
           </p>
+
+          {post.pdf && (
+            <a
+              href={post.pdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 mt-4 text-xs font-bold text-secondary hover:underline min-h-[44px]"
+            >
+              <span>📄</span>
+              <span>{es ? 'Descargar PDF adjunto' : 'Download attached PDF'}</span>
+            </a>
+          )}
         </div>
 
-        {/* Imagen del post si existiese, sino banner elegante de la fundación */}
-        <div className="h-48 sm:h-64 rounded-2xl bg-gradient-to-br from-[#e8f1fa] to-[#fafbfd] border border-gray-150 flex items-center justify-center text-5xl mb-8 select-none shadow-sm">
-          <span>📰</span>
+        {/* Imagen destacada real si existe, sino banner elegante de la fundación */}
+        <div className="h-48 sm:h-64 rounded-2xl bg-gradient-to-br from-[#e8f1fa] to-[#fafbfd] border border-gray-150 flex items-center justify-center text-5xl mb-8 select-none shadow-sm relative overflow-hidden">
+          {post.image ? <Image src={post.image} alt={post.title} fill className="object-cover" /> : <span>📰</span>}
         </div>
 
         {/* Contenido principal en HTML renderizado */}
@@ -79,7 +95,7 @@ export default async function BlogPostPage({ params: { lang, slug } }: Props) {
           </div>
 
           <a
-            href="https://wa.me/59170106276"
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs font-bold text-[#25d366] hover:underline flex items-center gap-1 min-h-[44px]"

@@ -46,3 +46,8 @@ yarn-error.log*
 
 # Archivos de prueba
 public/TEST.MD
+
+# Playwright — reportes y artefactos de la suite de auditoría del CMS (tests/cms/)
+/playwright-report/
+/test-results/
+/blob-report/

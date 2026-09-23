@@ -19,3 +19,13 @@ export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://fundacionpr
 export function waLink(whatsappNumber: string, message?: string): string {
   return message ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}` : `https://wa.me/${whatsappNumber}`
 }
+
+/**
+ * Busca la etiqueta de una ruta en site_settings.nav (fuente real del menú, ya
+ * editable desde el CMS) — para reusar en breadcrumbs en vez de hardcodear el
+ * nombre de cada página de nuevo. Si la ruta no está en nav (ej. "inicio", que no
+ * es parte del menú editable), el llamador debe usar otro fallback.
+ */
+export function getNavLabel(nav: { route: string; label: string }[], route: string): string | undefined {
+  return nav.find((item) => item.route === route)?.label
+}

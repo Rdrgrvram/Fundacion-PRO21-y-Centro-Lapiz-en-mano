@@ -4,6 +4,8 @@ es:
     title_line1: Tu apoyo
     title_line2: transforma vidas
     subtitle: Existen muchas formas de ser parte de este camino inclusivo. Aportando una donación, brindando voluntariado o firmando una alianza corporativa, estás sembrando esperanza en Bolivia.
+    donate_label: Donar ahora
+    volunteer_label: Ser voluntario
   hero_highlights:
     - icon: 👨‍👩‍👧
       value: 100+
@@ -71,6 +73,7 @@ es:
     - icon: 🏦
       title: Transferencia bancaria
       lines: []
+      is_bank: true
     - icon: 📱
       title: QR de pago directo
       lines:
@@ -184,6 +187,8 @@ en:
     title_line1: Your support
     title_line2: transforms lives
     subtitle: There are many ways to be part of this inclusive path. By providing a donation, volunteering, or signing a corporate alliance, you are sowing hope in Bolivia.
+    donate_label: Donate now
+    volunteer_label: Volunteer
   hero_highlights:
     - icon: 👨‍👩‍👧
       value: 100+
@@ -251,6 +256,7 @@ en:
     - icon: 🏦
       title: Bank transfer
       lines: []
+      is_bank: true
     - icon: 📱
       title: Direct QR payment
       lines:

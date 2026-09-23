@@ -6,6 +6,7 @@ import type { Locale } from '@/lib/i18n'
 import type { Testimonial } from '@/lib/content'
 import type { ImpactContent } from '@/lib/cms-schemas'
 import { PALETTE } from '@/lib/palette'
+import { waLink } from '@/lib/utils'
 
 function Counter({ end, suffix = '', duration = 1500 }: { end: string; suffix?: string; duration?: number }) {
   const [count, setCount] = useState(0)
@@ -34,14 +35,20 @@ interface ImpactoPageClientProps {
   lang: Locale
   content: ImpactContent
   testimonials: Testimonial[]
+  whatsappNumber: string
 }
 
-export default function ImpactoPageClient({ lang, content, testimonials }: ImpactoPageClientProps) {
-  const es = lang === 'es'
+export default function ImpactoPageClient({ lang, content, testimonials, whatsappNumber }: ImpactoPageClientProps) {
   const [activeTestimonial, setActiveTestimonial] = useState(0)
   const [activeFilter, setActiveFilter] = useState(0)
 
   const activeT = testimonials[activeTestimonial]
+  // Índice 0 de gallery_categories es siempre "Todos"/"All" (ver content/settings/impact.yml)
+  // — no filtra, muestra la galería completa.
+  const visibleGallery =
+    activeFilter === 0
+      ? content.gallery
+      : content.gallery.filter((img) => img.category === content.gallery_categories[activeFilter])
 
   return (
     <div className="overflow-x-hidden w-full bg-gray-50">
@@ -84,7 +91,8 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
               <span className="text-sm">📊</span>
               <span className="text-xs font-bold uppercase tracking-wider text-primary-700">{content.stats_section.badge}</span>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight">{content.stats_section.title}</h2>
+            <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.stats_section.title}</h2>
+            {content.stats_section.subtitle && <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">{content.stats_section.subtitle}</p>}
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto text-left">
@@ -113,7 +121,8 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
               <span className="text-sm">💛</span>
               <span className="text-xs font-bold uppercase tracking-wider text-[#8c3cbd]">{content.testimonials_section.badge}</span>
             </div>
-            <h2 className="font-serif text-2xl md:text-3xl text-[#111827] font-normal tracking-tight">{content.testimonials_section.title}</h2>
+            <h2 className="font-serif text-2xl md:text-3xl text-[#111827] font-normal tracking-tight mb-4">{content.testimonials_section.title}</h2>
+            {content.testimonials_section.subtitle && <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">{content.testimonials_section.subtitle}</p>}
           </div>
 
           {activeT && (
@@ -182,7 +191,7 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 max-w-5xl mx-auto items-stretch">
             <div className="lg:col-span-6 flex flex-col justify-start gap-4 text-left">
               <div className="text-[10px] font-bold text-gray-400 tracking-wider uppercase mb-2 select-none">
-                {es ? 'Informes Anuales Disponibles' : 'Available Annual Reports'}
+                {content.reports_section.list_label}
               </div>
               <div className="space-y-3">
                 {content.reports.map((r, idx) => (
@@ -191,16 +200,16 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
                       <div className="w-12 h-12 rounded-xl bg-white border border-gray-150 flex items-center justify-center text-2xl flex-shrink-0">📊</div>
                       <div>
                         <h4 className="text-xs sm:text-sm font-bold text-[#111827] leading-snug">{r.title}</h4>
-                        <p className="text-[10px] text-gray-400 font-semibold mt-0.5">{r.desc}</p>
+                        <p className="text-[10px] text-gray-400 font-semibold mt-0.5">{r.desc} · {r.year}</p>
                       </div>
                     </div>
                     <a
-                      href={r.file || 'https://wa.me/59170106276'}
+                      href={r.file || waLink(whatsappNumber)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-secondary/10 text-secondary font-bold text-[9px] uppercase tracking-wider px-3 py-1 rounded-full min-h-[28px] flex items-center justify-center whitespace-nowrap"
                     >
-                      {r.file ? (es ? 'Descargar PDF' : 'Download PDF') : (es ? 'Solicitar' : 'Request')}
+                      {r.file ? content.reports_section.download_label : content.reports_section.request_label}
                     </a>
                   </div>
                 ))}
@@ -234,6 +243,7 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
               <span className="text-xs font-bold uppercase tracking-wider text-accent">{content.media_section.badge}</span>
             </div>
             <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.media_section.title}</h2>
+            {content.media_section.subtitle && <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">{content.media_section.subtitle}</p>}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto text-left">
@@ -273,6 +283,7 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
               <span className="text-xs font-bold uppercase tracking-wider text-secondary">{content.gallery_section.badge}</span>
             </div>
             <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.gallery_section.title}</h2>
+            {content.gallery_section.subtitle && <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">{content.gallery_section.subtitle}</p>}
           </div>
 
           <div className="flex flex-wrap gap-2 justify-center mb-8 select-none">
@@ -291,7 +302,7 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {content.gallery.map((img, idx) => (
+            {visibleGallery.map((img, idx) => (
               <div key={idx} className="relative h-48 sm:h-56 rounded-2xl overflow-hidden border border-gray-200 transition-all duration-300 hover:scale-[1.02] hover:shadow-md">
                 <Image src={img.image} alt={img.alt} fill className="object-cover" />
               </div>
@@ -316,15 +327,15 @@ export default function ImpactoPageClient({ lang, content, testimonials }: Impac
               href={`/${lang}/colabora`}
               className="bg-primary hover:bg-primary/95 text-black font-extrabold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-primary/10 min-h-[44px] flex items-center justify-center"
             >
-              {es ? 'Colaborar ahora' : 'Collaborate now'}
+              {content.cta.cta_label}
             </Link>
             <a
-              href="https://wa.me/59170106276"
+              href={waLink(whatsappNumber)}
               target="_blank"
               rel="noopener noreferrer"
               className="border border-white/20 hover:border-white/50 bg-white/5 text-white font-bold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] min-h-[44px] flex items-center justify-center"
             >
-              {es ? 'Solicitar informes' : 'Request reports'}
+              {content.cta.secondary_label}
             </a>
           </div>
         </div>

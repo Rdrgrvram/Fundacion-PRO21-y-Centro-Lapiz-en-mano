@@ -1,9 +1,9 @@
 import { EXTENDED_PALETTE, type AccentColor } from '@/lib/palette'
-import type { ProgramStepSection } from '@/lib/content'
+import type { Program } from '@/lib/cms'
 
 const CYCLE: AccentColor[] = ['secondary', 'accent', 'primary']
 
-export default function ProgramEnrollmentSteps({ section }: { section: ProgramStepSection }) {
+export default function ProgramEnrollmentSteps({ section }: { section: Program['enrollment'] }) {
   const cols = section.steps.length > 4 ? 'sm:grid-cols-2 lg:grid-cols-3' : 'md:grid-cols-2 lg:grid-cols-4'
 
   return (
