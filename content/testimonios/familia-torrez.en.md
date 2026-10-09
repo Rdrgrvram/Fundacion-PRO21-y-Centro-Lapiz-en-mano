@@ -1,7 +1,7 @@
 ---
 family: "Familia Torrez"
 program: "Pasos Firmes"
-icon: "📚"
+icon: "book-open"
 color: "secondary"
 order: "4"
 featured_home: "true"

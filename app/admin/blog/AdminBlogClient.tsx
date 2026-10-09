@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
+import { Eye, EyeOff } from 'lucide-react'
 
 interface AdminPost {
   slug: string
@@ -91,8 +92,8 @@ export default function AdminBlogClient() {
         </p>
         <p className="text-xs text-gray-400 mb-6">
           {session.token
-            ? '🟢 Sesión de GitHub detectada — los cambios se publican directo al repositorio real.'
-            : '🟡 Sin sesión de GitHub (modo local) — los cambios solo se guardan en tu computadora hasta que hagas commit/push, o inicies sesión en /admin para publicar en producción.'}
+            ? 'Sesión de GitHub detectada — los cambios se publican directo al repositorio real.'
+            : 'Sin sesión de GitHub (modo local) — los cambios solo se guardan en tu computadora hasta que hagas commit/push, o inicies sesión en /admin para publicar en producción.'}
         </p>
 
         {error && <div className="mb-4 p-3 rounded-xl bg-red-50 text-red-600 text-sm font-semibold">{error}</div>}
@@ -112,13 +113,13 @@ export default function AdminBlogClient() {
                 <button
                   onClick={() => toggle(post.slug, post.visible)}
                   disabled={pending === post.slug}
-                  className={`shrink-0 px-4 py-2 rounded-full text-xs font-bold transition-all min-h-[36px] disabled:opacity-50 ${
+                  className={`shrink-0 inline-flex items-center gap-1 px-4 py-2 rounded-full text-xs font-bold transition-all min-h-[36px] disabled:opacity-50 ${
                     post.visible
                       ? 'bg-green-50 text-green-700 hover:bg-green-100'
                       : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
                   }`}
                 >
-                  {pending === post.slug ? '…' : post.visible ? '👁 Visible' : '🚫 Oculto'}
+                  {pending === post.slug ? '…' : post.visible ? <><Eye className="w-3.5 h-3.5" aria-hidden="true" /> Visible</> : <><EyeOff className="w-3.5 h-3.5" aria-hidden="true" /> Oculto</>}
                 </button>
               </div>
             ))}

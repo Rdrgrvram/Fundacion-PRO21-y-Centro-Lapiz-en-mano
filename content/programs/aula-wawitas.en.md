@@ -1,5 +1,13 @@
 ---
 title: Aula Wawitas
+visible: true
+order: 20
+home:
+  featured: true
+  icon: gift
+  color: secondary
+  badge: Preschool Program
+  ages: 3 – 5 years
 hero:
   badge: Preschool Program
   subtitle: Comprehensive preschool stimulation and education program for children ages 3 to 5, preparing them for a successful transition to regular primary education.
@@ -7,16 +15,16 @@ hero:
   cta_details_label: See details
   cta_whatsapp_label: WhatsApp inquiry
 stats:
-  - icon: 🧸
+  - icon: gift
     value: '3'
     label: 'levels: Nursery, Pre-Kinder, Kinder'
-  - icon: 📅
+  - icon: calendar
     value: 3 – 5
     label: years of age
-  - icon: 🎯
+  - icon: target
     value: '4'
     label: stimulation areas
-  - icon: 🏫
+  - icon: school
     value: ✓
     label: Regular education integration
 section_1:
@@ -25,19 +33,19 @@ section_1:
   layout: tarjetas
   subtitle: ''
   items:
-    - icon: ⏰
+    - icon: clock
       color: accent
       title: Early intervention
       desc: The earlier a need is identified and addressed, the greater the impact on the child's development. Each preschool stage is a unique learning window.
-    - icon: 🧩
+    - icon: puzzle
       color: secondary
       title: Individualized learning
       desc: No two children are alike. Each stimulation plan is custom-designed, respecting each child's pace, strengths, and particularities.
-    - icon: 🔄
+    - icon: refresh-cw
       color: primary
       title: Integral approach
       desc: 'We address all areas of development simultaneously and in a coordinated way: cognition, communication, motor skills, socialization, and autonomy.'
-    - icon: 👨‍👩‍👧
+    - icon: users-round
       color: accent
       title: Family as ally
       desc: Parents are the main agents of change. We train, accompany, and empower them to be active co-educators at home.
@@ -46,7 +54,7 @@ section_2:
   title: Program Levels
   subtitle: We accompany each child from age 3 with a progressive curriculum that respects their individual pace.
   tabs:
-    - icon: 🧸
+    - icon: gift
       color: accent
       label: Nursery
       age_range: 3 years
@@ -56,7 +64,7 @@ section_2:
         - Environmental exploration
         - Initial socioemotional skills
         - Functional and structured play
-    - icon: 🎨
+    - icon: paintbrush
       color: secondary
       label: Pre-Kinder
       age_range: 4 years
@@ -66,7 +74,7 @@ section_2:
         - Initial reading & writing concepts
         - Basic math notions
         - Vocabulary expansion
-    - icon: ✏️
+    - icon: pencil
       color: primary
       label: Kinder
       age_range: 5 years
@@ -80,7 +88,7 @@ section_3:
   badge: What we work on
   title: Stimulation Areas
   items:
-    - icon: 🧠
+    - icon: brain
       color: accent
       title: Cognition & Learning
       desc: ''
@@ -89,7 +97,7 @@ section_3:
         - Spatial and temporal concepts
         - Memory and attention
         - Basic logical reasoning
-    - icon: 🗣️
+    - icon: message-circle
       color: secondary
       title: Communication & Language
       desc: ''
@@ -98,7 +106,7 @@ section_3:
         - Instruction comprehension
         - Narration and description
         - Introduction to reading and writing
-    - icon: 🤸
+    - icon: accessibility
       color: primary
       title: Motor Skills & Body
       desc: ''
@@ -107,7 +115,7 @@ section_3:
         - Fine motor and graphomotor skills
         - Body schema
         - Autonomy skills
-    - icon: 🌟
+    - icon: sparkles
       color: accent
       title: Socialization & Autonomy
       desc: ''
@@ -119,16 +127,16 @@ section_3:
 enrollment:
   title: How to enroll your child?
   steps:
-    - icon: 📞
+    - icon: phone
       title: Initial contact
       desc: Contact us via WhatsApp or form. We respond in less than 24 hours.
-    - icon: 🔍
+    - icon: search
       title: Initial evaluation
       desc: We evaluate the child's development to understand their profile and needs.
-    - icon: 📋
+    - icon: file-text
       title: Stimulation plan
       desc: We design a personalized program with short, medium, and long-term goals.
-    - icon: 🌟
+    - icon: sparkles
       title: Program start
       desc: The child begins the program and the family receives ongoing guidance.
 cta:

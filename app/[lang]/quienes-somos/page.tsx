@@ -1,8 +1,10 @@
+import Icon from '@/components/ui/Icon'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { getTranslation, type Locale } from '@/lib/i18n'
-import { getAboutContent, getSiteSettings, getAllTeamAreas } from '@/lib/cms'
+import { getAboutContent, getAllPrograms, getSiteSettings, getAllTeamAreas } from '@/lib/cms'
+import { isVisibleProgramReference } from '@/lib/program-references'
 import { getNavLabel } from '@/lib/utils'
 import { PALETTE, type AccentColor } from '@/lib/palette'
 
@@ -38,6 +40,13 @@ export default function Page({ params: { lang } }: PageProps) {
   // La vista previa del equipo reusa las áreas de especialidad ya migradas en
   // la Fase 2, igual que en la página de Inicio — evita duplicar la lista.
   const teamAreas = getAllTeamAreas(lang)
+  const visibleProgramSlugs = new Set(getAllPrograms(lang).map((program) => program.slug))
+  const publicContent = {
+    ...content,
+    timeline: content.timeline.filter((item) =>
+      isVisibleProgramReference(item.program_slug, visibleProgramSlugs)
+    ),
+  }
 
   return (
     <div className="overflow-x-hidden w-full bg-gray-50">
@@ -102,7 +111,7 @@ export default function Page({ params: { lang } }: PageProps) {
             <div className="w-full lg:w-[8%] flex lg:flex-col items-center justify-center gap-4 py-4 lg:py-0 select-none">
               <div className="h-0.5 lg:h-full w-full lg:w-0.5 bg-gradient-to-r lg:bg-gradient-to-b from-transparent via-[#ffc500] to-transparent flex-1" />
               <div className="w-11 h-11 rounded-full bg-primary/15 border-2 border-primary flex items-center justify-center text-lg shadow-sm flex-shrink-0">
-                🤝
+                handshake
               </div>
               <div className="h-0.5 lg:h-full w-full lg:w-0.5 bg-gradient-to-r lg:bg-gradient-to-b from-transparent via-[#ffc500] to-transparent flex-1" />
             </div>
@@ -131,7 +140,7 @@ export default function Page({ params: { lang } }: PageProps) {
 
           <div className="text-center mb-12 max-w-md mx-auto">
             <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">📌</span>
+              <span className="text-sm"><Icon name="map-pin" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               <span className="text-xs font-bold uppercase tracking-wider text-secondary">
                 {content.mission_section.badge}
               </span>
@@ -153,7 +162,7 @@ export default function Page({ params: { lang } }: PageProps) {
                   <div className={`h-1.5 w-full bg-gradient-to-r ${style.from} to-white`} />
                   <div className="p-8 flex-1 flex flex-col">
                     <div className={`w-12 h-12 rounded-xl ${palette.bg} flex items-center justify-center text-2xl mb-5 shadow-sm`}>
-                      {card.icon}
+                      <Icon name={card.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" />
                     </div>
                     <div className={`text-[10px] font-bold tracking-widest uppercase mb-2 ${style.text}`}>
                       {card.label}
@@ -176,7 +185,7 @@ export default function Page({ params: { lang } }: PageProps) {
 
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">💛</span>
+              <span className="text-sm"><Icon name="heart" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               <span className="text-xs font-bold uppercase tracking-wider text-primary-700">
                 {content.values_section.badge}
               </span>
@@ -197,7 +206,7 @@ export default function Page({ params: { lang } }: PageProps) {
               >
                 <div>
                   <div className={`w-11 h-11 rounded-xl ${PALETTE[v.color].bg} flex items-center justify-center text-xl mb-4 transition-all duration-300 group-hover:scale-105`}>
-                    {v.icon}
+                    <Icon name={v.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" />
                   </div>
                   <h4 className="text-base text-gray-900 font-bold mb-2">
                     {v.name}
@@ -220,7 +229,7 @@ export default function Page({ params: { lang } }: PageProps) {
 
           <div className="text-center mb-16 max-w-md mx-auto">
             <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">📅</span>
+              <span className="text-sm"><Icon name="calendar" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               <span className="text-xs font-bold uppercase tracking-wider text-secondary">
                 {content.timeline_section.badge}
               </span>
@@ -238,7 +247,7 @@ export default function Page({ params: { lang } }: PageProps) {
             <div className="block md:hidden absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#ffc500]/10 via-[#ffc500]/80 to-[#ffc500]/0" />
 
             <div className="space-y-12 md:space-y-8 relative">
-              {content.timeline.map((item, idx) => {
+              {publicContent.timeline.map((item, idx) => {
                 const isLeft = idx % 2 === 0
                 return (
                   <div
@@ -257,7 +266,7 @@ export default function Page({ params: { lang } }: PageProps) {
 
                     <div className="flex justify-start pl-0 md:pl-0 md:justify-center relative z-20 mb-4 md:mb-0">
                       <div className="w-11 h-11 md:w-12 md:h-12 rounded-full bg-white border-[3px] border-primary flex items-center justify-center text-xl shadow-md absolute left-0 md:relative md:left-auto">
-                        {item.icon}
+                        <Icon name={item.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" />
                       </div>
                     </div>
 
@@ -317,7 +326,7 @@ export default function Page({ params: { lang } }: PageProps) {
                 className="bg-white/10 border border-white/20 p-5 rounded-2xl text-center transition-all duration-300 hover:bg-white/20 hover:-translate-y-1 select-none flex flex-col items-center justify-center min-h-[110px]"
               >
                 <div className="w-11 h-11 rounded-xl bg-white/20 flex items-center justify-center text-2xl mb-3">
-                  {area.icon}
+                  <Icon name={area.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" />
                 </div>
                 <div className="text-xs font-semibold text-white/90 leading-tight">
                   {area.name}
@@ -345,7 +354,7 @@ export default function Page({ params: { lang } }: PageProps) {
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/5 rounded-full translate-y-1/2 -translate-x-1/4" />
         </div>
         <div className="container mx-auto max-w-3xl relative z-10 text-center">
-          <span className="text-4xl mb-4 block select-none">💛</span>
+          <span className="text-4xl mb-4 block select-none"><Icon name="heart" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
           <h3 className="text-2xl md:text-3xl text-gray-900 font-bold mb-4">
             {content.cta.title}
           </h3>

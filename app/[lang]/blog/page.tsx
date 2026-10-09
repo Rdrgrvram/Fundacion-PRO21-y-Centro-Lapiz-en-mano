@@ -1,3 +1,4 @@
+import Icon from '@/components/ui/Icon'
 import Link from 'next/link'
 import Image from 'next/image'
 import { getAllPosts } from '@/lib/content'
@@ -45,7 +46,7 @@ export default async function Page({ params: { lang } }: Props) {
 
         <div className="container mx-auto max-w-4xl relative z-20 mt-8">
           <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full py-1 px-3.5 mb-5 select-none">
-            <span className="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-[10px] text-black font-extrabold">📰</span>
+            <span className="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-[10px] text-black font-extrabold"><Icon name="newspaper" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
             <span className="text-white/80 text-xs font-semibold">{es ? 'Noticias y Artículos' : 'News & Articles'}</span>
           </div>
 
@@ -77,7 +78,7 @@ export default async function Page({ params: { lang } }: Props) {
           
           {posts.length === 0 ? (
             <div className="text-center py-20 bg-white rounded-3xl border border-gray-200 max-w-md mx-auto shadow-sm select-none">
-              <span className="text-4xl block mb-3">📭</span>
+              <span className="text-4xl block mb-3"><Icon name="newspaper" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               <h3 className="font-serif text-lg text-gray-700 font-bold mb-1">
                 {es ? 'No hay artículos publicados' : 'No posts published yet'}
               </h3>
@@ -106,14 +107,14 @@ export default async function Page({ params: { lang } }: Props) {
                       {post.image ? (
                         <Image src={post.image} alt={post.title} fill className="object-cover" />
                       ) : (
-                        <span className="animate-pulse">📰</span>
+                        <span className="animate-pulse"><Icon name="newspaper" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
                       )}
                       <span className="absolute bottom-3 right-3 text-[9px] font-bold text-gray-400 bg-white px-2 py-0.5 rounded-full shadow-sm">
                         {post.date}
                       </span>
                       {post.pdf && (
                         <span className="absolute top-3 left-3 text-[9px] font-bold text-white bg-secondary px-2.5 py-1 rounded-full shadow-sm whitespace-nowrap select-none">
-                          📄 PDF
+                          file-text PDF
                         </span>
                       )}
                     </Link>
@@ -148,7 +149,7 @@ export default async function Page({ params: { lang } }: Props) {
       {/* Footer CTA */}
       <section className="py-16 px-4 bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary">
         <div className="container mx-auto max-w-2xl text-center text-white/80 relative z-10">
-          <span className="text-5xl block mb-4 select-none">👋</span>
+          <span className="text-5xl block mb-4 select-none"><Icon name="hand" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
           <h2 className="font-serif text-2xl sm:text-3xl text-white font-normal leading-tight mb-4">
             {es ? '¿Quieres contarnos tu historia?' : 'Want to share your story with us?'}
           </h2>
@@ -164,7 +165,7 @@ export default async function Page({ params: { lang } }: Props) {
               rel="noopener noreferrer"
               className="bg-primary hover:bg-primary/95 text-black font-extrabold text-xs sm:text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] min-h-[44px] flex items-center justify-center gap-1.5 shadow-lg shadow-primary/10 select-none"
             >
-              <span className="text-base">💬</span>
+              <span className="text-base"><Icon name="message-circle" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               {es ? 'Contactar por WhatsApp' : 'Contact via WhatsApp'}
             </a>
           </div>

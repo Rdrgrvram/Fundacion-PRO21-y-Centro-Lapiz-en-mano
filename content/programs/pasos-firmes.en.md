@@ -1,5 +1,13 @@
 ---
 title: Pasos Firmes
+visible: true
+order: 30
+home:
+  featured: true
+  icon: book-open
+  color: accent
+  badge: Learning difficulties
+  ages: Primary and Secondary
 hero:
   badge: Psychopedagogical support
   subtitle: 'Specialized psychopedagogical intervention for children and adolescents with learning difficulties: dyslexia, dysgraphia, dyscalculia, ADHD, and low school performance.'
@@ -7,16 +15,16 @@ hero:
   cta_details_label: See details
   cta_whatsapp_label: WhatsApp inquiry
 stats:
-  - icon: 📖
+  - icon: book-open
     value: '6'
     label: difficulties addressed
-  - icon: 🎯
+  - icon: target
     value: '4'
     label: service modalities
-  - icon: 🔬
+  - icon: microscope
     value: '6'
     label: intervention steps
-  - icon: 🏫
+  - icon: school
     value: ✓
     label: School coordination
 section_1:
@@ -25,32 +33,32 @@ section_1:
   layout: acordeón
   subtitle: Each learning difficulty has unique characteristics. We evaluate each child individually to design the most appropriate intervention.
   items:
-    - icon: 📖
+    - icon: book-open
       color: secondary
       title: Dyslexia
       tag: Reading
       desc: Persistent difficulty reading with fluency and accuracy, not explained by intelligence or lack of educational opportunity. Addressed with multisensory, structured methodologies.
-    - icon: ✏️
+    - icon: pencil
       color: accent
       title: Dysgraphia
       tag: Writing
       desc: 'Difficulty in written expression: irregular handwriting, frequent spelling errors, and problems organizing ideas on paper. We work on graphomotricity and written expression.'
-    - icon: 🔢
+    - icon: chart-column
       color: primary
       title: Dyscalculia
       tag: Math
       desc: Difficulty understanding numerical concepts, performing calculations, and solving age-appropriate math problems. Concrete-representational-abstract approach.
-    - icon: 🎯
+    - icon: target
       color: secondary
       title: ADHD
       tag: Attention
       desc: Difficulties in sustained attention, organization, impulse control, and motor activity regulation. Classroom and home strategies focused on executive functions.
-    - icon: ⏱️
+    - icon: clock
       color: accent
       title: Slow processing
       tag: Speed
       desc: The child understands content but needs significantly more time to process information and complete tasks. Environment adaptations and self-paced strategies.
-    - icon: 📚
+    - icon: book-open
       color: primary
       title: Low school performance
       tag: Performance
@@ -60,7 +68,7 @@ section_2:
   title: Service Modalities
   subtitle: We offer four intervention modalities that complement each other to provide a comprehensive response to each family.
   tabs:
-    - icon: 📚
+    - icon: book-open
       color: secondary
       label: Primary
       desc: Psychopedagogical support for primary school students with learning difficulties. We work in direct coordination with school teachers to ensure consistency between the center and school, adapting curricular content to each student's profile.
@@ -69,7 +77,7 @@ section_2:
         - Curricular adaptations
         - Reading & writing reinforcement
         - Math strategies
-    - icon: 🎓
+    - icon: graduation-cap
       color: accent
       label: Secondary
       desc: Specialized intervention for secondary school adolescents. We work on study organization, effective learning techniques, time management, and exam strategies, supporting students in the subjects they find most challenging.
@@ -78,7 +86,7 @@ section_2:
         - Organization and planning
         - Exam strategies
         - Time management
-    - icon: 👨‍👩‍👧‍👦
+    - icon: users-round
       color: primary
       label: Group Therapy
       desc: Group sessions for families facing similar challenges. A mutual support space where parents learn concrete strategies, share experiences, and strengthen their role as co-therapists at home.
@@ -87,7 +95,7 @@ section_2:
         - Home strategies
         - Emotional containment
         - Shared resources
-    - icon: 🧩
+    - icon: puzzle
       color: secondary
       label: Individual Therapy
       desc: Intensive individual sessions with the therapist, custom-designed for each child's or adolescent's unique learning profile. Higher frequency of attention and personalized progress tracking.
@@ -101,22 +109,22 @@ enrollment:
   title: 6 Intervention Steps
   subtitle: From first contact to ongoing evolution, we accompany each family through the entire process.
   steps:
-    - icon: 👂
+    - icon: circle-help
       title: Listen
       desc: Family interview to understand the child's history, strengths, and expectations.
-    - icon: 🔬
+    - icon: microscope
       title: Evaluate
       desc: Complete neuropsychological and psychopedagogical evaluation to identify the learning profile.
-    - icon: 📋
+    - icon: file-text
       title: Design
       desc: Development of the intervention plan with clear, measurable, and achievable objectives.
-    - icon: 🧩
+    - icon: puzzle
       title: Intervene
       desc: Individual or group sessions with evidence-based strategies.
-    - icon: 🔄
+    - icon: refresh-cw
       title: Coordinate
       desc: Permanent communication with school and family to ensure consistency.
-    - icon: 📈
+    - icon: chart-column
       title: Evolve
       desc: Periodic reevaluation of progress, objective adjustment, and celebration of achievements.
 cta:

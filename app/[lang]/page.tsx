@@ -1,8 +1,9 @@
+import Icon from '@/components/ui/Icon'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import type { Locale } from '@/lib/i18n'
 import { getAllTestimonials } from '@/lib/content'
-import { getHomeContent, getSiteSettings, getAllTeamAreas } from '@/lib/cms'
+import { getAllPrograms, getHomeContent, getSiteSettings, getAllTeamAreas } from '@/lib/cms'
 import { waLink } from '@/lib/utils'
 import type { AccentColor } from '@/lib/palette'
 
@@ -26,11 +27,31 @@ export default function Page({ params }: { params: { lang: Locale } }) {
 
   const content = getHomeContent(lang)
   const settings = getSiteSettings(lang)
+  const programs = getAllPrograms(lang)
   const whatsappUrl = waLink(settings.contact.whatsapp_number)
-  const testimonials = getAllTestimonials(lang).filter((t) => t.featuredHome)
+  const visibleProgramSlugs = new Set(programs.map((program) => program.slug))
+  const testimonials = getAllTestimonials(lang, { visibleProgramSlugs }).filter((t) => t.featuredHome)
   // La vista previa del equipo reusa las áreas de especialidad ya migradas en
   // la Fase 2 — evita duplicar la misma lista de roles en dos lugares.
   const teamAreas = getAllTeamAreas(lang)
+  const legacyCards = new Map(content.programs_teaser.cards.map((card) => [card.slug, card]))
+  const stats = content.stats.map((stat) =>
+    /program/i.test(stat.label) ? { ...stat, value: String(programs.length) } : stat
+  )
+  const programCards = programs
+    .filter((program) => program.home?.featured !== false)
+    .map((program) => {
+      const legacy = legacyCards.get(program.slug)
+      return {
+        slug: program.slug,
+        icon: program.home?.icon ?? legacy?.icon ?? 'sparkles',
+        color: program.home?.color ?? legacy?.color ?? 'primary',
+        badge: program.home?.badge ?? legacy?.badge ?? program.hero.badge,
+        title: program.title,
+        desc: program.home?.desc ?? legacy?.desc ?? program.hero.subtitle,
+        ages: program.home?.ages ?? legacy?.ages ?? '',
+      }
+    })
 
   return (
     <div className="bg-white">
@@ -67,7 +88,7 @@ export default function Page({ params }: { params: { lang: Locale } }) {
             {/* CTAs */}
             <div className="flex flex-wrap gap-4">
               <Link
-                href={`/${lang}/mi-escuelita-down`}
+                href={programs[0] ? `/${lang}/${programs[0].slug}` : `/${lang}/contacto`}
                 className="inline-flex items-center gap-2 bg-primary text-gray-900 font-extrabold px-8 py-4 rounded-full hover:bg-primary/90 transition-colors min-h-[52px] text-base"
               >
                 {content.hero.cta_primary}
@@ -99,9 +120,9 @@ export default function Page({ params }: { params: { lang: Locale } }) {
       <section className="py-12 border-b border-gray-100">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
-            {content.stats.map((s, i) => (
+            {stats.map((s, i) => (
               <div key={i} className="flex flex-col items-center text-center gap-2">
-                <span className="text-4xl">{s.icon}</span>
+                <span className="text-4xl"><Icon name={s.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
                 <span className="text-3xl font-extrabold text-gray-900">{s.value}</span>
                 <span className="text-sm text-gray-500 leading-tight">{s.label}</span>
               </div>
@@ -126,7 +147,7 @@ export default function Page({ params }: { params: { lang: Locale } }) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {content.programs_teaser.cards.map((p) => {
+            {programCards.map((p) => {
               const style = PROGRAM_STYLES[p.color]
               return (
                 <div
@@ -142,7 +163,7 @@ export default function Page({ params }: { params: { lang: Locale } }) {
                       <span className={`text-xs font-bold uppercase tracking-wide ${style.textAccent} bg-gray-50 px-3 py-1 rounded-full`}>
                         {p.badge}
                       </span>
-                      <span className="text-3xl">{p.icon}</span>
+                      <span className="text-3xl"><Icon name={p.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
                     </div>
 
                     <h3 className="text-xl font-extrabold text-gray-900 mb-3">{p.title}</h3>
@@ -150,7 +171,7 @@ export default function Page({ params }: { params: { lang: Locale } }) {
 
                     {/* Age range */}
                     <div className="flex items-center gap-2 text-xs text-gray-400 mb-5">
-                      <span>📅</span>
+                      <span><Icon name="calendar" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
                       <span>{p.ages}</span>
                     </div>
 
@@ -196,7 +217,7 @@ export default function Page({ params }: { params: { lang: Locale } }) {
             <div className="grid grid-cols-2 gap-4">
               {content.values.map((v, i) => (
                 <div key={i} className="bg-gray-50 rounded-xl p-4 border border-gray-100">
-                  <span className="text-2xl mb-2 block">{v.icon}</span>
+                  <span className="text-2xl mb-2 block"><Icon name={v.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
                   <h4 className="font-bold text-gray-900 text-sm mb-1">{v.title}</h4>
                   <p className="text-xs text-gray-500 leading-relaxed">{v.desc}</p>
                 </div>
@@ -257,7 +278,7 @@ export default function Page({ params }: { params: { lang: Locale } }) {
                 key={area.slug}
                 className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-full px-4 py-2 text-sm text-gray-700 font-medium"
               >
-                <span>{area.icon}</span>
+                <span><Icon name={area.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
                 <span>{area.name}</span>
               </div>
             ))}

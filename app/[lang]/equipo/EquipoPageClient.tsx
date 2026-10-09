@@ -1,4 +1,5 @@
 'use client'
+import Icon from '@/components/ui/Icon'
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -82,7 +83,7 @@ export default function EquipoPageClient({ lang, content, navLabel, areas, team,
                 key={i}
                 className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col items-center text-center transition-all duration-300 hover:shadow-md select-none"
               >
-                <div className="text-3xl mb-2">{s.icon}</div>
+                <div className="text-3xl mb-2"><Icon name={s.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></div>
                 <div className="text-2xl sm:text-3xl font-bold text-gray-900 leading-none">{s.value}</div>
                 <div className="text-xs text-gray-400 font-semibold mt-2">{s.label}</div>
               </div>
@@ -96,7 +97,7 @@ export default function EquipoPageClient({ lang, content, navLabel, areas, team,
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">🩺</span>
+              <span className="text-sm"><Icon name="stethoscope" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               <span className="text-xs font-bold uppercase tracking-wider text-primary-700">
                 {content.philosophy_section.badge}
               </span>
@@ -116,7 +117,7 @@ export default function EquipoPageClient({ lang, content, navLabel, areas, team,
                 className="bg-gray-50 border border-gray-200 rounded-3xl p-6 flex flex-col justify-between hover:shadow-sm hover:border-gray-300 transition-all duration-300 h-full"
               >
                 <div>
-                  <div className="text-3xl mb-4 select-none">{p.icon}</div>
+                  <div className="text-3xl mb-4 select-none"><Icon name={p.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></div>
                   <h4 className="text-base text-gray-900 font-bold mb-2">{p.title}</h4>
                   <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">{p.desc}</p>
                 </div>
@@ -131,7 +132,7 @@ export default function EquipoPageClient({ lang, content, navLabel, areas, team,
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">🏥</span>
+              <span className="text-sm"><Icon name="hospital" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               <span className="text-xs font-bold uppercase tracking-wider text-secondary">
                 {content.team_grid_section.badge}
               </span>
@@ -160,7 +161,7 @@ export default function EquipoPageClient({ lang, content, navLabel, areas, team,
                   <div className="p-5 flex items-center justify-between">
                     <div className="flex items-center gap-3.5">
                       <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-xl ${isSelected ? 'bg-primary text-black' : palette.bg}`}>
-                        {a.icon}
+                        <Icon name={a.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" />
                       </div>
                       <div>
                         <h4 className="text-sm font-bold text-gray-900 leading-snug">{a.name}</h4>
@@ -184,7 +185,7 @@ export default function EquipoPageClient({ lang, content, navLabel, areas, team,
                 className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl text-white shadow-md flex-shrink-0 select-none"
                 style={{ backgroundColor: PALETTE[selectedData.color].hex }}
               >
-                {selectedData.icon}
+                <Icon name={selectedData.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" />
               </div>
               <div className="flex-1">
                 <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-1">
@@ -267,7 +268,7 @@ export default function EquipoPageClient({ lang, content, navLabel, areas, team,
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12 max-w-xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">🔗</span>
+              <span className="text-sm"><Icon name="link" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               <span className="text-xs font-bold uppercase tracking-wider text-secondary">
                 {content.network_section.badge}
               </span>
@@ -282,7 +283,7 @@ export default function EquipoPageClient({ lang, content, navLabel, areas, team,
 
           <div className="hidden md:block relative w-[480px] h-[480px] mx-auto select-none">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full bg-gradient-to-br from-primary to-[#ffc500] flex flex-col items-center justify-center text-center shadow-lg shadow-primary/20 z-20">
-              <span className="text-2xl mb-0.5 block">👧</span>
+              <span className="text-2xl mb-0.5 block"><Icon name="baby" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               <span className="font-serif text-[10px] text-gray-900 font-bold leading-tight px-2">
                 {content.network_section.center_label}
               </span>
@@ -304,7 +305,7 @@ export default function EquipoPageClient({ lang, content, navLabel, areas, team,
                   className="absolute w-16 h-16 rounded-2xl bg-white border border-gray-200 shadow-sm flex flex-col items-center justify-center hover:scale-110 hover:border-primary hover:shadow-md transition-all duration-300 z-10"
                   title={a.name}
                 >
-                  <span className="text-xl block">{a.icon}</span>
+                  <span className="text-xl block"><Icon name={a.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
                   <span className="text-[8px] font-extrabold text-gray-400 mt-1 max-w-[50px] overflow-hidden text-ellipsis whitespace-nowrap">
                     {a.name.split(' ')[0]}
                   </span>
@@ -318,7 +319,7 @@ export default function EquipoPageClient({ lang, content, navLabel, areas, team,
 
             <div className="relative flex items-center gap-4 bg-gradient-to-r from-primary to-[#ffc500] p-4 rounded-2xl shadow-sm z-10 mb-8 max-w-[280px]">
               <div className="w-11 h-11 rounded-full bg-white flex items-center justify-center text-xl shadow-inner flex-shrink-0">
-                👧
+                baby
               </div>
               <div>
                 <h4 className="text-sm text-gray-900 font-bold leading-tight">{content.network_section.center_label}</h4>
@@ -331,7 +332,7 @@ export default function EquipoPageClient({ lang, content, navLabel, areas, team,
                 <div key={a.slug} className="relative flex items-center gap-4 pl-12">
                   <div className="absolute left-4 w-6 h-0.5 bg-primary/30" />
                   <div className="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-xl shadow-sm flex-shrink-0 z-10">
-                    {a.icon}
+                    <Icon name={a.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" />
                   </div>
                   <div>
                     <h5 className="text-xs font-bold text-gray-900">{a.name}</h5>
@@ -349,7 +350,7 @@ export default function EquipoPageClient({ lang, content, navLabel, areas, team,
         <div className="container mx-auto max-w-4xl text-center">
           <div className="text-center mb-10 max-w-md mx-auto">
             <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">🤝</span>
+              <span className="text-sm"><Icon name="handshake" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               <span className="text-xs font-bold uppercase tracking-wider text-accent">
                 {content.volunteers_section.badge}
               </span>
@@ -368,7 +369,7 @@ export default function EquipoPageClient({ lang, content, navLabel, areas, team,
                 key={v.slug}
                 className="bg-white border border-gray-200 rounded-full py-2.5 px-6 shadow-sm flex items-center gap-2.5 hover:border-primary hover:shadow-md transition-all duration-300"
               >
-                <span className="text-gray-400 select-none">👤</span>
+                <span className="text-gray-400 select-none"><Icon name="circle-user" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
                 <span className="text-xs sm:text-sm font-bold text-gray-700">{v.name}</span>
                 <span className="text-[10px] text-accent font-bold px-2 py-0.5 bg-accent/10 rounded-full select-none">
                   {content.volunteers_section.tag_label}
@@ -387,7 +388,7 @@ export default function EquipoPageClient({ lang, content, navLabel, areas, team,
         </div>
 
         <div className="container mx-auto max-w-3xl relative z-10 text-center">
-          <span className="text-5xl block mb-5 select-none">🩺</span>
+          <span className="text-5xl block mb-5 select-none"><Icon name="stethoscope" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
           <h2 className="text-3xl md:text-4xl text-white font-extrabold leading-tight mb-4">
             {content.cta.title}
           </h2>

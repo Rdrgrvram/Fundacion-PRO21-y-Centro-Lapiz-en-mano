@@ -1,4 +1,5 @@
 'use client'
+import Icon from '@/components/ui/Icon'
 import { useState } from 'react'
 import { EXTENDED_PALETTE } from '@/lib/palette'
 import type { ProgramCardSectionContent as ProgramCardSectionData } from '@/lib/cms-schemas'
@@ -40,7 +41,7 @@ export default function ProgramCardSection({ id, section, alt = false }: Program
             const inner = (
               <div className="flex items-start gap-4">
                 <div className={`w-12 h-12 ${style.bg} rounded-xl flex items-center justify-center text-2xl flex-shrink-0`}>
-                  {item.icon}
+                  <Icon name={item.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" />
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2">

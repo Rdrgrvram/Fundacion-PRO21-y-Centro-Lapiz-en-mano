@@ -1,7 +1,7 @@
 ---
 family: "Familia Mamani"
 program: "Aula Wawitas"
-icon: "🧩"
+icon: "puzzle"
 color: "accent"
 order: "3"
 featured_home: "false"

@@ -1,5 +1,13 @@
 ---
 title: Aula Wawitas
+visible: true
+order: 20
+home:
+  featured: true
+  icon: gift
+  color: secondary
+  badge: Programa Preescolar
+  ages: 3 – 5 años
 hero:
   badge: Programa Preescolar
   subtitle: Programa de estimulación y educación preescolar integral para niños y niñas de 3 a 5 años, preparándolos para una transición exitosa a la educación primaria regular.
@@ -7,16 +15,16 @@ hero:
   cta_details_label: Ver detalles
   cta_whatsapp_label: Consultar por WhatsApp
 stats:
-  - icon: 🧸
+  - icon: gift
     value: '3'
     label: 'niveles: Parvulario, Pre-Kínder, Kínder'
-  - icon: 📅
+  - icon: calendar
     value: 3 – 5
     label: años de edad
-  - icon: 🎯
+  - icon: target
     value: '4'
     label: áreas de estimulación
-  - icon: 🏫
+  - icon: school
     value: ✓
     label: Integración a educación regular
 section_1:
@@ -25,19 +33,19 @@ section_1:
   layout: tarjetas
   subtitle: ''
   items:
-    - icon: ⏰
+    - icon: clock
       color: accent
       title: Intervención temprana
       desc: Cuanto antes se identifique una necesidad y se intervenga, mayor será el impacto en el desarrollo del niño. Cada etapa preescolar es una ventana única de aprendizaje.
-    - icon: 🧩
+    - icon: puzzle
       color: secondary
       title: Aprendizaje individualizado
       desc: No hay dos niños iguales. Cada plan de estimulación se diseña a medida, respetando el ritmo, las fortalezas y las particularidades de cada pequeño.
-    - icon: 🔄
+    - icon: refresh-cw
       color: primary
       title: Enfoque integral
       desc: 'Abordamos todas las áreas del desarrollo de forma simultánea y coordinada: cognición, comunicación, motricidad, socialización y autonomía.'
-    - icon: 👨‍👩‍👧
+    - icon: users-round
       color: accent
       title: Familia como aliada
       desc: Los padres son los principales agentes del cambio. Los formamos, acompañamos y empoderamos para que sean co-educadores activos en el hogar.
@@ -46,7 +54,7 @@ section_2:
   title: Niveles del Programa
   subtitle: Acompañamos a cada niño desde los 3 años con un currículo progresivo que respeta su ritmo individual.
   tabs:
-    - icon: 🧸
+    - icon: gift
       color: accent
       label: Parvulario
       age_range: 3 años
@@ -56,7 +64,7 @@ section_2:
         - Exploración del entorno
         - Habilidades socioemocionales iniciales
         - Juego funcional y estructurado
-    - icon: 🎨
+    - icon: paintbrush
       color: secondary
       label: Pre-Kínder
       age_range: 4 años
@@ -66,7 +74,7 @@ section_2:
         - Conceptos de lectoescritura inicial
         - Nociones matemáticas básicas
         - Ampliación de vocabulario
-    - icon: ✏️
+    - icon: pencil
       color: primary
       label: Kínder
       age_range: 5 años
@@ -80,7 +88,7 @@ section_3:
   badge: Qué trabajamos
   title: Áreas de Estimulación
   items:
-    - icon: 🧠
+    - icon: brain
       color: accent
       title: Cognición y Aprendizaje
       desc: ''
@@ -89,7 +97,7 @@ section_3:
         - Conceptos espaciales y temporales
         - Memoria y atención
         - Razonamiento lógico básico
-    - icon: 🗣️
+    - icon: message-circle
       color: secondary
       title: Comunicación y Lenguaje
       desc: ''
@@ -98,7 +106,7 @@ section_3:
         - Comprensión de instrucciones
         - Narración y descripción
         - Iniciación a la lectoescritura
-    - icon: 🤸
+    - icon: accessibility
       color: primary
       title: Motricidad y Cuerpo
       desc: ''
@@ -107,7 +115,7 @@ section_3:
         - Motricidad fina y grafomotricidad
         - Esquema corporal
         - Destrezas de autonomía
-    - icon: 🌟
+    - icon: sparkles
       color: accent
       title: Socialización y Autonomía
       desc: ''
@@ -119,16 +127,16 @@ section_3:
 enrollment:
   title: ¿Cómo inscribir a tu hijo?
   steps:
-    - icon: 📞
+    - icon: phone
       title: Contacto inicial
       desc: Comunícate con nosotros por WhatsApp o formulario. Te respondemos en menos de 24 horas.
-    - icon: 🔍
+    - icon: search
       title: Evaluación inicial
       desc: Realizamos una evaluación del desarrollo del niño para conocer su perfil y necesidades.
-    - icon: 📋
+    - icon: file-text
       title: Plan de estimulación
       desc: Diseñamos un programa personalizado con objetivos a corto, medio y largo plazo.
-    - icon: 🌟
+    - icon: sparkles
       title: Inicio del programa
       desc: El niño comienza el programa y la familia recibe orientación continua.
 cta:

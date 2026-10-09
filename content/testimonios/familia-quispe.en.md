@@ -1,7 +1,7 @@
 ---
 family: "Familia Quispe"
 program: "Mi Escuelita Down"
-icon: "🌟"
+icon: "sparkles"
 color: "secondary"
 order: "1"
 featured_home: "true"
