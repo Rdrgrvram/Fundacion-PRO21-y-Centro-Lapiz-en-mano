@@ -35,7 +35,7 @@ es:
     - route: contacto
       label: Contacto
   header:
-    cta_label: Colaborar ♥
+    cta_label: Colaborar
     tagline: La Paz · Bolivia
   footer:
     programs_title: Programas
@@ -90,7 +90,7 @@ en:
     - route: contacto
       label: Contact
   header:
-    cta_label: Support us ♥
+    cta_label: Support us
     tagline: La Paz · Bolivia
   footer:
     programs_title: Programs

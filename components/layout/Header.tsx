@@ -12,12 +12,39 @@ import AccessibilityBar from './AccessibilityBar'
 interface HeaderProps {
   lang: Locale
   settings: SiteSettingsContent
+  programs: Array<{ slug: string; title: string }>
+  programRoutes: string[]
 }
 
-export default function Header({ lang, settings }: HeaderProps) {
+function buildNavItems(settings: SiteSettingsContent, programs: HeaderProps['programs'], programRoutes: string[]) {
+  const programSlugs = new Set(programRoutes)
+  const items: Array<{ route: string; label: string }> = []
+  let insertedPrograms = false
+
+  for (const item of settings.nav) {
+    if (programSlugs.has(item.route)) {
+      if (!insertedPrograms) {
+        items.push(...programs.map((program) => ({ route: program.slug, label: program.title })))
+        insertedPrograms = true
+      }
+      continue
+    }
+    items.push(item)
+  }
+
+  if (!insertedPrograms && programs.length > 0) {
+    const teamIndex = items.findIndex((item) => item.route === 'equipo')
+    items.splice(teamIndex === -1 ? items.length : teamIndex, 0, ...programs.map((program) => ({ route: program.slug, label: program.title })))
+  }
+
+  return items
+}
+
+export default function Header({ lang, settings, programs, programRoutes }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
   const es = lang === 'es'
+  const navItems = buildNavItems(settings, programs, programRoutes)
 
   // Cerrar el menú cuando cambia la ruta (navegación completa)
   useEffect(() => {
@@ -67,7 +94,7 @@ export default function Header({ lang, settings }: HeaderProps) {
           </Link>
 
           {/* Menú de navegación de escritorio (hidden on screens < 1280px) */}
-          <Nav lang={lang} items={settings.nav} />
+          <Nav lang={lang} items={navItems} />
 
           {/* Acciones del Header (Idioma + Colaborar en Escritorio) */}
           <div className="hidden xl:flex items-center gap-4">
@@ -131,7 +158,7 @@ export default function Header({ lang, settings }: HeaderProps) {
 
             {/* Enlaces de navegación */}
             <nav className="flex flex-col gap-1.5 flex-1">
-              {settings.nav.map(({ route, label }) => {
+              {navItems.map(({ route, label }) => {
                 const href = `/${lang}/${route}`
                 const isActive = pathname === href || pathname?.startsWith(href + '/')
                 return (

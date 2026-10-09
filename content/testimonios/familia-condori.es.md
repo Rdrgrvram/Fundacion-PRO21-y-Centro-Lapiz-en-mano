@@ -1,7 +1,7 @@
 ---
 family: "Familia Condori"
 program: "Pasos Firmes"
-icon: "📚"
+icon: "book-open"
 color: "secondary"
 order: "5"
 featured_home: "false"

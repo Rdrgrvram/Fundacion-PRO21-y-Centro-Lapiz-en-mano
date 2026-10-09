@@ -1,3 +1,4 @@
+import Icon from '@/components/ui/Icon'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -46,7 +47,7 @@ export default async function BlogPostPage({ params: { lang, slug } }: Props) {
           </Link>
 
           <time className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-2">
-            ⏱ {post.date}
+            <Icon name="clock" className="mr-1 inline-block h-[1em] w-[1em] align-[-0.125em]" />{post.date}
           </time>
           
           <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#0c2340] font-bold leading-tight mb-4">
@@ -64,7 +65,7 @@ export default async function BlogPostPage({ params: { lang, slug } }: Props) {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 mt-4 text-xs font-bold text-secondary hover:underline min-h-[44px]"
             >
-              <span>📄</span>
+              <span><Icon name="file-text" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               <span>{es ? 'Descargar PDF adjunto' : 'Download attached PDF'}</span>
             </a>
           )}
@@ -72,7 +73,7 @@ export default async function BlogPostPage({ params: { lang, slug } }: Props) {
 
         {/* Imagen destacada real si existe, sino banner elegante de la fundación */}
         <div className="h-48 sm:h-64 rounded-2xl bg-gradient-to-br from-[#e8f1fa] to-[#fafbfd] border border-gray-150 flex items-center justify-center text-5xl mb-8 select-none shadow-sm relative overflow-hidden">
-          {post.image ? <Image src={post.image} alt={post.title} fill className="object-cover" /> : <span>📰</span>}
+          {post.image ? <Image src={post.image} alt={post.title} fill className="object-cover" /> : <span><Icon name="newspaper" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>}
         </div>
 
         {/* Contenido principal en HTML renderizado */}
@@ -87,7 +88,7 @@ export default async function BlogPostPage({ params: { lang, slug } }: Props) {
         <div className="border-t border-gray-100 pt-6 mt-10 flex flex-col sm:flex-row justify-between items-center gap-4 select-none">
           <div className="flex items-center gap-3">
             <span className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-xs text-black font-extrabold shadow-inner">
-              ✦
+              <Icon name="sparkles" className="h-4 w-4" />
             </span>
             <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">
               {es ? 'Fundación PRO-21 y Centro Lápiz en Mano' : 'PRO-21 Foundation & Lápiz en Mano'}
@@ -100,7 +101,7 @@ export default async function BlogPostPage({ params: { lang, slug } }: Props) {
             rel="noopener noreferrer"
             className="text-xs font-bold text-[#25d366] hover:underline flex items-center gap-1 min-h-[44px]"
           >
-            <span>💬</span>
+            <span><Icon name="message-circle" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
             <span>{es ? 'Compartir comentarios por WhatsApp' : 'Share comments on WhatsApp'}</span>
           </a>
         </div>

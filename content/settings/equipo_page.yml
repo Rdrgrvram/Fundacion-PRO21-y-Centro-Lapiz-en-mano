@@ -5,16 +5,16 @@ es:
     title_line2: vocación y amor
     subtitle: Un equipo multidisciplinario que trabaja de forma coordinada, poniendo al niño y su familia en el centro de cada intervención para lograr avances significativos.
   stats:
-    - icon: 👩‍⚕️
+    - icon: stethoscope
       value: ''
       label: Profesionales
-    - icon: 🏥
+    - icon: hospital
       value: ''
       label: Áreas de especialidad
-    - icon: 📋
+    - icon: file-text
       value: '3'
       label: Programas activos
-    - icon: 💛
+    - icon: heart
       value: 100%
       label: Dedicación integral
   philosophy_section:
@@ -22,16 +22,16 @@ es:
     title: ¿Qué significa ser multidisciplinario?
     subtitle: No es sólo tener muchas especialidades bajo un mismo techo. Es un equipo que piensa, planifica y actúa coordinadamente por y para el niño.
   philosophy_items:
-    - icon: 🔄
+    - icon: refresh-cw
       title: Trabajo coordinado
       desc: Todas las áreas comparten información y diseñan planes conjuntos, evitando intervenciones aisladas.
-    - icon: 👁️
+    - icon: eye
       title: Mirada integral
       desc: No tratamos síntomas; acompañamos a una persona completa en sus dimensiones física, cognitiva, emocional y social.
-    - icon: 👨‍👩‍👧
+    - icon: users-round
       title: Familia como aliada
       desc: Los padres y madres no son espectadores; son parte activa de la terapia, con orientación continua.
-    - icon: 📊
+    - icon: chart-column
       title: Evaluación continua
       desc: Cada plan de intervención se revisa periódicamente según los avances y necesidades individuales.
   team_grid_section:
@@ -66,16 +66,16 @@ en:
     title_line2: vocation and love
     subtitle: A multidisciplinary team working coordinately, placing the child and family at the center of every intervention to achieve meaningful progress.
   stats:
-    - icon: 👩‍⚕️
+    - icon: stethoscope
       value: ''
       label: Staff members
-    - icon: 🏥
+    - icon: hospital
       value: ''
       label: Specialized areas
-    - icon: 📋
+    - icon: file-text
       value: '3'
       label: Active programs
-    - icon: 💛
+    - icon: heart
       value: 100%
       label: Dedicated care
   philosophy_section:
@@ -83,16 +83,16 @@ en:
     title: What does multidisciplinary mean?
     subtitle: It is not just having many specialties under one roof. It is a team that thinks, plans, and acts coordinately by and for the child.
   philosophy_items:
-    - icon: 🔄
+    - icon: refresh-cw
       title: Coordinated work
       desc: All areas share information and design joint plans, avoiding isolated interventions.
-    - icon: 👁️
+    - icon: eye
       title: Integral view
       desc: We do not treat symptoms; we support a whole person in their physical, cognitive, emotional, and social dimensions.
-    - icon: 👨‍👩‍👧
+    - icon: users-round
       title: Family as ally
       desc: Parents are not spectators; they are active participants in therapy, with continuous guidance.
-    - icon: 📊
+    - icon: chart-column
       title: Continuous evaluation
       desc: Each intervention plan is periodically reviewed based on individual progress and needs.
   team_grid_section:

@@ -85,9 +85,15 @@ export function getEquipoPageContent(locale: Locale): EquipoPageContent {
 // faltante lanza acá, con archivo y campo exactos, en vez de fallar en el render.
 export type Program = ProgramContent & { slug: string }
 
-const PROGRAM_SLUGS = ['mi-escuelita-down', 'aula-wawitas', 'pasos-firmes'] as const
+const PROGRAM_SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 
-export function getProgramBySlug(slug: string, locale: Locale): Program | null {
+export interface ProgramQueryOptions {
+  includeHidden?: boolean
+}
+
+export function getProgramBySlug(slug: string, locale: Locale, options: ProgramQueryOptions = {}): Program | null {
+  if (!PROGRAM_SLUG_PATTERN.test(slug)) return null
+
   const dir = path.join(CONTENT_DIR, 'programs')
   if (!fs.existsSync(path.join(dir, `${slug}.es.md`))) return null
 
@@ -101,11 +107,18 @@ export function getProgramBySlug(slug: string, locale: Locale): Program | null {
     throw new Error(`Contenido inválido en content/programs/${slug}.${locale}.md:\n${issues}`)
   }
 
-  return { ...result.data, slug }
+  const program = { ...result.data, slug }
+  if (!options.includeHidden && !program.visible) return null
+
+  return program
 }
 
-export function getAllPrograms(locale: Locale): Program[] {
-  return PROGRAM_SLUGS.map((slug) => getProgramBySlug(slug, locale)).filter((p): p is Program => p !== null)
+export function getAllPrograms(locale: Locale, options: ProgramQueryOptions = {}): Program[] {
+  const dir = path.join(CONTENT_DIR, 'programs')
+  return listLocaleSlugs(dir)
+    .map((slug) => getProgramBySlug(slug, locale, options))
+    .filter((p): p is Program => p !== null)
+    .sort((a, b) => a.order - b.order || a.title.localeCompare(b.title, locale))
 }
 
 // Colección folder i18n:true genérica (multiple_files: <slug>.<locale>.md) — una

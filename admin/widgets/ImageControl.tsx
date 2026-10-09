@@ -1,6 +1,7 @@
 import { Component, useEffect, useRef, useState, type CSSProperties, type KeyboardEvent } from 'react'
 import { List as ImmutableList, type Map as ImmutableMap } from 'immutable'
 import type { CmsWidgetControlProps } from 'decap-cms-app'
+import { Clock3, Image, Trash2, TriangleAlert } from 'lucide-react'
 
 // Cuando el campo ya tenía un valor, Decap abre la Media Library con ese valor en el
 // payload (`value: [actual]`) y, tras confirmar la selección, `mediaPaths` termina
@@ -157,7 +158,7 @@ export default class ImageControl extends Component<CmsWidgetControlProps> {
         <div className={this.props.classNameWrapper} style={{ pointerEvents: 'none', opacity: 0.5 }} aria-hidden="true">
           {!value ? (
             <div style={dropzoneStyle}>
-              <span style={{ fontSize: 28, lineHeight: 1 }}>🖼️</span>
+              <Image size={28} strokeWidth={1.8} aria-hidden="true" />
               <span style={{ fontSize: 13, color: '#6b7280' }}>Subir imagen</span>
             </div>
           ) : (
@@ -190,7 +191,7 @@ export default class ImageControl extends Component<CmsWidgetControlProps> {
             aria-label={`Elegir ${fieldLabel}`}
             style={dropzoneStyle}
           >
-            <span style={{ fontSize: 28, lineHeight: 1 }}>🖼️</span>
+            <Image size={28} strokeWidth={1.8} aria-hidden="true" />
             <span style={{ fontSize: 13, color: '#6b7280' }}>Subir imagen</span>
           </div>
         ) : (
@@ -213,7 +214,7 @@ export default class ImageControl extends Component<CmsWidgetControlProps> {
               aria-label="Quitar imagen"
               style={trashButtonStyle}
             >
-              🗑
+              <Trash2 size={16} strokeWidth={2} aria-hidden="true" />
             </button>
           </div>
         )}
@@ -314,14 +315,14 @@ function ImageThumbnail({
 
       {broken && (
         <div style={brokenStyle}>
-          <span style={{ fontSize: 22 }}>⚠️</span>
+          <TriangleAlert size={22} strokeWidth={1.8} aria-hidden="true" />
           <span style={{ fontSize: 12 }}>No se pudo cargar</span>
         </div>
       )}
 
       {showPending && (
         <div style={brokenStyle}>
-          <span style={{ fontSize: 22 }}>🕓</span>
+          <Clock3 size={22} strokeWidth={1.8} aria-hidden="true" />
           <span style={{ fontSize: 12, textAlign: 'center', padding: '0 8px' }}>
             Se verá acá al publicar
           </span>

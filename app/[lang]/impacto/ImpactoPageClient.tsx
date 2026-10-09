@@ -1,4 +1,5 @@
 'use client'
+import Icon from '@/components/ui/Icon'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -68,7 +69,7 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
 
         <div className="container mx-auto max-w-4xl text-center relative z-20 mt-8">
           <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full py-1 px-3.5 mb-5 select-none">
-            <span className="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-[10px] text-black font-extrabold">✦</span>
+            <span className="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-[10px] text-black font-extrabold"><Icon name="sparkles" className="h-3 w-3" /></span>
             <span className="text-white/80 text-xs font-semibold">{content.hero.badge}</span>
           </div>
 
@@ -88,7 +89,7 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">📊</span>
+              <span className="text-sm"><Icon name="chart-column" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               <span className="text-xs font-bold uppercase tracking-wider text-primary-700">{content.stats_section.badge}</span>
             </div>
             <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.stats_section.title}</h2>
@@ -100,7 +101,7 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
               <div key={i} className="bg-white rounded-3xl p-6 md:p-8 border border-gray-200 shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300 h-full">
                 <div>
                   <div className={`w-12 h-12 rounded-xl ${PALETTE[s.color].bg} flex items-center justify-center text-2xl mb-4 shadow-sm select-none`}>
-                    {s.icon}
+                    <Icon name={s.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" />
                   </div>
                   <div className="font-serif text-3xl sm:text-4xl font-bold text-gray-900 leading-none mb-2">
                     <Counter end={s.value} suffix={s.suffix ?? ''} />
@@ -118,7 +119,7 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
         <div className="container mx-auto max-w-4xl text-center">
           <div className="text-center mb-10 max-w-md mx-auto">
             <div className="inline-flex items-center gap-2 bg-[#f5edfb] border border-[#8c3cbd]/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">💛</span>
+              <span className="text-sm"><Icon name="heart" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               <span className="text-xs font-bold uppercase tracking-wider text-[#8c3cbd]">{content.testimonials_section.badge}</span>
             </div>
             <h2 className="font-serif text-2xl md:text-3xl text-[#111827] font-normal tracking-tight mb-4">{content.testimonials_section.title}</h2>
@@ -135,7 +136,7 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-t border-gray-100 pt-6">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full flex items-center justify-center text-2xl text-white select-none shadow-md" style={{ backgroundColor: PALETTE[activeT.color].hex }}>
-                      {activeT.icon}
+                      <Icon name={activeT.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" />
                     </div>
                     <div>
                       <h4 className="text-xs sm:text-sm font-bold text-[#111827]">{activeT.family}</h4>
@@ -165,7 +166,7 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
                   idx === activeTestimonial ? 'border-primary bg-white shadow-sm scale-[1.01]' : 'border-gray-200 bg-white/70 hover:bg-white text-gray-500'
                 }`}
               >
-                <span className="text-xl">{tm.icon}</span>
+                <span className="text-xl"><Icon name={tm.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
                 <div>
                   <div className="text-[10px] font-bold text-gray-900 leading-tight">{tm.family}</div>
                   <div className="text-[8px] text-gray-400 font-semibold truncate max-w-[64px] sm:max-w-xs">{tm.program}</div>
@@ -181,7 +182,7 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">🔍</span>
+              <span className="text-sm"><Icon name="search" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               <span className="text-xs font-bold uppercase tracking-wider text-secondary">{content.reports_section.badge}</span>
             </div>
             <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.reports_section.title}</h2>
@@ -197,7 +198,7 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
                 {content.reports.map((r, idx) => (
                   <div key={idx} className="bg-gray-50 rounded-2xl p-5 border border-gray-200/80 flex items-center justify-between hover:border-secondary/20 transition-all select-none hover:translate-x-1">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-white border border-gray-150 flex items-center justify-center text-2xl flex-shrink-0">📊</div>
+                      <div className="w-12 h-12 rounded-xl bg-white border border-gray-150 flex items-center justify-center text-2xl flex-shrink-0"><Icon name="chart-column" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></div>
                       <div>
                         <h4 className="text-xs sm:text-sm font-bold text-[#111827] leading-snug">{r.title}</h4>
                         <p className="text-[10px] text-gray-400 font-semibold mt-0.5">{r.desc} · {r.year}</p>
@@ -221,7 +222,7 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 {content.reports_breakdown.map((item, idx) => (
                   <div key={idx} className="bg-white rounded-2xl p-5 border border-gray-200/80 shadow-sm flex flex-col justify-between">
-                    <div className={`w-9 h-9 rounded-xl ${PALETTE[item.color].bg} flex items-center justify-center text-xl mb-3 shadow-inner select-none`}>{item.icon}</div>
+                    <div className={`w-9 h-9 rounded-xl ${PALETTE[item.color].bg} flex items-center justify-center text-xl mb-3 shadow-inner select-none`}><Icon name={item.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></div>
                     <div>
                       <h4 className="text-xs font-bold text-[#111827] mb-0.5">{item.title}</h4>
                       <p className="text-[10px] text-gray-400 leading-normal font-semibold">{item.desc}</p>
@@ -239,7 +240,7 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">📰</span>
+              <span className="text-sm"><Icon name="newspaper" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               <span className="text-xs font-bold uppercase tracking-wider text-accent">{content.media_section.badge}</span>
             </div>
             <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.media_section.title}</h2>
@@ -279,7 +280,7 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">📷</span>
+              <span className="text-sm"><Icon name="camera" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               <span className="text-xs font-bold uppercase tracking-wider text-secondary">{content.gallery_section.badge}</span>
             </div>
             <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.gallery_section.title}</h2>
@@ -319,7 +320,7 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
       <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary relative overflow-hidden">
         <div className="absolute inset-0 bg-radial-gradient(circle, rgba(232,168,56,0.06), transparent 70%) pointer-events-none" />
         <div className="container mx-auto max-w-3xl relative z-10 text-center">
-          <span className="text-5xl block mb-5 animate-[float_4s_ease-in-out_infinite] select-none">🌍</span>
+          <span className="text-5xl block mb-5 animate-[float_4s_ease-in-out_infinite] select-none"><Icon name="earth" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
           <h2 className="font-serif text-3xl md:text-4xl text-white font-normal leading-tight mb-4">{content.cta.title}</h2>
           <p className="text-sm md:text-base text-white/70 max-w-xl mx-auto leading-relaxed mb-10">{content.cta.text}</p>
           <div className="flex flex-wrap gap-4 justify-center items-center">

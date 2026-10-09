@@ -7,16 +7,16 @@ es:
     donate_label: Donar ahora
     volunteer_label: Ser voluntario
   hero_highlights:
-    - icon: 👨‍👩‍👧
+    - icon: users-round
       value: 100+
       label: Familias que acompañar
-    - icon: 🩺
+    - icon: stethoscope
       value: 20+
       label: Profesionales comprometidos
-    - icon: 📋
+    - icon: file-text
       value: '3'
       label: Programas especializados
-    - icon: 💚
+    - icon: heart
       value: Bs 0
       label: Costo para familias con beca
   donation_section:
@@ -27,7 +27,7 @@ es:
     - amount: Bs 100
       usd: ≈ $14
       label: Semilla
-      icon: 🌱
+      icon: wheat
       color: secondary
       impact: Cubre materiales terapéuticos para un niño durante un mes.
       items:
@@ -37,7 +37,7 @@ es:
     - amount: Bs 300
       usd: ≈ $43
       label: Acompañante
-      icon: 💚
+      icon: heart
       color: secondary
       impact: Financia 2 sesiones de terapia especializada.
       items:
@@ -48,7 +48,7 @@ es:
     - amount: Bs 500
       usd: ≈ $72
       label: Guardián
-      icon: ⭐
+      icon: sparkles
       color: primary
       impact: Cubre un mes completo de atención para una familia con beca.
       items:
@@ -57,7 +57,7 @@ es:
         - Materiales + sesiones
     - amount: Libre
       label: A tu medida
-      icon: 💛
+      icon: heart
       color: accent
       impact: Elige el monto que puedas. Todo suma y todo cambia vidas.
       items:
@@ -70,16 +70,16 @@ es:
     holder: Monica Medina Rosales
     note: La cuenta se actualizará una vez concluido el trámite institucional.
   payment_methods:
-    - icon: 🏦
+    - icon: wallet
       title: Transferencia bancaria
       lines: []
       is_bank: true
-    - icon: 📱
+    - icon: phone
       title: QR de pago directo
       lines:
         - Escanea desde tu app bancaria.
         - Compatible con Simple QR en Bolivia.
-    - icon: 🌐
+    - icon: earth
       title: Donación internacional
       lines:
         - PayPal o transferencia directa.
@@ -90,38 +90,38 @@ es:
     title: Comparte tu talento y haz la diferencia
     subtitle: Buscamos profesionales de la salud, pedagogos y personas motivadas que deseen certificar horas de Servicio Social.
   volunteer_areas:
-    - icon: 🩺
+    - icon: stethoscope
       title: Salud y terapia
       desc: Fisioterapia, psicología, fonoaudiología, psicomotricidad, nutrición.
       color: secondary
-    - icon: 📖
+    - icon: book-open
       title: Educación y tutorías
       desc: Apoyo escolar, adaptaciones curriculares, psicopedagogía, talleres.
       color: secondary
-    - icon: 🎨
+    - icon: paintbrush
       title: Arte y recreación
       desc: Música, pintura, teatro, expresión corporal, deportes adaptados.
       color: accent
-    - icon: 💻
+    - icon: monitor
       title: Tecnología y diseño
       desc: Desarrollo web, redes sociales, diseño gráfico, edición multimedia.
       color: accent
-    - icon: 📋
+    - icon: file-text
       title: Gestión y eventos
       desc: Planificación, captación de fondos, logística de talleres, campañas.
       color: primary
-    - icon: 🌍
+    - icon: earth
       title: Trabajo comunitario
       desc: Trabajo social, orientación legal, visitas domiciliarias, difusión.
       color: secondary
   volunteer_perks:
-    - icon: 📅
+    - icon: calendar
       text: Horarios adaptados a tu disponibilidad
-    - icon: 🎓
+    - icon: graduation-cap
       text: Inducción y capacitación metodológica inicial
-    - icon: 📋
+    - icon: file-text
       text: Certificado oficial de horas voluntarias/prácticas
-    - icon: 🌍
+    - icon: earth
       text: Acreditación válida para servicio social universitario
   volunteer_testimonial:
     quote: Llegué al Centro como practicante de fonoaudiología y decidí quedarme como voluntaria. Ver cómo un niño pronuncia sus primeras palabras es el regalo más grande de mi vida profesional.
@@ -131,7 +131,7 @@ es:
     title: Trabajemos juntos por la inclusión
     subtitle: Construimos puentes con empresas, universidades, ONGs y medios para potenciar el impacto en la comunidad boliviana.
   partner_types:
-    - icon: 🏢
+    - icon: briefcase
       title: Empresas comprometidas
       color: secondary
       desc: RSE, auspicios, donaciones corporativas con impacto social verificado.
@@ -139,7 +139,7 @@ es:
         - Recibo oficial de donación
         - Logotipo en sitio web
         - Informes semestrales de impacto
-    - icon: 🎓
+    - icon: graduation-cap
       title: Universidades y Colegios
       color: accent
       desc: Prácticas profesionales, voluntariado estudiantil e investigación.
@@ -147,7 +147,7 @@ es:
         - Convenios marco certificados
         - Campos de práctica guiados
         - Acceso a datos de investigación
-    - icon: 🌍
+    - icon: earth
       title: Cooperación Internacional
       color: secondary
       desc: Proyectos conjuntos de desarrollo y financiamiento de equipamiento.
@@ -155,7 +155,7 @@ es:
         - Auditorías de transparencia
         - Cumplimiento de objetivos ODS
         - Reportes técnicos de ejecución
-    - icon: 📺
+    - icon: monitor
       title: Medios y difusores
       color: accent
       desc: Difusión de campañas, reportajes de sensibilización y eventos.
@@ -168,16 +168,16 @@ es:
   allies:
     - name: Universidad Católica Boliviana
       type: UCB La Paz
-      icon: 🎓
+      icon: graduation-cap
     - name: Red Uno de Bolivia
       type: Televisión
-      icon: 📺
+      icon: monitor
     - name: ATB Red Nacional
       type: Televisión
-      icon: 🎬
+      icon: camera
     - name: Página Siete
       type: Prensa
-      icon: 📰
+      icon: newspaper
   cta:
     title: ¿Tienes dudas sobre cómo apoyar?
     text: Escríbenos directamente y te explicamos detalladamente cómo tu aporte se traduce en materiales de estimulación, sesiones terapéuticas o becas de estudio.
@@ -190,16 +190,16 @@ en:
     donate_label: Donate now
     volunteer_label: Volunteer
   hero_highlights:
-    - icon: 👨‍👩‍👧
+    - icon: users-round
       value: 100+
       label: Families to support
-    - icon: 🩺
+    - icon: stethoscope
       value: 20+
       label: Staff professionals
-    - icon: 📋
+    - icon: file-text
       value: '3'
       label: Specialized programs
-    - icon: 💚
+    - icon: heart
       value: Bs 0
       label: Cost for scholarship families
   donation_section:
@@ -210,7 +210,7 @@ en:
     - amount: Bs 100
       usd: ≈ $14
       label: Seed
-      icon: 🌱
+      icon: wheat
       color: secondary
       impact: Covers therapeutic materials for one child for a month.
       items:
@@ -220,7 +220,7 @@ en:
     - amount: Bs 300
       usd: ≈ $43
       label: Companion
-      icon: 💚
+      icon: heart
       color: secondary
       impact: Finances 2 specialized therapy sessions.
       items:
@@ -231,7 +231,7 @@ en:
     - amount: Bs 500
       usd: ≈ $72
       label: Guardian
-      icon: ⭐
+      icon: sparkles
       color: primary
       impact: Covers one full month of care for a family on scholarship.
       items:
@@ -240,7 +240,7 @@ en:
         - Materials + sessions
     - amount: Custom
       label: To your measure
-      icon: 💛
+      icon: heart
       color: accent
       impact: Choose the amount you can. Everything counts and transforms lives.
       items:
@@ -253,16 +253,16 @@ en:
     holder: Monica Medina Rosales
     note: The account will be updated once the institutional process is completed.
   payment_methods:
-    - icon: 🏦
+    - icon: wallet
       title: Bank transfer
       lines: []
       is_bank: true
-    - icon: 📱
+    - icon: phone
       title: Direct QR payment
       lines:
         - Scan from your banking app.
         - Compatible with Simple QR in Bolivia.
-    - icon: 🌐
+    - icon: earth
       title: International donation
       lines:
         - PayPal or direct wire transfer.
@@ -273,38 +273,38 @@ en:
     title: Share your talent and make a difference
     subtitle: We look for health professionals, educators, and motivated people wishing to certify Social Service hours.
   volunteer_areas:
-    - icon: 🩺
+    - icon: stethoscope
       title: Health & therapy
       desc: Physiotherapy, psychology, speech therapy, psychomotor, nutrition.
       color: secondary
-    - icon: 📖
+    - icon: book-open
       title: Education & tutoring
       desc: School support, curricular adaptations, psychopedagogy, workshops.
       color: secondary
-    - icon: 🎨
+    - icon: paintbrush
       title: Art & recreation
       desc: Music, painting, theater, body expression, adapted sports.
       color: accent
-    - icon: 💻
+    - icon: monitor
       title: Tech & design
       desc: Web dev, social media, graphic design, multimedia editing.
       color: accent
-    - icon: 📋
+    - icon: file-text
       title: Management & events
       desc: Planning, fundraising, workshop logistics, campaigns.
       color: primary
-    - icon: 🌍
+    - icon: earth
       title: Community work
       desc: Social work, legal guidance, home visits, outreach.
       color: secondary
   volunteer_perks:
-    - icon: 📅
+    - icon: calendar
       text: Schedules adapted to your availability
-    - icon: 🎓
+    - icon: graduation-cap
       text: Initial induction and methodological training
-    - icon: 📋
+    - icon: file-text
       text: Official certificate of volunteer/practice hours
-    - icon: 🌍
+    - icon: earth
       text: Valid accreditation for university social service
   volunteer_testimonial:
     quote: I came to the Center as a speech therapy intern and decided to stay as a volunteer. Seeing how a child pronounces their first words is the greatest gift of my professional life.
@@ -314,7 +314,7 @@ en:
     title: Let's work together for inclusion
     subtitle: We build bridges with corporations, universities, NGOs, and media to boost impact in the Bolivian community.
   partner_types:
-    - icon: 🏢
+    - icon: briefcase
       title: Committed Corporations
       color: secondary
       desc: CSR, sponsorship, corporate donations with verified social impact.
@@ -322,7 +322,7 @@ en:
         - Official donation receipt
         - Logo on the website
         - Bi-annual impact reports
-    - icon: 🎓
+    - icon: graduation-cap
       title: Universities & Schools
       color: accent
       desc: Professional internships, student volunteering, and research.
@@ -330,7 +330,7 @@ en:
         - Certified frameworks
         - Guided practice fields
         - Access to research data
-    - icon: 🌍
+    - icon: earth
       title: International Aid
       color: secondary
       desc: Joint development projects and equipment financing.
@@ -338,7 +338,7 @@ en:
         - Transparency audits
         - SDG alignment compliance
         - Technical execution reports
-    - icon: 📺
+    - icon: monitor
       title: Media & Outreach
       color: accent
       desc: Campaign dissemination, awareness reports, and events.
@@ -351,16 +351,16 @@ en:
   allies:
     - name: Universidad Católica Boliviana
       type: UCB La Paz
-      icon: 🎓
+      icon: graduation-cap
     - name: Red Uno de Bolivia
       type: Television
-      icon: 📺
+      icon: monitor
     - name: ATB Red Nacional
       type: Television
-      icon: 🎬
+      icon: camera
     - name: Página Siete
       type: Press
-      icon: 📰
+      icon: newspaper
   cta:
     title: Questions about how to support?
     text: Write to us directly and we will explain in detail how your support translates into stimulation materials, therapy sessions, or study scholarships.

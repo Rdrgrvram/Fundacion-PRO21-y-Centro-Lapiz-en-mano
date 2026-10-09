@@ -9,28 +9,28 @@ es:
     title: El impacto consolidado en números
     subtitle: Cada número representa una historia real de inclusión y progreso.
   stats:
-    - icon: 👨‍👩‍👧
+    - icon: users-round
       color: secondary
       value: '70'
       suffix: +
       label: Familias acompañadas
-    - icon: 📋
+    - icon: file-text
       color: accent
       value: '3'
       label: Programas activos
-    - icon: 🏛️
+    - icon: landmark
       color: secondary
       value: '8'
       label: Años de experiencia
-    - icon: 🩺
+    - icon: stethoscope
       color: secondary
       value: '10'
       label: Profesionales en el equipo
-    - icon: 🧩
+    - icon: puzzle
       color: accent
       value: '8'
       label: Áreas terapéuticas
-    - icon: 📅
+    - icon: calendar
       color: primary
       value: '1000'
       suffix: +
@@ -56,24 +56,25 @@ es:
     - year: '2023'
       title: Informe anual de gestión 2023
       desc: Lanzamiento de Aula Wawitas y expansión de salas.
+      program_slug: aula-wawitas
     - year: '2022'
       title: Informe anual de gestión 2022
       desc: Constitución de Fundación PRO-21 y consolidación.
   reports_breakdown_title: ¿Qué incluyen nuestros informes?
   reports_breakdown:
-    - icon: 👶
+    - icon: baby
       color: secondary
       title: Niños atendidos
       desc: Matrícula en cada programa e informes pedagógicos.
-    - icon: 💰
+    - icon: coins
       color: primary
       title: Uso de fondos
       desc: Distribución porcentual por áreas y costo de becas.
-    - icon: 📈
+    - icon: chart-column
       color: secondary
       title: Avances terapéuticos
       desc: Logros medidos a nivel psicomotor, fonoaudiológico y conductual.
-    - icon: 🤝
+    - icon: handshake
       color: secondary
       title: Convenios firmados
       desc: Nuevas alianzas nacionales y de cooperación.
@@ -154,28 +155,28 @@ en:
     title: Consolidated impact in numbers
     subtitle: Every number represents a real story of inclusion and progress.
   stats:
-    - icon: 👨‍👩‍👧
+    - icon: users-round
       color: secondary
       value: '70'
       suffix: +
       label: Families supported
-    - icon: 📋
+    - icon: file-text
       color: accent
       value: '3'
       label: Active programs
-    - icon: 🏛️
+    - icon: landmark
       color: secondary
       value: '8'
       label: Years of service
-    - icon: 🩺
+    - icon: stethoscope
       color: secondary
       value: '10'
       label: Staff professionals
-    - icon: 🧩
+    - icon: puzzle
       color: accent
       value: '8'
       label: Therapeutic areas
-    - icon: 📅
+    - icon: calendar
       color: primary
       value: '1000'
       suffix: +
@@ -201,24 +202,25 @@ en:
     - year: '2023'
       title: 2023 Annual Management Report
       desc: Launch of Aula Wawitas and sensory room expansion.
+      program_slug: aula-wawitas
     - year: '2022'
       title: 2022 Annual Management Report
       desc: Establishment of PRO-21 Foundation and consolidation.
   reports_breakdown_title: What do our reports include?
   reports_breakdown:
-    - icon: 👶
+    - icon: baby
       color: secondary
       title: Children served
       desc: Enrollment in each program and pedagogical reports.
-    - icon: 💰
+    - icon: coins
       color: primary
       title: Use of funds
       desc: Percentage distribution by areas and cost of scholarships.
-    - icon: 📈
+    - icon: chart-column
       color: secondary
       title: Therapeutic progress
       desc: Achievements measured at psychomotor, speech, and behavior levels.
-    - icon: 🤝
+    - icon: handshake
       color: secondary
       title: Signed agreements
       desc: New national and cooperation alliances.

@@ -1,4 +1,5 @@
 'use client'
+import Icon from '@/components/ui/Icon'
 import { useState } from 'react'
 import Link from 'next/link'
 import type { Locale } from '@/lib/i18n'
@@ -55,9 +56,9 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
   }
 
   const contactInfo = [
-    { icon: '📱', title: 'WhatsApp', primary: `+591 ${contact.phone_display}`, secondary: es ? 'Respuesta en menos de 2 horas' : 'Reply in less than 2 hours', href: whatsappUrl, action: es ? 'Escribir ahora' : 'Write now', hex: '#22c55e', bg: 'bg-green-50' },
-    { icon: '✉️', title: es ? 'Correo electrónico' : 'Email', primary: contact.email, secondary: es ? 'Respuesta en 24 horas' : 'Reply in 24 hours', href: `mailto:${contact.email}`, action: es ? 'Enviar correo' : 'Send email', hex: PALETTE.secondary.hex, bg: PALETTE.secondary.bg },
-    { icon: '📞', title: es ? 'Teléfono' : 'Phone', primary: `+591 ${contact.phone_display}`, secondary: es ? 'Lunes a viernes, 8:00 – 18:00' : 'Monday to Friday, 8:00 – 18:00', href: `tel:+591${contact.phone_display}`, action: es ? 'Llamar' : 'Call', hex: PALETTE.secondary.hex, bg: PALETTE.secondary.bg },
+    { icon: 'phone', title: 'WhatsApp', primary: `+591 ${contact.phone_display}`, secondary: es ? 'Respuesta en menos de 2 horas' : 'Reply in less than 2 hours', href: whatsappUrl, action: es ? 'Escribir ahora' : 'Write now', hex: '#22c55e', bg: 'bg-green-50' },
+    { icon: 'at', title: es ? 'Correo electrónico' : 'Email', primary: contact.email, secondary: es ? 'Respuesta en 24 horas' : 'Reply in 24 hours', href: `mailto:${contact.email}`, action: es ? 'Enviar correo' : 'Send email', hex: PALETTE.secondary.hex, bg: PALETTE.secondary.bg },
+    { icon: 'phone', title: es ? 'Teléfono' : 'Phone', primary: `+591 ${contact.phone_display}`, secondary: es ? 'Lunes a viernes, 8:00 – 18:00' : 'Monday to Friday, 8:00 – 18:00', href: `tel:+591${contact.phone_display}`, action: es ? 'Llamar' : 'Call', hex: PALETTE.secondary.hex, bg: PALETTE.secondary.bg },
   ]
 
   const socialLinks = [
@@ -84,7 +85,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
 
         <div className="container mx-auto max-w-4xl text-center relative z-20 mt-8">
           <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full py-1 px-3.5 mb-5 select-none">
-            <span className="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-[10px] text-black font-extrabold">✦</span>
+            <span className="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-[10px] text-black font-extrabold"><Icon name="sparkles" className="h-3 w-3" /></span>
             <span className="text-white/80 text-xs font-semibold">{content.hero.badge}</span>
           </div>
 
@@ -111,7 +112,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
               >
                 <div>
                   <div className="flex items-center gap-4 mb-4 select-none">
-                    <div className={`w-14 h-14 rounded-2xl ${c.bg} flex items-center justify-center text-3xl flex-shrink-0 shadow-sm`}>{c.icon}</div>
+                    <div className={`w-14 h-14 rounded-2xl ${c.bg} flex items-center justify-center text-3xl flex-shrink-0 shadow-sm`}><Icon name={c.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></div>
                     <div>
                       <div className="text-[10px] font-bold text-gray-400 tracking-wider uppercase">{c.title}</div>
                       <div className="text-sm sm:text-base font-bold text-[#111827] mt-0.5 break-all">{c.primary}</div>
@@ -160,7 +161,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
                                   isSelected ? `${style.border} bg-gray-50 ${style.text}` : 'border-gray-200 bg-white text-gray-600'
                                 }`}
                               >
-                                <span className="text-sm select-none">{r.icon}</span>
+                                <span className="text-sm select-none"><Icon name={r.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
                                 <span>{r.label}</span>
                               </button>
                             )
@@ -214,7 +215,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
                 </>
               ) : (
                 <div className="text-center py-16 px-4 flex flex-col items-center justify-center h-full">
-                  <span className="text-5xl block mb-4 select-none">✅</span>
+                  <span className="text-5xl block mb-4 select-none"><Icon name="check" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
                   <h3 className="font-serif text-xl sm:text-2xl text-[#111827] font-bold mb-3">{es ? '¡Mensaje recibido!' : 'Message received!'}</h3>
                   <p className="text-xs sm:text-sm text-gray-500 leading-relaxed mb-6 max-w-sm">
                     {es
@@ -229,7 +230,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
                       rel="noopener noreferrer"
                       className="bg-[#22c55e] hover:bg-[#22c55e]/90 text-white font-extrabold text-xs px-5 py-2.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] min-h-[44px] flex items-center justify-center gap-1.5"
                     >
-                      <span className="text-lg">💬</span>
+                      <span className="text-lg"><Icon name="message-circle" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
                       {es ? 'WhatsApp directo' : 'Direct WhatsApp'}
                     </a>
                   </div>
@@ -251,7 +252,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
             <div className="lg:col-span-5 flex flex-col gap-6 text-left">
               <div className="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between min-h-[220px]">
                 <div className="flex items-center gap-3.5 mb-4 select-none">
-                  <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-xl shadow-inner">📍</div>
+                  <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-xl shadow-inner"><Icon name="map-pin" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></div>
                   <div>
                     <h4 className="text-sm font-bold text-[#111827] leading-none">{content.map_card.title}</h4>
                     <p className="text-[10px] text-gray-400 font-semibold mt-1">{content.map_card.subtitle}</p>
@@ -271,7 +272,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
 
               <div className="bg-white rounded-3xl p-6 border border-gray-200/80 shadow-sm">
                 <div className="flex items-center gap-3.5 mb-4 select-none">
-                  <div className="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center text-xl shadow-inner">🕐</div>
+                  <div className="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center text-xl shadow-inner"><Icon name="clock" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></div>
                   <h4 className="text-sm font-bold text-[#111827]">{content.hours_title}</h4>
                 </div>
                 <div className="divide-y divide-gray-100 flex flex-col gap-0.5">
@@ -286,7 +287,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
 
               <div className="bg-white rounded-3xl p-6 border border-gray-200/80 shadow-sm">
                 <div className="flex items-center gap-3.5 mb-4 select-none">
-                  <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-xl shadow-inner">🌐</div>
+                  <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-xl shadow-inner"><Icon name="earth" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></div>
                   <h4 className="text-sm font-bold text-[#111827]">{content.social_title}</h4>
                 </div>
                 <div className="grid grid-cols-3 gap-2.5 select-none">
@@ -314,7 +315,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">⚡</span>
+              <span className="text-sm"><Icon name="sparkles" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               <span className="text-xs font-bold uppercase tracking-wider text-primary-700">{content.faq_section.badge}</span>
             </div>
             <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.faq_section.title}</h2>
@@ -324,7 +325,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
             {content.faqs.map((faq, i) => (
               <div key={i} className="bg-white rounded-3xl p-6 md:p-8 border border-gray-200 shadow-sm flex items-start gap-4 hover:shadow-md transition-all duration-300">
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0 shadow-sm text-white select-none" style={{ backgroundColor: PALETTE[faq.color].hex }}>
-                  {faq.icon}
+                  <Icon name={faq.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" />
                 </div>
                 <div>
                   <h4 className="font-serif text-base md:text-lg text-[#111827] font-bold mb-2">{faq.q}</h4>
@@ -361,7 +362,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
                 rel="noopener noreferrer"
                 className="bg-white/15 hover:bg-white/25 border border-white/20 backdrop-blur-md px-8 py-5 rounded-2xl text-white transition-all hover:scale-[1.02] active:scale-[0.98] flex flex-col items-center justify-center min-h-[44px] select-none"
               >
-                <span className="text-3xl mb-1 block">💬</span>
+                <span className="text-3xl mb-1 block"><Icon name="message-circle" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
                 <span className="font-serif text-xl font-bold leading-none">+591 {contact.phone_display}</span>
                 <span className="text-[10px] text-white/70 font-semibold mt-1">{es ? 'Presiona para chatear' : 'Tap to chat'}</span>
               </a>
@@ -373,7 +374,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
       {/* 6. Footer philosophy card */}
       <section className="py-16 px-4 bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary">
         <div className="container mx-auto max-w-2xl text-center text-white/75 relative">
-          <span className="text-4xl block mb-4 select-none">💛</span>
+          <span className="text-4xl block mb-4 select-none"><Icon name="heart" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
           <p className="font-serif text-lg sm:text-xl font-bold italic leading-relaxed mb-6">&ldquo;{content.closing_quote.text}&rdquo;</p>
           <div className="w-12 h-0.5 bg-primary/30 mx-auto mb-4" />
           <span className="text-xs text-white/40 font-semibold uppercase tracking-widest block">{content.closing_quote.attribution}</span>

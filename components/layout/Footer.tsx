@@ -1,3 +1,4 @@
+import Icon from '@/components/ui/Icon'
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Locale } from '@/lib/i18n'
@@ -29,17 +30,17 @@ export default function Footer({ lang }: FooterProps) {
 
             <ul className="mt-4 space-y-2 text-sm text-gray-400">
               <li className="flex gap-2">
-                <span>📍</span>
+                <span><Icon name="map-pin" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
                 <span>{contact.address}</span>
               </li>
               <li className="flex gap-2">
-                <span>📞</span>
+                <span><Icon name="phone" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
                 <a href={waLink(contact.whatsapp_number)} className="underline hover:text-white" target="_blank" rel="noopener noreferrer">
                   {contact.phone_display}
                 </a>
               </li>
               <li className="flex gap-2">
-                <span>✉️</span>
+                <span><Icon name="at" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
                 <a href={`mailto:${contact.email}`} className="underline hover:text-white">
                   {contact.email}
                 </a>

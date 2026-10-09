@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { getFamiliesContent, getSiteSettings } from '@/lib/cms'
+import { getAllPrograms, getFamiliesContent, getSiteSettings } from '@/lib/cms'
+import { isVisibleProgramReference } from '@/lib/program-references'
 import type { Locale } from '@/lib/i18n'
 import FamiliasPageClient from './FamiliasPageClient'
 
@@ -17,6 +18,13 @@ export async function generateMetadata({ params: { lang } }: PageProps): Promise
 
 export default function Page({ params: { lang } }: PageProps) {
   const content = getFamiliesContent(lang)
+  const visibleProgramSlugs = new Set(getAllPrograms(lang).map((program) => program.slug))
+  const publicContent = {
+    ...content,
+    guides: content.guides.filter((guide) =>
+      isVisibleProgramReference(guide.program_slug ?? guide.program, visibleProgramSlugs)
+    ),
+  }
   const { whatsapp_number } = getSiteSettings(lang).contact
-  return <FamiliasPageClient lang={lang} content={content} whatsappNumber={whatsapp_number} />
+  return <FamiliasPageClient lang={lang} content={publicContent} whatsappNumber={whatsapp_number} />
 }

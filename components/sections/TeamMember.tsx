@@ -1,3 +1,4 @@
+import Icon from '@/components/ui/Icon'
 import Image from 'next/image'
 
 interface TeamMemberProps {
@@ -15,7 +16,7 @@ export default function TeamMember({ name, role, specialty, bio, photo }: TeamMe
         {photo ? (
           <Image src={photo} alt={`Foto de ${name}`} fill className="object-cover" />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-3xl text-gray-400">👤</div>
+          <div className="w-full h-full flex items-center justify-center text-3xl text-gray-400"><Icon name="circle-user" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></div>
         )}
       </div>
       <h3 className="font-bold text-lg">{name}</h3>

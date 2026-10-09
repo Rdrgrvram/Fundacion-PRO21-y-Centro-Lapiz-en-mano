@@ -1,4 +1,5 @@
 'use client'
+import Icon from '@/components/ui/Icon'
 import { useState } from 'react'
 import type { Locale } from '@/lib/i18n'
 import type { CollaborateContent } from '@/lib/cms-schemas'
@@ -72,7 +73,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-left">
             <div>
               <div className="inline-flex items-center gap-2.5 bg-white/8 backdrop-blur-md border border-white/10 rounded-full py-1.5 pl-2.5 pr-4 mb-6 shadow-md select-none">
-                <span className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-xs text-black font-extrabold shadow-sm select-none">❤️</span>
+                <span className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-xs text-black font-extrabold shadow-sm select-none"><Icon name="heart" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
                 <span className="text-white/90 text-xs font-semibold">{content.hero.badge}</span>
               </div>
 
@@ -96,7 +97,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
             <div className="grid grid-cols-2 gap-4">
               {content.hero_highlights.map((s, i) => (
                 <div key={i} className="bg-white/5 border border-white/8 backdrop-blur-md rounded-2xl p-5 text-center hover:bg-white/10 transition-all select-none">
-                  <div className="text-2xl mb-1.5">{s.icon}</div>
+                  <div className="text-2xl mb-1.5"><Icon name={s.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></div>
                   <div className="font-serif text-2xl text-primary font-bold leading-none">{s.value}</div>
                   <div className="text-[10px] sm:text-xs text-white/60 font-semibold mt-2 leading-tight">{s.label}</div>
                 </div>
@@ -111,7 +112,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">💛</span>
+              <span className="text-sm"><Icon name="heart" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               <span className="text-xs font-bold uppercase tracking-wider text-primary-700">{content.donation_section.badge}</span>
             </div>
             <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.donation_section.title}</h2>
@@ -136,7 +137,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
                   <div className="h-1 w-full" style={{ backgroundColor: hex }} />
                   <div className="p-6">
                     <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4 transition-all duration-300 ${isSelected ? 'bg-primary text-black' : PALETTE[tier.color].bg}`}>
-                      {tier.icon}
+                      <Icon name={tier.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" />
                     </div>
                     <div className="font-serif text-2xl font-bold text-gray-900 leading-none mb-1">{tier.amount}</div>
                     {tier.usd && <span className="text-[10px] text-gray-400 font-semibold block mb-3">{tier.usd} USD</span>}
@@ -183,7 +184,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
                     rel="noopener noreferrer"
                     className="bg-primary hover:bg-primary/95 text-black font-extrabold text-sm sm:text-base px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-md shadow-primary/10 min-h-[44px] inline-flex items-center gap-2"
                   >
-                    <span>💛</span>
+                    <span><Icon name="heart" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
                     {es ? 'Confirmar donación por WhatsApp' : 'Confirm donation via WhatsApp'}
                   </a>
                   <p className="text-[10px] text-gray-400 mt-2">
@@ -203,7 +204,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
                     : m.lines
                   return (
                     <div key={idx} className="bg-gray-50 border border-gray-200/80 rounded-2xl p-4 flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-xl shadow-sm flex-shrink-0 select-none">{m.icon}</div>
+                      <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-xl shadow-sm flex-shrink-0 select-none"><Icon name={m.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></div>
                       <div>
                         <h4 className="text-xs sm:text-sm font-bold text-[#111827] mb-0.5">{m.title}</h4>
                         {lines.map((line, lidx) => (
@@ -227,7 +228,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">🙌</span>
+              <span className="text-sm"><Icon name="hand-heart" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               <span className="text-xs font-bold uppercase tracking-wider text-secondary">{content.volunteer_section.badge}</span>
             </div>
             <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.volunteer_section.title}</h2>
@@ -249,7 +250,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
                       isSelected ? 'border-secondary bg-secondary/10 text-gray-900 shadow-sm' : 'border-gray-200 bg-white text-gray-500 hover:bg-gray-50'
                     }`}
                   >
-                    <span className="text-2xl mb-2">{a.icon}</span>
+                    <span className="text-2xl mb-2"><Icon name={a.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
                     <span className="text-[10px] font-bold leading-tight">{a.title}</span>
                   </button>
                 )
@@ -257,7 +258,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
             </div>
             {selectedVolArea !== null && (
               <div className="mt-4 p-4 rounded-xl bg-white border border-gray-200 max-w-xl mx-auto text-xs font-semibold text-gray-600 animate-fade-slide-up text-left">
-                💡 <strong className="text-secondary">{content.volunteer_areas[selectedVolArea].title}:</strong> {content.volunteer_areas[selectedVolArea].desc}
+                <Icon name="lightbulb" className="mr-1 inline-block h-[1em] w-[1em] align-[-0.125em]" /> <strong className="text-secondary">{content.volunteer_areas[selectedVolArea].title}:</strong> {content.volunteer_areas[selectedVolArea].desc}
               </div>
             )}
           </div>
@@ -319,7 +320,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
                 </>
               ) : (
                 <div className="text-center py-12 px-4">
-                  <span className="text-5xl block mb-4 select-none">🎉</span>
+                  <span className="text-5xl block mb-4 select-none"><Icon name="trophy" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
                   <h3 className="font-serif text-xl text-[#111827] font-bold mb-3">{es ? '¡Inscripción recibida!' : 'Registration received!'}</h3>
                   <p className="text-xs sm:text-sm text-gray-500 leading-relaxed mb-6">
                     {es
@@ -339,7 +340,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
                 <div className="space-y-4">
                   {content.volunteer_perks.map((item, idx) => (
                     <div key={idx} className="flex items-center gap-3.5 pb-3 border-b border-gray-100 last:border-0 last:pb-0">
-                      <span className="text-xl select-none">{item.icon}</span>
+                      <span className="text-xl select-none"><Icon name={item.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
                       <span className="text-xs sm:text-sm font-semibold text-gray-600">{item.text}</span>
                     </div>
                   ))}
@@ -352,7 +353,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
                   &laquo;{content.volunteer_testimonial.quote}&raquo;
                 </p>
                 <div className="flex items-center gap-3 relative z-10">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#229cc2] to-[#229cc2] flex items-center justify-center text-white text-base select-none">🩺</div>
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#229cc2] to-[#229cc2] flex items-center justify-center text-white text-base select-none"><Icon name="stethoscope" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></div>
                   <div>
                     <div className="text-xs font-bold text-[#111827]">{es ? 'Voluntaria activa' : 'Active Volunteer'}</div>
                     <div className="text-[10px] text-gray-500 font-semibold">{content.volunteer_testimonial.role}</div>
@@ -369,7 +370,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">🤝</span>
+              <span className="text-sm"><Icon name="handshake" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               <span className="text-xs font-bold uppercase tracking-wider text-accent">{content.alliances_section.badge}</span>
             </div>
             <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.alliances_section.title}</h2>
@@ -390,7 +391,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
                   <div className="p-6 md:p-8">
                     <div className="flex items-start justify-between gap-4">
                       <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0 transition-all duration-300 ${isOpen ? PALETTE[p.color].bg : 'bg-gray-100'}`}>
-                        {p.icon}
+                        <Icon name={p.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" />
                       </div>
                       <div className="flex-1">
                         <h4 className="font-serif text-lg text-[#111827] font-bold leading-snug">{p.title}</h4>
@@ -424,7 +425,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
             <div className="flex flex-wrap gap-4 justify-center items-center">
               {content.allies.map((ally, i) => (
                 <div key={i} className="bg-gray-50 border border-gray-200 rounded-2xl py-4 px-5 text-center min-w-[140px] max-w-[180px] flex-1 sm:flex-none shadow-sm hover:border-primary transition-colors">
-                  <div className="text-2xl mb-1.5">{ally.icon}</div>
+                  <div className="text-2xl mb-1.5"><Icon name={ally.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></div>
                   <div className="text-xs font-bold text-[#111827] leading-snug">{ally.name}</div>
                   <div className="text-[9px] text-gray-400 font-semibold mt-1">{ally.type}</div>
                 </div>
@@ -442,7 +443,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
       <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-gray-900 via-secondary-700 to-secondary relative overflow-hidden">
         <div className="absolute inset-0 bg-radial-gradient(circle, rgba(232,168,56,0.06), transparent 70%) pointer-events-none" />
         <div className="container mx-auto max-w-3xl relative z-10 text-center">
-          <span className="text-5xl block mb-5 animate-[float_4s_ease-in-out_infinite] select-none">❤️</span>
+          <span className="text-5xl block mb-5 animate-[float_4s_ease-in-out_infinite] select-none"><Icon name="heart" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
           <h2 className="font-serif text-3xl md:text-4xl text-white font-normal leading-tight mb-4">{content.cta.title}</h2>
           <p className="text-sm md:text-base text-white/70 max-w-xl mx-auto leading-relaxed mb-10">{content.cta.text}</p>
           <div className="flex flex-wrap gap-4 justify-center items-center">
@@ -452,7 +453,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
               rel="noopener noreferrer"
               className="bg-[#22c55e] hover:bg-[#22c55e]/90 text-white font-extrabold text-sm sm:text-base px-8 py-3.5 sm:py-4 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[#22c55e]/20 min-h-[44px] flex items-center justify-center gap-2"
             >
-              <span className="text-xl">💬</span>
+              <span className="text-xl"><Icon name="message-circle" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               {es ? 'Escribir por WhatsApp' : 'Message us on WhatsApp'}
             </a>
             <a

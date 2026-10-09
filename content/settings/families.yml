@@ -14,25 +14,25 @@ es:
     subtitle: Sesiones sin costo con especialistas del centro, diseñadas para responder tus inquietudes vivenciales y familiares.
   virtual_sessions:
     - title: Orientación psicológica
-      icon: 🧠
+      icon: brain
       desc: Sesiones individuales con psicólogos para abordar el impacto emocional del diagnóstico, manejar la ansiedad, el duelo y la culpa, y fortalecer la salud mental de los padres.
       freq: Semanal
       duration: 45 min
       color: accent
     - title: Trabajo social
-      icon: 🤝
+      icon: handshake
       desc: Orientación sobre derechos, acceso a servicios públicos, trámites de discapacidad, becas educativas y redes de apoyo institucional disponibles en Bolivia.
       freq: Quincenal
       duration: 60 min
       color: secondary
     - title: Charlas temáticas
-      icon: 🎓
+      icon: graduation-cap
       desc: Talleres formativos sobre temas como estimulación en casa, manejo de conducta, alimentación, sexualidad, autonomía y transición a la vida adulta.
       freq: Mensual
       duration: 90 min
       color: accent
     - title: Interconsulta con especialistas
-      icon: 🩺
+      icon: stethoscope
       desc: Sesiones donde los padres pueden hacer preguntas directas al fisioterapeuta, fonoaudiólogo o terapeuta conductual de su hijo sobre el progreso y las estrategias.
       freq: Mensual
       duration: 30 min
@@ -44,19 +44,19 @@ es:
     subtitle: Comunidad de padres y madres que comparten experiencias cotidianas y celebran el desarrollo pleno de sus hijos.
   support_network:
     - title: Encuentros presenciales
-      icon: ☕
+      icon: utensils
       desc: Reuniones mensuales en el Centro Lápiz en Mano donde las familias comparten experiencias y se apoyan mutuamente en un espacio seguro.
       color: primary
     - title: Grupo de WhatsApp
-      icon: 📱
+      icon: phone
       desc: Comunidad activa de padres y madres donde compartir recursos, resolver dudas cotidianas y coordinar actividades.
       color: secondary
     - title: Padres mentores
-      icon: 💛
+      icon: heart
       desc: Familias con más tiempo en la fundación acompañan a las familias nuevas durante sus primeros meses, compartiendo su experiencia.
       color: accent
     - title: Eventos familiares
-      icon: 🎉
+      icon: trophy
       desc: Celebraciones, paseos inclusivos, talleres recreativos y actividades donde los niños y sus familias disfrutan juntos.
       color: accent
   guides_section:
@@ -65,37 +65,37 @@ es:
     subtitle: Material elaborado por nuestros profesionales para guiar las actividades formativas, sensoriales y de rutina diaria en casa.
   guides:
     - title: Guía de estimulación temprana en casa
-      icon: 👶
+      icon: baby
       desc: Actividades prácticas organizadas por edad para estimular el desarrollo de tu hijo desde el hogar.
       pages: 24 págs.
       program: Mi Escuelita Down
       color: secondary
     - title: Estrategias para el manejo de conducta
-      icon: 🧩
+      icon: puzzle
       desc: Técnicas basadas en evidencia para abordar conductas desafiantes con paciencia y efectividad.
       pages: 18 págs.
       program: Aula Wawitas
       color: accent
     - title: Cómo apoyar las tareas escolares
-      icon: 📚
+      icon: book-open
       desc: 'Guía práctica para padres de niños con dificultades de aprendizaje: organización y motivación.'
       pages: 20 págs.
       program: Pasos Firmes
       color: secondary
     - title: Derechos de la discapacidad en Bolivia
-      icon: ⚖️
+      icon: scale
       desc: Resumen de la normativa boliviana, trámites de certificación, acceso a salud, educación y beneficios.
       pages: 16 págs.
       program: Todos los programas
       color: accent
     - title: Pictogramas para la rutina diaria
-      icon: 🖼️
+      icon: image
       desc: 'Set descargable de pictogramas para estructurar rutinas visuales: higiene, alimentación y ocio.'
       pages: 12 láminas
       program: Aula Wawitas
       color: secondary
     - title: Guía de alimentación y nutrición
-      icon: 🥗
+      icon: utensils
       desc: Recomendaciones nutricionales y manejo de selectividad alimentaria para niños con TEA.
       pages: 22 págs.
       program: Aula Wawitas
@@ -142,25 +142,25 @@ en:
     subtitle: Cost-free sessions with center specialists, designed to answer your everyday family concerns.
   virtual_sessions:
     - title: Psychological orientation
-      icon: 🧠
+      icon: brain
       desc: Individual sessions with psychologists to address the emotional impact of diagnosis, manage anxiety, grief, and guilt, and strengthen parents' mental health.
       freq: Weekly
       duration: 45 min
       color: accent
     - title: Social work
-      icon: 🤝
+      icon: handshake
       desc: Orientation on rights, access to public services, disability certificate procedures, educational scholarships, and institutional networks in Bolivia.
       freq: Fortnightly
       duration: 60 min
       color: secondary
     - title: Thematic talks
-      icon: 🎓
+      icon: graduation-cap
       desc: Training workshops on topics such as stimulation at home, behavior management, nutrition, sexuality, autonomy, and transition to adult life.
       freq: Monthly
       duration: 90 min
       color: accent
     - title: Interconsultation with specialists
-      icon: 🩺
+      icon: stethoscope
       desc: Sessions where parents can ask direct questions to their child's physical therapist, speech therapist, or behavioral therapist about progress.
       freq: Monthly
       duration: 30 min
@@ -172,19 +172,19 @@ en:
     subtitle: Community of parents sharing daily experiences and celebrating the full development of their children.
   support_network:
     - title: In-person meetings
-      icon: ☕
+      icon: utensils
       desc: Monthly meetings at the Lápiz en Mano Center where families share experiences and support each other in a safe space.
       color: primary
     - title: WhatsApp Group
-      icon: 📱
+      icon: phone
       desc: Active community of parents to share resources, solve daily doubts, and coordinate activities.
       color: secondary
     - title: Mentor Parents
-      icon: 💛
+      icon: heart
       desc: Families with more time in the foundation accompany new families during their first months, sharing their experience.
       color: accent
     - title: Family events
-      icon: 🎉
+      icon: trophy
       desc: Celebrations, inclusive outings, recreational workshops, and activities where children and families enjoy together.
       color: accent
   guides_section:
@@ -193,37 +193,37 @@ en:
     subtitle: Material prepared by our professionals to guide educational, sensory, and daily routine activities at home.
   guides:
     - title: Early stimulation guide at home
-      icon: 👶
+      icon: baby
       desc: Practical activities organized by age to stimulate your child's development from home.
       pages: 24 pages
       program: Mi Escuelita Down
       color: secondary
     - title: Behavior management strategies
-      icon: 🧩
+      icon: puzzle
       desc: Evidence-based techniques to address challenging behaviors with patience and effectiveness.
       pages: 18 pages
       program: Aula Wawitas
       color: accent
     - title: How to support school homework
-      icon: 📚
+      icon: book-open
       desc: 'Practical guide for parents of children with learning difficulties: organization and motivation.'
       pages: 20 pages
       program: Pasos Firmes
       color: secondary
     - title: Disability rights in Bolivia
-      icon: ⚖️
+      icon: scale
       desc: Summary of Bolivian regulations, certification procedures, access to health, education, and benefits.
       pages: 16 pages
       program: All programs
       color: accent
     - title: Pictograms for daily routines
-      icon: 🖼️
+      icon: image
       desc: 'Downloadable set of pictograms to structure visual routines: hygiene, eating, and leisure.'
       pages: 12 sheets
       program: Aula Wawitas
       color: secondary
     - title: Nutrition and feeding guide
-      icon: 🥗
+      icon: utensils
       desc: Nutritional recommendations and food selectivity management for children with ASD.
       pages: 22 pages
       program: Aula Wawitas

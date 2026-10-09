@@ -1,6 +1,7 @@
 import CMS from 'decap-cms-app'
 import ImageControl from './widgets/ImageControl'
 import ImagePreview from './widgets/ImagePreview'
+import IconPicker from './widgets/IconPicker'
 
 // Punto de entrada del panel admin, compilado por scripts/build-admin.mjs hacia
 // public/admin/bundle.js. Los previews de marca por colección (ProgramPreview, etc.)
@@ -9,6 +10,7 @@ import ImagePreview from './widgets/ImagePreview'
 // Sobrescribe el widget nativo 'image' en TODAS las colecciones a la vez (equipo.photo,
 // impact.gallery.image, blog.image) — debe registrarse antes de CMS.init().
 CMS.registerWidget('image', ImageControl, ImagePreview)
+CMS.registerWidget('icon_picker', IconPicker)
 
 // Recarga forzada de toda la SPA tras cada publicación exitosa. Medida preventiva: hay
 // reportado en uso real un caso donde, tras publicar y sin recargar, una acción opuesta

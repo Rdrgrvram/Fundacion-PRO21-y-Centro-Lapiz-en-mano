@@ -4,9 +4,12 @@ import matter from 'gray-matter'
 import { remark } from 'remark'
 import remarkHtml from 'remark-html'
 import type { Locale } from '@/lib/i18n'
+import { ICON_NAMES, type IconName } from '@/lib/icon-catalog'
 import type { AccentColor } from '@/lib/palette'
+import { isVisibleProgramReference, normalizeProgramSlug } from '@/lib/program-references'
 
 const CONTENT_DIR = path.join(process.cwd(), 'content')
+const ICON_NAME_SET = new Set<string>(ICON_NAMES)
 
 // El widget `datetime` de Decap guarda fechas sin comillas en el frontmatter
 // (ej. `date: 2026-07-01`), que YAML/gray-matter parsea como un objeto Date en
@@ -122,7 +125,8 @@ export interface Testimonial {
   slug: string
   family: string
   program: string
-  icon: string
+  programSlug: string | undefined
+  icon: IconName
   color: AccentColor
   order: number
   featuredHome: boolean
@@ -130,16 +134,23 @@ export interface Testimonial {
   body: string
 }
 
-export function getAllTestimonials(locale: Locale): Testimonial[] {
+export function getAllTestimonials(
+  locale: Locale,
+  options: { visibleProgramSlugs?: ReadonlySet<string> } = {}
+): Testimonial[] {
   const dir = path.join(CONTENT_DIR, 'testimonios')
   return listLocaleSlugs(dir)
     .map((slug) => {
       const { data, content } = readLocaleMatter(dir, slug, locale)
+      const programSlug = normalizeProgramSlug(data.program_slug ?? data.program)
+      if (!isVisibleProgramReference(programSlug, options.visibleProgramSlugs)) return null
+
       return {
         slug,
         family: data.family ?? '',
         program: data.program ?? '',
-        icon: data.icon ?? '',
+        programSlug,
+        icon: typeof data.icon === 'string' && ICON_NAME_SET.has(data.icon) ? (data.icon as IconName) : 'sparkles',
         color: (data.color as AccentColor) ?? 'secondary',
         order: toNumber(data.order),
         featuredHome: toBool(data.featured_home),
@@ -147,6 +158,7 @@ export function getAllTestimonials(locale: Locale): Testimonial[] {
         body: content.trim(),
       }
     })
+    .filter((testimonial): testimonial is Testimonial => testimonial !== null)
     .sort((a, b) => a.order - b.order)
 }
 

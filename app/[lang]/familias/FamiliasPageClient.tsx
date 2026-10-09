@@ -1,4 +1,5 @@
 'use client'
+import Icon from '@/components/ui/Icon'
 import { useState } from 'react'
 import type { Locale } from '@/lib/i18n'
 import type { FamiliesContent } from '@/lib/cms-schemas'
@@ -33,7 +34,7 @@ export default function FamiliasPageClient({ lang, content, whatsappNumber }: Fa
 
         <div className="container mx-auto max-w-4xl text-center relative z-20 mt-8">
           <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full py-1 px-3.5 mb-5 select-none">
-            <span className="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-[10px] text-black font-extrabold">✦</span>
+            <span className="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-[10px] text-black font-extrabold"><Icon name="sparkles" className="h-3 w-3" /></span>
             <span className="text-white/80 text-xs font-semibold">{content.hero.badge}</span>
           </div>
 
@@ -52,7 +53,7 @@ export default function FamiliasPageClient({ lang, content, whatsappNumber }: Fa
           <div className="bg-gradient-to-br from-[#fdf2f8] to-[#fdf6e3] rounded-3xl p-8 md:p-10 border border-accent/10 shadow-sm text-left relative overflow-hidden">
             <div className="absolute -top-10 -right-10 w-36 h-36 rounded-full bg-radial-gradient(circle, rgba(232,168,56,0.1), transparent 70%) pointer-events-none" />
             <div className="flex flex-col sm:flex-row items-start gap-6 relative z-10">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#8c3cbd] to-[#e86840] text-white flex items-center justify-center text-3xl shadow-md flex-shrink-0 select-none">💌</div>
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#8c3cbd] to-[#e86840] text-white flex items-center justify-center text-3xl shadow-md flex-shrink-0 select-none"><Icon name="send" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></div>
               <div>
                 <h3 className="font-serif text-xl sm:text-2xl text-[#111827] font-bold mb-3">{content.welcome_letter.title}</h3>
                 <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">{content.welcome_letter.text}</p>
@@ -68,7 +69,7 @@ export default function FamiliasPageClient({ lang, content, whatsappNumber }: Fa
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">🎥</span>
+              <span className="text-sm"><Icon name="camera" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               <span className="text-xs font-bold uppercase tracking-wider text-accent">{content.sessions_section.badge}</span>
             </div>
             <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.sessions_section.title}</h2>
@@ -82,12 +83,12 @@ export default function FamiliasPageClient({ lang, content, whatsappNumber }: Fa
                 <div key={idx} className="bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300">
                   <div className="h-1.5 w-full" style={{ backgroundColor: style.hex }} />
                   <div className="p-6 md:p-8 flex items-start gap-5">
-                    <div className={`w-12 h-12 rounded-2xl ${style.bg} flex items-center justify-center text-2xl flex-shrink-0 select-none shadow-inner`}>{s.icon}</div>
+                    <div className={`w-12 h-12 rounded-2xl ${style.bg} flex items-center justify-center text-2xl flex-shrink-0 select-none shadow-inner`}><Icon name={s.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></div>
                     <div>
                       <h4 className="font-serif text-base sm:text-lg text-[#111827] font-bold mb-2">{s.title}</h4>
                       <div className="flex gap-2 mb-4 select-none">
                         <span className={`text-[9px] font-bold px-2.5 py-0.5 rounded-full ${style.bg}`} style={{ color: style.hex }}>{s.freq}</span>
-                        <span className="text-[9px] text-gray-400 font-bold px-2.5 py-0.5 rounded-full bg-gray-150">⏱ {s.duration}</span>
+                        <span className="text-[9px] text-gray-400 font-bold px-2.5 py-0.5 rounded-full bg-gray-150"><Icon name="clock" className="mr-1 inline-block h-[1em] w-[1em] align-[-0.125em]" />{s.duration}</span>
                       </div>
                       <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">{s.desc}</p>
                     </div>
@@ -99,7 +100,7 @@ export default function FamiliasPageClient({ lang, content, whatsappNumber }: Fa
 
           <div className="text-center mt-10 select-none">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-secondary/10 border border-secondary/10 text-xs font-semibold text-gray-700">
-              <span>✅</span>
+              <span><Icon name="check" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               <span>{content.sessions_note}</span>
             </div>
           </div>
@@ -111,7 +112,7 @@ export default function FamiliasPageClient({ lang, content, whatsappNumber }: Fa
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-[#fdf2f8] border border-accent/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">🤝</span>
+              <span className="text-sm"><Icon name="handshake" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               <span className="text-xs font-bold uppercase tracking-wider text-accent">{content.network_section.badge}</span>
             </div>
             <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.network_section.title}</h2>
@@ -122,7 +123,7 @@ export default function FamiliasPageClient({ lang, content, whatsappNumber }: Fa
             {content.support_network.map((item, idx) => (
               <div key={idx} className="bg-white rounded-3xl p-6 md:p-8 border border-gray-200 shadow-sm flex items-start gap-5 hover:shadow-md transition-all duration-300">
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0 text-white select-none shadow-md" style={{ backgroundColor: PALETTE[item.color].hex }}>
-                  {item.icon}
+                  <Icon name={item.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" />
                 </div>
                 <div>
                   <h4 className="font-serif text-base sm:text-lg text-[#111827] font-bold mb-2">{item.title}</h4>
@@ -139,7 +140,7 @@ export default function FamiliasPageClient({ lang, content, whatsappNumber }: Fa
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">📄</span>
+              <span className="text-sm"><Icon name="file-text" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               <span className="text-xs font-bold uppercase tracking-wider text-secondary">{content.guides_section.badge}</span>
             </div>
             <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.guides_section.title}</h2>
@@ -153,7 +154,7 @@ export default function FamiliasPageClient({ lang, content, whatsappNumber }: Fa
                 <div key={idx} className="bg-white rounded-3xl border border-gray-200 overflow-hidden flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                   <div>
                     <div className={`p-6 flex items-center justify-center text-5xl relative min-h-[96px] ${style.bg}`}>
-                      <span className="select-none animate-[float_4s_ease-in-out_infinite]">{g.icon}</span>
+                      <span className="select-none animate-[float_4s_ease-in-out_infinite]"><Icon name={g.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
                       <span className="absolute top-3 right-3 text-[9px] font-bold px-2 py-0.5 bg-white rounded-full text-gray-500 select-none shadow-sm">{g.pages}</span>
                     </div>
                     <div className="p-6">
@@ -170,7 +171,7 @@ export default function FamiliasPageClient({ lang, content, whatsappNumber }: Fa
                       className="w-full py-2.5 rounded-xl border flex items-center justify-center gap-1.5 text-xs font-bold transition-all"
                       style={{ color: style.hex, borderColor: `${style.hex}20` }}
                     >
-                      <span>⬇️</span>
+                      <span><Icon name="arrow-down" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
                       <span>{g.file ? (es ? 'Descargar PDF' : 'Download PDF') : es ? 'Solicitar PDF por WhatsApp' : 'Request PDF via WhatsApp'}</span>
                     </a>
                   </div>
@@ -190,7 +191,7 @@ export default function FamiliasPageClient({ lang, content, whatsappNumber }: Fa
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="text-sm">❓</span>
+              <span className="text-sm"><Icon name="circle-help" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               <span className="text-xs font-bold uppercase tracking-wider text-primary-700">{content.faq_section.badge}</span>
             </div>
             <h2 className="font-serif text-3xl md:text-4xl text-[#111827] font-normal tracking-tight mb-4">{content.faq_section.title}</h2>
@@ -231,7 +232,7 @@ export default function FamiliasPageClient({ lang, content, whatsappNumber }: Fa
       <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-[#1a1a1a] via-[#6b234e] to-[#8c3cbd] relative overflow-hidden">
         <div className="absolute inset-0 bg-radial-gradient(circle, rgba(232,168,56,0.06), transparent 70%) pointer-events-none" />
         <div className="container mx-auto max-w-3xl relative z-10 text-center">
-          <span className="text-5xl block mb-5 animate-[float_4s_ease-in-out_infinite] select-none">💛</span>
+          <span className="text-5xl block mb-5 animate-[float_4s_ease-in-out_infinite] select-none"><Icon name="heart" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
           <h2 className="font-serif text-3xl md:text-4xl text-white font-normal leading-tight mb-4">{content.cta.title}</h2>
           <p className="text-sm md:text-base text-white/70 max-w-xl mx-auto leading-relaxed mb-6">{content.cta.text}</p>
           <p className="text-xs sm:text-sm text-white/55 italic max-w-md mx-auto mb-10">{content.cta.note}</p>
@@ -242,7 +243,7 @@ export default function FamiliasPageClient({ lang, content, whatsappNumber }: Fa
               rel="noopener noreferrer"
               className="bg-[#22c55e] hover:bg-[#22c55e]/90 text-white font-extrabold text-sm sm:text-base px-8 py-3.5 sm:py-4 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[#22c55e]/20 min-h-[44px] flex items-center justify-center gap-2"
             >
-              <span className="text-xl">💬</span>
+              <span className="text-xl"><Icon name="message-circle" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
               {es ? 'Escríbenos por WhatsApp' : 'Message us on WhatsApp'}
             </a>
           </div>

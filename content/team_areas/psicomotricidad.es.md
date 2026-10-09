@@ -1,6 +1,6 @@
 ---
 name: "Psicomotricidad"
-icon: "🤸"
+icon: "accessibility"
 color: "accent"
 desc: "Fortalecimiento de la coordinación, equilibrio y esquema corporal para favorecer la autonomía, la concentración y la expresión corporal."
 skills:
