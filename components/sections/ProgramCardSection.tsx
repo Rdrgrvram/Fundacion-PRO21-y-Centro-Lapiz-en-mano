@@ -1,8 +1,8 @@
 'use client'
+import Icon from '@/components/ui/Icon'
 import { useState } from 'react'
 import { EXTENDED_PALETTE } from '@/lib/palette'
-import type { ProgramCardSection as ProgramCardSectionData } from '@/lib/content'
-import Icon from '@/components/ui/Icon'
+import type { ProgramCardSectionContent as ProgramCardSectionData } from '@/lib/cms-schemas'
 
 // Elige el número de columnas que mejor reparte los items en filas completas,
 // para evitar filas "huérfanas" con 1-2 tarjetas sueltas y mucho espacio vacío.
@@ -39,7 +39,7 @@ export default function ProgramCardSection({ id, section, alt = false, compact =
     <section id={id} className={`py-16 ${alt ? 'bg-gray-50' : 'bg-white'}`}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <span className="text-xs font-bold uppercase tracking-widest text-primary bg-primary/10 px-4 py-1.5 rounded-full">
+          <span className="text-xs font-bold uppercase tracking-widest text-primary-900 bg-primary/10 px-4 py-1.5 rounded-full">
             {section.badge}
           </span>
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mt-4 mb-4">{section.title}</h2>
@@ -74,14 +74,14 @@ export default function ProgramCardSection({ id, section, alt = false, compact =
                 <button key={i} onClick={() => setOpenIndex(isOpen ? null : i)} className={cardClass}>
                   <div className="flex items-start gap-4">
                     <div className={`w-12 h-12 ${style.bg} rounded-xl flex items-center justify-center flex-shrink-0`}>
-                      <Icon emoji={item.icon} className={`h-6 w-6 ${style.text}`} />
+                      <Icon name={item.icon} className={`h-6 w-6 ${style.text}`} />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
                         <h3 className={`font-bold text-base sm:text-lg ${style.text}`}>{item.title}</h3>
-                        {item.tag && <span className="text-[10px] sm:text-xs text-gray-400 uppercase tracking-wide flex-shrink-0">{item.tag}</span>}
+                        {item.tag && <span className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-wide flex-shrink-0">{item.tag}</span>}
                         <svg
-                          className={`ml-auto w-4 h-4 flex-shrink-0 text-gray-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                          className={`ml-auto w-4 h-4 flex-shrink-0 text-gray-500 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"
@@ -126,10 +126,10 @@ export default function ProgramCardSection({ id, section, alt = false, compact =
                     compact ? 'w-11 h-11 mb-3' : 'w-14 h-14 mb-4'
                   }`}
                 >
-                  <Icon emoji={item.icon} className={`${compact ? 'h-5 w-5' : 'h-7 w-7'} ${style.text}`} />
+                  <Icon name={item.icon} className={`${compact ? 'h-5 w-5' : 'h-7 w-7'} ${style.text}`} />
                 </div>
                 <h3 className={`font-bold ${style.text} ${compact ? 'text-sm' : 'text-base sm:text-lg'}`}>{item.title}</h3>
-                {item.tag && <span className="text-[10px] text-gray-400 uppercase tracking-wide mt-0.5 mb-2">{item.tag}</span>}
+                {item.tag && <span className="text-[10px] text-gray-500 uppercase tracking-wide mt-0.5 mb-2">{item.tag}</span>}
                 {item.desc && (
                   <p className={`text-gray-600 leading-relaxed mb-3 ${compact ? 'text-xs line-clamp-2' : 'text-sm line-clamp-3'}`}>
                     {item.desc}

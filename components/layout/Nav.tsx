@@ -11,18 +11,20 @@ export interface NavItem {
 interface NavProps {
   lang: Locale
   items: NavItem[]
+  // Slugs de los programas visibles (vienen del CMS); se agrupan en el dropdown.
+  programRoutes?: string[]
 }
 
-// Rutas de los 3 programas — se agrupan bajo un solo ítem "Programas" en el
+// Rutas por defecto de los programas — se agrupan bajo un solo ítem "Programas" en el
 // nav de escritorio para no saturar la barra horizontal con 10 links sueltos.
 const PROGRAM_ROUTES = ['mi-escuelita-down', 'aula-wawitas', 'pasos-firmes']
 
-export default function Nav({ lang, items }: NavProps) {
+export default function Nav({ lang, items, programRoutes = PROGRAM_ROUTES }: NavProps) {
   const pathname = usePathname()
 
   const linkClass = (isActive: boolean) =>
     `text-sm font-medium transition-colors hover:text-primary-700 ${
-      isActive ? 'text-primary-700' : 'text-gray-600'
+      isActive ? 'text-primary-900' : 'text-gray-600'
     }`
 
   const renderLink = ({ route, label }: NavItem) => {
@@ -35,7 +37,7 @@ export default function Nav({ lang, items }: NavProps) {
     )
   }
 
-  const programItems = items.filter(({ route }) => PROGRAM_ROUTES.includes(route))
+  const programItems = items.filter(({ route }) => programRoutes.includes(route))
   const programsLabel = lang === 'es' ? 'Programas' : 'Programs'
   const isProgramsActive = programItems.some(({ route }) => pathname?.startsWith(`/${lang}/${route}`))
 
@@ -44,7 +46,7 @@ export default function Nav({ lang, items }: NavProps) {
   return (
     <nav className="hidden lg:flex items-center gap-6">
       {items.map((item) => {
-        if (PROGRAM_ROUTES.includes(item.route)) {
+        if (programRoutes.includes(item.route)) {
           if (programsDropdownRendered || programItems.length === 0) return null
           programsDropdownRendered = true
           return (
@@ -52,7 +54,7 @@ export default function Nav({ lang, items }: NavProps) {
               <button
                 type="button"
                 className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary-700 focus:outline-none ${
-                  isProgramsActive ? 'text-primary-700' : 'text-gray-600'
+                  isProgramsActive ? 'text-primary-900' : 'text-gray-600'
                 }`}
                 aria-haspopup="true"
               >
@@ -82,7 +84,7 @@ export default function Nav({ lang, items }: NavProps) {
                         key={route}
                         href={href}
                         className={`block px-4 py-2.5 text-sm font-medium transition-colors ${
-                          isActive ? 'bg-secondary/10 text-secondary' : 'text-gray-700 hover:bg-gray-50 hover:text-secondary'
+                          isActive ? 'bg-secondary/10 text-secondary-700' : 'text-gray-700 hover:bg-gray-50 hover:text-secondary'
                         }`}
                       >
                         {label}

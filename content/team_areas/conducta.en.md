@@ -1,6 +1,6 @@
 ---
 name: "Psychology & behavior"
-icon: "🧠"
+icon: "brain"
 color: "accent"
 desc: "Support in developing social skills, self-regulation, and positive routines within the family and school environment."
 skills:

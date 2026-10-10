@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import type { AccentColor } from '@/lib/palette'
-import type { ProgramGallerySection } from '@/lib/content'
+import type { Program } from '@/lib/cms'
 
 interface ProgramGalleryProps {
-  section?: ProgramGallerySection
+  section?: Program['gallery']
   color: AccentColor
 }
 
@@ -44,8 +44,8 @@ export default function ProgramGallery({ section, color }: ProgramGalleryProps) 
         <div className="text-center mb-10 max-w-2xl mx-auto">
           {section.badge && (
             <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
-              <span className="text-xs font-bold uppercase tracking-wider text-secondary">{section.badge}</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-secondary-700" />
+              <span className="text-xs font-bold uppercase tracking-wider text-secondary-700">{section.badge}</span>
             </div>
           )}
           <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold tracking-tight">{section.title}</h2>
@@ -57,7 +57,7 @@ export default function ProgramGallery({ section, color }: ProgramGalleryProps) 
               key={idx}
               className={`group relative h-48 sm:h-56 bg-white rounded-lg border-t-4 ${BORDER[color]} border-x border-b border-gray-200 shadow-sm overflow-hidden transition-all duration-300 hover:rotate-0 hover:shadow-lg hover:z-10 ${TILT[idx % TILT.length]}`}
             >
-              <Image src={photo.src} alt={photo.alt} fill className="object-cover" />
+              <Image src={photo.image} alt={photo.alt} fill className="object-cover" />
               <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <p className="p-3 text-[11px] leading-snug font-mono text-white">{photo.alt}</p>
               </div>
