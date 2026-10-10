@@ -1,26 +1,19 @@
-import { Resend } from 'resend'
+import { validateVolunteerForm, formLang } from '@/lib/forms'
+import { sendMail, mailFailureResponse, singleLine } from '@/lib/mail'
 
 export async function POST(req: Request) {
   try {
-    const { name, email, phone, profession, availability, area, motivation } = await req.json()
-
-    if (!name || !email || !profession || !availability) {
-      return Response.json({ error: 'Faltan campos requeridos en la postulación' }, { status: 400 })
+    const body = await req.json()
+    const lang = formLang(body)
+    const parsed = validateVolunteerForm(body)
+    if (!parsed.ok) {
+      return Response.json({ error: parsed.error }, { status: 400 })
     }
+    const { name, email, phone, profession, availability, area, motivation } = parsed.data
 
-    const apiKey = process.env.RESEND_API_KEY
-    const destinationEmail = 'fundacionpro211@gmail.com'
-
-    if (!apiKey) {
-      console.warn('RESEND_API_KEY no configurado. Simulando envío de correo de voluntariado.')
-      return Response.json({ ok: true, simulated: true })
-    }
-
-    const resend = new Resend(apiKey)
-    await resend.emails.send({
-      from: 'web@fundacionpro21.org',
-      to: destinationEmail,
-      subject: `[Voluntariado] Nueva postulación: ${name}`,
+    const result = await sendMail({
+      subject: `[Voluntariado] Nueva postulación: ${singleLine(name)}`,
+      replyTo: email,
       text: [
         `Nueva postulación de voluntariado recibida desde el sitio web:\n`,
         `Nombre completo: ${name}`,
@@ -34,10 +27,11 @@ export async function POST(req: Request) {
         .filter(Boolean)
         .join('\n'),
     })
+    if (!result.ok) return mailFailureResponse(result.reason, lang)
 
     return Response.json({ ok: true })
   } catch (error) {
-    console.error('Error al procesar la postulación de voluntariado:', error)
-    return Response.json({ error: 'Error interno al enviar la postulación' }, { status: 500 })
+    console.error('Error en /api/volunteer:', error)
+    return Response.json({ error: 'Error interno al enviar la postulación.' }, { status: 500 })
   }
 }

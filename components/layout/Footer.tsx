@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import type { Locale } from '@/lib/i18n'
 import { getSiteSettings } from '@/lib/cms'
-import { getAllPrograms } from '@/lib/content'
+import { getAllPrograms } from '@/lib/cms'
 import { waLink } from '@/lib/utils'
 import BrandLogo from '@/components/ui/BrandLogo'
 
@@ -23,9 +23,9 @@ export default function Footer({ lang }: FooterProps) {
           {/* Columna 1: Identidad + contacto */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <Image src="/icons/logo-pro21.png" alt="Fundación PRO-21" width={40} height={48} className="h-12 w-auto object-contain" />
+              <Image src={settings.logo_pro21} alt={settings.logo_pro21_alt} width={40} height={48} className="h-12 w-auto object-contain" />
               <div className="w-px h-10 bg-white/20" />
-              <Image src="/icons/logo-lapiz.png" alt="Centro Lápiz en Mano" width={40} height={40} className="h-12 w-auto object-contain" />
+              <Image src={settings.logo_lapiz} alt={settings.logo_lapiz_alt} width={40} height={40} className="h-12 w-auto object-contain" />
             </div>
 
             <ul className="mt-4 space-y-2 text-sm text-gray-400">
@@ -43,7 +43,7 @@ export default function Footer({ lang }: FooterProps) {
                     <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.36 11.36 0 003.56.57 1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.49a1 1 0 011 1 11.36 11.36 0 00.57 3.56 1 1 0 01-.25 1.02l-2.19 2.21z"/>
                   </svg>
                 </span>
-                <a href={waLink(contact.whatsapp_number)} className="underline hover:text-white" target="_blank" rel="noopener noreferrer">
+                <a href={waLink(contact.whatsapp_number)} className="inline-flex min-h-[44px] items-center underline hover:text-white" target="_blank" rel="noopener noreferrer">
                   {contact.phone_display}
                 </a>
               </li>
@@ -53,7 +53,7 @@ export default function Footer({ lang }: FooterProps) {
                     <path d="M2 6a2 2 0 012-2h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6zm2.4-.5l7.05 5.4a1 1 0 001.1 0l7.05-5.4A.5.5 0 0019.4 5H4.6a.5.5 0 00-.2.5z"/>
                   </svg>
                 </span>
-                <a href={`mailto:${contact.email}`} className="underline hover:text-white">
+                <a href={`mailto:${contact.email}`} className="inline-flex min-h-[44px] items-center underline hover:text-white">
                   {contact.email}
                 </a>
               </li>
@@ -61,16 +61,16 @@ export default function Footer({ lang }: FooterProps) {
 
             {/* Redes sociales */}
             <div className="mt-5 flex gap-3">
-              <a href={social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-gray-400 hover:text-white transition-colors">
+              <a href={social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="inline-flex h-11 w-11 items-center justify-center text-gray-400 hover:text-white transition-colors">
                 <BrandLogo name="facebook" className="w-5 h-5" />
               </a>
-              <a href={social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-gray-400 hover:text-white transition-colors">
+              <a href={social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="inline-flex h-11 w-11 items-center justify-center text-gray-400 hover:text-white transition-colors">
                 <BrandLogo name="instagram" className="w-5 h-5" />
               </a>
-              <a href={social.tiktok_lapiz} target="_blank" rel="noopener noreferrer" aria-label="TikTok Centro Lápiz en Mano" className="text-gray-400 hover:text-white transition-colors">
+              <a href={social.tiktok_lapiz} target="_blank" rel="noopener noreferrer" aria-label="TikTok Centro Lápiz en Mano" className="inline-flex h-11 w-11 items-center justify-center text-gray-400 hover:text-white transition-colors">
                 <BrandLogo name="tiktok" className="w-5 h-5" />
               </a>
-              <a href={social.tiktok_pro21} target="_blank" rel="noopener noreferrer" aria-label="TikTok Fundación PRO-21" className="text-gray-400 hover:text-white transition-colors">
+              <a href={social.tiktok_pro21} target="_blank" rel="noopener noreferrer" aria-label="TikTok Fundación PRO-21" className="inline-flex h-11 w-11 items-center justify-center text-gray-400 hover:text-white transition-colors">
                 <BrandLogo name="tiktok" className="w-5 h-5" />
               </a>
             </div>
@@ -97,7 +97,7 @@ export default function Footer({ lang }: FooterProps) {
           </div>
         </div>
 
-        <div className="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500 text-xs">
+        <div className="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400 text-xs">
           <p>© {new Date().getFullYear()} {footer.copyright}</p>
         </div>
       </div>

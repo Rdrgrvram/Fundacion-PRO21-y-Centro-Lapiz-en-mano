@@ -2,6 +2,8 @@
 const nextConfig = {
   // Imágenes: permitir dominio de Cloudflare R2
   images: {
+    // AVIF primero (≈30-40 % más liviano que WebP en fotos); WebP como respaldo.
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'https',

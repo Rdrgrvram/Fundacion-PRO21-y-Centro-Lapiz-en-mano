@@ -1,6 +1,6 @@
 ---
 name: "Pedagogy & Early Years"
-icon: "📖"
+icon: "book-open"
 color: "secondary"
 desc: "Curricular adaptations based on each child's capabilities and pace, promoting meaningful learning and educational inclusion."
 skills:

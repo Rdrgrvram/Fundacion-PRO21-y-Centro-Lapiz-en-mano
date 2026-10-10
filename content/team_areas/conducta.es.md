@@ -1,6 +1,6 @@
 ---
 name: "Psicología y conducta"
-icon: "🧠"
+icon: "brain"
 color: "accent"
 desc: "Acompañamiento en el desarrollo de habilidades sociales, autorregulación y rutinas positivas dentro del entorno familiar y escolar."
 skills:
