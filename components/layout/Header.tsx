@@ -13,9 +13,40 @@ import Button from '@/components/ui/Button'
 interface HeaderProps {
   lang: Locale
   settings: SiteSettingsContent
+  programs: Array<{ slug: string; title: string }>
+  programRoutes: string[]
 }
 
-export default function Header({ lang, settings }: HeaderProps) {
+// Los programas salen del CMS (pueden crearse/ocultarse): se reemplazan los links
+// fijos de programas de settings.nav por los programas visibles, en el mismo lugar.
+function buildNavItems(settings: SiteSettingsContent, programs: HeaderProps['programs'], programRoutes: string[]) {
+  const programSlugs = new Set(programRoutes)
+  const programItems = programs.map((program) => ({ route: program.slug, label: program.title }))
+  const items: Array<{ route: string; label: string }> = []
+  let insertedPrograms = false
+
+  for (const item of settings.nav) {
+    if (programSlugs.has(item.route)) {
+      if (!insertedPrograms) {
+        items.push(...programItems)
+        insertedPrograms = true
+      }
+      continue
+    }
+    items.push(item)
+  }
+
+  if (!insertedPrograms && programItems.length > 0) {
+    const teamIndex = items.findIndex((item) => item.route === 'equipo')
+    items.splice(teamIndex === -1 ? items.length : teamIndex, 0, ...programItems)
+  }
+
+  return items
+}
+
+export default function Header({ lang, settings, programs, programRoutes }: HeaderProps) {
+  const navItems = buildNavItems(settings, programs, programRoutes)
+  const programSlugs = programs.map((p) => p.slug)
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
@@ -82,8 +113,8 @@ export default function Header({ lang, settings }: HeaderProps) {
           {/* Logo / Identidad */}
           <Link href={`/${lang}`} className="flex items-center gap-2 md:gap-3 group py-1.5 focus:outline-none" aria-label="Inicio — Fundación PRO-21 y Centro Lápiz en Mano">
             <Image
-              src="/icons/logo-pro21.png"
-              alt="Fundación PRO-21"
+              src={settings.logo_pro21}
+              alt={settings.logo_pro21_alt}
               width={40}
               height={48}
               className="h-10 md:h-12 w-auto object-contain"
@@ -91,8 +122,8 @@ export default function Header({ lang, settings }: HeaderProps) {
             />
             <div className="w-px h-8 bg-gray-200 flex-shrink-0" />
             <Image
-              src="/icons/logo-lapiz.png"
-              alt="Centro Lápiz en Mano"
+              src={settings.logo_lapiz}
+              alt={settings.logo_lapiz_alt}
               width={40}
               height={40}
               className="h-10 md:h-12 w-auto object-contain"
@@ -101,7 +132,7 @@ export default function Header({ lang, settings }: HeaderProps) {
           </Link>
 
           {/* Menú de navegación de escritorio (hidden on screens < 1280px) */}
-          <Nav lang={lang} items={settings.nav} />
+          <Nav lang={lang} items={navItems} programRoutes={programSlugs} />
 
           {/* Acciones del Header (Idioma + Colaborar en Escritorio) */}
           <div className="hidden lg:flex items-center gap-4">
@@ -147,14 +178,14 @@ export default function Header({ lang, settings }: HeaderProps) {
             {/* Header del cajón */}
             <div className="flex items-center justify-between pb-4 border-b border-gray-100 mb-6">
               <div className="flex items-center gap-2">
-                <Image src="/icons/logo-pro21.png" alt="Fundación PRO-21" width={32} height={38} className="h-9 w-auto object-contain" />
+                <Image src={settings.logo_pro21} alt={settings.logo_pro21_alt} width={32} height={38} className="h-9 w-auto object-contain" />
                 <div className="w-px h-7 bg-gray-200" />
-                <Image src="/icons/logo-lapiz.png" alt="Centro Lápiz en Mano" width={32} height={32} className="h-9 w-auto object-contain" />
+                <Image src={settings.logo_lapiz} alt={settings.logo_lapiz_alt} width={32} height={32} className="h-9 w-auto object-contain" />
               </div>
               <button
                 onClick={() => setIsOpen(false)}
                 aria-label={es ? 'Cerrar menú' : 'Close menu'}
-                className="w-11 h-11 flex items-center justify-center rounded-full border border-gray-100 text-gray-500 hover:text-gray-900 hover:bg-gray-50 active:bg-gray-100 transition-colors focus:outline-none"
+                className="w-11 h-11 flex items-center justify-center rounded-full border border-gray-100 text-gray-600 hover:text-gray-900 hover:bg-gray-50 active:bg-gray-100 transition-colors focus:outline-none"
               >
                 ✕
               </button>
@@ -162,7 +193,7 @@ export default function Header({ lang, settings }: HeaderProps) {
 
             {/* Enlaces de navegación */}
             <nav className="flex flex-col gap-1.5 flex-1">
-              {settings.nav.map(({ route, label }) => {
+              {navItems.map(({ route, label }) => {
                 const href = `/${lang}/${route}`
                 const isActive = pathname === href || pathname?.startsWith(href + '/')
                 return (
@@ -172,7 +203,7 @@ export default function Header({ lang, settings }: HeaderProps) {
                     onClick={() => setIsOpen(false)}
                     className={`min-h-[44px] px-4 rounded-xl flex items-center text-sm font-semibold transition-all ${
                       isActive
-                        ? 'bg-secondary/10 text-secondary'
+                        ? 'bg-secondary/10 text-secondary-700'
                         : 'text-gray-700 hover:bg-gray-50 hover:text-secondary'
                     }`}
                   >
@@ -187,7 +218,7 @@ export default function Header({ lang, settings }: HeaderProps) {
               <Button href={`/${lang}/colabora`} variant="primary" size="lg" className="w-full rounded-xl">
                 {settings.header.cta_label}
               </Button>
-              <div className="text-[10px] text-gray-400 text-center font-medium">
+              <div className="text-[10px] text-gray-500 text-center font-medium">
                 {settings.header.tagline}
               </div>
             </div>

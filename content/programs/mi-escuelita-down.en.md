@@ -1,5 +1,14 @@
 ---
 title: Mi Escuelita Down
+visible: true
+order: 10
+photos_authorized: true
+home:
+  featured: true
+  icon: sparkles
+  color: primary
+  badge: Down Syndrome
+  ages: 0 – 14+ years
 hero:
   badge: Specialized Program
   subtitle: Comprehensive therapeutic and educational intervention for children with Down syndrome, from early stimulation to full school inclusion.
@@ -8,17 +17,19 @@ hero:
   quote: At Lápiz en Mano, we found not only therapy but a family that taught us to see abilities before limitations.
   quote_author: Familia Quispe
   quote_context: Mi Escuelita Down
+  cta_details_label: See details
+  cta_whatsapp_label: WhatsApp inquiry
 stats:
-  - icon: 👶
+  - icon: baby
     value: 0 – 14+
     label: years served
-  - icon: 🏫
+  - icon: school
     value: '3'
     label: educational levels
-  - icon: 💛
+  - icon: heart
     value: '4'
     label: therapy areas
-  - icon: 🎓
+  - icon: graduation-cap
     value: '8'
     label: years of experience
 section_1:
@@ -27,37 +38,37 @@ section_1:
   layout: tarjetas
   subtitle: Each child receives a personalized intervention plan that integrates the four therapy areas based on their individual needs.
   items:
-    - icon: 🧠
+    - icon: brain
       color: accent
       title: Behavioral Therapy
-      desc: We support children in developing social skills, self-regulation, and positive routines.
+      desc: We support children in developing social skills, self-regulation, and positive routines in family and school environments.
       items:
         - Social skills
         - Emotional self-regulation
         - Positive routines
         - Functional independence
-    - icon: 🗣️
+    - icon: message-circle
       color: secondary
       title: Speech Therapy
-      desc: We evaluate and treat language difficulties with strategies that promote effective communication.
+      desc: We evaluate and treat language difficulties, implementing strategies that promote effective communication, including augmentative and alternative systems.
       items:
         - Orofacial control
         - Phonetic articulation
         - Expressive and receptive language
         - Functional communication
-    - icon: 💪
+    - icon: accessibility
       color: secondary
       title: Physiotherapy
-      desc: We intervene from early stimulation to improve muscle tone, posture, and mobility.
+      desc: We intervene from early stimulation to improve muscle tone, posture, and mobility, adapting exercises to each developmental stage.
       items:
         - Motor early stimulation
         - Neuromuscular rehabilitation
         - Muscle tone and posture
         - Functional mobility
-    - icon: 🤸
+    - icon: accessibility
       color: primary
       title: Psychomotor Therapy
-      desc: We strengthen coordination, balance, and body schema through circuits, games, and experiential activities.
+      desc: We strengthen coordination, balance, and body schema to foster autonomy and body expression through circuits, games, and experiential activities.
       items:
         - Gross and fine motor coordination
         - Body schema
@@ -68,7 +79,7 @@ section_2:
   title: Educational Levels
   subtitle: Our students hold a regular education grade book and receive curricular adaptations at each stage.
   tabs:
-    - icon: 🌱
+    - icon: wheat
       color: accent
       label: Pre-Kinder
       age_range: 3 – 5 years
@@ -78,7 +89,7 @@ section_2:
         - Early language development
         - Socioemotional skills
         - Functional and structured play
-    - icon: 📚
+    - icon: book-open
       color: secondary
       label: Kinder
       age_range: 5 – 6 years
@@ -88,7 +99,7 @@ section_2:
         - Basic mathematics
         - Coexistence and norms
         - Primary school preparation
-    - icon: 🎓
+    - icon: graduation-cap
       color: primary
       label: Primary
       age_range: 6+ years
@@ -102,22 +113,37 @@ section_3:
   badge: Comprehensive support
   title: Complementary Services
   items:
-    - icon: 🧩
+    - icon: puzzle
       color: accent
       title: Neuro-cognitive Stimulation
       desc: 'We enhance cognitive functions: attention, working memory, executive functions, and logical reasoning adapted to each child''s Down syndrome profile.'
-    - icon: 👨‍👩‍👧
+    - icon: users-round
       color: secondary
       title: Family Guidance
       desc: Sessions with parents to share strategies, resolve doubts, and empower families as co-therapists at home. Includes free virtual sessions.
-    - icon: 🏫
+    - icon: school
       color: accent
       title: School Coordination
       desc: We work directly with the child's regular school teachers to design curricular adaptations and ensure learning continuity in both environments.
-    - icon: 📊
+    - icon: chart-column
       color: secondary
       title: Ongoing Evaluation
       desc: We periodically reevaluate each child's progress and adjust the intervention plan to maintain relevant and achievable goals at each development stage.
+enrollment:
+  title: How to join the program?
+  steps:
+    - icon: phone
+      title: Initial contact
+      desc: Contact us via WhatsApp or form to schedule a first conversation.
+    - icon: search
+      title: Evaluation
+      desc: We conduct a comprehensive evaluation to design a personalized plan.
+    - icon: file-text
+      title: Intervention plan
+      desc: We set clear objectives and select priority therapy areas.
+    - icon: wheat
+      title: Program start
+      desc: The child starts sessions. The family receives ongoing guidance.
 gallery:
   badge: A look inside our sessions
   title: See the program in action
@@ -134,24 +160,8 @@ gallery:
       alt: Two children in a water-based sensory stimulation activity
     - image: /images/actividades-reales/pintura-arroz-color.jpg
       alt: Girl painting with colored rice in a sensory activity
-enrollment:
-  badge: Our process
-  title: How to join the program?
-  subtitle: A simple, guided process, from the first contact to the start of sessions.
-  steps:
-    - icon: 📞
-      title: Initial contact
-      desc: Contact us via WhatsApp or form to schedule a first conversation.
-    - icon: 🔍
-      title: Evaluation
-      desc: We conduct a comprehensive evaluation to design a personalized plan.
-    - icon: 📋
-      title: Intervention plan
-      desc: We set clear objectives and select priority therapy areas.
-    - icon: 🌱
-      title: Program start
-      desc: The child starts sessions. The family receives ongoing guidance.
 cta:
   title: Does your child have Down syndrome?
   text: Contact us today. We evaluate each child free of charge and design a plan adapted to their needs.
+  link_label: Contact form
 ---

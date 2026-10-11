@@ -6,25 +6,25 @@ es:
     subtitle: Ya sea que busques inscribir a tu hijo, realizar prácticas profesionales, proponer una alianza o hacernos llegar tus dudas, estamos listos para escucharte.
   reasons:
     - label: Quiero inscribir a mi hijo/a
-      icon: 🌟
+      icon: sparkles
       color: secondary
     - label: Solicitar una evaluación
-      icon: 🔍
+      icon: search
       color: accent
     - label: Ser voluntario/a
-      icon: 🙌
+      icon: hand-heart
       color: secondary
     - label: Alianza institucional
-      icon: 🤝
+      icon: handshake
       color: accent
     - label: Donación o patrocinio
-      icon: 💛
+      icon: heart
       color: primary
     - label: Prensa o medios
-      icon: 📰
+      icon: newspaper
       color: secondary
     - label: Otro motivo
-      icon: 💬
+      icon: message-circle
       color: neutral
   form_section:
     title: Envíanos un mensaje
@@ -50,19 +50,19 @@ es:
   faqs:
     - q: ¿Cómo inscribo a mi hijo?
       a: Agenda una evaluación inicial de diagnóstico escribiendo a nuestro WhatsApp. Nuestro equipo multidisciplinario sugerirá el programa terapéutico o escolar adecuado.
-      icon: 🌟
+      icon: sparkles
       color: secondary
     - q: ¿Tiene costo la atención?
       a: Cada programa cuenta con cuotas mensuales solidarias. Si la familia no puede cubrirlas, contamos con becas parciales y completas. Ningún niño queda sin atención por motivos económicos.
-      icon: 💰
+      icon: coins
       color: primary
     - q: ¿Se requiere diagnóstico previo?
       a: No es necesario. Puedes consultarnos ante cualquier señal de alerta en el desarrollo, comunicación o conducta de tu hijo. Nosotros realizamos la evaluación correspondiente.
-      icon: 📋
+      icon: file-text
       color: secondary
     - q: ¿Atienden fuera de La Paz?
       a: La atención terapéutica y escolar presencial es en La Paz. Sin embargo, ofrecemos orientación familiar y capacitaciones virtuales para todo el país.
-      icon: 🌎
+      icon: earth
       color: accent
   whatsapp_cta:
     title: ¿Prefieres una respuesta inmediata?
@@ -78,25 +78,25 @@ en:
     subtitle: Whether you want to enroll your child, complete professional practice, propose an alliance, or ask questions, we are ready to listen.
   reasons:
     - label: I want to enroll my child
-      icon: 🌟
+      icon: sparkles
       color: secondary
     - label: Request an evaluation
-      icon: 🔍
+      icon: search
       color: accent
     - label: Become a volunteer
-      icon: 🙌
+      icon: hand-heart
       color: secondary
     - label: Institutional alliance
-      icon: 🤝
+      icon: handshake
       color: accent
     - label: Donation or sponsorship
-      icon: 💛
+      icon: heart
       color: primary
     - label: Press or media
-      icon: 📰
+      icon: newspaper
       color: secondary
     - label: Other reason
-      icon: 💬
+      icon: message-circle
       color: neutral
   form_section:
     title: Send us a message
@@ -122,19 +122,19 @@ en:
   faqs:
     - q: How do I enroll my child?
       a: Schedule an initial diagnostic evaluation by messaging our WhatsApp. Our team will suggest the appropriate therapeutic or school program.
-      icon: 🌟
+      icon: sparkles
       color: secondary
     - q: Is there a cost for care?
       a: Each program has supportive monthly fees. If a family cannot cover them, we offer partial and full scholarships. No child is left without care due to economic reasons.
-      icon: 💰
+      icon: coins
       color: primary
     - q: Is a prior diagnosis required?
       a: It is not necessary. You can consult us for any developmental, communication, or behavioral warning sign in your child. We perform the evaluation.
-      icon: 📋
+      icon: file-text
       color: secondary
     - q: Do you serve outside La Paz?
       a: Physical therapy and school care are in La Paz. However, we offer family guidance and virtual training sessions nationwide.
-      icon: 🌎
+      icon: earth
       color: accent
   whatsapp_cta:
     title: Do you prefer an immediate response?

@@ -100,15 +100,15 @@ export default function ProtagonistPhoto({
           )}
         >
           <blockquote className="font-display text-sm italic leading-snug sm:text-base">
-            <span className={light ? 'text-primary' : 'text-primary-700'}>&ldquo;</span>
+            <span className={light ? 'text-primary' : 'text-primary-900'}>&ldquo;</span>
             {quote}
-            <span className={light ? 'text-primary' : 'text-primary-700'}>&rdquo;</span>
+            <span className={light ? 'text-primary' : 'text-primary-900'}>&rdquo;</span>
           </blockquote>
           {attribution && (
             <div
               className={cx(
                 'mt-2 text-[11px] font-semibold uppercase tracking-wider not-italic',
-                light ? 'text-white/70' : 'text-gray-400'
+                light ? 'text-white/90' : 'text-gray-500'
               )}
             >
               {attribution}

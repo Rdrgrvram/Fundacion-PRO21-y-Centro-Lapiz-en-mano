@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 import { getContactPageContent, getSiteSettings } from '@/lib/cms'
 import type { Locale } from '@/lib/i18n'
 import ContactoPageClient from './ContactoPageClient'
@@ -9,10 +10,12 @@ interface PageProps {
 
 export async function generateMetadata({ params: { lang } }: PageProps): Promise<Metadata> {
   const content = getContactPageContent(lang)
-  return {
+  return pageMetadata({
+    lang,
+    path: '/contacto',
     title: `${content.hero.title_line1} ${content.hero.title_line2} | Fundación PRO-21 y Centro Lápiz en Mano`,
     description: content.hero.subtitle,
-  }
+  })
 }
 
 export default function Page({ params: { lang } }: PageProps) {

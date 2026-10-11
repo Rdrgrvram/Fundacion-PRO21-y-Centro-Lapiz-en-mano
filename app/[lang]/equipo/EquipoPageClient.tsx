@@ -1,29 +1,35 @@
 'use client'
+import Icon from '@/components/ui/Icon'
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import type { Locale } from '@/lib/i18n'
-import type { TeamArea, TeamMember, Volunteer } from '@/lib/content'
+import { getTranslation, type Locale } from '@/lib/i18n'
+import type { TeamArea, TeamMember, Volunteer } from '@/lib/cms'
+import type { EquipoPageContent } from '@/lib/cms-schemas'
 import { PALETTE } from '@/lib/palette'
-import Icon from '@/components/ui/Icon'
 
 interface EquipoPageClientProps {
   lang: Locale
+  content: EquipoPageContent
+  navLabel?: string
   areas: TeamArea[]
   team: TeamMember[]
   volunteers: Volunteer[]
 }
 
-export default function EquipoPageClient({ lang, areas, team, volunteers }: EquipoPageClientProps) {
-  const es = lang === 'es'
+export default function EquipoPageClient({ lang, content, navLabel, areas, team, volunteers }: EquipoPageClientProps) {
+  const t = getTranslation(lang)
   const [selectedArea, setSelectedArea] = useState<number | null>(null)
 
-  const stats = [
-    { n: `${team.length}+`, l: es ? 'Profesionales' : 'Staff members', icon: 'activity' },
-    { n: String(areas.length), l: es ? 'Áreas de especialidad' : 'Specialized areas', icon: 'puzzle' },
-    { n: '3', l: es ? 'Programas activos' : 'Active programs', icon: 'clipboard' },
-    { n: '100%', l: es ? 'Dedicación integral' : 'Dedicated care', icon: 'heart' },
-  ]
+  // El valor de las 2 primeras cifras se calcula acá (se autoactualiza con el
+  // contenido real) — el CMS solo controla ícono/etiqueta para esas 2. Las
+  // últimas 2 sí usan el valor tal cual viene del CMS. Ver hint del campo en
+  // public/admin/config.yml.
+  const stats = content.stats.map((s, i) => ({
+    icon: s.icon,
+    label: s.label,
+    value: i === 0 ? `${team.length}+` : i === 1 ? String(areas.length) : (s.value ?? ''),
+  }))
 
   const selectedData = selectedArea !== null ? areas[selectedArea] : null
 
@@ -39,36 +45,25 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
         </div>
 
         <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
-          <nav className="flex items-center gap-2 text-white/60 text-xs mb-8">
-            <Link href={`/${lang}`} className="hover:text-white transition-colors">{es ? 'Inicio' : 'Home'}</Link>
+          <nav className="flex items-center gap-2 text-white text-xs mb-8">
+            <Link href={`/${lang}`} className="inline-flex min-h-[44px] min-w-[44px] -my-3.5 items-center hover:text-white transition-colors">{t['nav.home']}</Link>
             <span>/</span>
-            <span className="text-white font-semibold">{es ? 'Equipo' : 'Team'}</span>
+            <span className="text-white font-semibold">{navLabel ?? t['nav.team']}</span>
           </nav>
 
-          <div className="inline-flex items-center gap-2 bg-white/15 border border-white/20 rounded-full px-4 py-1.5 mb-5">
+          <div className="inline-flex items-center gap-2 bg-black/20 border border-white/20 rounded-full px-4 py-1.5 mb-5">
             <span className="text-xs font-bold uppercase tracking-wider text-white select-none">
-              {es ? 'Nuestro equipo' : 'Our team'}
+              {content.hero.badge}
             </span>
           </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-extrabold leading-tight mb-4">
-            {es ? (
-              <>
-                Profesionales con <br />
-                <span className="italic font-normal">vocación y amor</span>
-              </>
-            ) : (
-              <>
-                Professionals with <br />
-                <span className="italic font-normal">vocation and love</span>
-              </>
-            )}
+            {content.hero.title_line1} <br />
+            <span className="font-bold italic text-primary">{content.hero.title_line2}</span>
           </h1>
 
-          <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-2xl leading-relaxed">
-            {es
-              ? 'Un equipo multidisciplinario que trabaja de forma coordinada, poniendo al niño y su familia en el centro de cada intervención para lograr avances significativos.'
-              : 'A multidisciplinary team working coordinately, placing the child and family at the center of every intervention to achieve meaningful progress.'}
+          <p className="text-sm md:text-base lg:text-lg text-white/90 max-w-2xl leading-relaxed">
+            {content.hero.subtitle}
           </p>
         </div>
 
@@ -88,9 +83,9 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
                 key={i}
                 className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col items-center text-center transition-all duration-300 hover:shadow-md select-none"
               >
-                <Icon name={s.icon} className="mx-auto mb-2 h-6 w-6 text-secondary" />
-                <div className="text-2xl sm:text-3xl font-bold text-gray-900 leading-none">{s.n}</div>
-                <div className="text-xs text-gray-400 font-semibold mt-2">{s.l}</div>
+                <Icon name={s.icon} className="mx-auto mb-2 h-6 w-6 text-secondary-700" />
+                <div className="text-2xl sm:text-3xl font-bold text-gray-900 leading-none">{s.value}</div>
+                <div className="text-xs text-gray-500 font-semibold mt-2">{s.label}</div>
               </div>
             ))}
           </div>
@@ -103,35 +98,28 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="h-1.5 w-1.5 rounded-full bg-primary-700" />
-              <span className="text-xs font-bold uppercase tracking-wider text-primary-700">
-                {es ? 'Filosofía de trabajo' : 'Work philosophy'}
+              <span className="text-xs font-bold uppercase tracking-wider text-primary-900">
+                {content.philosophy_section.badge}
               </span>
             </div>
             <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold tracking-tight mb-4">
-              {es ? '¿Qué significa ser multidisciplinario?' : 'What does multidisciplinary mean?'}
+              {content.philosophy_section.title}
             </h2>
-            <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">
-              {es
-                ? 'No es sólo tener muchas especialidades bajo un mismo techo. Es un equipo que piensa, planifica y actúa coordinadamente por y para el niño.'
-                : 'It is not just having many specialties under one roof. It is a team that thinks, plans, and acts coordinately by and for the child.'}
+            <p className="text-sm text-gray-600 max-w-lg mx-auto leading-relaxed">
+              {content.philosophy_section.subtitle}
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
-            {[
-              { icon: 'refresh', title: es ? 'Trabajo coordinado' : 'Coordinated work', desc: es ? 'Todas las áreas comparten información y diseñan planes conjuntos, evitando intervenciones aisladas.' : 'All areas share information and design joint plans, avoiding isolated interventions.' },
-              { icon: 'eye', title: es ? 'Mirada integral' : 'Integral view', desc: es ? 'No tratamos síntomas: acompañamos a una persona completa en sus dimensiones física, cognitiva, emocional y social.' : 'We do not treat symptoms: we support a whole person in their physical, cognitive, emotional, and social dimensions.' },
-              { icon: 'users', title: es ? 'Familia como aliada' : 'Family as ally', desc: es ? 'Los padres y madres no son espectadores: son parte activa de la terapia, con orientación continua.' : 'Parents are not spectators: they are active participants in therapy, with continuous guidance.' },
-              { icon: 'chart', title: es ? 'Evaluación continua' : 'Continuous evaluation', desc: es ? 'Cada plan de intervención se revisa periódicamente según los avances y necesidades individuales.' : 'Each intervention plan is periodically reviewed based on individual progress and needs.' },
-            ].map((p, i) => (
+            {content.philosophy_items.map((p, i) => (
               <div
                 key={i}
                 className="bg-gray-50 border border-gray-200 rounded-3xl p-6 flex flex-col justify-between hover:shadow-sm hover:border-gray-300 transition-all duration-300 h-full"
               >
                 <div>
-                  <Icon name={p.icon} className="mb-4 h-7 w-7 text-secondary" />
+                  <Icon name={p.icon} className="mb-4 h-7 w-7 text-secondary-700" />
                   <h4 className="text-base text-gray-900 font-bold mb-2">{p.title}</h4>
-                  <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">{p.desc}</p>
+                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">{p.desc}</p>
                 </div>
               </div>
             ))}
@@ -144,18 +132,16 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
-              <span className="text-xs font-bold uppercase tracking-wider text-secondary">
-                {es ? 'Áreas de especialidad' : 'Specialized Areas'}
+              <span className="h-1.5 w-1.5 rounded-full bg-secondary-700" />
+              <span className="text-xs font-bold uppercase tracking-wider text-secondary-700">
+                {content.team_grid_section.badge}
               </span>
             </div>
             <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold tracking-tight mb-4">
-              {es ? 'Conoce a Nuestro Equipo' : 'Meet Our Team'}
+              {content.team_grid_section.title}
             </h2>
-            <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">
-              {es
-                ? 'Filtra por área para conocer a los profesionales, su especialidad y formación complementaria.'
-                : 'Filter by area to meet the professionals, their specialty, and educational background.'}
+            <p className="text-sm text-gray-600 max-w-lg mx-auto leading-relaxed">
+              {content.team_grid_section.subtitle}
             </p>
           </div>
 
@@ -175,16 +161,16 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
                   <div className="p-5 flex items-center justify-between">
                     <div className="flex items-center gap-3.5">
                       <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-xl ${isSelected ? 'bg-primary text-black' : palette.bg}`}>
-                        {a.icon}
+                        <Icon name={a.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" />
                       </div>
                       <div>
                         <h4 className="text-sm font-bold text-gray-900 leading-snug">{a.name}</h4>
-                        <span className="text-[9px] text-gray-400 font-semibold block mt-0.5">
-                          {team.filter((m) => m.area === a.slug).length} {es ? 'Profesionales' : 'Staff'}
+                        <span className="text-[9px] text-gray-500 font-semibold block mt-0.5">
+                          {team.filter((m) => m.area === a.slug).length} {content.team_grid_section.staff_count_label}
                         </span>
                       </div>
                     </div>
-                    <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs transition-transform duration-300 ${isSelected ? 'bg-primary/20 text-gray-900 rotate-180' : 'bg-gray-50 text-gray-400'}`}>
+                    <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs transition-transform duration-300 ${isSelected ? 'bg-primary/20 text-gray-900 rotate-180' : 'bg-gray-50 text-gray-500'}`}>
                       ▾
                     </div>
                   </div>
@@ -199,14 +185,14 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
                 className="w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-md flex-shrink-0 select-none"
                 style={{ backgroundColor: PALETTE[selectedData.color].hex }}
               >
-                <Icon emoji={selectedData.icon} className="h-6 w-6" />
+                <Icon name={selectedData.icon} className="h-6 w-6" />
               </div>
               <div className="flex-1">
-                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-1">
-                  {es ? 'Competencias de esta área' : 'Competencies in this area'}
+                <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest block mb-1">
+                  {content.team_grid_section.competencies_label}
                 </span>
                 <h4 className="text-lg font-bold text-gray-900 mb-2">{selectedData.name}</h4>
-                <p className="text-xs text-gray-500 leading-relaxed mb-4">{selectedData.desc}</p>
+                <p className="text-xs text-gray-600 leading-relaxed mb-4">{selectedData.desc}</p>
                 <div className="flex flex-wrap gap-2">
                   {selectedData.skills.map((s, idx) => (
                     <span key={idx} className={`text-xs font-semibold px-3 py-1 rounded-xl text-gray-700 ${PALETTE[selectedData.color].bg}`}>
@@ -217,9 +203,9 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
               </div>
               <button
                 onClick={() => setSelectedArea(null)}
-                className="text-xs font-bold text-gray-400 hover:text-gray-600 transition-colors uppercase self-end md:self-center bg-gray-50 hover:bg-gray-100 border border-gray-200 px-3.5 py-1.5 rounded-full select-none"
+                className="text-xs font-bold text-gray-500 hover:text-gray-600 transition-colors uppercase self-end md:self-center bg-gray-50 hover:bg-gray-100 border border-gray-200 px-3.5 py-1.5 rounded-full select-none"
               >
-                {es ? 'Limpiar filtro' : 'Clear filter'}
+                {content.team_grid_section.clear_filter_label}
               </button>
             </div>
           )}
@@ -250,25 +236,25 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
                     </div>
 
                     <h3 className="text-lg font-bold text-gray-900 leading-snug">{m.name}</h3>
-                    <p className="text-[11px] font-bold uppercase tracking-wider text-gray-900/60 mt-1 select-none">
+                    <p className="text-[11px] font-bold uppercase tracking-wider text-gray-900/80 mt-1 select-none">
                       {m.role}
                     </p>
 
                     <span
                       className={`text-[9px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full mt-3 border select-none ${palette.bg}`}
-                      style={{ color: palette.hex, borderColor: `${palette.hex}15` }}
+                      style={{ color: palette.textHex, borderColor: `${palette.hex}15` }}
                     >
                       {matchedArea?.name || ''}
                     </span>
 
                     <div className="w-12 h-0.5 bg-gray-100 my-4" />
 
-                    <div className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1.5 select-none">
-                      {es ? 'Especialidad médica' : 'Medical Specialty'}
+                    <div className="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1.5 select-none">
+                      {content.team_grid_section.specialty_label}
                     </div>
                     <p className="text-xs font-bold text-gray-700 mb-4 px-2">{m.specialty}</p>
 
-                    <p className="text-xs text-gray-500 leading-relaxed px-1">{m.bio}</p>
+                    <p className="text-xs text-gray-600 leading-relaxed px-1">{m.bio}</p>
                   </div>
                 </div>
               )
@@ -282,18 +268,16 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12 max-w-xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/15 rounded-full px-4 py-1.5 mb-3 select-none">
-              <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
-              <span className="text-xs font-bold uppercase tracking-wider text-secondary">
-                {es ? 'Trabajo en red' : 'Network work'}
+              <span className="h-1.5 w-1.5 rounded-full bg-secondary-700" />
+              <span className="text-xs font-bold uppercase tracking-wider text-secondary-700">
+                {content.network_section.badge}
               </span>
             </div>
             <h2 className="text-3xl md:text-4xl text-gray-900 font-extrabold tracking-tight mb-4">
-              {es ? 'El niño y su familia en el centro' : 'The child and family at the center'}
+              {content.network_section.title}
             </h2>
-            <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">
-              {es
-                ? 'Cada profesional aporta desde su especialidad, pero todos interactúan con el mismo núcleo: el bienestar pleno de la familia.'
-                : "Each professional contributes from their specialty, but all interact with the same core: the family's full well-being."}
+            <p className="text-sm text-gray-600 max-w-lg mx-auto leading-relaxed">
+              {content.network_section.subtitle}
             </p>
           </div>
 
@@ -301,7 +285,7 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full bg-gradient-to-br from-primary to-primary flex flex-col items-center justify-center text-center shadow-lg shadow-primary/20 z-20">
               <Icon name="smile" className="mb-1 h-6 w-6 text-gray-900" />
               <span className="text-[10px] text-gray-900 font-bold leading-tight">
-                {es ? 'El Niño y' : 'The Child &'}<br />{es ? 'su Familia' : 'Family'}
+                {content.network_section.center_label}
               </span>
             </div>
 
@@ -321,8 +305,8 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
                   className="absolute w-16 h-16 rounded-2xl bg-white border border-gray-200 shadow-sm flex flex-col items-center justify-center hover:scale-110 hover:border-primary hover:shadow-md transition-all duration-300 z-10"
                   title={a.name}
                 >
-                  <Icon emoji={a.icon} className="h-5 w-5 text-secondary" />
-                  <span className="text-[8px] font-extrabold text-gray-400 mt-1 max-w-[50px] overflow-hidden text-ellipsis whitespace-nowrap">
+                  <Icon name={a.icon} className="h-5 w-5 text-secondary-700" />
+                  <span className="text-[8px] font-extrabold text-gray-500 mt-1 max-w-[50px] overflow-hidden text-ellipsis whitespace-nowrap">
                     {a.name.split(' ')[0]}
                   </span>
                 </div>
@@ -338,8 +322,8 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
                 <Icon name="smile" className="h-5 w-5" />
               </div>
               <div>
-                <h4 className="text-sm text-gray-900 font-bold leading-tight">{es ? 'El Niño y su Familia' : 'The Child and Family'}</h4>
-                <p className="text-[10px] text-gray-900/60 font-semibold uppercase mt-0.5">{es ? 'Centro de la red' : 'Red Core'}</p>
+                <h4 className="text-sm text-gray-900 font-bold leading-tight">{content.network_section.center_label}</h4>
+                <p className="text-[10px] text-gray-900/80 font-semibold uppercase mt-0.5">{content.network_section.center_sublabel}</p>
               </div>
             </div>
 
@@ -348,11 +332,11 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
                 <div key={a.slug} className="relative flex items-center gap-4 pl-12">
                   <div className="absolute left-4 w-6 h-0.5 bg-primary/30" />
                   <div className="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-xl shadow-sm flex-shrink-0 z-10">
-                    {a.icon}
+                    <Icon name={a.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" />
                   </div>
                   <div>
                     <h5 className="text-xs font-bold text-gray-900">{a.name}</h5>
-                    <p className="text-[9px] text-gray-400 font-semibold">{es ? 'Intervención integral' : 'Integral Care'}</p>
+                    <p className="text-[9px] text-gray-500 font-semibold">{content.network_section.node_caption}</p>
                   </div>
                 </div>
               ))}
@@ -368,16 +352,14 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
             <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/15 rounded-full px-4 py-1.5 mb-3 select-none">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               <span className="text-xs font-bold uppercase tracking-wider text-accent">
-                {es ? 'Voluntariado' : 'Volunteering'}
+                {content.volunteers_section.badge}
               </span>
             </div>
             <h2 className="text-2xl md:text-3xl text-gray-900 font-extrabold tracking-tight mb-2">
-              {es ? 'Nuestros Voluntarios' : 'Our Volunteers'}
+              {content.volunteers_section.title}
             </h2>
-            <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
-              {es
-                ? 'Agradecemos de corazón a quienes dedican su tiempo y energía a apoyar de forma desinteresada a la fundación.'
-                : 'We sincerely thank those who donate their time and energy to selflessly support our foundation.'}
+            <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+              {content.volunteers_section.subtitle}
             </p>
           </div>
 
@@ -387,10 +369,10 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
                 key={v.slug}
                 className="bg-white border border-gray-200 rounded-full py-2.5 px-6 shadow-sm flex items-center gap-2.5 hover:border-primary hover:shadow-md transition-all duration-300"
               >
-                <Icon name="users" className="h-4 w-4 text-gray-400" />
+                <Icon name="users" className="h-4 w-4 text-gray-500" />
                 <span className="text-xs sm:text-sm font-bold text-gray-700">{v.name}</span>
                 <span className="text-[10px] text-accent font-bold px-2 py-0.5 bg-accent/10 rounded-full select-none">
-                  {es ? 'Voluntaria' : 'Volunteer'}
+                  {content.volunteers_section.tag_label}
                 </span>
               </div>
             ))}
@@ -403,13 +385,11 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
       <section className="py-16 md:py-24 px-4 bg-accent">
         <div className="container mx-auto max-w-3xl text-center">
           <h2 className="text-3xl md:text-4xl text-white font-extrabold leading-tight mb-4">
-            {es ? '¿Quieres unirte a nuestro equipo?' : 'Want to join our team?'}
+            {content.cta.title}
           </h2>
 
-          <p className="text-sm md:text-base text-white/80 max-w-xl mx-auto leading-relaxed mb-8">
-            {es
-              ? 'Buscamos fisioterapeutas, psicopedagogos, fonoaudiólogos, psicólogos clínicos y educadores que deseen poner su conocimiento al servicio de la inclusión integral en La Paz.'
-              : 'We look for physiotherapists, psychopedagogues, speech therapists, clinical psychologists, and educators who wish to put their knowledge at the service of integral inclusion in La Paz.'}
+          <p className="text-sm md:text-base text-white/90 max-w-xl mx-auto leading-relaxed mb-8">
+            {content.cta.text}
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center items-center">
@@ -417,13 +397,13 @@ export default function EquipoPageClient({ lang, areas, team, volunteers }: Equi
               href={`/${lang}/contacto`}
               className="bg-primary hover:bg-primary/95 text-black font-extrabold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-black/10 min-h-[44px] flex items-center justify-center select-none"
             >
-              {es ? 'Postular ahora' : 'Apply now'}
+              {content.cta.primary_label}
             </Link>
             <Link
               href={`/${lang}/colabora`}
               className="border-2 border-white/30 hover:border-white/60 bg-white/10 hover:bg-white/20 text-white font-bold text-sm px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] min-h-[44px] flex items-center justify-center select-none"
             >
-              {es ? 'Ser voluntario' : 'Become a volunteer'}
+              {content.cta.secondary_label}
             </Link>
           </div>
         </div>

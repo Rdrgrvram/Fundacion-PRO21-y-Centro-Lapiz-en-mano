@@ -1,6 +1,6 @@
 ---
 name: Fisioterapia
-icon: 💪
+icon: accessibility
 color: secondary
 desc: Intervención desde la estimulación temprana para mejorar el tono muscular,
   la postura y la movilidad, adaptando ejercicios a cada etapaaa.
