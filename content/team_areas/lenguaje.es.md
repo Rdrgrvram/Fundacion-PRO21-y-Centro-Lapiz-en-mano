@@ -1,6 +1,6 @@
 ---
 name: "Terapia de lenguaje"
-icon: "🗣️"
+icon: "message-circle"
 color: "secondary"
 desc: "Trabajo en respiración, control orofacial y articulación de sonidos para mejorar la comunicación y el habla de forma divertida y funcional."
 skills:

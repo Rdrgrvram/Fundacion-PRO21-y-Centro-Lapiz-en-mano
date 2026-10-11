@@ -1,8 +1,12 @@
+import Icon from '@/components/ui/Icon'
 import Link from 'next/link'
+import Image from 'next/image'
 import { getAllPosts } from '@/lib/content'
+import { getSiteSettings } from '@/lib/cms'
+import { waLink } from '@/lib/utils'
 import type { Locale } from '@/lib/i18n'
 import type { Metadata } from 'next'
-import Icon from '@/components/ui/Icon'
+import { pageMetadata } from '@/lib/seo'
 
 interface Props {
   params: { lang: Locale }
@@ -10,23 +14,26 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const es = params.lang === 'es'
-  return {
+  return pageMetadata({
+    lang: params.lang,
+    path: '/blog',
     title: es ? 'Blog | Fundación PRO-21 y Centro Lápiz en Mano' : 'Blog | PRO-21 Foundation & Lápiz en Mano',
     description: es
       ? 'Noticias, artículos formativos y novedades de la Fundación PRO-21 y Centro Lápiz en Mano en La Paz, Bolivia.'
-      : 'News, educational articles, and updates from the PRO-21 Foundation and Lápiz en Mano Center in La Paz, Bolivia.'
-  }
+      : 'News, educational articles, and updates from the PRO-21 Foundation and Lápiz en Mano Center in La Paz, Bolivia.',
+  })
 }
 
 export default async function Page({ params: { lang } }: Props) {
   const es = lang === 'es'
   const posts = await getAllPosts()
+  const whatsappUrl = waLink(getSiteSettings(lang).contact.whatsapp_number)
 
   return (
     <div className="overflow-x-hidden w-full bg-gray-50">
       
       {/* Hero Section */}
-      <section className="relative bg-secondary overflow-hidden">
+      <section className="relative bg-secondary-700 overflow-hidden">
         {/* Decoraciones */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/3" />
@@ -41,13 +48,13 @@ export default async function Page({ params: { lang } }: Props) {
         </div>
 
         <div className="container mx-auto px-4 py-16 md:py-24 relative z-20">
-          <nav className="flex items-center gap-2 text-white/60 text-xs mb-8">
-            <Link href={`/${lang}`} className="hover:text-white transition-colors">{es ? 'Inicio' : 'Home'}</Link>
+          <nav className="flex items-center gap-2 text-white text-xs mb-8">
+            <Link href={`/${lang}`} className="inline-flex min-h-[44px] min-w-[44px] -my-3.5 items-center hover:text-white transition-colors">{es ? 'Inicio' : 'Home'}</Link>
             <span>/</span>
             <span className="text-white font-semibold">Blog</span>
           </nav>
 
-          <div className="inline-flex items-center gap-2 bg-white/15 border border-white/20 rounded-full px-4 py-1.5 mb-5">
+          <div className="inline-flex items-center gap-2 bg-black/20 border border-white/20 rounded-full px-4 py-1.5 mb-5">
             <span className="text-xs font-bold uppercase tracking-wider text-white select-none">{es ? 'Noticias y Artículos' : 'News & Articles'}</span>
           </div>
 
@@ -65,7 +72,7 @@ export default async function Page({ params: { lang } }: Props) {
             )}
           </h1>
 
-          <p className="text-sm md:text-base text-white/80 max-w-2xl leading-relaxed">
+          <p className="text-sm md:text-base text-white/90 max-w-2xl leading-relaxed">
             {es 
               ? 'Novedades sobre eventos, campañas de recaudación, metodologías terapéuticas y testimonios de superación en Bolivia.'
               : 'Updates on events, fundraising campaigns, therapeutic methodologies, and stories of growth in Bolivia.'}
@@ -83,7 +90,7 @@ export default async function Page({ params: { lang } }: Props) {
               <h3 className="text-lg text-gray-700 font-bold mb-1">
                 {es ? 'No hay artículos publicados' : 'No posts published yet'}
               </h3>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-gray-500">
                 {es ? 'Vuelve pronto para leer nuestras novedades.' : 'Come back soon to read our updates.'}
               </p>
             </div>
@@ -95,19 +102,36 @@ export default async function Page({ params: { lang } }: Props) {
                   className="bg-white rounded-3xl border border-gray-200 overflow-hidden flex flex-col justify-between hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 h-full"
                 >
                   <div>
-                    {/* Cabecera visual simulada/placeholder */}
-                    <div className="h-44 bg-gradient-to-br from-secondary-50 to-gray-50 flex items-center justify-center relative overflow-hidden select-none border-b border-gray-100">
-                      <Icon name="newspaper" className="h-10 w-10 text-secondary/40" />
-                      <span className="absolute bottom-3 right-3 text-[9px] font-bold text-gray-400 bg-white px-2 py-0.5 rounded-full shadow-sm">
+                    {/* Cabecera visual: imagen destacada real si existe, o placeholder
+                        decorativo como respaldo. El clic abre el PDF adjunto (si lo hay)
+                        en vez de llevar al artículo — insignia visible para que quede
+                        claro qué va a pasar antes de hacer clic. */}
+                    <Link
+                      href={post.pdf ?? `/${lang}/blog/${post.slug}`}
+                      target={post.pdf ? '_blank' : undefined}
+                      rel={post.pdf ? 'noopener noreferrer' : undefined}
+                      className="h-44 bg-gradient-to-br from-[#e8f7fb] to-[#f9fafb] flex items-center justify-center text-4xl relative overflow-hidden select-none border-b border-gray-100 block"
+                    >
+                      {post.image ? (
+                        <Image src={post.image} alt={post.title} fill className="object-cover" />
+                      ) : (
+                        <span className="animate-pulse"><Icon name="newspaper" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
+                      )}
+                      <span className="absolute bottom-3 right-3 text-[9px] font-bold text-gray-500 bg-white px-2 py-0.5 rounded-full shadow-sm">
                         {post.date}
                       </span>
-                    </div>
+                      {post.pdf && (
+                        <span className="absolute top-3 left-3 text-[9px] font-bold text-white bg-secondary-700 px-2.5 py-1 rounded-full shadow-sm whitespace-nowrap select-none">
+                          file-text PDF
+                        </span>
+                      )}
+                    </Link>
 
                     <div className="p-6">
                       <h2 className="text-base sm:text-lg text-gray-900 font-bold mb-3 leading-snug line-clamp-2">
                         {post.title}
                       </h2>
-                      <p className="text-xs sm:text-sm text-gray-500 leading-relaxed line-clamp-3">
+                      <p className="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-3">
                         {post.excerpt}
                       </p>
                     </div>
@@ -131,7 +155,7 @@ export default async function Page({ params: { lang } }: Props) {
       </section>
 
       {/* Footer CTA */}
-      <section className="py-16 bg-secondary">
+      <section className="py-16 bg-secondary-700">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-4">
             {es ? '¿Quieres contarnos tu historia?' : 'Want to share your story with us?'}
@@ -143,7 +167,7 @@ export default async function Page({ params: { lang } }: Props) {
           </p>
           <div className="flex justify-center">
             <a
-              href="https://wa.me/59170106276"
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-gray-900 text-white font-bold px-8 py-4 rounded-full hover:bg-gray-800 transition-colors min-h-[52px]"

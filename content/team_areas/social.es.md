@@ -1,6 +1,6 @@
 ---
 name: "Trabajo social"
-icon: "🤝"
+icon: "handshake"
 color: "accent"
 desc: "Orientación, acompañamiento social y contención emocional para las familias, estructurando la red de apoyo necesaria en el hogar."
 skills:
