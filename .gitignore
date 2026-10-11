@@ -50,3 +50,12 @@ public/TEST.MD
 # Playwright MCP screenshots/snapshots
 .playwright-mcp/
 v2-*.png
+
+# Playwright — reportes y artefactos de la suite de auditoría del CMS (tests/cms/)
+/playwright-report/
+/test-results/
+/blob-report/
+
+# Datos de menores y escaneos: nunca se versionan (Constitución, Art. IV)
+/documentacion/
+/Documentacion/

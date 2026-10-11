@@ -1,6 +1,6 @@
 ---
 name: "Speech therapy"
-icon: "🗣️"
+icon: "message-circle"
 color: "secondary"
 desc: "Work on breathing, orofacial control, and speech sounds articulation to improve communication and speech in a fun, functional way."
 skills:

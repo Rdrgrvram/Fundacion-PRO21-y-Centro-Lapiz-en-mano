@@ -1,8 +1,8 @@
 'use client'
+import Icon from '@/components/ui/Icon'
 import { useState } from 'react'
 import { EXTENDED_PALETTE } from '@/lib/palette'
-import type { ProgramTabSection as ProgramTabSectionData } from '@/lib/content'
-import Icon from '@/components/ui/Icon'
+import type { ProgramTabSectionContent as ProgramTabSectionData } from '@/lib/cms-schemas'
 
 interface ProgramTabSectionProps {
   id?: string
@@ -19,7 +19,7 @@ export default function ProgramTabSection({ id, section }: ProgramTabSectionProp
     <section id={id} className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
-          <span className="text-xs font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-4 py-1.5 rounded-full">
+          <span className="text-xs font-bold uppercase tracking-widest text-secondary-700 bg-secondary/10 px-4 py-1.5 rounded-full">
             {section.badge}
           </span>
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mt-4 mb-4">{section.title}</h2>
@@ -39,11 +39,11 @@ export default function ProgramTabSection({ id, section }: ProgramTabSectionProp
                   isActive ? `${tStyle.bgSolid} ${tStyle.textOn} shadow-md` : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
-                <Icon emoji={t.icon} className="h-4 w-4" />
+                <Icon name={t.icon} className="h-4 w-4" />
                 <span>{t.label}</span>
-                {t.ageRange && (
-                  <span className={`text-xs px-2 py-0.5 rounded-full ${isActive ? 'bg-white/20' : 'bg-gray-200 text-gray-500'}`}>
-                    {t.ageRange}
+                {t.age_range && (
+                  <span className={`text-xs px-2 py-0.5 rounded-full ${isActive ? 'bg-black/20' : 'bg-gray-200 text-gray-600'}`}>
+                    {t.age_range}
                   </span>
                 )}
               </button>
@@ -54,10 +54,10 @@ export default function ProgramTabSection({ id, section }: ProgramTabSectionProp
         {/* Panel activo */}
         <div className={`max-w-4xl mx-auto bg-white rounded-2xl border ${style.border} shadow-sm overflow-hidden`}>
           <div className={`${style.bg} p-6 flex items-center gap-4`}>
-            <Icon emoji={tab.icon} className={`h-9 w-9 ${style.text}`} />
+            <Icon name={tab.icon} className={`h-9 w-9 ${style.text}`} />
             <div>
               <h3 className={`text-xl font-extrabold ${style.text}`}>{tab.label}</h3>
-              {tab.ageRange && <span className="text-sm text-gray-500">{tab.ageRange}</span>}
+              {tab.age_range && <span className="text-sm text-gray-600">{tab.age_range}</span>}
             </div>
           </div>
           <div className="p-6">

@@ -1,9 +1,10 @@
+import Icon from '@/components/ui/Icon'
 import { EXTENDED_PALETTE, type AccentColor } from '@/lib/palette'
-import type { ProgramStepSection } from '@/lib/content'
+import type { Program } from '@/lib/cms'
 
 const CYCLE: AccentColor[] = ['secondary', 'accent', 'primary']
 
-export default function ProgramEnrollmentSteps({ section }: { section: ProgramStepSection }) {
+export default function ProgramEnrollmentSteps({ section }: { section: Program['enrollment'] }) {
   const cols = section.steps.length > 4 ? 'sm:grid-cols-2 lg:grid-cols-3' : 'md:grid-cols-2 lg:grid-cols-4'
 
   return (
@@ -11,7 +12,7 @@ export default function ProgramEnrollmentSteps({ section }: { section: ProgramSt
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
           {section.badge && (
-            <span className="text-xs font-bold uppercase tracking-widest text-primary bg-primary/15 px-4 py-1.5 rounded-full">
+            <span className="text-xs font-bold uppercase tracking-widest text-primary-900 bg-primary/15 px-4 py-1.5 rounded-full">
               {section.badge}
             </span>
           )}

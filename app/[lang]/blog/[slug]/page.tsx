@@ -1,10 +1,14 @@
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getPostBySlug, getAllPosts } from '@/lib/content'
 import type { Locale } from '@/lib/i18n'
 import Icon from '@/components/ui/Icon'
 import BrandLogo from '@/components/ui/BrandLogo'
+import Image from 'next/image'
+import { getSiteSettings } from '@/lib/cms'
+import { waLink } from '@/lib/utils'
 
 interface Props {
   params: { lang: Locale; slug: string }
@@ -18,16 +22,19 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPostBySlug(params.slug)
   if (!post) return {}
-  return {
+  return pageMetadata({
+    lang: params.lang,
+    path: `/blog/${params.slug}`,
     title: `${post.title} | Blog`,
-    description: post.excerpt
-  }
+    description: post.excerpt,
+  })
 }
 
 export default async function BlogPostPage({ params: { lang, slug } }: Props) {
   const es = lang === 'es'
   const post = await getPostBySlug(slug)
   if (!post) notFound()
+  const whatsappUrl = waLink(getSiteSettings(lang).contact.whatsapp_number)
 
   return (
     <div className="overflow-x-hidden w-full bg-gray-50 py-12 px-4 sm:py-16 md:py-20">
@@ -43,7 +50,7 @@ export default async function BlogPostPage({ params: { lang, slug } }: Props) {
             <span>{es ? 'Volver al Blog' : 'Back to Blog'}</span>
           </Link>
 
-          <time className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-2">
+          <time className="text-[10px] font-bold text-gray-500 uppercase tracking-widest block mb-2">
             ⏱ {post.date}
           </time>
           
@@ -51,14 +58,26 @@ export default async function BlogPostPage({ params: { lang, slug } }: Props) {
             {post.title}
           </h1>
 
-          <p className="text-xs sm:text-sm text-gray-400 font-semibold italic leading-relaxed">
+          <p className="text-xs sm:text-sm text-gray-500 font-semibold italic leading-relaxed">
             {post.excerpt}
           </p>
+
+          {post.pdf && (
+            <a
+              href={post.pdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 mt-4 text-xs font-bold text-secondary-700 hover:underline min-h-[44px]"
+            >
+              <span><Icon name="file-text" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>
+              <span>{es ? 'Descargar PDF adjunto' : 'Download attached PDF'}</span>
+            </a>
+          )}
         </div>
 
-        {/* Imagen del post si existiese, sino banner elegante de la fundación */}
-        <div className="h-48 sm:h-64 rounded-2xl bg-gradient-to-br from-secondary-50 to-gray-50 border border-gray-150 flex items-center justify-center mb-8 select-none shadow-sm">
-          <Icon name="newspaper" className="h-12 w-12 text-secondary/40" />
+        {/* Imagen destacada real si existe, sino banner elegante de la fundación */}
+        <div className="h-48 sm:h-64 rounded-2xl bg-gradient-to-br from-[#e8f1fa] to-[#fafbfd] border border-gray-150 flex items-center justify-center text-5xl mb-8 select-none shadow-sm relative overflow-hidden">
+          {post.image ? <Image src={post.image} alt={post.title} fill className="object-cover" /> : <span><Icon name="newspaper" className="inline-block h-[1em] w-[1em] align-[-0.125em]" /></span>}
         </div>
 
         {/* Contenido principal en HTML renderizado */}
@@ -75,13 +94,13 @@ export default async function BlogPostPage({ params: { lang, slug } }: Props) {
             <span className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-gray-900 shadow-inner">
               <Icon name="sparkle" className="h-4 w-4" />
             </span>
-            <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">
+            <span className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">
               {es ? 'Fundación PRO-21 y Centro Lápiz en Mano' : 'PRO-21 Foundation & Lápiz en Mano'}
             </span>
           </div>
 
           <a
-            href="https://wa.me/59170106276"
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs font-bold text-green-700 hover:underline flex items-center gap-1.5 min-h-[44px]"
