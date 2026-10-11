@@ -186,6 +186,11 @@ Trabajo posterior en `v2` (commits `36f7c0f`..`ee6fc0e`): cita de ProtagonistPho
 
 **Pendiente (decisiones de la reunión con la Fundación, no de código):** consentimiento de fotos de menores para web pública, autorización de testimonios, cuenta institucional de donaciones, autorización formal de los logos de aliados. La variante "audaz" del hero quedó anotada, no explorada. Detalles menores anotados sin hacer: foto de voluntaria en Colabora aún deja algo de hueco bajo el form; diagrama de red de Equipo se ve algo sobrio.
 
+### Reunión de avance con la Fundación (sep 2026)
+Se armó la agenda de la reunión como página de Notion (borrador privado del usuario, id `3d6aeb54-9287-81e7-be0f-edbcce30cb2a`, título "Reunión de avance — sitio web Fundación PRO-21"). Enfoque acordado: **es reunión de avance / punto de control, NO entrega de producto**. Estructura: antes de la reunión (checklist), Bloque 1 mostrar avance (diseño + estado CMS), Bloque 2 puntos pendientes de la Fundación (consentimiento de fotos de menores = bloqueante #1, testimonios, cuenta institucional de donaciones, logos de aliados, contenido faltante, datos institucionales), Bloque 3 coordinación fase final (cuenta GitHub de la Fundación, compra del dominio `.org` recién cuando el desarrollo esté aprobado, servicios Vercel/Cloudflare/Resend con correo institucional), Bloque 4 primera prueba de formularios y donaciones, Bloque 5 fecha de entrega e hitos, + sección de qué viene en la reunión de entrega (capacitación, manuales, traspaso de credenciales, acta, 30 días de soporte). Falta: mover el borrador de Notion a un espacio de equipo cuando el usuario defina destino.
+
+Nota técnica Notion MCP: al escribir contenido con `notion-update-page` / `replace_content`, usar **saltos de línea reales** (no `\n`) y **tablas nativas** `<table header-row="true"><tr><td>` (no `|` markdown, que sale escapado como texto).
+
 ### Estilo de trabajo acordado con el usuario
 - Consultar antes de cambios no triviales o de criterio; el usuario aprueba con respuestas cortas tipo "sigue" cuando está de acuerdo.
 - Verificar **todo** cambio de código con `npx tsc --noEmit -p tsconfig.json` antes de darlo por terminado.
