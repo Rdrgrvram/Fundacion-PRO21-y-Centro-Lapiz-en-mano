@@ -6,7 +6,7 @@
 | **Versión entregada** | v1 — rama `integracion` (base: `develop`) |
 | **Supervisor académico** | M.Sc. Orlando Rivera |
 | **Fecha de entrega** | _por definir_ |
-| **Estado del documento** | Borrador para firma. Las celdas marcadas ⏳ se completan con la corrida final (T075) |
+| **Estado del documento** | Borrador para firma. Verificación final realizada el 10-oct-2026 (T075) |
 
 ## 1. Alcance entregado
 
@@ -29,13 +29,13 @@ Leyenda: ✅ cumple · 🟡 cumple con salvedad · ⏳ implementado, pendiente d
 | RF-007 | Solo cifras respaldadas; "9 profesionales" consistente | ✅ | Sin "1000+ sesiones" ni "8 áreas". `tests/consent` |
 | RF-008 | 3 últimas publicaciones del blog en Inicio | ✅ | `tests/blog/blog.spec.ts` |
 | RF-009 | Guías de Familias: descarga real o solicitud por WhatsApp sin prometer lo inexistente | ✅ | Hoy por WhatsApp (sin PDFs subidos) |
-| RF-010 | Ninguna imagen rota | ⏳ | Barrido final |
+| RF-010 | Ninguna imagen rota | ✅ | Barrido de 44 vistas (11 rutas × es/en × 375/1280 px), 10-oct-2026: sin imágenes rotas, errores de consola ni enlaces internos caídos |
 | RF-011 | Objetivos táctiles ≥ 44 px y contraste AA en móvil | 🟡 | `tests/a11y` (axe, 375 px). Corregido con tokens existentes. Salvedad: `heading-order` (§5) |
 | RF-012 | Inicio, Mi Escuelita Down y Contacto ≥ 90 en Lighthouse | 🟡 | Mi Escuelita Down 92–93 y Contacto 92–95 cumplen. **Inicio 85–92 (mediana ≈ 90): en el umbral** (§5) |
 | RF-013 | Entradas creadas desde el panel con nombre legible | ✅ | `identifier_field` en testimonios y equipo; `tests/cms/slugs.spec.ts` |
-| RF-014 | Suite de pruebas del CMS al 100 % | ⏳ | Corrida completa final (T051/T075) |
+| RF-014 | Suite de pruebas del CMS al 100 % | 🟡 | Corrida completa 10-oct-2026: 260/261. El fallo (`impacto.spec.ts:110`, aviso "Entrada guardada") es intermitente y pasa al repetir el archivo (7/7) |
 | RF-015 | Guía de despliegue, manuales y acta; sin secretos ni datos de menores en el repositorio | ✅ | Esta carpeta; `.gitignore` excluye `documentacion/` |
-| RF-016 | Rama de integración compila y es la base de la entrega | ⏳ | `tsc` + `build` en la corrida final. Pendiente: PR a `develop` (T002) |
+| RF-016 | Rama de integración compila y es la base de la entrega | ✅ | `tsc` + `build` sin errores (10-oct-2026). PR #49 `integracion → develop` |
 
 **Criterios de éxito sin comprobar aún:** CE-004 (una persona no técnica publica una noticia en < 10 min usando solo el manual) y CE-005 (una persona ajena despliega con solo la guía) requieren una prueba con personas reales; se recomiendan durante la capacitación.
 
@@ -71,7 +71,7 @@ Ocultas hasta recibir autorizaciones firmadas de esos programas. Esas páginas s
 
 ## 5. Deuda técnica conocida
 
-1. **Rendimiento de Inicio:** Lighthouse móvil 85–92 (11 corridas, mediana ≈ 90). Ya era así en `develop`; se descartaron regresión, fuentes y JavaScript; la causa es la foto protagonista del hero y el CSS bloqueante en el perfil más lento. Se redujo la foto de 53 KB a 36 KB con AVIF/WebP. Más margen exige tocar diseño. Detalle: `specs/001-entrega-v1/notas-rendimiento.md`.
+1. **Rendimiento de Inicio:** Lighthouse móvil 85–92 (11 corridas, mediana ≈ 90). Ya era así en `develop`; se descartaron regresión, fuentes y JavaScript; la causa es la foto protagonista del hero y el CSS bloqueante en el perfil más lento. Se redujo la foto de 53 KB a 36 KB con AVIF/WebP. Más margen exige tocar diseño. Una corrida de verificación del 10-oct-2026 en un equipo con carga dio rendimiento 65–91 (LCP 3,3–4,4 s) en las tres rutas, por debajo de lo medido antes; accesibilidad 98–100, buenas prácticas 100 y SEO 100. **Se recomienda repetir la medición en un equipo sin carga antes de citar cifras.** Detalle: `specs/001-entrega-v1/notas-rendimiento.md`.
 2. **Encabezados:** la regla `heading-order` de axe (buena práctica, no criterio WCAG AA) falla en 14 de 24 rutas por saltos h1→h3/h4. Contacto ya está corregida.
 3. **Blog en inglés:** las publicaciones se muestran en español en ambos idiomas (decisión acordada).
 4. **Imágenes en el repositorio:** no se usa Cloudflare R2; crecimiento del repositorio explicado en `MANUAL-ADMIN.md` §6.
