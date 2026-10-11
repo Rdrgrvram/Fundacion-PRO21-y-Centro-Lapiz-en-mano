@@ -4,7 +4,7 @@ import Image from 'next/image'
 import type { Locale } from '@/lib/i18n'
 import type { CollaborateContent } from '@/lib/cms-schemas'
 import { PALETTE } from '@/lib/palette'
-import { waLink } from '@/lib/utils'
+import { waLink, donationMessage } from '@/lib/utils'
 import ProtagonistPhoto from '@/components/sections/ProtagonistPhoto'
 import Icon from '@/components/ui/Icon'
 
@@ -226,7 +226,8 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
 
                 <div className="mt-8 select-none">
                   <a
-                    href={waLink(whatsappNumber)}
+                    id="confirmar-donacion"
+                    href={waLink(whatsappNumber, donationMessage(es, content.donation_tiers[selectedTier], customAmount))}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-primary hover:bg-primary/95 text-black font-extrabold text-sm sm:text-base px-8 py-3.5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-md shadow-primary/10 min-h-[44px] inline-flex items-center gap-2"

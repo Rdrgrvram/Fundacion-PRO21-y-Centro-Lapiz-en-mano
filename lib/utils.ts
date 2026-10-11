@@ -21,6 +21,27 @@ export function waLink(whatsappNumber: string, message?: string): string {
 }
 
 /**
+ * Mensaje de WhatsApp prellenado para confirmar una donación. Un monto personalizado
+ * válido (> 0) tiene prioridad sobre la tarjeta elegida. Una tarjeta de monto libre
+ * ("Libre"/"Free", sin cifra) sin monto personalizado no menciona ninguna cantidad.
+ */
+export function donationMessage(
+  es: boolean,
+  tier: { amount: string; label: string },
+  customAmount: string
+): string {
+  const custom = Number(customAmount)
+  const hasCustom = customAmount.trim() !== '' && Number.isFinite(custom) && custom > 0
+  const tierHasAmount = /\d/.test(tier.amount)
+  const amount = hasCustom ? `Bs ${custom}` : tierHasAmount ? tier.amount : ''
+  const level = !hasCustom && tierHasAmount ? ` (${es ? 'nivel' : 'tier'} ${tier.label})` : ''
+  if (es) {
+    return `Hola, quiero hacer una donación${amount ? ` de ${amount}` : ''}${level} a la Fundación PRO-21. ¿Me indican cómo confirmar el depósito?`
+  }
+  return `Hello, I would like to make a donation${amount ? ` of ${amount}` : ''}${level} to Fundación PRO-21. Could you tell me how to confirm the deposit?`
+}
+
+/**
  * Busca la etiqueta de una ruta en site_settings.nav (fuente real del menú, ya
  * editable desde el CMS) — para reusar en breadcrumbs en vez de hardcodear el
  * nombre de cada página de nuevo. Si la ruta no está en nav (ej. "inicio", que no
