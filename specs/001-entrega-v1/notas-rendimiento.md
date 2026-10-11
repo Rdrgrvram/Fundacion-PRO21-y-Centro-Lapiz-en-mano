@@ -28,3 +28,16 @@ Accesibilidad de Contacto (94): se corrigieron texto blanco/90 sobre verde, salt
 
 ## Deuda de accesibilidad registrada
 `heading-order` (buena práctica de axe, no criterio WCAG AA) falla en 14 de 24 rutas por saltos h1→h3/h4. Contacto ya está corregida; el resto requiere revisar el esquema de encabezados de cada página.
+
+## Corrida de verificación final (10-oct-2026, T075)
+Lighthouse 12.2.1, móvil, `next start` sobre build de producción, 3 corridas por ruta. Equipo de desarrollo con otros procesos activos (servidor Decap, navegador), por lo que el rendimiento queda por debajo de las mediciones previas.
+
+| Ruta | Rendimiento | LCP | Accesibilidad | Buenas prácticas | SEO |
+|---|---|---|---|---|---|
+| `/es` | 65 / 79 / 87 | 3,7–4,4 s | 98 | 100 | 100 |
+| `/es/mi-escuelita-down` | 75 / 75 / 76 | 3,4–3,7 s | 100 | 100 | 100 |
+| `/es/contacto` | 74 / 82 / 91 | 3,3–3,5 s | 100 | 100 | 100 |
+
+Las tres rutas cumplen ≥ 90 en accesibilidad, buenas prácticas y SEO. **Rendimiento no llega a 90 de forma estable** en esta corrida; la varianza es alta (hasta 26 puntos en Inicio). Repetir en un equipo sin carga antes de citar cifras en el acta.
+
+Barrido (44 vistas: 11 rutas × es/en × 375/1280 px): sin errores de consola, sin peticiones ≥ 400, sin imágenes rotas, sin scroll horizontal, 1 `<h1>` por página y 24 enlaces internos sin caídas.

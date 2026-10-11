@@ -53,7 +53,7 @@ Verificación por lote: `npx tsc --noEmit -p tsconfig.json` + `npm run build` (+
 - [x] **T072** [P] `docs/entrega/GUIA-DOMINIO.md` (compra `.org` ≤ $15, DNS hacia Vercel, correo institucional para Resend). *(RF-015)*
 - [x] **T073** `docs/entrega/GUIA-DESPLIEGUE.md` paso a paso: GitHub de la fundación → Vercel → OAuth del CMS → Cloudflare R2 → Resend → dominio → verificación (Quickstart Q13). *(RF-015, H8)*
 - [x] **T074** `docs/entrega/ACTA-ENTREGA.md`: estado de cada requisito (cumple/parcial/no cumple con evidencia), pendientes de la fundación (permisos de Wawitas/Pasos Firmes, firmas institucionales, guías PDF, fotos de 2 profesionales, cifras a validar), **riesgo registrado de fotos de uso general**, y 30 días de soporte. *(RF-015)*
-- [ ] **T075** Barrido final (rutas × es/en × 375/1280, consola, imágenes, enlaces), Lighthouse, `tsc`, `build`, `test:cms` y todas las pruebas nuevas, **en una sola corrida limpia**; completar la tabla de Quickstart. *(CE-002, CE-003, CE-006)*
+- [x] **T075** *(10-oct: barrido 44 vistas limpio, tsc, build y suite 260/261 OK; rendimiento Lighthouse 65–91 en equipo cargado, ver `notas-rendimiento.md` — repetir en equipo limpio)* Barrido final (rutas × es/en × 375/1280, consola, imágenes, enlaces), Lighthouse, `tsc`, `build`, `test:cms` y todas las pruebas nuevas, **en una sola corrida limpia**; completar la tabla de Quickstart. *(CE-002, CE-003, CE-006)*
 
 ## Trazabilidad requisito → tarea
 | RF | Tareas | RF | Tareas |
