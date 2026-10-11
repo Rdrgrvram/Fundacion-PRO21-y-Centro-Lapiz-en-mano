@@ -41,3 +41,14 @@ Lighthouse 12.2.1, móvil, `next start` sobre build de producción, 3 corridas p
 Las tres rutas cumplen ≥ 90 en accesibilidad, buenas prácticas y SEO. **Rendimiento no llega a 90 de forma estable** en esta corrida; la varianza es alta (hasta 26 puntos en Inicio). Repetir en un equipo sin carga antes de citar cifras en el acta.
 
 Barrido (44 vistas: 11 rutas × es/en × 375/1280 px): sin errores de consola, sin peticiones ≥ 400, sin imágenes rotas, sin scroll horizontal, 1 `<h1>` por página y 24 enlaces internos sin caídas.
+
+## Corrida con el equipo libre (11-oct-2026)
+Lighthouse 12.2.1, móvil, `npm start` sobre build de producción, 3 corridas por ruta, sin otros procesos pesados activos.
+
+| Ruta | Rendimiento | LCP | Accesibilidad | Buenas prácticas | SEO |
+|---|---|---|---|---|---|
+| `/es` | 91 / 84 / 85 | 3,0–3,9 s | 98 | 100 | 100 |
+| `/es/mi-escuelita-down` | 87 / 85 / 85 | 3,4–3,5 s | 100 | 100 | 100 |
+| `/es/contacto` | 91 / 73 / 90 | 3,3–3,6 s | 100 | 100 | 100 |
+
+Mejora respecto a la corrida con carga del 10-oct, pero **ninguna ruta llega a 90 de forma estable**. Mi Escuelita Down quedó en 85–87 frente a los 92–93 medidos antes; la diferencia puede deberse a la varianza de Lighthouse y al equipo. Para citar una cifra única conviene medir en el despliegue real (Vercel), donde el servidor y la red son los definitivos.
