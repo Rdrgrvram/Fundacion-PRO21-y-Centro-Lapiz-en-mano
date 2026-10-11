@@ -1,6 +1,6 @@
 ---
 name: Physiotherapy
-icon: 💪
+icon: accessibility
 color: secondary
 desc: Intervention from early stimulation to improve muscle tone, posture, and
   mobility, adapting exercises to each stage.

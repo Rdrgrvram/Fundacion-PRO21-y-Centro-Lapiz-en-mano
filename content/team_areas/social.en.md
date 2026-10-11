@@ -1,6 +1,6 @@
 ---
 name: "Social Work"
-icon: "🤝"
+icon: "handshake"
 color: "accent"
 desc: "Guidance, social support, and emotional containment for families, structuring the necessary support network at home."
 skills:

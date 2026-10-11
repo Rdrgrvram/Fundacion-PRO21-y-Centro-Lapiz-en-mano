@@ -1,6 +1,6 @@
 ---
 name: "Psychomotor therapy"
-icon: "🤸"
+icon: "accessibility"
 color: "accent"
 desc: "Strengthening coordination, balance, and body schema to favor autonomy, concentration, and body expression."
 skills:

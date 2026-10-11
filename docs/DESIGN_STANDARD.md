@@ -111,6 +111,22 @@ Implementado en `components/sections/ProgramHero.tsx` para los 3 programas; inli
 
 ---
 
+## Accesibilidad: contraste y áreas táctiles (WCAG AA — obligatorio)
+
+Verificado automáticamente por `tests/a11y/a11y.spec.ts` (axe + medición de áreas táctiles, 12 rutas × es/en a 375px). **Una página nueva no se da por terminada si esa prueba falla.**
+
+**Contraste de texto (≥ 4,5:1; ≥ 3:1 solo para texto grande: ≥ 24px, o ≥ 18,66px en negrita):**
+- **Texto de acento sobre fondo claro:** azul → `text-secondary-700` (nunca `text-secondary`, que da 3,18:1); amarillo → `text-primary-900` (nunca `text-primary`/`text-primary-700` sobre tintes); morado → `text-accent`. En `style={{ color }}` usar `PALETTE[x].textHex`, no `.hex` (`.hex` es solo para fondos, bordes e íconos).
+- **Texto blanco sobre azul de marca:** el fondo debe ser `bg-secondary-700` (#166e8a, 5,9:1), no `bg-secondary` (#229cc2, solo 3,18:1). Los gradientes de hero terminan en `to-secondary-700`. El azul de marca (`secondary`) queda para acentos, bordes, íconos y `bg-secondary/10`.
+- **Texto secundario gris:** mínimo `text-gray-500` sobre blanco y `text-gray-600` sobre tintes o grises claros. Nunca `text-gray-400` para texto sobre claro (2,5:1). Sobre fondo oscuro (footer) se usa `text-gray-400` o más claro.
+- **Texto blanco tenue sobre fondos de color:** no bajar de `text-white/90`; los textos pequeños (< 14px) y las migas de pan van en `text-white` sólido.
+- **Chips y paneles sobre un hero de color:** usar `bg-black/15`–`bg-black/25` (oscurecen el fondo), no `bg-white/10–25` (lo aclaran y bajan el contraste del texto blanco).
+- **Verde (WhatsApp, éxito):** texto blanco solo sobre `bg-green-700`; texto verde sobre claro, `#15803d` (Tailwind green-700) o más oscuro.
+
+**Áreas táctiles (≥ 44 × 44 px en móvil):** todo enlace, botón y campo. Si el elemento visual es más chico (íconos, puntos de carrusel, migas de pan), el área táctil se amplía con `min-h-[44px] min-w-[44px]` (y `-my-3.5` si no debe cambiar el alto de la fila) o con un botón contenedor de 44px alrededor del punto. Excepción: enlaces dentro de un párrafo de texto.
+
+---
+
 ## Navegación (breakpoints)
 
 - El menú desktop (`Nav.tsx`) y el toggle de hamburguesa (`Header.tsx`) colapsan juntos en `lg:` (no `xl:` — se bajó el breakpoint al agrupar los 3 programas bajo un dropdown "Programas", lo que liberó espacio horizontal). Si se agregan más ítems al nav plano, revisar este breakpoint de nuevo antes de subirlo.

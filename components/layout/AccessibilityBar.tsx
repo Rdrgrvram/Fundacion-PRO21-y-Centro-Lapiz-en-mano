@@ -61,29 +61,29 @@ export default function AccessibilityBar({ lang }: AccessibilityBarProps) {
 
   return (
     <div className="bg-secondary-700 text-white text-xs py-1.5 px-4 border-b border-white/10 flex flex-wrap items-center justify-between gap-3 min-h-[44px]">
-      <span className="text-white/60 font-medium select-none">
+      <span className="text-white/90 font-medium select-none">
         {es ? 'Centro Lápiz en Mano · La Paz, Bolivia' : 'Lápiz en Mano Center · La Paz, Bolivia'}
       </span>
       <div className="flex items-center gap-2 flex-wrap">
-        <span className="text-white/60 select-none mr-1">{es ? 'Accesibilidad:' : 'Accessibility:'}</span>
+        <span className="text-white/90 select-none mr-1">{es ? 'Accesibilidad:' : 'Accessibility:'}</span>
         
         <button 
           onClick={decreaseFontSize} 
-          aria-label={es ? 'Reducir tamaño de texto' : 'Decrease font size'} 
+          aria-label={es ? 'A− Reducir tamaño de texto' : 'A− Decrease font size'} 
           className="w-11 h-11 md:w-8 md:h-8 flex items-center justify-center rounded bg-white/10 hover:bg-white/20 active:bg-white/30 text-sm font-bold transition-colors"
         >
           A−
         </button>
         <button 
           onClick={resetFontSize} 
-          aria-label={es ? 'Restablecer tamaño de texto' : 'Reset font size'} 
+          aria-label={es ? 'A Restablecer tamaño de texto' : 'A Reset font size'} 
           className={`w-11 h-11 md:w-8 md:h-8 flex items-center justify-center rounded text-sm font-bold transition-colors ${fontSize === 100 ? 'bg-primary text-black' : 'bg-white/10 hover:bg-white/20 active:bg-white/30'}`}
         >
           A
         </button>
         <button 
           onClick={increaseFontSize} 
-          aria-label={es ? 'Aumentar tamaño de texto' : 'Increase font size'} 
+          aria-label={es ? 'A+ Aumentar tamaño de texto' : 'A+ Increase font size'} 
           className="w-11 h-11 md:w-8 md:h-8 flex items-center justify-center rounded bg-white/10 hover:bg-white/20 active:bg-white/30 text-sm font-bold transition-colors"
         >
           A+
