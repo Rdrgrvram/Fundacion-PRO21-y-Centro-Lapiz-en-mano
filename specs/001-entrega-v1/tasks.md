@@ -39,7 +39,7 @@ Verificación por lote: `npx tsc --noEmit -p tsconfig.json` + `npm run build` (+
 
 ## Fase 5 — CMS operable
 - [x] **T050** [P] `identifier_field` en `testimonios` (`family`) y `equipo` (`name`); prueba: crear entrada → archivo con nombre legible, sin `map-`. *(RF-013, D8)*
-- [ ] **T051** Actualizar la suite `tests/cms/` a los cambios (campos `photos_authorized`, etiquetas) y correr **una** corrida completa verde. *(RF-014)*
+- [x] **T051** *(corrida completa 10-oct: 260/261 verdes; el único fallo, `impacto.spec.ts:110` "Entrada guardada", pasó al repetirlo — intermitente del CMS local)* Actualizar la suite `tests/cms/` a los cambios (campos `photos_authorized`, etiquetas) y correr **una** corrida completa verde. *(RF-014)*
 
 ## Fase 6 — Accesibilidad y rendimiento
 - [x] **T060** Prueba `tests/a11y/axe.spec.ts` (axe sobre las 12 rutas × es/en, 375px): lista de nodos con contraste < AA y objetivos táctiles < 44px (fallando = rojo). *(RF-011)*
@@ -48,11 +48,11 @@ Verificación por lote: `npx tsc --noEmit -p tsconfig.json` + `npm run build` (+
 - [x] **T063** *(cerrada con salvedad: Inicio 85–92, ver `notas-rendimiento.md`)* Un único arreglo acotado según T062; Lighthouse ≥ 90 en `/es`, `/es/mi-escuelita-down`, `/es/contacto` (3 corridas). Si no se logra, registrar en el acta con la medición. *(RF-012)*
 
 ## Fase 7 — Entrega
-- [ ] **T070** [P] `docs/entrega/MANUAL-CMS.md` (para quien edita: crear/editar/ocultar, subir imágenes y PDFs, qué NO tocar) con capturas. *(RF-015)*
-- [ ] **T071** [P] `docs/entrega/MANUAL-ADMIN.md` (cuentas, variables de entorno, rotación de claves, costos, respaldo del repositorio). *(RF-015)*
-- [ ] **T072** [P] `docs/entrega/GUIA-DOMINIO.md` (compra `.org` ≤ $15, DNS hacia Vercel, correo institucional para Resend). *(RF-015)*
-- [ ] **T073** `docs/entrega/GUIA-DESPLIEGUE.md` paso a paso: GitHub de la fundación → Vercel → OAuth del CMS → Cloudflare R2 → Resend → dominio → verificación (Quickstart Q13). *(RF-015, H8)*
-- [ ] **T074** `docs/entrega/ACTA-ENTREGA.md`: estado de cada requisito (cumple/parcial/no cumple con evidencia), pendientes de la fundación (permisos de Wawitas/Pasos Firmes, firmas institucionales, guías PDF, fotos de 2 profesionales, cifras a validar), **riesgo registrado de fotos de uso general**, y 30 días de soporte. *(RF-015)*
+- [x] **T070** [P] `docs/entrega/MANUAL-CMS.md` (para quien edita: crear/editar/ocultar, subir imágenes y PDFs, qué NO tocar) con capturas. *(RF-015)*
+- [x] **T071** [P] `docs/entrega/MANUAL-ADMIN.md` (cuentas, variables de entorno, rotación de claves, costos, respaldo del repositorio). *(RF-015)*
+- [x] **T072** [P] `docs/entrega/GUIA-DOMINIO.md` (compra `.org` ≤ $15, DNS hacia Vercel, correo institucional para Resend). *(RF-015)*
+- [x] **T073** `docs/entrega/GUIA-DESPLIEGUE.md` paso a paso: GitHub de la fundación → Vercel → OAuth del CMS → Cloudflare R2 → Resend → dominio → verificación (Quickstart Q13). *(RF-015, H8)*
+- [x] **T074** `docs/entrega/ACTA-ENTREGA.md`: estado de cada requisito (cumple/parcial/no cumple con evidencia), pendientes de la fundación (permisos de Wawitas/Pasos Firmes, firmas institucionales, guías PDF, fotos de 2 profesionales, cifras a validar), **riesgo registrado de fotos de uso general**, y 30 días de soporte. *(RF-015)*
 - [ ] **T075** Barrido final (rutas × es/en × 375/1280, consola, imágenes, enlaces), Lighthouse, `tsc`, `build`, `test:cms` y todas las pruebas nuevas, **en una sola corrida limpia**; completar la tabla de Quickstart. *(CE-002, CE-003, CE-006)*
 
 ## Trazabilidad requisito → tarea
