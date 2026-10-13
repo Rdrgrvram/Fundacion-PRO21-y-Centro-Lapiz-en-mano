@@ -98,7 +98,7 @@ Marca cada punto en el sitio real:
 
 - [ ] `/es` y `/en` cargan; el idioma del navegador al compartir el enlace es correcto.
 - [ ] `/sitemap.xml`, `/robots.txt` y el ícono de la pestaña (favicon) existen.
-- [ ] `/es/aula-wawitas` y `/es/pasos-firmes` **no muestran fotos de niños**; `/es/mi-escuelita-down` sí.
+- [ ] `/es/aula-wawitas`, `/es/pasos-firmes` y `/es/desarrolla-tea` **no muestran fotos de niños**; `/es/mi-escuelita-down` sí.
 - [ ] Testimonios: solo "Mamá de T./S./R.".
 - [ ] "9 profesionales" en Inicio, Quiénes Somos, Equipo e Impacto; sin "1000+ sesiones" ni "8 áreas".
 - [ ] Formulario de **Contacto** y de **Voluntariado** (Colabora): llegan al correo de la Fundación.

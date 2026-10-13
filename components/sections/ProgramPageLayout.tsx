@@ -15,8 +15,7 @@ interface ProgramPageLayoutProps {
   program: Program
 }
 
-// Composición compartida por los 3 programas (Mi Escuelita Down, Aula Wawitas,
-// Pasos Firmes) — cada page.tsx queda como un wrapper fino que solo trae los
+// Composición compartida por todos los programas (content/programs/*) — cada page.tsx queda como un wrapper fino que solo trae los
 // datos. Ver docs/CMS-DOCUMENTATION.md §4.1 (ejemplo trabajado a fondo).
 export default function ProgramPageLayout({ lang, program }: ProgramPageLayoutProps) {
   const { contact } = getSiteSettings(lang)
@@ -28,6 +27,7 @@ export default function ProgramPageLayout({ lang, program }: ProgramPageLayoutPr
       <ProgramCardSection id="section-1" section={program.section_1} alt />
       <ProgramTabSection id="section-2" section={program.section_2} />
       {program.section_3 && <ProgramCardSection section={program.section_3} alt compact />}
+      {program.section_4 && <ProgramCardSection section={program.section_4} compact />}
       <ProgramGallery section={program.photos_authorized ? program.gallery : undefined} color={program.hero.color} />
       <ProgramEnrollmentSteps section={program.enrollment} />
       {testimonial && <ProgramTestimonial testimonial={testimonial} />}

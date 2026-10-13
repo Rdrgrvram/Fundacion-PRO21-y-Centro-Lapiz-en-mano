@@ -34,7 +34,10 @@ export async function openCmsEntry(page: Page, hash: string) {
 export async function publishEntry(page: Page) {
   await page.getByRole('button', { name: 'Publicar', exact: true }).click()
   await page.locator('text=Publicar ahora').first().click({ force: true })
-  await expect(page.getByText('Entrada guardada')).toBeVisible({ timeout: 10000 })
+  // El aviso dura ~800 ms antes del reload: en equipos lentos el sondeo no lo alcanza a ver. Se acepta también el estado
+  // final del botón ("Publicado"), que confirma la misma publicación.
+  const guardado = page.getByText('Entrada guardada').or(page.getByRole('button', { name: 'Publicado', exact: true })).first()
+  await expect(guardado).toBeVisible({ timeout: 15000 })
 
   // admin/entry.tsx fuerza un location.reload() ~800ms después de cada publicación
   // exitosa (enganchado al evento 'postPublish' de Decap) — si el test navega o

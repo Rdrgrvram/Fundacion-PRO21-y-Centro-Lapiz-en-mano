@@ -11,15 +11,13 @@ export interface NavItem {
 interface NavProps {
   lang: Locale
   items: NavItem[]
-  // Slugs de los programas visibles (vienen del CMS); se agrupan en el dropdown.
-  programRoutes?: string[]
+  // Slugs de los programas (vienen del CMS vía Header); se agrupan en el dropdown.
+  programRoutes: string[]
 }
 
-// Rutas por defecto de los programas — se agrupan bajo un solo ítem "Programas" en el
-// nav de escritorio para no saturar la barra horizontal con 10 links sueltos.
-const PROGRAM_ROUTES = ['mi-escuelita-down', 'aula-wawitas', 'pasos-firmes']
-
-export default function Nav({ lang, items, programRoutes = PROGRAM_ROUTES }: NavProps) {
+// Los programas se agrupan bajo un solo ítem "Programas" en el nav de escritorio para no
+// saturar la barra horizontal con links sueltos. La lista sale del CMS, nunca fija en código.
+export default function Nav({ lang, items, programRoutes }: NavProps) {
   const pathname = usePathname()
 
   const linkClass = (isActive: boolean) =>
