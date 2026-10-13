@@ -30,7 +30,7 @@ const EXPECTED_SECTIONS = [
 // aparte en vez de esa lista.
 const EXPECTED_NEW_FIELD_LABELS = [
   'Badge (ubicación)',
-  'Texto del botón (compartido por las 3 tarjetas)',
+  'Texto del botón (compartido por todas las tarjetas)',
   'Texto del botón', // team_preview.cta_label
   'Texto del botón de contacto', // cta.link_label
 ]

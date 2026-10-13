@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test'
 import AxeBuilder from '@axe-core/playwright'
+import { programRoutes } from '../helpers/programs'
 
 // RF-011 — contraste WCAG AA, áreas táctiles ≥ 44px y nombre accesible = texto visible, en móvil (375px), 12 rutas × es/en.
 // DEUDA CONOCIDA (no es criterio WCAG AA, sino buena práctica de axe): `heading-order` falla en 14 de 24 rutas (saltos
@@ -9,9 +10,7 @@ import AxeBuilder from '@axe-core/playwright'
 const ROUTES = [
   '',
   '/quienes-somos',
-  '/mi-escuelita-down',
-  '/aula-wawitas',
-  '/pasos-firmes',
+  ...programRoutes(),
   '/equipo',
   '/impacto',
   '/colabora',

@@ -188,6 +188,18 @@ _______________
 
 ---
 
+## Sección: Desarrolla TEA
+
+> Programa nuevo (oct-2026). El texto sale del documento oficial del Centro (`PROYECTO DESARROLLATEA.md`); no se inventaron cifras ni testimonios. Ver `specs/002-programa-desarrolla-tea/`.
+
+- [x] Documento completo en es y en: enfoque (7 principios), modalidades y horarios (4 pestañas), áreas de intervención (8, con sus 77 puntos) y ruta de ingreso (11 pasos)
+- [x] Objetivos específicos, población beneficiaria y articulación interdisciplinaria, en es y en (Bloque 4 opcional, acordeón). Justificación, Problemática y Conclusión quedan fuera a propósito (`specs/002-programa-desarrolla-tea/tasks.md`, T034)
+- [x] Edad atendida: 3 – 12 años
+- [ ] Orden en menú y pie (`order: 40`) y nombre público "Desarrolla TEA": **por confirmar con la Fundación**
+- [ ] ⚠️ Fotografías del programa (con autorización escrita de los padres; hoy `photos_authorized` apagado)
+
+---
+
 ## Sección: Nuestro Equipo
 
 > *(Completar una fila por cada profesional del equipo)*

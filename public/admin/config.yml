@@ -155,14 +155,15 @@ collections:
               - { label: Etiqueta, name: badge, widget: string, i18n: true }
               - { label: Título, name: title, widget: string, i18n: true }
               - { label: Subtítulo, name: subtitle, widget: text, i18n: true }
-              - { label: "Texto del botón (compartido por las 3 tarjetas)", name: cta_label, widget: string, i18n: true }
+              - { label: "Texto del botón (compartido por todas las tarjetas)", name: cta_label, widget: string, i18n: true }
               - label: "Tarjetas de programa"
                 name: cards
                 widget: list
-                min: 3
-                max: 3
+                hint: "Datos de respaldo: la tarjeta de cada programa sale de su propia ficha (Programas → Tarjeta de Inicio). No hay un número fijo de tarjetas."
                 fields:
-                  - { label: Programa, name: slug, widget: select, options: [mi-escuelita-down, aula-wawitas, pasos-firmes], hint: "Determina a qué página enlaza la tarjeta" }
+                  # Select y no relation: probado el 11-oct-2026, un relation aquí hace que el panel marque "CAMBIOS NO GUARDADOS" al abrir Inicio
+                  # sin que nadie edite (mismo bug de Decap que ya se documenta en el campo "area" del equipo). Al agregar un programa nuevo, sumar su slug acá.
+                  - { label: Programa, name: slug, widget: select, options: [mi-escuelita-down, aula-wawitas, pasos-firmes, desarrolla-tea], hint: "Determina a qué página enlaza la tarjeta" }
                   - { label: "Ícono (Lucide)", name: icon, widget: icon_picker }
                   - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
                   - { label: Etiqueta, name: badge, widget: string, i18n: true }
@@ -435,6 +436,7 @@ collections:
         fields:
           - { label: Etiqueta, name: badge, widget: string, i18n: true }
           - { label: "Título de sección", name: title, widget: string, i18n: true }
+          - { label: "Formato visual", name: layout, widget: select, options: [tarjetas, acordeón], default: tarjetas, required: false, hint: "Acordeón: el texto completo se muestra al hacer clic (recomendado si las descripciones son largas; las tarjetas recortan el texto)" }
           - label: Ítems
             name: items
             widget: list
@@ -443,6 +445,32 @@ collections:
               - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
               - { label: Título, name: title, widget: string, i18n: true }
               - { label: Descripción, name: desc, widget: text, i18n: true, required: false }
+              - label: "Sub-puntos (opcional)"
+                name: items
+                widget: list
+                required: false
+                field: { label: Punto, name: point, widget: string, i18n: true }
+      - label: "Bloque 4 (opcional — ej. Objetivos / Beneficiarios / Trabajo en red)"
+        name: section_4
+        widget: object
+        required: false
+        fields:
+          - { label: Etiqueta, name: badge, widget: string, i18n: true, required: false }
+          - { label: "Título de sección", name: title, widget: string, i18n: true, required: false }
+          - { label: "Formato visual", name: layout, widget: select, options: [tarjetas, acordeón], default: tarjetas, required: false, hint: "Acordeón: el texto completo se muestra al hacer clic (recomendado si las descripciones son largas; las tarjetas recortan el texto)" }
+          - label: Ítems
+            name: items
+            widget: list
+            fields:
+              - { label: "Ícono (Lucide)", name: icon, widget: icon_picker }
+              - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: Descripción, name: desc, widget: text, i18n: true, required: false }
+              - label: "Sub-puntos (opcional)"
+                name: items
+                widget: list
+                required: false
+                field: { label: Punto, name: point, widget: string, i18n: true }
       - label: "Sección: Galería de fotos"
         name: gallery
         widget: object
@@ -453,6 +481,8 @@ collections:
           - label: Fotos
             name: photos
             widget: list
+            required: false
+            hint: "Puede quedar vacía: la galería no se muestra hasta que haya fotos autorizadas."
             fields:
               - { label: Foto, name: image, widget: image }
               - { label: "Texto alternativo (accesibilidad)", name: alt, widget: string, i18n: true }

@@ -202,3 +202,5 @@ Nota técnica Notion MCP: al escribir contenido con `notion-update-page` / `repl
 ### Pendientes menores
 - Borrar manualmente la carpeta `_to_delete/Nav.tsx.bak` (quedó ahí por falta de permiso de borrado en la sesión anterior).
 - Migración de emoji→SVG en contenido editorial del CMS (valores de "Nuestra Misión", stats, chips de área) — identificada como mejora de mayor alcance, requiere tocar `lib/cms-schemas.ts` y `public/admin/config.yml`, **no iniciada**.
+
+@AGENTS.md

@@ -20,7 +20,7 @@ Leyenda: ✅ cumple · 🟡 cumple con salvedad · ⏳ implementado, pendiente d
 
 | ID | Requisito | Estado | Evidencia |
 |---|---|---|---|
-| RF-001 | Fotos de niños ocultas en programas sin autorización; reactivables sin código | ✅ | Campo `photos_authorized` (por defecto apagado). Aula Wawitas y Pasos Firmes apagados. `tests/consent/consent.spec.ts` |
+| RF-001 | Fotos de niños ocultas en programas sin autorización; reactivables sin código | ✅ | Campo `photos_authorized` (por defecto apagado). Aula Wawitas, Pasos Firmes y Desarrolla TEA apagados. `tests/consent/consent.spec.ts`, `tests/programs/desarrolla-tea.spec.ts` |
 | RF-002 | Solo los 3 testimonios entregados, sin nombres completos | ✅ | "Mamá de T./S./R." en testimonios, hero de Inicio, Impacto y Familias. `tests/consent` |
 | RF-003 | Formularios al correo oficial; nunca confirman un envío que no ocurrió | ✅ | Sin `RESEND_API_KEY` responden 503 y la página ofrece WhatsApp. `tests/api/forms.spec.ts`. **Envío real con clave: pendiente de prueba en el despliegue** (§4) |
 | RF-004 | Validación de correo, campos y spam, en ambos idiomas | ✅ | Respuestas 400. `tests/api/forms.spec.ts` |
@@ -49,7 +49,7 @@ Las fotos de Inicio, Quiénes Somos, Impacto, Colabora y Familias **no están as
 
 Los 10 permisos recibidos corresponden **solo a Mi Escuelita Down**. Algunos tienen defectos (sin fecha, sin nombre o sin firma institucional) y la institución no firmó ninguno. Por decisión del responsable basta con la **declaración de la Fundación** de que cuenta con las autorizaciones; queda registrada aquí. Los documentos originales contienen datos de menores y **no se incluyen en el repositorio**.
 
-### 3.3 Fotografías de Aula Wawitas y Pasos Firmes
+### 3.3 Fotografías de Aula Wawitas, Pasos Firmes y Desarrolla TEA
 
 Ocultas hasta recibir autorizaciones firmadas de esos programas. Esas páginas se ven completas sin fotos.
 
@@ -57,7 +57,7 @@ Ocultas hasta recibir autorizaciones firmadas de esos programas. Esas páginas s
 
 | # | Pendiente | Bloquea |
 |---|---|---|
-| 1 | Autorizaciones firmadas de uso de imagen de **Aula Wawitas** y **Pasos Firmes** (para activar sus fotos) | Fotos de esos programas |
+| 1 | Autorizaciones firmadas de uso de imagen de **Aula Wawitas**, **Pasos Firmes** y **Desarrolla TEA** (para activar sus fotos) | Fotos de esos programas |
 | 2 | Firma y fecha de la **institución** en las autorizaciones existentes | Cierre formal del riesgo 3.2 |
 | 3 | Autorización escrita de las **3 familias** de los testimonios para publicarlos en la web | Testimonios en línea |
 | 4 | Autorización formal de los **logos de aliados y medios** (UCB, Red Uno, ATB, Página Siete) | Sección de aliados |
