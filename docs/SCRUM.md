@@ -3,6 +3,32 @@
 
 ---
 
+## Estado real del backlog (actualizado 14-oct-2026)
+
+> Las tablas de abajo son el backlog **inicial**. Estado verificado contra el código y el repositorio:
+
+| Historia | Estado | Salvedad |
+|---|---|---|
+| US-01, US-05, US-08 | ✅ | — |
+| US-02 Escuelita Down | ✅ | — |
+| US-03 Aula Wawitas, US-04 Pasos Firmes | 🟡 | Sin galería pública hasta tener autorización de fotos (#66) |
+| US-06 Inglés | ✅ | Blog solo en español (decisión acordada) |
+| US-07 CMS | 🟡 | Falta probar el login OAuth con un usuario de la Fundación en producción (#62) |
+| US-09 Impacto | 🟡 | Informes anuales sin PDF; testimonios pendientes de autorización (#66) |
+| US-10 Accesibilidad | ✅ | Lighthouse accesibilidad 98–100; `heading-order` corregido (#54) |
+| US-11 Equipo | 🟡 | Faltan fotos de 2 profesionales (#66) |
+| US-12, US-17 Formularios | 🟡 | Falta un envío real con Resend (#63) |
+| US-13 Donaciones | 🟡 | Falta la cuenta institucional definitiva (#66) |
+| US-14 Recursos para familias | 🟡 | Sin PDFs; se ofrece WhatsApp (#66) |
+| US-15 Imágenes en R2 | 🟡 | **No se usa R2**; las imágenes van al repositorio (#58) |
+| US-16 Blog | 🟡 | Hay 1 publicación; el criterio pide 2 reales (#57) |
+| US-DOC (#41) | 🟡 | Manuales hechos en Markdown; falta PDF (#56) |
+
+**Historias añadidas:** Desarrolla TEA (4.º programa, PR #51) y mensaje de WhatsApp en donaciones (PR #50).
+
+**Sprint 6-Deploy (en curso):** issues #52 a #67 en GitHub. Sprint Goal: dejar el desarrollo cerrado y llegar a la reunión final con la Fundación listos para desplegar y entregar.
+---
+
 ## ¿Por qué Scrum para este proyecto?
 
 Con 6 personas, 8 semanas y un cliente real (la fundación), Scrum permite:
