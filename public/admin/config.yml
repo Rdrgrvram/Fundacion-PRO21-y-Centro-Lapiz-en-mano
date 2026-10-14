@@ -855,6 +855,15 @@ collections:
                   - field: visible
                     values: [true]
               - { label: Categoría, name: category, widget: string, required: false, hint: "Debe coincidir exactamente con una de las Categorías de la galería de arriba (ej. Mi Escuelita), para que el filtro funcione" }
+          - label: "Videos de YouTube (opcional)"
+            name: videos
+            widget: list
+            required: false
+            hint: "Pega el enlace de un video de YouTube. Si no hay videos, la sección no se muestra. Videos donde aparezcan niños: SOLO con autorización escrita de los padres."
+            fields:
+              - { label: Título, name: title, widget: string, i18n: true }
+              - { label: "Enlace de YouTube", name: url, widget: string, i18n: duplicate, pattern: ['^https?://(www\.|m\.)?(youtube\.com|youtu\.be)/', "Debe ser un enlace de YouTube (https://youtu.be/… o https://www.youtube.com/watch?v=…)"] }
+              - { label: "Descripción (opcional)", name: desc, widget: string, i18n: true, required: false }
           - { label: "Nota de la galería", name: gallery_note, widget: text, i18n: true }
           - label: "CTA final"
             name: cta
@@ -929,6 +938,9 @@ collections:
               - { label: "Ícono (Lucide)", name: icon, widget: icon_picker }
               - { label: Título, name: title, widget: string, i18n: true }
               - { label: Líneas, name: lines, widget: list, i18n: true }
+              - { label: "Imagen de QR (opcional)", name: qrImage, widget: image, required: false, i18n: duplicate, hint: "Código QR de pago. Si el banco o la cuenta cambian, sube aquí el QR nuevo." }
+              - { label: "Enlace de pago (opcional)", name: link, widget: string, required: false, i18n: duplicate, pattern: ['^https?://', "Debe empezar con https://"], hint: "Por ejemplo el enlace de PayPal. Si se deja vacío no aparece ningún botón." }
+              - { label: "Texto del botón (opcional)", name: link_label, widget: string, required: false, i18n: true, hint: "Si se deja vacío dice «Donar ahora»." }
               - { label: "¿Es transferencia bancaria?", name: is_bank, widget: boolean, required: false, default: false, hint: "Marcar SOLO en el método de transferencia bancaria — sus 'Líneas' se ignoran y se arman automáticamente con los 'Datos bancarios' de abajo." }
           - { label: "Nota de pago", name: payment_note, widget: text, i18n: true }
           - label: "Sección: Voluntariado"
@@ -1121,7 +1133,7 @@ collections:
     fields:
       - { label: "Visible en el sitio", name: visible, widget: boolean, default: true, required: false, hint: "Si se desactiva, la entrada deja de existir públicamente (error 404) hasta reactivarla. También se puede cambiar desde el panel rápido en /admin/blog." }
       - { label: Título, name: title, widget: string }
-      - { label: Fecha de publicación, name: date, widget: datetime, format: "YYYY-MM-DD" }
+      - { label: Fecha de publicación, name: date, widget: datetime, format: "YYYY-MM-DD", time_format: false, default: "{{now}}", hint: "Se rellena con la fecha de hoy; cámbiala si publicas una noticia de otro día." }
       - { label: Imagen destacada, name: image, widget: image, required: false }
       - { label: "PDF adjunto (opcional)", name: pdf, widget: file, required: false, hint: "Si se sube, al hacer clic en la imagen del blog en el listado público se abre este PDF en vez del artículo.", media_folder: "/public/docs", public_folder: "/docs" }
       - { label: Resumen (para la lista), name: excerpt, widget: text }

@@ -4,7 +4,7 @@ import Image from 'next/image'
 import type { Locale } from '@/lib/i18n'
 import type { CollaborateContent } from '@/lib/cms-schemas'
 import { PALETTE } from '@/lib/palette'
-import { waLink, donationMessage } from '@/lib/utils'
+import { waLink, donationMessage, tierAmountValue } from '@/lib/utils'
 import ProtagonistPhoto from '@/components/sections/ProtagonistPhoto'
 import Icon from '@/components/ui/Icon'
 
@@ -18,7 +18,12 @@ interface ColaboraPageClientProps {
 export default function ColaboraPageClient({ lang, content, whatsappNumber, email }: ColaboraPageClientProps) {
   const es = lang === 'es'
   const [selectedTier, setSelectedTier] = useState(1)
-  const [customAmount, setCustomAmount] = useState('')
+  // El campo de monto arranca con el de la tarjeta destacada y se rellena al elegir otra (la persona puede cambiarlo).
+  const [customAmount, setCustomAmount] = useState(() => tierAmountValue(content.donation_tiers[1]?.amount ?? ''))
+  const chooseTier = (i: number) => {
+    setSelectedTier(i)
+    setCustomAmount(tierAmountValue(content.donation_tiers[i]?.amount ?? ''))
+  }
   const [selectedVolArea, setSelectedVolArea] = useState<number | null>(null)
   const [openAlliance, setOpenAlliance] = useState<number | null>(null)
   const [formSent, setFormSent] = useState(false)
@@ -173,7 +178,16 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
               return (
                 <div
                   key={i}
-                  onClick={() => setSelectedTier(i)}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={isSelected}
+                  onClick={() => chooseTier(i)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      chooseTier(i)
+                    }
+                  }}
                   className={`bg-white rounded-3xl overflow-hidden border cursor-pointer relative shadow-sm hover:shadow-md transition-all duration-300 ${isSelected ? 'border-primary scale-[1.01]' : 'border-gray-200 hover:border-gray-300'}`}
                 >
                   {tier.featured && (
@@ -262,6 +276,17 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
                         ))}
                         {isBank && content.donation_bank.note && (
                           <div className="text-[10px] text-gray-500 italic mt-1">{content.donation_bank.note}</div>
+                        )}
+                        {m.link && /^https?:\/\//i.test(m.link) && (
+                          <a
+                            href={m.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-3 inline-flex min-h-[44px] items-center gap-2 rounded-full bg-secondary-700 px-5 text-xs font-bold text-white transition-transform hover:scale-[1.02] active:scale-[0.98] sm:text-sm"
+                          >
+                            <Icon name="heart" className="h-4 w-4" />
+                            {m.link_label || (es ? 'Donar ahora' : 'Donate now')}
+                          </a>
                         )}
                         {m.qrImage && (
                           <div className="mt-3 border border-gray-200 rounded-2xl p-3 bg-white max-w-[180px] shadow-sm">
