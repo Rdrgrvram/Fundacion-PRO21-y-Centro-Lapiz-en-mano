@@ -56,7 +56,7 @@
 - **Estado:** ⬜ Pendiente
 
 ### RF-04 · Aula Wawitas
-- **Descripción:** Programa para autismo y neurodesarrollo
+- **Descripción:** Programa preescolar (3 a 5 años) con niveles de estimulación; el autismo lo atiende Desarrolla TEA
 - **Debe incluir:**
   - Descripción del programa
   - Los 9 servicios especializados (a listar en entrevista)
