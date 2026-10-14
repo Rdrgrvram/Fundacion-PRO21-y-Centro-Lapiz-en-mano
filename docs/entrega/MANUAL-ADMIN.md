@@ -63,9 +63,9 @@ Si una clave llegó a subirse al repositorio: **rótala primero** (borrar el arc
 
 ## 6. Imágenes y el límite de espacio
 
-En v1 las imágenes subidas desde el panel **se guardan en el repositorio** (`public/images/uploads`), con un máximo de 500 KB cada una. No se usa Cloudflare R2.
+En v1 las imágenes subidas desde el panel **se guardan en el repositorio** (`public/images/uploads`) y los PDFs en `public/docs`, con un máximo de 5 MB cada archivo. No se usa Cloudflare R2.
 
-Consecuencias: es simple y gratis, pero el repositorio crece con cada foto. GitHub recomienda mantenerlo bajo 1 GB. Con fotos de 500 KB cabrían miles, así que no es un problema práctico; si algún día lo fuera, se puede migrar a R2 (hay un plan previo en `docs/ARCHITECTURE.md`).
+Consecuencias: es simple y gratis, pero el repositorio crece con cada foto. GitHub recomienda mantenerlo bajo 1 GB. Con fotos optimizadas de 300–500 KB y unos pocos PDFs cabrían miles de archivos, así que no es un problema práctico; si algún día lo fuera, se puede migrar a R2 (hay un plan previo en `docs/ARCHITECTURE.md`).
 
 ## 7. Respaldo
 

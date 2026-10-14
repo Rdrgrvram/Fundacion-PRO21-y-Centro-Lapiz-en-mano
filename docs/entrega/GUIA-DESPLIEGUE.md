@@ -90,7 +90,7 @@ Sigue `GUIA-DOMINIO.md` completa (compra, DNS hacia Vercel, verificación en Res
 
 ## Paso 6 — Imágenes
 
-No hay nada que configurar: las imágenes subidas desde el panel se guardan en el repositorio (`public/images/uploads`, máximo 500 KB). **Cloudflare R2 no se usa en v1**; ignora las variables `CLOUDFLARE_R2_*`.
+No hay nada que configurar: las imágenes subidas desde el panel se guardan en el repositorio (`public/images/uploads`; los PDFs en `public/docs`; máximo 5 MB por archivo). **Cloudflare R2 no se usa en v1**; ignora las variables `CLOUDFLARE_R2_*`.
 
 ## Paso 7 — Verificación final (Quickstart)
 
@@ -103,7 +103,7 @@ Marca cada punto en el sitio real:
 - [ ] "9 profesionales" en Inicio, Quiénes Somos, Equipo e Impacto; sin "1000+ sesiones" ni "8 áreas".
 - [ ] Formulario de **Contacto** y de **Voluntariado** (Colabora): llegan al correo de la Fundación.
 - [ ] `/admin`: login con GitHub, crear una publicación de prueba en Blog, pasarla a *Listo*, publicarla y verla en `/es/blog` en ≈ 3 min. Luego ocúltala con *Visible en el sitio*.
-- [ ] Subir una imagen de prueba (< 500 KB) desde el panel y verla en el sitio.
+- [ ] Subir una imagen y un PDF de prueba (< 5 MB) desde el panel y comprobar que se ven y se descargan en el sitio.
 - [ ] Vercel → Deployments: último despliegue en verde.
 
 Cuando todo está marcado, el despliegue está completo. Registra la fecha y quién lo hizo en el acta.

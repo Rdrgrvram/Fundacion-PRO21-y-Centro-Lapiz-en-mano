@@ -21,7 +21,7 @@ publish_mode: editorial_workflow
 # Carpeta donde se guardan las imágenes subidas desde el CMS
 media_folder: public/images/uploads
 public_folder: /images/uploads
-max_file_size: 512000 # ~500KB por imagen — evita inflar el repo con el tiempo
+max_file_size: 5242880 # 5 MB por archivo: alcanza para una guía/informe en PDF y una foto optimizada; evita inflar el repo (issue #69)
 
 # Nombres de archivo de las entradas nuevas: solo ASCII, sin tildes ni ñ (más seguros en URLs
 # y entre sistemas operativos). Ej.: "Mamá de Z." -> mama-de-z
@@ -791,7 +791,7 @@ collections:
               - { label: Año, name: year, widget: string }
               - { label: Título, name: title, widget: string, i18n: true }
               - { label: Descripción, name: desc, widget: text, i18n: true }
-              - { label: "Archivo PDF", name: file, widget: file, required: false, hint: "Sube el informe en PDF. Si se deja vacío, el botón de descarga redirige a WhatsApp." }
+              - { label: "Archivo PDF", name: file, widget: file, required: false, hint: "Sube el informe en PDF. Si se deja vacío, el botón de descarga redirige a WhatsApp.", media_folder: "/public/docs", public_folder: "/docs" }
           - { label: "Título del desglose de informes", name: reports_breakdown_title, widget: string, i18n: true }
           - label: "Desglose de informes (uso de fondos)"
             name: reports_breakdown
@@ -1086,7 +1086,7 @@ collections:
                   - field: visible
                     values: [true]
               - { label: "Color de acento", name: color, widget: select, options: [primary, secondary, accent] }
-              - { label: "Archivo PDF", name: file, widget: file, required: false, hint: "Sube la guía en PDF. Si se deja vacío, el botón de descarga redirige a WhatsApp." }
+              - { label: "Archivo PDF", name: file, widget: file, required: false, hint: "Sube la guía en PDF. Si se deja vacío, el botón de descarga redirige a WhatsApp.", media_folder: "/public/docs", public_folder: "/docs" }
           - { label: "Nota de guías", name: guides_note, widget: text, i18n: true }
           - label: "Sección: Preguntas frecuentes"
             name: faq_section
@@ -1123,7 +1123,7 @@ collections:
       - { label: Título, name: title, widget: string }
       - { label: Fecha de publicación, name: date, widget: datetime, format: "YYYY-MM-DD" }
       - { label: Imagen destacada, name: image, widget: image, required: false }
-      - { label: "PDF adjunto (opcional)", name: pdf, widget: file, required: false, hint: "Si se sube, al hacer clic en la imagen del blog en el listado público se abre este PDF en vez del artículo." }
+      - { label: "PDF adjunto (opcional)", name: pdf, widget: file, required: false, hint: "Si se sube, al hacer clic en la imagen del blog en el listado público se abre este PDF en vez del artículo.", media_folder: "/public/docs", public_folder: "/docs" }
       - { label: Resumen (para la lista), name: excerpt, widget: text }
       - { label: Contenido, name: body, widget: markdown }
 
