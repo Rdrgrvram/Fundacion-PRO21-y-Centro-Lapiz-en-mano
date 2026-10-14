@@ -69,7 +69,7 @@ media_folder: public/images/uploads
 public_folder: /images/uploads
 media_library:
   config:
-    max_file_size: 512000   # ~500KB por imagen — evita inflar el repo Git con el tiempo
+    max_file_size: 5242880  # 5 MB por archivo (PDFs en public/docs) — evita inflar el repo Git; ver issue #69
 
 i18n:
   structure: multiple_files

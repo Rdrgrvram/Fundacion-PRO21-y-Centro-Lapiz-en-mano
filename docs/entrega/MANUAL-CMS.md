@@ -77,7 +77,8 @@ Si dudas de una foto, no la publiques y consulta a la dirección.
 ### 4.4 Subir imágenes y PDFs
 
 - Pulsa el campo de imagen/archivo → **Elegir una imagen** → **Subir**.
-- **Tamaño máximo: 500 KB por imagen.** Si pesa más, el panel la rechaza. Reduce la foto antes (por ejemplo con la app Fotos o squoosh.app: ancho 1600 px, calidad 75–80 %).
+- **Tamaño máximo: 5 MB por archivo.** Si pesa más, el panel lo rechaza. Para fotos, bájalas antes a unos 300–500 KB (por ejemplo con la app Fotos o squoosh.app: ancho 1600 px, calidad 75–80 %). Para PDFs, usa "reducir tamaño" al exportar; una guía de pocas páginas cabe holgada.
+- Los **PDFs** se guardan en `public/docs` y las **fotos** en `public/images/uploads`. En el sitio, el botón de la guía o del informe cambia solo de "Solicitar por WhatsApp" a "Descargar PDF" cuando subes el archivo.
 - Formato recomendado: JPG o WebP. Nombres sin tildes.
 - Las imágenes se guardan dentro del repositorio (`public/images/uploads`). Por eso el límite: cada foto engorda el repositorio para siempre.
 - Escribe siempre el **texto alternativo** cuando exista el campo: lo leen las personas con lectores de pantalla y mejora la búsqueda.
@@ -115,7 +116,7 @@ También puedes ver todo en la pestaña **Flujo de trabajo** (Workflow) del pane
 | Síntoma | Qué hacer |
 |---|---|
 | "No tienes acceso" al entrar | El administrador debe agregar tu cuenta de GitHub al repositorio (permiso *Write*) |
-| La imagen no se sube | Pesa más de 500 KB: redúcela |
+| El archivo no se sube | Pesa más de 5 MB: redúcelo (foto: ancho 1600 px; PDF: exportar con menor tamaño) |
 | Publiqué y no veo el cambio | Espera 3 minutos y recarga con Ctrl+F5. Si sigue igual, avisa al administrador (puede haber un error de construcción) |
 | Un cambio mío rompió algo | Avisa al administrador: todo cambio queda en el historial de GitHub y se puede revertir |
 | El panel pide login otra vez | Normal tras unas horas; vuelve a entrar con GitHub |
