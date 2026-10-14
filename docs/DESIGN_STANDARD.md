@@ -60,6 +60,7 @@ Implementado en `components/sections/ProgramHero.tsx` para los 3 programas; inli
 - Blancas: `bg-white rounded-2xl` o `rounded-3xl` + `border border-gray-200` + `shadow-sm`
 - Hover: `hover:shadow-md hover:border-gray-300 transition-all duration-300` (agregar `hover:-translate-y-1` en grids de tarjetas pequeñas)
 - Ícono: círculo `rounded-xl` con `bg-[color]/10` o `/15`, texto/emoji centrado
+- **Tarjetas de programa en Inicio** (`data-testid="programs-grid"`): `grid-cols-1 md:grid-cols-2 xl:grid-cols-4` — 1 columna en celular, 2×2 en tablet y laptop chica, 4 desde 1280px (con 4 programas no queda tarjeta huérfana). Las 4 columnas empiezan en `xl` y no en `lg` porque a 1024px el botón "Conocer programa" se partía en 2 líneas. Si el número de programas deja de ser múltiplo de 2, revisar la grilla.
 
 ## Contenedor y espaciado
 

@@ -22,6 +22,11 @@ export default defineConfig({
       url: 'http://localhost:3000',
       reuseExistingServer: true,
       timeout: 60_000,
+      // tests/api/forms.spec.ts asume que el servidor arranca SIN servicio de correo (responde 503). Next carga
+      // .env.local, así que una clave real ahí hacía que esas pruebas enviaran correos reales a la Fundación.
+      // Una variable ya definida (aunque vacía) gana sobre .env.local. Solo aplica si Playwright arranca el
+      // servidor: si reutiliza un `npm run dev` ya abierto conserva su clave, por eso hay que apagarlo antes.
+      env: { RESEND_API_KEY: '' },
     },
     {
       // Proxy de filesystem de Decap (local_backend: true en public/admin/config.yml).

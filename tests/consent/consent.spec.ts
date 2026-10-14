@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test'
 import { existsSync, readFileSync } from 'fs'
 import yaml from 'js-yaml'
+import { UNAUTHORIZED_PROGRAMS, programRoutes } from '../helpers/programs'
 
 // RF-001, RF-002, RF-007 — consentimiento y contenido veraz (memory/constitution.md, Art. IV).
 // Se lee el HTML crudo (request) y el contenido real con js-yaml: la prueba no duplica datos.
@@ -11,7 +12,6 @@ import yaml from 'js-yaml'
 //  - Las fotos de uso general (Inicio, Quiénes Somos, Colabora, Familias…) se dejan; ese riesgo
 //    queda registrado en el acta de entrega.
 
-const UNAUTHORIZED_PROGRAMS = ['aula-wawitas', 'pasos-firmes']
 const LANGS = ['es', 'en'] as const
 
 /** El HTML de Next codifica las rutas de imagen (%2F); se normaliza para buscar rutas. */
@@ -56,7 +56,7 @@ test.describe('Testimonios: solo los 3 entregados por la fundación', () => {
   const OLD_NAMES = /Familia (Quispe|Mamani|Torrez|Torres|Condori)/
   const MINOR_NAMES = /\b(Tiago|Rafael|Sara)\b/ // nunca nombres de menores
 
-  const PAGES = ['', '/impacto', '/familias', '/mi-escuelita-down', '/pasos-firmes', '/aula-wawitas', '/colabora']
+  const PAGES = ['', '/impacto', '/familias', ...programRoutes(), '/colabora']
   for (const lang of LANGS) {
     for (const path of PAGES) {
       test(`/${lang}${path}: sin testimonios anteriores ni nombres de menores`, async ({ request }) => {
@@ -133,7 +133,7 @@ test.describe('Familias: no se promete una descarga que no existe (RF-009)', () 
 // Art. IV: nunca fotos de stock ni de IA. Las 4 imágenes de /images/wawitas/ lo eran
 // (se habían detectado y reemplazado, pero la galería en español de Impacto las seguía usando).
 test.describe('Sin imágenes de stock/IA', () => {
-  const ALL = ['', '/quienes-somos', '/mi-escuelita-down', '/aula-wawitas', '/pasos-firmes', '/equipo', '/impacto', '/colabora', '/familias', '/blog', '/contacto']
+  const ALL = ['', '/quienes-somos', ...programRoutes(), '/equipo', '/impacto', '/colabora', '/familias', '/blog', '/contacto']
   for (const lang of LANGS) {
     test(`/${lang}/**: ninguna página referencia /images/wawitas/`, async ({ request }) => {
       for (const path of ALL) {

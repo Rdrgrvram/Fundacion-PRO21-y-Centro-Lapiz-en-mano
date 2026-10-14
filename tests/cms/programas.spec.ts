@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test'
 import matter from 'gray-matter'
 import { getProgramBySlug } from '@/lib/cms'
+import { programSlugs } from '../helpers/programs'
 import { openCmsEntry, publishEntry, backupContentFile, uniqueMarker } from './helpers'
 
 // Auditoría de la colección "programs" (Mi Escuelita Down / Aula Wawitas / Pasos
@@ -15,7 +16,7 @@ import { openCmsEntry, publishEntry, backupContentFile, uniqueMarker } from './h
 // (ProgramPageLayout), así que solo se confirma con un smoke test que cargan.
 
 const REPRESENTATIVE_SLUG = 'mi-escuelita-down'
-const ALL_SLUGS = ['mi-escuelita-down', 'aula-wawitas', 'pasos-firmes']
+const ALL_SLUGS = programSlugs()
 
 const EXPECTED_SECTIONS = [
   'Hero',
@@ -66,6 +67,7 @@ test.describe('CMS — Programas (colección "programs")', () => {
     await expect(page.getByRole('link', { name: 'Aula Wawitas' })).toBeVisible()
     await expect(page.getByRole('link', { name: 'Mi Escuelita Down' })).toBeVisible()
     await expect(page.getByRole('link', { name: 'Pasos Firmes' })).toBeVisible()
+    await expect(page.getByRole('link', { name: 'Desarrolla TEA' })).toBeVisible()
   })
 
   test('el panel carga la entrada de Mi Escuelita Down vía backend local, sin caer al login real de GitHub', async ({

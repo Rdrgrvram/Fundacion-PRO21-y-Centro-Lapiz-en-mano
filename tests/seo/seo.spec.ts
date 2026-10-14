@@ -1,13 +1,12 @@
 import { test, expect } from '@playwright/test'
+import { programRoutes, programSlugs } from '../helpers/programs'
 
 // RF-006: mapa del sitio, reglas de rastreo, metadatos de vista previa, relación
 // entre idiomas y favicon. Se lee el HTML crudo, como un rastreador.
 const ROUTES = [
   '',
   '/quienes-somos',
-  '/mi-escuelita-down',
-  '/aula-wawitas',
-  '/pasos-firmes',
+  ...programRoutes(),
   '/equipo',
   '/impacto',
   '/colabora',
@@ -20,8 +19,10 @@ test('existe /sitemap.xml con las rutas en ambos idiomas', async ({ request }) =
   const res = await request.get('/sitemap.xml')
   expect(res.status()).toBe(200)
   const xml = await res.text()
-  expect(xml).toContain('/es/mi-escuelita-down')
-  expect(xml).toContain('/en/mi-escuelita-down')
+  for (const slug of programSlugs({ visibleOnly: true })) {
+    expect(xml).toContain(`/es/${slug}`)
+    expect(xml).toContain(`/en/${slug}`)
+  }
   expect(xml).toContain('/es/contacto')
   expect(xml).toContain('/en/contacto')
 })

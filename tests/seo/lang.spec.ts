@@ -1,13 +1,12 @@
 import { test, expect } from '@playwright/test'
+import { programRoutes } from '../helpers/programs'
 
 // RF-005: el documento declara el idioma de la ruta. Se lee el HTML crudo (request),
 // no el DOM del navegador: así se ve lo mismo que un rastreador sin JavaScript.
 const ROUTES = [
   '',
   '/quienes-somos',
-  '/mi-escuelita-down',
-  '/aula-wawitas',
-  '/pasos-firmes',
+  ...programRoutes(),
   '/equipo',
   '/impacto',
   '/colabora',
