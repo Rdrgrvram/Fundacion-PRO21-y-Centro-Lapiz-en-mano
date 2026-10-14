@@ -69,7 +69,7 @@ export default function FamiliasPageClient({ lang, content, whatsappNumber }: Fa
               />
             )}
             <div className="bg-gradient-to-br from-accent-50 to-primary-50 rounded-3xl p-8 md:p-10 border border-accent/10 shadow-sm text-left">
-              <h3 className="font-display text-2xl sm:text-3xl text-gray-900 font-bold mb-3">{content.welcome_letter.title}</h3>
+              <h2 className="font-display text-2xl sm:text-3xl text-gray-900 font-bold mb-3">{content.welcome_letter.title}</h2>
               <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">{content.welcome_letter.text}</p>
               <p className="text-xs sm:text-sm font-bold text-accent italic mt-4">{content.welcome_letter.signature}</p>
             </div>
@@ -100,7 +100,7 @@ export default function FamiliasPageClient({ lang, content, whatsappNumber }: Fa
                       <Icon name={s.icon} className="h-6 w-6 text-gray-700" />
                     </div>
                     <div>
-                      <h4 className="text-base sm:text-lg text-gray-900 font-bold mb-2">{s.title}</h4>
+                      <h3 className="text-base sm:text-lg text-gray-900 font-bold mb-2">{s.title}</h3>
                       <div className="flex gap-2 mb-4 select-none">
                         <span className={`text-[9px] font-bold px-2.5 py-0.5 rounded-full ${style.bg}`} style={{ color: style.textHex }}>{s.freq}</span>
                         <span className="text-[9px] text-gray-500 font-bold px-2.5 py-0.5 rounded-full bg-gray-150">{s.duration}</span>
@@ -141,7 +141,7 @@ export default function FamiliasPageClient({ lang, content, whatsappNumber }: Fa
                   <Icon name={item.icon} className="h-7 w-7" />
                 </div>
                 <div>
-                  <h4 className="text-base sm:text-lg text-gray-900 font-bold mb-2">{item.title}</h4>
+                  <h3 className="text-base sm:text-lg text-gray-900 font-bold mb-2">{item.title}</h3>
                   <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
@@ -174,7 +174,7 @@ export default function FamiliasPageClient({ lang, content, whatsappNumber }: Fa
                     </div>
                     <div className="p-6">
                       <span className="text-[9px] font-bold uppercase tracking-wide mb-1 block" style={{ color: style.textHex }}>{g.program}</span>
-                      <h4 className="text-sm sm:text-base text-gray-900 font-bold mb-2 leading-snug">{g.title}</h4>
+                      <h3 className="text-sm sm:text-base text-gray-900 font-bold mb-2 leading-snug">{g.title}</h3>
                       <p className="text-xs text-gray-500 leading-relaxed mb-4 min-h-[48px]">{g.desc}</p>
                     </div>
                   </div>
@@ -227,7 +227,7 @@ export default function FamiliasPageClient({ lang, content, whatsappNumber }: Fa
                       <div className={`w-9 h-9 rounded-xl flex items-center justify-center text-sm font-bold transition-all duration-300 ${isOpen ? 'bg-primary text-black' : 'bg-gray-100 text-gray-600'}`}>
                         {i + 1}
                       </div>
-                      <h4 className="text-xs sm:text-sm font-bold text-gray-900 leading-snug">{faq.q}</h4>
+                      <h3 className="text-xs sm:text-sm font-bold text-gray-900 leading-snug">{faq.q}</h3>
                     </div>
                     <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold transition-all duration-300 ${isOpen ? 'bg-primary/10 text-primary-900 rotate-180' : 'bg-gray-50 text-gray-500'}`}>▾</div>
                   </div>

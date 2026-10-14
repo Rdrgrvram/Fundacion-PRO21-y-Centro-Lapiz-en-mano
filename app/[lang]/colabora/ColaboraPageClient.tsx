@@ -256,7 +256,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
                         <Icon name={m.icon} className="h-5 w-5 text-secondary-700" />
                       </div>
                       <div>
-                        <h4 className="text-xs sm:text-sm font-bold text-gray-900 mb-0.5">{m.title}</h4>
+                        <h3 className="text-xs sm:text-sm font-bold text-gray-900 mb-0.5">{m.title}</h3>
                         {lines.map((line, lidx) => (
                           <div key={lidx} className="text-[11px] text-gray-600 font-semibold leading-relaxed">{line}</div>
                         ))}
@@ -328,7 +328,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
             <div className="bg-white rounded-3xl p-6 md:p-8 border border-gray-200 shadow-sm text-left">
               {!formSent ? (
                 <>
-                  <h4 className="text-lg md:text-xl text-gray-900 font-bold mb-6">{es ? 'Inscríbete como voluntario' : 'Register as volunteer'}</h4>
+                  <h3 className="text-lg md:text-xl text-gray-900 font-bold mb-6">{es ? 'Inscríbete como voluntario' : 'Register as volunteer'}</h3>
                   <div className="space-y-4">
                     {[
                       { label: es ? 'Nombre completo' : 'Full name', placeholder: es ? 'Ej: María Flores' : 'E.g., Maria Flores', type: 'text', value: volName, set: setVolName, err: 'name' },
@@ -424,7 +424,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
 
             <div className="flex flex-col gap-6 justify-between text-left">
               <div className={`bg-white rounded-3xl p-6 md:p-8 border border-gray-200 shadow-sm ${content.volunteer_testimonial ? 'flex-1' : 'self-start w-full'}`}>
-                <h4 className="text-lg text-gray-900 font-bold mb-4">{es ? '¿Qué implica el voluntariado?' : 'What does volunteering involve?'}</h4>
+                <h3 className="text-lg text-gray-900 font-bold mb-4">{es ? '¿Qué implica el voluntariado?' : 'What does volunteering involve?'}</h3>
                 <div className="space-y-4">
                   {content.volunteer_perks.map((item, idx) => (
                     <div key={idx} className="flex items-center gap-3.5 pb-3 border-b border-gray-100 last:border-0 last:pb-0">
@@ -502,7 +502,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
                         <Icon name={p.icon} className="h-7 w-7 text-gray-700" />
                       </div>
                       <div className="flex-1">
-                        <h4 className="text-lg text-gray-900 font-bold leading-snug">{p.title}</h4>
+                        <h3 className="text-lg text-gray-900 font-bold leading-snug">{p.title}</h3>
                         <p className="text-xs sm:text-sm text-gray-600 mt-2 leading-relaxed">{p.desc}</p>
                       </div>
                       <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300 ${isOpen ? 'bg-accent/10 text-accent rotate-180' : 'bg-gray-50 text-gray-500'}`}>▾</div>
@@ -528,7 +528,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
           </div>
 
           <div className="bg-white rounded-3xl border border-gray-200 p-6 md:p-8 max-w-5xl mx-auto shadow-sm text-center select-none">
-            <h4 className="text-lg text-gray-900 font-bold mb-2">{content.allies_title}</h4>
+            <h3 className="text-lg text-gray-900 font-bold mb-2">{content.allies_title}</h3>
             <p className="text-xs text-gray-500 mb-8">{content.allies_subtitle}</p>
             <div className="flex flex-wrap gap-4 justify-center items-center">
               {content.allies.map((ally, i) => {

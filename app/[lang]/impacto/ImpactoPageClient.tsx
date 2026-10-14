@@ -190,7 +190,7 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
                       <Icon name={activeT.icon} className="h-6 w-6" />
                     </div>
                     <div>
-                      <h4 className="text-xs sm:text-sm font-bold text-gray-900">{activeT.family}</h4>
+                      <h3 className="text-xs sm:text-sm font-bold text-gray-900">{activeT.family}</h3>
                       <p className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider mt-0.5">{activeT.program}</p>
                     </div>
                   </div>
@@ -258,7 +258,7 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
                         <Icon name="newspaper" className="h-5 w-5 text-secondary-700" />
                       </div>
                       <div>
-                        <h4 className="text-xs sm:text-sm font-bold text-gray-900 leading-snug">{r.title}</h4>
+                        <h3 className="text-xs sm:text-sm font-bold text-gray-900 leading-snug">{r.title}</h3>
                         <p className="text-[10px] text-gray-500 font-semibold mt-0.5">{r.desc}</p>
                       </div>
                     </div>
@@ -284,7 +284,7 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
                       <Icon name={item.icon} className="h-5 w-5 text-gray-700" />
                     </div>
                     <div>
-                      <h4 className="text-xs font-bold text-gray-900 mb-0.5">{item.title}</h4>
+                      <h3 className="text-xs font-bold text-gray-900 mb-0.5">{item.title}</h3>
                       <p className="text-[10px] text-gray-500 leading-normal font-semibold">{item.desc}</p>
                     </div>
                   </div>
@@ -327,7 +327,7 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
                           </div>
                         )}
                         <div>
-                          <h4 className="text-xs sm:text-sm font-bold text-gray-900 leading-none">{m.outlet}</h4>
+                          <h3 className="text-xs sm:text-sm font-bold text-gray-900 leading-none">{m.outlet}</h3>
                           <span className="text-[9px] text-gray-500 font-semibold mt-1 block">{m.type}</span>
                         </div>
                       </div>
