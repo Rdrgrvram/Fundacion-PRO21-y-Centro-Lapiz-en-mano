@@ -16,7 +16,7 @@ Dirección del panel: `https://<dominio-del-sitio>/admin` (ejemplo: `https://fun
 
 ## 2. Entrar al panel
 
-1. Abre `/admin`.
+1. Abre `/admin`, o baja hasta el final de cualquier página del sitio y pulsa **Acceso del equipo** (enlace pequeño junto al copyright).
 2. Pulsa **Login with GitHub** e inicia sesión con tu cuenta.
 3. Si GitHub pide autorizar la aplicación, pulsa **Authorize**.
 
@@ -82,6 +82,13 @@ Si dudas de una foto, no la publiques y consulta a la dirección.
 - Formato recomendado: JPG o WebP. Nombres sin tildes.
 - Las imágenes se guardan dentro del repositorio (`public/images/uploads`). Por eso el límite: cada foto engorda el repositorio para siempre.
 - Escribe siempre el **texto alternativo** cuando exista el campo: lo leen las personas con lectores de pantalla y mejora la búsqueda.
+
+### 4.4b Videos, medios de pago y QR
+
+- **Videos (Impacto):** en **Impacto → Videos de YouTube**, pulsa **Agregar**, escribe un título y pega el enlace del video (`https://youtu.be/…` o `https://www.youtube.com/watch?v=…`). El video vive en YouTube: no pesa en el sitio y solo se descarga cuando alguien pulsa **Reproducir**. Si no hay videos, la sección no aparece. **Videos donde se vea a un niño: solo con autorización escrita de los padres.**
+- **QR de donación:** en **Colabora → Métodos de pago**, abre el método del QR y cambia **Imagen de QR**. Úsalo cuando el banco o la cuenta cambien (la cuenta actual es provisoria).
+- **PayPal u otra plataforma de pago:** en el mismo lugar, escribe el **Enlace de pago** (debe empezar con `https://`) y, si quieres, el texto del botón. Aparece un botón «Donar ahora» que abre la plataforma en otra pestaña. Si el enlace queda vacío, no aparece ningún botón.
+- **Fecha de una noticia nueva:** viene rellena con el día de hoy; cámbiala solo si la noticia es de otro día.
 
 ### 4.5 Cambiar teléfono, WhatsApp o correo
 
