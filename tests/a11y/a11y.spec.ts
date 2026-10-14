@@ -3,8 +3,7 @@ import AxeBuilder from '@axe-core/playwright'
 import { programRoutes } from '../helpers/programs'
 
 // RF-011 — contraste WCAG AA, áreas táctiles ≥ 44px y nombre accesible = texto visible, en móvil (375px), 12 rutas × es/en.
-// DEUDA CONOCIDA (no es criterio WCAG AA, sino buena práctica de axe): `heading-order` falla en 14 de 24 rutas (saltos
-// h1→h3/h4). Registrada en el acta de entrega; Contacto ya está corregida.
+// También `heading-order` (buena práctica de axe): la jerarquía de encabezados no salta niveles (h1→h3/h4).
 // Si falla, el mensaje lista los nodos exactos para corregirlos (solo con tokens existentes:
 // memory/constitution.md, Art. V).
 const ROUTES = [
@@ -50,6 +49,13 @@ for (const lang of LANGS) {
         })
       )
       expect(nodes, `Contraste insuficiente en ${url}`).toEqual([])
+    })
+
+    test(`${url}: jerarquía de encabezados sin saltos`, async ({ page }) => {
+      await prepare(page, url)
+      const results = await new AxeBuilder({ page }).withRules(['heading-order']).analyze()
+      const nodes = results.violations.flatMap((v) => v.nodes.map((n) => `${n.target.join(' ')}  [${n.any[0]?.message}]`))
+      expect(nodes, `Encabezados que saltan nivel en ${url}`).toEqual([])
     })
 
     test(`${url}: nombre accesible contiene el texto visible (WCAG 2.5.3)`, async ({ page }) => {

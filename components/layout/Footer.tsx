@@ -78,7 +78,7 @@ export default function Footer({ lang }: FooterProps) {
 
           {/* Columna 2: Programas */}
           <div>
-            <h3 className="font-bold text-lg mb-3">{footer.programs_title}</h3>
+            <h2 className="font-sans tracking-normal font-bold text-lg mb-3">{footer.programs_title}</h2>
             <ul className="space-y-1 text-gray-400 text-sm">
               {programs.map((p) => (
                 <li key={p.slug}><Link href={`/${lang}/${p.slug}`} className="hover:text-white">{p.title}</Link></li>
@@ -88,7 +88,7 @@ export default function Footer({ lang }: FooterProps) {
 
           {/* Columna 3: Institución */}
           <div>
-            <h3 className="font-bold text-lg mb-3">{footer.institution_title}</h3>
+            <h2 className="font-sans tracking-normal font-bold text-lg mb-3">{footer.institution_title}</h2>
             <ul className="space-y-1 text-gray-400 text-sm">
               {footer.institution_links.map((link) => (
                 <li key={link.route}><Link href={`/${lang}/${link.route}`} className="hover:text-white">{link.label}</Link></li>

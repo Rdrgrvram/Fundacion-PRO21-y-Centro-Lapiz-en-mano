@@ -272,7 +272,7 @@ export default async function Page({ params }: { params: { lang: Locale } }) {
                 {content.values.map((v, i) => (
                   <div key={i} className="bg-gray-50 rounded-xl p-4 border border-gray-100">
                     <Icon name={v.icon} className="mb-2 h-5 w-5 text-secondary-700" />
-                    <h4 className="font-bold text-gray-900 text-sm mb-1">{v.title}</h4>
+                    <h3 className="font-bold text-gray-900 text-sm mb-1">{v.title}</h3>
                     <p className="text-xs text-gray-600 leading-relaxed">{v.desc}</p>
                   </div>
                 ))}
