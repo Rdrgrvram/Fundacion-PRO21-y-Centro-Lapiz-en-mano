@@ -62,3 +62,6 @@ v2-*.png
 
 # Contexto local de sesiones de Claude Code (no versionar)
 STATE.md
+
+# Script local con un token de GitHub: NUNCA versionar (ver AGENTS.md)
+scripts/subir-instrucciones-github.ps1

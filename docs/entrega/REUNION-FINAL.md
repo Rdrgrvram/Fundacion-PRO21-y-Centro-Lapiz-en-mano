@@ -9,7 +9,7 @@
 ## 1. Antes de la reunión (equipo de desarrollo)
 
 - [ ] Mergear la rama de cierre a `develop` y poner `master` al día (#52). El CMS publica en `master`.
-- [ ] Revocar el token expuesto de `scripts/subir-instrucciones-github.ps1` (#59).
+- [x] Token expuesto revocado y script eliminado (#59, 14-oct-2026).
 - [ ] Hacer el deploy de prueba en `.vercel.app`, sin difundir, y llevar la URL (#60).
 - [ ] Medir Lighthouse en Vercel (#61) y probar un envío real de formularios con Resend (#63).
 - [ ] Decidir el límite de archivos del CMS (ver §3, decisión 1).
