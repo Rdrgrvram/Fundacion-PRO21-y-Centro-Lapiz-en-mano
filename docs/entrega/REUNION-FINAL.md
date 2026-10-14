@@ -25,7 +25,7 @@
 
 | # | Decisión | Opciones | Recomendación y porqué |
 |---|---|---|---|
-| 1 | **Límite de archivos del CMS (#69).** Hoy 500 KB por archivo, también PDFs: una guía o informe normal sería rechazada. US-15 pedía "sin límite técnico" | A) subir el límite (≈5 MB) y separar carpeta de PDFs · B) Cloudflare R2 | **A** para la v1: costo $0, sin cuenta nueva, lo ya construido sigue igual. El repositorio crece; el manual explica cómo comprimir. R2 queda como mejora futura |
+| 1 | **Límite de archivos del CMS (#69).** Ya aplicada la opción A: 5 MB por archivo y carpeta propia para PDFs, con prueba automática (`tests/cms/recursos.spec.ts`). Antes eran 500 KB, y una guía o informe normal era rechazada. US-15 pedía "sin límite técnico" | A) subir el límite (≈5 MB) y separar carpeta de PDFs · B) Cloudflare R2 | **A** para la v1: costo $0, sin cuenta nueva, lo ya construido sigue igual. El repositorio crece; el manual explica cómo comprimir. R2 queda como mejora futura |
 | 2 | **Rama de producción (#52)** | `master` (la usa el CMS) · cambiar a `main` | `master`: no hay que tocar el CMS ni Vercel |
 | 3 | **Qué hacer con fotos sin autorización** | Mantener ocultas · quitar el contenido | Mantener ocultas con `photos_authorized: false`; se activan al llegar la firma |
 | 4 | **Fotos de uso general** (Inicio, Quiénes somos, Impacto, Colabora, Familias) | Mantener · retirar | Ya aceptado por escrito en el acta §3.1; reconfirmar que la Fundación asume el riesgo |
@@ -42,6 +42,25 @@ Los criterios de las historias US-02/03/04 venían de la entrevista de junio. El
 - [ ] **Inicio:** la frase "síndrome de Down, autismo y dificultades de aprendizaje" ¿se mantiene?
 - [ ] **Desarrolla TEA:** ¿nombre público definitivo y posición en el menú? (hoy `order: 40`)
 - [ ] **Cifras:** el documento dice "10 profesionales y voluntarios"; el sitio dice "9 profesionales". ¿Se muestran aparte los voluntarios? También: 70 niños (40 y 30) y 8 años de vida institucional.
+
+## 4b. Compromisos de la propuesta inicial (mayo de 2026)
+
+La propuesta que presentó M.Sc. Orlando Rivera a la Fundación (`Proyecto_Social_Web_FundacionPRO21.docx`) es el **compromiso formal**. La redactó la UCB antes de recibir el documento oficial de la Fundación, por lo que los detalles de los programas eran supuestos. Esto explica las diferencias del §4: **no se omitió nada que la Fundación hubiera pedido; la Fundación validó después otro contenido.** Aun así, el acta debe registrar las diferencias y que la Fundación las acepta.
+
+| Compromiso de la propuesta | Estado |
+|---|---|
+| Mi Escuelita Down: 4 niveles, 8 servicios terapéuticos, Programa Crecer | Diferente. El documento oficial trae 4 áreas de terapia y el área Educativa (§4) |
+| Aula Wawitas: programa de autismo, 9 servicios, detección temprana | Diferente. El documento oficial la define como preescolar; el autismo lo cubre Desarrolla TEA |
+| Pasos Firmes: 7 áreas de intervención | Diferente. El documento oficial define 4 áreas |
+| Quiénes somos: **8 valores** | Cumple (8 valores). El documento oficial menciona 5; confirmar cuáles prefiere la Fundación |
+| Impacto: galería de fotos **y videos** | **Falta video.** Hay fotos; ningún video. Pedir videos o retirar el compromiso |
+| Contacto: formulario, **mapa**, WhatsApp, redes | El mapa es un enlace a Google Maps, no un mapa incrustado. Confirmar si basta |
+| Almacenamiento en **Cloudflare R2** | No se usa; las imágenes van al repositorio (#69). Registrar en el acta |
+| Hospedaje, CMS y SSL a $0; dominio ≈ $12–15/año | Cumple |
+| Panel de administración sin código | Cumple, pendiente de probar con una persona de la Fundación (#62) |
+| Manuales, capacitación y 30 días de soporte | Manuales hechos; capacitación y soporte empiezan en la entrega (#67) |
+| 3 a 4 reuniones de revisión | Confirmar cuántas se hicieron |
+| La Fundación proporciona el dominio o autoriza a la UCB a gestionar uno temporal | Pendiente (#65) |
 
 ## 5. Lo que la Fundación debe entregar o firmar (#66)
 
