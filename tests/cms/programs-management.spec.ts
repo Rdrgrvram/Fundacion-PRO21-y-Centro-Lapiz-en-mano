@@ -3,6 +3,7 @@ import path from 'path'
 import { test, expect } from '@playwright/test'
 import matter from 'gray-matter'
 import { getAllPrograms, getProgramBySlug } from '@/lib/cms'
+import { programSlugs } from '../helpers/programs'
 
 const root = process.cwd()
 const configPath = path.join(root, 'public', 'admin', 'config.yml')
@@ -19,12 +20,10 @@ test.describe('Program management invariants', () => {
     expect(config).toContain('field: visible')
 
     const programs = getAllPrograms('es')
-    expect(programs.length).toBeGreaterThanOrEqual(3)
-    expect(programs.map((program) => program.slug)).toEqual([
-      'mi-escuelita-down',
-      'aula-wawitas',
-      'pasos-firmes',
-    ])
+    expect(programs.length).toBeGreaterThanOrEqual(4)
+    // Mismo orden que ve el sitio, leído por una vía independiente (archivos), sin lista fija.
+    expect(programs.map((program) => program.slug)).toEqual(programSlugs({ visibleOnly: true }))
+    expect(programs.map((program) => program.slug)).toContain('desarrolla-tea')
   })
 
   test('hiding a program removes it from public resolution but keeps CMS access', async () => {

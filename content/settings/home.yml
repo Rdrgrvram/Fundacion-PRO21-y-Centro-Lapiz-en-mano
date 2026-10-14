@@ -20,12 +20,12 @@ es:
       value: "9"
       label: profesionales
     - icon: target
-      value: "3"
+      value: "4"
       label: programas activos
   programs_teaser:
     badge: Nuestros programas
     title: ¿En qué podemos ayudarte?
-    subtitle: Tres programas especializados que atienden diferentes necesidades del
+    subtitle: Cuatro programas especializados que atienden diferentes necesidades del
       desarrollo infantil, con un enfoque integral y personalizado.
     cta_label: Conocer programa
     cards:
@@ -120,12 +120,12 @@ en:
       value: "9"
       label: professionals
     - icon: target
-      value: "3"
+      value: "4"
       label: active programs
   programs_teaser:
     badge: Our programs
     title: How can we help you?
-    subtitle: Three specialized programs addressing different childhood development
+    subtitle: Four specialized programs addressing different childhood development
       needs, with a comprehensive and personalized approach.
     cta_label: Learn more
     cards:

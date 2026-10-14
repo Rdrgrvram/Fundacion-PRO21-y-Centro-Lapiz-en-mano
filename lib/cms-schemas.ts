@@ -403,6 +403,7 @@ export const programSchema = z.object({
   section_1: programCardSection,
   section_2: programTabSection,
   section_3: programCardSection.optional(),
+  section_4: programCardSection.optional(),
   enrollment: z.object({
     badge: z.string().optional(),
     title: z.string(),

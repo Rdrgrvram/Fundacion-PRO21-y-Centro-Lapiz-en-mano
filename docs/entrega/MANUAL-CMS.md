@@ -32,7 +32,7 @@ Las secciones siguen el orden del sitio. Cada una dice en su descripción en qu�
 |---|---|
 | Configuración general | Teléfono, WhatsApp, correo, redes, menú, pie de página (aparece en **todo** el sitio) |
 | Inicio, Quiénes Somos, Impacto, Colabora, Familias, Contacto | Textos y fotos de cada página |
-| Programas | Una entrada por programa (Mi Escuelita Down, Aula Wawitas, Pasos Firmes…) |
+| Programas | Una entrada por programa (Mi Escuelita Down, Aula Wawitas, Pasos Firmes, Desarrolla TEA…) |
 | Testimonios | Citas de familias |
 | Equipo (profesionales, áreas, voluntarios, página) | Personas y áreas del equipo |
 | Blog | Noticias |
@@ -68,9 +68,11 @@ Cada programa tiene el interruptor **Fotos de niños autorizadas**:
 - **Apagado** (valor por defecto): el programa no muestra ninguna foto de niños, ni portada ni galería. La página se ve completa igual.
 - **Encendido:** solo cuando la Fundación tiene las autorizaciones firmadas de **ese** programa.
 
-Hoy está encendido solo en *Mi Escuelita Down*. *Aula Wawitas* y *Pasos Firmes* siguen apagados hasta recibir permisos firmados. Si una familia revoca su permiso, apaga el interruptor (o quita la foto) y publica: no hay que tocar código.
+Hoy está encendido solo en *Mi Escuelita Down*. *Aula Wawitas*, *Pasos Firmes* y *Desarrolla TEA* siguen apagados hasta recibir permisos firmados. Si una familia revoca su permiso, apaga el interruptor (o quita la foto) y publica: no hay que tocar código.
 
 Si dudas de una foto, no la publiques y consulta a la dirección.
+
+> **Al crear o editar un programa:** completa siempre el *Título de sección* de la galería, aunque todavía no tengas fotos. Si queda vacío, el panel no te deja guardar. Sin fotos autorizadas la galería no se muestra en el sitio.
 
 ### 4.4 Subir imágenes y PDFs
 
