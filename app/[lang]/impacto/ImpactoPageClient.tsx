@@ -9,6 +9,7 @@ import { PALETTE } from '@/lib/palette'
 import { waLink } from '@/lib/utils'
 import ProtagonistPhoto from '@/components/sections/ProtagonistPhoto'
 import Icon from '@/components/ui/Icon'
+import VideoGrid from '@/components/sections/VideoGrid'
 
 // Mismo tratamiento de "ficha de actividad" (inclinación + borde de color +
 // caption al hover) que components/sections/ProgramGallery.tsx — ambas
@@ -396,6 +397,8 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
           <div className="text-center mt-6 select-none">
             <p className="text-[10px] text-gray-500 font-semibold italic">{content.gallery_note}</p>
           </div>
+
+          <VideoGrid videos={content.videos} es={es} />
         </div>
       </section>
 

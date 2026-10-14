@@ -103,8 +103,7 @@ test.describe('Blog — publicar desde el panel', () => {
       await openCmsEntry(page, '/collections/blog/new')
       await page.getByText('Título', { exact: true }).first().locator('xpath=following::input[1]').fill(titulo)
       await page.getByText(/^resumen/i).first().locator('xpath=following::textarea[1]').fill('Resumen de la publicación de prueba.')
-      // En una entrada nueva la fecha viene vacía y es obligatoria: la persona pulsa "Ahora".
-      await page.getByRole('button', { name: /set date to now|ahora/i }).click()
+      // La fecha viene rellena con hoy: la persona no necesita tocarla (issue #72).
       await page.locator('[data-slate-editor="true"]').first().click()
       await page.keyboard.type('Contenido de la publicación de prueba del recorrido automático.')
       await publishEntry(page)
