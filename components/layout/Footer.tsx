@@ -79,9 +79,9 @@ export default function Footer({ lang }: FooterProps) {
           {/* Columna 2: Programas */}
           <div>
             <h2 className="font-sans tracking-normal font-bold text-lg mb-3">{footer.programs_title}</h2>
-            <ul className="space-y-1 text-gray-400 text-sm">
+            <ul className="text-gray-400 text-sm">
               {programs.map((p) => (
-                <li key={p.slug}><Link href={`/${lang}/${p.slug}`} className="hover:text-white">{p.title}</Link></li>
+                <li key={p.slug}><Link href={`/${lang}/${p.slug}`} className="inline-flex min-h-[44px] min-w-[44px] items-center hover:text-white">{p.title}</Link></li>
               ))}
             </ul>
           </div>
@@ -89,9 +89,9 @@ export default function Footer({ lang }: FooterProps) {
           {/* Columna 3: Institución */}
           <div>
             <h2 className="font-sans tracking-normal font-bold text-lg mb-3">{footer.institution_title}</h2>
-            <ul className="space-y-1 text-gray-400 text-sm">
+            <ul className="text-gray-400 text-sm">
               {footer.institution_links.map((link) => (
-                <li key={link.route}><Link href={`/${lang}/${link.route}`} className="hover:text-white">{link.label}</Link></li>
+                <li key={link.route}><Link href={`/${lang}/${link.route}`} className="inline-flex min-h-[44px] min-w-[44px] items-center hover:text-white">{link.label}</Link></li>
               ))}
             </ul>
           </div>
@@ -99,6 +99,14 @@ export default function Footer({ lang }: FooterProps) {
 
         <div className="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400 text-xs">
           <p>© {new Date().getFullYear()} {footer.copyright}</p>
+          {/* Acceso discreto al panel para quienes editan el sitio; /admin está excluido de los buscadores (robots.ts). */}
+          <a
+            href="/admin/"
+            rel="nofollow"
+            className="mt-1 inline-flex min-h-[44px] items-center px-2 text-gray-400 underline-offset-4 hover:text-white hover:underline"
+          >
+            {lang === 'es' ? 'Acceso del equipo' : 'Team access'}
+          </a>
         </div>
       </div>
     </footer>
