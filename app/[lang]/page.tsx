@@ -10,6 +10,7 @@ import { waLink } from '@/lib/utils'
 import type { AccentColor } from '@/lib/palette'
 import ProtagonistPhoto from '@/components/sections/ProtagonistPhoto'
 import NewsPreview from '@/components/sections/NewsPreview'
+import TestimonialBand from '@/components/sections/TestimonialBand'
 
 export function generateMetadata({ params: { lang } }: { params: { lang: Locale } }): Metadata {
   const es = lang === 'es'
@@ -283,36 +284,19 @@ export default async function Page({ params }: { params: { lang: Locale } }) {
       </section>
 
       {/* ── Testimonios ───────────────────────────────────────────────────── */}
-      <section className="py-16 md:py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <span className="text-xs font-bold uppercase tracking-widest text-accent bg-accent/10 px-4 py-1.5 rounded-full">
-              {content.testimonials_section.badge}
-            </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mt-4">
-              {content.testimonials_section.title}
-            </h2>
+      {testimonials.length > 0 && (
+        <section className="bg-secondary-700 py-16 md:py-20">
+          <div className="container mx-auto px-4">
+            <div className="mb-10 text-center">
+              <span className="rounded-full bg-black/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-white">
+                {content.testimonials_section.badge}
+              </span>
+              <h2 className="mt-4 text-3xl font-extrabold text-white md:text-4xl">{content.testimonials_section.title}</h2>
+            </div>
+            <TestimonialBand items={testimonials} es={lang === 'es'} />
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {testimonials.map((item) => (
-              <blockquote
-                key={item.slug}
-                className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col gap-4"
-              >
-                <div className="text-primary-900 text-3xl font-serif leading-none">&ldquo;</div>
-                <p className="text-gray-700 text-sm leading-relaxed italic flex-1">{item.body}</p>
-                <footer className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
-                  <span className="font-bold text-gray-900 text-sm">{item.family}</span>
-                  <span className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary-900 font-semibold">
-                    {item.program}
-                  </span>
-                </footer>
-              </blockquote>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <NewsPreview
         lang={lang}

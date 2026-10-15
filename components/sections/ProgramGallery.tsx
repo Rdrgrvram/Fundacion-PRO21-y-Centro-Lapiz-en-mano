@@ -5,6 +5,7 @@ import type { Program } from '@/lib/cms'
 interface ProgramGalleryProps {
   section?: Program['gallery']
   color: AccentColor
+  bg?: string
 }
 
 const BORDER: Record<AccentColor, string> = {
@@ -35,11 +36,11 @@ const TILT = [
 // apoya como una tarjeta suelta con el color del programa en el borde
 // superior, y revela su descripción real al pasar el cursor, como si fuera
 // la anotación de la sesión en la libreta del centro.
-export default function ProgramGallery({ section, color }: ProgramGalleryProps) {
+export default function ProgramGallery({ section, color, bg = 'bg-gray-50' }: ProgramGalleryProps) {
   if (!section || section.photos.length === 0) return null
 
   return (
-    <section className="py-16 md:py-24 px-4 bg-gray-50">
+    <section className={`py-16 md:py-24 px-4 ${bg}`}>
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-10 max-w-2xl mx-auto">
           {section.badge && (
@@ -53,15 +54,18 @@ export default function ProgramGallery({ section, color }: ProgramGalleryProps) 
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6">
           {section.photos.map((photo, idx) => (
-            <div
+            <figure
               key={idx}
-              className={`group relative h-48 sm:h-56 bg-white rounded-lg border-t-4 ${BORDER[color]} border-x border-b border-gray-200 shadow-sm overflow-hidden transition-all duration-300 hover:rotate-0 hover:shadow-lg hover:z-10 ${TILT[idx % TILT.length]}`}
+              className={`group relative bg-white rounded-lg border-t-4 ${BORDER[color]} border-x border-b border-gray-200 shadow-sm overflow-hidden transition-all duration-300 hover:rotate-0 hover:shadow-lg hover:z-10 ${TILT[idx % TILT.length]}`}
             >
-              <Image src={photo.image} alt={photo.alt} fill className="object-cover" />
-              <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <p className="p-3 text-[11px] leading-snug font-mono text-white">{photo.alt}</p>
+              <div className="relative h-36 sm:h-44">
+                <Image src={photo.image} alt={photo.alt} fill className="object-cover" />
               </div>
-            </div>
+              {/* Leyenda siempre visible (antes solo con hover: en el celular no existía). El lector de pantalla ya lee el alt de la foto. */}
+              <figcaption aria-hidden="true" className="p-3 text-xs leading-snug font-mono text-gray-700">
+                {photo.alt}
+              </figcaption>
+            </figure>
           ))}
         </div>
       </div>

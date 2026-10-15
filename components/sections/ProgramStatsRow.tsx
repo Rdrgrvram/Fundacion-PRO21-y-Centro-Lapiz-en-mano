@@ -9,7 +9,7 @@ const CYCLE: AccentColor[] = ['secondary', 'accent', 'primary']
 
 export default function ProgramStatsRow({ stats }: { stats: Program['stats'] }) {
   return (
-    <section className="py-10 border-b border-gray-100">
+    <section className="py-8 md:py-10 border-b border-gray-100">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto text-center">
           {stats.map((s, i) => {
@@ -19,7 +19,13 @@ export default function ProgramStatsRow({ stats }: { stats: Program['stats'] }) 
                 <div className={`w-12 h-12 ${style.bg} rounded-full flex items-center justify-center`}>
                   <Icon name={s.icon} className={`h-6 w-6 ${style.text}`} />
                 </div>
-                <span className={`text-2xl font-extrabold ${style.text}`}>{s.value}</span>
+                <span
+                  className={`font-display font-bold leading-none whitespace-nowrap ${style.text} ${
+                    String(s.value).length > 7 ? 'text-3xl md:text-4xl' : 'text-4xl md:text-5xl'
+                  }`}
+                >
+                  {s.value}
+                </span>
                 <span className="text-xs sm:text-sm text-gray-600 leading-tight">{s.label}</span>
               </div>
             )
