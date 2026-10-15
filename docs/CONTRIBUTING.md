@@ -32,7 +32,7 @@ Panel CMS en `http://localhost:3000/admin`
 
 | Rama | Uso |
 |---|---|
-| `main` | Producción — solo merges desde `develop` tras QA |
+| `master` | Producción — solo merges desde `develop` tras QA |
 | `develop` | Integración — rama principal de desarrollo |
 | `feature/us-XX-nombre` | Una rama por historia de usuario |
 

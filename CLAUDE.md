@@ -60,7 +60,7 @@ mockups/             # Mockups Vite de referencia (NO es código de producción)
 - Componentes: PascalCase (`HeroSection.tsx`)
 - Utilidades: camelCase (`formatDate.ts`)
 - Commits en **español** con prefijos: `feat:` `fix:` `content:` `style:` `docs:`
-- Ramas: `main` (producción), `develop`, `feature/nombre`
+- Ramas: `master` (producción), `develop`, `feature/nombre`
 - Clases Tailwind: orden layout → spacing → color → typography
 - Comentarios en español
 
