@@ -116,7 +116,7 @@ export default function Page({ params: { lang } }: PageProps) {
                 <div className="w-14 h-14 mb-5 select-none">
                   <Image src={settings.logo_pro21} alt={settings.logo_pro21_alt} width={56} height={56} className="w-full h-full object-contain" />
                 </div>
-                <h3 className="text-xl md:text-2xl text-gray-900 font-bold mb-1">Fundación PRO-21</h3>
+                <h2 className="font-sans tracking-normal text-xl md:text-2xl text-gray-900 font-bold mb-1">Fundación PRO-21</h2>
                 <p className="text-xs font-semibold text-secondary-700 italic tracking-wide mb-4">
                   {content.identity.pro21.tagline}
                 </p>
@@ -130,7 +130,7 @@ export default function Page({ params: { lang } }: PageProps) {
                 <div className="w-14 h-14 mb-5 select-none">
                   <Image src={settings.logo_lapiz} alt={settings.logo_lapiz_alt} width={56} height={56} className="w-full h-full object-contain" />
                 </div>
-                <h3 className="text-xl md:text-2xl text-gray-900 font-bold mb-1">Centro Lápiz en Mano</h3>
+                <h2 className="font-sans tracking-normal text-xl md:text-2xl text-gray-900 font-bold mb-1">Centro Lápiz en Mano</h2>
                 <p className="text-xs font-semibold text-accent italic tracking-wide mb-4">
                   {content.identity.lapiz.tagline}
                 </p>
@@ -218,9 +218,9 @@ export default function Page({ params: { lang } }: PageProps) {
                   <div className={`w-11 h-11 rounded-xl ${PALETTE[v.color].bg} flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-105`}>
                     <Icon name={v.icon} className={`h-5 w-5 ${CARD_STYLES[v.color].text}`} />
                   </div>
-                  <h4 className="text-base text-gray-900 font-bold mb-2">
+                  <h3 className="text-base text-gray-900 font-bold mb-2">
                     {v.name}
-                  </h4>
+                  </h3>
                   <p className="text-xs text-gray-600 leading-relaxed">
                     {v.desc}
                   </p>
@@ -268,7 +268,7 @@ export default function Page({ params: { lang } }: PageProps) {
                       {isLeft && (
                         <div className="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm hover:border-secondary/30 transition-all duration-300 mr-6">
                           <span className="inline-block text-xs font-bold px-3 py-1 bg-secondary/10 text-secondary-700 rounded-full mb-3">{item.year}</span>
-                          <h4 className="text-lg text-gray-900 font-bold mb-2">{item.title}</h4>
+                          <h3 className="text-lg text-gray-900 font-bold mb-2">{item.title}</h3>
                           <p className="text-xs text-gray-600 leading-relaxed">{item.desc}</p>
                         </div>
                       )}
@@ -284,14 +284,14 @@ export default function Page({ params: { lang } }: PageProps) {
                       {!isLeft && (
                         <div className="hidden md:block bg-white rounded-3xl p-6 border border-gray-200 shadow-sm hover:border-secondary/30 transition-all duration-300">
                           <span className="inline-block text-xs font-bold px-3 py-1 bg-secondary/10 text-secondary-700 rounded-full mb-3">{item.year}</span>
-                          <h4 className="text-lg text-gray-900 font-bold mb-2">{item.title}</h4>
+                          <h3 className="text-lg text-gray-900 font-bold mb-2">{item.title}</h3>
                           <p className="text-xs text-gray-600 leading-relaxed">{item.desc}</p>
                         </div>
                       )}
 
                       <div className="block md:hidden bg-white rounded-2xl p-5 sm:p-6 border border-gray-200 shadow-sm">
                         <span className="inline-block text-[10px] font-bold px-2.5 py-0.5 bg-secondary/10 text-secondary-700 rounded-full mb-2">{item.year}</span>
-                        <h4 className="text-base text-gray-900 font-bold mb-1.5">{item.title}</h4>
+                        <h3 className="text-base text-gray-900 font-bold mb-1.5">{item.title}</h3>
                         <p className="text-xs text-gray-600 leading-relaxed">{item.desc}</p>
                       </div>
                     </div>

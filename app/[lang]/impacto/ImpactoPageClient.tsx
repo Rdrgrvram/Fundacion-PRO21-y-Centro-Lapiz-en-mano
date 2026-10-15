@@ -9,6 +9,7 @@ import { PALETTE } from '@/lib/palette'
 import { waLink } from '@/lib/utils'
 import ProtagonistPhoto from '@/components/sections/ProtagonistPhoto'
 import Icon from '@/components/ui/Icon'
+import VideoGrid from '@/components/sections/VideoGrid'
 
 // Mismo tratamiento de "ficha de actividad" (inclinación + borde de color +
 // caption al hover) que components/sections/ProgramGallery.tsx — ambas
@@ -190,7 +191,7 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
                       <Icon name={activeT.icon} className="h-6 w-6" />
                     </div>
                     <div>
-                      <h4 className="text-xs sm:text-sm font-bold text-gray-900">{activeT.family}</h4>
+                      <h3 className="text-xs sm:text-sm font-bold text-gray-900">{activeT.family}</h3>
                       <p className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider mt-0.5">{activeT.program}</p>
                     </div>
                   </div>
@@ -225,7 +226,7 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
                 <Icon name={tm.icon} className="h-5 w-5 flex-shrink-0 text-secondary-700" />
                 <div>
                   <div className="text-[10px] font-bold text-gray-900 leading-tight">{tm.family}</div>
-                  <div className="text-[8px] text-gray-500 font-semibold truncate max-w-[64px] sm:max-w-xs">{tm.program}</div>
+                  <div className="text-[10px] text-gray-500 font-semibold leading-snug">{tm.program}</div>
                 </div>
               </button>
             ))}
@@ -258,7 +259,7 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
                         <Icon name="newspaper" className="h-5 w-5 text-secondary-700" />
                       </div>
                       <div>
-                        <h4 className="text-xs sm:text-sm font-bold text-gray-900 leading-snug">{r.title}</h4>
+                        <h3 className="text-xs sm:text-sm font-bold text-gray-900 leading-snug">{r.title}</h3>
                         <p className="text-[10px] text-gray-500 font-semibold mt-0.5">{r.desc}</p>
                       </div>
                     </div>
@@ -284,7 +285,7 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
                       <Icon name={item.icon} className="h-5 w-5 text-gray-700" />
                     </div>
                     <div>
-                      <h4 className="text-xs font-bold text-gray-900 mb-0.5">{item.title}</h4>
+                      <h3 className="text-xs font-bold text-gray-900 mb-0.5">{item.title}</h3>
                       <p className="text-[10px] text-gray-500 leading-normal font-semibold">{item.desc}</p>
                     </div>
                   </div>
@@ -327,7 +328,7 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
                           </div>
                         )}
                         <div>
-                          <h4 className="text-xs sm:text-sm font-bold text-gray-900 leading-none">{m.outlet}</h4>
+                          <h3 className="text-xs sm:text-sm font-bold text-gray-900 leading-none">{m.outlet}</h3>
                           <span className="text-[9px] text-gray-500 font-semibold mt-1 block">{m.type}</span>
                         </div>
                       </div>
@@ -375,20 +376,23 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
               .map((img, idx) => {
                 const catColor = img.category ? CATEGORY_BORDER[img.category] ?? CATEGORY_BORDER._default : CATEGORY_BORDER._default
                 return (
-                  <div
+                  <figure
                     key={idx}
-                    className={`group relative h-48 sm:h-56 bg-white rounded-lg border-t-4 ${catColor} border-x border-b border-gray-200 shadow-sm overflow-hidden transition-all duration-300 hover:rotate-0 hover:shadow-lg hover:z-10 ${TILT[idx % TILT.length]}`}
+                    className={`group relative bg-white rounded-lg border-t-4 ${catColor} border-x border-b border-gray-200 shadow-sm overflow-hidden transition-all duration-300 hover:rotate-0 hover:shadow-lg hover:z-10 ${TILT[idx % TILT.length]}`}
                   >
-                    <Image src={img.image} alt={img.alt} fill className="object-cover" />
-                    {img.category && (
-                      <span className="absolute top-2 left-2 bg-white/90 backdrop-blur-sm rounded px-2 py-0.5 text-[9px] font-mono font-bold uppercase tracking-wider text-gray-700 shadow-sm">
-                        {img.category}
-                      </span>
-                    )}
-                    <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <p className="p-3 text-[11px] leading-snug font-mono text-white">{img.alt}</p>
+                    <div className="relative h-36 sm:h-44">
+                      <Image src={img.image} alt={img.alt} fill className="object-cover" />
+                      {img.category && (
+                        <span className="absolute top-2 left-2 bg-white/90 backdrop-blur-sm rounded px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-gray-700 shadow-sm">
+                          {img.category}
+                        </span>
+                      )}
                     </div>
-                  </div>
+                    {/* Leyenda siempre visible (antes solo con hover: en el celular no existía). El lector de pantalla ya lee el alt de la foto. */}
+                    <figcaption aria-hidden="true" className="p-3 text-xs leading-snug font-mono text-gray-700">
+                      {img.alt}
+                    </figcaption>
+                  </figure>
                 )
               })}
           </div>
@@ -396,6 +400,8 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
           <div className="text-center mt-6 select-none">
             <p className="text-[10px] text-gray-500 font-semibold italic">{content.gallery_note}</p>
           </div>
+
+          <VideoGrid videos={content.videos} es={es} />
         </div>
       </section>
 

@@ -173,6 +173,8 @@ export const impactSchema = z.object({
   gallery_section: sectionHeader,
   gallery_categories: z.array(z.string()),
   gallery: z.array(z.object({ image: z.string(), alt: z.string(), category: z.string().optional(), program_slug: z.string().optional() })),
+  // Opcional: sin videos cargados la sección no se muestra. Videos de niños, solo con autorización escrita de los padres.
+  videos: z.array(z.object({ title: z.string(), url: z.string(), desc: z.string().optional() })).default([]),
   gallery_note: z.string(),
   cta: z.object({ title: z.string(), text: z.string(), cta_label: z.string(), secondary_label: z.string() }),
 })
@@ -206,7 +208,16 @@ export const collaborateSchema = z.object({
   ),
   donation_bank: z.object({ bank: z.string(), account: z.string(), holder: z.string(), note: z.string() }),
   payment_methods: z.array(
-    z.object({ icon: iconName, title: z.string(), lines: z.array(z.string()), is_bank: z.boolean().optional(), qrImage: z.string().optional() })
+    z.object({
+      icon: iconName,
+      title: z.string(),
+      lines: z.array(z.string()),
+      is_bank: z.boolean().optional(),
+      qrImage: z.string().optional(),
+      // Enlace de pago externo (p. ej. PayPal). Sin valor no aparece botón; solo se acepta http(s) al mostrarlo.
+      link: z.string().optional(),
+      link_label: z.string().optional(),
+    })
   ),
   payment_note: z.string(),
   volunteer_section: sectionHeader,
@@ -415,7 +426,7 @@ export const programSchema = z.object({
     .object({
       badge: z.string().optional(),
       title: z.string(),
-      photos: z.array(z.object({ image: z.string(), alt: z.string() })),
+      photos: z.array(z.object({ image: z.string(), alt: z.string() })).default([]),
     })
     .optional(),
   cta: z.object({
@@ -482,7 +493,7 @@ export const teamAreaSchema = z.object({
   color: accentColor,
   desc: z.string(),
   skills: z.array(z.string()),
-  programs: z.array(z.string()),
+  programs: z.array(z.string()).default([]),
   program_slugs: z.array(z.string()).optional(),
 })
 

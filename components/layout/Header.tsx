@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
@@ -8,6 +8,7 @@ import type { SiteSettingsContent } from '@/lib/cms-schemas'
 import Nav from './Nav'
 import LanguageSwitcher from './LanguageSwitcher'
 import AccessibilityBar from './AccessibilityBar'
+import AccessibilityMenu from './AccessibilityMenu'
 import Button from '@/components/ui/Button'
 
 interface HeaderProps {
@@ -51,6 +52,52 @@ export default function Header({ lang, settings, programs, programRoutes }: Head
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
   const es = lang === 'es'
+  const botonMenu = useRef<HTMLButtonElement>(null)
+  const cajon = useRef<HTMLDivElement>(null)
+  const botonCerrar = useRef<HTMLButtonElement>(null)
+  const estuvoAbierto = useRef(false)
+
+  // Menú móvil como diálogo: Escape lo cierra, el foco entra al abrir, Tab no se escapa al fondo y el foco vuelve
+  // al botón de menú al cerrar.
+  useEffect(() => {
+    if (!isOpen) {
+      if (estuvoAbierto.current) botonMenu.current?.focus()
+      estuvoAbierto.current = false
+      return
+    }
+    estuvoAbierto.current = true
+    botonCerrar.current?.focus()
+    const alTeclear = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsOpen(false)
+        return
+      }
+      if (e.key !== 'Tab' || !cajon.current) return
+      const enfocables = cajon.current.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')
+      if (enfocables.length === 0) return
+      const primero = enfocables[0]
+      const ultimo = enfocables[enfocables.length - 1]
+      if (e.shiftKey && document.activeElement === primero) {
+        e.preventDefault()
+        ultimo.focus()
+      } else if (!e.shiftKey && document.activeElement === ultimo) {
+        e.preventDefault()
+        primero.focus()
+      }
+    }
+    document.addEventListener('keydown', alTeclear)
+    return () => document.removeEventListener('keydown', alTeclear)
+  }, [isOpen])
+
+  // Si la ventana se ensancha hasta escritorio con el menú abierto, se cierra: si no, el scroll del fondo quedaba bloqueado.
+  useEffect(() => {
+    const consulta = window.matchMedia('(min-width: 1024px)')
+    const alCambiar = (e: MediaQueryListEvent) => {
+      if (e.matches) setIsOpen(false)
+    }
+    consulta.addEventListener('change', alCambiar)
+    return () => consulta.removeEventListener('change', alCambiar)
+  }, [])
 
   // Cerrar el menú cuando cambia la ruta (navegación completa)
   useEffect(() => {
@@ -100,7 +147,7 @@ export default function Header({ lang, settings, programs, programRoutes }: Head
   }, [isOpen])
 
   return (
-    <div className="sticky top-0 z-50 w-full flex flex-col">
+    <div className="sticky top-0 z-[60] w-full flex flex-col">
       {/* Barra de accesibilidad global — se colapsa al hacer scroll */}
       <div className={`overflow-hidden transition-[max-height] duration-300 ease-in-out ${scrolled ? 'max-h-0' : 'max-h-16'}`}>
         <AccessibilityBar lang={lang} />
@@ -111,7 +158,7 @@ export default function Header({ lang, settings, programs, programRoutes }: Head
         <div className="w-full pl-2 pr-4 md:pl-4 md:pr-6 flex items-center justify-between h-16 md:h-20">
           
           {/* Logo / Identidad */}
-          <Link href={`/${lang}`} className="flex items-center gap-2 md:gap-3 group py-1.5 focus:outline-none" aria-label="Inicio — Fundación PRO-21 y Centro Lápiz en Mano">
+          <Link href={`/${lang}`} className="flex items-center gap-2 md:gap-3 group py-1.5 rounded-lg" aria-label="Inicio — Fundación PRO-21 y Centro Lápiz en Mano">
             <Image
               src={settings.logo_pro21}
               alt={settings.logo_pro21_alt}
@@ -144,12 +191,15 @@ export default function Header({ lang, settings, programs, programRoutes }: Head
 
           {/* Controles para Móvil/Tablet */}
           <div className="flex lg:hidden items-center gap-2">
+            <AccessibilityMenu lang={lang} />
             <LanguageSwitcher lang={lang} />
             
             {/* Botón Hamburguesa */}
             <button
+              ref={botonMenu}
               onClick={() => setIsOpen(!isOpen)}
-              aria-label={es ? 'Abrir menú de navegación' : 'Open navigation menu'}
+              aria-label={isOpen ? (es ? 'Cerrar menú de navegación' : 'Close navigation menu') : es ? 'Abrir menú de navegación' : 'Open navigation menu'}
+              aria-haspopup="dialog"
               aria-expanded={isOpen}
               className="w-11 h-11 flex items-center justify-center rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50 active:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-secondary transition-all"
             >
@@ -174,7 +224,12 @@ export default function Header({ lang, settings, programs, programRoutes }: Head
           />
 
           {/* Contenedor del menú lateral */}
-          <div className="fixed top-0 right-0 bottom-0 w-[300px] max-w-[85vw] bg-white z-50 shadow-2xl flex flex-col p-6 transition-transform duration-300 transform translate-x-0 overflow-y-auto">
+          <div
+            ref={cajon}
+            role="dialog"
+            aria-modal="true"
+            aria-label={es ? 'Menú de navegación' : 'Navigation menu'}
+            className="fixed top-0 right-0 bottom-0 w-[300px] max-w-[85vw] bg-white z-50 shadow-2xl flex flex-col p-6 transition-transform duration-300 transform translate-x-0 overflow-y-auto">
             {/* Header del cajón */}
             <div className="flex items-center justify-between pb-4 border-b border-gray-100 mb-6">
               <div className="flex items-center gap-2">
@@ -182,10 +237,12 @@ export default function Header({ lang, settings, programs, programRoutes }: Head
                 <div className="w-px h-7 bg-gray-200" />
                 <Image src={settings.logo_lapiz} alt={settings.logo_lapiz_alt} width={32} height={32} className="h-9 w-auto object-contain" />
               </div>
-              <button
+              <button
+                ref={botonCerrar}
+                type="button"
                 onClick={() => setIsOpen(false)}
                 aria-label={es ? 'Cerrar menú' : 'Close menu'}
-                className="w-11 h-11 flex items-center justify-center rounded-full border border-gray-100 text-gray-600 hover:text-gray-900 hover:bg-gray-50 active:bg-gray-100 transition-colors focus:outline-none"
+                className="w-11 h-11 flex items-center justify-center rounded-full border border-gray-100 text-gray-600 hover:text-gray-900 hover:bg-gray-50 active:bg-gray-100 transition-colors"
               >
                 ✕
               </button>

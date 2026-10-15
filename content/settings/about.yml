@@ -87,7 +87,7 @@ es:
       icon: puzzle
       title: Aula Wawitas
       program_slug: aula-wawitas
-      desc: Se lanza el segundo programa especializado, enfocado en niños con autismo y otras condiciones del neurodesarrollo, incorporando detección temprana y evaluación multidisciplinaria.
+      desc: Se lanza el segundo programa, orientado al desarrollo integral de niños y niñas en edad preescolar, con niveles de estimulación para los 3, 4 y 5 años y una transición progresiva hacia la educación escolar.
     - year: '2024'
       icon: book-open
       title: Pasos Firmes
@@ -200,7 +200,7 @@ en:
       icon: puzzle
       title: Aula Wawitas
       program_slug: aula-wawitas
-      desc: The second specialized program is launched, focused on children with autism and other neurodevelopmental conditions, incorporating early detection and multidisciplinary evaluation.
+      desc: The second program is launched, focused on the comprehensive development of preschool-age children, with stimulation levels for ages 3, 4 and 5 and a gradual transition to school education.
     - year: '2024'
       icon: book-open
       title: Pasos Firmes

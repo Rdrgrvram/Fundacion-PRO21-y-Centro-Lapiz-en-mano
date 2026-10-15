@@ -15,7 +15,7 @@ lo demás:
 | # | Decisión | Justificación |
 |---|---|---|
 | 1 | **Bilingüe con pestaña ES/EN en el editor** | `i18n` nativo de Decap. Un único borrador compartido en memoria por entrada — cambiar de pestaña no descarta nada. |
-| 2 | **Publicación con revisión (`editorial_workflow`)** | Borrador → PR → revisión de un desarrollador antes de llegar a producción. |
+| 2 | **Publicación directa (`simple`)** — antes `editorial_workflow` | Cambiado el 14-oct-2026: con 1 o 2 personas poco técnicas, los 4 pasos del flujo editorial (guardar, en revisión, listo, publicar, con un PR de GitHub por debajo) eran el mayor punto de confusión, y las pruebas locales ya corrían en modo simple (Decap degrada el editorial a simple con `local_backend`). Se pierde la revisión previa; se gana simplicidad. La red de seguridad es el historial de GitHub (`Revert`) y los interruptores «Visible». |
 | 3 | **Desarrollo en la rama `CMS`** | Se integra a `master` (producción real) por PR, fase por fase (ver ramas por fase en §9). |
 | 4 | **Adaptar componentes existentes** | `components/sections/*` y `components/ui/{Card,Badge}.tsx` se adaptan, no se reescriben desde cero. |
 | 5 | **100% GitHub, sin plataformas externas** | Ver §0.1 y §7 — esta versión endurece esta regla más allá de lo que cumplía la v1. |
@@ -63,13 +63,13 @@ backend:
   # base_url: apunta a la Vercel Function de OAuth propia — ver §7
   # local_backend: true   # solo local, nunca commiteado activo — usar con `npx decap-server`
 
-publish_mode: editorial_workflow
+publish_mode: simple   # publica directo a master (ver decisión #2 de §0)
 
 media_folder: public/images/uploads
 public_folder: /images/uploads
 media_library:
   config:
-    max_file_size: 512000   # ~500KB por imagen — evita inflar el repo Git con el tiempo
+    max_file_size: 5242880  # 5 MB por archivo (PDFs en public/docs) — evita inflar el repo Git; ver issue #69
 
 i18n:
   structure: multiple_files

@@ -6,6 +6,7 @@ import type { ContactPageContent, SiteSettingsContent } from '@/lib/cms-schemas'
 import { PALETTE } from '@/lib/palette'
 import { waLink } from '@/lib/utils'
 import Icon from '@/components/ui/Icon'
+import MapEmbed from '@/components/sections/MapEmbed'
 import BrandLogo from '@/components/ui/BrandLogo'
 
 const REASON_STYLES = {
@@ -295,6 +296,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
                   </div>
                 </div>
                 <p className="text-xs text-gray-600 leading-relaxed mb-5">{contact.address}</p>
+                <MapEmbed address={contact.address} es={es} />
                 <a
                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.address)}`}
                   target="_blank"
@@ -341,7 +343,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
                     >
                       <BrandLogo name={s.name} className="h-6 w-6" />
                       <span className="text-[10px] font-extrabold text-gray-700">{s.name}</span>
-                      <span className="text-[8px] text-gray-500 font-semibold truncate max-w-[72px]">{s.handle}</span>
+                      <span className="text-xs text-gray-500 font-semibold break-all">{s.handle}</span>
                     </a>
                   ))}
                 </div>

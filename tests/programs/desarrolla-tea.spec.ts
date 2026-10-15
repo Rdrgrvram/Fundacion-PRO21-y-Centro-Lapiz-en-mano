@@ -194,7 +194,7 @@ test.describe('Modalidades: cada pestaña muestra su contenido', () => {
       const tabs = TABS[lang]
       for (const [i, tab] of tabs.entries()) {
         // El nombre accesible del botón incluye el rango de edad además de la etiqueta.
-        await page.getByRole('button', { name: new RegExp(`^${tab.label}`) }).click()
+        await page.getByRole('tab', { name: new RegExp(`^${tab.label}`) }).click()
         for (const point of tab.points) {
           await expect(page.getByText(point, { exact: true }).first(), `${tab.label}: ${point}`).toBeVisible()
         }

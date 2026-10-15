@@ -4,7 +4,7 @@ import Image from 'next/image'
 import type { Locale } from '@/lib/i18n'
 import type { CollaborateContent } from '@/lib/cms-schemas'
 import { PALETTE } from '@/lib/palette'
-import { waLink, donationMessage } from '@/lib/utils'
+import { waLink, donationMessage, tierAmountValue } from '@/lib/utils'
 import ProtagonistPhoto from '@/components/sections/ProtagonistPhoto'
 import Icon from '@/components/ui/Icon'
 
@@ -18,7 +18,12 @@ interface ColaboraPageClientProps {
 export default function ColaboraPageClient({ lang, content, whatsappNumber, email }: ColaboraPageClientProps) {
   const es = lang === 'es'
   const [selectedTier, setSelectedTier] = useState(1)
-  const [customAmount, setCustomAmount] = useState('')
+  // El campo de monto arranca con el de la tarjeta destacada y se rellena al elegir otra (la persona puede cambiarlo).
+  const [customAmount, setCustomAmount] = useState(() => tierAmountValue(content.donation_tiers[1]?.amount ?? ''))
+  const chooseTier = (i: number) => {
+    setSelectedTier(i)
+    setCustomAmount(tierAmountValue(content.donation_tiers[i]?.amount ?? ''))
+  }
   const [selectedVolArea, setSelectedVolArea] = useState<number | null>(null)
   const [openAlliance, setOpenAlliance] = useState<number | null>(null)
   const [formSent, setFormSent] = useState(false)
@@ -173,7 +178,16 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
               return (
                 <div
                   key={i}
-                  onClick={() => setSelectedTier(i)}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={isSelected}
+                  onClick={() => chooseTier(i)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      chooseTier(i)
+                    }
+                  }}
                   className={`bg-white rounded-3xl overflow-hidden border cursor-pointer relative shadow-sm hover:shadow-md transition-all duration-300 ${isSelected ? 'border-primary scale-[1.01]' : 'border-gray-200 hover:border-gray-300'}`}
                 >
                   {tier.featured && (
@@ -209,7 +223,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
               <div className="flex flex-col justify-between">
                 <div>
                   <div className="text-[10px] font-bold text-gray-500 tracking-wider uppercase mb-3 select-none">
-                    {es ? 'Monto personalizado (Bs)' : 'Custom amount (Bs)'}
+                    {es ? 'Tu aporte (Bs)' : 'Your contribution (Bs)'}
                   </div>
                   <div className="relative mb-5 max-w-xs">
                     <span className="absolute left-4 top-1/2 -translate-y-1/2 text-lg text-primary-900 font-bold select-none">Bs</span>
@@ -221,6 +235,9 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
                       className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 focus:border-primary rounded-xl text-lg focus:outline-none bg-gray-50"
                     />
                   </div>
+                  <p className="-mt-3 mb-4 text-xs font-semibold text-gray-500">
+                    {es ? 'Se rellena con la tarjeta que elijas. Puedes cambiarlo.' : 'Filled in from the card you choose. You can change it.'}
+                  </p>
                   <p className="text-xs text-gray-600 leading-relaxed max-w-sm">{content.payment_note}</p>
                 </div>
 
@@ -256,12 +273,23 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
                         <Icon name={m.icon} className="h-5 w-5 text-secondary-700" />
                       </div>
                       <div>
-                        <h4 className="text-xs sm:text-sm font-bold text-gray-900 mb-0.5">{m.title}</h4>
+                        <h3 className="text-xs sm:text-sm font-bold text-gray-900 mb-0.5">{m.title}</h3>
                         {lines.map((line, lidx) => (
                           <div key={lidx} className="text-[11px] text-gray-600 font-semibold leading-relaxed">{line}</div>
                         ))}
                         {isBank && content.donation_bank.note && (
                           <div className="text-[10px] text-gray-500 italic mt-1">{content.donation_bank.note}</div>
+                        )}
+                        {m.link && /^https?:\/\//i.test(m.link) && (
+                          <a
+                            href={m.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-3 inline-flex min-h-[44px] items-center gap-2 rounded-full bg-secondary-700 px-5 text-xs font-bold text-white transition-transform hover:scale-[1.02] active:scale-[0.98] sm:text-sm"
+                          >
+                            <Icon name="heart" className="h-4 w-4" />
+                            {m.link_label || (es ? 'Donar ahora' : 'Donate now')}
+                          </a>
                         )}
                         {m.qrImage && (
                           <div className="mt-3 border border-gray-200 rounded-2xl p-3 bg-white max-w-[180px] shadow-sm">
@@ -328,7 +356,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
             <div className="bg-white rounded-3xl p-6 md:p-8 border border-gray-200 shadow-sm text-left">
               {!formSent ? (
                 <>
-                  <h4 className="text-lg md:text-xl text-gray-900 font-bold mb-6">{es ? 'Inscríbete como voluntario' : 'Register as volunteer'}</h4>
+                  <h3 className="text-lg md:text-xl text-gray-900 font-bold mb-6">{es ? 'Inscríbete como voluntario' : 'Register as volunteer'}</h3>
                   <div className="space-y-4">
                     {[
                       { label: es ? 'Nombre completo' : 'Full name', placeholder: es ? 'Ej: María Flores' : 'E.g., Maria Flores', type: 'text', value: volName, set: setVolName, err: 'name' },
@@ -424,7 +452,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
 
             <div className="flex flex-col gap-6 justify-between text-left">
               <div className={`bg-white rounded-3xl p-6 md:p-8 border border-gray-200 shadow-sm ${content.volunteer_testimonial ? 'flex-1' : 'self-start w-full'}`}>
-                <h4 className="text-lg text-gray-900 font-bold mb-4">{es ? '¿Qué implica el voluntariado?' : 'What does volunteering involve?'}</h4>
+                <h3 className="text-lg text-gray-900 font-bold mb-4">{es ? '¿Qué implica el voluntariado?' : 'What does volunteering involve?'}</h3>
                 <div className="space-y-4">
                   {content.volunteer_perks.map((item, idx) => (
                     <div key={idx} className="flex items-center gap-3.5 pb-3 border-b border-gray-100 last:border-0 last:pb-0">
@@ -492,8 +520,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
               return (
                 <div
                   key={p.title}
-                  onClick={() => setOpenAlliance(isOpen ? null : idx)}
-                  className={`bg-white rounded-3xl border overflow-hidden shadow-sm hover:shadow-md cursor-pointer transition-all duration-300 ${isOpen ? 'border-accent' : 'border-gray-200'}`}
+                  className={`relative bg-white rounded-3xl border overflow-hidden shadow-sm hover:shadow-md cursor-pointer transition-all duration-300 ${isOpen ? 'border-accent' : 'border-gray-200'}`}
                 >
                   <div className="h-1 w-full" style={{ backgroundColor: hex }} />
                   <div className="p-6 md:p-8">
@@ -502,13 +529,32 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
                         <Icon name={p.icon} className="h-7 w-7 text-gray-700" />
                       </div>
                       <div className="flex-1">
-                        <h4 className="text-lg text-gray-900 font-bold leading-snug">{p.title}</h4>
+                        <h3 className="text-lg text-gray-900 font-bold leading-snug">
+                          {/* El botón se estira sobre toda la tarjeta (after:absolute): teclado, lector de pantalla y mouse usan el mismo control. */}
+                          <button
+                            type="button"
+                            id={`alianza-${idx}`}
+                            aria-expanded={isOpen}
+                            aria-controls={`alianza-panel-${idx}`}
+                            onClick={() => setOpenAlliance(isOpen ? null : idx)}
+                            className="inline-flex min-h-[44px] items-center text-left after:absolute after:inset-0 after:content-['']"
+                          >
+                            {p.title}
+                          </button>
+                        </h3>
                         <p className="text-xs sm:text-sm text-gray-600 mt-2 leading-relaxed">{p.desc}</p>
                       </div>
                       <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300 ${isOpen ? 'bg-accent/10 text-accent rotate-180' : 'bg-gray-50 text-gray-500'}`}>▾</div>
                     </div>
 
-                    <div className={`overflow-hidden transition-all duration-500 ${isOpen ? 'max-h-[250px] opacity-100 mt-6' : 'max-h-0 opacity-0'}`}>
+                    <div
+                      id={`alianza-panel-${idx}`}
+                      role="region"
+                      aria-labelledby={`alianza-${idx}`}
+                      aria-hidden={!isOpen}
+                      className={`grid transition-all duration-300 ease-out ${isOpen ? 'grid-rows-[1fr] opacity-100 mt-6' : 'grid-rows-[0fr] opacity-0'}`}
+                    >
+                     <div className="overflow-hidden">
                       <div className="pt-4 border-t border-gray-100">
                         <div className="text-[10px] font-bold text-gray-500 tracking-wider uppercase mb-3">{es ? 'Beneficios de la alianza' : 'Benefits of the alliance'}</div>
                         <div className="flex flex-col gap-2">
@@ -520,6 +566,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
                           ))}
                         </div>
                       </div>
+                     </div>
                     </div>
                   </div>
                 </div>
@@ -528,7 +575,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
           </div>
 
           <div className="bg-white rounded-3xl border border-gray-200 p-6 md:p-8 max-w-5xl mx-auto shadow-sm text-center select-none">
-            <h4 className="text-lg text-gray-900 font-bold mb-2">{content.allies_title}</h4>
+            <h3 className="text-lg text-gray-900 font-bold mb-2">{content.allies_title}</h3>
             <p className="text-xs text-gray-500 mb-8">{content.allies_subtitle}</p>
             <div className="flex flex-wrap gap-4 justify-center items-center">
               {content.allies.map((ally, i) => {

@@ -118,7 +118,7 @@ export default function EquipoPageClient({ lang, content, navLabel, areas, team,
               >
                 <div>
                   <Icon name={p.icon} className="mb-4 h-7 w-7 text-secondary-700" />
-                  <h4 className="text-base text-gray-900 font-bold mb-2">{p.title}</h4>
+                  <h3 className="text-base text-gray-900 font-bold mb-2">{p.title}</h3>
                   <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">{p.desc}</p>
                 </div>
               </div>
@@ -164,7 +164,7 @@ export default function EquipoPageClient({ lang, content, navLabel, areas, team,
                         <Icon name={a.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" />
                       </div>
                       <div>
-                        <h4 className="text-sm font-bold text-gray-900 leading-snug">{a.name}</h4>
+                        <h3 className="text-sm font-bold text-gray-900 leading-snug">{a.name}</h3>
                         <span className="text-[9px] text-gray-500 font-semibold block mt-0.5">
                           {team.filter((m) => m.area === a.slug).length} {content.team_grid_section.staff_count_label}
                         </span>
@@ -191,7 +191,7 @@ export default function EquipoPageClient({ lang, content, navLabel, areas, team,
                 <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest block mb-1">
                   {content.team_grid_section.competencies_label}
                 </span>
-                <h4 className="text-lg font-bold text-gray-900 mb-2">{selectedData.name}</h4>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{selectedData.name}</h3>
                 <p className="text-xs text-gray-600 leading-relaxed mb-4">{selectedData.desc}</p>
                 <div className="flex flex-wrap gap-2">
                   {selectedData.skills.map((s, idx) => (
@@ -301,12 +301,12 @@ export default function EquipoPageClient({ lang, content, navLabel, areas, team,
               return (
                 <div
                   key={a.slug}
-                  style={{ left: `${x - 30}px`, top: `${y - 30}px` }}
-                  className="absolute w-16 h-16 rounded-2xl bg-white border border-gray-200 shadow-sm flex flex-col items-center justify-center hover:scale-110 hover:border-primary hover:shadow-md transition-all duration-300 z-10"
+                  style={{ left: `${x - 46}px`, top: `${y - 30}px` }}
+                  className="absolute w-[92px] h-16 rounded-2xl bg-white border border-gray-200 shadow-sm flex flex-col items-center justify-center hover:scale-110 hover:border-primary hover:shadow-md transition-all duration-300 z-10"
                   title={a.name}
                 >
                   <Icon name={a.icon} className="h-5 w-5 text-secondary-700" />
-                  <span className="text-[8px] font-extrabold text-gray-500 mt-1 max-w-[50px] overflow-hidden text-ellipsis whitespace-nowrap">
+                  <span className="text-[10px] font-extrabold text-gray-500 mt-1 max-w-[88px] text-center leading-none">
                     {a.name.split(' ')[0]}
                   </span>
                 </div>
@@ -322,7 +322,7 @@ export default function EquipoPageClient({ lang, content, navLabel, areas, team,
                 <Icon name="smile" className="h-5 w-5" />
               </div>
               <div>
-                <h4 className="text-sm text-gray-900 font-bold leading-tight">{content.network_section.center_label}</h4>
+                <h3 className="text-sm text-gray-900 font-bold leading-tight">{content.network_section.center_label}</h3>
                 <p className="text-[10px] text-gray-900/80 font-semibold uppercase mt-0.5">{content.network_section.center_sublabel}</p>
               </div>
             </div>
@@ -335,7 +335,7 @@ export default function EquipoPageClient({ lang, content, navLabel, areas, team,
                     <Icon name={a.icon} className="inline-block h-[1em] w-[1em] align-[-0.125em]" />
                   </div>
                   <div>
-                    <h5 className="text-xs font-bold text-gray-900">{a.name}</h5>
+                    <h4 className="text-xs font-bold text-gray-900">{a.name}</h4>
                     <p className="text-[9px] text-gray-500 font-semibold">{content.network_section.node_caption}</p>
                   </div>
                 </div>
