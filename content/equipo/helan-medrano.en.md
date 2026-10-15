@@ -1,4 +1,5 @@
 ---
+visible: true
 name: "Helan Paola Medrano López"
 role: "B.S. Child Psychology"
 specialty: "Child Psychology & Family Counseling"

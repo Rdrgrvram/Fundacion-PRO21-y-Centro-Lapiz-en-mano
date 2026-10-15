@@ -1,4 +1,5 @@
 ---
+visible: true
 name: "Helan Paola Medrano López"
 role: "Lic. Psicología Infantil"
 specialty: "Psicología Infantil y Contención Familiar"

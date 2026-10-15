@@ -149,7 +149,7 @@ export function getAllTeamAreas(locale: Locale): TeamArea[] {
 export type TeamMember = TeamMemberContent & { slug: string }
 
 export function getAllTeamMembers(locale: Locale): TeamMember[] {
-  return getFolderCollection('equipo', locale, teamMemberSchema)
+  return getFolderCollection('equipo', locale, teamMemberSchema).filter((member) => member.visible !== false)
 }
 
 // Sin i18n (un solo .md por persona) — no puede reusar getFolderCollection, que

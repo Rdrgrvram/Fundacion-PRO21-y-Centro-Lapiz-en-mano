@@ -142,6 +142,8 @@ export function getAllTestimonials(
   return listLocaleSlugs(dir)
     .map((slug) => {
       const { data, content } = readLocaleMatter(dir, slug, locale)
+      // Interruptor «Visible en el sitio» del panel: apagado = no se muestra (sin borrar la entrada).
+      if (data.visible === false || data.visible === 'false') return null
       const programSlug = normalizeProgramSlug(data.program_slug ?? data.program)
       if (!isVisibleProgramReference(programSlug, options.visibleProgramSlugs)) return null
 

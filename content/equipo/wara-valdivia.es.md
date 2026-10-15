@@ -1,4 +1,5 @@
 ---
+visible: true
 name: "Wara Belen Valdivia"
 role: "Lic. Psicomotricidad"
 specialty: "Psicomotricidad Educativa y Terapéutica"

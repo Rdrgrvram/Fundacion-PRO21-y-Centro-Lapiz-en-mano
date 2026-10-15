@@ -1,4 +1,5 @@
 ---
+visible: true
 family: "Mom of T."
 program: "Mi Escuelita Down"
 icon: "sparkles"

@@ -1,4 +1,5 @@
 ---
+visible: true
 name: "Benita Isabel Rosales"
 role: "Lic. Trabajo Social"
 specialty: "Trabajo Social Familiar e Inclusión"

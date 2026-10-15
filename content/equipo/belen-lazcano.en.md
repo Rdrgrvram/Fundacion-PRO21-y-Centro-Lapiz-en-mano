@@ -1,4 +1,5 @@
 ---
+visible: true
 name: Belen Lazcano Quispe
 role: B.S. Physiotherapy and Kinesiology
 specialty: Pediatric Physiotherapy & Neurodevelopment

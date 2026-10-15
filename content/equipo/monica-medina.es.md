@@ -1,4 +1,5 @@
 ---
+visible: true
 name: "Mónica Mikaela Medina Rosales"
 role: "Lic. Psicología Clínica"
 specialty: "Psicología Clínica Infantil y Neurodesarrollo"

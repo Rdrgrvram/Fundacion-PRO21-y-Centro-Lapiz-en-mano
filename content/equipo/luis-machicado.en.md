@@ -1,4 +1,5 @@
 ---
+visible: true
 name: Luis Enrique Machicado Cahuaya
 role: B.S. Psychology
 specialty: Behavior Modification & Socialization
