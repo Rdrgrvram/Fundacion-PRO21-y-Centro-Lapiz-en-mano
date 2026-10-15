@@ -16,7 +16,7 @@ La fundación atiende niños con síndrome de Down, autismo y dificultades de ap
 | Estilos | Tailwind CSS |
 | CMS | Decap CMS (git-based, sin servidor) |
 | Hosting | Vercel (plan Hobby, $0) |
-| Imágenes | Cloudflare R2 (10 GB gratis) |
+| Imágenes y PDFs | En el repositorio: fotos en `public/images/uploads`, PDFs en `public/docs` (recomendado ≤ 5 MB por archivo). **Cloudflare R2 no se usa en v1** (decisión del 14-oct-2026: $0, sin cuentas nuevas; se puede migrar si el repositorio crece) |
 | Email | Resend (3.000 emails/mes gratis) |
 | Idiomas | Español (principal) + Inglés |
 
@@ -75,7 +75,7 @@ mockups/             # Mockups Vite de referencia (NO es código de producción)
 ## Variables de entorno
 
 Ver `.env.example`. Las críticas son:
-- `CLOUDFLARE_R2_*` — para subir imágenes desde el CMS
+- `CLOUDFLARE_R2_*` — **no se usan en v1** (ver tabla de Stack); quedan en `.env.example` solo como referencia de una futura migración
 - `RESEND_API_KEY` — para el formulario de contacto
 - `NEXT_PUBLIC_SITE_URL` — URL de producción
 

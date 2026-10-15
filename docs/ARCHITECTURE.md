@@ -25,10 +25,10 @@
 └──────────┬──────────────────────┬───────────────────┘
            │                      │
 ┌──────────▼───────┐   ┌──────────▼───────────────────┐
-│   DECAP CMS      │   │      CLOUDFLARE R2            │
-│ /admin/index.html│   │  Almacenamiento de imágenes   │
-│ config.yml       │   │  10 GB gratuitos · Sin egress │
-│ Git-based · Free │   │  Conectado via API key        │
+│   DECAP CMS      │   │   REPOSITORIO (GitHub)        │
+│ /admin/index.html│   │  Fotos: public/images/uploads │
+│ config.yml       │   │  PDFs:  public/docs           │
+│ Git-based · Free │   │  Sin servicio extra · $0      │
 └──────────┬───────┘   └──────────────────────────────┘
            │
 ┌──────────▼───────────────────────────────────────────┐
@@ -59,11 +59,14 @@ La página de una fundación es principalmente contenido estático que cambia po
 - **Git-based** — todo el contenido vive en el repositorio, con historial de versiones
 - **Compatible con Next.js** — lee archivos Markdown del repo
 
-### ¿Por qué Cloudflare R2?
+### Imágenes y PDFs: en el repositorio (decisión del 14-oct-2026)
 
-- **10 GB gratuitos** permanentes (no expiran como AWS S3 Free Tier)
-- **Sin cargos de egress** — las imágenes se sirven sin costo de transferencia
-- **CDN de Cloudflare** — imágenes rápidas globalmente
+La propuesta inicial contemplaba **Cloudflare R2** (10 GB gratis, sin cargos de egress). En la v1 se decidió **guardar fotos y PDFs en el propio repositorio**:
+
+- **Costo $0 y sin cuentas nuevas** para la Fundación (menos credenciales que custodiar).
+- **Lo que se probó:** subir una foto y un PDF desde el panel, verlos en el sitio y descargarlos (`tests/cms/recursos.spec.ts`).
+- **Costo asumido:** cada archivo engorda el repositorio para siempre. Por eso se recomienda ≤ 5 MB por archivo y fotos de 300–500 KB (Decap no hace cumplir ese límite en el campo de PDFs; ver `MANUAL-CMS.md` §4.4). GitHub avisa desde 50 MB por archivo y rechaza 100 MB.
+- **Cuándo migrar a R2:** si el repositorio se acerca a 1 GB. Habría que implementar la integración (no existe) y guardar las claves como variables de entorno. Las variables `CLOUDFLARE_R2_*` de `.env.example` están comentadas como referencia.
 
 ---
 
@@ -237,10 +240,10 @@ collections:
 
 ```env
 # .env.local (no subir a GitHub)
-CLOUDFLARE_R2_ACCESS_KEY=
-CLOUDFLARE_R2_SECRET_KEY=
-CLOUDFLARE_R2_BUCKET=pro21-media
-CLOUDFLARE_R2_ENDPOINT=https://<account-id>.r2.cloudflarestorage.com
+# CLOUDFLARE_R2_ACCESS_KEY=
+# CLOUDFLARE_R2_SECRET_KEY=
+# CLOUDFLARE_R2_BUCKET=pro21-media
+# CLOUDFLARE_R2_ENDPOINT=https://<account-id>.r2.cloudflarestorage.com
 
 # Formulario de contacto (usar Resend o Formspree - gratuitos)
 RESEND_API_KEY=

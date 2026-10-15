@@ -1,4 +1,5 @@
 ---
+visible: true
 name: "Megan"
 role: "Early Childhood & Pedagogical Support"
 specialty: "Special Education & Curriculum Adaptations"

@@ -121,6 +121,21 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
 
 // ── Testimonios ─────────────────────────────────────────────────────────────
 
+/**
+ * Nombres («Mamá de T.») de los testimonios con «Visible en el sitio» apagado. Las citas de la portada de Inicio, la
+ * historia destacada de Impacto y la carta de Familias son COPIAS de un testimonio: si su autor coincide con uno oculto,
+ * esas páginas retiran también esa cita (por ejemplo, cuando una familia retira su permiso).
+ */
+export function getHiddenTestimonialFamilies(locale: Locale): Set<string> {
+  const dir = path.join(CONTENT_DIR, 'testimonios')
+  const ocultos = new Set<string>()
+  for (const slug of listLocaleSlugs(dir)) {
+    const { data } = readLocaleMatter(dir, slug, locale)
+    if ((data.visible === false || data.visible === 'false') && typeof data.family === 'string') ocultos.add(data.family.trim())
+  }
+  return ocultos
+}
+
 export interface Testimonial {
   slug: string
   family: string
@@ -142,6 +157,8 @@ export function getAllTestimonials(
   return listLocaleSlugs(dir)
     .map((slug) => {
       const { data, content } = readLocaleMatter(dir, slug, locale)
+      // Interruptor «Visible en el sitio» del panel: apagado = no se muestra (sin borrar la entrada).
+      if (data.visible === false || data.visible === 'false') return null
       const programSlug = normalizeProgramSlug(data.program_slug ?? data.program)
       if (!isVisibleProgramReference(programSlug, options.visibleProgramSlugs)) return null
 

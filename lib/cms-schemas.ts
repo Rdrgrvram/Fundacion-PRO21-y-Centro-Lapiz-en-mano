@@ -500,6 +500,8 @@ export const teamAreaSchema = z.object({
 export type TeamAreaContent = z.infer<typeof teamAreaSchema>
 
 export const teamMemberSchema = z.object({
+  // Interruptor «Visible en el sitio»: sin el campo (contenido anterior) se muestra.
+  visible: z.boolean().optional(),
   name: z.string(),
   role: z.string(),
   specialty: z.string(),

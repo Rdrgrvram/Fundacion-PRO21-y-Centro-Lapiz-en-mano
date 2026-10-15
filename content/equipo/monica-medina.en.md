@@ -1,4 +1,5 @@
 ---
+visible: true
 name: "Mónica Mikaela Medina Rosales"
 role: "B.S. Clinical Psychology"
 specialty: "Child Clinical Psychology & Neurodevelopment"

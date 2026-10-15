@@ -1,4 +1,5 @@
 ---
+visible: true
 name: "Ana Valentina Copa Rosales"
 role: "B.S. Psychology"
 specialty: "Learning & Behavioral Psychology"

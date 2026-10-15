@@ -526,6 +526,7 @@ collections:
     i18n: true
     summary: "{{family}} — {{program}}"
     fields:
+      - { label: "Visible en el sitio", name: visible, widget: boolean, default: true, required: false, i18n: duplicate, hint: "Si lo apagas, el testimonio deja de verse en el sitio (tarjetas, portada de Inicio, historia destacada de Impacto y carta de Familias) pero no se borra. Úsalo, por ejemplo, si una familia retira su permiso." }
       - { label: Nombre de la familia, name: family, widget: string, i18n: true, hint: "Usa el formato «Mamá de R.» (solo la inicial del niño). En la pestaña EN escribe la versión en inglés («Mom of R.»)." }
       - label: Programa
         name: program
@@ -692,6 +693,7 @@ collections:
     identifier_field: name
     i18n: true
     fields:
+      - { label: "Visible en el sitio", name: visible, widget: boolean, default: true, required: false, i18n: duplicate, hint: "Si lo apagas, la persona deja de verse en el sitio pero no se borra. Ojo: las cifras escritas a mano («9 profesionales» en Inicio, Quiénes somos e Impacto) hay que actualizarlas." }
       - { label: Nombre completo, name: name, widget: string, i18n: duplicate }
       - { label: Cargo, name: role, widget: string, i18n: true }
       - { label: Especialidad, name: specialty, widget: string, i18n: true }

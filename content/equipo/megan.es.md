@@ -1,4 +1,5 @@
 ---
+visible: true
 name: "Megan"
 role: "Parvularia y Apoyo Pedagógico"
 specialty: "Educación Especial y Adaptaciones Curriculares"

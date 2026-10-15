@@ -1,4 +1,5 @@
 ---
+visible: true
 family: "Mom of S."
 program: "Pasos Firmes"
 icon: "book-open"

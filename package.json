@@ -10,7 +10,8 @@
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
-    "test:cms": "playwright test"
+    "test:cms": "playwright test",
+    "docs:pdf": "node scripts/exportar-pdf.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
