@@ -55,7 +55,7 @@ Las 3 publicaciones visibles más recientes aparecen también en Inicio, en "Úl
 
 - **Blog:** desactiva **Visible en el sitio**. La publicación deja de existir públicamente (error 404) hasta que la reactives. También puedes hacerlo rápido desde `/admin/blog`.
 - **Programas:** desactiva **Visible públicamente**. El programa desaparece del menú, Inicio y el pie de página, pero sigue editable.
-- **Testimonios y equipo:** cada entrada tiene el interruptor **Visible en el sitio** (arriba del formulario). Apágalo para quitar un testimonio —por ejemplo, si una familia retira su permiso— o a una persona del equipo sin borrarla; se oculta en español e inglés a la vez. Para volver a mostrarla, enciéndelo. **No borres** la entrada para ocultarla.
+- **Testimonios y equipo:** cada entrada tiene el interruptor **Visible en el sitio** (arriba del formulario). Apágalo para quitar un testimonio —por ejemplo, si una familia retira su permiso— o a una persona del equipo sin borrarla; se oculta en español e inglés a la vez. Con un testimonio también se retiran sus citas copiadas en la portada de Inicio, la historia destacada de Impacto y la carta de Familias. Al ocultar a una persona del equipo, las cifras escritas a mano («9 profesionales» en Inicio, Quiénes somos e Impacto) hay que actualizarlas. Para volver a mostrarla, enciéndelo. **No borres** la entrada para ocultarla.
 
 Ocultar es siempre preferible a borrar: se puede deshacer.
 

@@ -166,7 +166,8 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
         </section>
       )}
 
-      {/* 3. Testimonials Carousel */}
+      {/* 3. Testimonials Carousel (si todos están ocultos, la sección no se muestra) */}
+      {testimonials.length > 0 && (
       <section className="py-16 md:py-24 px-4 bg-gray-50 border-b border-gray-200/50">
         <div className="container mx-auto max-w-4xl text-center">
           <div className="text-center mb-10 max-w-md mx-auto">
@@ -233,6 +234,7 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
           </div>
         </div>
       </section>
+      )}
 
       {/* 4. Transparency & Reports Grid */}
       <section className="py-16 md:py-24 px-4 bg-white border-b border-gray-200/50">

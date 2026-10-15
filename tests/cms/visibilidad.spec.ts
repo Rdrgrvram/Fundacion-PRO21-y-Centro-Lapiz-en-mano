@@ -1,5 +1,6 @@
 import fs from 'fs'
 import { test, expect } from '@playwright/test'
+import { load } from 'js-yaml'
 import { openCmsEntry, publishEntry, backupContentFile } from './helpers'
 
 // Issue #73 — interruptor «Visible en el sitio» en testimonios y equipo: se puede ocultar sin borrar
@@ -47,6 +48,47 @@ test.describe('Visibilidad de testimonios y equipo', () => {
     } finally {
       es.restore()
       en.restore()
+    }
+  })
+
+  test('al ocultar un testimonio también se retira su cita copiada en Inicio, Impacto y Familias', async ({ request }) => {
+    // Cada cita de esas páginas es copia de un testimonio y lleva su nombre como autor.
+    const casos = [
+      { slug: 'mama-de-t', yml: 'settings/home.yml', pagina: '/es', cita: (d: any) => d.es.hero.quote },
+      { slug: 'mama-de-s', yml: 'settings/impact.yml', pagina: '/es/impacto', cita: (d: any) => d.es.featured_story.quote },
+      { slug: 'mama-de-r', yml: 'settings/families.yml', pagina: '/es/familias', cita: (d: any) => d.es.welcome_letter.quote },
+    ]
+    for (const caso of casos) {
+      const es = backupContentFile(`testimonios/${caso.slug}.es.md`)
+      const en = backupContentFile(`testimonios/${caso.slug}.en.md`)
+      try {
+        const fuente = load(fs.readFileSync(backupContentFile(caso.yml).path, 'utf-8')) as any
+        // Un tramo de la cita sin signos que el HTML pudiera escapar.
+        const fragmento = /[A-Za-zÁÉÍÓÚáéíóúñ ]{25,}/.exec(caso.cita(fuente))![0].trim()
+        expect(await (await request.get(caso.pagina)).text(), `antes: ${caso.pagina} muestra la cita`).toContain(fragmento)
+        marcarOculto(es.path)
+        marcarOculto(en.path)
+        expect(await (await request.get(caso.pagina)).text(), `${caso.pagina} retira la cita de ${caso.slug}`).not.toContain(fragmento)
+      } finally {
+        es.restore()
+        en.restore()
+      }
+    }
+  })
+
+  test('con todos los testimonios ocultos Impacto no deja la sección vacía', async ({ page }) => {
+    const slugs = ['mama-de-t', 'mama-de-s', 'mama-de-r']
+    const copias = slugs.flatMap((slug) => [backupContentFile(`testimonios/${slug}.es.md`), backupContentFile(`testimonios/${slug}.en.md`)])
+    try {
+      const titulo = ((load(fs.readFileSync(backupContentFile('settings/impact.yml').path, 'utf-8')) as any).es.testimonials_section.title as string).trim()
+      // Se mira la página renderizada (el HTML crudo también trae los datos serializados que Next envía al cliente).
+      await page.goto('/es/impacto', { waitUntil: 'networkidle' })
+      await expect(page.getByRole('heading', { name: titulo })).toBeVisible()
+      for (const c of copias) marcarOculto(c.path)
+      await page.goto('/es/impacto', { waitUntil: 'networkidle' })
+      await expect(page.getByRole('heading', { name: titulo }), 'la sección de testimonios desaparece').toHaveCount(0)
+    } finally {
+      copias.forEach((c) => c.restore())
     }
   })
 
