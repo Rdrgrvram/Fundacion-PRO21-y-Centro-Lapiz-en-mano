@@ -1,4 +1,5 @@
 ---
+visible: true
 name: "Benita Isabel Rosales"
 role: "B.S. Social Work"
 specialty: "Family Social Work & Inclusion Support"

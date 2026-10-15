@@ -1,4 +1,5 @@
 ---
+visible: true
 family: "Mamá de R."
 program: "Mi Escuelita Down"
 icon: "gift"

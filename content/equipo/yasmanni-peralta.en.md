@@ -1,4 +1,5 @@
 ---
+visible: true
 name: "Yasmanni German Peralta Mendoza"
 role: "B.S. Speech Therapy"
 specialty: "Speech-Language Pathology & Speech Therapy"

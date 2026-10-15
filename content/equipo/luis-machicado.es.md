@@ -1,4 +1,5 @@
 ---
+visible: true
 name: Luis Enrique Machicado Cahuaya
 role: Lic. Psicología
 specialty: Modificación de Conducta y Socialización

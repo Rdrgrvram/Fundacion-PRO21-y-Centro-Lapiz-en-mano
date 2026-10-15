@@ -1,4 +1,5 @@
 ---
+visible: true
 name: "Wara Belen Valdivia"
 role: "B.S. Psychomotor Therapy"
 specialty: "Educational and Therapeutic Psychomotricity"

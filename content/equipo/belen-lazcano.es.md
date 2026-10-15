@@ -1,4 +1,5 @@
 ---
+visible: true
 name: Belen Lazcano Quispe
 role: Lic. Fisioterapia y Kinesiología
 specialty: Fisioterapia Pediátrica y Neurodesarrollo

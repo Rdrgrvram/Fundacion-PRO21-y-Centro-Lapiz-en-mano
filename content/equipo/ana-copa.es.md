@@ -1,4 +1,5 @@
 ---
+visible: true
 name: "Ana Valentina Copa Rosales"
 role: "Lic. Psicología"
 specialty: "Psicología del Aprendizaje y Conducta"

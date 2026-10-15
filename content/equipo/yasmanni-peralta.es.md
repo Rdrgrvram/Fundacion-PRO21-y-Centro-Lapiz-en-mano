@@ -1,4 +1,5 @@
 ---
+visible: true
 name: "Yasmanni German Peralta Mendoza"
 role: "Lic. Terapia de Lenguaje"
 specialty: "Fonoaudiología y Terapia del Lenguaje"
