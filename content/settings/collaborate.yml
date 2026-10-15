@@ -14,7 +14,7 @@ es:
       value: 20+
       label: Profesionales comprometidos
     - icon: file-text
-      value: '3'
+      value: '4'
       label: Programas especializados
     - icon: heart
       value: Bs 0
@@ -195,7 +195,7 @@ en:
       value: 20+
       label: Staff professionals
     - icon: file-text
-      value: '3'
+      value: '4'
       label: Specialized programs
     - icon: heart
       value: Bs 0

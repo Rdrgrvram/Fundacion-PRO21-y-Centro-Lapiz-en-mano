@@ -8,7 +8,9 @@ import { openCmsEntry, publishEntry, backupContentFile } from './helpers'
 
 // US-14 / US-15 / US-09 — la Fundación sube PDFs e imágenes desde el panel y quedan disponibles en el sitio.
 // Cubre el límite de tamaño (5 MB; antes 500 KB rechazaba cualquier PDF normal) y la carpeta propia de PDFs
-// (public/docs). Los archivos subidos y el contenido editado se restauran al terminar.
+// (public/docs). Nota: en estas pruebas Decap NO hizo cumplir max_file_size en el campo de archivos (con el límite en
+// 1000 bytes aceptó un PDF de 50 KB), así que el límite es una recomendación documentada, no una validación del panel.
+// Los archivos subidos y el contenido editado se restauran al terminar.
 
 const FAMILIES_YML = 'settings/families.yml'
 const HOME_YML = 'settings/home.yml'

@@ -25,10 +25,11 @@
 
 | # | Decisión | Opciones | Recomendación y porqué |
 |---|---|---|---|
-| 1 | **Límite de archivos del CMS (#69).** Ya aplicada la opción A: 5 MB por archivo y carpeta propia para PDFs, con prueba automática (`tests/cms/recursos.spec.ts`). Antes eran 500 KB, y una guía o informe normal era rechazada. US-15 pedía "sin límite técnico" | A) subir el límite (≈5 MB) y separar carpeta de PDFs · B) Cloudflare R2 | **A** para la v1: costo $0, sin cuenta nueva, lo ya construido sigue igual. El repositorio crece; el manual explica cómo comprimir. R2 queda como mejora futura |
+| 1 | **Límite de archivos del CMS (#69).** Ya aplicada la opción A: 5 MB por archivo y carpeta propia para PDFs, con prueba automática de subida (`tests/cms/recursos.spec.ts`). Aviso: el panel no hace cumplir ese límite en el campo de PDFs (se comprobó), así que es una recomendación y se explica en el manual. Antes eran 500 KB, y una guía o informe normal era rechazada. US-15 pedía "sin límite técnico" | A) subir el límite (≈5 MB) y separar carpeta de PDFs · B) Cloudflare R2 | **A** para la v1: costo $0, sin cuenta nueva, lo ya construido sigue igual. El repositorio crece; el manual explica cómo comprimir. R2 queda como mejora futura |
 | 2 | **Rama de producción (#52)** | `master` (la usa el CMS) · cambiar a `main` | `master`: no hay que tocar el CMS ni Vercel |
 | 3 | **Qué hacer con fotos sin autorización** | Mantener ocultas · quitar el contenido | Mantener ocultas con `photos_authorized: false`; se activan al llegar la firma |
 | 4 | **Fotos de uso general** (Inicio, Quiénes somos, Impacto, Colabora, Familias) | Mantener · retirar | Ya aceptado por escrito en el acta §3.1; reconfirmar que la Fundación asume el riesgo |
+| 6 | **Modo de publicación del panel** | Directo (`simple`) · con revisión (`editorial_workflow`) | **Directo, ya aplicado.** Una o dos personas editan y no hay segunda persona que revise: el flujo editorial solo añade pasos (borrador, en revisión, listo, publicar) y PRs de GitHub. Cada cambio queda en el historial y se deshace con *Revert* (`MANUAL-ADMIN.md` §7). Confirmar con la Fundación y probarlo con una persona real (CE-004) |
 | 5 | **Fecha de lanzamiento público** y quién anuncia | — | Después de dominio, cuentas institucionales y autorizaciones |
 
 ## 4. Preguntas sobre los programas (#68)

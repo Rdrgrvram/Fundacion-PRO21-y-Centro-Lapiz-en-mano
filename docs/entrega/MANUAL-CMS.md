@@ -10,7 +10,7 @@ Dirección del panel: `https://<dominio-del-sitio>/admin` (ejemplo: `https://fun
 ## 1. Cómo funciona (en 30 segundos)
 
 - Todo el contenido del sitio (textos, fotos, equipo, blog) vive en archivos del repositorio de GitHub. El panel `/admin` es una pantalla cómoda para editarlos.
-- **Nada se publica de inmediato.** Cada cambio pasa por tres estados: *Borradores → En revisión → Listo*. Al pasar a *Listo* y publicar, el sitio se actualiza solo en **2–3 minutos**.
+- **Un solo botón: Publicar.** No hay borradores ni estados intermedios. Cuando pulsas **Publicar**, el cambio queda guardado y el sitio se actualiza solo en **2–3 minutos**. Por eso, **revisa bien antes de pulsar Publicar**. Si algo sale mal, se puede deshacer (ver la sección 5).
 - Cada persona que edita necesita **una cuenta de GitHub** que el administrador haya agregado al repositorio con permiso *Write* (ver `MANUAL-ADMIN.md`).
 - El sitio está en **español e inglés**. Casi todas las pantallas tienen pestañas **ES / EN**: completa las dos.
 
@@ -55,7 +55,7 @@ Las 3 publicaciones visibles más recientes aparecen también en Inicio, en "Úl
 
 - **Blog:** desactiva **Visible en el sitio**. La publicación deja de existir públicamente (error 404) hasta que la reactives. También puedes hacerlo rápido desde `/admin/blog`.
 - **Programas:** desactiva **Visible públicamente**. El programa desaparece del menú, Inicio y el pie de página, pero sigue editable.
-- **Testimonios y equipo:** cada entrada tiene su interruptor *visible*.
+- **Testimonios y equipo:** **no tienen interruptor de visibilidad**. Para quitar un testimonio (por ejemplo, si una familia retira su permiso) o a una persona del equipo hay que **eliminar la entrada**. No se pierde para siempre: queda en el historial de GitHub y se puede recuperar. Si dudas, pide ayuda antes de borrar. (Mejora pendiente: agregarles un interruptor, ver issue de seguimiento.)
 
 Ocultar es siempre preferible a borrar: se puede deshacer.
 
@@ -77,7 +77,7 @@ Si dudas de una foto, no la publiques y consulta a la dirección.
 ### 4.4 Subir imágenes y PDFs
 
 - Pulsa el campo de imagen/archivo → **Elegir una imagen** → **Subir**.
-- **Tamaño máximo: 5 MB por archivo.** Si pesa más, el panel lo rechaza. Para fotos, bájalas antes a unos 300–500 KB (por ejemplo con la app Fotos o squoosh.app: ancho 1600 px, calidad 75–80 %). Para PDFs, usa "reducir tamaño" al exportar; una guía de pocas páginas cabe holgada.
+- **Tamaño máximo recomendado: 5 MB por archivo.** El panel está configurado con ese límite, pero en las pruebas no siempre lo hace cumplir al subir PDFs: cuida tú el peso, porque cada archivo engorda el repositorio para siempre (GitHub rechaza sin más lo que pase de 100 MB). Para fotos, bájalas antes a unos 300–500 KB (por ejemplo con la app Fotos o squoosh.app: ancho 1600 px, calidad 75–80 %). Para PDFs, usa "reducir tamaño" al exportar; una guía de pocas páginas cabe holgada.
 - Los **PDFs** se guardan en `public/docs` y las **fotos** en `public/images/uploads`. En el sitio, el botón de la guía o del informe cambia solo de "Solicitar por WhatsApp" a "Descargar PDF" cuando subes el archivo.
 - Formato recomendado: JPG o WebP. Nombres sin tildes.
 - Las imágenes se guardan dentro del repositorio (`public/images/uploads`). Por eso el límite: cada foto engorda el repositorio para siempre.
@@ -98,16 +98,18 @@ Si dudas de una foto, no la publiques y consulta a la dirección.
 
 **Testimonios → Nuevo** / **Equipo — Profesionales → Nuevo**. Se guardan con un nombre de archivo legible (por ejemplo `mama-de-t`). Para testimonios usa solo el formato acordado: **"Mamá de T."** (inicial, nunca el nombre completo del niño) y solo textos que la familia validó.
 
-## 5. Del borrador al sitio (flujo de publicación)
+## 5. Publicar y deshacer
 
-1. Editas y pulsas **Guardar**: queda como **Borrador**.
-2. Cambia el estado a **En revisión** (menú *Establecer estado*).
-3. Alguien de la Fundación revisa. Puede abrir la **vista previa** (enlace en el PR de GitHub).
-4. Pasa a **Listo → Publicar**. El sitio se reconstruye solo en 2–3 minutos.
+1. Editas lo que necesites. Para ver cómo queda, usa la **vista previa** (el ojo, a la derecha del editor).
+2. Pulsas **Publicar** → **Publicar ahora**. Aparece el aviso «Entrada guardada».
+3. En **2–3 minutos** el sitio ya muestra el cambio. Abre el sitio y compruébalo.
 
-También puedes ver todo en la pestaña **Flujo de trabajo** (Workflow) del panel.
+**Si te equivocaste:**
+- **Una noticia o programa que no debe verse:** edítalo y desactiva *Visible en el sitio* (o *Visible públicamente*). No lo borres.
+- **Un texto mal escrito:** vuelve a editarlo y publica de nuevo.
+- **Algo que no sabes arreglar:** no insistas ni borres. Avisa a quien administra el sitio. Cada cambio queda guardado en el historial de GitHub y se puede **revertir** en un minuto (ver `MANUAL-ADMIN.md` §7).
 
-**[Captura: tablero Flujo de trabajo]**
+> Antes la publicación pasaba por borradores y revisión. Se simplificó porque una o dos personas editan el sitio y cada paso extra era un lugar donde atascarse. A cambio, nadie revisa antes de publicar: la revisión la haces tú con la vista previa.
 
 ## 6. Qué NO tocar
 
