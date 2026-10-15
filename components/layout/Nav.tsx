@@ -79,7 +79,9 @@ export default function Nav({ lang, items, programRoutes }: NavProps) {
               ref={contenedor}
               className="relative group"
               onMouseEnter={() => setOpen(true)}
-              onMouseLeave={() => setOpen(false)}
+              onMouseLeave={(e) => {
+                if (!e.currentTarget.contains(document.activeElement)) setOpen(false)
+              }}
               onBlur={(e) => {
                 if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setOpen(false)
               }}
