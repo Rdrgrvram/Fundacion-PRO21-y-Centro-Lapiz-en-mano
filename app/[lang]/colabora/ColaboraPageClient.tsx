@@ -520,8 +520,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
               return (
                 <div
                   key={p.title}
-                  onClick={() => setOpenAlliance(isOpen ? null : idx)}
-                  className={`bg-white rounded-3xl border overflow-hidden shadow-sm hover:shadow-md cursor-pointer transition-all duration-300 ${isOpen ? 'border-accent' : 'border-gray-200'}`}
+                  className={`relative bg-white rounded-3xl border overflow-hidden shadow-sm hover:shadow-md cursor-pointer transition-all duration-300 ${isOpen ? 'border-accent' : 'border-gray-200'}`}
                 >
                   <div className="h-1 w-full" style={{ backgroundColor: hex }} />
                   <div className="p-6 md:p-8">
@@ -530,13 +529,32 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
                         <Icon name={p.icon} className="h-7 w-7 text-gray-700" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-lg text-gray-900 font-bold leading-snug">{p.title}</h3>
+                        <h3 className="text-lg text-gray-900 font-bold leading-snug">
+                          {/* El botón se estira sobre toda la tarjeta (after:absolute): teclado, lector de pantalla y mouse usan el mismo control. */}
+                          <button
+                            type="button"
+                            id={`alianza-${idx}`}
+                            aria-expanded={isOpen}
+                            aria-controls={`alianza-panel-${idx}`}
+                            onClick={() => setOpenAlliance(isOpen ? null : idx)}
+                            className="inline-flex min-h-[44px] items-center text-left after:absolute after:inset-0 after:content-['']"
+                          >
+                            {p.title}
+                          </button>
+                        </h3>
                         <p className="text-xs sm:text-sm text-gray-600 mt-2 leading-relaxed">{p.desc}</p>
                       </div>
                       <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300 ${isOpen ? 'bg-accent/10 text-accent rotate-180' : 'bg-gray-50 text-gray-500'}`}>▾</div>
                     </div>
 
-                    <div className={`overflow-hidden transition-all duration-500 ${isOpen ? 'max-h-[250px] opacity-100 mt-6' : 'max-h-0 opacity-0'}`}>
+                    <div
+                      id={`alianza-panel-${idx}`}
+                      role="region"
+                      aria-labelledby={`alianza-${idx}`}
+                      aria-hidden={!isOpen}
+                      className={`grid transition-all duration-300 ease-out ${isOpen ? 'grid-rows-[1fr] opacity-100 mt-6' : 'grid-rows-[0fr] opacity-0'}`}
+                    >
+                     <div className="overflow-hidden">
                       <div className="pt-4 border-t border-gray-100">
                         <div className="text-[10px] font-bold text-gray-500 tracking-wider uppercase mb-3">{es ? 'Beneficios de la alianza' : 'Benefits of the alliance'}</div>
                         <div className="flex flex-col gap-2">
@@ -548,6 +566,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
                           ))}
                         </div>
                       </div>
+                     </div>
                     </div>
                   </div>
                 </div>

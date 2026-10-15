@@ -376,20 +376,23 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
               .map((img, idx) => {
                 const catColor = img.category ? CATEGORY_BORDER[img.category] ?? CATEGORY_BORDER._default : CATEGORY_BORDER._default
                 return (
-                  <div
+                  <figure
                     key={idx}
-                    className={`group relative h-48 sm:h-56 bg-white rounded-lg border-t-4 ${catColor} border-x border-b border-gray-200 shadow-sm overflow-hidden transition-all duration-300 hover:rotate-0 hover:shadow-lg hover:z-10 ${TILT[idx % TILT.length]}`}
+                    className={`group relative bg-white rounded-lg border-t-4 ${catColor} border-x border-b border-gray-200 shadow-sm overflow-hidden transition-all duration-300 hover:rotate-0 hover:shadow-lg hover:z-10 ${TILT[idx % TILT.length]}`}
                   >
-                    <Image src={img.image} alt={img.alt} fill className="object-cover" />
-                    {img.category && (
-                      <span className="absolute top-2 left-2 bg-white/90 backdrop-blur-sm rounded px-2 py-0.5 text-[9px] font-mono font-bold uppercase tracking-wider text-gray-700 shadow-sm">
-                        {img.category}
-                      </span>
-                    )}
-                    <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <p className="p-3 text-[11px] leading-snug font-mono text-white">{img.alt}</p>
+                    <div className="relative h-36 sm:h-44">
+                      <Image src={img.image} alt={img.alt} fill className="object-cover" />
+                      {img.category && (
+                        <span className="absolute top-2 left-2 bg-white/90 backdrop-blur-sm rounded px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-gray-700 shadow-sm">
+                          {img.category}
+                        </span>
+                      )}
                     </div>
-                  </div>
+                    {/* Leyenda siempre visible (antes solo con hover: en el celular no existía). El lector de pantalla ya lee el alt de la foto. */}
+                    <figcaption aria-hidden="true" className="p-3 text-xs leading-snug font-mono text-gray-700">
+                      {img.alt}
+                    </figcaption>
+                  </figure>
                 )
               })}
           </div>
