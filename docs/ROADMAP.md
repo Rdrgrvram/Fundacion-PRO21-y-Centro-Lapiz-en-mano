@@ -5,6 +5,26 @@
 
 ---
 
+## Estado real (actualizado 14-oct-2026)
+
+> El plan de abajo es el **original de junio** y se conserva como referencia. El calendario real se corrió: los sprints se ejecutaron entre julio y octubre de 2026.
+
+| Fase | Estado |
+|---|---|
+| Semanas 1–3 (entrevista, requisitos, diseño) | ✅ Hecho (Sprint 0 y 1) |
+| Semanas 4–6 (construcción: 11 páginas, CMS, i18n, formularios, accesibilidad) | ✅ Hecho. Integrado en `develop` (PR #49, v1) |
+| Semana 7 (QA y manuales) | ✅ Hecho. Manuales y acta en `docs/entrega/` (en Markdown; falta exportarlos a PDF, issue #56) |
+| Alcance añadido | 4.º programa **Desarrolla TEA** (PR #51), donaciones con WhatsApp prellenado (PR #50) |
+| Semana 8 (deploy, capacitación, entrega) | ⏳ Pendiente. Issues #60 a #67 (milestone *Sprint 6-Deploy*) |
+
+**Diferencias con el plan original:**
+- **Cloudflare R2 no se usa:** las imágenes viven en el repositorio (`public/images/uploads`), a costo $0 y sin cuenta nueva. Ver issue #58 y `MANUAL-ADMIN.md` §6.
+- **Los programas son 4**, no 3.
+- **Rendimiento:** Lighthouse de Inicio, Escuelita Down y Contacto queda en 73–91 (no estable ≥ 90); accesibilidad 98–100. Se mide de nuevo en Vercel (issue #61).
+
+**Para cerrar el desarrollo y entregar** (orden sugerido): rama de producción al día (#52) → limpieza de ramas (#53) → deploy de prueba (#60) → Lighthouse (#61), OAuth del CMS (#62) y formularios reales (#63) → cuentas y dominio (#64, #65) → pendientes de la Fundación (#66) → reunión final y firma del acta (#67).
+---
+
 ## Vista general
 
 ```

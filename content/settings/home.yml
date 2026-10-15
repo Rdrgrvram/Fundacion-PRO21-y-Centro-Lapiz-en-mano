@@ -1,0 +1,199 @@
+es:
+  hero:
+    title_line1: Terapia y escuela especializada
+    title_line2: para tu hijo
+    subtitle: Síndrome de Down, autismo y dificultades de aprendizaje. Hacemos una primera evaluación sin costo y te orientamos al programa adecuado.
+    cta_primary: Ver programas
+    image: /images/actividades-reales/retrato-sonrisa.jpg
+    quote: En la Fundación no solamente ayudan a nuestros hijos, sino también a nosotros los papás a poder afrontar y saber que no estamos solos.
+    quote_author: Mamá de T.
+    quote_program: Mi Escuelita Down
+    badge: La Paz, Bolivia
+  stats:
+    - icon: baby
+      value: 70+
+      label: niños atendidos
+    - icon: rocket
+      value: "8"
+      label: años de experiencia
+    - icon: stethoscope
+      value: "9"
+      label: profesionales
+    - icon: target
+      value: "4"
+      label: programas activos
+  programs_teaser:
+    badge: Nuestros programas
+    title: ¿En qué podemos ayudarte?
+    subtitle: Cuatro programas especializados que atienden diferentes necesidades del
+      desarrollo infantil, con un enfoque integral y personalizado.
+    cta_label: Conocer programa
+    cards:
+      - slug: mi-escuelita-down
+        icon: sparkles
+        color: primary
+        badge: Síndrome de Down
+        title: Mi Escuelita Down
+        desc: Intervención terapéutica y educativa integral desde estimulación temprana
+          hasta inclusión en primaria regular. Terapia de lenguaje, conducta,
+          fisioterapia y psicomotricidad.
+        ages: 0 – 14+ años
+      - slug: aula-wawitas
+        icon: gift
+        color: secondary
+        badge: Programa Preescolar
+        title: Aula Wawitas
+        desc: "Estimulación y educación preescolar integral para niños de 3 a 5 años.
+          Tres niveles: Parvulario, Pre-Kínder y Kínder, con preparación para la
+          escuela regular."
+        ages: 3 – 5 años
+      - slug: pasos-firmes
+        icon: book-open
+        color: accent
+        badge: Dificultades de aprendizaje
+        title: Pasos Firmes
+        desc: Apoyo psicopedagógico para niños y adolescentes con dislexia, disgrafía,
+          discalculia, TDAH y bajo rendimiento escolar. Modalidades individuales
+          y grupales.
+        ages: Primaria y Secundaria
+  mission:
+    badge: Quiénes somos
+    title: Nuestra Misión
+    text: Nuestro compromiso es con los derechos de los niños y niñas con síndrome
+      de Down, neurodivergencia y dificultades de aprendizaje a recibir una
+      educación integral de calidad, inclusiva y personalizada que les permita
+      desarrollar todo su potencial.
+    link_text: Conocer nuestra historia
+    image: /images/actividades-reales/pintura-tinas-color.jpg
+  testimonials_section:
+    badge: Lo que dicen las familias
+    title: Historias que nos motivan
+  news_section:
+    badge: Novedades
+    title: Últimas noticias
+    cta_label: Ver todas las noticias
+    read_label: Leer más
+  values:
+    - icon: handshake
+      title: Inclusión radical
+      desc: Eliminamos barreras y creamos espacios donde cada niño es valorado.
+    - icon: lightbulb
+      title: Innovación con propósito
+      desc: Metodologías basadas en evidencia y adaptadas a cada perfil.
+    - icon: users-round
+      title: Familia como aliada
+      desc: Los padres son parte central del proceso terapéutico.
+    - icon: wheat
+      title: Desarrollo holístico
+      desc: "Atendemos todas las dimensiones: cognitiva, física, social y emocional."
+  team_preview:
+    badge: Equipo profesional
+    title: 9 profesionales a tu lado
+    text: Nuestro equipo multidisciplinario incluye terapeutas de lenguaje,
+      fisioterapeutas, psicomotricistas, psicólogos, trabajadores sociales y
+      pedagogos.
+    cta_label: Conocer al equipo
+  cta:
+    title: ¿Quieres saber si podemos ayudar a tu hijo?
+    text: Contáctanos hoy. Realizamos una primera evaluación sin costo y te
+      orientamos hacia el programa más adecuado.
+    link_label: Formulario de contacto
+en:
+  hero:
+    title_line1: Specialized therapy and school
+    title_line2: for your child
+    subtitle: Down syndrome, autism, and learning difficulties. We run a free first evaluation and guide you to the right program.
+    cta_primary: See programs
+    image: /images/actividades-reales/retrato-sonrisa.jpg
+    quote: The Foundation doesn't only help our children, it also helps us parents face things and know that we are not alone.
+    quote_author: Mom of T.
+    quote_program: Mi Escuelita Down
+    badge: La Paz, Bolivia
+  stats:
+    - icon: baby
+      value: 70+
+      label: children served
+    - icon: school
+      value: "8"
+      label: years of experience
+    - icon: stethoscope
+      value: "9"
+      label: professionals
+    - icon: target
+      value: "4"
+      label: active programs
+  programs_teaser:
+    badge: Our programs
+    title: How can we help you?
+    subtitle: Four specialized programs addressing different childhood development
+      needs, with a comprehensive and personalized approach.
+    cta_label: Learn more
+    cards:
+      - slug: mi-escuelita-down
+        icon: sparkles
+        color: primary
+        badge: Down Syndrome
+        title: Mi Escuelita Down
+        desc: Comprehensive therapeutic and educational intervention from early
+          stimulation to regular primary inclusion. Speech, behavioral,
+          physiotherapy, and psychomotor therapy.
+        ages: 0 – 14+ years
+      - slug: aula-wawitas
+        icon: gift
+        color: secondary
+        badge: Preschool Program
+        title: Aula Wawitas
+        desc: "Comprehensive preschool stimulation and education for children ages 3 to
+          5. Three levels: Nursery, Pre-Kinder and Kinder, with preparation for
+          regular school."
+        ages: 3 – 5 years
+      - slug: pasos-firmes
+        icon: book-open
+        color: accent
+        badge: Learning difficulties
+        title: Pasos Firmes
+        desc: Psychopedagogical support for children and adolescents with dyslexia,
+          dysgraphia, dyscalculia, ADHD, and low school performance. Individual
+          and group modalities.
+        ages: Primary and Secondary
+  mission:
+    badge: Who we are
+    title: Our Mission
+    text: Our commitment is to the rights of children with Down syndrome,
+      neurodivergence, and learning difficulties to receive quality, inclusive,
+      and personalized comprehensive education that allows them to develop their
+      full potential.
+    link_text: Learn our history
+    image: /images/actividades-reales/pintura-tinas-color.jpg
+  testimonials_section:
+    badge: What families say
+    title: Stories that motivate us
+  news_section:
+    badge: News
+    title: Latest news
+    cta_label: See all news
+    read_label: Read more
+  values:
+    - icon: handshake
+      title: Radical inclusion
+      desc: We remove barriers and create spaces where every child is valued.
+    - icon: lightbulb
+      title: Purposeful innovation
+      desc: Evidence-based methodologies adapted to each profile.
+    - icon: users-round
+      title: Family as ally
+      desc: Parents are a central part of the therapeutic process.
+    - icon: wheat
+      title: Holistic development
+      desc: "We attend all dimensions: cognitive, physical, social, and emotional."
+  team_preview:
+    badge: Professional team
+    title: 9 professionals by your side
+    text: Our multidisciplinary team includes speech therapists, physiotherapists,
+      psychomotricity specialists, psychologists, social workers, and educators.
+    cta_label: Meet the team
+  cta:
+    title: Want to know if we can help your child?
+    text: Contact us today. We conduct a free first evaluation and guide you to the
+      most appropriate program.
+    link_label: Contact form

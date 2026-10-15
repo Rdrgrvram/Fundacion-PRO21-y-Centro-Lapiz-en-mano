@@ -1,0 +1,196 @@
+# DESIGN_STANDARD.md — Estándar visual del sitio
+
+> Patrones ya establecidos en el código. Referencia para nuevas páginas o secciones.
+> Verificado contra: Inicio, Quiénes Somos, Equipo, Mi Escuelita Down, Aula Wawitas, Pasos Firmes,
+> Colabora, Familias, Blog, Contacto, Impacto (unificación completa).
+
+---
+
+## Hero (portada de cada página)
+
+- Fondo: color sólido de marca (`bg-primary` / `bg-secondary` / `bg-accent`) — excepto Inicio, que usa `bg-gray-900` como pieza insignia
+  - `bg-gray-900` queda reservado exclusivamente para ese momento (hero de Inicio). El footer usa `bg-gray-950` — un neutro más oscuro y distinto — precisamente para no repetir la pieza insignia en todas las páginas y que siga siendo un momento memorable solo en Inicio.
+- Estructura del `<section>`: **sin** `min-height` ni `flex items-center` ni padding propio. Todo el espaciado vertical vive en el contenedor interno:
+
+```tsx
+<section className="relative bg-[color] overflow-hidden">
+  <div className="absolute inset-0 pointer-events-none">
+    <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/3" />
+    <div className="absolute bottom-1/4 -left-16 w-64 h-64 bg-white/10 rounded-full" />
+  </div>
+  <svg className="absolute bottom-0 left-0 w-full" viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path d="M0 0 Q360 60 720 30 Q1080 0 1440 0 L1440 60 L0 60 Z" fill="white" />
+  </svg>
+  <div className="container mx-auto px-4 py-16 md:py-24 relative z-20">
+    {/* breadcrumb, badge, H1, subtítulo */}
+  </div>
+</section>
+```
+
+- **Importante — el contenedor NO lleva `max-w`.** Solo el `<p>` de subtítulo se restringe con `max-w-2xl`. Agregar `max-w-3xl` (o cualquier otro) al contenedor entero rompe la alineación horizontal frente a otras páginas (bug real detectado y corregido en Familias/Blog/Contacto/Impacto — el contenido arrancaba más a la derecha y más angosto que en Quiénes Somos).
+  - Excepción legítima 1: **Colabora**, cuyo hero tiene un grid de 2 columnas con tarjetas de estadísticas y sí necesita `max-w-6xl` por la densidad de ese contenido — no replicar esa excepción en heroes de texto simple.
+  - Excepción legítima 2: **Inicio**, cuyo hero usa `grid lg:grid-cols-2` — columna de texto (badge + H1 + subtítulo + CTAs) a la izquierda, columna de foto a la derecha. La foto real vive en una **forma orgánica** (`rounded-[46%_54%_57%_43%_/_52%_46%_54%_48%]`) con dos **blobs de color de marca** detrás (`bg-secondary/40`, `bg-accent/40`, cada uno con su propio border-radius orgánico) y una **cita real de familia** como pie de foto debajo de la forma (nunca superpuesta). Foto y cita se editan desde el CMS (`hero.image`, `hero.quote`, `hero.quote_author`, `hero.quote_program` en `content/settings/home.yml`). El H1 de Inicio baja a `lg:text-5xl xl:text-6xl` (no `xl:text-7xl`) porque ahora vive en media columna.
+    - Regla de las formas orgánicas: solo para la **foto protagonista** de una sección (hero de Inicio). El resto de fotos del sitio siguen en rectángulos redondeados (`rounded-2xl`). No convertir todas las fotos en blobs.
+    - El titular de Inicio es **directo y específico** ("Terapia y escuela especializada para tu hijo"), no un eslogan abstracto — un padre que llega buscando ayuda entiende en 3 segundos qué ofrece la fundación. La frase inspiradora anterior puede vivir en la sección de misión.
+- **Titular directo — regla general.** El `<h1>` de cada hero debe decir qué hace la fundación / qué ofrece la página, no un eslogan abstracto. Aplicado en rama `v2` a Impacto ("Nuestro impacto, en cifras e historias reales"), Colabora ("Doná, ofrecé tu tiempo o sé aliado") y Familias ("Acompañamiento y recursos para tu familia"). Quiénes Somos ("Dos instituciones, una misión") se mantiene: ya es específico. Los heroes de programa usan el nombre del programa, que ya es directo.
+- Círculos decorativos: exactamente 2, `bg-white/10 rounded-full` (superior derecho `w-96 h-96 -translate-y-1/2 translate-x-1/3`; inferior izquierdo `w-64 h-64 bottom-1/4 -left-16`)
+- Breadcrumb: `<nav className="text-white/60 text-xs mb-8">Inicio / [Página]</nav>` con hover a blanco (omitir en Inicio)
+- Badge: `inline-flex items-center gap-2 bg-white/15 border border-white/20 rounded-full px-4 py-1.5` + texto `text-xs font-bold uppercase tracking-wider text-white`
+- H1: `text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-extrabold leading-tight mb-4`
+- Subtítulo: `text-sm md:text-base lg:text-lg text-white/80 max-w-2xl leading-relaxed`
+- Ola SVG al fondo: `viewBox="0 0 1440 60" preserveAspectRatio="none"` + `<path d="M0 0 Q360 60 720 30 Q1080 0 1440 0 L1440 60 L0 60 Z" />`
+- **Contraste de texto sobre el hero**: si se usa un color de acento dentro del H1/badge (ej. `text-primary` para resaltar una palabra), verificar WCAG AA antes de aplicarlo:
+  - `text-primary` sobre `bg-secondary` ≈ 2.0:1 — **no pasa**, usar `font-extrabold` blanco sin color en su lugar.
+  - `text-primary` sobre `bg-accent` ≈ 3.79:1 — pasa solo para texto grande (18pt+/14pt bold+, que es el caso de un H1), se puede mantener.
+  - Nunca combinar el acento de color con `italic`: usar `font-extrabold` a secas para el énfasis.
+
+Implementado en `components/sections/ProgramHero.tsx` para los 3 programas; inline en el resto de páginas de contenido. Quiénes Somos/Equipo/Inicio son la referencia canónica más simple (sin grid especial).
+
+---
+
+## Encabezado de sección (section header)
+
+- Badge tipo píldora: `inline-flex items-center gap-2 bg-[color]/10 border border-[color]/15 rounded-full px-4 py-1.5 mb-3` + emoji + `text-xs font-bold uppercase tracking-wider text-[color]`
+- H2: `text-3xl md:text-4xl text-gray-900 font-extrabold tracking-tight`
+- Subtítulo opcional: `text-sm text-gray-500 max-w-lg mx-auto leading-relaxed`
+- Contenedor: `text-center mb-12 max-w-xl mx-auto` (ajustar max-w según densidad de contenido)
+
+## Tarjetas (cards)
+
+- Blancas: `bg-white rounded-2xl` o `rounded-3xl` + `border border-gray-200` + `shadow-sm`
+- Hover: `hover:shadow-md hover:border-gray-300 transition-all duration-300` (agregar `hover:-translate-y-1` en grids de tarjetas pequeñas)
+- Ícono: círculo `rounded-xl` con `bg-[color]/10` o `/15`, texto/emoji centrado
+- **Tarjetas de programa en Inicio** (`data-testid="programs-grid"`): `grid-cols-1 md:grid-cols-2 xl:grid-cols-4` — 1 columna en celular, 2×2 en tablet y laptop chica, 4 desde 1280px (con 4 programas no queda tarjeta huérfana). Las 4 columnas empiezan en `xl` y no en `lg` porque a 1024px el botón "Conocer programa" se partía en 2 líneas. Si el número de programas deja de ser múltiplo de 2, revisar la grilla.
+
+## Contenedor y espaciado
+
+- `container mx-auto max-w-6xl` para secciones anchas con grids/columnas; `max-w-3xl`/`max-w-4xl` solo para contenido centrado tipo CTA/timeline — **nunca** en el contenedor del hero (ver regla de hero arriba).
+- Padding vertical de sección: `py-16 md:py-24` (secciones grandes) o `py-12 md:py-20` (secciones intermedias)
+
+---
+
+## CTA final (última sección antes del footer)
+
+**Estándar real (Inicio, Equipo, Programas, Colabora, Familias, Blog, Contacto, Impacto):**
+
+```tsx
+<section className="py-16 bg-[color]">
+  <div className="container mx-auto px-4 text-center">
+    <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">{title}</h2>
+    <p className="text-white/90 text-lg mb-8 max-w-xl mx-auto">{text}</p>
+    <div className="flex flex-wrap justify-center gap-4">
+      <a
+        href="https://wa.me/59170106276"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 bg-gray-900 text-white font-bold px-8 py-4 rounded-full hover:bg-gray-800 transition-colors min-h-[52px]"
+      >
+        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c...z" /></svg>
+        {label}
+      </a>
+      {/* segundo botón alternativo, si aplica: bg-white text-gray-900 hover:bg-gray-100, mismo min-h-[52px] */}
+    </div>
+  </div>
+</section>
+```
+
+- **Sin círculos decorativos ni emoji glifo** en esta sección — a diferencia del hero, el CTA final es plano (solo el color de fondo sólido).
+- **El botón de WhatsApp siempre lleva el ícono SVG** (`w-5 h-5`, `viewBox="0 0 24 24"`, `fill="currentColor"`) antes del texto — usar el path completo ya implementado en `components/sections/ProgramCTA.tsx` y en el CTA de Inicio. Este ícono se perdió accidentalmente en Colabora/Familias/Blog/Impacto durante una ronda de unificación y fue reinsertado — vigilar que cualquier botón nuevo de WhatsApp lo incluya desde el inicio.
+- Botones pill: `bg-gray-900 text-white hover:bg-gray-800` (principal/oscuro) y `bg-white text-gray-900 hover:bg-gray-100` (alternativo/claro), ambos `inline-flex items-center gap-2 font-bold px-8 py-4 rounded-full min-h-[52px]`.
+
+**Nunca usar** `font-serif` ni `font-normal` en el h2 del CTA — reservados solo para el glifo decorativo de comillas en testimonios.
+
+---
+
+## Páginas de programa: estándar único (los 4 programas, y los que se creen)
+
+Todas las páginas salen de `components/sections/ProgramPageLayout.tsx`; **un programa no puede tener su propio diseño**. Lo que cambia entre programas es el contenido (`content/programs/*`), nunca la presentación. Lo verifica `tests/programs/estandar.spec.ts` (la lista sale de `content/programs`, así que un programa nuevo entra solo).
+
+**Esqueleto, en este orden:** hero → fila de 4 datos clave → sección 1 (áreas) → sección 2 (pestañas) → sección 3 y 4 (opcionales) → galería (solo con `photos_authorized`) → pasos de inscripción → testimonio del programa (si hay) → CTA final.
+
+**Reglas de presentación (iguales para todos):**
+- **Fondos:** las secciones que existen se pintan en el ciclo fijo gris → blanco → tinte suave del color del programa (`components/sections/programTone.ts`). No uses `bg-*` sueltos en una sección de programa.
+- **Datos clave:** 4 cifras en la fuente de titulares (`font-display text-4xl md:text-5xl`). Es la «banda» de datos del programa; no se crean bandas especiales para un solo programa.
+- **Áreas y servicios:** lista de dos columnas con ícono, **sin tarjetas y sin recortar texto** (nada de `line-clamp`). Solo la variante acordeón usa tarjetas.
+- **Pasos de inscripción:** hasta 6 a la vista; si hay más, el resto queda tras «Ver los N pasos restantes».
+- **Acordeón de tarjetas:** siempre en filas de dos columnas desde `md` (nunca 4+3 con huérfanas ni títulos partidos en 4 líneas).
+- **Pasos en móvil:** cada paso es una fila compacta (número a la izquierda); desde `sm` vuelve a la tarjeta centrada.
+- **Datos clave:** `whitespace-nowrap`; si el valor tiene más de 7 caracteres (por ejemplo «Lun – Sáb») baja un escalón de tamaño.
+- **Ritmo vertical:** `py-12 md:py-16` en cada sección y `mb-8 md:mb-12` bajo su cabecera.
+- **Pestañas y acordeones:** con roles ARIA y teclado (ver «Teclado y foco»).
+- **Sin foto autorizada:** el hero y la galería se muestran igual de completos sin foto; no se sustituyen por imágenes de stock.
+
+**Topes recomendados de contenido (quien edita en el panel):** sección 1 de 4 a 8 ítems, 3 o 4 pestañas, pasos de inscripción hasta 6 visibles (más es admisible, quedan plegados), descripciones de una o dos frases.
+
+---
+
+## Iconografía
+
+- Los iconos de **navegación estructural** (redes sociales en el footer, WhatsApp en los CTA) son siempre SVG inline (`currentColor`, `viewBox="0 0 24 24"`, tamaño `w-4 h-4` a `w-5 h-5` según contexto) — nunca emoji. Esto incluye los íconos de contacto del footer (ubicación/teléfono/correo), migrados de emoji a SVG para que combinen visualmente con los íconos de redes sociales ya existentes.
+- **Sin emoji como glifo.** El contenido del CMS sigue guardando un emoji en el campo `icon`, pero se renderiza vía `components/ui/Icon.tsx`, que lo traduce a un ícono de línea real (`currentColor`, grilla de 24, `stroke-width` 1.75). Uso: `<Icon emoji={item.icon} className="h-6 w-6 text-secondary" />` o `<Icon name="calendar" .../>` para íconos fijos. Si el emoji no está en el mapa `EMOJI` se muestra tal cual (fallback) — así la Fundación puede seguir escribiendo cualquier emoji y los comunes se ven como ícono. Aplicado en **todas las páginas** (Inicio, Quiénes Somos, programas, Impacto, Colabora, Familias, Blog, Contacto, Equipo) y componentes.
+- **Logos de marca:** `components/ui/BrandLogo.tsx` para plataformas con logo reconocible (`whatsapp`, `facebook`, `instagram`, `tiktok`) — SVG real, `fill` sólido. Para organizaciones/medios locales con logo propio (UCB, Red Uno, ATB, Página Siete) hay un campo `logo` opcional en el CMS (`allies[].logo`, `media[].logo`) que apunta a `public/images/logos/`; si está vacío se cae al monograma / ícono de categoría.
+- **Decoración de badges** (la píldora `bg-{color}/10` sobre el título de sección): un punto de color (`<span className="h-1.5 w-1.5 rounded-full bg-{color}" />`), nunca un emoji.
+- Avatares sin foto: usar iniciales sobre un círculo de color de marca (`bg-[color]/10 text-[color]-700` o el fondo sólido del `PALETTE[color]`), nunca un emoji genérico (`👤`) — patrón ya implementado en la grilla de Equipo vía el campo `initials`/`color` del CMS.
+
+---
+
+## Accesibilidad: contraste y áreas táctiles (WCAG AA — obligatorio)
+
+Verificado automáticamente por `tests/a11y/a11y.spec.ts` (axe + medición de áreas táctiles, 12 rutas × es/en a 375px). **Una página nueva no se da por terminada si esa prueba falla.**
+
+**Contraste de texto (≥ 4,5:1; ≥ 3:1 solo para texto grande: ≥ 24px, o ≥ 18,66px en negrita):**
+- **Texto de acento sobre fondo claro:** azul → `text-secondary-700` (nunca `text-secondary`, que da 3,18:1); amarillo → `text-primary-900` (nunca `text-primary`/`text-primary-700` sobre tintes); morado → `text-accent`. En `style={{ color }}` usar `PALETTE[x].textHex`, no `.hex` (`.hex` es solo para fondos, bordes e íconos).
+- **Texto blanco sobre azul de marca:** el fondo debe ser `bg-secondary-700` (#166e8a, 5,9:1), no `bg-secondary` (#229cc2, solo 3,18:1). Los gradientes de hero terminan en `to-secondary-700`. El azul de marca (`secondary`) queda para acentos, bordes, íconos y `bg-secondary/10`.
+- **Texto secundario gris:** mínimo `text-gray-500` sobre blanco y `text-gray-600` sobre tintes o grises claros. Nunca `text-gray-400` para texto sobre claro (2,5:1). Sobre fondo oscuro (footer) se usa `text-gray-400` o más claro.
+- **Texto blanco tenue sobre fondos de color:** no bajar de `text-white/90`; los textos pequeños (< 14px) y las migas de pan van en `text-white` sólido.
+- **Chips y paneles sobre un hero de color:** usar `bg-black/15`–`bg-black/25` (oscurecen el fondo), no `bg-white/10–25` (lo aclaran y bajan el contraste del texto blanco).
+- **Verde (WhatsApp, éxito):** texto blanco solo sobre `bg-green-700`; texto verde sobre claro, `#15803d` (Tailwind green-700) o más oscuro.
+
+**Áreas táctiles (≥ 44 × 44 px en móvil):** todo enlace, botón y campo. Si el elemento visual es más chico (íconos, puntos de carrusel, migas de pan), el área táctil se amplía con `min-h-[44px] min-w-[44px]` (y `-my-3.5` si no debe cambiar el alto de la fila) o con un botón contenedor de 44px alrededor del punto. Excepción: enlaces dentro de un párrafo de texto. Los enlaces cortos de una lista (por ejemplo «Team» en el pie) necesitan también `min-w-[44px]`.
+
+**Teclado y foco (verificado por `tests/layout/teclado-y-movil.spec.ts`):**
+- **Foco visible global** (`styles/globals.css`): anillo de 3 px en `secondary-700`, blanco dentro de `footer`, `.bg-gray-900` y `.bg-gray-950`. Usa `:where()` (prioridad cero): un componente con su propio anillo (`focus:ring-…`) sigue mandando. **No uses `focus:outline-none` sin dejar otro indicador** (anillo o borde de otro color).
+- **Saltar al contenido:** `app/[lang]/layout.tsx` ofrece «Saltar al contenido» como primer elemento enfocable y `<main id="main">`. No quitarlo.
+- **Algo clicable que no sea `<a>`/`<button>`** (p. ej. una tarjeta que se elige) necesita `role="button"`, `tabIndex={0}`, `aria-pressed` y manejar Enter y Espacio.
+- **Contenido que reemplaza al botón que se pulsó** (mapa, video): mover el foco al contenido nuevo para no perderlo.
+- **Texto mínimo de 10 px para etiquetas y 12 px para contenido útil.** No cortar con `truncate` texto que la persona necesita leer completo.
+- **Apilamiento:** el contenedor del `Header` es `z-[60]`, por encima del botón flotante de WhatsApp (`z-50`), para que el menú móvil abierto no quede tapado.
+
+---
+
+## Navegación (breakpoints)
+
+- El menú desktop (`Nav.tsx`) y el toggle de hamburguesa (`Header.tsx`) colapsan juntos en `lg:` (no `xl:` — se bajó el breakpoint al agrupar los 3 programas bajo un dropdown "Programas", lo que liberó espacio horizontal). Si se agregan más ítems al nav plano, revisar este breakpoint de nuevo antes de subirlo.
+
+---
+
+## Tipografía — reglas duras
+
+- **Dos familias:**
+  - **Inter** (`font-sans`, fuente base del `<body>`) — todo el cuerpo, leads, botones, formularios, navegación, etiquetas y **títulos de tarjeta** (`h3`/`h4`).
+  - **Fraunces** (`font-display`, serif suave) — se carga en `app/layout.tsx` (`next/font/google`, variable `--font-display`) y se aplica automáticamente a **`h1` y `h2`** vía regla en `styles/globals.css`. Es decir: titulares de hero, de sección y de CTA. También para **citas destacadas** (usar la clase `font-display` + `italic`).
+  - Regla: los títulos de sección (`h2`) van en Fraunces sin hacer nada; los de tarjeta van en `h3`/`h4` y quedan en Inter. No poner contenido de tarjeta en `h2`.
+- `font-extrabold` para todos los H1/H2 de página y CTA (Fraunces sintetiza el peso ~700).
+- **Itálica en el hero:** permitida en la línea 2 del `<h1>` **solo si NO lleva color de acento** (queda en blanco, hereda). `italic` + `text-primary` sobre `bg-secondary` falla contraste AA — usar `italic` a secas (Fraunces itálica) o `font-extrabold` blanco. Nunca `italic` + acento de color juntos.
+- `font-serif` (apunta a Inter en `tailwind.config.js`) queda obsoleto para citas nuevas — usar `font-display`.
+- Colores de texto: `text-gray-900` (nunca hex crudo `#111827` o `#1a1a1a` en código nuevo) — cualquier color debe trazarse a un token de `tailwind.config.js` o `lib/palette.ts`, nunca un hex arbitrario nuevo.
+
+---
+
+## Foto protagonista — `components/sections/ProtagonistPhoto.tsx`
+
+Componente reutilizable para la **foto protagonista de una sección**: foto real en forma
+orgánica (`rounded-[46%_54%…]`) + dos blobs de color de marca detrás (`bg-{color}/40`,
+cada uno con su propio border-radius orgánico) + cita real de familia opcional como
+**pie de foto DEBAJO de la forma** (nunca superpuesta — el recorte orgánico corta el texto).
+La prop `quoteTone` (`'light' | 'dark'`) ajusta el color del pie según el fondo de la sección.
+
+- Se usa en: hero de Inicio, hero de los 3 programas (`ProgramHero.tsx`), sección de
+  identidad de Quiénes Somos, historia destacada de Impacto, testimonio de voluntariado en
+  Colabora, carta de bienvenida en Familias.
+- **Regla:** solo para la foto protagonista de una sección. El resto de fotos del sitio
+  siguen en rectángulos redondeados (`rounded-2xl`). No convertir todas las fotos en blobs.
+- Props: `src`, `alt`, `quote?`, `author?`, `context?`, `blobs?` (`[AccentColor, AccentColor]`,
+  por defecto `['secondary','accent']`), `ratio?` (`'portrait' | 'square'`), `priority?`.
+- Los campos de contenido (`hero.image`/`hero.quote`/…) viven en el CMS — ver
+  `content/settings/*.yml`, `content/programs/*.md`, `lib/cms-schemas.ts` y `public/admin/config.yml`.

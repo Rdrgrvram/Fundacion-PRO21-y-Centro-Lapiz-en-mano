@@ -1,0 +1,352 @@
+es:
+  hero:
+    badge: Impacto y transparencia
+    title_line1: Nuestro impacto, en
+    title_line2: cifras e historias reales
+    subtitle: Detrás de cada cifra hay un niño que encontró su espacio de inclusión. Detrás de cada reporte anual hay un compromiso inquebrantable con la transparencia.
+  featured_story:
+    image: /images/actividades-reales/bandeja-cuentas-color.jpg
+    quote: En la Fundación encontramos profesionales que nos orientaron y nos acompañaron paso a paso.
+    author: Mamá de S.
+    context: Pasos Firmes
+  stats_section:
+    badge: Nuestras cifras
+    title: El impacto consolidado en números
+    subtitle: Cada número representa una historia real de inclusión y progreso.
+  stats:
+    - icon: users-round
+      color: secondary
+      value: '70'
+      suffix: +
+      label: Familias acompañadas
+    - icon: file-text
+      color: accent
+      value: '3'
+      label: Programas activos
+    - icon: landmark
+      color: secondary
+      value: '8'
+      label: Años de experiencia
+    - icon: stethoscope
+      color: secondary
+      value: '9'
+      label: Profesionales en el equipo
+  testimonials_section:
+    badge: Voces de las familias
+    title: Lo que dicen de nosotros
+    subtitle: Historias en primera persona de las familias que forman parte de nuestra comunidad.
+  reports_section:
+    badge: Transparencia institucional
+    title: Rendición de cuentas anual
+    subtitle: La confianza se construye publicando informes de gestión claros para cooperantes, aliados y familias.
+    list_label: Informes Anuales Disponibles
+    download_label: Descargar PDF
+    request_label: Solicitar
+  reports:
+    - year: '2025'
+      title: Informe anual de gestión 2025
+      desc: Resultados, cifras de atención, uso de recursos y proyección.
+    - year: '2024'
+      title: Informe anual de gestión 2024
+      desc: Segundo año de operaciones con tres programas activos.
+    - year: '2023'
+      title: Informe anual de gestión 2023
+      desc: Lanzamiento de Aula Wawitas y expansión de salas.
+      program_slug: aula-wawitas
+    - year: '2022'
+      title: Informe anual de gestión 2022
+      desc: Constitución de Fundación PRO-21 y consolidación.
+  reports_breakdown_title: ¿Qué incluyen nuestros informes?
+  reports_breakdown:
+    - icon: baby
+      color: secondary
+      title: Niños atendidos
+      desc: Matrícula en cada programa e informes pedagógicos.
+    - icon: coins
+      color: primary
+      title: Uso de fondos
+      desc: Distribución porcentual por áreas y costo de becas.
+    - icon: chart-column
+      color: secondary
+      title: Avances terapéuticos
+      desc: Logros medidos a nivel psicomotor, fonoaudiológico y conductual.
+    - icon: handshake
+      color: secondary
+      title: Convenios firmados
+      desc: Nuevas alianzas nacionales y de cooperación.
+  media_section:
+    badge: Impacto social en medios
+    title: Difusión en prensa y televisión
+    subtitle: Así hablan de nuestro trabajo la prensa y la televisión boliviana.
+  media:
+    - outlet: Red Uno de Bolivia
+      type: Televisión
+      desc: Cobertura especial del incidente durante los conflictos en La Paz, visibilizando el centro.
+      year: '2026'
+      color: accent
+      logo: /images/logos/red-uno.png
+    - outlet: ATB Digital
+      type: Televisión
+      desc: Reportaje sobre los programas de inclusión educativa para niños con síndrome de Down.
+      year: '2026'
+      color: secondary
+      logo: /images/logos/atb.png
+    - outlet: Página Siete
+      type: Prensa escrita
+      desc: Artículo sobre la labor del Centro Lápiz en Mano y la importancia de la estimulación temprana.
+      year: '2025'
+      color: secondary
+      logo: /images/logos/pagina-siete.png
+    - outlet: Redes Internacionales
+      type: Digital
+      desc: Acompañamiento y notas de solidaridad internacional tras la difusión de prensa.
+      year: '2026'
+      color: accent
+  gallery_section:
+    badge: Galería del centro
+    title: Momentos que nos inspiran
+    subtitle: Un vistazo a la vida diaria en nuestros programas y actividades.
+  gallery_categories:
+    - Todos
+    - Mi Escuelita
+    - Aula Wawitas
+    - Pasos Firmes
+    - Eventos
+  gallery:
+    - image: /images/actividades/estimulacion-sensorial.jpg
+      alt: Actividad de estimulación sensorial
+      category: Mi Escuelita
+      program_slug: mi-escuelita-down
+    - image: /images/actividades/psicomotricidad-bolos.jpg
+      alt: Actividad de psicomotricidad con bolos
+      category: Mi Escuelita
+      program_slug: mi-escuelita-down
+    - image: /images/actividades-reales/pesca-sensorial.jpg
+      alt: Niño en una actividad de pesca sensorial con letras de colores
+      category: Mi Escuelita
+      program_slug: mi-escuelita-down
+    - image: /images/actividades-reales/bandeja-arena-sensorial.jpg
+      alt: Niño explorando una bandeja de arena en terapia sensorial
+      category: Mi Escuelita
+      program_slug: mi-escuelita-down
+    - image: /images/actividades-reales/terapia-individual-tarjetas.jpg
+      alt: Sesión de terapia individual con tarjetas educativas
+      category: Mi Escuelita
+      program_slug: mi-escuelita-down
+    - image: /images/actividades-reales/nino-cubo-rubik.jpg
+      alt: Niño sosteniendo un cubo en el Centro Lápiz en Mano
+      category: Aula Wawitas
+      program_slug: aula-wawitas
+    - image: /images/actividades-reales/retrato-sonrisa.jpg
+      alt: Niña sonriendo durante una actividad en el aula
+      category: Aula Wawitas
+      program_slug: aula-wawitas
+    - image: /images/actividades-reales/pintura-tinas-color.jpg
+      alt: Niños pintando con las manos en tinas de colores
+      category: Aula Wawitas
+      program_slug: aula-wawitas
+    - image: /images/actividades/mercado-autonomia.jpg
+      alt: Actividad de autonomía tipo mercado
+      category: Pasos Firmes
+      program_slug: pasos-firmes
+    - image: /images/actividades/trazos-cognitivos.jpg
+      alt: Actividad de trazos y estimulación cognitiva
+      category: Pasos Firmes
+      program_slug: pasos-firmes
+    - image: /images/actividades-reales/juego-mesa-cartas.jpg
+      alt: Estudiantes jugando un juego de cartas en una actividad grupal
+      category: Pasos Firmes
+      program_slug: pasos-firmes
+    - image: /images/actividades-reales/rompecabezas-geometrico.jpg
+      alt: Estudiante resolviendo un rompecabezas de figuras geométricas
+      category: Pasos Firmes
+      program_slug: pasos-firmes
+    - image: /images/actividades-reales/escritura-numeros-pizarra.jpg
+      alt: Estudiante practicando la escritura de números en una pizarra
+      category: Pasos Firmes
+      program_slug: pasos-firmes
+    - image: /images/actividades-reales/grupo-orejas-conejo.jpg
+      alt: Grupo de niños en una actividad especial en el centro
+      category: Eventos
+  gallery_note: '* Fotografías ilustrativas y reales de uso interno bajo consentimiento de tutoría legal.'
+  cta:
+    title: ¿Quieres ser parte de esta transformación?
+    text: Cada boliviano donado, cada hora de voluntariado y cada alianza estratégica multiplica el impacto social, permitiéndonos acoger a más niños y niñas en lista de espera.
+    cta_label: Colaborar ahora
+    secondary_label: Solicitar informes
+en:
+  hero:
+    badge: Impact & transparency
+    title_line1: Our impact, in
+    title_line2: real numbers and stories
+    subtitle: Behind every number is a child who found their space of inclusion. Behind every annual report is an unwavering commitment to transparency.
+  featured_story:
+    image: /images/actividades-reales/bandeja-cuentas-color.jpg
+    quote: At the Foundation we found professionals who guided us and accompanied us step by step.
+    author: Mom of S.
+    context: Pasos Firmes
+  stats_section:
+    badge: Our metrics
+    title: Consolidated impact in numbers
+    subtitle: Every number represents a real story of inclusion and progress.
+  stats:
+    - icon: users-round
+      color: secondary
+      value: '70'
+      suffix: +
+      label: Families supported
+    - icon: file-text
+      color: accent
+      value: '3'
+      label: Active programs
+    - icon: landmark
+      color: secondary
+      value: '8'
+      label: Years of service
+    - icon: stethoscope
+      color: secondary
+      value: '9'
+      label: Staff professionals
+  testimonials_section:
+    badge: Voices of families
+    title: What they say about us
+    subtitle: First-hand stories from the families that are part of our community.
+  reports_section:
+    badge: Institutional Transparency
+    title: Annual Accountability
+    subtitle: Trust is built by publishing clear management reports for partners, allies, and families.
+    list_label: Available Annual Reports
+    download_label: Download PDF
+    request_label: Request
+  reports:
+    - year: '2025'
+      title: 2025 Annual Management Report
+      desc: Results, care figures, resources utilization, and projection.
+    - year: '2024'
+      title: 2024 Annual Management Report
+      desc: Second year of operations with three active programs.
+    - year: '2023'
+      title: 2023 Annual Management Report
+      desc: Launch of Aula Wawitas and sensory room expansion.
+      program_slug: aula-wawitas
+    - year: '2022'
+      title: 2022 Annual Management Report
+      desc: Establishment of PRO-21 Foundation and consolidation.
+  reports_breakdown_title: What do our reports include?
+  reports_breakdown:
+    - icon: baby
+      color: secondary
+      title: Children served
+      desc: Enrollment in each program and pedagogical reports.
+    - icon: coins
+      color: primary
+      title: Use of funds
+      desc: Percentage distribution by areas and cost of scholarships.
+    - icon: chart-column
+      color: secondary
+      title: Therapeutic progress
+      desc: Achievements measured at psychomotor, speech, and behavior levels.
+    - icon: handshake
+      color: secondary
+      title: Signed agreements
+      desc: New national and cooperation alliances.
+  media_section:
+    badge: Outreach in media
+    title: Broadcasting in press and television
+    subtitle: How Bolivian press and television talk about our work.
+  media:
+    - outlet: Red Uno de Bolivia
+      type: Television
+      desc: Special coverage of the incident during conflicts in La Paz, making the center visible.
+      year: '2026'
+      color: accent
+      logo: /images/logos/red-uno.png
+    - outlet: ATB Digital
+      type: Television
+      desc: Report on educational inclusion programs for children with Down syndrome in Bolivia.
+      year: '2026'
+      color: secondary
+      logo: /images/logos/atb.png
+    - outlet: Página Siete
+      type: Press outlet
+      desc: Article on the work of Lápiz en Mano Center and the importance of early stimulation.
+      year: '2025'
+      color: secondary
+      logo: /images/logos/pagina-siete.png
+    - outlet: Redes Internacionales
+      type: Digital media
+      desc: Accompaniment and international solidarity notes after press releases.
+      year: '2026'
+      color: accent
+  gallery_section:
+    badge: Center Gallery
+    title: Moments that inspire us
+    subtitle: A glimpse into daily life across our programs and activities.
+  gallery_categories:
+    - All
+    - Mi Escuelita
+    - Aula Wawitas
+    - Pasos Firmes
+    - Events
+  gallery:
+    - image: /images/actividades/estimulacion-sensorial.jpg
+      alt: Sensory stimulation activity
+      category: Mi Escuelita
+      program_slug: mi-escuelita-down
+    - image: /images/actividades/psicomotricidad-bolos.jpg
+      alt: Psychomotor activity with bowling pins
+      category: Mi Escuelita
+      program_slug: mi-escuelita-down
+    - image: /images/actividades-reales/pesca-sensorial.jpg
+      alt: Child doing a sensory fishing activity with colored letters
+      category: Mi Escuelita
+      program_slug: mi-escuelita-down
+    - image: /images/actividades-reales/bandeja-arena-sensorial.jpg
+      alt: Child exploring a sand tray during sensory therapy
+      category: Mi Escuelita
+      program_slug: mi-escuelita-down
+    - image: /images/actividades-reales/terapia-individual-tarjetas.jpg
+      alt: Individual therapy session with educational cards
+      category: Mi Escuelita
+      program_slug: mi-escuelita-down
+    - image: /images/actividades-reales/nino-cubo-rubik.jpg
+      alt: Child holding a cube at the Lápiz en Mano Center
+      category: Aula Wawitas
+      program_slug: aula-wawitas
+    - image: /images/actividades-reales/retrato-sonrisa.jpg
+      alt: Girl smiling during a classroom activity
+      category: Aula Wawitas
+      program_slug: aula-wawitas
+    - image: /images/actividades-reales/pintura-tinas-color.jpg
+      alt: Children finger-painting in colored tubs
+      category: Aula Wawitas
+      program_slug: aula-wawitas
+    - image: /images/actividades/mercado-autonomia.jpg
+      alt: Market-style autonomy activity
+      category: Pasos Firmes
+      program_slug: pasos-firmes
+    - image: /images/actividades/trazos-cognitivos.jpg
+      alt: Cognitive stimulation drawing activity
+      category: Pasos Firmes
+      program_slug: pasos-firmes
+    - image: /images/actividades-reales/juego-mesa-cartas.jpg
+      alt: Students playing a card game in a group activity
+      category: Pasos Firmes
+      program_slug: pasos-firmes
+    - image: /images/actividades-reales/rompecabezas-geometrico.jpg
+      alt: Student solving a geometric shapes puzzle
+      category: Pasos Firmes
+      program_slug: pasos-firmes
+    - image: /images/actividades-reales/escritura-numeros-pizarra.jpg
+      alt: Student practicing writing numbers on a whiteboard
+      category: Pasos Firmes
+      program_slug: pasos-firmes
+    - image: /images/actividades-reales/grupo-orejas-conejo.jpg
+      alt: Group of children in a special activity at the center
+      category: Events
+  gallery_note: '* Illustrative and real photos of internal use under consent of legal guardianship.'
+  cta:
+    title: Want to be part of this transformation?
+    text: Every Bolivian Peso donated, every hour of volunteering, and every strategic alliance multiplies the social impact, allowing us to welcome more children on the waiting list.
+    cta_label: Collaborate now
+    secondary_label: Request reports

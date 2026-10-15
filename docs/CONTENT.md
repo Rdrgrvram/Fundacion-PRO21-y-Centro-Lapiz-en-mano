@@ -6,6 +6,25 @@
 
 ---
 
+## Estado real del contenido (actualizado 14-oct-2026)
+
+> Las plantillas de abajo se usaron para la entrevista de junio. **La fuente de verdad ahora es `content/` (editable desde el CMS).** Ya están cargados: identidad y colores (ver `CLAUDE.md`), logos, textos de las 11 páginas en es/en, 4 programas, 9 profesionales, 3 testimonios y datos de contacto.
+
+**Falta de la Fundación** (detalle en el acta §4 y en el issue #66):
+
+| Contenido | Estado |
+|---|---|
+| Autorizaciones firmadas de fotos: Aula Wawitas, Pasos Firmes, Desarrolla TEA | ⏳ Fotos ocultas (`photos_authorized: false`) |
+| Autorización de las 3 familias para publicar sus testimonios | ⏳ |
+| Firma y fecha institucional en las autorizaciones existentes | ⏳ |
+| Autorización de logos de aliados (UCB, Red Uno, ATB, Página Siete) | ⏳ |
+| Cuenta institucional de donaciones (banco/QR definitivo) | ⏳ |
+| PDFs: guías para familias e informes anuales | ⏳ Hoy se ofrece WhatsApp |
+| Fotos de Helan Medrano y Luis Machicado | ⏳ Hoy aparecen con iniciales |
+| Segunda publicación real del blog (la primera es `bienvenida`) | ⏳ (#57) |
+| Nombre público y orden de Desarrolla TEA (`order: 40`) | ⏳ |
+---
+
 ## Identidad de marca
 
 ### Colores (completar tras la entrevista)
@@ -185,6 +204,18 @@ _______________
 
 ### Fotografías del programa
 - [ ] ⚠️ Mínimo 4 fotos (con autorización)
+
+---
+
+## Sección: Desarrolla TEA
+
+> Programa nuevo (oct-2026). El texto sale del documento oficial del Centro (`PROYECTO DESARROLLATEA.md`); no se inventaron cifras ni testimonios. Ver `specs/002-programa-desarrolla-tea/`.
+
+- [x] Documento completo en es y en: enfoque (7 principios), modalidades y horarios (4 pestañas), áreas de intervención (8, con sus 77 puntos) y ruta de ingreso (11 pasos)
+- [x] Objetivos específicos, población beneficiaria y articulación interdisciplinaria, en es y en (Bloque 4 opcional, acordeón). Justificación, Problemática y Conclusión quedan fuera a propósito (`specs/002-programa-desarrolla-tea/tasks.md`, T034)
+- [x] Edad atendida: 3 – 12 años
+- [ ] Orden en menú y pie (`order: 40`) y nombre público "Desarrolla TEA": **por confirmar con la Fundación**
+- [ ] ⚠️ Fotografías del programa (con autorización escrita de los padres; hoy `photos_authorized` apagado)
 
 ---
 

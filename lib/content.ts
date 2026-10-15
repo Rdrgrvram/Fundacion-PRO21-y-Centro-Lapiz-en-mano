@@ -3,8 +3,56 @@ import path from 'path'
 import matter from 'gray-matter'
 import { remark } from 'remark'
 import remarkHtml from 'remark-html'
+import type { Locale } from '@/lib/i18n'
+import { ICON_NAMES, type IconName } from '@/lib/icon-catalog'
+import type { AccentColor } from '@/lib/palette'
+import { isVisibleProgramReference, normalizeProgramSlug } from '@/lib/program-references'
 
 const CONTENT_DIR = path.join(process.cwd(), 'content')
+const ICON_NAME_SET = new Set<string>(ICON_NAMES)
+
+// El widget `datetime` de Decap guarda fechas sin comillas en el frontmatter
+// (ej. `date: 2026-07-01`), que YAML/gray-matter parsea como un objeto Date en
+// vez de string — React no puede renderizar eso directo como children.
+export function toDateString(value: unknown): string {
+  if (value instanceof Date) return value.toISOString().slice(0, 10)
+  return typeof value === 'string' ? value : ''
+}
+
+// Los widgets `boolean`/`number` de Decap guardan valores YAML reales, pero
+// contenido escrito a mano (o migrado) a veces los deja como texto — "false"
+// es un string no vacío y por lo tanto truthy en JS. Se normaliza explícito.
+export function toBool(value: unknown): boolean {
+  return value === true || value === 'true'
+}
+
+function toNumber(value: unknown, fallback = 0): number {
+  const n = Number(value)
+  return Number.isFinite(n) ? n : fallback
+}
+
+// ── Helpers para colecciones bilingües (<slug>.<locale>.md, i18n: true en Decap) ──
+
+export function listLocaleSlugs(dir: string): string[] {
+  if (!fs.existsSync(dir)) return []
+  const slugs = new Set<string>()
+  for (const file of fs.readdirSync(dir)) {
+    const match = file.match(/^(.+)\.(es|en)\.md$/)
+    if (match) slugs.add(match[1])
+  }
+  return [...slugs].sort()
+}
+
+function readLocaleMatter(dir: string, slug: string, locale: Locale) {
+  const localeFile = path.join(dir, `${slug}.${locale}.md`)
+  const fallbackFile = path.join(dir, `${slug}.es.md`)
+  const filePath = fs.existsSync(localeFile) ? localeFile : fallbackFile
+  return matter(fs.readFileSync(filePath, 'utf-8'))
+}
+
+export function readLocaleFrontmatter(dir: string, slug: string, locale: Locale) {
+  return readLocaleMatter(dir, slug, locale).data
+}
 
 // ── Blog ───────────────────────────────────────────────────────────────────
 
@@ -14,7 +62,16 @@ export interface Post {
   date: string
   excerpt: string
   image?: string
+  pdf?: string
+  visible: boolean
   contentHtml: string
+}
+
+// Un post sin campo `visible` en el frontmatter (ej. entradas creadas antes de
+// que este campo existiera, como content/blog/bienvenida.md) debe seguir
+// visible por defecto — solo `visible: false` explícito lo oculta.
+function toVisible(value: unknown): boolean {
+  return value === undefined ? true : toBool(value)
 }
 
 export async function getAllPosts(): Promise<Omit<Post, 'contentHtml'>[]> {
@@ -26,8 +83,17 @@ export async function getAllPosts(): Promise<Omit<Post, 'contentHtml'>[]> {
     .map((file) => {
       const slug = file.replace(/\.md$/, '')
       const { data } = matter(fs.readFileSync(path.join(dir, file), 'utf-8'))
-      return { slug, title: data.title ?? '', date: data.date ?? '', excerpt: data.excerpt ?? '', image: data.image }
+      return {
+        slug,
+        title: data.title ?? '',
+        date: toDateString(data.date),
+        excerpt: data.excerpt ?? '',
+        image: data.image,
+        pdf: data.pdf,
+        visible: toVisible(data.visible),
+      }
     })
+    .filter((post) => post.visible)
     .sort((a, b) => (a.date < b.date ? 1 : -1))
 }
 
@@ -37,72 +103,79 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
 
   const raw = fs.readFileSync(filePath, 'utf-8')
   const { data, content } = matter(raw)
+  if (!toVisible(data.visible)) return null
+
   const processed = await remark().use(remarkHtml).process(content)
 
   return {
     slug,
     title: data.title ?? '',
-    date: data.date ?? '',
+    date: toDateString(data.date),
     excerpt: data.excerpt ?? '',
     image: data.image,
+    pdf: data.pdf,
+    visible: true,
     contentHtml: processed.toString(),
   }
 }
 
-// ── Equipo ──────────────────────────────────────────────────────────────────
-
-export interface TeamMember {
-  slug: string
-  name: string
-  role: string
-  specialty: string
-  bio: string
-  photo?: string
-}
-
-export function getAllTeamMembers(): TeamMember[] {
-  const dir = path.join(CONTENT_DIR, 'equipo')
-  if (!fs.existsSync(dir)) return []
-
-  return fs
-    .readdirSync(dir)
-    .filter((f) => f.endsWith('.md'))
-    .map((file) => {
-      const { data } = matter(fs.readFileSync(path.join(dir, file), 'utf-8'))
-      return {
-        slug: file.replace(/\.md$/, ''),
-        name: data.name ?? '',
-        role: data.role ?? '',
-        specialty: data.specialty ?? '',
-        bio: data.bio ?? '',
-        photo: data.photo,
-      }
-    })
-}
-
 // ── Testimonios ─────────────────────────────────────────────────────────────
+
+/**
+ * Nombres («Mamá de T.») de los testimonios con «Visible en el sitio» apagado. Las citas de la portada de Inicio, la
+ * historia destacada de Impacto y la carta de Familias son COPIAS de un testimonio: si su autor coincide con uno oculto,
+ * esas páginas retiran también esa cita (por ejemplo, cuando una familia retira su permiso).
+ */
+export function getHiddenTestimonialFamilies(locale: Locale): Set<string> {
+  const dir = path.join(CONTENT_DIR, 'testimonios')
+  const ocultos = new Set<string>()
+  for (const slug of listLocaleSlugs(dir)) {
+    const { data } = readLocaleMatter(dir, slug, locale)
+    if ((data.visible === false || data.visible === 'false') && typeof data.family === 'string') ocultos.add(data.family.trim())
+  }
+  return ocultos
+}
 
 export interface Testimonial {
   slug: string
   family: string
   program: string
+  programSlug: string | undefined
+  icon: IconName
+  color: AccentColor
+  order: number
+  featuredHome: boolean
+  featuredImpacto: boolean
   body: string
 }
 
-export function getAllTestimonials(): Testimonial[] {
+export function getAllTestimonials(
+  locale: Locale,
+  options: { visibleProgramSlugs?: ReadonlySet<string> } = {}
+): Testimonial[] {
   const dir = path.join(CONTENT_DIR, 'testimonios')
-  if (!fs.existsSync(dir)) return []
+  return listLocaleSlugs(dir)
+    .map((slug) => {
+      const { data, content } = readLocaleMatter(dir, slug, locale)
+      // Interruptor «Visible en el sitio» del panel: apagado = no se muestra (sin borrar la entrada).
+      if (data.visible === false || data.visible === 'false') return null
+      const programSlug = normalizeProgramSlug(data.program_slug ?? data.program)
+      if (!isVisibleProgramReference(programSlug, options.visibleProgramSlugs)) return null
 
-  return fs
-    .readdirSync(dir)
-    .filter((f) => f.endsWith('.md'))
-    .map((file) => {
-      const { data, content } = matter(fs.readFileSync(path.join(dir, file), 'utf-8'))
       return {
-        slug: file.replace(/\.md$/, ''),
+        slug,
         family: data.family ?? '',
         program: data.program ?? '',
+        programSlug,
+        icon: typeof data.icon === 'string' && ICON_NAME_SET.has(data.icon) ? (data.icon as IconName) : 'sparkles',
+        color: (data.color as AccentColor) ?? 'secondary',
+        order: toNumber(data.order),
+        featuredHome: toBool(data.featured_home),
+        featuredImpacto: toBool(data.featured_impacto),
         body: content.trim(),
       }
     })
+    .filter((testimonial): testimonial is Testimonial => testimonial !== null)
+    .sort((a, b) => a.order - b.order)
 }
+

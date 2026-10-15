@@ -11,17 +11,103 @@
   --color-text: #1a1a1a;         /* gris oscuro — nunca negro puro */
 }
 
+/* ── Movimiento reducido ─────────────────────────────────────────────────────
+   Quien pide menos movimiento al sistema no ve transiciones ni animaciones; los estados finales se conservan. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Foco visible con teclado ───────────────────────────────────────────────
+   Anillo de 3 px en el azul de marca (secondary-700, AA sobre blanco); blanco sobre fondos oscuros.
+   :where() deja la prioridad en cero: un componente con su propio anillo (focus:ring…) sigue mandando. */
+@layer base {
+  :where(a, button, input, select, textarea, summary, [role='button'], [tabindex]):focus-visible {
+    @apply outline outline-[3px] outline-offset-[3px] outline-secondary-700;
+  }
+  footer :focus-visible,
+  .bg-gray-900 :focus-visible,
+  .bg-gray-950 :focus-visible {
+    @apply outline-white;
+  }
+}
+
 /* ── Clase para alto contraste (accesibilidad) ──────────────────────────── */
 .high-contrast {
-  --color-primary: #000000;
-  --color-secondary: #000000;
-  --color-text: #000000;
   background-color: #ffffff !important;
   color: #000000 !important;
 }
 
+.high-contrast,
 .high-contrast * {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #000000 !important;
   border-color: #000000 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* Enlaces legibles con subrayado y color distintivo */
+.high-contrast a {
+  text-decoration: underline !important;
+  color: #0000ee !important;
+}
+
+.high-contrast a:hover,
+.high-contrast a:focus {
+  color: #000000 !important;
+  background-color: #ffff00 !important; /* Fondo amarillo en hover para máxima visibilidad */
+}
+
+/* Controles interactivos con bordes negros sólidos */
+.high-contrast button,
+.high-contrast a.button,
+.high-contrast a[role="button"],
+.high-contrast input,
+.high-contrast select,
+.high-contrast textarea {
+  border: 2px solid #000000 !important;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  outline: 2px solid transparent !important;
+}
+
+/* Efectos hover/focus invertidos para interactividad clara */
+.high-contrast button:hover,
+.high-contrast button:focus,
+.high-contrast a.button:hover,
+.high-contrast a.button:focus,
+.high-contrast a[role="button"]:hover,
+.high-contrast a[role="button"]:focus,
+.high-contrast input:focus,
+.high-contrast select:focus,
+.high-contrast textarea:focus {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* Tratamiento para imágenes e íconos en alto contraste */
+.high-contrast img,
+.high-contrast video {
+  filter: grayscale(100%) contrast(120%) !important;
+}
+
+.high-contrast svg {
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+.high-contrast svg * {
+  fill: currentColor !important;
+  stroke: currentColor !important;
+  background-color: transparent !important;
 }
 
 /* ── Componentes reutilizables ───────────────────────────────────────────── */
@@ -47,5 +133,61 @@
 /* ── Fuente base ─────────────────────────────────────────────────────────── */
 body {
   color: var(--color-text);
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
   font-display: swap;
 }
+
+/* ── Tipografía display (Fraunces) ───────────────────────────────────────────
+   Solo los titulares de sección (h1/h2). Los títulos de tarjeta (h3/h4) y todo
+   el cuerpo siguen en Inter. Ver docs/DESIGN_STANDARD.md § Tipografía. */
+h1,
+h2,
+.font-display {
+  font-family: var(--font-display), ui-serif, Georgia, Cambria, serif;
+  font-optical-sizing: auto;
+  letter-spacing: -0.02em;
+}
+
+/* ── Animaciones y efectos de entrada ────────────────────────────────────── */
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.03); }
+}
+
+.animate-fade-slide-up {
+  animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+

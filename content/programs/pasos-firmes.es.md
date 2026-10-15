@@ -1,0 +1,155 @@
+---
+title: Pasos Firmes
+visible: true
+order: 30
+photos_authorized: false
+home:
+  featured: true
+  icon: book-open
+  color: accent
+  badge: Dificultades de aprendizaje
+  ages: Primaria y Secundaria
+hero:
+  badge: Apoyo psicopedagógico
+  subtitle: 'Intervención psicopedagógica especializada para niños y adolescentes con dificultades de aprendizaje: dislexia, disgrafía, discalculia, TDAH y bajo rendimiento escolar.'
+  color: accent
+  image: /images/actividades-reales/escritura-pizarra-circulos.jpg
+  quote: Pasos Firmes cambió la relación de mi hija con la escuela. Pasó de llorar cada mañana a querer ir.
+  quote_author: Familia Torrez
+  quote_context: Pasos Firmes
+  cta_details_label: Ver detalles
+  cta_whatsapp_label: Consultar por WhatsApp
+stats:
+  - icon: book-open
+    value: '6'
+    label: dificultades atendidas
+  - icon: target
+    value: '4'
+    label: modalidades de atención
+  - icon: microscope
+    value: '6'
+    label: pasos de intervención
+  - icon: school
+    value: ✓
+    label: Coord. con escuelas
+section_1:
+  badge: Áreas de especialidad
+  title: Dificultades que Atendemos
+  layout: acordeón
+  subtitle: Cada dificultad de aprendizaje tiene características únicas. Evaluamos a cada niño de forma individual para diseñar la intervención más adecuada.
+  items:
+    - icon: book-open
+      color: secondary
+      title: Dislexia
+      tag: Lectura
+      desc: Dificultad persistente para leer con fluidez y precisión, no explicada por la inteligencia ni por falta de oportunidades educativas. Se trabaja con metodologías multisensoriales y estructuradas.
+    - icon: pencil
+      color: accent
+      title: Disgrafía
+      tag: Escritura
+      desc: 'Dificultad en la expresión escrita: caligrafía irregular, errores ortográficos frecuentes y problemas para organizar ideas en el papel. Trabajamos grafomotricidad y expresión escrita.'
+    - icon: chart-column
+      color: primary
+      title: Discalculia
+      tag: Matemáticas
+      desc: Dificultad para comprender conceptos numéricos, realizar cálculos y resolver problemas matemáticos acordes a la edad. Abordaje concreto-representativo-abstracto.
+    - icon: target
+      color: secondary
+      title: TDAH
+      tag: Atención
+      desc: Dificultades en la atención sostenida, organización, control de impulsos y regulación de la actividad motora. Estrategias para el aula y el hogar con enfoque en funciones ejecutivas.
+    - icon: clock
+      color: accent
+      title: Procesamiento lento
+      tag: Velocidad
+      desc: El niño comprende los contenidos pero necesita significativamente más tiempo para procesar información y completar tareas. Adaptaciones del entorno y estrategias de ritmo propio.
+    - icon: book-open
+      color: primary
+      title: Bajo rendimiento escolar
+      tag: Rendimiento
+      desc: Bajo rendimiento no explicado por una condición específica. Requiere evaluación integral para identificar causas y diseñar estrategias personalizadas de apoyo académico.
+section_2:
+  badge: Cómo trabajamos
+  title: Modalidades de Atención
+  subtitle: Ofrecemos cuatro modalidades de intervención que se complementan para dar una respuesta integral a cada familia.
+  tabs:
+    - icon: book-open
+      color: secondary
+      label: Primaria
+      desc: Apoyo psicopedagógico para estudiantes de educación primaria con dificultades de aprendizaje. Trabajamos en coordinación directa con los docentes escolares para garantizar coherencia entre el centro y la escuela, adaptando los contenidos curriculares al perfil de cada estudiante.
+      highlights:
+        - Coordinación con docentes
+        - Adaptaciones curriculares
+        - Refuerzo de lectoescritura
+        - Estrategias matemáticas
+    - icon: graduation-cap
+      color: accent
+      label: Secundaria
+      desc: Intervención especializada para adolescentes en educación secundaria. Trabajamos organización del estudio, técnicas de aprendizaje efectivas, gestión del tiempo y estrategias para exámenes, acompañando al estudiante en las materias que le presentan mayor dificultad.
+      highlights:
+        - Técnicas de estudio
+        - Organización y planificación
+        - Estrategias para exámenes
+        - Gestión del tiempo
+    - icon: users-round
+      color: primary
+      label: Terapia Grupal
+      desc: Sesiones grupales para familias que enfrentan desafíos similares. Un espacio de apoyo mutuo donde los padres aprenden estrategias concretas, comparten experiencias y fortalecen su rol como co-terapeutas en el hogar.
+      highlights:
+        - Red de apoyo entre familias
+        - Estrategias para el hogar
+        - Contención emocional
+        - Recursos compartidos
+    - icon: puzzle
+      color: secondary
+      label: Terapia Individual
+      desc: Sesiones individuales intensivas con el terapeuta, diseñadas a medida del perfil de aprendizaje único de cada niño o adolescente. Mayor frecuencia de atención y seguimiento personalizado del progreso.
+      highlights:
+        - Plan de intervención único
+        - Seguimiento personalizado
+        - Mayor frecuencia de sesiones
+        - Comunicación directa con familia
+enrollment:
+  badge: Nuestro proceso
+  title: 6 Pasos de Intervención
+  subtitle: Desde el primer contacto hasta la evolución continua, acompañamos a cada familia en todo el proceso.
+  steps:
+    - icon: circle-help
+      title: Escuchar
+      desc: Entrevista con la familia para entender la historia del niño, sus fortalezas y expectativas.
+    - icon: microscope
+      title: Evaluar
+      desc: Evaluación neuropsicológica y psicopedagógica completa para identificar el perfil de aprendizaje.
+    - icon: file-text
+      title: Diseñar
+      desc: Elaboración del plan de intervención con objetivos claros, medibles y alcanzables.
+    - icon: puzzle
+      title: Intervenir
+      desc: Sesiones individuales o grupales con estrategias basadas en evidencia.
+    - icon: refresh-cw
+      title: Coordinar
+      desc: Comunicación permanente con la escuela y la familia para garantizar coherencia.
+    - icon: chart-column
+      title: Evolucionar
+      desc: Reevaluación periódica de avances, ajuste de objetivos y celebración de logros.
+gallery:
+  badge: Así vivimos el programa
+  title: Un vistazo a nuestras intervenciones
+  photos:
+    - image: /images/actividades-reales/juego-mesa-cartas.jpg
+      alt: Estudiantes jugando con cartas en actividad grupal
+    - image: /images/actividades-reales/rompecabezas-geometrico.jpg
+      alt: Estudiante resolviendo un rompecabezas de figuras geométricas
+    - image: /images/actividades-reales/manualidad-esqueleto-memoria.jpg
+      alt: Estudiante realizando una manualidad de memoria y motricidad fina
+    - image: /images/actividades-reales/grupo-mesa-actividad.jpg
+      alt: Grupo de estudiantes trabajando juntos en una actividad de mesa
+    - image: /images/actividades-reales/escritura-numeros-pizarra.jpg
+      alt: Estudiante practicando escritura de números en una pizarra
+    - image: /images/actividades-reales/escritura-pizarra-circulos.jpg
+      alt: Estudiante practicando trazos en una pizarra blanca
+cta:
+  title: ¿Tu hijo tiene dificultades en la escuela?
+  text: No esperes más. La intervención temprana marca la diferencia. Contáctanos y evaluamos a tu hijo gratuitamente.
+  link_label: Formulario de contacto
+---

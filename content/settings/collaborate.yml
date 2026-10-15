@@ -1,0 +1,362 @@
+es:
+  hero:
+    badge: Colabora con nosotros
+    title_line1: Doná, ofrecé tu tiempo
+    title_line2: o sé aliado
+    subtitle: Existen muchas formas de ser parte de este camino inclusivo. Aportando una donación, brindando voluntariado o firmando una alianza corporativa, estás sembrando esperanza en Bolivia.
+    donate_label: Donar ahora
+    volunteer_label: Ser voluntario
+  hero_highlights:
+    - icon: users-round
+      value: 100+
+      label: Familias que acompañar
+    - icon: stethoscope
+      value: 20+
+      label: Profesionales comprometidos
+    - icon: file-text
+      value: '4'
+      label: Programas especializados
+    - icon: heart
+      value: Bs 0
+      label: Costo para familias con beca
+  donation_section:
+    badge: Donaciones con impacto
+    title: Elige cómo quieres colaborar
+    subtitle: Cada aporte se destina al equipamiento de salas multisensoriales, insumos escolares y subvención de becas familiares.
+  donation_tiers:
+    - amount: Bs 100
+      usd: ≈ $14
+      label: Semilla
+      icon: wheat
+      color: secondary
+      impact: Cubre materiales terapéuticos para un niño durante un mes.
+      items:
+        - Materiales de estimulación
+        - Fichas psicopedagógicas
+        - Insumos terapéuticos
+    - amount: Bs 300
+      usd: ≈ $43
+      label: Acompañante
+      icon: heart
+      color: secondary
+      impact: Financia 2 sesiones de terapia especializada.
+      items:
+        - 1 sesión de fisioterapia
+        - 1 sesión de lenguaje
+        - Evaluación de avances
+      featured: true
+    - amount: Bs 500
+      usd: ≈ $72
+      label: Guardián
+      icon: sparkles
+      color: primary
+      impact: Cubre un mes completo de atención para una familia con beca.
+      items:
+        - Plan terapéutico mensual
+        - Orientación familiar
+        - Materiales + sesiones
+    - amount: Libre
+      label: A tu medida
+      icon: heart
+      color: accent
+      impact: Elige el monto que puedas. Todo suma y todo cambia vidas.
+      items:
+        - Cualquier monto ayuda
+        - Recibo de donación
+        - Impacto verificable
+  donation_bank:
+    bank: Banco Sol
+    account: 2633243-000-001
+    holder: Monica Medina Rosales
+    note: La cuenta se actualizará una vez concluido el trámite institucional.
+  payment_methods:
+    - icon: wallet
+      title: Transferencia bancaria
+      lines: []
+      is_bank: true
+    - icon: phone
+      title: QR de pago directo
+      lines:
+        - Escanea desde tu app bancaria.
+        - Compatible con Simple QR en Bolivia.
+      qrImage: /images/qr-donacion.jpg
+    - icon: earth
+      title: Donación internacional
+      lines:
+        - PayPal o transferencia directa.
+        - Escríbenos para recibir los códigos Swift/IBAN.
+  payment_note: El 100% de tu donación se destina de forma directa y transparente a los programas del centro. Emitimos recibos oficiales de donación.
+  volunteer_section:
+    badge: Voluntariado con propósito
+    title: Comparte tu talento y haz la diferencia
+    subtitle: Buscamos profesionales de la salud, pedagogos y personas motivadas que deseen certificar horas de Servicio Social.
+  volunteer_areas:
+    - icon: stethoscope
+      title: Salud y terapia
+      desc: Fisioterapia, psicología, fonoaudiología, psicomotricidad, nutrición.
+      color: secondary
+    - icon: book-open
+      title: Educación y tutorías
+      desc: Apoyo escolar, adaptaciones curriculares, psicopedagogía, talleres.
+      color: secondary
+    - icon: paintbrush
+      title: Arte y recreación
+      desc: Música, pintura, teatro, expresión corporal, deportes adaptados.
+      color: accent
+    - icon: monitor
+      title: Tecnología y diseño
+      desc: Desarrollo web, redes sociales, diseño gráfico, edición multimedia.
+      color: accent
+    - icon: file-text
+      title: Gestión y eventos
+      desc: Planificación, captación de fondos, logística de talleres, campañas.
+      color: primary
+    - icon: earth
+      title: Trabajo comunitario
+      desc: Trabajo social, orientación legal, visitas domiciliarias, difusión.
+      color: secondary
+  volunteer_perks:
+    - icon: calendar
+      text: Horarios adaptados a tu disponibilidad
+    - icon: graduation-cap
+      text: Inducción y capacitación metodológica inicial
+    - icon: file-text
+      text: Certificado oficial de horas voluntarias/prácticas
+    - icon: earth
+      text: Acreditación válida para servicio social universitario
+  alliances_section:
+    badge: Alianzas de valor
+    title: Trabajemos juntos por la inclusión
+    subtitle: Construimos puentes con empresas, universidades, ONGs y medios para potenciar el impacto en la comunidad boliviana.
+  partner_types:
+    - icon: briefcase
+      title: Empresas comprometidas
+      color: secondary
+      desc: RSE, auspicios, donaciones corporativas con impacto social verificado.
+      benefits:
+        - Recibo oficial de donación
+        - Logotipo en sitio web
+        - Informes semestrales de impacto
+    - icon: graduation-cap
+      title: Universidades y Colegios
+      color: accent
+      desc: Prácticas profesionales, voluntariado estudiantil e investigación.
+      benefits:
+        - Convenios marco certificados
+        - Campos de práctica guiados
+        - Acceso a datos de investigación
+    - icon: earth
+      title: Cooperación Internacional
+      color: secondary
+      desc: Proyectos conjuntos de desarrollo y financiamiento de equipamiento.
+      benefits:
+        - Auditorías de transparencia
+        - Cumplimiento de objetivos ODS
+        - Reportes técnicos de ejecución
+    - icon: monitor
+      title: Medios y difusores
+      color: accent
+      desc: Difusión de campañas, reportajes de sensibilización y eventos.
+      benefits:
+        - Contenido de prensa exclusivo
+        - Entrevistas con especialistas
+        - Menciones de agradecimiento
+  allies_title: Aliados que ya nos respaldan
+  allies_subtitle: Organizaciones que confían activamente en nuestro impacto social
+  allies:
+    - name: Universidad Católica Boliviana
+      type: UCB La Paz
+      logo: /images/logos/ucb.png
+    - name: Red Uno de Bolivia
+      type: Televisión
+      logo: /images/logos/red-uno.png
+    - name: ATB Red Nacional
+      type: Televisión
+      logo: /images/logos/atb.png
+    - name: Página Siete
+      type: Prensa
+      logo: /images/logos/pagina-siete.png
+  cta:
+    title: ¿Tienes dudas sobre cómo apoyar?
+    text: Escríbenos directamente y te explicamos detalladamente cómo tu aporte se traduce en materiales de estimulación, sesiones terapéuticas o becas de estudio.
+en:
+  hero:
+    badge: Support us
+    title_line1: Donate, give your time
+    title_line2: or become an ally
+    subtitle: There are many ways to be part of this inclusive path. By providing a donation, volunteering, or signing a corporate alliance, you are sowing hope in Bolivia.
+    donate_label: Donate now
+    volunteer_label: Volunteer
+  hero_highlights:
+    - icon: users-round
+      value: 100+
+      label: Families to support
+    - icon: stethoscope
+      value: 20+
+      label: Staff professionals
+    - icon: file-text
+      value: '4'
+      label: Specialized programs
+    - icon: heart
+      value: Bs 0
+      label: Cost for scholarship families
+  donation_section:
+    badge: Donations with impact
+    title: Choose how you wish to support
+    subtitle: Every contribution goes to equipping multisensory rooms, school supplies, and subsidizing family scholarships.
+  donation_tiers:
+    - amount: Bs 100
+      usd: ≈ $14
+      label: Seed
+      icon: wheat
+      color: secondary
+      impact: Covers therapeutic materials for one child for a month.
+      items:
+        - Stimulation materials
+        - Psychopedagogical sheets
+        - Therapeutic supplies
+    - amount: Bs 300
+      usd: ≈ $43
+      label: Companion
+      icon: heart
+      color: secondary
+      impact: Finances 2 specialized therapy sessions.
+      items:
+        - 1 physical therapy session
+        - 1 speech therapy session
+        - Progress evaluation
+      featured: true
+    - amount: Bs 500
+      usd: ≈ $72
+      label: Guardian
+      icon: sparkles
+      color: primary
+      impact: Covers one full month of care for a family on scholarship.
+      items:
+        - Monthly therapeutic plan
+        - Family guidance
+        - Materials + sessions
+    - amount: Custom
+      label: To your measure
+      icon: heart
+      color: accent
+      impact: Choose the amount you can. Everything counts and transforms lives.
+      items:
+        - Any amount helps
+        - Official donation receipt
+        - Verifiable impact
+  donation_bank:
+    bank: Banco Sol
+    account: 2633243-000-001
+    holder: Monica Medina Rosales
+    note: The account will be updated once the institutional process is completed.
+  payment_methods:
+    - icon: wallet
+      title: Bank transfer
+      lines: []
+      is_bank: true
+    - icon: phone
+      title: Direct QR payment
+      lines:
+        - Scan from your banking app.
+        - Compatible with Simple QR in Bolivia.
+      qrImage: /images/qr-donacion.jpg
+    - icon: earth
+      title: International donation
+      lines:
+        - PayPal or direct wire transfer.
+        - Contact us to receive Swift/IBAN codes.
+  payment_note: 100% of your donation is designated directly and transparently to center programs. We issue official donation receipts.
+  volunteer_section:
+    badge: Volunteering with purpose
+    title: Share your talent and make a difference
+    subtitle: We look for health professionals, educators, and motivated people wishing to certify Social Service hours.
+  volunteer_areas:
+    - icon: stethoscope
+      title: Health & therapy
+      desc: Physiotherapy, psychology, speech therapy, psychomotor, nutrition.
+      color: secondary
+    - icon: book-open
+      title: Education & tutoring
+      desc: School support, curricular adaptations, psychopedagogy, workshops.
+      color: secondary
+    - icon: paintbrush
+      title: Art & recreation
+      desc: Music, painting, theater, body expression, adapted sports.
+      color: accent
+    - icon: monitor
+      title: Tech & design
+      desc: Web dev, social media, graphic design, multimedia editing.
+      color: accent
+    - icon: file-text
+      title: Management & events
+      desc: Planning, fundraising, workshop logistics, campaigns.
+      color: primary
+    - icon: earth
+      title: Community work
+      desc: Social work, legal guidance, home visits, outreach.
+      color: secondary
+  volunteer_perks:
+    - icon: calendar
+      text: Schedules adapted to your availability
+    - icon: graduation-cap
+      text: Initial induction and methodological training
+    - icon: file-text
+      text: Official certificate of volunteer/practice hours
+    - icon: earth
+      text: Valid accreditation for university social service
+  alliances_section:
+    badge: Valuable Alliances
+    title: Let's work together for inclusion
+    subtitle: We build bridges with corporations, universities, NGOs, and media to boost impact in the Bolivian community.
+  partner_types:
+    - icon: briefcase
+      title: Committed Corporations
+      color: secondary
+      desc: CSR, sponsorship, corporate donations with verified social impact.
+      benefits:
+        - Official donation receipt
+        - Logo on the website
+        - Bi-annual impact reports
+    - icon: graduation-cap
+      title: Universities & Schools
+      color: accent
+      desc: Professional internships, student volunteering, and research.
+      benefits:
+        - Certified frameworks
+        - Guided practice fields
+        - Access to research data
+    - icon: earth
+      title: International Aid
+      color: secondary
+      desc: Joint development projects and equipment financing.
+      benefits:
+        - Transparency audits
+        - SDG alignment compliance
+        - Technical execution reports
+    - icon: monitor
+      title: Media & Outreach
+      color: accent
+      desc: Campaign dissemination, awareness reports, and events.
+      benefits:
+        - Exclusive press content
+        - Interviews with specialists
+        - Thank-you mentions
+  allies_title: Allies already supporting us
+  allies_subtitle: Organizations actively trusting our social impact
+  allies:
+    - name: Universidad Católica Boliviana
+      type: UCB La Paz
+      logo: /images/logos/ucb.png
+    - name: Red Uno de Bolivia
+      type: Television
+      logo: /images/logos/red-uno.png
+    - name: ATB Red Nacional
+      type: Television
+      logo: /images/logos/atb.png
+    - name: Página Siete
+      type: Press
+      logo: /images/logos/pagina-siete.png
+  cta:
+    title: Questions about how to support?
+    text: Write to us directly and we will explain in detail how your support translates into stimulation materials, therapy sessions, or study scholarships.

@@ -1,0 +1,167 @@
+---
+title: Mi Escuelita Down
+visible: true
+order: 10
+photos_authorized: true
+home:
+  featured: true
+  icon: sparkles
+  color: primary
+  badge: Down Syndrome
+  ages: 0 – 14+ years
+hero:
+  badge: Specialized Program
+  subtitle: Comprehensive therapeutic and educational intervention for children with Down syndrome, from early stimulation to full school inclusion.
+  color: primary
+  image: /images/actividades-reales/bandeja-arena-sensorial.jpg
+  quote: At Lápiz en Mano, we found not only therapy but a family that taught us to see abilities before limitations.
+  quote_author: Familia Quispe
+  quote_context: Mi Escuelita Down
+  cta_details_label: See details
+  cta_whatsapp_label: WhatsApp inquiry
+stats:
+  - icon: baby
+    value: 0 – 14+
+    label: years served
+  - icon: school
+    value: '3'
+    label: educational levels
+  - icon: heart
+    value: '4'
+    label: therapy areas
+  - icon: graduation-cap
+    value: '8'
+    label: years of experience
+section_1:
+  badge: Specialized intervention
+  title: Therapy Areas
+  layout: tarjetas
+  subtitle: Each child receives a personalized intervention plan that integrates the four therapy areas based on their individual needs.
+  items:
+    - icon: brain
+      color: accent
+      title: Behavioral Therapy
+      desc: We support children in developing social skills, self-regulation, and positive routines in family and school environments.
+      items:
+        - Social skills
+        - Emotional self-regulation
+        - Positive routines
+        - Functional independence
+    - icon: message-circle
+      color: secondary
+      title: Speech Therapy
+      desc: We evaluate and treat language difficulties, implementing strategies that promote effective communication, including augmentative and alternative systems.
+      items:
+        - Orofacial control
+        - Phonetic articulation
+        - Expressive and receptive language
+        - Functional communication
+    - icon: accessibility
+      color: secondary
+      title: Physiotherapy
+      desc: We intervene from early stimulation to improve muscle tone, posture, and mobility, adapting exercises to each developmental stage.
+      items:
+        - Motor early stimulation
+        - Neuromuscular rehabilitation
+        - Muscle tone and posture
+        - Functional mobility
+    - icon: accessibility
+      color: primary
+      title: Psychomotor Therapy
+      desc: We strengthen coordination, balance, and body schema to foster autonomy and body expression through circuits, games, and experiential activities.
+      items:
+        - Gross and fine motor coordination
+        - Body schema
+        - Balance and laterality
+        - Bilateral integration
+section_2:
+  badge: Inclusive education
+  title: Educational Levels
+  subtitle: Our students hold a regular education grade book and receive curricular adaptations at each stage.
+  tabs:
+    - icon: wheat
+      color: accent
+      label: Pre-Kinder
+      age_range: 3 – 5 years
+      desc: Play-based activities focused on early cognitive development. We progressively introduce reading, writing, and math concepts adapted to the child's communicative profile, working hand-in-hand with families.
+      highlights:
+        - Sensory and motor stimulation
+        - Early language development
+        - Socioemotional skills
+        - Functional and structured play
+    - icon: book-open
+      color: secondary
+      label: Kinder
+      age_range: 5 – 6 years
+      desc: 'We consolidate fundamental skills: basic reading and writing, math operations, and coexistence skills. We prepare children for the transition to regular primary education with therapeutic support.'
+      highlights:
+        - Basic reading and writing
+        - Basic mathematics
+        - Coexistence and norms
+        - Primary school preparation
+    - icon: graduation-cap
+      color: primary
+      label: Primary
+      age_range: 6+ years
+      desc: Primary students at Centro Lápiz en Mano attend both our center and a regular school simultaneously. We make personalized curricular adaptations and coordinate with school teachers to ensure real and successful educational inclusion.
+      highlights:
+        - Curricular adaptations
+        - School coordination
+        - Regular system grade book
+        - Path through graduation
+section_3:
+  badge: Comprehensive support
+  title: Complementary Services
+  items:
+    - icon: puzzle
+      color: accent
+      title: Neuro-cognitive Stimulation
+      desc: 'We enhance cognitive functions: attention, working memory, executive functions, and logical reasoning adapted to each child''s Down syndrome profile.'
+    - icon: users-round
+      color: secondary
+      title: Family Guidance
+      desc: Sessions with parents to share strategies, resolve doubts, and empower families as co-therapists at home. Includes free virtual sessions.
+    - icon: school
+      color: accent
+      title: School Coordination
+      desc: We work directly with the child's regular school teachers to design curricular adaptations and ensure learning continuity in both environments.
+    - icon: chart-column
+      color: secondary
+      title: Ongoing Evaluation
+      desc: We periodically reevaluate each child's progress and adjust the intervention plan to maintain relevant and achievable goals at each development stage.
+enrollment:
+  title: How to join the program?
+  steps:
+    - icon: phone
+      title: Initial contact
+      desc: Contact us via WhatsApp or form to schedule a first conversation.
+    - icon: search
+      title: Evaluation
+      desc: We conduct a comprehensive evaluation to design a personalized plan.
+    - icon: file-text
+      title: Intervention plan
+      desc: We set clear objectives and select priority therapy areas.
+    - icon: wheat
+      title: Program start
+      desc: The child starts sessions. The family receives ongoing guidance.
+gallery:
+  badge: A look inside our sessions
+  title: See the program in action
+  photos:
+    - image: /images/actividades-reales/pesca-sensorial.jpg
+      alt: Child doing a sensory fishing activity with colored letters
+    - image: /images/actividades-reales/bandeja-arena-sensorial.jpg
+      alt: Child exploring a sand tray during sensory therapy
+    - image: /images/actividades-reales/bandeja-cuentas-color.jpg
+      alt: Child working with a tray of colored beads
+    - image: /images/actividades-reales/terapia-individual-tarjetas.jpg
+      alt: Individual therapy session with educational cards
+    - image: /images/actividades-reales/juego-agua-sensorial.jpg
+      alt: Two children in a water-based sensory stimulation activity
+    - image: /images/actividades-reales/pintura-arroz-color.jpg
+      alt: Girl painting with colored rice in a sensory activity
+cta:
+  title: Does your child have Down syndrome?
+  text: Contact us today. We evaluate each child free of charge and design a plan adapted to their needs.
+  link_label: Contact form
+---

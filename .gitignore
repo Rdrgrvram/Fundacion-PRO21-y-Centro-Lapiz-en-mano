@@ -10,6 +10,9 @@ out/
 # Mockups — build de Vite (no va al repo)
 mockups/dist/
 
+# Panel admin (Decap CMS) — bundle generado por scripts/build-admin.mjs en cada build
+public/admin/bundle.js
+
 # Variables de entorno — NUNCA subir al repositorio
 .env
 .env.local
@@ -37,3 +40,30 @@ Thumbs.db
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Claude Code: se versionan las skills, los hooks y settings.json del proyecto; lo personal queda fuera
+.claude/settings.local.json
+.claude/worktrees/
+.claude/skills/caveman-mode/
+
+# Archivos de prueba
+public/TEST.MD
+
+# Playwright MCP screenshots/snapshots
+.playwright-mcp/
+v2-*.png
+
+# Playwright — reportes y artefactos de la suite de auditoría del CMS (tests/cms/)
+/playwright-report/
+/test-results/
+/blob-report/
+
+# Datos de menores y escaneos: nunca se versionan (Constitución, Art. IV)
+/documentacion/
+/Documentacion/
+
+# Contexto local de sesiones de Claude Code (no versionar)
+STATE.md
+
+# Script local con un token de GitHub: NUNCA versionar (ver AGENTS.md)
+scripts/subir-instrucciones-github.ps1
