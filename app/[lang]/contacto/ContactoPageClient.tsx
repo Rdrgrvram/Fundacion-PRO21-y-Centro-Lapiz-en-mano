@@ -343,7 +343,7 @@ export default function ContactoPageClient({ lang, content, settings }: Contacto
                     >
                       <BrandLogo name={s.name} className="h-6 w-6" />
                       <span className="text-[10px] font-extrabold text-gray-700">{s.name}</span>
-                      <span className="text-[8px] text-gray-500 font-semibold truncate max-w-[72px]">{s.handle}</span>
+                      <span className="text-xs text-gray-500 font-semibold break-all">{s.handle}</span>
                     </a>
                   ))}
                 </div>

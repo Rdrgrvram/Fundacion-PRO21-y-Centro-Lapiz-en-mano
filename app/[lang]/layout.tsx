@@ -35,8 +35,15 @@ export default function LangLayout({ children, params: { lang } }: LangLayoutPro
   return (
     <html lang={lang} className={fraunces.variable}>
       <body className={inter.className}>
+        {/* Primer elemento enfocable: lleva al contenido sin recorrer menú y barra de accesibilidad. Queda fuera de pantalla (tamaño normal, sin sr-only) y baja al enfocarlo. */}
+        <a
+          href="#main"
+          className="fixed left-4 top-4 z-[70] inline-flex min-h-[44px] -translate-y-[200%] items-center rounded-lg bg-white px-4 text-sm font-bold text-gray-900 shadow-lg focus:translate-y-0"
+        >
+          {lang === 'es' ? 'Saltar al contenido' : 'Skip to content'}
+        </a>
         <Header lang={lang} settings={settings} programs={programs} programRoutes={programRoutes} />
-        <main>{children}</main>
+        <main id="main" tabIndex={-1} className="focus:outline-none">{children}</main>
         <Footer lang={lang} />
         <WhatsAppButton lang={lang} />
       </body>

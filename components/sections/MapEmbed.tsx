@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Icon from '@/components/ui/Icon'
 
 interface MapEmbedProps {
@@ -12,11 +12,17 @@ interface MapEmbedProps {
 // Contacto ni envía datos a Google sin que la persona lo pida. No necesita clave ni costo (issue #71).
 export default function MapEmbed({ address, es }: MapEmbedProps) {
   const [loaded, setLoaded] = useState(false)
+  const marco = useRef<HTMLIFrameElement>(null)
+  // El botón desaparece al cargar el mapa: el foco del teclado pasa al mapa en vez de perderse.
+  useEffect(() => {
+    if (loaded) marco.current?.focus()
+  }, [loaded])
   const src = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`
 
   if (loaded) {
     return (
       <iframe
+        ref={marco}
         title={es ? `Mapa de ubicación: ${address}` : `Location map: ${address}`}
         src={src}
         loading="lazy"

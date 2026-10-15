@@ -10,6 +10,10 @@ import { openCmsEntry, publishEntry, backupContentFile, uniqueMarker } from './h
 const SLUG = 'desarrolla-tea'
 
 test.describe('CMS — Programa Desarrolla TEA', () => {
+  // El formulario de este programa es el más grande del panel (decenas de sub-puntos): editar y publicar tarda ≈ 30 s,
+  // justo el límite por defecto, y fallaba de forma intermitente con la máquina cargada.
+  test.describe.configure({ timeout: 90_000 })
+
   let es: ReturnType<typeof backupContentFile>
   let en: ReturnType<typeof backupContentFile>
 

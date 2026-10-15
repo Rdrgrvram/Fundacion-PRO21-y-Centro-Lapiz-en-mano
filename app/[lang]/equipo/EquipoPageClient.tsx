@@ -301,12 +301,12 @@ export default function EquipoPageClient({ lang, content, navLabel, areas, team,
               return (
                 <div
                   key={a.slug}
-                  style={{ left: `${x - 30}px`, top: `${y - 30}px` }}
-                  className="absolute w-16 h-16 rounded-2xl bg-white border border-gray-200 shadow-sm flex flex-col items-center justify-center hover:scale-110 hover:border-primary hover:shadow-md transition-all duration-300 z-10"
+                  style={{ left: `${x - 46}px`, top: `${y - 30}px` }}
+                  className="absolute w-[92px] h-16 rounded-2xl bg-white border border-gray-200 shadow-sm flex flex-col items-center justify-center hover:scale-110 hover:border-primary hover:shadow-md transition-all duration-300 z-10"
                   title={a.name}
                 >
                   <Icon name={a.icon} className="h-5 w-5 text-secondary-700" />
-                  <span className="text-[8px] font-extrabold text-gray-500 mt-1 max-w-[50px] overflow-hidden text-ellipsis whitespace-nowrap">
+                  <span className="text-[10px] font-extrabold text-gray-500 mt-1 max-w-[88px] text-center leading-none">
                     {a.name.split(' ')[0]}
                   </span>
                 </div>

@@ -100,7 +100,7 @@ export default function Header({ lang, settings, programs, programRoutes }: Head
   }, [isOpen])
 
   return (
-    <div className="sticky top-0 z-50 w-full flex flex-col">
+    <div className="sticky top-0 z-[60] w-full flex flex-col">
       {/* Barra de accesibilidad global — se colapsa al hacer scroll */}
       <div className={`overflow-hidden transition-[max-height] duration-300 ease-in-out ${scrolled ? 'max-h-0' : 'max-h-16'}`}>
         <AccessibilityBar lang={lang} />
@@ -111,7 +111,7 @@ export default function Header({ lang, settings, programs, programRoutes }: Head
         <div className="w-full pl-2 pr-4 md:pl-4 md:pr-6 flex items-center justify-between h-16 md:h-20">
           
           {/* Logo / Identidad */}
-          <Link href={`/${lang}`} className="flex items-center gap-2 md:gap-3 group py-1.5 focus:outline-none" aria-label="Inicio — Fundación PRO-21 y Centro Lápiz en Mano">
+          <Link href={`/${lang}`} className="flex items-center gap-2 md:gap-3 group py-1.5 rounded-lg" aria-label="Inicio — Fundación PRO-21 y Centro Lápiz en Mano">
             <Image
               src={settings.logo_pro21}
               alt={settings.logo_pro21_alt}
@@ -185,7 +185,7 @@ export default function Header({ lang, settings, programs, programRoutes }: Head
               <button
                 onClick={() => setIsOpen(false)}
                 aria-label={es ? 'Cerrar menú' : 'Close menu'}
-                className="w-11 h-11 flex items-center justify-center rounded-full border border-gray-100 text-gray-600 hover:text-gray-900 hover:bg-gray-50 active:bg-gray-100 transition-colors focus:outline-none"
+                className="w-11 h-11 flex items-center justify-center rounded-full border border-gray-100 text-gray-600 hover:text-gray-900 hover:bg-gray-50 active:bg-gray-100 transition-colors"
               >
                 ✕
               </button>

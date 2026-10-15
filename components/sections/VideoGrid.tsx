@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Icon from '@/components/ui/Icon'
 import { youtubeId } from '@/lib/utils'
 
@@ -20,6 +20,12 @@ interface VideoGridProps {
 // de YouTube se ignora. La sección no se pinta si no hay videos válidos.
 export default function VideoGrid({ videos, es }: VideoGridProps) {
   const [playing, setPlaying] = useState<Set<number>>(new Set())
+  const marcos = useRef<Record<number, HTMLIFrameElement | null>>({})
+  const ultimo = useRef<number | null>(null)
+  // Al cargar un video su botón desaparece: el foco del teclado pasa al video en vez de perderse.
+  useEffect(() => {
+    if (ultimo.current !== null) marcos.current[ultimo.current]?.focus()
+  }, [playing])
   const items = videos
     .map((v) => ({ ...v, id: youtubeId(v.url) }))
     .filter((v): v is Video & { id: string } => v.id !== null)
@@ -34,6 +40,9 @@ export default function VideoGrid({ videos, es }: VideoGridProps) {
             <div className="aspect-video w-full bg-gray-900">
               {playing.has(i) ? (
                 <iframe
+                  ref={(el) => {
+                    marcos.current[i] = el
+                  }}
                   title={v.title}
                   src={`https://www.youtube-nocookie.com/embed/${v.id}?autoplay=1&rel=0`}
                   allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
@@ -43,7 +52,10 @@ export default function VideoGrid({ videos, es }: VideoGridProps) {
               ) : (
                 <button
                   type="button"
-                  onClick={() => setPlaying((prev) => new Set(prev).add(i))}
+                  onClick={() => {
+                    ultimo.current = i
+                    setPlaying((prev) => new Set(prev).add(i))
+                  }}
                   aria-label={es ? `Reproducir video: ${v.title}` : `Play video: ${v.title}`}
                   className="flex h-full w-full flex-col items-center justify-center gap-3 px-4 text-center text-white transition-colors hover:bg-gray-800 active:scale-[0.99]"
                 >

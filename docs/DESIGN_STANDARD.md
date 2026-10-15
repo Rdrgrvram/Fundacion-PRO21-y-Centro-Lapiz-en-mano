@@ -124,7 +124,15 @@ Verificado automáticamente por `tests/a11y/a11y.spec.ts` (axe + medición de á
 - **Chips y paneles sobre un hero de color:** usar `bg-black/15`–`bg-black/25` (oscurecen el fondo), no `bg-white/10–25` (lo aclaran y bajan el contraste del texto blanco).
 - **Verde (WhatsApp, éxito):** texto blanco solo sobre `bg-green-700`; texto verde sobre claro, `#15803d` (Tailwind green-700) o más oscuro.
 
-**Áreas táctiles (≥ 44 × 44 px en móvil):** todo enlace, botón y campo. Si el elemento visual es más chico (íconos, puntos de carrusel, migas de pan), el área táctil se amplía con `min-h-[44px] min-w-[44px]` (y `-my-3.5` si no debe cambiar el alto de la fila) o con un botón contenedor de 44px alrededor del punto. Excepción: enlaces dentro de un párrafo de texto.
+**Áreas táctiles (≥ 44 × 44 px en móvil):** todo enlace, botón y campo. Si el elemento visual es más chico (íconos, puntos de carrusel, migas de pan), el área táctil se amplía con `min-h-[44px] min-w-[44px]` (y `-my-3.5` si no debe cambiar el alto de la fila) o con un botón contenedor de 44px alrededor del punto. Excepción: enlaces dentro de un párrafo de texto. Los enlaces cortos de una lista (por ejemplo «Team» en el pie) necesitan también `min-w-[44px]`.
+
+**Teclado y foco (verificado por `tests/layout/teclado-y-movil.spec.ts`):**
+- **Foco visible global** (`styles/globals.css`): anillo de 3 px en `secondary-700`, blanco dentro de `footer`, `.bg-gray-900` y `.bg-gray-950`. Usa `:where()` (prioridad cero): un componente con su propio anillo (`focus:ring-…`) sigue mandando. **No uses `focus:outline-none` sin dejar otro indicador** (anillo o borde de otro color).
+- **Saltar al contenido:** `app/[lang]/layout.tsx` ofrece «Saltar al contenido» como primer elemento enfocable y `<main id="main">`. No quitarlo.
+- **Algo clicable que no sea `<a>`/`<button>`** (p. ej. una tarjeta que se elige) necesita `role="button"`, `tabIndex={0}`, `aria-pressed` y manejar Enter y Espacio.
+- **Contenido que reemplaza al botón que se pulsó** (mapa, video): mover el foco al contenido nuevo para no perderlo.
+- **Texto mínimo de 10 px para etiquetas y 12 px para contenido útil.** No cortar con `truncate` texto que la persona necesita leer completo.
+- **Apilamiento:** el contenedor del `Header` es `z-[60]`, por encima del botón flotante de WhatsApp (`z-50`), para que el menú móvil abierto no quede tapado.
 
 ---
 
