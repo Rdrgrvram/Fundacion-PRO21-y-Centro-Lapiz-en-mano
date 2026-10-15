@@ -22,6 +22,8 @@ const nextConfig = {
 
   // Headers de seguridad
   async headers() {
+    // Sitio de prueba (SITE_NOINDEX=1): que ningún buscador lo indexe antes del lanzamiento
+    const noIndex = process.env.SITE_NOINDEX === '1'
     return [
       {
         source: '/(.*)',
@@ -29,6 +31,7 @@ const nextConfig = {
           { key: 'X-Frame-Options', value: 'DENY' },
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          ...(noIndex ? [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }] : []),
         ],
       },
     ]
