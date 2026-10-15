@@ -26,7 +26,10 @@ for (const [lang, completa] of [
     const boton = page.locator('blockquote:visible button[aria-expanded]').first()
     await expect(boton).toHaveText(completa)
     await expect(boton).toHaveAttribute('aria-expanded', 'false')
+    const cita = page.locator('blockquote:visible p').first()
+    await expect(cita).toHaveClass(/line-clamp-5/)
     await boton.click()
     await expect(boton).toHaveAttribute('aria-expanded', 'true')
+    await expect(cita, 'la cita se despliega de verdad').not.toHaveClass(/line-clamp/)
   })
 }

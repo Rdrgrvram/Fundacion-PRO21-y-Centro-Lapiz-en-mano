@@ -8,10 +8,12 @@ import { programSlugs } from '../helpers/programs'
 const LANGS = ['es', 'en'] as const
 
 async function secciones(page: Page) {
+  // Todas las secciones del cuerpo de la página (el hero y el CTA final llevan fondo de color y se descartan).
   return page.evaluate(() =>
-    [...document.querySelectorAll<HTMLElement>('main > div > section, main > div > div > section')].map((s) => ({
+    [...document.querySelectorAll<HTMLElement>('main section')].map((s) => ({
       id: s.id,
       fondo: getComputedStyle(s).backgroundColor,
+      color: getComputedStyle(s).backgroundImage !== 'none',
       h2: s.querySelector('h2')?.textContent?.trim() ?? '',
     }))
   )
@@ -50,14 +52,14 @@ for (const lang of LANGS) {
 
       test('las secciones alternan fondo: dos vecinas nunca tienen el mismo', async ({ page }) => {
         await page.goto(`/${lang}/${slug}`, { waitUntil: 'networkidle' })
-        const lista = (await secciones(page)).filter((s) => s.h2)
-        // Desde la sección 1 hasta la de pasos/testimonio (antes del CTA final de color).
-        const cuerpo = lista.filter((s) => s.id === 'section-1' || s.id === 'section-2' || s.id === '' ).slice(0, 8)
+        // Secciones de contenido en orden: sin degradado de color (hero y CTA final).
+        const cuerpo = (await secciones(page)).filter((s) => !s.color)
+        expect(cuerpo.length, 'debe haber al menos 4 secciones de contenido para comprobar').toBeGreaterThanOrEqual(4)
         for (let i = 1; i < cuerpo.length; i++) {
-          if (cuerpo[i].fondo === cuerpo[i - 1].fondo) {
-            // Dos secciones seguidas con el mismo fondo solo se admiten si una es la franja de color del CTA.
-            expect(cuerpo[i].h2 === '' || cuerpo[i - 1].h2 === '', `«${cuerpo[i - 1].h2}» y «${cuerpo[i].h2}» tienen el mismo fondo`).toBe(true)
-          }
+          // La fila de datos clave es blanca y puede tocar a la primera sección: solo se compara desde la sección 1.
+          if (!cuerpo[i].id && !cuerpo[i].h2) continue
+          if (cuerpo[i - 1].id === '' && cuerpo[i - 1].h2 === '' ) continue
+          expect(cuerpo[i].fondo, `«${cuerpo[i - 1].h2 || cuerpo[i - 1].id}» y «${cuerpo[i].h2 || cuerpo[i].id}» no deben tener el mismo fondo`).not.toBe(cuerpo[i - 1].fondo)
         }
       })
 
