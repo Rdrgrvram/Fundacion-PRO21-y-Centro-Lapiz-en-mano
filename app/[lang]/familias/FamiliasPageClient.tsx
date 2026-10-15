@@ -69,7 +69,7 @@ export default function FamiliasPageClient({ lang, content, whatsappNumber }: Fa
               />
             )}
             <div className="bg-gradient-to-br from-accent-50 to-primary-50 rounded-3xl p-8 md:p-10 border border-accent/10 shadow-sm text-left">
-              <h3 className="font-display text-2xl sm:text-3xl text-gray-900 font-bold mb-3">{content.welcome_letter.title}</h3>
+              <h2 className="font-display text-2xl sm:text-3xl text-gray-900 font-bold mb-3">{content.welcome_letter.title}</h2>
               <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">{content.welcome_letter.text}</p>
               <p className="text-xs sm:text-sm font-bold text-accent italic mt-4">{content.welcome_letter.signature}</p>
             </div>
@@ -100,7 +100,7 @@ export default function FamiliasPageClient({ lang, content, whatsappNumber }: Fa
                       <Icon name={s.icon} className="h-6 w-6 text-gray-700" />
                     </div>
                     <div>
-                      <h4 className="text-base sm:text-lg text-gray-900 font-bold mb-2">{s.title}</h4>
+                      <h3 className="text-base sm:text-lg text-gray-900 font-bold mb-2">{s.title}</h3>
                       <div className="flex gap-2 mb-4 select-none">
                         <span className={`text-[9px] font-bold px-2.5 py-0.5 rounded-full ${style.bg}`} style={{ color: style.textHex }}>{s.freq}</span>
                         <span className="text-[9px] text-gray-500 font-bold px-2.5 py-0.5 rounded-full bg-gray-150">{s.duration}</span>
@@ -141,7 +141,7 @@ export default function FamiliasPageClient({ lang, content, whatsappNumber }: Fa
                   <Icon name={item.icon} className="h-7 w-7" />
                 </div>
                 <div>
-                  <h4 className="text-base sm:text-lg text-gray-900 font-bold mb-2">{item.title}</h4>
+                  <h3 className="text-base sm:text-lg text-gray-900 font-bold mb-2">{item.title}</h3>
                   <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
@@ -174,7 +174,7 @@ export default function FamiliasPageClient({ lang, content, whatsappNumber }: Fa
                     </div>
                     <div className="p-6">
                       <span className="text-[9px] font-bold uppercase tracking-wide mb-1 block" style={{ color: style.textHex }}>{g.program}</span>
-                      <h4 className="text-sm sm:text-base text-gray-900 font-bold mb-2 leading-snug">{g.title}</h4>
+                      <h3 className="text-sm sm:text-base text-gray-900 font-bold mb-2 leading-snug">{g.title}</h3>
                       <p className="text-xs text-gray-500 leading-relaxed mb-4 min-h-[48px]">{g.desc}</p>
                     </div>
                   </div>
@@ -219,21 +219,40 @@ export default function FamiliasPageClient({ lang, content, whatsappNumber }: Fa
               return (
                 <div
                   key={i}
-                  onClick={() => setOpenFaq(isOpen ? null : i)}
-                  className={`bg-white rounded-2xl border overflow-hidden shadow-sm hover:shadow-md cursor-pointer transition-all duration-300 ${isOpen ? 'border-primary' : 'border-gray-200'}`}
+                  className={`relative bg-white rounded-2xl border overflow-hidden shadow-sm hover:shadow-md cursor-pointer transition-all duration-300 ${isOpen ? 'border-primary' : 'border-gray-200'}`}
                 >
                   <div className="flex items-center justify-between p-5 select-none">
                     <div className="flex items-center gap-4">
                       <div className={`w-9 h-9 rounded-xl flex items-center justify-center text-sm font-bold transition-all duration-300 ${isOpen ? 'bg-primary text-black' : 'bg-gray-100 text-gray-600'}`}>
                         {i + 1}
                       </div>
-                      <h4 className="text-xs sm:text-sm font-bold text-gray-900 leading-snug">{faq.q}</h4>
+                      <h3 className="text-xs sm:text-sm font-bold text-gray-900 leading-snug">
+                        {/* El botón se estira sobre toda la tarjeta (after:absolute): teclado, lector de pantalla y mouse usan el mismo control. */}
+                        <button
+                          type="button"
+                          id={`faq-q-${i}`}
+                          aria-expanded={isOpen}
+                          aria-controls={`faq-a-${i}`}
+                          onClick={() => setOpenFaq(isOpen ? null : i)}
+                          className="inline-flex min-h-[44px] items-center text-left after:absolute after:inset-0 after:content-['']"
+                        >
+                          {faq.q}
+                        </button>
+                      </h3>
                     </div>
                     <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold transition-all duration-300 ${isOpen ? 'bg-primary/10 text-primary-900 rotate-180' : 'bg-gray-50 text-gray-500'}`}>▾</div>
                   </div>
-                  <div className={`overflow-hidden transition-all duration-500 ${isOpen ? 'max-h-[350px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                    <div className="px-5 pb-5 pl-5 sm:pl-18">
-                      <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">{faq.a}</p>
+                  <div
+                    id={`faq-a-${i}`}
+                    role="region"
+                    aria-labelledby={`faq-q-${i}`}
+                    aria-hidden={!isOpen}
+                    className={`grid transition-all duration-300 ease-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="px-5 pb-5 pl-5 sm:pl-18">
+                        <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">{faq.a}</p>
+                      </div>
                     </div>
                   </div>
                 </div>

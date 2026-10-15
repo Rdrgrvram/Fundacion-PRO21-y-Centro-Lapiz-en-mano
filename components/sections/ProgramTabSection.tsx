@@ -1,24 +1,36 @@
 'use client'
 import Icon from '@/components/ui/Icon'
-import { useState } from 'react'
+import { useId, useRef, useState } from 'react'
 import { EXTENDED_PALETTE } from '@/lib/palette'
 import type { ProgramTabSectionContent as ProgramTabSectionData } from '@/lib/cms-schemas'
 
 interface ProgramTabSectionProps {
   id?: string
   section: ProgramTabSectionData
+  bg?: string
 }
 
-export default function ProgramTabSection({ id, section }: ProgramTabSectionProps) {
+export default function ProgramTabSection({ id, section, bg = 'bg-white' }: ProgramTabSectionProps) {
   const [active, setActive] = useState(0)
+  const uid = useId()
+  const botones = useRef<(HTMLButtonElement | null)[]>([])
   const tab = section.tabs[active]
   if (!tab) return null
+  // Patrón WAI-ARIA de pestañas: flechas ←/→ y Inicio/Fin cambian de pestaña y mueven el foco.
+  const alTeclear = (e: React.KeyboardEvent, i: number) => {
+    const n = section.tabs.length
+    const destino = e.key === 'ArrowRight' ? (i + 1) % n : e.key === 'ArrowLeft' ? (i - 1 + n) % n : e.key === 'Home' ? 0 : e.key === 'End' ? n - 1 : null
+    if (destino === null) return
+    e.preventDefault()
+    setActive(destino)
+    botones.current[destino]?.focus()
+  }
   const style = EXTENDED_PALETTE[tab.color]
 
   return (
-    <section id={id} className="py-16 bg-white">
+    <section id={id} className={`py-12 md:py-16 ${bg}`}>
       <div className="container mx-auto px-4">
-        <div className="text-center mb-10">
+        <div className="text-center mb-8 md:mb-10">
           <span className="text-xs font-bold uppercase tracking-widest text-secondary-700 bg-secondary/10 px-4 py-1.5 rounded-full">
             {section.badge}
           </span>
@@ -27,13 +39,23 @@ export default function ProgramTabSection({ id, section }: ProgramTabSectionProp
         </div>
 
         {/* Tabs */}
-        <div className="flex justify-center gap-2 mb-8 flex-wrap">
+        <div role="tablist" aria-label={section.title} className="flex justify-center gap-2 mb-8 flex-wrap">
           {section.tabs.map((t, i) => {
             const tStyle = EXTENDED_PALETTE[t.color]
             const isActive = active === i
             return (
               <button
                 key={i}
+                ref={(el) => {
+                  botones.current[i] = el
+                }}
+                type="button"
+                role="tab"
+                id={`${uid}-tab-${i}`}
+                aria-selected={isActive}
+                aria-controls={`${uid}-panel`}
+                tabIndex={isActive ? 0 : -1}
+                onKeyDown={(e) => alTeclear(e, i)}
                 onClick={() => setActive(i)}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm transition-all min-h-[44px] ${
                   isActive ? `${tStyle.bgSolid} ${tStyle.textOn} shadow-md` : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
@@ -52,7 +74,13 @@ export default function ProgramTabSection({ id, section }: ProgramTabSectionProp
         </div>
 
         {/* Panel activo */}
-        <div className={`max-w-4xl mx-auto bg-white rounded-2xl border ${style.border} shadow-sm overflow-hidden`}>
+        <div
+          role="tabpanel"
+          id={`${uid}-panel`}
+          aria-labelledby={`${uid}-tab-${active}`}
+          tabIndex={0}
+          className={`max-w-4xl mx-auto bg-white rounded-2xl border ${style.border} shadow-sm overflow-hidden`}
+        >
           <div className={`${style.bg} p-6 flex items-center gap-4`}>
             <Icon name={tab.icon} className={`h-9 w-9 ${style.text}`} />
             <div>

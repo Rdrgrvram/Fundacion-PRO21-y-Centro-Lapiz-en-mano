@@ -33,12 +33,19 @@ export function donationMessage(
   const custom = Number(customAmount)
   const hasCustom = customAmount.trim() !== '' && Number.isFinite(custom) && custom > 0
   const tierHasAmount = /\d/.test(tier.amount)
+  // El campo de monto se rellena con el de la tarjeta elegida: si coincide, el mensaje conserva el nombre del nivel.
+  const matchesTier = hasCustom && tierHasAmount && custom === Number(tierAmountValue(tier.amount))
   const amount = hasCustom ? `Bs ${custom}` : tierHasAmount ? tier.amount : ''
-  const level = !hasCustom && tierHasAmount ? ` (${es ? 'nivel' : 'tier'} ${tier.label})` : ''
+  const level = (!hasCustom || matchesTier) && tierHasAmount ? ` (${es ? 'nivel' : 'tier'} ${tier.label})` : ''
   if (es) {
     return `Hola, quiero hacer una donación${amount ? ` de ${amount}` : ''}${level} a la Fundación PRO-21. ¿Me indican cómo confirmar el depósito?`
   }
   return `Hello, I would like to make a donation${amount ? ` of ${amount}` : ''}${level} to Fundación PRO-21. Could you tell me how to confirm the deposit?`
+}
+
+/** Número de una tarjeta de donación ("Bs 300" → "300"); vacío si la tarjeta es de monto libre ("Libre"/"Custom"). */
+export function tierAmountValue(amount: string): string {
+  return amount.replace(/[^\d.]/g, '')
 }
 
 /**
@@ -49,4 +56,28 @@ export function donationMessage(
  */
 export function getNavLabel(nav: { route: string; label: string }[], route: string): string | undefined {
   return nav.find((item) => item.route === route)?.label
+}
+
+/**
+ * ID de un video de YouTube a partir de un enlace (watch?v=, youtu.be/, /shorts/ o /embed/).
+ * Devuelve null si no es un enlace de YouTube válido: así nunca se incrusta algo que no sea un video de YouTube.
+ */
+export function youtubeId(url: string): string | null {
+  let u: URL
+  try {
+    u = new URL(url.trim())
+  } catch {
+    return null
+  }
+  const host = u.hostname.replace(/^(www|m)\./, '')
+  let id: string | null = null
+  if (host === 'youtu.be') id = u.pathname.slice(1).split('/')[0]
+  else if (host === 'youtube.com' || host === 'youtube-nocookie.com') {
+    if (u.pathname === '/watch') id = u.searchParams.get('v')
+    else {
+      const m = u.pathname.match(/^\/(?:shorts|embed|live)\/([^/?#]+)/)
+      id = m ? m[1] : null
+    }
+  }
+  return id && /^[A-Za-z0-9_-]{11}$/.test(id) ? id : null
 }

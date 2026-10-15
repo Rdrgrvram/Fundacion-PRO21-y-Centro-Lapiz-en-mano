@@ -46,7 +46,7 @@ mockups/             # Mockups Vite de referencia (NO es código de producción)
 | `/[lang]` | Inicio |
 | `/[lang]/quienes-somos` | Quiénes somos |
 | `/[lang]/mi-escuelita-down` | Mi Escuelita Down (síndrome de Down) |
-| `/[lang]/aula-wawitas` | Aula Wawitas (autismo) |
+| `/[lang]/aula-wawitas` | Aula Wawitas (preescolar 3–5 años) |
 | `/[lang]/pasos-firmes` | Pasos Firmes (dislexia, atención) |
 | `/[lang]/equipo` | Equipo profesional |
 | `/[lang]/impacto` | Impacto y cifras |

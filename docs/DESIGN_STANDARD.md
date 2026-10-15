@@ -102,6 +102,28 @@ Implementado en `components/sections/ProgramHero.tsx` para los 3 programas; inli
 
 ---
 
+## Páginas de programa: estándar único (los 4 programas, y los que se creen)
+
+Todas las páginas salen de `components/sections/ProgramPageLayout.tsx`; **un programa no puede tener su propio diseño**. Lo que cambia entre programas es el contenido (`content/programs/*`), nunca la presentación. Lo verifica `tests/programs/estandar.spec.ts` (la lista sale de `content/programs`, así que un programa nuevo entra solo).
+
+**Esqueleto, en este orden:** hero → fila de 4 datos clave → sección 1 (áreas) → sección 2 (pestañas) → sección 3 y 4 (opcionales) → galería (solo con `photos_authorized`) → pasos de inscripción → testimonio del programa (si hay) → CTA final.
+
+**Reglas de presentación (iguales para todos):**
+- **Fondos:** las secciones que existen se pintan en el ciclo fijo gris → blanco → tinte suave del color del programa (`components/sections/programTone.ts`). No uses `bg-*` sueltos en una sección de programa.
+- **Datos clave:** 4 cifras en la fuente de titulares (`font-display text-4xl md:text-5xl`). Es la «banda» de datos del programa; no se crean bandas especiales para un solo programa.
+- **Áreas y servicios:** lista de dos columnas con ícono, **sin tarjetas y sin recortar texto** (nada de `line-clamp`). Solo la variante acordeón usa tarjetas.
+- **Pasos de inscripción:** hasta 6 a la vista; si hay más, el resto queda tras «Ver los N pasos restantes».
+- **Acordeón de tarjetas:** siempre en filas de dos columnas desde `md` (nunca 4+3 con huérfanas ni títulos partidos en 4 líneas).
+- **Pasos en móvil:** cada paso es una fila compacta (número a la izquierda); desde `sm` vuelve a la tarjeta centrada.
+- **Datos clave:** `whitespace-nowrap`; si el valor tiene más de 7 caracteres (por ejemplo «Lun – Sáb») baja un escalón de tamaño.
+- **Ritmo vertical:** `py-12 md:py-16` en cada sección y `mb-8 md:mb-12` bajo su cabecera.
+- **Pestañas y acordeones:** con roles ARIA y teclado (ver «Teclado y foco»).
+- **Sin foto autorizada:** el hero y la galería se muestran igual de completos sin foto; no se sustituyen por imágenes de stock.
+
+**Topes recomendados de contenido (quien edita en el panel):** sección 1 de 4 a 8 ítems, 3 o 4 pestañas, pasos de inscripción hasta 6 visibles (más es admisible, quedan plegados), descripciones de una o dos frases.
+
+---
+
 ## Iconografía
 
 - Los iconos de **navegación estructural** (redes sociales en el footer, WhatsApp en los CTA) son siempre SVG inline (`currentColor`, `viewBox="0 0 24 24"`, tamaño `w-4 h-4` a `w-5 h-5` según contexto) — nunca emoji. Esto incluye los íconos de contacto del footer (ubicación/teléfono/correo), migrados de emoji a SVG para que combinen visualmente con los íconos de redes sociales ya existentes.
@@ -124,7 +146,15 @@ Verificado automáticamente por `tests/a11y/a11y.spec.ts` (axe + medición de á
 - **Chips y paneles sobre un hero de color:** usar `bg-black/15`–`bg-black/25` (oscurecen el fondo), no `bg-white/10–25` (lo aclaran y bajan el contraste del texto blanco).
 - **Verde (WhatsApp, éxito):** texto blanco solo sobre `bg-green-700`; texto verde sobre claro, `#15803d` (Tailwind green-700) o más oscuro.
 
-**Áreas táctiles (≥ 44 × 44 px en móvil):** todo enlace, botón y campo. Si el elemento visual es más chico (íconos, puntos de carrusel, migas de pan), el área táctil se amplía con `min-h-[44px] min-w-[44px]` (y `-my-3.5` si no debe cambiar el alto de la fila) o con un botón contenedor de 44px alrededor del punto. Excepción: enlaces dentro de un párrafo de texto.
+**Áreas táctiles (≥ 44 × 44 px en móvil):** todo enlace, botón y campo. Si el elemento visual es más chico (íconos, puntos de carrusel, migas de pan), el área táctil se amplía con `min-h-[44px] min-w-[44px]` (y `-my-3.5` si no debe cambiar el alto de la fila) o con un botón contenedor de 44px alrededor del punto. Excepción: enlaces dentro de un párrafo de texto. Los enlaces cortos de una lista (por ejemplo «Team» en el pie) necesitan también `min-w-[44px]`.
+
+**Teclado y foco (verificado por `tests/layout/teclado-y-movil.spec.ts`):**
+- **Foco visible global** (`styles/globals.css`): anillo de 3 px en `secondary-700`, blanco dentro de `footer`, `.bg-gray-900` y `.bg-gray-950`. Usa `:where()` (prioridad cero): un componente con su propio anillo (`focus:ring-…`) sigue mandando. **No uses `focus:outline-none` sin dejar otro indicador** (anillo o borde de otro color).
+- **Saltar al contenido:** `app/[lang]/layout.tsx` ofrece «Saltar al contenido» como primer elemento enfocable y `<main id="main">`. No quitarlo.
+- **Algo clicable que no sea `<a>`/`<button>`** (p. ej. una tarjeta que se elige) necesita `role="button"`, `tabIndex={0}`, `aria-pressed` y manejar Enter y Espacio.
+- **Contenido que reemplaza al botón que se pulsó** (mapa, video): mover el foco al contenido nuevo para no perderlo.
+- **Texto mínimo de 10 px para etiquetas y 12 px para contenido útil.** No cortar con `truncate` texto que la persona necesita leer completo.
+- **Apilamiento:** el contenedor del `Header` es `z-[60]`, por encima del botón flotante de WhatsApp (`z-50`), para que el menú móvil abierto no quede tapado.
 
 ---
 

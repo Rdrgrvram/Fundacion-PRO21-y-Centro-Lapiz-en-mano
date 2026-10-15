@@ -30,7 +30,7 @@ Leyenda: ✅ cumple · 🟡 cumple con salvedad · ⏳ implementado, pendiente d
 | RF-008 | 3 últimas publicaciones del blog en Inicio | ✅ | `tests/blog/blog.spec.ts` |
 | RF-009 | Guías de Familias: descarga real o solicitud por WhatsApp sin prometer lo inexistente | ✅ | Hoy por WhatsApp (sin PDFs subidos) |
 | RF-010 | Ninguna imagen rota | ✅ | Barrido de 44 vistas (11 rutas × es/en × 375/1280 px), 10-oct-2026: sin imágenes rotas, errores de consola ni enlaces internos caídos |
-| RF-011 | Objetivos táctiles ≥ 44 px y contraste AA en móvil | 🟡 | `tests/a11y` (axe, 375 px). Corregido con tokens existentes. Salvedad: `heading-order` (§5) |
+| RF-011 | Objetivos táctiles ≥ 44 px y contraste AA en móvil | ✅ | `tests/a11y` (axe, 375 px, 104 pruebas): contraste, áreas táctiles y jerarquía de encabezados (`heading-order` corregido el 14-oct-2026) |
 | RF-012 | Inicio, Mi Escuelita Down y Contacto ≥ 90 en Lighthouse | 🟡 | Medición del 11-oct-2026 con el equipo libre (3 corridas por ruta): Inicio 84–91, Mi Escuelita Down 85–87, Contacto 73–91 (mediana 90). **Ninguna llega a 90 de forma estable**; mediciones anteriores dieron 92–95 en Mi Escuelita Down y Contacto. Accesibilidad 98–100, buenas prácticas 100 y SEO 100 en las tres (§5) |
 | RF-013 | Entradas creadas desde el panel con nombre legible | ✅ | `identifier_field` en testimonios y equipo; `tests/cms/slugs.spec.ts` |
 | RF-014 | Suite de pruebas del CMS al 100 % | 🟡 | Corrida completa 10-oct-2026: 260/261. El fallo (`impacto.spec.ts:110`, aviso "Entrada guardada") es intermitente y pasa al repetir el archivo (7/7) |
@@ -72,7 +72,7 @@ Ocultas hasta recibir autorizaciones firmadas de esos programas. Esas páginas s
 ## 5. Deuda técnica conocida
 
 1. **Rendimiento de Inicio:** Lighthouse móvil 85–92 (11 corridas, mediana ≈ 90). Ya era así en `develop`; se descartaron regresión, fuentes y JavaScript; la causa es la foto protagonista del hero y el CSS bloqueante en el perfil más lento. Se redujo la foto de 53 KB a 36 KB con AVIF/WebP. Más margen exige tocar diseño. Una corrida del 10-oct-2026 con el equipo cargado dio 65–91; la del 11-oct-2026 con el equipo libre dio Inicio 84–91, Mi Escuelita Down 85–87 y Contacto 73–91 (LCP 3,0–3,9 s). **El rendimiento queda cerca de 90 pero sin llegar de forma estable, y las cifras varían entre corridas y equipos**; se registra como riesgo conocido. Accesibilidad 98–100, buenas prácticas 100 y SEO 100. Detalle: `specs/001-entrega-v1/notas-rendimiento.md`.
-2. **Encabezados:** la regla `heading-order` de axe (buena práctica, no criterio WCAG AA) falla en 14 de 24 rutas por saltos h1→h3/h4. Contacto ya está corregida.
+2. ~~**Encabezados:** `heading-order` en 14 de 24 rutas~~ Corregido el 14-oct-2026; ahora tiene prueba (`tests/a11y`).
 3. **Blog en inglés:** las publicaciones se muestran en español en ambos idiomas (decisión acordada).
 4. **Imágenes en el repositorio:** no se usa Cloudflare R2; crecimiento del repositorio explicado en `MANUAL-ADMIN.md` §6.
 5. **Pruebas del CMS** editan contenido real: correr una sola instancia a la vez.

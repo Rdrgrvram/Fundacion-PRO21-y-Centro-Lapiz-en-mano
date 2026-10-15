@@ -41,8 +41,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Claude Cowork (archivos internos del agente — no van al repo)
-.claude/
+# Claude Code: se versionan las skills, los hooks y settings.json del proyecto; lo personal queda fuera
+.claude/settings.local.json
+.claude/worktrees/
+.claude/skills/caveman-mode/
 
 # Archivos de prueba
 public/TEST.MD
@@ -62,3 +64,6 @@ v2-*.png
 
 # Contexto local de sesiones de Claude Code (no versionar)
 STATE.md
+
+# Script local con un token de GitHub: NUNCA versionar (ver AGENTS.md)
+scripts/subir-instrucciones-github.ps1

@@ -14,7 +14,7 @@ import { openCmsEntry, publishEntry, backupContentFile, uniqueMarker } from './h
 const EXPECTED_SECTIONS = [
   'Nombre de la familia',
   'Programa',
-  'Ícono (Lucide)',
+  'Ícono (elige uno de la lista)',
   'Color de acento',
   'Orden de aparición',
   'Mostrar en Inicio',
@@ -74,7 +74,9 @@ test.describe('CMS — Testimonios (colección "testimonios")', () => {
       await publishEntry(page)
 
       await page.goto('/es')
-      await expect(page.getByText(marker)).toBeVisible()
+      // Inicio muestra una banda con una cita visible y las demás como chips: se elige el chip del testimonio editado.
+      await page.getByRole('button', { name: marker }).click()
+      await expect(page.locator('blockquote:visible footer').getByText(marker)).toBeVisible()
     } finally {
       backupEs.restore()
       backupEn.restore()
