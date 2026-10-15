@@ -11,6 +11,19 @@
   --color-text: #1a1a1a;         /* gris oscuro — nunca negro puro */
 }
 
+/* ── Movimiento reducido ─────────────────────────────────────────────────────
+   Quien pide menos movimiento al sistema no ve transiciones ni animaciones; los estados finales se conservan. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* ── Foco visible con teclado ───────────────────────────────────────────────
    Anillo de 3 px en el azul de marca (secondary-700, AA sobre blanco); blanco sobre fondos oscuros.
    :where() deja la prioridad en cero: un componente con su propio anillo (focus:ring…) sigue mandando. */
