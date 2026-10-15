@@ -223,7 +223,7 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
               <div className="flex flex-col justify-between">
                 <div>
                   <div className="text-[10px] font-bold text-gray-500 tracking-wider uppercase mb-3 select-none">
-                    {es ? 'Monto personalizado (Bs)' : 'Custom amount (Bs)'}
+                    {es ? 'Tu aporte (Bs)' : 'Your contribution (Bs)'}
                   </div>
                   <div className="relative mb-5 max-w-xs">
                     <span className="absolute left-4 top-1/2 -translate-y-1/2 text-lg text-primary-900 font-bold select-none">Bs</span>
@@ -235,6 +235,9 @@ export default function ColaboraPageClient({ lang, content, whatsappNumber, emai
                       className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 focus:border-primary rounded-xl text-lg focus:outline-none bg-gray-50"
                     />
                   </div>
+                  <p className="-mt-3 mb-4 text-xs font-semibold text-gray-500">
+                    {es ? 'Se rellena con la tarjeta que elijas. Puedes cambiarlo.' : 'Filled in from the card you choose. You can change it.'}
+                  </p>
                   <p className="text-xs text-gray-600 leading-relaxed max-w-sm">{content.payment_note}</p>
                 </div>
 

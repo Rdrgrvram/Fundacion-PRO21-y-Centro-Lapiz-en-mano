@@ -226,7 +226,7 @@ export default function ImpactoPageClient({ lang, content, testimonials, whatsap
                 <Icon name={tm.icon} className="h-5 w-5 flex-shrink-0 text-secondary-700" />
                 <div>
                   <div className="text-[10px] font-bold text-gray-900 leading-tight">{tm.family}</div>
-                  <div className="text-[8px] text-gray-500 font-semibold truncate max-w-[64px] sm:max-w-xs">{tm.program}</div>
+                  <div className="text-[10px] text-gray-500 font-semibold leading-snug">{tm.program}</div>
                 </div>
               </button>
             ))}

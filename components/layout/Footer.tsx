@@ -18,10 +18,10 @@ export default function Footer({ lang }: FooterProps) {
   return (
     <footer className="bg-gray-950 text-white mt-auto">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-8 md:gap-8">
 
           {/* Columna 1: Identidad + contacto */}
-          <div>
+          <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-3 mb-4">
               <Image src={settings.logo_pro21} alt={settings.logo_pro21_alt} width={40} height={48} className="h-12 w-auto object-contain" />
               <div className="w-px h-10 bg-white/20" />

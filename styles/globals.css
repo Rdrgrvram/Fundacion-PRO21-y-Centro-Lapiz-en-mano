@@ -11,6 +11,20 @@
   --color-text: #1a1a1a;         /* gris oscuro — nunca negro puro */
 }
 
+/* ── Foco visible con teclado ───────────────────────────────────────────────
+   Anillo de 3 px en el azul de marca (secondary-700, AA sobre blanco); blanco sobre fondos oscuros.
+   :where() deja la prioridad en cero: un componente con su propio anillo (focus:ring…) sigue mandando. */
+@layer base {
+  :where(a, button, input, select, textarea, summary, [role='button'], [tabindex]):focus-visible {
+    @apply outline outline-[3px] outline-offset-[3px] outline-secondary-700;
+  }
+  footer :focus-visible,
+  .bg-gray-900 :focus-visible,
+  .bg-gray-950 :focus-visible {
+    @apply outline-white;
+  }
+}
+
 /* ── Clase para alto contraste (accesibilidad) ──────────────────────────── */
 .high-contrast {
   background-color: #ffffff !important;
