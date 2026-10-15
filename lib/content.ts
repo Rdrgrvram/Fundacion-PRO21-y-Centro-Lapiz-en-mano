@@ -121,6 +121,21 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
 
 // ── Testimonios ─────────────────────────────────────────────────────────────
 
+/**
+ * Nombres («Mamá de T.») de los testimonios con «Visible en el sitio» apagado. Las citas de la portada de Inicio, la
+ * historia destacada de Impacto y la carta de Familias son COPIAS de un testimonio: si su autor coincide con uno oculto,
+ * esas páginas retiran también esa cita (por ejemplo, cuando una familia retira su permiso).
+ */
+export function getHiddenTestimonialFamilies(locale: Locale): Set<string> {
+  const dir = path.join(CONTENT_DIR, 'testimonios')
+  const ocultos = new Set<string>()
+  for (const slug of listLocaleSlugs(dir)) {
+    const { data } = readLocaleMatter(dir, slug, locale)
+    if ((data.visible === false || data.visible === 'false') && typeof data.family === 'string') ocultos.add(data.family.trim())
+  }
+  return ocultos
+}
+
 export interface Testimonial {
   slug: string
   family: string

@@ -98,6 +98,11 @@ ${cuerpo}</body></html>`;
 
 const fecha = new Date().toLocaleDateString('es-BO', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'America/La_Paz' });
 const filtro = process.argv.slice(2).map((a) => a.replace(/\.md$/, ''));
+const desconocidos = filtro.filter((d) => !DOCUMENTOS.includes(d));
+if (desconocidos.length) {
+  console.error(`Documento(s) desconocido(s): ${desconocidos.join(', ')}. Opciones: ${DOCUMENTOS.join(', ')}`);
+  process.exit(1);
+}
 const lista = filtro.length ? DOCUMENTOS.filter((d) => filtro.includes(d)) : DOCUMENTOS;
 
 await mkdir(dirSalida, { recursive: true });

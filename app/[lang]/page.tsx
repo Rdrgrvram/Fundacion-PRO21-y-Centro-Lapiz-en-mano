@@ -4,7 +4,7 @@ import { pageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Locale } from '@/lib/i18n'
-import { getAllPosts, getAllTestimonials } from '@/lib/content'
+import { getAllPosts, getAllTestimonials, getHiddenTestimonialFamilies } from '@/lib/content'
 import { getAllPrograms, getAllTeamAreas, getAllTeamMembers, getHomeContent, getSiteSettings } from '@/lib/cms'
 import { waLink } from '@/lib/utils'
 import type { AccentColor } from '@/lib/palette'
@@ -39,6 +39,8 @@ export default async function Page({ params }: { params: { lang: Locale } }) {
   const es = lang === 'es'
 
   const content = getHomeContent(lang)
+  // La cita de la portada es copia de un testimonio: si ese testimonio está oculto, la cita se retira también.
+  const citaRetirada = getHiddenTestimonialFamilies(lang).has(content.hero.quote_author.trim())
   const settings = getSiteSettings(lang)
   const programs = getAllPrograms(lang)
   const whatsappUrl = waLink(settings.contact.whatsapp_number)
@@ -144,9 +146,9 @@ export default async function Page({ params }: { params: { lang: Locale } }) {
             <ProtagonistPhoto
               src={content.hero.image}
               alt="Actividad en el Centro Lápiz en Mano"
-              quote={content.hero.quote}
-              author={content.hero.quote_author}
-              context={content.hero.quote_program}
+              quote={citaRetirada ? undefined : content.hero.quote}
+              author={citaRetirada ? undefined : content.hero.quote_author}
+              context={citaRetirada ? undefined : content.hero.quote_program}
               quoteTone="light"
               priority
               className="mt-12 lg:mt-0"

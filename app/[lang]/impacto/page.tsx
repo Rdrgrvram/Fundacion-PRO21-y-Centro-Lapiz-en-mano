@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { pageMetadata } from '@/lib/seo'
-import { getAllTestimonials } from '@/lib/content'
+import { getAllTestimonials, getHiddenTestimonialFamilies } from '@/lib/content'
 import { getAllPrograms, getImpactContent, getSiteSettings } from '@/lib/cms'
 import { isVisibleProgramReference, normalizeProgramSlug } from '@/lib/program-references'
 import type { Locale } from '@/lib/i18n'
@@ -45,8 +45,11 @@ export default function Page({ params: { lang } }: PageProps) {
       index === 0 ||
       (isVisibleProgramReference(category, visibleProgramSlugs) && gallery.some((image) => image.category === category))
   )
+  const retiradas = getHiddenTestimonialFamilies(lang)
   const publicContent = {
     ...content,
+    // La historia destacada es copia de un testimonio: si ese testimonio está oculto, se retira también.
+    featured_story: content.featured_story && !retiradas.has(content.featured_story.author.trim()) ? content.featured_story : undefined,
     stats: content.stats.map((stat) =>
       /program/i.test(stat.label) ? { ...stat, value: String(programs.length) } : stat
     ),
