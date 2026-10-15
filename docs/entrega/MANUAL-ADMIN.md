@@ -76,6 +76,14 @@ Todo el contenido **es** el repositorio, así que el respaldo es copiar el repos
 - Los **mensajes de contacto no se almacenan en el sitio**: solo existen en el correo de la Fundación. Respalda esa bandeja si es importante.
 - **No** versiones nunca documentos con datos de menores (autorizaciones firmadas, reseñas originales). Guárdalos en un lugar privado de la Fundación.
 
+### Deshacer un cambio publicado por error
+
+El panel publica **directo** (modo simple): cada «Publicar» es un *commit* en la rama `master`. Para deshacerlo:
+1. Entra al repositorio en GitHub → pestaña **Commits** (rama `master`).
+2. Busca el commit del cambio (dice el nombre de la página o la entrada, por ejemplo «Update Content…»).
+3. Ábrelo y pulsa **Revert** (arriba a la derecha). GitHub crea el commit inverso; aprueba y en 2–3 minutos el sitio vuelve a como estaba.
+Si no te sientes seguro, pide apoyo al equipo de desarrollo: es una operación de un minuto y no se pierde nada.
+
 ## 8. Cambios que requieren a un desarrollador
 
 Estos cambios están en el código, no en el panel:

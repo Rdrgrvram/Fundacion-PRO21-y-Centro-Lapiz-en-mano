@@ -426,7 +426,7 @@ export const programSchema = z.object({
     .object({
       badge: z.string().optional(),
       title: z.string(),
-      photos: z.array(z.object({ image: z.string(), alt: z.string() })),
+      photos: z.array(z.object({ image: z.string(), alt: z.string() })).default([]),
     })
     .optional(),
   cta: z.object({
@@ -493,7 +493,7 @@ export const teamAreaSchema = z.object({
   color: accentColor,
   desc: z.string(),
   skills: z.array(z.string()),
-  programs: z.array(z.string()),
+  programs: z.array(z.string()).default([]),
   program_slugs: z.array(z.string()).optional(),
 })
 
