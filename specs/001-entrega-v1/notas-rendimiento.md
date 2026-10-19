@@ -52,3 +52,16 @@ Lighthouse 12.2.1, móvil, `npm start` sobre build de producción, 3 corridas po
 | `/es/contacto` | 91 / 73 / 90 | 3,3–3,6 s | 100 | 100 | 100 |
 
 Mejora respecto a la corrida con carga del 10-oct, pero **ninguna ruta llega a 90 de forma estable**. Mi Escuelita Down quedó en 85–87 frente a los 92–93 medidos antes; la diferencia puede deberse a la varianza de Lighthouse y al equipo. Para citar una cifra única conviene medir en el despliegue real (Vercel), donde el servidor y la red son los definitivos.
+
+## Corrida en Vercel (19-oct-2026, #77)
+Deploy de prueba desde `develop` (URL en el issue #77), con `SITE_NOINDEX=1`. Lighthouse de Chrome DevTools 152, Navigation, móvil, ventana de incógnito, 3 corridas por ruta.
+
+| Ruta | Rendimiento | LCP | Accesibilidad | Buenas prácticas | SEO |
+|---|---|---|---|---|---|
+| `/es` | 79 / 79 / 84 | 3,6–4,8 s | 100 | 100 | 69* |
+| `/es/mi-escuelita-down` | 77 / 83 / 80 | 3,6–4,8 s | 100 | 100 | 69* |
+| `/es/contacto` | 85 / 73 / 73 | 3,7–4,6 s | 100 | 100 | 69* |
+
+\* SEO 69: única auditoría fallida en `/es`, «Page is blocked from indexing» (cabecera `x-robots-tag: noindex, nofollow` y `robots.txt`), causada por `SITE_NOINDEX=1`, intencional en el deploy de prueba. Al lanzar se quita la variable y hay que volver a medir.
+
+Rendimiento no llega a 90 en ninguna corrida (máximo 85). Insights de `/es`: Legacy JavaScript (43 KiB), Improve image delivery (24 KiB), Render-blocking requests (60 ms). Desglose del LCP en `/es` (observado, sin throttling): TTFB 110 ms, retraso de carga 70 ms, duración de carga 170 ms, retraso de render 240 ms; la fase más larga es el render, lo que apunta más a JavaScript/CSS que a la foto del hero. Es una interpretación a partir de un solo reporte.
