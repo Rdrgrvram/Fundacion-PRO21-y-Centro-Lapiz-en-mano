@@ -3,7 +3,7 @@
 
 backend:
   name: github
-  repo: Rdrgrvram/Fundacion-PRO21-y-Centro-Lapiz-en-mano
+  repo: fundacionpro21bolivia/Fundacion-PRO21-y-Centro-Lapiz-en-mano
   branch: master
   # Origen público del sitio + endpoint de la función OAuth propia (app/api/auth).
   # Actualizar base_url si el dominio de producción cambia.

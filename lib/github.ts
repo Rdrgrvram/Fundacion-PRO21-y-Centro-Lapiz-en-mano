@@ -3,7 +3,7 @@
 // app/admin/blog/ y app/api/admin-blog/*). Mismos repo/branch que
 // public/admin/config.yml — si alguna vez cambian ahí, actualizar acá también.
 
-const REPO = 'Rdrgrvram/Fundacion-PRO21-y-Centro-Lapiz-en-mano'
+const REPO = 'fundacionpro21bolivia/Fundacion-PRO21-y-Centro-Lapiz-en-mano'
 const BRANCH = 'master'
 
 interface GithubFile {
